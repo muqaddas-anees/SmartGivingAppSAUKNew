@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityEflair" EntityNamespace="Therapy.Entity" ContextNamespace="Therapy.DAL" Class="TherapyDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=69.41.185.220;Initial Catalog=DeffinityEflair;User ID=Deffinity3DBUser;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="TP.SubjectiveQuestions" Member="SubjectiveQuestions">
+    <Type Name="SubjectiveQuestion">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TrialID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="TP.Treatments" Member="Treatments">
+    <Type Name="Treatment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TrialID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="TP.KeyMarkers" Member="KeyMarkers">
+    <Type Name="KeyMarker">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TrialID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="TP.AssociatedTherapyDetails" Member="AssociatedTherapyDetails">
+    <Type Name="AssociatedTherapyDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TherapyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionType" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="QuestionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Answer" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="TP.CommonQuestion" Member="CommonQuestions">
+    <Type Name="CommonQuestion">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="KeyMarkerLists">
+    <Type Name="KeyMarkerList">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+      <Column Name="Trial" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="TreatmentLists">
+    <Type Name="TreatmentList">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+      <Column Name="Trial" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+      <Column Name="TrialID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="SubjectiveQuestionLists">
+    <Type Name="SubjectiveQuestionList">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+      <Column Name="Trial" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="PatientTrailsandTreatmentLists">
+    <Type Name="PatientTrailsandTreatmentList">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Treatment" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+      <Column Name="Trial" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+      <Column Name="User" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondaryTreatment" Member="TypeofTreatment" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="TP.SecondaryTreatment" Member="SecondaryTreatments">
+    <Type Name="SecondaryTreatment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TrialID" Storage="_TrailID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="SecondaryTreatmentLists">
+    <Type Name="SecondaryTreatmentList">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+      <Column Name="Trial" Type="System.String" DbType="NVarchar(500)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TrialID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="TP.PatientTrialsAndTreatments" Member="PatientTrialsAndTreatments">
+    <Type Name="PatientTrialsAndTreatment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TrialID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TreatmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeofTreatment" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="TP.TrialConfiguration" Member="TrialConfigurations">
+    <Type Name="TrialConfiguration">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TrailStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="TP.PatientTrailbyDate" Member="PatientTrailbyDates">
+    <Type Name="PatientTrailbyDate">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TrialID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="TP.TherapyPatientDetails" Member="TherapyPatientDetails">
+    <Type Name="TherapyPatientDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateLogged" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TrialID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WeekCommencingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TreatmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FlagStartedFromBeginning" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

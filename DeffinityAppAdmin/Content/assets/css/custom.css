@@ -1,0 +1,496 @@
+/**
+ *
+ * Apply your custom CSS here
+ *
+*/
+
+body {	
+}
+
+input[type="button"], input[type="submit"], button{
+    vertical-align:baseline;
+}
+
+.modalBackground {
+	        background-color:Gray;
+	        filter:alpha(opacity=70);
+	        opacity:0.7;
+        }
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+.nav.nav-tabs + .tab-content
+{
+   padding:0px;
+}
+
+
+
+.panle-padding-10
+{
+  padding:10px;
+}
+
+.no-right-left-padding
+{
+   padding-right:0px;
+   padding-left:0px;
+}
+.no-right-padding
+{
+   padding-right:0px;
+}
+
+.no-left-padding
+{
+   padding-left:0px;
+}
+
+.no-top-padding
+{
+   padding-top:0px;
+}
+
+.no-bottom-padding
+{
+   padding-bottom:0px;
+}
+
+.form-group-no-margin {
+    margin-bottom:0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.hr-group-no-margin {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.hr-group-5-margin {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.panel .panel-body{
+    color:black;
+}
+
+.rlist input[type=radio] {
+    margin-left:15px;
+    margin-right:5px;
+
+}
+.rlist{
+    margin-bottom:5px;
+}
+.MyCalendar * {
+        -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.MyCalendar table {
+        -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.MyCalendar table tr {
+        -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.MyCalendar table tr td {
+        -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.MyCalendar div {
+        -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.MyCalendar {
+        -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.MyCalendar .ajax__calendar * {
+        -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.MyCalendar .ajax__calendar_header{
+/*background: #cad9da;*/
+color:White;
+/*padding-top: 2px;*/
+z-index:10000;
+ -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.MyCalendar .ajax__calendar_footer{
+/*background: #cad9da;*/
+/*color:White;*/
+/*padding-bottom: 5px;*/
+z-index:10000;
+-webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.MyCalendar .ajax__calendar_days{
+/*border:#cad9da 0px solid;*/
+
+z-index:10000;
+}
+ .MyCalendar  .ajax__calendar_container {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.MyCalendar .ajax__calendar_container {
+    border:1px solid #cad9da;
+    background-color:White;   
+    z-index:10000; 
+    position: relative;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.MyCalendar .ajax__calendar_other .ajax__calendar_day,
+.MyCalendar .ajax__calendar_other .ajax__calendar_year {
+    /*color: black;*/
+    color: silver;
+    background-color:White;   z-index:10000;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.MyCalendar .ajax__calendar_hover .ajax__calendar_day,
+.MyCalendar .ajax__calendar_hover .ajax__calendar_month,
+.MyCalendar .ajax__calendar_hover .ajax__calendar_year {
+    color: black;
+    background-color:White;   
+    z-index:10000;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.MyCalendar .ajax__calendar_active .ajax__calendar_day,
+.MyCalendar .ajax__calendar_active .ajax__calendar_month,
+.MyCalendar .ajax__calendar_active .ajax__calendar_year   {
+    color: black;
+    /*font-weight:bold;*/
+    z-index:10000;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.MyCalendar .ajax__calendar_today     
+{
+	  font-weight:bold; z-index:10000;
+
+      -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+	  
+.MyCalendar table td{
+padding:0px; z-index:10000;
+-webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.MyCalendar .ajax__calendar_title {
+    color:black; 
+    margin:auto;  padding:0px;z-index:10000; 
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+
+
+.breadcrumb {
+  background: none;
+}
+.breadcrumb span i {
+  margin-right: 4px;
+}
+.breadcrumb span a {
+  color: #979898;
+}
+.breadcrumb span.active > * {
+  color: #646565;
+}
+.breadcrumb.bc-2 {
+  background-color: #eeeeee;
+}
+.breadcrumb.bc-3 {
+  border: 1px solid #dddddd;
+}
+.breadcrumb.auto-hidden span {
+  display: block;
+  float: left;
+}
+.breadcrumb.auto-hidden span:before {
+  display: block;
+  float: left;
+}
+.breadcrumb.auto-hidden span a {
+  display: block;
+  float: left;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.breadcrumb.auto-hidden span a.collapsed {
+  width: 45px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.breadcrumb.auto-hidden span a {
+  -webkit-transition: all 220ms ease-in-out;
+  -moz-transition: all 220ms ease-in-out;
+  -o-transition: all 220ms ease-in-out;
+  transition: all 220ms ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+ 
+   .breadcrumb span a {
+    font-size: 12px;
+  }
+}
+
+.table-responsive[data-pattern="priority-columns"]{
+   position:inherit;
+}
+
+
+.pointer {
+    cursor: pointer;
+    cursor: hand;
+}
+
+
+input[type="radio"] 
+{
+    margin-left: 8px;
+    margin-right: 2px;
+}
+
+input[type="radio"] + label
+{
+    margin-left: 2px;
+}
+input[type="checkbox"] 
+{
+    margin-left: 5px;
+    margin-right: 3px;
+}
+/*sub heading*/
+ .col-md-12 strong
+       {
+           font-size:15px;
+           font-weight:normal;
+       }
+
+ 
+ .col-md-10 strong
+       {
+           font-size:15px;
+           font-weight:normal;
+       }
+
+ .col-md-8 strong
+       {
+           font-size:15px;
+           font-weight:normal;
+       }
+
+ 
+ .col-xs-12 strong
+       {
+           font-size:15px;
+           font-weight:normal;
+       }
+
+ 
+ .col-xs-10 strong
+       {
+           font-size:15px;
+           font-weight:normal;
+       }
+
+ .col-xs-8 strong
+       {
+           font-size:15px;
+           font-weight:normal;
+       }
+
+ .col-nowrap a{
+     white-space:normal;
+ }
+ .col-nowrap span{
+     white-space:normal;
+ }
+
+
+ .col-nowrap_200{
+     white-space:normal;
+     min-width:200px;
+ }
+ .col-nowrap_300{
+     white-space:normal;
+     min-width:300px;
+ }
+ .col-nowrap_400{
+     white-space:normal;
+     min-width:400px;
+ }
+ .col-nowrap_500{
+     white-space:normal;
+     min-width:500px;
+ }
+ 
+ .col-nowrap_200 span{
+     white-space:normal;
+     min-width:200px;
+ }
+ .col-nowrap_300 span{
+     white-space:normal;
+     min-width:300px;
+ }
+ .col-nowrap_400 span{
+     white-space:normal;
+     min-width:400px;
+ }
+ .col-nowrap_500 span{
+     white-space:normal;
+     min-width:500px;
+ }
+
+ .mq.js .table-responsive[data-pattern="priority-columns"] th[data-priority],
+ .mq.js.lt-ie10 .sticky-table-header th[data-priority], .mq.js 
+.table-responsive[data-pattern="priority-columns"] 
+td[data-priority], .mq.js.lt-ie10 .sticky-table-header td[data-priority] {
+    display: table-cell;
+}
+
+
+
+ 
+ .valert-danger {
+    background-color: #cc3f44;
+    border-color: #cc3f44;
+    color: #ffffff;
+}
+
+
+.valert {
+    margin-top:10px;
+    padding: 7px;
+    margin-bottom: 1px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    width:100%;
+    float: left;
+    position: relative;
+    
+}
+/*.btn{
+        margin-bottom: 0px
+}*/
+.btn-icon-standalone{
+    vertical-align:bottom;
+}
+.btn.btn-icon-standalone i, .btn.btn-icon-standalone span{
+       padding-bottom: 10px;
+    padding-top: 10px;
+    
+}
+
+.text-bold strong{
+        font-weight: normal;
+    line-height: 1;
+    color: #777777;
+    font-size: 17px;
+    /*font-size: 65%;*/
+}
+
+
+/*.page-body.skin-facebook .btn.btn-secondary i {
+    background-color: #8b9dc3;
+    color: #ffffff;
+}*/
+
+
+
+/*table.dataTable thead tr {
+    background-color: #2c3e50; 
+    color: #ffffff;
+}
+
+table.dataTable tbody > tr > th {
+    background-color: #2c3e50; 
+    color: #ffffff;
+}
+table.dataTable tbody > tr > th > div > span{
+    
+    color: #ffffff;
+}
+    table.dataTable tbody > tr > th a {
+        background-color: #2c3e50; 
+        color: #ffffff;
+    }
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #2c3e50;
+    color: #ffffff;
+}
+    .table-striped > tbody > tr:nth-child(odd) > th a {
+        background-color: #2c3e50;
+        color: #ffffff;
+    }
+
+div.jtable-main-container table.jtable thead th.jtable-column-header div.jtable-column-header-container span.jtable-column-header-text {
+    display: inline-block;
+    color: #ffffff;
+}
+
+.dataTables_wrapper tr .dataTables_empty {
+    border-bottom: 1px solid #eeeeee;
+    background-color: white;
+}*/
+
+/*.page-body.skin-navy .btn.btn-secondary {
+    background-color: #FF6500;
+    color: #ffffff;
+}
+    .page-body.skin-navy .btn.btn-secondary:hover {
+        background-color: #f17829;
+        text-color: #ffffff;
+    }
+
+    .page-body.skin-navy .btn.btn-secondary:active, .page-body.skin-navy .btn.btn-secondary:focus {
+        background-color: #FF6500;
+        border-color: #FF6500;
+    }*/
+
+
+/*.btn.btn-secondary.btn-icon-standalone i {
+    background-color: #FF6500;
+    border-right-color: #FF6500;
+}
+
+    .btn.btn-secondary.btn-icon-standalone i:hover {
+        background-color: #FF6500;
+        border-right-color: #FF6500;
+    }*/

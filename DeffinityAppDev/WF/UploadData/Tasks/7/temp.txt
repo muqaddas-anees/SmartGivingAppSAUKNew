@@ -1,0 +1,13 @@
+9440699683
+
+8310719776
+
+
+ prefs.setString(AppVariables.session_email, email);
+        prefs.setString(AppVariables.session_userid, uid);
+         prefs.setString(AppVariables.session_username, username);
+          prefs.setString(AppVariables.session_typeoflogin, typeoflogin);
+
+
+nc1@nc1.com
+ems123

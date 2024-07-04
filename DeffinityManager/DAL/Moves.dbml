@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityEflair" EntityNamespace="Move.Entity" ContextNamespace="Move.DAL" Class="MovesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=69.41.185.219;Initial Catalog=DeffinityEflair;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.v_AssetMove" Member="v_AssetMoves">
+    <Type Name="v_AssetMove">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MoveRef" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FromMove" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ToMove" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ExistingGOP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProposedGOP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Extension" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="NumberofItems" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IncidentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chkstatus" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MoveAssets_Document" Member="MoveAssets_Documents">
+    <Type Name="MoveAssets_Document">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MoveID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IncidentID_Moves" Member="IncidentID_Moves">
+    <Type Name="IncidentID_Move">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SDID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoOfUsers" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MoveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AssetMove" Member="AssetMoves">
+    <Type Name="AssetMove">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MoveRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FromMove" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ToMove" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ExistingGOP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProposedGOP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Extension" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NumberofItems" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Movedate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IncidentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chkstatus" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CheckStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IcomAgent" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ConsoleID" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PortID" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="FromSpkr" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SpeakerBusNum" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SpeakerBusType" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SpeakerBusPort" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SpeakerBusPin" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ToSpeaker" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="FreeSEAT" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DestSpeakerBusType" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Handset1" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Handset2" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Headset1" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Headset2" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DeskView" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AssetsDeskUpload" Member="AssetsDeskUploads">
+    <Type Name="AssetsDeskUpload">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Desk" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GOP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ConsoleID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PortID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SpkrBusNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MoveAssets" Member="MoveAssets">
+    <Type Name="MoveAsset">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EquipmentType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Assetnumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Make" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Model" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromGop" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromPort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ToGOP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ToPort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MoveRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Incident" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OldLink" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NewLink" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HostName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Desk" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CommitDatabase" Member="CommitDatabases">
+    <Type Name="CommitDatabase">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MoveRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="FromMove" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ToMove" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="MoveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IncidentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExistingGOP" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ProposedGOP" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MovesDealerVoice" Member="MovesDealerVoices">
+    <Type Name="MovesDealerVoice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Desk" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ConsoleID" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PortID" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="FromSpkr" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SpeakerBusNum" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SpeakerBusType" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SpeakerBusPort" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SpeakerBusPin" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ToSpeaker" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="FreeSEAT" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DestSpeakerBusType" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Handset1" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Handset2" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Headset1" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Headset2" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="IcomAgent" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="MoveRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="JOURNAL.MoveInformation" Member="JMoveInformations">
+    <Type Name="JMoveInformation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Desk" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MoveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TicketRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.AssetsMove_Delete" Method="AssetsMove_Delete">
+    <Parameter Name="MoveID" Parameter="moveID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

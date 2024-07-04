@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityEflair" EntityNamespace="IncidentMgt.Entity" ContextNamespace="IncidentMgt.DAL" Class="IncidentDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=DeffinityEflair;User ID=sa1;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Incident_UnitCategory" Member="Incident_UnitCategories">
+    <Type Name="Incident_UnitCategory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_UnitCredit_reoccurrence" Member="Incident_UnitCredit_reoccurrences">
+    <Type Name="Incident_UnitCredit_reoccurrence">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SdID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurchaseOrderNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RenewType" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NoEndDate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EndBy" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident" Member="Incidents">
+    <Type Name="Incident">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Visible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DateLogged" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CategorySLA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SLATarget" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SLAMet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IncidentType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="AssignedToTeam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WeekCommencingDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="RequesterName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RequesterEmail" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RequesterTelephone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="RequesterDeskLocation" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="RequesterDepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PriorityLevel" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Resolution" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InHandTime" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="WorkDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkHours" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkMinutes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Custom1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Custom2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Custom3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Custom4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClosedTime" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="OutOfHours" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Program" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POnumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quotestatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QuoteLineStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Area" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectCategoryMasterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Callout" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InHandSLAMet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BuildingID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FloorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Custom5" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom6" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom7" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom8" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom9" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom10" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom11" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom12" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom13" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom14" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom15" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Custom16" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="LoggedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_UnitExpiryPeriod" Member="Incident_UnitExpiryPeriods">
+    <Type Name="Incident_UnitExpiryPeriod">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PeriodType" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Period" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_UnitConsumptionRAGAlerts" Member="Incident_UnitConsumptionRAGAlerts">
+    <Type Name="Incident_UnitConsumptionRAGAlert">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RemainingUnits" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmailDistribution" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="RAG" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_MinimumUnitsAssignedPerCall" Member="Incident_MinimumUnitsAssignedPerCalls">
+    <Type Name="Incident_MinimumUnitsAssignedPerCall">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MinimumUnitsAssignedPerCall" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_ServicePrice" Member="Incident_ServicePrices">
+    <Type Name="Incident_ServicePrice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IncidentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OriginalPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DiscountPercent" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DiscountPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RevicedPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UnitConsumption" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_AssignedTeam" Member="Incident_AssignedTeams">
+    <Type Name="Incident_AssignedTeam">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IncidentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AssigneTo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RequiredDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ScheduledDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Required" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_UnitsPurchaseHistory" Member="Incident_UnitsPurchaseHistories">
+    <Type Name="Incident_UnitsPurchaseHistory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DatePurchased" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="UnitsPurchased" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="UnitCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurchaseOrderNo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExpiryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AgeRAGStatus" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="QtyWasted" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="QtyUsed" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_Service" Member="Incident_Services">
+    <Type Name="Incident_Service">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ServiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IncidentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BuyingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SellingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ServiceTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitConsumption" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_ServiceUnits" Member="Incident_ServiceUnits">
+    <Type Name="Incident_ServiceUnit">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SdID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateApplied" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyUsed" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AppliedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SRType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TypeOfHours" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SectionType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CallServiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_UnitConsumptionConfiguration" Member="Incident_UnitConsumptionConfigurations">
+    <Type Name="Incident_UnitConsumptionConfiguration">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SRType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TypeOfHours" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="FromDay" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ToDay" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromTime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="ToTime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="IncludePublicHoliday" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AutoUnitsAllocated" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="PerUnitOfTime" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="UnitType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incident_UnitUsedJouranl" Member="Incident_UnitUsedJouranls">
+    <Type Name="Incident_UnitUsedJouranl">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CallID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UnitsPurchaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalUnits" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="AppliedUnits" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="DateLogged" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsApplied" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Incident_UnitsPurchaseHistory_barchartYvalue" Method="Incident_UnitsPurchaseHistory_barchartYvalue">
+    <Parameter Name="SdID" Parameter="sdID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Incident_UnitsPurchaseHistory_barchartYvalueResult">
+      <Column Name="UnitsPurchsed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Incident_ServiceUnits_SelectAll" Method="Incident_ServiceUnits_SelectAll">
+    <Parameter Name="Sdid" Parameter="sdid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Incident_ServiceUnits_SelectAllResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SdID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateApplied" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyUsed" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AppliedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SRType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TypeOfHours" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategoryName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Incident_UnitsPurchaseHistory_BarchartXYvalue" Method="Incident_UnitsPurchaseHistory_BarchartXYvalue">
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Todate" Parameter="todate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="PortfoliID" Parameter="portfoliID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Incident_UnitsPurchaseHistory_BarchartXYvalueResult">
+      <Column Name="DatePurchased" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="UnitsPurchased" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyUsed" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Incident_ServiceUnits_SelectByType" Method="Incident_ServiceUnits_SelectByType">
+    <Parameter Name="Sdid" Parameter="sdid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SectionType" Parameter="sectionType" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="Incident_ServiceUnits_SelectByTypeResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SdID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateApplied" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyUsed" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AppliedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SRType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TypeOfHours" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SectionType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategoryName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Incident_UnitsPurchaseHistoryDashboardSelect" Method="Incident_UnitsPurchaseHistoryDashboardSelect">
+    <Parameter Name="CustomerId" Parameter="customerId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Incident_UnitsPurchaseHistoryDashboardSelectResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AgeRAGStatus" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="DatePurchased" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ExpiryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="PurchaseOrderNo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="QtyWasted" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitsPurchased" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="QtyUsed" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DaysRemaining" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Incident_UnitsPurchaseHistory_SelectByCustomerID" Method="Incident_UnitsPurchaseHistory_SelectByCustomerID">
+    <Parameter Name="PortfolioID" Parameter="portfolioID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Incident_UnitsPurchaseHistory_SelectByCustomerIDResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DatePurchased" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="UnitsPurchased" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="UnitCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurchaseOrderNo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExpiryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AgeRAGStatus" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="QtyWasted" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="QtyUsed" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="UnitCategoryName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QtyRemaining" Type="System.Decimal" DbType="Decimal(19,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

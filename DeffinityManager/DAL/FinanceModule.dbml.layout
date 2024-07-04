@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 14.5" name="FinanceModule">
+  <DataContextMoniker Name="/FinanceModuleDataContext" />
+  <nestedChildShapes>
+    <classShape Id="0a8f097b-076d-4092-becf-ca6aa6ed4297" absoluteBounds="0.5, 1.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/FinanceModuleDataContext/FinanceRateCard" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c667a36c-f261-4911-947f-df0516159ed4" absoluteBounds="0.51499999999999968, 1.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a2cb3141-4cbd-4765-a7ba-19f64f129a21" absoluteBounds="4.5, 5, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/FinanceModuleDataContext/ExperienceClassification" />
+      <nestedChildShapes>
+        <elementListCompartment Id="edee57a4-7aad-46ed-b0df-6ecb438a6d55" absoluteBounds="4.515, 5.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="629813ff-d480-41be-8641-76793161c2d6" absoluteBounds="3, 1.125, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/FinanceModuleDataContext/FMOverheadCost" />
+      <nestedChildShapes>
+        <elementListCompartment Id="07bf96ef-4c48-484a-a848-46e89231133b" absoluteBounds="3.0149999999999997, 1.585, 1.9700000000000002, 1.7878011067708333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a1958cd7-4be5-4667-b7ca-f8e62e92b9d9" absoluteBounds="5.75, 1.25, 2, 2.5401025390625">
+      <DataClassMoniker Name="/FinanceModuleDataContext/FMApportionCost" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0fea6454-6a9d-47fc-b454-bf84b8712fa7" absoluteBounds="5.765, 1.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="10f92d97-a8b6-4a10-885e-b05925654629" absoluteBounds="0.5, 4, 2, 1.9631982421875">
+      <DataClassMoniker Name="/FinanceModuleDataContext/VariationBreakdownHour" />
+      <nestedChildShapes>
+        <elementListCompartment Id="123816e8-007c-4dd0-ab12-8a78ebc129e9" absoluteBounds="0.51500000000000012, 4.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="de19e772-f45a-4c46-a87f-0426f201ae2a" absoluteBounds="8, 0.875, 2, 7.5399397786458326">
+      <DataClassMoniker Name="/FinanceModuleDataContext/AssignedContractorsToProject" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6e6075cd-980b-4a14-b04a-71ecd4bb922b" absoluteBounds="8.015, 1.335, 1.9700000000000002, 6.979939778645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="19f3ee38-c72e-423d-8a31-b26b5c6819ea" absoluteBounds="3.125, 6.625, 2, 2.3478011067708326">
+      <DataClassMoniker Name="/FinanceModuleDataContext/PMHours" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9716ec01-c32a-4734-b9af-fc262b50c1f8" absoluteBounds="3.14, 7.085, 1.9700000000000002, 1.7878011067708333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f822c972-ed59-48cf-a619-3053e5b5159e" absoluteBounds="5.375, 6.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/FinanceModuleDataContext/ProjectPMHour" />
+      <nestedChildShapes>
+        <elementListCompartment Id="541e1be8-225b-473d-8c4c-e32ea3a455e7" absoluteBounds="5.39, 7.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="51f2ecf4-4256-4a3a-bf42-5ddeba542976" absoluteBounds="0.5, 6.125, 2, 8.1168440755208326">
+      <DataClassMoniker Name="/FinanceModuleDataContext/DeviationReport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="20d49ae9-dbd4-4a72-b5f8-ec9d38687b0a" absoluteBounds="0.51500000000000012, 6.585, 1.9700000000000002, 7.556844075520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a806424f-5767-4224-a26e-97cd4f6c6d6e" absoluteBounds="6.625, 9.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/FinanceModuleDataContext/Expensesentrytype" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7cee0ae1-2ff9-4886-aece-a1b4211801c7" absoluteBounds="6.64, 9.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d160ec3d-2f72-4bb6-a61f-5579d06cda09" absoluteBounds="3.25, 9.375, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/FinanceModuleDataContext/ExternalExpense" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c4bf4a13-da4a-45c3-8f6e-ecfbb3bace3f" absoluteBounds="3.265, 9.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityEflair" EntityNamespace="POMgt.Entity" ContextNamespace="POMgt.DAL" Class="PurchaseOrderMgtDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=69.41.185.219;Initial Catalog=DeffinityEflair;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Customer_PODatabseDetails" Member="Customer_PODatabseDetails">
+    <Type Name="Customer_PODatabseDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ProjectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateRaised" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Currencey" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TotalPaid" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="RetentionValue" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RetentionReminder" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CustomerPOID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PO_GoodsDetails" Member="PO_GoodsDetails">
+    <Type Name="PO_GoodsDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyOrderd" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyRec" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyOut" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="GenInfID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Vendors" Member="v_Vendors">
+    <Type Name="v_Vendor">
+      <Column Name="VendorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RegNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HQAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VATNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PostCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="SID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GroupOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeApproveID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NormalBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NormalSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EmploymentStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReleaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpClassification" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer_PODatabase" Member="Customer_PODatabases">
+    <Type Name="Customer_PODatabase">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Value" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DetailsOfPO" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PaymentMethod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateRaised" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RaisedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RelatedToPO" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="POExpiryDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PaymentMode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DDays" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PODrain" Member="PODrains">
+    <Type Name="PODrain">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HourNameType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HourName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_CustomerPO_Details" Member="v_CustomerPO_Details">
+    <Type Name="v_CustomerPO_Detail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(171)" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(19,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Currencey" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CustomerPOID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ProjectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RetentionValue" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPaid" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DateRaised" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="POValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="POExpiryDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DetailsOfPO" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RelatedToPO" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PaymentMethod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PaymentMode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RaisedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DDays" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Project" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(171)" CanBeNull="true" />
+      <Column Name="HoursBooked" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PO_GenInformation" Member="PO_GenInformations">
+    <Type Name="PO_GenInformation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RequestedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApprovedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurchasedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_PurchaseDetails" Member="v_PurchaseDetails">
+    <Type Name="v_PurchaseDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RequestedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApprovedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurchasedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GNNotes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HQAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PostCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="GenInfID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyOrderd" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyRec" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyOut" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ProjectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReferenceWithPrefix" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

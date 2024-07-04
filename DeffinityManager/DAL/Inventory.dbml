@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityFirstData" EntityNamespace="InventoryMgt.Entity" ContextNamespace="InventoryMgt.DAL" Class="InventoryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Site" Member="Sites">
+    <Type Name="Site">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Site" Member="Site1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Visible" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Address3" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Postcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AssignedSitesToPortfolio" Member="AssignedSitesToPortfolios">
+    <Type Name="AssignedSitesToPortfolio">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Portfolio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GoodsReceipt" Member="GoodsReceipts">
+    <Type Name="GoodsReceipt">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Item" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpectedShipmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NextShipmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="QtyOrdered" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QtyReceived" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OutStandingQty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AuthorizedPay" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ServiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Types" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubcategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceCatalog_category" Member="ServiceCatalog_categories">
+    <Type Name="ServiceCatalog_category">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MasterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GoodsItem_StorageDetails" Member="GoodsItem_StorageDetails">
+    <Type Name="GoodsItem_StorageDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="JOURNAL.InventoryStockItem" Member="JInventoryStockItems">
+    <Type Name="JInventoryStockItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReasonCode" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Vendors" Member="v_Vendors">
+    <Type Name="v_Vendor">
+      <Column Name="VendorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RegNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HQAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VATNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PostCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="SID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GroupOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeApproveID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NormalBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NormalSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EmploymentStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReleaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpClassification" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Manufacturer" Member="Manufacturers">
+    <Type Name="Manufacturer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GoodsStorageDetails" Member="GoodsStorageDetails">
+    <Type Name="GoodsStorageDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InventoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Product" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GridFieldConfigurator" Member="GridFieldConfigurators">
+    <Type Name="GridFieldConfigurator">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DeafaultName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="GridFieldConfigurator_Inventory_BatchCustomData" Member="Inventory_BatchCustomDatas" ThisKey="id" OtherKey="CustomFieldID" Type="Inventory_BatchCustomData" />
+      <Association Name="GridFieldConfigurator_InventoryManager_UsageCustomData" Member="InventoryManager_UsageCustomDatas" ThisKey="id" OtherKey="CustomFieldID" Type="InventoryManager_UsageCustomData" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_Area" Member="Inventory_Areas">
+    <Type Name="Inventory_Area">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Cid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Inventory_Area_Inventory_Locatin" Member="Inventory_Locatins" ThisKey="id" OtherKey="IA_id" Type="Inventory_Locatin" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_AssociatedBarcode" Member="Inventory_AssociatedBarcodes">
+    <Type Name="Inventory_AssociatedBarcode">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_BatchCustomData" Member="Inventory_BatchCustomDatas">
+    <Type Name="Inventory_BatchCustomData">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BatchID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomFieldID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomFieldValue" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="GridFieldConfigurator_Inventory_BatchCustomData" Member="GridFieldConfigurator" ThisKey="CustomFieldID" OtherKey="id" Type="GridFieldConfigurator" IsForeignKey="true" />
+      <Association Name="Inventory_Batch_Inventory_BatchCustomData" Member="Inventory_Batch" ThisKey="BatchID" OtherKey="ID" Type="Inventory_Batch" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_Bin" Member="Inventory_Bins">
+    <Type Name="Inventory_Bin">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="IS_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Inventory_Shelf_Inventory_Bin" Member="Inventory_Shelf" ThisKey="IS_id" OtherKey="id" Type="Inventory_Shelf" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_Condtions" Member="Inventory_Condtions">
+    <Type Name="Inventory_Condtion">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Condition" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_DistributionList" Member="Inventory_DistributionLists">
+    <Type Name="Inventory_DistributionList">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequestTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_Locatin" Member="Inventory_Locatins">
+    <Type Name="Inventory_Locatin">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="IA_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Inventory_Locatin_Inventory_Shelf" Member="Inventory_Shelfs" ThisKey="id" OtherKey="IL_id" Type="Inventory_Shelf" />
+      <Association Name="Inventory_Area_Inventory_Locatin" Member="Inventory_Area" ThisKey="IA_id" OtherKey="id" Type="Inventory_Area" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_Shelf" Member="Inventory_Shelfs">
+    <Type Name="Inventory_Shelf">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="IL_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Inventory_Shelf_Inventory_Bin" Member="Inventory_Bins" ThisKey="id" OtherKey="IS_id" Type="Inventory_Bin" />
+      <Association Name="Inventory_Locatin_Inventory_Shelf" Member="Inventory_Locatin" ThisKey="IL_id" OtherKey="id" Type="Inventory_Locatin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_SiteStorageDetails" Member="Inventory_SiteStorageDetails">
+    <Type Name="Inventory_SiteStorageDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Usebarcode" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="UseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UseStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DeployedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeployedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_Use" Member="Inventory_Uses">
+    <Type Name="Inventory_Use">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryAdditionalInfo" Member="InventoryAdditionalInfos">
+    <Type Name="InventoryAdditionalInfo">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="productId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomFieldID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomFieldValue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.inventoryCustomFields" Member="inventoryCustomFields">
+    <Type Name="inventoryCustomField">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeOfField" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DefaultText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MinimumValue" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MaximumValue" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Mandatory" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FieldPosition" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="LabelName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ListValue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryFieldsConfig" Member="InventoryFieldsConfigs">
+    <Type Name="InventoryFieldsConfig">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DefaultName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="IsVisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryFieldsConfigData" Member="InventoryFieldsConfigDatas">
+    <Type Name="InventoryFieldsConfigData">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DefaultName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="IsVisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryManager" Member="InventoryManagers">
+    <Type Name="InventoryManager">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SiteId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReOrderLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Categoery" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyOnOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpctArvlDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LeadTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Image" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Manufacturer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateOrdered" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Area" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Location" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Shelf" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="InventoryManager_Inventory_Batch" Member="Inventory_Batches" ThisKey="Id" OtherKey="InventoryID" Type="Inventory_Batch" />
+      <Association Name="InventoryManager_Inventory_Batch1" Member="Inventory_Batches1" ThisKey="Id" OtherKey="InventoryID" Type="Inventory_Batch" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryManager_PSDProducts" Member="InventoryManager_PSDProducts">
+    <Type Name="InventoryManager_PSDProduct">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="QtyUsed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyReplenish" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Requester" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="projectid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BatchID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConditionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecordNumber" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="InventoryManager_PSDProduct_InventoryManager_UsageCustomData" Member="InventoryManager_UsageCustomDatas" ThisKey="Id" OtherKey="PSDID" Type="InventoryManager_UsageCustomData" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryManager_UsageCustomData" Member="InventoryManager_UsageCustomDatas">
+    <Type Name="InventoryManager_UsageCustomData">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PSDID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomFieldID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomFieldValue" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="GridFieldConfigurator_InventoryManager_UsageCustomData" Member="GridFieldConfigurator" ThisKey="CustomFieldID" OtherKey="id" Type="GridFieldConfigurator" IsForeignKey="true" />
+      <Association Name="InventoryManager_PSDProduct_InventoryManager_UsageCustomData" Member="InventoryManager_PSDProduct" ThisKey="PSDID" OtherKey="Id" Type="InventoryManager_PSDProduct" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryManagerJournal" Member="InventoryManagerJournals">
+    <Type Name="InventoryManagerJournal">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReOrderLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Categoery" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyOnOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpctArvlDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LeadTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Image" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Manufacturer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateOrdered" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MdofiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NoDeployed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReasonCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TransferQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OpeningStock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyChangedOrNot" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryManagerTrack" Member="InventoryManagerTracks">
+    <Type Name="InventoryManagerTrack">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateOrdered" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SiteId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyOrdered" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="QtyUsed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="InventoryUploadLists">
+    <Type Name="InventoryUploadList">
+      <Column Name="InventoryID" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="Product" Type="System.String" DbType="Nvarchar(500)" CanBeNull="true" />
+      <Column Name="OpeningQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumberDeployed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Use" Type="System.String" DbType="Nvarchar(200)" CanBeNull="true" />
+      <Column Name="UseID" Type="System.Int32" DbType="int" CanBeNull="false" />
+      <Column Name="Category" Type="System.String" DbType="Nvarchar(200)" CanBeNull="true" />
+      <Column Name="SubCategory" Type="System.String" DbType="nvarchar(200)" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_New_Stock" Member="Inventory_New_Stocks">
+    <Type Name="Inventory_New_Stock">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AreaId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="shelfId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Binid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BatchControl" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Inventory_Batch" Member="Inventory_Batches">
+    <Type Name="Inventory_Batch">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InventoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BatchRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BatchDisplayName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DateReceived" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AddedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Area" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Location" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Shelf" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BatchControl" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Inventory_Batch_Inventory_BatchCustomData" Member="Inventory_BatchCustomDatas" ThisKey="ID" OtherKey="BatchID" Type="Inventory_BatchCustomData" />
+      <Association Name="InventoryManager_Inventory_Batch" Member="InventoryManager" ThisKey="InventoryID" OtherKey="Id" Type="InventoryManager" IsForeignKey="true" />
+      <Association Name="InventoryManager_Inventory_Batch1" Member="InventoryManager1" ThisKey="InventoryID" OtherKey="Id" Type="InventoryManager" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryBatchOptions" Member="InventoryBatchOptions">
+    <Type Name="InventoryBatchOption">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BatchControl" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateTimeCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WarehouseDetails" Member="WarehouseDetails">
+    <Type Name="WarehouseDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WarehouseName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Town" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Postcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WarehouseManagerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoggedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoggedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryCategory" Member="InventoryCategories">
+    <Type Name="InventoryCategory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MasterID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryItemsAlloatment" Member="InventoryItemsAlloatments">
+    <Type Name="InventoryItemsAlloatment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CallID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InventoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AllotmentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AllotedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryItemsTransfer" Member="InventoryItemsTransfers">
+    <Type Name="InventoryItemsTransfer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransferFromInventoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransferToInventoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransferFromLocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransferToLocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransferQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TransferBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InventoryItems" Member="InventoryItems">
+    <Type Name="InventoryItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SubCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Equipment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="StorageLocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoggedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LoggedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Floor" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Aisle" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Shelf" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Bin" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ReorderLevel" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_InventoryItems" Member="V_InventoryItems">
+    <Type Name="V_InventoryItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SubCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Equipment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TotalQty" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QtyUsed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StorageLocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoggedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LoggedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Floor" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Aisle" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Shelf" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Bin" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ReorderLevel" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ReorderLevelColor" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SubCategoryName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="StorageLocationName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.IM_GetProduct" Method="IM_GetProduct">
+    <Parameter Name="CustomerId" Parameter="customerId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CategoryId" Parameter="categoryId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SubcategoryId" Parameter="subcategoryId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SiteId" Parameter="siteId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SectionType" Parameter="sectionType" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InventoryManager_Insert" Method="InventoryManager_Insert">
+    <Parameter Name="SiteId" Parameter="siteId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductId" Parameter="productId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ReorderLevel" Parameter="reorderLevel" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SectionType" Parameter="sectionType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Categoery" Parameter="categoery" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SubCategory" Parameter="subCategory" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PortfolioID" Parameter="portfolioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="QtyOnOrder" Parameter="qtyOnOrder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ExpctArvlDate" Parameter="expctArvlDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="LeadTime" Parameter="leadTime" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemDescription" Parameter="itemDescription" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Supplier" Parameter="supplier" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PartNumber" Parameter="partNumber" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Image" Parameter="image" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="Manufacturer" Parameter="manufacturer" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DateOrdered" Parameter="dateOrdered" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Barcode" Parameter="barcode" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Area" Parameter="area" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Location" Parameter="location" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Shelf" Parameter="shelf" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Bin" Parameter="bin" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InventoryManager_Update" Method="InventoryManager_Update">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SiteId" Parameter="siteId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ReorderLevel" Parameter="reorderLevel" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SectionType" Parameter="sectionType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Categoery" Parameter="categoery" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SubCategory" Parameter="subCategory" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PortfolioID" Parameter="portfolioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="QtyOnOrder" Parameter="qtyOnOrder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ExpctArvlDate" Parameter="expctArvlDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="LeadTime" Parameter="leadTime" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemDescription" Parameter="itemDescription" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Image" Parameter="image" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="Supplier" Parameter="supplier" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Manufacturer" Parameter="manufacturer" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DateOrdered" Parameter="dateOrdered" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Barcode" Parameter="barcode" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Area" Parameter="area" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Location" Parameter="location" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Shelf" Parameter="shelf" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Bin" Parameter="bin" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PartNumber" Parameter="partNumber" Type="System.String" DbType="NVarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

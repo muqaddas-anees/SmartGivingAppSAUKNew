@@ -1,0 +1,3 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="DeffinityEflairConnectionString4" Provider="System.Data.SqlClient" />
+</Database>

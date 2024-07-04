@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "WF/Projects/Gantt/js/gnt-all-debug.min.js",
+    "inputFiles": [
+      "WF/Projects/Gantt/js/gnt-all-debug.js"
+    ]
+  },
+  {
+    "outputFileName": "WF/Projects/Gantt/js/ext-all.min.js",
+    "inputFiles": [
+      "WF/Projects/Gantt/js/ext-all.js"
+    ]
+  }
+]

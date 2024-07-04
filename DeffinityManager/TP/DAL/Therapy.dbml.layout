@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.125, 10" name="Trial">
+  <DataContextMoniker Name="/TherapyDataContext" />
+  <nestedChildShapes>
+    <classShape Id="72cb174e-faae-4799-a99c-14381a317730" absoluteBounds="2.875, 1, 2, 1.3862939453125">
+      <DataClassMoniker Name="/TherapyDataContext/SubjectiveQuestion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2c3246b4-6aa8-4f9a-9232-b2286fe5d96d" absoluteBounds="2.8899999999999997, 1.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f2c3dab9-ae53-4817-b967-e2ce137d5717" absoluteBounds="0.5, 2.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/TherapyDataContext/Treatment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ac015f26-0823-4b72-a562-4f7b072c9127" absoluteBounds="0.51500000000000012, 3.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6f945e29-1013-49e5-b415-e071a4f2041f" absoluteBounds="2.875, 2.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/TherapyDataContext/KeyMarker" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b0775bed-3c33-41ff-8cf4-db8e6bd94520" absoluteBounds="2.8900000000000006, 3.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dbdf4b7e-786c-47b4-87ec-d620d4900dc7" absoluteBounds="7.5, 2.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/TherapyDataContext/AssociatedTherapyDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8cbbead6-2333-4b2d-8b21-1e66457c7a3a" absoluteBounds="7.5150000000000006, 2.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0f67cf50-6cb7-4828-98cc-41c96d880d59" absoluteBounds="7.5, 1, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/TherapyDataContext/CommonQuestion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4f4472f4-2917-4f4b-b999-01d0a567d3ed" absoluteBounds="7.5150000000000006, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f61c71a6-961a-4d22-ac35-7569797100c4" absoluteBounds="0.5, 4.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TherapyDataContext/KeyMarkerList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ad593e01-0316-4527-80a1-890c4c99f0ad" absoluteBounds="0.51499999999999968, 4.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="be4a0527-b60b-47e2-87eb-061f1ed49009" absoluteBounds="2.875, 4.5, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/TherapyDataContext/TreatmentList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e481d470-cc21-48cf-81de-76164e1ec140" absoluteBounds="2.89, 4.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7dac1dad-3d19-4dee-ad95-e881169598d7" absoluteBounds="5.375, 4.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TherapyDataContext/SubjectiveQuestionList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ec15fd2d-5c95-44ce-ac2f-707ec7e12090" absoluteBounds="5.39, 4.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dd55f670-0078-4de8-81da-1a0ff0f580cb" absoluteBounds="7.875, 4.625, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/TherapyDataContext/PatientTrailsandTreatmentList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c7cf3bba-5027-40a6-961e-02f55c49b1e5" absoluteBounds="7.8900000000000006, 5.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5c564774-d9c7-4a70-9914-8da37dea2940" absoluteBounds="0.5, 6.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/TherapyDataContext/SecondaryTreatment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="67dafbb7-697b-4fae-b5bb-bfeb5d8a0225" absoluteBounds="0.51499999999999968, 6.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ac42ae23-ee60-44f0-8e3f-5013f880798e" absoluteBounds="3.625, 6.75, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/TherapyDataContext/SecondaryTreatmentList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e8b06b16-bb5f-43fc-aa2a-c496e599676b" absoluteBounds="3.64, 7.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="395170a2-2887-4279-8830-0b2de36558dc" absoluteBounds="7.75, 7.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/TherapyDataContext/PatientTrialsAndTreatment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7af8a468-0a0e-4573-949f-8a202843fde0" absoluteBounds="7.765, 8.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76d43dc9-13c0-4403-bbf7-59da0b7df711" absoluteBounds="5.625, 2.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TherapyDataContext/TrialConfiguration" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f7c27bac-63cb-4605-b0b4-c7541c3b6e0f" absoluteBounds="5.64, 3.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7a172e4d-397b-4f8c-bb7e-5726f517cdb7" absoluteBounds="11.875, 3.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/TherapyDataContext/PatientTrailbyDate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="84eeff7a-0548-4d35-9836-827512606526" absoluteBounds="11.89, 3.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bfe22109-91cf-40fb-975d-a794a6982a68" absoluteBounds="11.25, 2.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/TherapyDataContext/TherapyPatientDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a1a4f51f-c0e1-48a4-a6b2-8886f2c91319" absoluteBounds="11.265, 3.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

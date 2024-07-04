@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        table td {
+            padding: 5px;
+        }
+
+        .hdr1 {
+            font-size: 18px;
+            padding-top: 15px;
+            text-align: right;
+        }
+
+        .hilite {
+            color: #4b0049;
+        }
+
+        .hdr td {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            background: #8595a6;
+            text-align: left;
+        }
+
+        .cont_row td {
+            border: #8595a6 1px solid;
+            color: #219de6;
+            font-weight: bold
+        }
+
+        .bo_line {
+            border-bottom: #999 10px solid;
+        }
+
+        .hdrt {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            background: #8595a6;
+            text-align: left;
+        }
+
+        .even_row {
+            background: #f2f9ec;
+        }
+
+        .odd_row {
+            background: #f5f5fa;
+        }
+
+        .tab_header {
+            background: #a3a3a3;
+            color: #fff;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table align="center" width="600" style="border:5px solid #b3b3b3; margin-top:10px;" cellspacing="0" cellpadding="0">
+
+          
+            <tr>
+
+                <td style="padding-top:30px;" colspan="2">
+
+                    <p style="text-align:center;">
+
+                        <img src="{{app_logo}}" id="im" alt="" style="text-align:center;" />
+                    </p>
+
+                    <br />
+
+                    <p>
+
+                        Dear <b>{{name}}</b>
+                    </p>
+
+                    <br />
+
+
+                    <p>
+                        <b>{{instance_name}}</b> needs your help to raise money for their fundraising campaign <a href="{{fundraiser_url}}">{{fundriser_name}}</a>.
+
+                    </p>
+
+                    <!--<p>
+                        They are using {{app_name}} to raise critical funds, and you would be a great addition to their fundraising team.
+                    </p>-->
+                    <p>
+                        By creating your own fundraising page, you’ll have the chance to share why <b>{{fundriser_name}}</b> matters to you with your family and friends, encouraging them to give to a cause that is close to your heart.
+                    </p>
+                    <p>
+                        You’ll greatly impact <b>{{instance_name}}’s</b> mission and help others do the same!
+                    </p>
+                    <p>
+                        It’s easy to do - even if you've never fundraised before. First  <a href="{{register_url}}">register</a> for a Fundraiser account.
+                    </p>
+
+                    <p> From there, you’ll see an invitation from {{instance_name}}.  </p>
+                    <!--<p>
+                        From there, you’ll be taken to your {{app_name}} dashboard, where you’ll click on "Set Up Campaign"
+                        and follow the steps to launch your fundraising page - make sure to personalise it with images and a story about why <b>{{fundriser_name}}</b> matters to you!
+
+                    </p>-->
+
+                <p> Once you have accepted just follow the steps to launch your fundraising page - make sure to personalise it with your profile picture and a story about why <b>{{fundriser_name}}</b> matters to you! </p>
+                    <!--<p>
+                        After signing up as a fundraiser for <b>{{fundriser_name}}</b>, you will receive various fundraising tools.
+                    </p>-->
+
+                    <p>Good luck and thank you for taking part in this great cause.</p>
+
+                    <br />
+                    <!--<p style="text-align:center;"> <a href="{{register_url}}"> Create Your Account and Get Started!</a> </p>-->
+                    <p style="text-align:center;">
+                        <table cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td style="width:120px"></td>
+                                <td style="border-radius: 2px; text-align: center;" bgcolor="#1F83FF">
+                                    <a href="{{register_url}}" target="_blank" style="padding: 8px 12px; border: 1px solid #1F83FF;border-radius: 2px;font-family: Arial, Helvetica, sans-serif;font-size: 14px; color: #ffffff;text-decoration: none;font-weight:bold;display: inline-block;">
+                                        Create Your Account and Get Started!
+                                    </a>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        </p>
+                        <br />
+                        <br />
+                    <p>
+                        Thank you for making a difference
+                    </p>
+
+                    <p>
+                        {{instance_name}} Team
+                    </p>
+
+                    <br /><br />
+
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-top: 10px;">
+                </td>
+                <td style="        padding-top: 10px;
+        float: right;
+        text-align: right;">
+                </td>
+            </tr>
+
+
+        </table>
+    </div>
+</body>
+</html>

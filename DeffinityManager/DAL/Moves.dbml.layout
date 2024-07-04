@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.875, 8.875" name="Moves">
+  <DataContextMoniker Name="/MovesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="9cdafd9b-4609-45d6-9f0c-e0aaa9f34a7e" absoluteBounds="2.75, 0.5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/MovesDataContext/v_AssetMove" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1bcc9a40-1d09-4d85-bd05-4869eb9662b6" absoluteBounds="2.765, 0.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="291b27d7-0998-4684-a883-1604162e5d5f" absoluteBounds="5.125, 0.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/MovesDataContext/MoveAssets_Document" />
+      <nestedChildShapes>
+        <elementListCompartment Id="78ce5e03-5199-4d5d-8fff-ef3df213b3d0" absoluteBounds="5.14, 1.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d84128d7-5e55-467c-820d-0ebf0257cb38" absoluteBounds="5.125, 2.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/MovesDataContext/IncidentID_Move" />
+      <nestedChildShapes>
+        <elementListCompartment Id="78461f74-5b31-44c8-baed-cbe071537ebc" absoluteBounds="5.14, 2.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0dc0b6fb-6f93-4bb4-9845-ef6e4fc2889e" absoluteBounds="0.5, 0.75, 2, 7.1553369140625">
+      <DataClassMoniker Name="/MovesDataContext/AssetMove" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e475d59d-b0d5-438a-94be-0fd5dedc6db8" absoluteBounds="0.51499999999999968, 1.21, 1.9700000000000002, 6.5953369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d95b4719-9061-46c4-9f65-545de3bed45b" absoluteBounds="5.375, 4.375, 2, 1.9631982421875">
+      <DataClassMoniker Name="/MovesDataContext/AssetsDeskUpload" />
+      <nestedChildShapes>
+        <elementListCompartment Id="41b10aaf-225d-4de1-9f9d-f956dbf48b7d" absoluteBounds="5.39, 4.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6d93ac38-b4e0-46c0-80ee-0c1e6205b17a" absoluteBounds="3, 4.375, 2, 4.2708154296875">
+      <DataClassMoniker Name="/MovesDataContext/MoveAsset" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9422874a-4e29-4ac6-bcc0-8390f3802767" absoluteBounds="3.0149999999999997, 4.835, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="15c48f67-a436-46e1-a681-429fc0f0ef1d" absoluteBounds="9.625, 0.5, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/MovesDataContext/CommitDatabase" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c74118ec-3d74-4533-ba8a-5516541c870b" absoluteBounds="9.64, 0.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5dcd57d4-4e62-48c4-bb04-e21cdd6aee7a" absoluteBounds="7.375, 0.5, 2, 4.2708154296875">
+      <DataClassMoniker Name="/MovesDataContext/MovesDealerVoice" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9cf60402-4cb1-4501-aed2-115ef9f8cb67" absoluteBounds="7.3900000000000006, 0.96, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="48e3de04-8b90-424a-96ff-3add7236c96e" absoluteBounds="5.375, 6.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/MovesDataContext/JMoveInformation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca1076cc-a0c3-4a02-b2ae-7b62eb8537d6" absoluteBounds="5.39, 6.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

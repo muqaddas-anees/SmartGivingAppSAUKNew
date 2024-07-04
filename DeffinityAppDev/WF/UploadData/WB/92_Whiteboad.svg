@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600" viewBox="0 0 800 600" version="1.1">
+	<!--Figure start-->
+	<polygon points="150.83998107910156,80.15998840332031 220.83998107910156,80.15998840332031 220.83998107910156,150.1599884033203 150.83998107910156,150.1599884033203 "  style="stroke:#000000;fill:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="109.15999"  transform="rotate(0 185.83995 ,115.15999)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="185.83995" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="226.33998107910156,79.63999938964844 296.33998107910156,79.63999938964844 296.33998107910156,149.63999938964844 226.33998107910156,149.63999938964844 "  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="108.63999"  transform="rotate(0 261.33993 ,114.63999)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="261.33993" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="304.1799774169922,79.1199951171875 374.1799774169922,79.1199951171875 374.1799774169922,149.1199951171875 304.1799774169922,149.1199951171875 "  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="108.11998"  transform="rotate(0 339.17996 ,114.11998)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="339.17996" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="380.8300018310547,79.75997924804687 450.8300018310547,79.75997924804687 450.8300018310547,149.75997924804687 380.8300018310547,149.75997924804687 "  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="108.75997"  transform="rotate(0 415.82993 ,114.75997)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="415.82993" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="276,182.70999145507812 346,182.70999145507812 346,227.70999145507812 276,227.70999145507812 "  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="196.70999"  transform="rotate(0 311 ,202.70999)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="311" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="185.94000244140625,167.50999450683594 222.75999959309897,167.50999450683594 222.75999959309897,191.17999267578125 185.94000244140625,191.17999267578125 "  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="172.02998"  transform="rotate(0 204.34998 ,178.02998)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="204.34998" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="471.6771698505436,358.1955418087204 471.3003678462852,242.70461928210003 518.3701246979307,242.55106333305477 518.746926702189,358.0419858596787 "  style="stroke:#ff0000;fill:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="294.3819"  transform="rotate(269.81321315802506 492.40867 ,300.3819)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="492.40867" dy="12">Lonmw115599</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="530.8071747333556,357.6755527950479 530.430372729097,242.1846302684281 577.5001295807442,242.0310743193829 577.8769315850011,357.5219968460067 "  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="293.86192"  transform="rotate(269.8132678445773 551.53864 ,299.86192)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="551.53864" dy="12">Lonmw115599</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<path d="M400.62835592340235,232.75506346940173 C400.3882047656013,221.71197941739612 403.8753316574944,212.6797195054205 408.4170718328457,212.58094630774147 C412.9588120081967,212.48217311006314 416.8353008577606,221.35429002724334 417.07545201556115,232.39737407924917 C417.31560317336283,243.44045813125547 413.8284762814691,252.47271804323074 409.286736106119,252.57149124090938 C404.74499593076734,252.67026443858947 400.86850708120283,243.79814752140731 400.62835592340235,232.75506346940173"  style="stroke:#000000;fill:#333399;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"   />
+	<text y="224.57672"  transform="rotate(358.7542073622443 408.80842 ,230.57672)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="408.80842" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+</svg>

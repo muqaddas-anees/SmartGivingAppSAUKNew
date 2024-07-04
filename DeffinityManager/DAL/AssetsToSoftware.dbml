@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityFirstDataDev" EntityNamespace="AssetsMgr.Entity" ContextNamespace="AssetsMgr.DAL" Class="AssetsToSoftwareDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AssetsToSoftwares" Member="AssetsToSoftwares">
+    <Type Name="AssetsToSoftware">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SoftwareID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Version" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Maintenance" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MRenewalDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdatedBy" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AssetsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_AssetsToSoftwares" Member="v_AssetsToSoftwares">
+    <Type Name="v_AssetsToSoftware">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SoftwareID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoftwreName" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VendorName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Maintenance" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MRenewalDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdatedBy" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Version" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AssetsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Assets_softwares" Member="Assets_softwares">
+    <Type Name="Assets_software">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Software" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Asset_Status" Member="Asset_Status">
+    <Type Name="Asset_Status">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StatusName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="Asset_Status_Asset" Member="Assets" ThisKey="Id" OtherKey="StatusId" Type="Asset" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Assetstype" Member="Assetstypes">
+    <Type Name="Assetstype">
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Assetsmodel" Member="Assetsmodels">
+    <Type Name="Assetsmodel">
+      <Column Name="ModelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Assetsmake" Member="Assetsmakes">
+    <Type Name="Assetsmake">
+      <Column Name="MakeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Make" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AssetAssociatedToContacts" Member="AssetAssociatedToContacts">
+    <Type Name="AssetAssociatedToContact">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContactId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AssetId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContactAddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Assets" Member="Assets">
+    <Type Name="Asset">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SerialNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AssetNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Make" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Model" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromSite" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromBuilding" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromFloor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromRoom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromLocation" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Datemoved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Datecommision" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="FromPort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromOwner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromNotes" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Technical" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="userid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromVLAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromIPAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromSubnet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NewAsset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToSite" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToBuilding" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToFloor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToRoom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToLocation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToIPAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToSubnet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToPort" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToNotes" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ToOwner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToVLAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Approve" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AssetsTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignName" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurchasedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AssestValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="StatusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactAddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Asset_Status_Asset" Member="Asset_Status" ThisKey="StatusId" OtherKey="Id" Type="Asset_Status" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="DC.Categories" Member="Categories">
+    <Type Name="Category">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TypeOfRequestID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="DC.SubCategory" Member="SubCategories">
+    <Type Name="SubCategory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="DC.ProductModel" Member="ProductModels">
+    <Type Name="ProductModel">
+      <Column Name="ModelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SubCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModelName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WarrantyTerm" Member="WarrantyTerms">
+    <Type Name="WarrantyTerm">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_Assets" Member="V_Assets">
+    <Type Name="V_Asset">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SerialNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AssetNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Make" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Model" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromSite" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromBuilding" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromFloor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromRoom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromLocation" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Datemoved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Datecommision" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="FromPort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromOwner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromNotes" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Technical" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="userid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromVLAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromIPAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromSubnet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NewAsset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToSite" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToBuilding" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToFloor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToRoom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToLocation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToIPAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToSubnet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToPort" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToNotes" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ToOwner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToVLAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Approve" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AssetsTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignName" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurchasedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AssestValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="StatusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactAddressID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MakeName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="ModelName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="FromSiteName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToSiteName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PortfolioName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AssetsType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StatusName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GoodsReceipt_Vendors" Method="GoodsReceipt_Vendors">
+    <ElementType Name="GoodsReceipt_VendorsResult">
+      <Column Name="VendorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Assets_PortfilioSelect" Method="Assets_PortfilioSelect">
+    <ElementType Name="Assets_PortfilioSelectResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortFolio" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="Owner" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CostCentre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxBudget" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BenefitstoOrganisation" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="StrategicFit" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="VisionStatement" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="RisksandIssues" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ResourcesRequired" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="PortfolioTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Justification" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="BusinessUrgency" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Visible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KeyContactName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TelephoneNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OtherNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Assets_Model" Method="Assets_Model">
+    <ElementType Name="Assets_ModelResult">
+      <Column Name="ModelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Assets_Type" Method="Assets_Type">
+    <ElementType Name="Assets_TypeResult">
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Assets_Make" Method="Assets_Make">
+    <ElementType Name="Assets_MakeResult">
+      <Column Name="MakeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Make" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AssetsSoftware_ReportTest" Method="AssetsSoftware_ReportTest">
+    <ElementType Name="AssetsSoftware_ReportTestResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SerialNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AssetNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Make" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Model" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromSite" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromBuilding" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromFloor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromRoom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromLocation" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Datemoved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Datecommision" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="FromPort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromOwner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromNotes" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Technical" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="userid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromVLAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromIPAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromSubnet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NewAsset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToSite" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToBuilding" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToFloor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToRoom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToLocation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToIPAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToSubnet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToPort" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToNotes" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ToOwner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToVLAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Approve" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AssetsTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignName" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MakeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModelName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TypeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FromSiteName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ToSiteName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PortfolioName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AssetsType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Assets_Details" Method="Assets_Details">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Assets_DetailsResult">
+      <Column Name="SerialNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AssetNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MakeName" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModelName" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FromSiteName" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TypeName" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DN_InsertNewAdminAssetsDB" Method="DN_InsertNewAdminAssetsDB">
+    <Parameter Name="SerialNo" Parameter="serialNo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="AssetNo" Parameter="assetNo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Make" Parameter="make" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Model" Parameter="model" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromSite" Parameter="fromSite" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromBuilding" Parameter="fromBuilding" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FromFloor" Parameter="fromFloor" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FromRoom" Parameter="fromRoom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FromLocation" Parameter="fromLocation" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Datemoved" Parameter="datemoved" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="Datecommision" Parameter="datecommision" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="FromPort" Parameter="fromPort" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FromOwner" Parameter="fromOwner" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FromNotes" Parameter="fromNotes" Type="System.String" DbType="NText" />
+    <Parameter Name="Technical" Parameter="technical" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromVLAN" Parameter="fromVLAN" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FromIPAddress" Parameter="fromIPAddress" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FromSubnet" Parameter="fromSubnet" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="NewAsset" Parameter="newAsset" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PortfolioID" Parameter="portfolioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ToSite" Parameter="toSite" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ToBuilding" Parameter="toBuilding" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ToFloor" Parameter="toFloor" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ToRoom" Parameter="toRoom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ToLocation" Parameter="toLocation" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ToIPAddress" Parameter="toIPAddress" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ToSubnet" Parameter="toSubnet" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ToPort" Parameter="toPort" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ToNotes" Parameter="toNotes" Type="System.String" DbType="NText" />
+    <Parameter Name="ToOwner" Parameter="toOwner" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ToVLAN" Parameter="toVLAN" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Approve" Parameter="approve" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="AssignType" Parameter="assignType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AssetsTypeID" Parameter="assetsTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AssignName" Parameter="assignName" Type="System.Int32" DbType="Int" />
+    <Parameter Name="VendorID" Parameter="vendorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PurchasedDate" Parameter="purchasedDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ExpDate" Parameter="expDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="AssestValue" Parameter="assestValue" Type="System.Double" DbType="Float" />
+    <Parameter Name="StatusId" Parameter="statusId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Color" Parameter="color" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DN_UpdateAdmin_AssetsNew" Method="DN_UpdateAdmin_AssetsNew">
+    <Parameter Name="AssetNo" Parameter="assetNo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Make" Parameter="make" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Model" Parameter="model" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromSite" Parameter="fromSite" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromBuilding" Parameter="fromBuilding" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FromFloor" Parameter="fromFloor" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FromRoom" Parameter="fromRoom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FromLocation" Parameter="fromLocation" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Datemoved" Parameter="datemoved" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="Datecommision" Parameter="datecommision" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="FromPort" Parameter="fromPort" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FromOwner" Parameter="fromOwner" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromVLAN" Parameter="fromVLAN" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FromIPAddress" Parameter="fromIPAddress" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="FromSubnet" Parameter="fromSubnet" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="NewAsset" Parameter="newAsset" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PortfolioID" Parameter="portfolioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SerialNo" Parameter="serialNo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Technical" Parameter="technical" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="AssetsTypeID" Parameter="assetsTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AssignType" Parameter="assignType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AssignName" Parameter="assignName" Type="System.Int32" DbType="Int" />
+    <Parameter Name="VendorID" Parameter="vendorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PurchasedDate" Parameter="purchasedDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ExpDate" Parameter="expDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="AssestValue" Parameter="assestValue" Type="System.Double" DbType="Float" />
+    <Parameter Name="StatusId" Parameter="statusId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Color" Parameter="color" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

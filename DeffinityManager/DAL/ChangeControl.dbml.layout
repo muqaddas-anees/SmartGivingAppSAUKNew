@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ChangeControl">
+  <DataContextMoniker Name="/ChangeControlDataContext" />
+  <nestedChildShapes>
+    <classShape Id="e8316053-620a-4bdd-8de7-ee638c53d359" absoluteBounds="0.75, 0.75, 2, 6.5784326171875">
+      <DataClassMoniker Name="/ChangeControlDataContext/ChangeControl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="95fdd3bd-98ab-45f7-b651-81cae08916e4" absoluteBounds="0.765, 1.21, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b1f097c2-3bab-4026-9378-bdc2f55c159f" absoluteBounds="4, 3.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/ChangeControlDataContext/ChangeControl_Risk" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d0a77b5b-e813-4c3c-9ea5-de8c0894dd5a" absoluteBounds="4.015, 4.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 4.60659912109375); (4 : 4.60659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ChangeControlDataContext/ChangeControl/ChangeControl_ChangeControl_Risk" />
+      <nodes>
+        <classShapeMoniker Id="e8316053-620a-4bdd-8de7-ee638c53d359" />
+        <classShapeMoniker Id="b1f097c2-3bab-4026-9378-bdc2f55c159f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="bbbcd736-0e51-442f-b1f9-0393f5b6ca75" absoluteBounds="4, 6, 2, 1.9631982421875">
+      <DataClassMoniker Name="/ChangeControlDataContext/ChangeControl_Task" />
+      <nestedChildShapes>
+        <elementListCompartment Id="619a66b7-3fb3-4062-9e34-9112f99d8797" absoluteBounds="4.015, 6.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 6.66421630859375); (4 : 6.66421630859375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ChangeControlDataContext/ChangeControl/ChangeControl_ChangeControl_Task" />
+      <nodes>
+        <classShapeMoniker Id="e8316053-620a-4bdd-8de7-ee638c53d359" />
+        <classShapeMoniker Id="bbbcd736-0e51-442f-b1f9-0393f5b6ca75" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="3e10a906-e6f4-4101-9673-620296b6fb04" absoluteBounds="6.875, 1, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/ChangeControlDataContext/ChangeControlAdmin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="49fd3f72-2f60-45ce-93ea-ee37916cc3ba" absoluteBounds="6.89, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b5847e67-bae3-4902-80d4-74e962b5ae5e" absoluteBounds="3.875, 0.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/ChangeControlDataContext/ChangeControl_Approval" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7432f723-c4b0-43df-885e-fbc3c6b37e67" absoluteBounds="3.89, 1.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.04890055338542); (3.875 : 2.04890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ChangeControlDataContext/ChangeControl/ChangeControl_ChangeControl_Approval" />
+      <nodes>
+        <classShapeMoniker Id="e8316053-620a-4bdd-8de7-ee638c53d359" />
+        <classShapeMoniker Id="b5847e67-bae3-4902-80d4-74e962b5ae5e" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

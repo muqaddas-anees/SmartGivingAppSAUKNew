@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityEflair" EntityNamespace="Training.Entity" ContextNamespace="Training.DAL" Class="TrainingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=69.41.185.220;Initial Catalog=DeffinityEflair;User ID=Deffinity3DBUser;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="Training.Category" Member="Categories">
+    <Type Name="Category">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Training.Bookings" Member="Bookings">
+    <Type Name="Booking">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateofCourse" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Employee" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CourseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RequiredByDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Instructor" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CourseVenue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NotifyDaysPrior" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CostofCourse" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NotifyUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FeedBack" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FileID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartTime" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Expenses" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Penalties" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DurationInDays" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Outcome" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Budget" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FeedBackMail" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CourseReoccurs" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReFrequencey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Day" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UntilDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Training.Course" Member="Courses">
+    <Type Name="Course">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Venue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Duration" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="TrainingTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequirementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CourseDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Course_Course" Member="Courses" ThisKey="Title,CategoryID" OtherKey="Title,CategoryID" Type="Course" />
+      <Association Name="Course_Course" Member="Course1" ThisKey="Title,CategoryID" OtherKey="Title,CategoryID" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

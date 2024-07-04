@@ -1,0 +1,643 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="DeffinityAppDev.Main" %>
+<%--<%@ Register Src="~/controls/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>--%>
+<%--<%@ Register Src="~/controls/SideMenu.ascx" TagPrefix="uc1" TagName="SideMenu" %>
+<%@ Register Src="~/controls/TopNavigation.ascx" TagPrefix="uc1" TagName="TopNavigation" %>--%>
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title></title>
+	<link rel="canonical" href="Https://preview.keenthemes.com/metronic8" />
+		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Page Vendor Stylesheets(used by this page)-->
+		
+	<%-- <%: System.Web.Optimization.Styles.Render("~/bundles/metroniccss") %>--%>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		@media (min-width: 768px) {
+  .form-inline .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+  .form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+  }
+  .form-inline .input-group {
+    display: inline-table;
+    vertical-align: middle;
+  }
+  .form-inline .input-group .input-group-addon,
+  .form-inline .input-group .input-group-btn,
+  .form-inline .input-group .form-control {
+    width: auto;
+  }
+  .form-inline .input-group > .form-control {
+    width: 100%;
+  }
+  .form-inline .control-label {
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+  .form-inline .radio,
+  .form-inline .checkbox {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+  .form-inline .radio label,
+  .form-inline .checkbox label {
+    padding-left: 0;
+  }
+  .form-inline .radio input[type="radio"],
+  .form-inline .checkbox input[type="checkbox"] {
+    position: relative;
+    margin-left: 0;
+  }
+  .form-inline .has-feedback .form-control-feedback {
+    top: 0;
+  }
+}
+.form-horizontal .radio,
+.form-horizontal .checkbox,
+.form-horizontal .radio-inline,
+.form-horizontal .checkbox-inline {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 7px;
+}
+.form-horizontal .radio,
+.form-horizontal .checkbox {
+  min-height: 25px;
+}
+.form-horizontal .form-group {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px;
+  }
+}
+.form-horizontal .has-feedback .form-control-feedback {
+  top: 0;
+  right: 15px;
+}
+@media (min-width: 768px) {
+  .form-horizontal .form-group-lg .control-label {
+    padding-top: 14.3px;
+  }
+}
+@media (min-width: 768px) {
+  .form-horizontal .form-group-sm .control-label {
+    padding-top: 6px;
+  }
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+ .modalBackground
+    {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.5;
+    }
+	</style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="kt_body" class="page-loading-enabled page-loading header-fixed header-tablet-and-mobile-fixed aside-fixed aside-secondary-disabled ">
+	<div class="page-loader">
+			<span class="spinner-border text-primary" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</span>
+		</div>
+    <form id="form1" runat="server">
+
+		
+		<link href='<%:ResolveClientUrl("~/assets/plugins/custom/leaflet/leaflet.bundle.css")%>' rel="stylesheet" type="text/css" />
+		<!--end::Page Vendor Stylesheets-->
+		<!--begin::Global Stylesheets Bundle(used by all pages)-->
+		<link href='<%:ResolveClientUrl("~/assets/plugins/global/plugins.bundle.css")%>' rel="stylesheet" type="text/css" />
+		<link href='<%:ResolveClientUrl("~/assets/css/style.bundle.css")%>' rel="stylesheet" type="text/css" />
+
+			<%--<link href='assets/plugins/custom/leaflet/leaflet.bundle.css"' rel="stylesheet" type="text/css" />
+		<!--end::Page Vendor Stylesheets-->
+		<!--begin::Global Stylesheets Bundle(used by all pages)-->
+		<link href='assets/plugins/global/plugins.bundle.css' rel="stylesheet" type="text/css" />
+		<link href='assets/css/style.bundle.css' rel="stylesheet" type="text/css" />--%>
+	<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" LoadScriptsBeforeUI="true">
+       <Scripts>
+          <%-- <asp:ScriptReference Path="~/Scripts/AjaxControlToolkit/Bundle" />--%>
+		    <asp:ScriptReference Path="~/Scripts/AjaxControlToolkit/Bundle" />
+       </Scripts>
+   </asp:ScriptManager>
+      
+  
+
+
+
+			<div class="d-flex flex-column flex-root">
+			<!--begin::Page-->
+			<div class="page d-flex flex-row flex-column-fluid">
+				<!--begin::Aside-->
+				<div id="kt_aside" class="aside bg-primary" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="auto" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle">
+					<!--begin::Logo-->
+					<div class="aside-logo d-none d-lg-flex flex-column align-items-center flex-column-auto py-8" id="kt_aside_logo">
+						<a href='<%:ResolveClientUrl("~/App/Home.aspx")%>'>
+							<img alt="Logo" src=<%:ResolveClientUrl("~/assets/media/logos/logo-1.png?id=12")%> class="img-fluid" />
+						</a>
+					</div>
+					<!--end::Logo-->
+					<!--begin::Nav-->
+					<div class="aside-nav d-flex flex-column align-lg-center flex-column-fluid w-100 pt-5 pt-lg-0" id="kt_aside_nav">
+						<!--begin::Primary menu-->
+						<div id="kt_aside_menu" class="menu menu-column menu-title-gray-600 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-6" data-kt-menu="true">
+							<div class="menu-item py-2">
+								<a class="menu-link active menu-center" href='<%:ResolveClientUrl("~/App/Home.aspx")%>' title="Home" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="bi bi-house fs-2"></i>
+									</span>
+								</a>
+							</div>
+
+							<div class="menu-item py-2">
+								<a  href='<%:ResolveClientUrl("~/App/Organizations.aspx")%>' class="menu-link menu-center" title="Organizations" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="fa fa-building fs-2"></i>
+									</span>
+								</a>
+								
+							</div>
+							<div class="menu-item py-2">
+								<a href='<%:ResolveClientUrl("~/App/OrganizationAdmin.aspx")%>' class="menu-link menu-center" title="Admin Users" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="fas fa-users-cog fs-2"></i>
+									</span>
+								</a>
+								
+							</div>
+							<div class="menu-item py-2">
+								<a href='<%:ResolveClientUrl("~/App/Members.aspx")%>' class="menu-link menu-center" title="Members" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="fa fa-user-tie fs-2"></i>
+									</span>
+								</a>
+								
+							</div>
+							<%--<div class="menu-item py-2">
+								<a href='<%:ResolveClientUrl("~/App/Organizations.aspx")%>' class="menu-link menu-center" title="Portal" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="bi bi-chat-square-text fs-2"></i>
+									</span>
+								</a>
+								
+							</div>--%>
+							<div class="menu-item py-2"  style="display:none;visibility:hidden;">
+								<a href='<%:ResolveClientUrl("~/App/TithingCategorySettings.aspx?type=active")%>' class="menu-link menu-center" title="Donation Categories" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="fa fa-money-bill-wave fs-2"></i>
+									</span>
+								</a>
+								
+							</div>
+							<div class="menu-item py-2"  style="display:none;visibility:hidden;">
+								<a href='<%:ResolveClientUrl("~/WF/Admin/Premium.aspx")%>' class="menu-link menu-center" title="Job Management" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="fa fa-tasks fs-2"></i>
+									</span>
+								</a>
+							</div>
+							<div class="menu-item py-2" style="display:none;visibility:hidden;">
+								<a href='<%:ResolveClientUrl("~/App/DigitalTithings.aspx")%>' class="menu-link menu-center" title="Fundraisers" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="fa fa-donate fs-2"></i>
+									</span>
+								</a>
+							</div>
+								<%--<div class="menu-item py-2">
+								<a href='#' class="menu-link menu-center" title="Faith Union Financial Integration" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="fab fa-laravel fs-2"></i>
+									</span>
+								</a>
+							</div>--%>
+								<%--<div class="menu-item py-2">
+								<a href='<%:ResolveClientUrl("~/App/CardConnectInegration.aspx")%>' class="menu-link menu-center" title="Card Connect Integration " data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="fa fa-credit-card fs-2"></i>
+									</span>
+								</a>
+								
+							</div>--%>
+							<%--<div class="menu-item py-2">
+								<a href='<%:ResolveClientUrl("~/App/FaithEducationConfig.aspx")%>' class="menu-link menu-center" title="Faith Education" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="fa fa-chalkboard-teacher fs-2"></i>
+									</span>
+								</a>
+								
+							</div>--%>
+							<%--<div class="menu-item py-2">
+								<a href='<%:ResolveClientUrl("~/App/InternationalSettings.aspx")%>' class="menu-link menu-center" title="International Settings" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+									<span class="menu-icon me-0">
+										<i class="fa fa-globe-americas fs-2"></i>
+									</span>
+								</a>
+								
+							</div>--%>
+						</div>
+						<!--end::Primary menu-->
+					</div>
+					<!--end::Nav-->
+					<!--begin::Footer-->
+					<div class="aside-footer d-flex flex-column align-items-center flex-column-auto" id="kt_aside_footer">
+						<!--begin::Menu-->
+						<div class="mb-7">
+							<%--<button type="button" class="btn btm-sm btn-icon btn-color-white btn-active-color-primary btn-active-light" data-kt-menu-trigger="click" data-kt-menu-overflow="true" data-kt-menu-placement="top-start" data-kt-menu-flip="top-end" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-dismiss="click" title="Quick actions">
+								<!--begin::Svg Icon | path: icons/duotune/general/gen008.svg-->
+								<span class="svg-icon svg-icon-2 svg-icon-lg-1">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<path d="M3 2H10C10.6 2 11 2.4 11 3V10C11 10.6 10.6 11 10 11H3C2.4 11 2 10.6 2 10V3C2 2.4 2.4 2 3 2Z" fill="black" />
+										<path opacity="0.3" d="M14 2H21C21.6 2 22 2.4 22 3V10C22 10.6 21.6 11 21 11H14C13.4 11 13 10.6 13 10V3C13 2.4 13.4 2 14 2Z" fill="black" />
+										<path opacity="0.3" d="M3 13H10C10.6 13 11 13.4 11 14V21C11 21.6 10.6 22 10 22H3C2.4 22 2 21.6 2 21V14C2 13.4 2.4 13 3 13Z" fill="black" />
+										<path opacity="0.3" d="M14 13H21C21.6 13 22 13.4 22 14V21C22 21.6 21.6 22 21 22H14C13.4 22 13 21.6 13 21V14C13 13.4 13.4 13 14 13Z" fill="black" />
+									</svg>
+								</span>
+								<!--end::Svg Icon-->
+							</button>--%>
+							<!--begin::Menu 2-->
+							
+							<!--end::Menu 2-->
+						</div>
+						<!--end::Menu-->
+					</div>
+					<!--end::Footer-->
+				</div>
+				<!--end::Aside-->
+				<!--begin::Wrapper-->
+				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+					<!--begin::Header-->
+					<div id="kt_header" style="" class="header bg-white align-items-stretch">
+						<!--begin::Container-->
+						<div class="container-fluid d-flex align-items-stretch justify-content-between">
+							<!--begin::Aside mobile toggle-->
+							<div class="d-flex align-items-center d-lg-none ms-n3 me-1" title="Show aside menu">
+								<div class="btn btn-icon btn-active-color-primary w-40px h-40px" id="kt_aside_toggle">
+									<!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
+									<span class="svg-icon svg-icon-2x mt-1">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black" />
+											<path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="black" />
+										</svg>
+									</span>
+									<!--end::Svg Icon-->
+								</div>
+							</div>
+							<!--end::Aside mobile toggle-->
+							<!--begin::Mobile logo-->
+							<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+								<a href="../../demo4/dist/index.html" class="d-lg-none">
+									<img alt="Logo" src="../../assets/media/logos/logo-2.svg" class="h-30px" />
+								</a>
+							</div>
+							<!--end::Mobile logo-->
+							<div class="d-flex align-items-center" id="kt_header_wrapper">
+								<!--begin::Page title-->
+								<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-20 pb-2 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_wrapper'}">
+									<!--begin::Heading-->
+									<h1 class="text-dark fw-bolder my-1 fs-3 lh-1">
+										
+										<asp:ContentPlaceHolder id="page_title" runat="server">
+    </asp:ContentPlaceHolder>
+
+<asp:ContentPlaceHolder ID="page_description" runat="server">
+</asp:ContentPlaceHolder>
+
+									</h1>
+									<!--end::Heading-->
+								</div>
+								<!--end::Page title=-->
+							</div>
+							<!--begin::Wrapper-->
+							<div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
+								<!--begin::Navbar-->
+								<div class="d-flex align-items-stretch" id="kt_header_nav">
+									<!--begin::Menu wrapper-->
+									<div class="header-menu align-items-stretch" data-kt-drawer="true" data-kt-drawer-name="header-menu" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_header_menu_mobile_toggle" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_body', lg: '#kt_header_nav'}">
+										<!--begin::Menu-->
+										<div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-600 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold fs-6 my-5 my-lg-0 align-items-stretch" id="#kt_header_menu" data-kt-menu="true">
+											<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item here show menu-lg-down-accordion me-lg-1">
+												<a class="menu-link active py-3" href="../../demo4/dist/index.html">
+													<%--<span class="menu-title">Dashboards</span>--%>
+													<span class="menu-arrow d-lg-none"></span>
+												</a>
+												<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+													<div class="menu-item">
+														<a class="menu-link active py-3" href="../../demo4/dist/index.html">
+															<span class="menu-icon">
+																<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
+																<span class="svg-icon svg-icon-2">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+																		<path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
+																		<path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
+																	</svg>
+																</span>
+																<!--end::Svg Icon-->
+															</span>
+															<span class="menu-title">Default</span>
+														</a>
+													</div>
+													<div class="menu-item">
+														<a class="menu-link py-3" href="../../demo4/dist/dashboards/compact.html">
+															<span class="menu-icon">
+																<!--begin::Svg Icon | path: icons/duotune/general/gen009.svg-->
+																<span class="svg-icon svg-icon-2">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<path opacity="0.3" d="M21 22H14C13.4 22 13 21.6 13 21V3C13 2.4 13.4 2 14 2H21C21.6 2 22 2.4 22 3V21C22 21.6 21.6 22 21 22Z" fill="black" />
+																		<path d="M10 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H10C10.6 2 11 2.4 11 3V21C11 21.6 10.6 22 10 22Z" fill="black" />
+																	</svg>
+																</span>
+																<!--end::Svg Icon-->
+															</span>
+															<span class="menu-title">Compact</span>
+														</a>
+													</div>
+													<div class="menu-item">
+														<a class="menu-link py-3" href="../../demo4/dist/landing.html">
+															<span class="menu-icon">
+																<!--begin::Svg Icon | path: icons/duotune/communication/com001.svg-->
+																<span class="svg-icon svg-icon-2">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<path opacity="0.3" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="black" />
+																		<path d="M19 10.4C19 10.3 19 10.2 19 10C19 8.9 18.1 8 17 8H16.9C15.6 6.2 14.6 4.29995 13.9 2.19995C13.3 2.09995 12.6 2 12 2C11.9 2 11.8 2 11.7 2C12.4 4.6 13.5 7.10005 15.1 9.30005C15 9.50005 15 9.7 15 10C15 11.1 15.9 12 17 12C17.1 12 17.3 12 17.4 11.9C18.6 13 19.9 14 21.4 14.8C21.4 14.8 21.5 14.8 21.5 14.9C21.7 14.2 21.8 13.5 21.9 12.7C20.9 12.1 19.9 11.3 19 10.4Z" fill="black" />
+																		<path d="M12 15C11 13.1 10.2 11.2 9.60001 9.19995C9.90001 8.89995 10 8.4 10 8C10 7.1 9.40001 6.39998 8.70001 6.09998C8.40001 4.99998 8.20001 3.90005 8.00001 2.80005C7.30001 3.10005 6.70001 3.40002 6.20001 3.90002C6.40001 4.80002 6.50001 5.6 6.80001 6.5C6.40001 6.9 6.10001 7.4 6.10001 8C6.10001 9 6.80001 9.8 7.80001 10C8.30001 11.6 9.00001 13.2 9.70001 14.7C7.10001 13.2 4.70001 11.5 2.40001 9.5C2.20001 10.3 2.10001 11.1 2.10001 11.9C4.60001 13.9 7.30001 15.7 10.1 17.2C10.2 18.2 11 19 12 19C12.6 20 13.2 20.9 13.9 21.8C14.6 21.7 15.3 21.5 15.9 21.2C15.4 20.5 14.9 19.8 14.4 19.1C15.5 19.5 16.5 19.9 17.6 20.2C18.3 19.8 18.9 19.2 19.4 18.6C17.6 18.1 15.7 17.5 14 16.7C13.9 15.8 13.1 15 12 15Z" fill="black" />
+																	</svg>
+																</span>
+																<!--end::Svg Icon-->
+															</span>
+															<span class="menu-title">Landing</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										<%--	<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
+												<span class="menu-link py-3">
+													<span class="menu-title">Crafted</span>
+													<span class="menu-arrow d-lg-none"></span>
+												</span>
+												
+											</div>--%>
+										
+											
+										</div>
+										<!--end::Menu-->
+									</div>
+									<!--end::Menu wrapper-->
+								</div>
+								<!--end::Navbar-->
+								<!--begin::Topbar-->
+								<div class="d-flex align-items-stretch justify-self-end flex-shrink-0">
+									<!--begin::Toolbar wrapper-->
+									<div class="d-flex align-items-stretch flex-shrink-0">
+										<!--begin::Search-->
+									
+										<!--end::Search-->
+										
+									
+										<!--begin::Chat-->
+									
+										<!--end::Chat-->
+									
+										<!--begin::User-->
+										<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+											<!--begin::Menu wrapper-->
+											<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
+												<img id="imguser" runat="server" src="../assets/media/avatars/150-26.jpg" alt="User" />
+											</div>
+											<!--begin::Menu-->
+											<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
+												<!--begin::Menu item-->
+												<div class="menu-item px-3">
+													<div class="menu-content d-flex align-items-center px-3">
+														<!--begin::Avatar-->
+														<div class="symbol symbol-50px me-5">
+															<img id="imguser1" runat="server" alt="Logo" src="../assets/media/avatars/150-26.jpg" />
+														</div>
+														<!--end::Avatar-->
+														<!--begin::Username-->
+														<div class="d-flex flex-column">
+															<div class="fw-bolder d-flex align-items-center fs-5"><asp:Literal ID="lblUserName" runat="server"></asp:Literal>
+															<%--<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>--%></div>
+															<a href="#" class="fw-bold text-muted text-hover-primary fs-7"><asp:Literal ID="lblEmail" runat="server"></asp:Literal> </a>
+														</div>
+														<!--end::Username-->
+													</div>
+												</div>
+												<!--end::Menu item-->
+												<!--begin::Menu separator-->
+												<div class="separator my-2"></div>
+												<!--end::Menu separator-->
+											<%--	<!--begin::Menu item-->
+												<div class="menu-item px-5">
+													<a href="../../demo4/dist/account/overview.html" class="menu-link px-5">My Profile</a>
+												</div>--%>
+												<!--end::Menu item-->
+												<!--begin::Menu item-->
+												<%--<div class="menu-item px-5">
+													<a href="../../demo4/dist/pages/projects/list.html" class="menu-link px-5">
+														<span class="menu-text">My Projects</span>
+														<span class="menu-badge">
+															<span class="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
+														</span>
+													</a>
+												</div>--%>
+												<!--end::Menu item-->
+												
+												<!--begin::Menu separator-->
+												<div class="separator my-2"></div>
+												<!--end::Menu separator-->
+												
+												<!--begin::Menu item-->
+												<div class="menu-item px-5">
+													<a href="../Default.aspx" class="menu-link px-5">Sign Out</a>
+												</div>
+												<!--end::Menu item-->
+											</div>
+											<!--end::Menu-->
+											<!--end::Menu wrapper-->
+										</div>
+										<!--end::User -->
+										<!--begin::Heaeder menu toggle-->
+										<div class="d-flex align-items-center d-lg-none ms-3 me-n1" title="Show header menu">
+											<div class="btn btn-icon btn-active-color-primary w-30px h-30px w-md-40px h-md-40px" id="kt_header_menu_mobile_toggle">
+												<!--begin::Svg Icon | path: icons/duotune/text/txt001.svg-->
+												<span class="svg-icon svg-icon-1">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+														<path d="M13 11H3C2.4 11 2 10.6 2 10V9C2 8.4 2.4 8 3 8H13C13.6 8 14 8.4 14 9V10C14 10.6 13.6 11 13 11ZM22 5V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4V5C2 5.6 2.4 6 3 6H21C21.6 6 22 5.6 22 5Z" fill="black" />
+														<path opacity="0.3" d="M21 16H3C2.4 16 2 15.6 2 15V14C2 13.4 2.4 13 3 13H21C21.6 13 22 13.4 22 14V15C22 15.6 21.6 16 21 16ZM14 20V19C14 18.4 13.6 18 13 18H3C2.4 18 2 18.4 2 19V20C2 20.6 2.4 21 3 21H13C13.6 21 14 20.6 14 20Z" fill="black" />
+													</svg>
+												</span>
+												<!--end::Svg Icon-->
+											</div>
+										</div>
+										<!--end::Heaeder menu toggle-->
+									</div>
+									<!--end::Toolbar wrapper-->
+								</div>
+								<!--end::Topbar-->
+							</div>
+							<!--end::Wrapper-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Header-->
+					<!--begin::Search form-->
+					
+					<!--end::Search form-->
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Container-->
+						<div class="container-fluid" id="kt_content_container">
+							<!--begin::Row-->
+							            <asp:ContentPlaceHolder id="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+							<!--end::Row-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Content-->
+					<!--begin::Footer-->
+			<%--<uc1:footer runat="server" id="Footer" />--%>
+					<!--end::Footer-->
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+       
+    </form>
+
+
+
+    	<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+			<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+			<span class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+					<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black" />
+					<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black" />
+				</svg>
+			</span>
+			<!--end::Svg Icon-->
+		</div>
+
+	<%-- <%: System.Web.Optimization.Scripts.Render("~/bundles/metronicjs") %>--%>
+    <!--end::Scrolltop-->
+		<!--end::Main-->
+		<!--begin::Javascript-->
+		<!--begin::Global Javascript Bundle(used by all pages)-->
+		<script src='<%:ResolveClientUrl("~/assets/plugins/global/plugins.bundle.js")%>'></script>
+		<script src='<%:ResolveClientUrl("~/assets/js/scripts.bundle.js")%>'></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Vendors Javascript(used by this page)-->
+		<script src='<%:ResolveClientUrl("~/assets/plugins/custom/leaflet/leaflet.bundle.js")%>'></script>
+		<!--end::Page Vendors Javascript-->
+		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src='<%:ResolveClientUrl("~/assets/js/custom/modals/select-location.js")%>'></script>
+		<script src='<%:ResolveClientUrl("~/assets/js/custom/widgets.js")%>'></script>
+	<%--	<script src='<%:ResolveClientUrl("~/assets/js/custom/apps/chat/chat.js")%>'></script>
+		<script src='<%:ResolveClientUrl("~/assets/js/custom/modals/create-app.js")%>'></script>
+		<script src='<%:ResolveClientUrl("~/assets/js/custom/modals/upgrade-plan.js")%>'></script>--%>
+	  <%: System.Web.Optimization.Styles.Render("~/Content/AjaxControlToolkit/Styles/Bundle") %>
+    <script src='<%:ResolveClientUrl("~/Scripts/Utility.js")%>'></script>
+		<!--end::Page Custom Javascript-->
+		<!--end::Javascript-->
+	
+	 <asp:ContentPlaceHolder id="Scripts_Section" runat="server">
+    </asp:ContentPlaceHolder>
+	<%--<script src='assets/plugins/global/plugins.bundle.js'></script>
+		<script src='assets/js/scripts.bundle.js'></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Vendors Javascript(used by this page)-->
+		<script src='assets/plugins/custom/leaflet/leaflet.bundle.js'></script>
+		<!--end::Page Vendors Javascript-->
+		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src='assets/js/custom/modals/select-location.js'></script>
+		<script src='assets/js/custom/widgets.js'></script>
+		<script src='assets/js/custom/apps/chat/chat.js'></script>
+		<script src='assets/js/custom/modals/create-app.js'></script>
+		<script src='assets/js/custom/modals/upgrade-plan.js'></script>--%>
+
+	<script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        //toastr.success("etetetetet", "testet");
+        function showswal(msg, buttontitle) {
+            Swal.fire({
+                text: msg,
+                icon: 'success',
+                buttonsStyling: false,
+                confirmButtonText: buttontitle,
+                customClass: {
+                    confirmButton: 'btn btn-primary'
+                }
+            });
+        }
+    </script>
+	
+	
+<%--	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"/>--%>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script type="text/javascript">
+
+
+
+
+    $(".input_date_new").flatpickr({
+        //enableTime: true,
+        dateFormat: "m/d/Y"
+
+	});
+
+    $(".input_time_new").flatpickr({
+        enableTime: true,
+		dateFormat: "H:i",
+        noCalendar: true,
+
+    });
+</script>
+
+
+	
+</body>
+</html>

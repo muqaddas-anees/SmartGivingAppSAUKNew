@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityFirstDataDev" EntityNamespace="TimesheetMgt.Entity" ContextNamespace="TimesheetMgt.DAL" Class="TimeSheetDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TimesheetWCDate" Member="TimesheetWCDates">
+    <Type Name="TimesheetWCDate">
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WCDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ApproverID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OptionalApproverID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimesheetEntryType" Member="TimesheetEntryTypes">
+    <Type Name="TimesheetEntryType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntryType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimeSheetApproveType" Member="TimeSheetApproveTypes">
+    <Type Name="TimeSheetApproveType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApproveType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="TimeSheetKeys">
+    <Type Name="TimeSheetKey">
+      <Column Name="eDate" Type="System.String" CanBeNull="false" />
+      <Column Name="Color" Type="System.String" CanBeNull="false" />
+      <Column Name="Counts" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_TimesheetDetails" Member="V_TimesheetDetails">
+    <Type Name="V_TimesheetDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeSheetStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateEntered" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalSelling" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HourlyBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HourlySellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ContractorsName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EntryTypeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ApproveTypeName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ApproverComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProjectTaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemDescription" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Portfolio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerReference" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ApproverName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SubmittedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimesheetApproverEmail" Member="TimesheetApproverEmails">
+    <Type Name="TimesheetApproverEmail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApproverID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Enable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimesheetCategory" Member="TimesheetCategories">
+    <Type Name="TimesheetCategory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimeSheetRate" Member="TimeSheetRates">
+    <Type Name="TimeSheetRate">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContractorsId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Entrytype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hourlyrate_Buying" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Hourlyrate_Selling" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Minimumdailyhours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="HourlyBuying" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="Hourly_Selling" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimesheetRemindersTbl" Member="TimesheetRemindersTbls">
+    <Type Name="TimesheetRemindersTbl">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SwitchOnTimesheetAlert" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SendReminderAt" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="Avoidweekends" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimesheetApprover" Member="TimesheetApprovers">
+    <Type Name="TimesheetApprover">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ApproverID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimesheetEntry" Member="TimesheetEntries">
+    <Type Name="TimesheetEntry">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeSheetStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateEntered" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalSelling" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HourlyBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HourlySellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AssignType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActivityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SRnumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Planner" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="StatusFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimeApprover" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondApprover" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimeApprovedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SecondApprovedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PrimeApproverStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecodaryApproverStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RowID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ColumnID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApproverComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ApprovedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubmittedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Approver_CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Customer_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Decline_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Decline_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fromtime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="totime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="CustomType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryMethod" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MasterProfileID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExpensesAccountingCodes" Member="ExpensesAccountingCodes">
+    <Type Name="ExpensesAccountingCode">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountingCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_timesheetentry" Member="v_timesheetentries">
+    <Type Name="v_timesheetentry">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeSheetStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateEntered" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalSelling" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HourlyBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HourlySellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AssignType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActivityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SRnumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Planner" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="StatusFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimeApprover" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondApprover" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimeApprovedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SecondApprovedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PrimeApproverStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecodaryApproverStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RowID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ColumnID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApproverComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ApprovedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubmittedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Approver_CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Customer_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Decline_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Decline_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fromtime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="totime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="CustomType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryMethod" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MasterProfileID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResourceName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EntryTypeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TimeSheetStatusName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WCDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PorfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TaskName" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PrimeApproverName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SecondApproverName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Approver_CustomerName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DeclineByName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimeExpenses" Member="TimeExpenses">
+    <Type Name="TimeExpense">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeExpensesDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BuyingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SellingPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SellingTotal" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="AccountingCodesID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReimburseToID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Item" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LoggedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Image" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_TimeExpenses" Member="v_TimeExpenses">
+    <Type Name="v_TimeExpense">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PorfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeExpensesDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BuyingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SellingPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SellingTotal" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="AccountingCodesID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountingCodesName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ReimburseToID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReimburseToName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Item" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LoggedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Image" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Timesheet_BindDates2" Method="Timesheet_BindDates2">
+    <Parameter Name="ContractorID" Parameter="contractorID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Timesheet_BindDates2Result">
+      <Column Name="EnteredDate" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="color" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="total" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DN_TimesheetEntryDelete" Method="DN_TimesheetEntryDelete">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.TimesheetEntry_UpdateStatus" Method="TimesheetEntry_UpdateStatus">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StatusID" Parameter="statusID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.TimeSheetResource_AddUpdateWcDate" Method="TimeSheetResource_AddUpdateWcDate">
+    <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="contractorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="projectRef" Type="System.Int32" DbType="Int" />
+    <Parameter Name="projectTaskId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="siteId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="entryType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="hours" Type="System.Decimal" DbType="Decimal" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DN_selecttimesheetcveiwModify" Method="DN_selecttimesheetcveiwModify">
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="contractorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="WcDateID" Parameter="wcDateID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DN_selecttimesheetcveiwModifyResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateEntered" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="EntryTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Activity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ActivityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sitename" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTask" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ApproverEmail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TimesheetstatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TimesheetEntry_WeeklyView" Method="TimesheetEntry_WeeklyView">
+    <Parameter Name="wcdate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="contractorid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="rowcount" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TimesheetEntry_WeeklyViewResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="projectreferece" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="taskid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="entrytype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="site" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c0_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c0" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="c1_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c1" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="c2_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c2" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="c3_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c3" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="c4_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c4" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="c5_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c5" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="c6_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c6" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="ctotal" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="custom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConvertToHours" Method="ConvertToHours" IsComposable="true">
+    <Parameter Name="Min" Parameter="min" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="dbo.ConvertToMins" Method="ConvertToMins" IsComposable="true">
+    <Parameter Name="Input" Parameter="input" Type="System.Double" DbType="Float" />
+    <Return Type="System.Double" />
+  </Function>
+  <Function Name="dbo.DN_TimesheetEntryupdate" Method="DN_TimesheetEntryupdate">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Activity" Parameter="activity" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="AssignType" Parameter="assignType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ResourceID" Parameter="resourceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="entryid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Timesheetdate" Parameter="timesheetdate" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="hours" Type="System.Double" DbType="Float" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(1000)" />
+    <Parameter Name="SiteID" Parameter="siteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProjectTaskID" Parameter="projectTaskID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fromtime" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="totime" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="output" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DN_TimesheetEntry" Method="DN_TimesheetEntry">
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Activity" Parameter="activity" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="AssignType" Parameter="assignType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ResourceID" Parameter="resourceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="entryid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Timesheetdate" Parameter="timesheetdate" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="hours" Type="System.Double" DbType="Float" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(1000)" />
+    <Parameter Name="SiteID" Parameter="siteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProjectTaskID" Parameter="projectTaskID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fromtime" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="totime" Type="System.TimeSpan" DbType="Time" />
+    <Parameter Name="CustomType" Parameter="customType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EntryMethod" Parameter="entryMethod" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="ProfileID" Parameter="profileID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Double" DbType="Float" />
+    <Parameter Name="RateMultiplier" Parameter="rateMultiplier" Type="System.Double" DbType="Float" />
+    <Parameter Name="IsNightShift" Parameter="isNightShift" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IsOnCallOut" Parameter="isOnCallOut" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="output" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.TimesheetEntrySelectDayView" Method="TimesheetEntrySelectDayView">
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="contractorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PortfolioID" Parameter="portfolioID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DayOrWeek" Parameter="dayOrWeek" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="out" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="TimesheetEntrySelectDayViewResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateEntered" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="EntryTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProjectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Activity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectReference1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sitename" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTask" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ApproverEmail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TimesheetstatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fromtime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="totime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TimesheetViewByWCDate" Method="TimesheetViewByWCDate">
+    <Parameter Name="WCDateID" Parameter="wCDateID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="contractorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="key" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TimeSheetApproverID" Parameter="timeSheetApproverID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TimesheetViewByWCDateResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApproverComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Pref" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateEntered" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Site" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTask" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SRnumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Planner" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="TotalHoursBooked" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SignedOffHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Shift" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StatusName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TimeSheetWCViewByApprover" Method="TimeSheetWCViewByApprover">
+    <Parameter Name="TimeSheetApproverID" Parameter="timeSheetApproverID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TimeSheetWCViewByApproverResult">
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TotalHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="WCDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PrimeApprover" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondApprover" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimeApproverName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SecondApproverName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CustomerApproverName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TimesheetEntrySelectByJob" Method="TimesheetEntrySelectByJob">
+    <Parameter Name="JobID" Parameter="jobID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TimesheetEntrySelectByJobResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateEntered" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="EntryTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Activity" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectReference1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sitename" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTask" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ApproverEmail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TimesheetstatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fromtime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="totime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

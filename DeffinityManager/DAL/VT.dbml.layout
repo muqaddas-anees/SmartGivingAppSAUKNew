@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="VT">
+  <DataContextMoniker Name="/VTDataContext" />
+  <nestedChildShapes>
+    <classShape Id="46c471c8-440d-4115-8138-0522810607bb" absoluteBounds="3.5, 1.75, 2, 4.2708154296875">
+      <DataClassMoniker Name="/VTDataContext/LeaveRequest" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ea42e2c1-ea3e-4e04-bfca-69ddc106ed12" absoluteBounds="3.5149999999999997, 2.21, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c6512308-a399-494c-af82-37376fb2416d" absoluteBounds="0.75, 3.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/VTDataContext/AbsenseType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eead4dd1-78bd-48af-ae5d-4c0221791f8d" absoluteBounds="0.76500000000000057, 4.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8d717487-278d-4457-a7d0-9594a7bc7720" absoluteBounds="8, 1.625, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/VTDataContext/ApprovalStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eeb0f4af-097a-4b47-ac6d-e2a3dc58d4d5" absoluteBounds="8.015, 2.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a188ec67-e832-46eb-8133-8154e0d7bf75" absoluteBounds="6, 1.25, 2, 4.8477197265625">
+      <DataClassMoniker Name="/VTDataContext/LeaveRequestJournal" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cdefdd7c-9cb7-4b4f-bb7d-630176b02635" absoluteBounds="6.015, 1.71, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6f5b3390-bce8-49ec-9f88-883587b67d5e" absoluteBounds="0.875, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/VTDataContext/History" />
+      <nestedChildShapes>
+        <elementListCompartment Id="03b80f96-70a9-49b6-a260-3cdd8b97d29b" absoluteBounds="0.89000000000000012, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

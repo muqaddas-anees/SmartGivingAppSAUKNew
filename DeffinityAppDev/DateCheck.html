@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+    <script>
+    $(function () {
+        $("#txtFromDate").datepicker({ dateFormat: 'dd/mm/yy' });
+        $("#txtTodate").datepicker({ dateFormat: 'dd/mm/yy' });
+
+        $("#btnSubmit").click(function () {
+            var get_startdate = $("#txtFromDate").val();
+            var get_todate = $("#txtTodate").val();
+            var sDate = new Date(DateConvertion(get_startdate));
+            var eDate = new Date(DateConvertion(get_todate));
+            if ((get_startdate.length == 0) || (get_startdate == null)) {
+                alert("Please enter From date");
+                ret_val = false;
+            }
+            else if ((get_todate.length == 0) || (get_todate == null)) {
+                alert("Please enter To date");
+                ret_val = false;
+            }
+            else if (sDate >= eDate) {
+                alert("Please ensure to date is after the from date");
+                ret_val = false;
+            }
+            else {
+                window.location = 'http://www.emsysindia.com/?from=' + get_startdate + '&to=' + get_todate;
+            }
+        });
+
+    });
+
+    function DateConvertion(s_date) {
+        var b = s_date;
+        var temp = new Array();
+        temp = b.split('/');
+        var s1 = temp[1] + '/' + temp[0] + '/' + temp[2];
+        return s1
+    }
+    </script>
+</head>
+<body>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                From:
+            </td>
+            <td>
+                &nbsp;  <input type="text" id="txtFromDate" />
+            </td>
+            <td>
+                &nbsp; To:
+            </td>
+            <td>
+                &nbsp; <input type="text" id="txtTodate" />
+            </td>
+            <td> &nbsp;
+                <input type="button" id="btnSubmit" title="Submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

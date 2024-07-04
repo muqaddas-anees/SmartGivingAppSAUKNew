@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.25" name="DeffinityChatDataClasses">
+  <DataContextMoniker Name="/DeffinityChatDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="bfea4ee8-e601-4325-828f-491696f5d4c2" absoluteBounds="2.75, 3.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DeffinityChatDataClassesDataContext/tblArticleLike" />
+      <nestedChildShapes>
+        <elementListCompartment Id="024442df-8613-4d14-be38-e2a00d06501e" absoluteBounds="2.7649999999999997, 4.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c7fa2154-c144-4d8f-9541-7ce434352441" absoluteBounds="5, 0.875, 2, 5.8092268880208326">
+      <DataClassMoniker Name="/DeffinityChatDataClassesDataContext/Contractor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1d8ff09c-2909-4d49-aaf6-b4e3bf7506e2" absoluteBounds="5.015, 1.335, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c122de9d-733c-47ad-964b-0e9db4415ab2" absoluteBounds="0.5, 4.875, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/DeffinityChatDataClassesDataContext/CustomerAccountTeamChat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee086073-1d77-4fe4-9640-8a3ebcdc5a65" absoluteBounds="0.51499999999999968, 5.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b5affecb-abb9-451f-b334-3ddb5e2adc5b" absoluteBounds="2, 7.125, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/DeffinityChatDataClassesDataContext/Team" />
+      <nestedChildShapes>
+        <elementListCompartment Id="937593a2-13ed-40a9-9a27-b379404ef8ff" absoluteBounds="2.0149999999999997, 7.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.69931705603966 : 8.5112939453125); (2.69931705603966 : 8.7612939453125); (3.31500117938702 : 8.7612939453125); (3.31500117938702 : 8.5112939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DeffinityChatDataClassesDataContext/Team/Team_Team" />
+      <nodes>
+        <classShapeMoniker Id="b5affecb-abb9-451f-b334-3ddb5e2adc5b" />
+        <classShapeMoniker Id="b5affecb-abb9-451f-b334-3ddb5e2adc5b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="291b492e-9511-4817-a5c0-fcee851d9fe2" absoluteBounds="0.5, 0.625, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/DeffinityChatDataClassesDataContext/tblDeffinityChat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2eb7586d-c9a9-4307-826f-4e828bbdf25f" absoluteBounds="0.515, 1.085, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="36dd8407-f54e-41fb-b5d9-0dcbdea74f9c" absoluteBounds="2.75, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DeffinityChatDataClassesDataContext/tblDeffinityChatComment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5f735da-73bf-41a9-9753-784d6cfda779" absoluteBounds="2.765, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

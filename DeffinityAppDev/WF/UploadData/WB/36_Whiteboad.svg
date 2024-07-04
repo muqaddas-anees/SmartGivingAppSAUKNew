@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600" viewBox="0 0 800 600" version="1.1">
+	<!--Figure start-->
+	<polygon points="29,17.5 99,17.5 99,62.5 29,62.5 "  style="stroke:#000000;fill:#999999;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="31.5"  transform="rotate(0 64 ,37.5)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="64" dy="12">Dinesh </tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="126,20.5 196,20.5 196,65.5 126,65.5 "  style="stroke:#000000;fill:#999999;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="34.5"  transform="rotate(0 161 ,40.5)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="161" dy="12">Nadeem</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="222,20.5 292,20.5 292,65.5 222,65.5 "  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="34.5"  transform="rotate(0 257 ,40.5)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="257" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<path d=" M43,94 L93,94 Q101,95.25,103,104 L103,132 Q101,140,93,142 L43,142 Q35,140,33,132 L33,104 Q35,94,43,94"  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="112"  transform="rotate(0 68 ,118)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="68" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<path d=" M197,123 Q197,137.49747468305833 186.74873734152916,147.74873734152916 Q176.49747468305833,158 162,158 Q147.50252531694167,158 137.25126265847084,147.74873734152916 Q127,137.49747468305833 127,123 Q127,108.50252531694167 137.25126265847084,98.25126265847084 Q147.50252531694164,88 162,88 Q176.49747468305833,88 186.74873734152916,98.25126265847084 Q197,108.50252531694166 197,122.99999999999999"  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;" />
+	<text y="117"  transform="rotate(0 162 ,123)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="162" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<path d=" M309,122 Q309,136.49747468305833 298.74873734152914,146.74873734152916 Q288.49747468305833,157 274,157 Q259.50252531694167,157 249.25126265847084,146.74873734152916 Q239,136.49747468305833 239,122 Q239,107.50252531694167 249.25126265847084,97.25126265847084 Q259.50252531694167,87 274,87 Q288.49747468305833,87 298.74873734152914,97.25126265847084 Q309,107.50252531694166 309,121.99999999999999"  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;" />
+	<text y="116"  transform="rotate(0 274 ,122)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="274" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="400,147 470,147 470,217 400,217 "  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="176"  transform="rotate(0 435 ,182)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="435" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 282, 268.5)">
+		<image x="257.64875" y="240.67000000000002" width="48.7025" height="55.66" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/6_firewall.svg" />
+	</g>
+	<text y="295.33"  transform="rotate(0 282 ,301.33)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="282" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 366, 266.5)">
+		<image x="347.2725409836066" y="236.4375" width="37.454918032786885" height="60.125" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/5_server.svg" />
+	</g>
+	<text y="295.5625"  transform="rotate(0 366 ,301.5625)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="366" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 185, 263.5)">
+		<image x="155.26305263157894" y="216.41649999999998" width="59.473894736842105" height="94.167" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/7_building.svg" />
+	</g>
+	<text y="309.5835"  transform="rotate(0 185 ,315.5835)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="185" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 84, 264.5)">
+		<image x="65.67" y="235.2710810810811" width="36.66" height="58.45783783783783" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/11_pda.svg" />
+	</g>
+	<text y="292.7715"  transform="rotate(0 84 ,298.7715)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="84" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 449, 252.5)">
+		<image x="436.75" y="236.82" width="24.5" height="31.36" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/10_lock.svg" />
+	</g>
+	<text y="267.35"  transform="rotate(0 449 ,273.35)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="449" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 535.47609, 247.82973)">
+		<image x="497.7309697059322" y="190.99999832129117" width="75.49024058813563" height="113.6594633574177" xlink:href="http://upload.wikimedia.org/wikipedia/commons/8/8e/Rear_of_rack_at_NERSC_data_center.jpg" />
+	</g>
+	<text y="308.8696"  transform="rotate(0 535.47609 ,314.8696)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="535.47609" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<path d=" M95,357 Q95,361.97056274847716 91.48528137423857,365.4852813742386 Q87.97056274847714,369 83,369 Q78.02943725152286,369 74.51471862576143,365.4852813742386 Q71,361.97056274847716 71,357 Q71,352.02943725152284 74.51471862576143,348.5147186257614 Q78.02943725152285,345 83,345 Q87.97056274847715,345 91.48528137423857,348.5147186257614 Q95,352.02943725152284 95,357"  style="stroke:#000000;fill:#FFFFFF;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;" />
+	<path d=" M90,357 Q90,359.8994949366117 87.94974746830583,361.9497474683058 Q85.89949493661166,364 83,364 Q80.10050506338834,364 78.05025253169417,361.9497474683058 Q76,359.8994949366117 76,357 Q76,354.1005050633883 78.05025253169417,352.0502525316942 Q80.10050506338833,350 83,350 Q85.89949493661167,350 87.94974746830583,352.0502525316942 Q90,354.1005050633883 90,357"  style="stroke:#000000;fill:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;" />
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 436.70678, 71.68005)">
+		<image x="380.69439451342635" y="10.999965722878542" width="112.0247709731473" height="121.3601685542429" xlink:href="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTprQ84w6HKxyFuBjruumJFXZWJ0jp_vY4dd9sCLh375-LNBhADog" />
+	</g>
+	<text y="139.00183"  transform="rotate(0 436.70678 ,145.00183)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="436.70678" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<polygon points="253,334.5 323,334.5 323,379.5 253,379.5 "  style="stroke:#000000;fill:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="348.5"  transform="rotate(0 288 ,354.5)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="288" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 551.22882, 81.0481)">
+		<image x="501.12172249610535" y="47.302503721866856" width="100.21419500778934" height="67.4911925562663" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/2_switch.svg" />
+	</g>
+	<text y="119.21705"  transform="rotate(0 551.22882 ,125.21705)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="551.22882" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 423.73999, 370.03999)">
+		<image x="396.73999" y="345.9854445454545" width="54" height="48.10909090909091" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/8_laptop.svg" />
+	</g>
+	<text y="393.28999"  transform="rotate(0 423.73999 ,399.28999)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="423.73999" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+<polyline points="162,88 162,58 235,58 235,186.41649999999998 185,186.4165 185,216.4165 " style="stroke:#000000;fill:none;stroke-width:1.005;stroke-linecap:butt;stroke-linejoin:miter;" />
+	<path d=" M185,216.4165 L192.5,203.42611894323343 M185,216.4165 L177.5,203.42611894323343"  style="stroke:#000000;fill:none;stroke-width:1.005;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<polygon points="235,104.70825 235,104.70825 235,116.70825 235,116.70825 "  style="stroke:none;fill:#FFFFFF;stroke-width:none;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="104.70825"  transform="rotate(0 235 ,110.70825)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="235" dy="12"></tspan>
+	</text><polyline points="309,122 339,122 366,122 366,206.4375 366,236.4375 " style="stroke:#000000;fill:none;stroke-width:1.005;stroke-linecap:butt;stroke-linejoin:miter;" />
+	<path d=" M366,236.4375 L373.5,223.44711894323342 M366,236.4375 L358.5,223.44711894323342"  style="stroke:#000000;fill:none;stroke-width:1.005;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<polygon points="366,144.71875 366,144.71875 366,156.71875 366,156.71875 "  style="stroke:none;fill:#FFFFFF;stroke-width:none;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="144.71875"  transform="rotate(0 366 ,150.71875)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="366" dy="12"></tspan>
+	</text>
+</svg>

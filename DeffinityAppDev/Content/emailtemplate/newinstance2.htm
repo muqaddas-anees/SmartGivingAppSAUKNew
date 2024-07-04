@@ -1,0 +1,132 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        table td {
+            padding: 5px;
+        }
+
+        .hdr1 {
+            font-size: 18px;
+            padding-top: 15px;
+            text-align: right;
+        }
+
+        .hdr1_sub {
+            font-size: 12px;
+            padding-top: 2px;
+            text-align: right;
+        }
+
+        .hilite {
+            color: #4b0049;
+        }
+
+        .hdr td {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            background: #8595a6;
+            text-align: left;
+        }
+
+        .cont_row td {
+            border: #8595a6 1px solid;
+            color: #219de6;
+            font-weight: bold;
+        }
+
+        .bo_line {
+            border-bottom: #999 10px solid;
+        }
+
+        .hdrt {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            background: #8595a6;
+            text-align: left;
+        }
+
+        .even_row {
+            background: #f2f9ec;
+        }
+
+        .odd_row {
+            background: #f5f5fa;
+        }
+
+        .tab_header {
+            background: #a3a3a3;
+            color: #fff;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table align="center" width="600" style="border: 0px solid #b3b3b3; margin-top: 10px;"
+               cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="30" valign="top">
+                    <img src="[site]/Content/assets/images/logo-white-bg@2x.png" alt="" style="float: left" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td height="9" colspan="2">
+                    <img src="[site]/WF/MailLogo/border.gif" height="5px" id="ImgBorder" runat="server" width="600" />
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;" colspan="2">
+                    Dear <b class="hilite">[user]</b>,
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;" colspan="2">
+                    Ok, we’re all set. We’ve just set you up with your own version of 123 Customer Connect.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Go ahead and click the following link:<br /> [url]
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <table style="border-width:1px;border-color:darkgray;width:100%">
+                        <thead>
+                            <tr style="font-weight:bold;background-color:silver;">
+                                <td style="width:40%">Full name </td>
+                                <td style="width:30%">Login name</td>
+                                <td style="width:30%">Password</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            [datarow]
+                        </tbody>
+
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-top: 20px;" colspan="2">
+                    <br />
+                    <br />
+                    Thank you.
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

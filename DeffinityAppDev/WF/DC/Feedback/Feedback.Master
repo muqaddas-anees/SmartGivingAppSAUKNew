@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Feedback.master.cs" Inherits="DeffinityAppDev.WF.DC.Feedback.Feedback" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    
+
+    <link href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic" rel="stylesheet"/>    
+    <script src="../../../Content/assets/js/jquery-1.11.1.min.js"></script>    
+    <script src="../../../Content/assets/js/jquery-validate/jquery.validate.min.js"></script>  
+    <script src="../../../Content/assets/js/formwizard/jquery.bootstrap.wizard.min.js"></script>
+        <script src="../../../Content/assets/js/jquery-ui/jquery-ui.min.js"></script>
+   <%: System.Web.Optimization.Styles.Render("~/bundles/bootstarpcss") %>
+    <%: System.Web.Optimization.Scripts.Render("~/bundles/xenonjs") %>
+    <script src="dist/jquery.emojiRatings.js"></script>
+     <style>
+         
+        .transparent {
+            background-color: rgba(0,0,0,0);
+        }
+
+
+        .watermark {
+            background: url("feedback.jpg") center center no-repeat;
+            opacity: 0.4;
+            opacity: 0.4;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6"></div>
+        <div class="watermark">
+        </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </form>
+</body>
+</html>

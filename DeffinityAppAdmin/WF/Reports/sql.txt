@@ -1,0 +1,86 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+go
+
+ALTER PROCEDURE [dbo].[AMPS_Report1]
+ @ProjRef int
+AS
+declare @lCount int 
+declare @cCount int
+ --Create a temp table to hold the current page of data
+ --Add and ID column to count the records
+CREATE TABLE #AC2Proj_Temp(
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[AC2PID] [int] NOT NULL,
+	[ItemDescription] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[UnitPrice] [float] NOT NULL,
+	[QTY] [float] NULL,
+	[Total] [float] NULL,
+	[CurrencyCode] [int] NULL,
+	[ConvertedTotal] [float] NULL,
+	[Type] [int] NULL,
+)
+
+ --Fill the temp table with the users data
+ INSERT INTO #AC2Proj_Temp (AC2PID, ItemDescription, UnitPrice,QTY,Total,CurrencyCode,ConvertedTotal,Type) 
+     SELECT AC2PID, LabourDescription, UnitPrice,QTY,Total,CurrencyCode,ConvertedTotal,1
+        	FROM AC2Proj_Labour where AC2PID in (select ID from AssignedContractorsToProjects where ProjectReference=@ProjRef)
+
+
+
+INSERT INTO #AC2Proj_Temp (AC2PID, ItemDescription, UnitPrice,QTY,Total,CurrencyCode,ConvertedTotal,Type) 
+     SELECT AC2PID, ItemDescription, UnitPrice,QTY,Total,CurrencyCode,ConvertedTotal,2
+        	FROM AC2Proj_Materials where AC2PID in (select ID from AssignedContractorsToProjects where ProjectReference=@ProjRef)
+
+
+
+INSERT INTO #AC2Proj_Temp (AC2PID, ItemDescription, UnitPrice,QTY,Total,CurrencyCode,ConvertedTotal,Type) 
+     SELECT AC2PID, ItemDescription, UnitPrice,QTY,Total,CurrencyCode,ConvertedTotal,3
+        	FROM AC2Proj_Misc where AC2PID in (select ID from AssignedContractorsToProjects where ProjectReference=@ProjRef)
+
+ --Return the total number of records available as an output parameter
+
+select @lCount=count(*) from #AC2Proj_Temp
+
+if @lCount>0
+	SELECT "AC2Proj_Temp"."ItemDescription", "AC2Proj_Temp"."UnitPrice", "AC2Proj_Temp"."QTY", "AC2Proj_Temp"."Total", "dbo"."GetShortCurrency"("AC2Proj_Temp"."CurrencyCode") "CurrencyCode", "AC2Proj_Temp"."ConvertedTotal", [dbo].[GetType]("AC2Proj_Temp"."Type") "Type", "AssignedContractorsToProjects"."ContractorsName", "MasterTemplate"."Description",CAST("ProjectDefaults"."ProjectReferencePrefix" AS varchar(5)) + ' ' + CAST("Projects"."ProjectReference" AS varchar(5)) as "ProjectReference", "Projects"."ProjectTitle", "Projects"."ProjectDescription","Projects"."CostCentre", "OperationsOwners"."OperationsOwners", "Projects"."StartDate", "Projects"."CompletedDate", "Projects"."BudgetaryCost", "Projects"."BudgetaryCostLevel3", "Projects"."ActualCost", "Projects"."DateAuthorised", "Projects"."DateQAApproved","dbo"."GetShortCurrency"("Projects"."BaseCurrency") "BaseCurrency"
+	 FROM 
+	 "dbo"."ProjectDefaults" "ProjectDefaults",
+	(
+	(
+	(
+	"dbo"."Projects" "Projects" INNER JOIN "dbo"."AssignedContractorsToProjects" "AssignedContractorsToProjects" ON "Projects"."ProjectReference"="AssignedContractorsToProjects"."ProjectReference"
+	)
+	 INNER JOIN "#AC2Proj_Temp" "AC2Proj_Temp" ON "AssignedContractorsToProjects"."ID"="AC2Proj_Temp"."AC2PID"
+	) 
+	INNER JOIN "dbo"."OperationsOwners" "OperationsOwners"  ON "OperationsOwners"."ID"="Projects"."OwnerGroupID"
+	)
+	INNER JOIN "dbo"."MasterTemplate" "MasterTemplate" ON "AssignedContractorsToProjects"."TemplateID"="MasterTemplate"."ID"
+	 ORDER BY "Projects"."ProjectReference", "AssignedContractorsToProjects"."ContractorsName", "AC2Proj_Temp"."Type"
+
+else
+	select @cCount=count(*) from AssignedContractorsToProjects where ProjectReference=@ProjRef
+	if(@cCount>0)
+		SELECT  null "ItemDescription", 0 "UnitPrice", 0 "QTY", 0 "Total", null "CurrencyCode", 0 "ConvertedTotal", null "Type","AssignedContractorsToProjects"."ContractorsName", "MasterTemplate"."Description",CAST("ProjectDefaults"."ProjectReferencePrefix" AS varchar(5)) + ' ' + CAST("Projects"."ProjectReference" AS varchar(5)) as "ProjectReference", "Projects"."ProjectTitle", "Projects"."ProjectDescription","Projects"."CostCentre", "OperationsOwners"."OperationsOwners", "Projects"."StartDate", "Projects"."CompletedDate", "Projects"."BudgetaryCost", "Projects"."BudgetaryCostLevel3", "Projects"."ActualCost", "Projects"."DateAuthorised", "Projects"."DateQAApproved","dbo"."GetShortCurrency"("Projects"."BaseCurrency") "BaseCurrency"
+		 FROM 
+		 "dbo"."ProjectDefaults" "ProjectDefaults",
+		(
+		(
+		"dbo"."Projects" "Projects" INNER JOIN "dbo"."AssignedContractorsToProjects" "AssignedContractorsToProjects" ON "Projects"."ProjectReference"="AssignedContractorsToProjects"."ProjectReference"
+		) 
+		INNER JOIN "dbo"."OperationsOwners" "OperationsOwners"  ON "OperationsOwners"."ID"="Projects"."OwnerGroupID"
+		)
+		INNER JOIN "dbo"."MasterTemplate" "MasterTemplate" ON "AssignedContractorsToProjects"."TemplateID"="MasterTemplate"."ID"
+		where "Projects"."ProjectReference"=@ProjRef
+		ORDER BY "Projects"."ProjectReference", "AssignedContractorsToProjects"."ContractorsName"
+	else
+		SELECT  null "ItemDescription", 0 "UnitPrice", 0 "QTY", 0 "Total", null "CurrencyCode", 0 "ConvertedTotal", null "Type",null "ContractorsName",null "Description" ,CAST("ProjectDefaults"."ProjectReferencePrefix" AS varchar(5)) + ' ' + CAST("Projects"."ProjectReference" AS varchar(5)) as "ProjectReference", "Projects"."ProjectTitle", "Projects"."ProjectDescription","Projects"."CostCentre", "OperationsOwners"."OperationsOwners", "Projects"."StartDate", "Projects"."CompletedDate", "Projects"."BudgetaryCost", "Projects"."BudgetaryCostLevel3", "Projects"."ActualCost", "Projects"."DateAuthorised", "Projects"."DateQAApproved","dbo"."GetShortCurrency"("Projects"."BaseCurrency") "BaseCurrency"
+		 FROM 
+		 "dbo"."ProjectDefaults" "ProjectDefaults",
+		
+		"dbo"."Projects" "Projects" INNER JOIN "dbo"."OperationsOwners" "OperationsOwners"  ON "OperationsOwners"."ID"="Projects"."OwnerGroupID"
+
+		where "Projects"."ProjectReference"=@ProjRef
+		ORDER BY "Projects"."ProjectReference"
+
+drop table  #AC2Proj_Temp

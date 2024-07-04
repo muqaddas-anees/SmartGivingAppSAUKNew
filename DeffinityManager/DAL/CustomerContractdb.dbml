@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityEflair" EntityNamespace="CustomerContract.Entity" ContextNamespace="CustomerContract.DAL" Class="CustomerContractdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=69.41.185.220;Initial Catalog=DeffinityEflair;User ID=Deffinity3DBUser;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ContractorGroup" Member="ContractorGroups">
+    <Type Name="ContractorGroup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer_Contracts" Member="Customer_Contracts">
+    <Type Name="Customer_Contract">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractTitle" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ContractDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InitialValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RollingContract" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ContractDuration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ContractDurationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NotificationPeriod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NotificationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TerminationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RenewalDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DetailsOfSLA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DetailsOfTechnologyUsed" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NonCompleteClauses" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GeneralNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NDADetails" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GovernigLaw" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AnniversaryNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VendorOrCustomer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer_ContractsJournal" Member="Customer_ContractsJournals">
+    <Type Name="Customer_ContractsJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractTitle" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ContractDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InitialValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RollingContract" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ContractDuration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ContractDurationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NotificationPeriod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NotificationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TerminationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RenewalDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DetailsOfSLA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DetailsOfTechnologyUsed" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NonCompleteClauses" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GeneralNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NDADetails" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GovernigLaw" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AnniversaryNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VendorOrCustomer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ContractID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="JournalDisplays">
+    <Type Name="JournalDisplay">
+      <Column Name="FieldName" Type="System.String" CanBeNull="false" />
+      <Column Name="FieldValue" Type="System.String" CanBeNull="false" />
+      <Column Name="ModifiedDate" Type="System.DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContractChecklist" Member="ContractChecklists">
+    <Type Name="ContractChecklist">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CheckedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CheckedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ContractID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerOLA" Member="CustomerOLAs">
+    <Type Name="CustomerOLA">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Agreement" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HoursOfCoverage" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Resources" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MinimumRequirements" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Charges" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ReportingCycle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VendorOrCustomer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerSite" Member="CustomerSites">
+    <Type Name="CustomerSite">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MainContact" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="StaffRequired" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ToTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SLAInformation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VendorOrCustomer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.CustomerSite_Delete" Method="CustomerSite_Delete">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CustomerSite_Update" Method="CustomerSite_Update">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SiteID" Parameter="siteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MainContact" Parameter="mainContact" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Telephone" Parameter="telephone" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="StaffRequired" Parameter="staffRequired" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromTime" Parameter="fromTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ToTime" Parameter="toTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="SLAInfo" Parameter="sLAInfo" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CustomerOLA_Delete" Method="CustomerOLA_Delete">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CustomerOLA_Insert" Method="CustomerOLA_Insert">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Agreement" Parameter="agreement" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PONumber" Parameter="pONumber" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Terms" Parameter="terms" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="HoursOFCoverage" Parameter="hoursOFCoverage" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Resources" Parameter="resources" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="MinimumRequirements" Parameter="minimumRequirements" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Charges" Parameter="charges" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ReportingCycle" Parameter="reportingCycle" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="UserType" Parameter="userType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="VendorOrCustomer" Parameter="vendorOrCustomer" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ContractID" Parameter="contractID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CustomerOLA_Update" Method="CustomerOLA_Update">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Agreement" Parameter="agreement" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PONumber" Parameter="pONumber" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Terms" Parameter="terms" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="HoursOFCoverage" Parameter="hoursOFCoverage" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Resources" Parameter="resources" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="MinimumRequirements" Parameter="minimumRequirements" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Charges" Parameter="charges" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ReportingCycle" Parameter="reportingCycle" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CustomerOLA_SelectAll" Method="CustomerOLA_SelectAll">
+    <Parameter Name="CustomerId" Parameter="customerId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="VendorOrCustomer" Parameter="vendorOrCustomer" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ContractID" Parameter="contractID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CustomerOLA_SelectAllResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Agreement" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Terms" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HoursOfCoverage" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Resources" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MinimumRequirements" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Charges" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ReportingCycle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VendorOrCustomer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CustomerSite_Insert" Method="CustomerSite_Insert">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SiteID" Parameter="siteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MainContact" Parameter="mainContact" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Telephone" Parameter="telephone" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="StaffRequired" Parameter="staffRequired" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromTime" Parameter="fromTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ToTime" Parameter="toTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="SLAInfo" Parameter="sLAInfo" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="UserType" Parameter="userType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="VendorOrCustomer" Parameter="vendorOrCustomer" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ContractorID" Parameter="contractorID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CustomerSite_SelectAll" Method="CustomerSite_SelectAll">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="VendorOrCustomer" Parameter="vendorOrCustomer" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ContractID" Parameter="contractID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CustomerSite_SelectAllResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MainContact" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="StaffRequired" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ToTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SLAInformation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sitename" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VendorOrCustomer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

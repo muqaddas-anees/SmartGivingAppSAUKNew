@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13, 16" name="ServiceUnitsDataClasses">
+  <DataContextMoniker Name="/IncidentDataContext" />
+  <nestedChildShapes>
+    <classShape Id="91883da9-8e7e-45f9-8b55-69a2f9127da4" absoluteBounds="0.5, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_UnitCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="73b4966f-3a02-477e-a354-39870ca4f73e" absoluteBounds="0.51500000000000012, 0.96000000000000085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="999b4937-8e90-4d19-8dab-3f81f82aac7a" absoluteBounds="5.5, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_UnitCredit_reoccurrence" />
+      <nestedChildShapes>
+        <elementListCompartment Id="199b1ab3-0a8c-4833-9e6d-45d9afcf0c45" absoluteBounds="5.515, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0250415e-05ff-4772-a4f4-c11016ea291a" absoluteBounds="5.5, 3.25, 2, 12.539777018229165">
+      <DataClassMoniker Name="/IncidentDataContext/Incident" />
+      <nestedChildShapes>
+        <elementListCompartment Id="16a1098b-10d1-43ca-be42-aedd5c22af28" absoluteBounds="5.515, 3.71, 1.9700000000000002, 11.979777018229166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="194774d2-b516-4ee1-82b2-2c44baa2bd0e" absoluteBounds="3, 3.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_UnitExpiryPeriod" />
+      <nestedChildShapes>
+        <elementListCompartment Id="24f861c9-47da-4bcb-bd62-843d8c2db858" absoluteBounds="3.0149999999999997, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fe414f0e-d6c9-45ea-8ca1-c999c38651d5" absoluteBounds="0.5, 4.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_UnitConsumptionRAGAlert" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3547d783-45b7-48f5-b3ef-0c0901fb5a16" absoluteBounds="0.51500000000000012, 4.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d2c7f4da-a53d-4459-b6ab-695e8bcde161" absoluteBounds="0.625, 6.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_MinimumUnitsAssignedPerCall" />
+      <nestedChildShapes>
+        <elementListCompartment Id="20aa8cd3-2ff7-4992-9ca6-978ec471bdb3" absoluteBounds="0.64000000000000012, 6.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="960e7947-80e6-421c-a059-de50f857e9ff" absoluteBounds="8.25, 5.25, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_ServicePrice" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d0f99392-e61e-4308-8d62-cc1d7fc4da1b" absoluteBounds="8.265, 5.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6e9ac63f-fe0f-4f49-8d39-8ae37a9a32d0" absoluteBounds="10.75, 3.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_AssignedTeam" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8815136d-8f24-430e-b579-f2ebb42dcb15" absoluteBounds="10.765, 4.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="33fcfb7a-3b66-4f1f-9a15-c1c65996def4" absoluteBounds="3, 6.875, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_UnitsPurchaseHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d455048e-8895-4acd-826d-bcc525e2ac41" absoluteBounds="3.015, 7.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="358b67c7-9b72-4fe9-a5ee-25eedd1db679" absoluteBounds="0.75, 8.125, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_Service" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6aac30c9-d589-49c8-89b8-99f99ab2ff97" absoluteBounds="0.765, 8.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0bcaea8c-e09f-475d-a33d-05f61bedd1b6" absoluteBounds="3.125, 0.5, 2, 3.1170068359375">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_ServiceUnit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="45f308fc-a4a3-4684-9acf-40a8ddab5e49" absoluteBounds="3.14, 0.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1dd2b3fa-2425-496a-bea5-a9b6324452cf" absoluteBounds="8.5, 1.625, 2, 3.1170068359375">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_UnitConsumptionConfiguration" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c1863d9a-7753-47ec-a283-d342b471923c" absoluteBounds="8.515, 2.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b3d64fdc-d395-4f4b-8a40-bf6705989dfa" absoluteBounds="3.25, 10.125, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/IncidentDataContext/Incident_UnitUsedJouranl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="46203972-b454-49e2-8dad-fd2cb66de93c" absoluteBounds="3.265, 10.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

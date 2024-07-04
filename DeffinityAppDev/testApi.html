@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <input id="btnSubmit" type="button" value="Submit" />
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSubmit").click(function (e) {
+            debugger;
+            e.preventDefault();
+            //var apiurl = "https://libertyhomeguard.deffinity.com/api/WSAddCustomer";
+            var apiurl = "api/WSAddCustomer";
+            var data = {
+                name: 'testdata',
+                email: 'indra@deffinity.com',
+                address: 'address1',
+                city: 'city1',
+                state: 'state1',
+                postcode: 'postcode1',
+                policytype: 'Total Home Guard',//'System Guard','Appliance Guard','Total Home Guard'
+                subscriptiontype:'1',//1.Monthly,2.Yearly
+                amount:'100.00',
+                addons: '1,2',//'1.Pool AND SPA,2.Sump Pump,3.Central Vacuum,4.Well Pump,5.Additional SPA,6.Septic System & Septic Sewage Ejector Pump,7.Stand Alone Freezer,8.Second Refrigerator'
+                propertytype:'',
+                other:'',
+                islessthan5ksqft: '0',//0.LESS THAN 5,000 SQ FT , 1.MORE THAN 5,000 SQ FT
+                billingname: 'testdata',
+                billingemail: 'indra@deffinity.com',
+                billingaddress: 'address1',
+                billingcity: 'city1',
+                billingstate: 'state1',
+                billingpostcode: 'postcode1',
+                ordernumber:'001',
+                paypalreference: '',
+                phoneno1:'',
+                phoneno2:''
+
+            }
+            $.ajax({
+                url: apiurl,
+                type: 'POST',
+                dataType: 'json',
+                data: data,
+                success: function (d) {
+                    debugger;
+                    alert(d);
+                },
+                error: function () {
+                    alert("Error please try again");
+                }
+            });
+        });
+    });
+
+    </script>  
+</body>
+</html>

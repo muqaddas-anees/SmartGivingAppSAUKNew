@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DBForProjectDeviation" targetNamespace="http://tempuri.org/DBForProjectDeviation.xsd" xmlns:mstns="http://tempuri.org/DBForProjectDeviation.xsd" xmlns="http://tempuri.org/DBForProjectDeviation.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="DBstring" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBstring (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.DBstring.ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DBstring" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBstring (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DeffinityManager.Properties.Settings.GlobalReference.Default.DBstring" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DtContractorsTableAdapter" GeneratorDataComponentClassName="DtContractorsTableAdapter" Name="DtContractors" UserDataComponentName="DtContractorsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>select 0 as ID,' Please select..' as ContractorName
+union 
+Select ID,ContractorName from Contractors where SID in (1,3,2) and Status = 'Active' order by  'ContractorName'</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="ContractorName" DataSetColumn="ContractorName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DtSiteTableAdapter" GeneratorDataComponentClassName="DtSiteTableAdapter" Name="DtSite" UserDataComponentName="DtSiteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>select 0 as ID,' Please select..' as Site
+union 
+select site.ID as ID,Site from site order by Site</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Site" DataSetColumn="Site" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DeviationTableAdapter" GeneratorDataComponentClassName="DeviationTableAdapter" Name="DtDeviation" UserDataComponentName="DeviationTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="DeffinityEflair.dbo.DN_Deviation_Select" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillDeviationSelect" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDeviationSelect" GeneratorSourceName="FillDeviationSelect" GetMethodModifier="Public" GetMethodName="GetDeviationSelect" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDeviationSelect" UserSourceName="FillDeviationSelect">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.DN_Deviation_Select</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@IssueType" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@IssueSection" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@AssignTo" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Status" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Issue" Precision="0" ProviderType="NVarChar" Scale="0" Size="200" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Projectreference" DataSetColumn="Projectreference" />
+              <Mapping SourceColumn="DateRaised" DataSetColumn="DateRaised" />
+              <Mapping SourceColumn="InternalRef" DataSetColumn="InternalRef" />
+              <Mapping SourceColumn="Status1" DataSetColumn="Status1" />
+              <Mapping SourceColumn="Associated" DataSetColumn="Associated" />
+              <Mapping SourceColumn="AffectedArea" DataSetColumn="AffectedArea" />
+              <Mapping SourceColumn="Severity" DataSetColumn="Severity" />
+              <Mapping SourceColumn="PlanType" DataSetColumn="PlanType" />
+              <Mapping SourceColumn="Descriptiontxt" DataSetColumn="Descriptiontxt" />
+              <Mapping SourceColumn="DetailsDeviation" DataSetColumn="DetailsDeviation" />
+              <Mapping SourceColumn="Impactbusiness" DataSetColumn="Impactbusiness" />
+              <Mapping SourceColumn="IssuseType" DataSetColumn="IssuseType" />
+              <Mapping SourceColumn="IssueTypeName" DataSetColumn="IssueTypeName" />
+              <Mapping SourceColumn="Assignedto1" DataSetColumn="Assignedto1" />
+              <Mapping SourceColumn="Assignedto" DataSetColumn="Assignedto" />
+              <Mapping SourceColumn="SendReminderDate" DataSetColumn="SendReminderDate" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+              <Mapping SourceColumn="IssueSection" DataSetColumn="IssueSection" />
+              <Mapping SourceColumn="Site" DataSetColumn="Site" />
+              <Mapping SourceColumn="Site1" DataSetColumn="Site1" />
+              <Mapping SourceColumn="Reminderto1" DataSetColumn="Reminderto1" />
+              <Mapping SourceColumn="Reminderto" DataSetColumn="Reminderto" />
+              <Mapping SourceColumn="Customer" DataSetColumn="Customer1" />
+              <Mapping SourceColumn="Loggedby" DataSetColumn="Loggedby1" />
+              <Mapping SourceColumn="Reportedby" DataSetColumn="Reportedby1" />
+              <Mapping SourceColumn="RaisedByID" DataSetColumn="RaisedByID" />
+              <Mapping SourceColumn="CountFiles" DataSetColumn="CountFiles" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="DeffinityEflair.dbo.DN_Deviation_Update" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="DeviationUpdate" Modifier="Public" Name="DeviationUpdate" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeviationUpdate">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.DN_Deviation_Update</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@InternalRef" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Customer" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Site" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Loggedby" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Reportedby" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Associated" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@AffectedArea" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Severity" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@PlanType" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Descriptiontxt" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@DetailsDeviation" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Impactbusiness" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Assignedto" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="smalldatetime" DbType="DateTime" Direction="Input" ParameterName="@SendReminderDate" Precision="16" ProviderType="SmallDateTime" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Reminderto" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@IssueSection" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@IssueType" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@status" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="DeffinityEflair.dbo.DN_DeviationDelete" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="DNDeviationDelete" Modifier="Public" Name="DNDeviationDelete" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DNDeviationDelete">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.DN_DeviationDelete</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="DeffinityEflair.dbo.DN_Deviation_ByIssueID" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillByDeviationByID" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataDeviationByID" GeneratorSourceName="FillByDeviationByID" GetMethodModifier="Public" GetMethodName="GetDataDeviationByID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataDeviationByID" UserSourceName="FillByDeviationByID">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.DN_Deviation_ByIssueID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@issueID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="DeffinityEflair.dbo.DN_Deviation_Insert" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillByDeviationInsert" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataDeviationInsert" GeneratorSourceName="FillByDeviationInsert" GetMethodModifier="Public" GetMethodName="GetDataDeviationInsert" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataDeviationInsert" UserSourceName="FillByDeviationInsert">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.DN_Deviation_Insert</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Projectreference" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="smalldatetime" DbType="DateTime" Direction="Input" ParameterName="@DateRaised" Precision="16" ProviderType="SmallDateTime" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@InternalRef" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Customer" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Site" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Loggedby" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Reportedby" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Associated" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@AffectedArea" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Severity" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@PlanType" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Descriptiontxt" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@DetailsDeviation" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Impactbusiness" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Assignedto" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="smalldatetime" DbType="DateTime" Direction="Input" ParameterName="@SendReminderDate" Precision="16" ProviderType="SmallDateTime" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Reminderto" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@IssueSection" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@IssueType" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Status" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MarkAsComplete" Modifier="Public" Name="MarkAsComplete" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="MarkAsComplete">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE    ProjectDeviations
+SET              Status = 3
+WHERE     (ID = @id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="ID" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DeviationDocsTableAdapter" GeneratorDataComponentClassName="DeviationDocsTableAdapter" Name="DtDeviationDocuments" UserDataComponentName="DeviationDocsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="DeffinityEflair.dbo.Deviation_Documents_SelectByDeviationID" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillDeviationDocument" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataDeviationDocument" GeneratorSourceName="FillDeviationDocument" GetMethodModifier="Public" GetMethodName="GetDataDeviationDocument" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataDeviationDocument" UserSourceName="FillDeviationDocument">
+                <DeleteCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.Deviation_Document_Delete</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@docId" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumn="DocId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.Deviation_Document_Insert</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@documentname" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="DocumentName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@DeviationID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumn="DeviationID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@createdate" Precision="23" ProviderType="DateTime" Scale="3" Size="8" SourceColumn="CreateDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Extension" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Extension" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.Deviation_Documents_SelectByDeviationID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@DeviationID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.Deviation_Document_Update</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@docId" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumn="DocId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@documentname" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="DocumentName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@DeviationID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumn="DeviationID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@createdate" Precision="23" ProviderType="DateTime" Scale="3" Size="8" SourceColumn="CreateDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Extension" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Extension" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DocId" DataSetColumn="DocId" />
+              <Mapping SourceColumn="DocumentName" DataSetColumn="DocumentName" />
+              <Mapping SourceColumn="DeviationID" DataSetColumn="DeviationID" />
+              <Mapping SourceColumn="CreateDate" DataSetColumn="CreateDate" />
+              <Mapping SourceColumn="Extension" DataSetColumn="Extension" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="DeffinityEflair.dbo.DN_DeviationDeleteDocuments" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillByDeviationDeleteDocuments" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataDeviationDeleteDocuments" GeneratorSourceName="FillByDeviationDeleteDocuments" GetMethodModifier="Public" GetMethodName="GetDataDeviationDeleteDocuments" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataDeviationDeleteDocuments" UserSourceName="FillByDeviationDeleteDocuments">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.DN_DeviationDeleteDocuments</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="DeffinityEflair.dbo.Deviation_Document_Insert" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillByDeviationDocumentInsert" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataDeviationDocumentInsert" GeneratorSourceName="FillByDeviationDocumentInsert" GetMethodModifier="Public" GetMethodName="GetDataDeviationDocumentInsert" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataDeviationDocumentInsert" UserSourceName="FillByDeviationDocumentInsert">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.Deviation_Document_Insert</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@documentname" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@DeviationID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@createdate" Precision="23" ProviderType="DateTime" Scale="3" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Extension" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DeviationProjectsTableAdapter" GeneratorDataComponentClassName="DeviationProjectsTableAdapter" Name="DtDeviationProjects" UserDataComponentName="DeviationProjectsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="DeffinityEflair.dbo.DN_Deviation_Projects" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillProjects" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataProjects" GeneratorSourceName="FillProjects" GetMethodModifier="Public" GetMethodName="GetDataProjects" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataProjects" UserSourceName="FillProjects">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.DN_Deviation_Projects</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Title" DataSetColumn="Title" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DeviationHealthChecksTableAdapter" GeneratorDataComponentClassName="DeviationHealthChecksTableAdapter" Name="DtHealthChecks" UserDataComponentName="DeviationHealthChecksTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBstring (Settings)" DbObjectName="DeffinityEflair.dbo.DN_Deviation_HealthChecks" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillHealthChecks" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataHealthChecks" GeneratorSourceName="FillHealthChecks" GetMethodModifier="Public" GetMethodName="GetDataHealthChecks" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataHealthChecks" UserSourceName="FillHealthChecks">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.DN_Deviation_HealthChecks</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Title" DataSetColumn="Title" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DBForProjectDeviation" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DBForProjectDeviation" msprop:Generator_UserDSName="DBForProjectDeviation">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtContractors" msprop:Generator_TableClassName="DtContractorsDataTable" msprop:Generator_TableVarName="tableDtContractors" msprop:Generator_TablePropName="DtContractors" msprop:Generator_RowDeletingName="DtContractorsRowDeleting" msprop:Generator_RowChangingName="DtContractorsRowChanging" msprop:Generator_RowEvHandlerName="DtContractorsRowChangeEventHandler" msprop:Generator_RowDeletedName="DtContractorsRowDeleted" msprop:Generator_UserTableName="DtContractors" msprop:Generator_RowChangedName="DtContractorsRowChanged" msprop:Generator_RowEvArgName="DtContractorsRowChangeEvent" msprop:Generator_RowClassName="DtContractorsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="ContractorName" msprop:Generator_ColumnVarNameInTable="columnContractorName" msprop:Generator_ColumnPropNameInRow="ContractorName" msprop:Generator_ColumnPropNameInTable="ContractorNameColumn" msprop:Generator_UserColumnName="ContractorName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtSite" msprop:Generator_TableClassName="DtSiteDataTable" msprop:Generator_TableVarName="tableDtSite" msprop:Generator_TablePropName="DtSite" msprop:Generator_RowDeletingName="DtSiteRowDeleting" msprop:Generator_RowChangingName="DtSiteRowChanging" msprop:Generator_RowEvHandlerName="DtSiteRowChangeEventHandler" msprop:Generator_RowDeletedName="DtSiteRowDeleted" msprop:Generator_UserTableName="DtSite" msprop:Generator_RowChangedName="DtSiteRowChanged" msprop:Generator_RowEvArgName="DtSiteRowChangeEvent" msprop:Generator_RowClassName="DtSiteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Site" msprop:Generator_ColumnVarNameInTable="columnSite" msprop:Generator_ColumnPropNameInRow="Site" msprop:Generator_ColumnPropNameInTable="SiteColumn" msprop:Generator_UserColumnName="Site" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtDeviation" msprop:Generator_TableClassName="DtDeviationDataTable" msprop:Generator_TableVarName="tableDtDeviation" msprop:Generator_TablePropName="DtDeviation" msprop:Generator_RowDeletingName="DtDeviationRowDeleting" msprop:Generator_RowChangingName="DtDeviationRowChanging" msprop:Generator_RowEvHandlerName="DtDeviationRowChangeEventHandler" msprop:Generator_RowDeletedName="DtDeviationRowDeleted" msprop:Generator_UserTableName="DtDeviation" msprop:Generator_RowChangedName="DtDeviationRowChanged" msprop:Generator_RowEvArgName="DtDeviationRowChangeEvent" msprop:Generator_RowClassName="DtDeviationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Projectreference" msprop:Generator_ColumnVarNameInTable="columnProjectreference" msprop:Generator_ColumnPropNameInRow="Projectreference" msprop:Generator_ColumnPropNameInTable="ProjectreferenceColumn" msprop:Generator_UserColumnName="Projectreference" type="xs:int" minOccurs="0" />
+              <xs:element name="DateRaised" msprop:Generator_ColumnVarNameInTable="columnDateRaised" msprop:Generator_ColumnPropNameInRow="DateRaised" msprop:Generator_ColumnPropNameInTable="DateRaisedColumn" msprop:Generator_UserColumnName="DateRaised" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="InternalRef" msprop:Generator_ColumnVarNameInTable="columnInternalRef" msprop:Generator_ColumnPropNameInRow="InternalRef" msprop:Generator_ColumnPropNameInTable="InternalRefColumn" msprop:Generator_UserColumnName="InternalRef" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Customer" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCustomer" msprop:Generator_ColumnPropNameInRow="Customer" msprop:Generator_ColumnPropNameInTable="CustomerColumn" msprop:Generator_UserColumnName="Customer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Loggedby" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLoggedby" msprop:Generator_ColumnPropNameInRow="Loggedby" msprop:Generator_ColumnPropNameInTable="LoggedbyColumn" msprop:Generator_UserColumnName="Loggedby" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Reportedby" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnReportedby" msprop:Generator_ColumnPropNameInRow="Reportedby" msprop:Generator_ColumnPropNameInTable="ReportedbyColumn" msprop:Generator_UserColumnName="Reportedby" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Status1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnStatus1" msprop:Generator_ColumnPropNameInRow="Status1" msprop:Generator_ColumnPropNameInTable="Status1Column" msprop:Generator_UserColumnName="Status1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Associated" msprop:Generator_ColumnVarNameInTable="columnAssociated" msprop:Generator_ColumnPropNameInRow="Associated" msprop:Generator_ColumnPropNameInTable="AssociatedColumn" msprop:Generator_UserColumnName="Associated" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AffectedArea" msprop:Generator_ColumnVarNameInTable="columnAffectedArea" msprop:Generator_ColumnPropNameInRow="AffectedArea" msprop:Generator_ColumnPropNameInTable="AffectedAreaColumn" msprop:Generator_UserColumnName="AffectedArea" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Severity" msprop:Generator_ColumnVarNameInTable="columnSeverity" msprop:Generator_ColumnPropNameInRow="Severity" msprop:Generator_ColumnPropNameInTable="SeverityColumn" msprop:Generator_UserColumnName="Severity" type="xs:int" minOccurs="0" />
+              <xs:element name="PlanType" msprop:Generator_ColumnVarNameInTable="columnPlanType" msprop:Generator_ColumnPropNameInRow="PlanType" msprop:Generator_ColumnPropNameInTable="PlanTypeColumn" msprop:Generator_UserColumnName="PlanType" type="xs:int" minOccurs="0" />
+              <xs:element name="Descriptiontxt" msprop:Generator_ColumnVarNameInTable="columnDescriptiontxt" msprop:Generator_ColumnPropNameInRow="Descriptiontxt" msprop:Generator_ColumnPropNameInTable="DescriptiontxtColumn" msprop:Generator_UserColumnName="Descriptiontxt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DetailsDeviation" msprop:Generator_ColumnVarNameInTable="columnDetailsDeviation" msprop:Generator_ColumnPropNameInRow="DetailsDeviation" msprop:Generator_ColumnPropNameInTable="DetailsDeviationColumn" msprop:Generator_UserColumnName="DetailsDeviation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Impactbusiness" msprop:Generator_ColumnVarNameInTable="columnImpactbusiness" msprop:Generator_ColumnPropNameInRow="Impactbusiness" msprop:Generator_ColumnPropNameInTable="ImpactbusinessColumn" msprop:Generator_UserColumnName="Impactbusiness" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IssuseType" msprop:Generator_ColumnVarNameInTable="columnIssuseType" msprop:Generator_ColumnPropNameInRow="IssuseType" msprop:Generator_ColumnPropNameInTable="IssuseTypeColumn" msprop:Generator_UserColumnName="IssuseType" type="xs:int" minOccurs="0" />
+              <xs:element name="IssueTypeName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnIssueTypeName" msprop:Generator_ColumnPropNameInRow="IssueTypeName" msprop:Generator_ColumnPropNameInTable="IssueTypeNameColumn" msprop:Generator_UserColumnName="IssueTypeName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Assignedto1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAssignedto1" msprop:Generator_ColumnPropNameInRow="Assignedto1" msprop:Generator_ColumnPropNameInTable="Assignedto1Column" msprop:Generator_UserColumnName="Assignedto1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Assignedto" msprop:Generator_ColumnVarNameInTable="columnAssignedto" msprop:Generator_ColumnPropNameInRow="Assignedto" msprop:Generator_ColumnPropNameInTable="AssignedtoColumn" msprop:Generator_UserColumnName="Assignedto" type="xs:int" minOccurs="0" />
+              <xs:element name="SendReminderDate" msprop:Generator_ColumnVarNameInTable="columnSendReminderDate" msprop:Generator_ColumnPropNameInRow="SendReminderDate" msprop:Generator_ColumnPropNameInTable="SendReminderDateColumn" msprop:Generator_UserColumnName="SendReminderDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:int" minOccurs="0" />
+              <xs:element name="IssueSection" msprop:Generator_ColumnVarNameInTable="columnIssueSection" msprop:Generator_ColumnPropNameInRow="IssueSection" msprop:Generator_ColumnPropNameInTable="IssueSectionColumn" msprop:Generator_UserColumnName="IssueSection" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Site" msprop:Generator_ColumnVarNameInTable="columnSite" msprop:Generator_ColumnPropNameInRow="Site" msprop:Generator_ColumnPropNameInTable="SiteColumn" msprop:Generator_UserColumnName="Site" type="xs:int" minOccurs="0" />
+              <xs:element name="Site1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSite1" msprop:Generator_ColumnPropNameInRow="Site1" msprop:Generator_ColumnPropNameInTable="Site1Column" msprop:Generator_UserColumnName="Site1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Reminderto1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnReminderto1" msprop:Generator_ColumnPropNameInRow="Reminderto1" msprop:Generator_ColumnPropNameInTable="Reminderto1Column" msprop:Generator_UserColumnName="Reminderto1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Reminderto" msprop:Generator_ColumnVarNameInTable="columnReminderto" msprop:Generator_ColumnPropNameInRow="Reminderto" msprop:Generator_ColumnPropNameInTable="RemindertoColumn" msprop:Generator_UserColumnName="Reminderto" type="xs:int" minOccurs="0" />
+              <xs:element name="Customer1" msdata:Caption="Customer" msprop:Generator_ColumnVarNameInTable="columnCustomer1" msprop:Generator_ColumnPropNameInRow="Customer1" msprop:Generator_ColumnPropNameInTable="Customer1Column" msprop:Generator_UserColumnName="Customer1" type="xs:int" minOccurs="0" />
+              <xs:element name="Loggedby1" msdata:Caption="Loggedby" msprop:Generator_ColumnVarNameInTable="columnLoggedby1" msprop:Generator_ColumnPropNameInRow="Loggedby1" msprop:Generator_ColumnPropNameInTable="Loggedby1Column" msprop:Generator_UserColumnName="Loggedby1" type="xs:int" minOccurs="0" />
+              <xs:element name="Reportedby1" msdata:Caption="Reportedby" msprop:Generator_ColumnVarNameInTable="columnReportedby1" msprop:Generator_ColumnPropNameInRow="Reportedby1" msprop:Generator_ColumnPropNameInTable="Reportedby1Column" msprop:Generator_UserColumnName="Reportedby1" type="xs:int" minOccurs="0" />
+              <xs:element name="RaisedByID" msprop:Generator_ColumnVarNameInTable="columnRaisedByID" msprop:Generator_ColumnPropNameInRow="RaisedByID" msprop:Generator_ColumnPropNameInTable="RaisedByIDColumn" msprop:Generator_UserColumnName="RaisedByID" type="xs:int" minOccurs="0" />
+              <xs:element name="CountFiles" msprop:Generator_ColumnVarNameInTable="columnCountFiles" msprop:Generator_ColumnPropNameInRow="CountFiles" msprop:Generator_ColumnPropNameInTable="CountFilesColumn" msprop:Generator_UserColumnName="CountFiles" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtDeviationDocuments" msprop:Generator_TableClassName="DtDeviationDocumentsDataTable" msprop:Generator_TableVarName="tableDtDeviationDocuments" msprop:Generator_TablePropName="DtDeviationDocuments" msprop:Generator_RowDeletingName="DtDeviationDocumentsRowDeleting" msprop:Generator_RowChangingName="DtDeviationDocumentsRowChanging" msprop:Generator_RowEvHandlerName="DtDeviationDocumentsRowChangeEventHandler" msprop:Generator_RowDeletedName="DtDeviationDocumentsRowDeleted" msprop:Generator_UserTableName="DtDeviationDocuments" msprop:Generator_RowChangedName="DtDeviationDocumentsRowChanged" msprop:Generator_RowEvArgName="DtDeviationDocumentsRowChangeEvent" msprop:Generator_RowClassName="DtDeviationDocumentsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DocId" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDocId" msprop:Generator_ColumnPropNameInRow="DocId" msprop:Generator_ColumnPropNameInTable="DocIdColumn" msprop:Generator_UserColumnName="DocId" type="xs:int" minOccurs="0" />
+              <xs:element name="DocumentName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDocumentName" msprop:Generator_ColumnPropNameInRow="DocumentName" msprop:Generator_ColumnPropNameInTable="DocumentNameColumn" msprop:Generator_UserColumnName="DocumentName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeviationID" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDeviationID" msprop:Generator_ColumnPropNameInRow="DeviationID" msprop:Generator_ColumnPropNameInTable="DeviationIDColumn" msprop:Generator_UserColumnName="DeviationID" type="xs:int" minOccurs="0" />
+              <xs:element name="CreateDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_UserColumnName="CreateDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Extension" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnExtension" msprop:Generator_ColumnPropNameInRow="Extension" msprop:Generator_ColumnPropNameInTable="ExtensionColumn" msprop:Generator_UserColumnName="Extension" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtDeviationProjects" msprop:Generator_TableClassName="DtDeviationProjectsDataTable" msprop:Generator_TableVarName="tableDtDeviationProjects" msprop:Generator_TablePropName="DtDeviationProjects" msprop:Generator_RowDeletingName="DtDeviationProjectsRowDeleting" msprop:Generator_RowChangingName="DtDeviationProjectsRowChanging" msprop:Generator_RowEvHandlerName="DtDeviationProjectsRowChangeEventHandler" msprop:Generator_RowDeletedName="DtDeviationProjectsRowDeleted" msprop:Generator_UserTableName="DtDeviationProjects" msprop:Generator_RowChangedName="DtDeviationProjectsRowChanged" msprop:Generator_RowEvArgName="DtDeviationProjectsRowChangeEvent" msprop:Generator_RowClassName="DtDeviationProjectsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Title" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="171" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DtHealthChecks" msprop:Generator_TableClassName="DtHealthChecksDataTable" msprop:Generator_TableVarName="tableDtHealthChecks" msprop:Generator_TablePropName="DtHealthChecks" msprop:Generator_RowDeletingName="DtHealthChecksRowDeleting" msprop:Generator_RowChangingName="DtHealthChecksRowChanging" msprop:Generator_RowEvHandlerName="DtHealthChecksRowChangeEventHandler" msprop:Generator_RowDeletedName="DtHealthChecksRowDeleted" msprop:Generator_UserTableName="DtHealthChecks" msprop:Generator_RowChangedName="DtHealthChecksRowChanged" msprop:Generator_RowEvArgName="DtHealthChecksRowChangeEvent" msprop:Generator_RowClassName="DtHealthChecksRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DtContractors" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="DtSite_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DtSite" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="DtHealthChecks_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DtHealthChecks" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

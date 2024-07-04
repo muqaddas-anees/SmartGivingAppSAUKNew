@@ -1,0 +1,138 @@
+<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+
+--%>
+    
+  
+  <asp:GridView  runat="server" GridLines="None"   
+  AutoGenerateColumns="False" HorizontalAlign="Left" CellPadding="0" CellSpacing="1" ShowFooter="True" CssClass="sec_table">
+  <HeaderStyle CssClass="tab_header" Font-Bold="False" Height="30px" />    
+  <RowStyle  CssClass="even_row" />
+  <AlternatingRowStyle CssClass="odd_row" />
+  </asp:GridView> 
+  
+ <asp:GridView SkinID="gvCustomer" runat="server" GridLines="None"   
+  AutoGenerateColumns="False" HorizontalAlign="Left" CellPadding="0" CellSpacing="1" ShowFooter="True" CssClass="sec_table">
+  <HeaderStyle CssClass="table_head" Font-Bold="False" Height="30px" />    
+  <RowStyle  CssClass="even_row" />
+  <AlternatingRowStyle CssClass="odd_row" />
+  </asp:GridView>
+  
+
+<asp:GridView  runat="server"  SkinID="NewGrid" GridLines="None"   
+  AutoGenerateColumns="False" HorizontalAlign="Left" CellPadding="0" CellSpacing="1" ShowFooter="True" CssClass="sec_table">
+  <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" CssClass = "Freezing" />
+  <RowStyle  CssClass="even_row" />
+  <AlternatingRowStyle CssClass="odd_row" />  
+  </asp:GridView> 
+  
+  <asp:DataList SkinID="FilesList" runat="server"  BorderStyle="None" CellPadding="0" CellSpacing="0" BorderWidth="0" >
+  <ItemStyle/>            
+  </asp:DataList>
+    
+  <asp:DataList SkinID="ProgrammeList" runat="server"  CellPadding="0" CellSpacing="1" CssClass="sec_table">
+    <ItemStyle CssClass="even_row"/>      
+    <AlternatingItemStyle CssClass="odd_row" />    
+    </asp:DataList>
+    
+  <asp:DataList runat="server" CellPadding="4" ForeColor="#333333" GridLines="Horizontal" CssClass="sec_table">
+    <ItemStyle BackColor="#F7F6F3" ForeColor="#333333"  />      
+    <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
+    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+    </asp:DataList>    
+   
+   <asp:DataList runat="server" CellPadding="4" ForeColor="#333333" GridLines="Horizontal"  CssClass="sec_table"  SkinID="ListKpi">
+    <ItemStyle BackColor="#F7F6F3" ForeColor="#333333"  Height="10px" />      
+    <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
+    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+    </asp:DataList> 
+        
+  <asp:GridView SkinID="gvDefault" runat="server" CellPadding="4" ForeColor="#333333" GridLines="Horizontal">
+    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+    <EditRowStyle BackColor="#999999" />
+    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+  </asp:GridView> 
+  
+  <asp:TextBox SkinID="Price" runat="server" CssClass = "txt_field"  style="text-align:right"></asp:TextBox>  
+  <asp:TextBox runat="server" CssClass = "txt_field"></asp:TextBox>
+  <asp:TextBox SkinID="txtCalender" runat="server" CssClass = "txt_field"  Width="100px"></asp:TextBox>  
+  <asp:TextBox SkinID="txtMulti"  CssClass = "txt_field" runat="server" Width="450" height="50px"  />  
+  <asp:TextBox SkinID="txtEmail"  CssClass = "txt_field" runat="server" Width="250"  />  
+  <asp:DropDownList runat="server" CssClass="txt_field"></asp:DropDownList>    
+  <asp:Image SkinID="Calender" runat="server" ImageAlign="AbsMiddle" style="cursor:hand;" ImageUrl="~/media/icon_calender.png"  ToolTip="Pick a date" />  
+  <asp:Image SkinID="RagGreen" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/images/indcate_green.png"  ToolTip="GREEN" />  
+  <asp:Image SkinID="RagRed" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/images/indcate_red.png"  ToolTip="RED" />  
+  <asp:Image SkinID="RagAmber" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/images/indcate_yellow.png"  ToolTip="AMBER" />  
+  <asp:Image SkinID="Back" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/media/btn_back.gif" />    
+  <asp:Image SkinID="LookUp" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/images/btn_look_up.gif" />    
+  
+  <asp:HyperLink SkinID="ImgViewCart"  runat="server" ImageUrl="~/images/btn_view_cart.gif"/>
+  <asp:HyperLink SkinID="ImgSaveOrder"  runat="server" ImageUrl="~/images/btn_save_order.gif"/>
+  
+  
+  <asp:ImageButton SkinID="ImgCreate"  runat="server" ImageUrl="~/images/btn_create.gif"  />
+  <asp:ImageButton SkinID="ImgUpdateStatus"  runat="server" ImageUrl="~/images/btn_update_status.gif"  />
+  <asp:ImageButton SkinID="ImgViewReport"  runat="server" ImageUrl="~/images/btn_view_report.gif"  />
+  <asp:ImageButton SkinID="ImgAddtoKB"  runat="server" ImageUrl="~/images/btn_ad_kb.gif"  />
+  <asp:ImageButton SkinID="ImgViewAll"  runat="server" ImageUrl="~/images/btn_view_all.gif"  />
+  <asp:ImageButton SkinID="ImgNewChangeControl"  runat="server" ImageUrl="~/media/btn_new_change_req.gif"  />
+  <asp:ImageButton SkinID="ImgAddtoCart"  runat="server" ImageUrl="~/media/btn_addto_cart.gif"  />
+  <asp:ImageButton SkinID="ImgNew"  runat="server" ImageUrl="~/media/btn_new.gif"  />
+  <asp:ImageButton SkinID="ImgCrateNewCustomer"  runat="server" ImageUrl="~/media/btn_create_new_customer.gif"  />
+  <asp:ImageButton SkinID="ImgSendApproval"  runat="server" ImageUrl="~/images/btn_send_approval.gif"  />
+  <asp:ImageButton SkinID="ImgSaveOrder"  runat="server" ImageUrl="~/images/btn_save_order.gif"  />
+  <asp:ImageButton SkinID="ImgAttach"  runat="server" ImageUrl="~/media/btn_attach.gif"  />
+  <asp:ImageButton SkinID="ImgNewCase"  runat="server" ImageUrl="~/media/btn_log_new_case.gif"  />
+  <asp:ImageButton SkinID="ImgSubmitUpdate"  runat="server" ImageUrl="~/media/btn_subupdate.gif"  />
+  <asp:ImageButton SkinID="ImgRaiseInvoice"  runat="server" ImageUrl="~/media/btn_raise_valuation.gif"  />
+  <asp:ImageButton SkinID="ImgRaiseVariation"  runat="server" ImageUrl="~/media/btn_raise_-new_variation.gif"  />
+  <asp:ImageButton SkinID="ImgAssign"  runat="server" ImageUrl="~/media/btn_assign.gif"  />
+  <asp:ImageButton SkinID="ImgNext"  runat="server" ImageUrl="~/media/btn_next.gif"  />
+  <asp:ImageButton SkinID="ImgBack" runat="server" ImageUrl="~/media/btn_back.gif"  />
+  <asp:ImageButton SkinID="ImgFinished" runat="server" ImageUrl="~/media/btn_finished.gif"  />
+  <asp:ImageButton SkinID="ImgUpload" runat="server" ImageUrl="~/media/btn_upload.gif" />  
+  <asp:ImageButton SkinID="ImgCancel" ImageUrl="~/media/btn_cancel.gif" runat="server" />
+  <asp:ImageButton SkinID="ImgEdit" runat="server" ImageUrl="~/media/btn_edit.gif" />  
+  <asp:ImageButton SkinID="ImgSubmit" runat="server" ImageUrl="~/media/btn_submit.gif" />
+  <asp:ImageButton SkinID="ImgSearch" runat="server" ImageUrl="~/media/btn_search.gif" />
+  <asp:ImageButton SkinID="ImgUpdate" runat="server" ImageUrl="~/media/btn_update.gif" />
+  <asp:ImageButton SkinID="ImgAdd" runat="server" ImageUrl="~/media/btn_ad.gif" />
+  <asp:ImageButton SkinID="ImgAddNew" runat="server" ImageUrl="~/media/btn_add_new.gif" />
+  <asp:ImageButton SkinID="ImgApprove" runat="server" ImageUrl="~/media/btn_approve.gif" />
+  <asp:ImageButton SkinID="ImgReject" runat="server" ImageUrl="~/media/btn_reject.gif" />
+  <asp:ImageButton SkinID="ImgApply" runat="server" ImageUrl="~/media/btn_apply.gif" />
+  <asp:ImageButton SkinID="ImgClear" runat="server" ImageUrl="~/media/btn_clear.gif" />
+  <asp:ImageButton SkinID="ImgNewIncident"  runat="server" ImageUrl="~/media/btn_new_incident.gif"  />
+  <asp:ImageButton SkinID="ImgNewRequest"  runat="server" ImageUrl="~/media/btn_new_rqst.gif"  />
+  <asp:ImageButton SkinID="ImgView"  runat="server" ImageUrl="~/media/btn_view.gif"  />  
+  
+  <asp:ImageButton SkinID="ImgSymCancel" runat="server" ImageUrl="~/images/icon_cancel.png" ToolTip="Update/Insert" />
+  <asp:ImageButton SkinID="ImgSymUpdate" runat="server" ImageUrl="~/images/icon_update.png" ToolTip="Update/Insert" />
+  <asp:ImageButton SkinID="ImgSymSearch" runat="server" ImageUrl="~/images/icon_search.png" ToolTip="Search" />
+  <asp:ImageButton SkinID="ImgSymEdit" runat="server" ImageUrl="~/images/icon_edit.png" ToolTip="Edit" />
+  <asp:ImageButton SkinID="ImgSymAdd" runat="server" ImageUrl="~/media/btn_add.gif" ToolTip="Add" ImageAlign="AbsMiddle" />
+  <asp:ImageButton SkinID="ImgSymPlus" runat="server" ImageUrl="~/media/add.jpg" ToolTip="Add" ImageAlign="AbsMiddle" />
+  <asp:ImageButton SkinID="ImgSymDel" runat="server" ImageUrl="~/images/icon_delete.png" ImageAlign="AbsMiddle" ToolTip="Delete" />
+  <asp:ImageButton SkinID="ImgAddPost" runat="server" ImageUrl="~/media/blog_add_newpost.gif" />
+  <asp:ImageButton SkinID="ImgReply" runat="server" ImageUrl="~/media/blog_reply.gif" />
+  <asp:ImageButton SkinID="ImgContact" runat="server" ImageUrl="~/media/blog_contact.gif" />
+  <asp:ImageButton SkinID="ImgCreateMeeting" runat="server" ImageUrl="~/media/btn_create_meeting.gif" />
+  <asp:ImageButton SkinID="ImgSave" runat="server" ImageUrl="~/media/btn_save.gif" />
+  
+   

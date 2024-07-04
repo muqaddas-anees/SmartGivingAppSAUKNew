@@ -1,0 +1,271 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        .btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            padding: 6px 12px;
+            font-size: 13px;
+            line-height: 1.42857143;
+            border-radius: 0px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+            .btn.btn-secondary {
+                background-color: #68b828;
+                color: #ffffff;
+            }
+            .btn.btn-blue {
+                background-color: #0e62c7;
+                color: #ffffff;
+            }
+        body {
+            margin: 0;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        table td {
+            padding: 5px;
+        }
+
+        .hdr1 {
+            font-size: 18px;
+            padding-top: 15px;
+            text-align: right;
+        }
+
+        .hdr1_sub {
+            font-size: 12px;
+            padding-top: 2px;
+            text-align: right;
+        }
+
+        .hilite {
+            color: #4b0049;
+        }
+
+        .hdr td {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            background: #8595a6;
+            text-align: left;
+        }
+
+        .cont_row td {
+            border: #8595a6 1px solid;
+            color: #219de6;
+            font-weight: bold;
+        }
+
+        .bo_line {
+            border-bottom: #999 10px solid;
+        }
+
+        .hdrt {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            background: #8595a6;
+            text-align: left;
+        }
+
+        .even_row {
+            background: #f2f9ec;
+        }
+
+        .odd_row {
+            background: #f5f5fa;
+        }
+
+        .tab_header {
+            background: #a3a3a3;
+            color: #fff;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table align="center" width="600" style="border: 5px solid #b3b3b3; margin-top: 10px;"
+               cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="30" valign="top">
+                    <img src="[logo]" alt="" style="float: left" />
+                </td>
+                <td>
+                    <table width="400" border="0" cellspacing="0" cellpadding="0" align="right" style="float: right">
+                        <tr>
+                            <td class="hdr1">[mail_head]<br /> <span class="hdr1_sub"><!--Status: [Status]--> </span>  </td>
+                        </tr>
+                    </table>
+                </td>
+
+            </tr>
+            <tr>
+                <td height="9" colspan="2">
+                    <img src="[border]" height="5px" id="ImgBorder" runat="server" width="600" />
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;" colspan="2">
+                    Dear <b>[resourcename]</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;" colspan="2">
+                    A customer at <b>[address]</b>  has a problem with the following item:
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+
+                    <a href="[Url_direction]" target="_blank" style="text-decoration: none; display: inline-block;"><img style="border:0;" src="[img_direction]" alt="Map" /> </a>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;" colspan="2">
+                    [ProductsTable]
+                </td>
+            </tr>  
+            <tr>
+                <td style="padding-top: 10px;">
+                    <table width="175" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                Job Ref :
+
+                            </td>
+                        </tr>
+                    </table>
+                   
+                </td>
+                <td style="padding-top: 10px;">
+                    <b>[ticketref]</b>
+                </td>
+            </tr>        
+            <tr>
+                <td style="padding-top: 10px;">
+
+                    <table width="175" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                Job Details :
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="padding-top: 10px;">
+                    <b>[ticketdescription]</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;" colspan="2" >
+                    <!--Would you like to accept this job:-->
+                </td>
+            </tr>
+            <!--<tr>
+                <td colspan="2">
+
+                    <a href="[ArrivalUrl]" target="_blank" style="text-decoration: none; display: inline-block;"><img style="border:0;" src="[img]" alt="Yes! Accept and Schedule" /> </a>
+                </td>
+            </tr>-->
+            <!--<tr>
+                <td colspan="2">
+
+                    <a href="[RejectUrl]" target="_blank" style="text-decoration: none; display: inline-block;"><img style="border:0;" src="[img_reject]" alt="Reject This Job" /> </a>
+                </td>
+            </tr>-->
+            <tr>
+                <td colspan="2">
+
+                    <a href="[Url_imhere]" target="_blank" style="text-decoration: none; display: inline-block;"><img style="border:0;" src="[img_imhere]" alt="I’m Here" /> </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+
+                    <a href="[Url_arrived]" target="_blank" style="text-decoration: none; display: inline-block;"><img style="border:0;" src="[img_arrived]" alt="I’m Arrived" /> </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a href="[Url_customernot]" target="_blank" style="text-decoration: none; display: inline-block;"><img style="border:0;" src="[img_customernot]" alt="Customer Not Responding" /> </a>
+                </td>
+            </tr>
+           
+            <tr>
+                <td colspan="2">
+
+                    <a href="[Url_rate]" target="_blank" style="text-decoration: none; display: inline-block;"><img style="border:0;" src="[img_rate]" alt="Select Flat Rate Pricing" /> </a>
+                </td>
+            </tr>
+           
+            <tr>
+                <td colspan="2">
+
+                    <a href="[Url_close]" target="_blank" style="text-decoration: none; display: inline-block;"><img style="border:0;" src="[img_close]" alt="Close the Job" /> </a>
+                </td>
+            </tr>
+            <tr>
+             
+                <td colspan="2">
+                <!--<table width="80%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td bgcolor="#229954" style="padding: 9px 15px 9px 15px; -webkit-border-radius:3px; border-radius:3px" align="center"><a href="[AcceptUrl]" target="_blank" style="font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; display: inline-block;">YES! I Would Like To Accept This Job</a></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <br />-->
+                <!--<table width="80%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td bgcolor="#229954" style="padding: 9px 15px 9px 15px; -webkit-border-radius:3px; border-radius:3px" align="center"><a href="[ArrivalUrl]" target="_blank" style="font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; display: inline-block;">Enter Date and Time of Arrival</a></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <table width="80%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td bgcolor="#EB7035" style="padding: 9px 15px 9px 15px; -webkit-border-radius:3px; border-radius:3px" align="center"><a href="[RejectUrl]" target="_blank" style="font-size: 14px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; display: inline-block;">NO! Reject Job</a></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>-->
+            </td>
+            </tr><tr>
+                <td style="padding-top: 10px;" colspan="2">
+                    Thank you and have a nice day.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+</body>
+</html>

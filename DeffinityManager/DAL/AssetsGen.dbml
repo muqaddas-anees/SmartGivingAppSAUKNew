@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Gendata" EntityNamespace="AssetsGenMgt.Entity" ContextNamespace="AssetsGenMgt.DAL" Class="AssetsGenDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=69.41.185.219;Initial Catalog=Gendata;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBAssetsGenString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Equipment" Member="Equipments">
+    <Type Name="Equipment">
+      <Column Name="EquipmentNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EquipmentType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EquipmentName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EquipmentRef" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PortCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Height" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PositionNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Side" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PatchPanelFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChildDeviceFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VirtualDeviceFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeviceLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentEquipmentNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EquipmentStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(2048)" CanBeNull="true" />
+      <Column Name="StatusFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImportFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StandAloneFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LeftInset" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Width" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="InternalFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Offset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VisioShape" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentStatus" Member="EquipmentStatus">
+    <Type Name="EquipmentStatus">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentType" Member="EquipmentTypes">
+    <Type Name="EquipmentType">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cabinet" Member="Cabinets">
+    <Type Name="Cabinet">
+      <Column Name="CabinetNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SiteNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuildingNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CabinetName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VirtualFlag" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="CabinetSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(2048)" CanBeNull="true" />
+      <Column Name="StatusFlag" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SpecialCabinetFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpecialCabinetWidth" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CabinetEquipment" Member="CabinetEquipments">
+    <Type Name="CabinetEquipment">
+      <Column Name="CabinetNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EquipmentNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Location" Member="Locations">
+    <Type Name="Location">
+      <Column Name="LocationNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StatusFlag" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPAddress" Member="IPAddresses">
+    <Type Name="IPAddress">
+      <Column Name="EquipmentNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IPAddress" Member="IPAddress1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IPAddress_Sort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SubnetMask" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SubnetMask_Sort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GatewayAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GatewayAddress_Sort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PrimaryDNSName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PrimaryDNSAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PrimaryDNSAddress_Sort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SecondaryDNSName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SecondaryDNSAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SecondaryDNSAddress_Sort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MACAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VLAN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DNSName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IPFunction" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(2048)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IPAddressNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPFunction" Member="IPFunctions">
+    <Type Name="IPFunction">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Port" Member="Ports">
+    <Type Name="Port">
+      <Column Name="PortNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EquipmentNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortSpeed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortPower" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RearPortStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(2048)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UplinkFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortType" Member="PortTypes">
+    <Type Name="PortType">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DataPowerFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Building" Member="Buildings">
+    <Type Name="Building">
+      <Column Name="BuildingNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BuildingName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(2048)" CanBeNull="true" />
+      <Column Name="StatusFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Site" Member="Sites">
+    <Type Name="Site">
+      <Column Name="SiteNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Organisation" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Town" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Postcode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(2048)" CanBeNull="true" />
+      <Column Name="StatusFlag" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VisioTemplateShape" Member="VisioTemplateShapes">
+    <Type Name="VisioTemplateShape">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortPower" Member="PortPowers">
+    <Type Name="PortPower">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortSpeed" Member="PortSpeeds">
+    <Type Name="PortSpeed">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortStatus" Member="PortStatus">
+    <Type Name="PortStatus">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortTrace" Member="PortTraces">
+    <Type Name="PortTrace">
+      <Column Name="SessionID" Type="System.String" DbType="VarChar(120) NOT NULL" CanBeNull="false" />
+      <Column Name="StartPortNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PositionNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LinkCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LinkType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromDeviceName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromDeviceNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromPortName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FromPortNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToDeviceName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ToDeviceNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToPortName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ToPortNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CableLength" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CableID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AttributeType" Member="AttributeTypes">
+    <Type Name="AttributeType">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AttributeGroup" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ValueType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LookupType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentAttribute" Member="EquipmentAttributes">
+    <Type Name="EquipmentAttribute">
+      <Column Name="EquipmentNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AttributeCode" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AttributeString" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AttributeValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AttributeDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReportValue" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

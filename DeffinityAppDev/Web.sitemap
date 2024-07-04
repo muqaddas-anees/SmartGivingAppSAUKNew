@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true"  >
+
+  <siteMapNode url="~/WF/DC/FLSJlist.aspx?type=FLS&amp;home" title="Home"  description="">
+
+    <!--Home Top Admin Section-->
+    <!--<siteMapNode url="~/CustomerProjectOverview.aspx" title="My Project"  description="" />-->
+    <!--<siteMapNode url="~/WF/CustomerAdmin/Portfolio.aspx?tab=1" title="Customer Admin"  description="" >-->
+      <!--<siteMapNode url="WF/CustomerAdmin/Portfolio.aspx?tab=2" title="Customer Portal Users"  description="" />
+      <siteMapNode url="WF/CustomerAdmin/Locations.aspx" title="Site Details"  description="" />
+      <siteMapNode url="WF/CustomerAdmin/PortfolioCustomerConfig.aspx" title="Portal Configuration"  description="" />
+      <siteMapNode url="WF/CustomerAdmin/PortfolioDocs.aspx" title="Document Library"  description="" />-->
+      <!--<siteMapNode url="WF/CustomerAdmin/FlowChartUploader.aspx" title="Flow Processes"  description="" />
+      <siteMapNode url="WF/CustomerAdmin/PortfolioAssessment.aspx" title="Customer Assessment"  description="" />
+      <siteMapNode url="WF/CustomerAdmin/CustomerAccountTeam.aspx" title="Account Team"  description="" />-->
+      <!--<siteMapNode url="WF/CustomerAdmin/PortfolioCustomEmail.aspx?Type=Customer" title="Custom Alerts"  description="" />
+      <siteMapNode url="WF/CustomerAdmin/NewShift.aspx" title="Shift Pattern"  description="" />
+      <siteMapNode url="WF/CustomerAdmin/OrgnChartUploader.aspx" title="Organisation Chart"  description="" />
+      <siteMapNode url="WF/CustomerAdmin/PortfolioRag.aspx" title="Key Milestones"  description="" />-->
+      <siteMapNode url="WF/CustomerAdmin/PortfolioContacts.aspx" title="Manage CRM"  description="" />
+      <!--<siteMapNode url="WF/CustomerAdmin/ServiceCatalogue.aspx" title="Service Catalogue"  description="" />-->
+      <!--<siteMapNode url="WF/CustomerAdmin/PortfolioHealthCheck.aspx" title="Manage Health Checks"  description="" />-->
+      <!--<siteMapNode url="WF/CustomerAdmin/adminmasterlists.aspx?type=portfolio&amp;setval=2" title="Manage Checklists"  description="" />-->
+      <!--<siteMapNode url="WF/CustomerAdmin/ManageTeamMembers.aspx" title="Team Structure"  description="" />
+      <siteMapNode url="WF/CustomerAdmin/AssetsAdmin.aspx" title="Assets"  description="" />-->
+    <!--</siteMapNode>-->
+    
+    <!--Project Praposal-->
+    <!--<siteMapNode url="WF/ProjectPlan/ProjectPipeline.aspx?Status=8" title="Project Proposal"  description=""  >
+      <siteMapNode url="WF/ProjectPlan/Projectplan.aspx" title="Project plan"  description="" />
+      <siteMapNode url="WF/ProjectPlan/ProjectPlanningScope.aspx" title="Scope"  description="" />
+      <siteMapNode url="WF/ProjectPlan/ProjectPlanningFunding.aspx" title="Funding"  description="" />
+      <siteMapNode url="WF/ProjectPlan/ProjectPlanningBizReq.aspx" title="BizReq"  description="" />
+      <siteMapNode url="WF/ProjectPlan/ProjectPlanAct.aspx" title="Tasks"  description="" />
+      <siteMapNode url="WF/ProjectPlan/ProjectPlanApprove.aspx" title="Approve"  description="" />
+    </siteMapNode>-->
+    <!--Project Module-->
+
+    <!--<siteMapNode url="WF/Projects/ProjectHome.aspx?type=all" title="Projects"  description=""  >
+      <siteMapNode url="WF/Projects/ProjectPipeline.aspx?Status=2" title="Live"  description="" />
+      <siteMapNode url="WF/Projects/ProjectPipeline.aspx?Status=0" title="All"  description="" />
+      <siteMapNode url="WF/Projects/ProjectPipeline.aspx?Status=1" title="Pending"  description="" />
+      <siteMapNode url="WF/Projects/ProjectPipeline.aspx?Status=3" title="Completed"  description="" />
+      <siteMapNode url="WF/Projects/ProjectPipeline.aspx?Status=4" title="Cancelled"  description="" />
+      <siteMapNode url="WF/Projects/ProjectPipeline.aspx?Status=5" title="Archived"  description="" />
+      <siteMapNode url="WF/Projects/ProjectAggregateDashboard.aspx?Status=9" title="Project Dashboard"  description="" />
+      <siteMapNode url="WF/Projects/ProjectPipeline.aspx?Status=7" title="On Hold"  description="" />
+      <siteMapNode url="WF/Projects/ProjectOverviewV4.aspx" title="Project Plan"  description="" />
+      <siteMapNode url="WF/Projects/ProjectOverview.aspx" title="Project Details"  description="" />
+      <siteMapNode url="WF/Projects/ProjectResources.aspx" title="Project Resources"  description="" />
+      <siteMapNode url="WF/Projects/ProjectBOM.aspx" title="Bill of Materials"  description="" />
+      <siteMapNode url="WF/Projects/Budget_General.aspx" title="General"  description="" />
+      <siteMapNode url="WF/Projects/Budget_Hours.aspx" title="Hours"  description="" />
+      <siteMapNode url="WF/Projects/Budget_Expenses.aspx" title="Expenses"  description="" />
+      <siteMapNode url="WF/Projects/ProjectBudget.aspx" title="Project Budget"  description="" />
+      <siteMapNode url="WF/Projects/ProjectBudgetbyTask.aspx" title="Project Budget by Task"  description="" />
+      <siteMapNode url="WF/Projects/GoodsReceipt.aspx" title="Goods Receipt"  description="" />
+      <siteMapNode url="WF/Projects/ProjectBenfitBudget.aspx" title="Project Benfit Budget"  description="" />
+      <siteMapNode url="WF/Projects/ProjectFinancials.aspx" title="Project Financials"  description="" >
+       
+      </siteMapNode>
+     
+      <siteMapNode url="WF/Projects/ProjectTracker_General.aspx" title="Project Tracker"  description="" >
+        <siteMapNode url="WF/Projects/ProjectDeviationReport.aspx" title="Variation"  description="" />
+      </siteMapNode>
+      <siteMapNode url="WF/Projects/ProjectLabourTracker.aspx" title="Project Tracker"  description="" />
+      <siteMapNode url="WF/Projects/ProjectMaterialTracker.aspx" title="Project Tracker"  description="" />
+      <siteMapNode url="WF/Projects/ProjectPMHours.aspx" title="Project Tracker"  description="" />
+      <siteMapNode url="WF/Projects/ProjectTracker_Variations.aspx" title="Project Tracker"  description="" />
+      <siteMapNode url="WF/Projects/ProjectTracker_Actuals.aspx" title="Project Tracker"  description="" />
+      <siteMapNode url="WF/Projects/ProjectTracker_Invoicing.aspx" title="Project Tracker"  description="" />
+      <siteMapNode url="WF/Projects/ProjectFinancial_CustomerPO.aspx" title="Project Tracker"  description="" />
+      <siteMapNode url="WF/Projects/ProjectStaffHours.aspx" title="Project Tracker"  description="" />
+      <siteMapNode url="WF/Projects/ProjectRisks.aspx" title="Project Risks"  description="" />
+      <siteMapNode url="WF/Projects/ProjectIssues.aspx" title="Project Issues"  description="" />
+      <siteMapNode url="WF/Projects/ProjectCustomEmail.aspx" title="Project Custom Email alert"  description="" />
+      <siteMapNode url="WF/Projects/ProjectPlanReocurrence.aspx" title="Project Email Update Schedule"  description="" />
+      <siteMapNode url="WF/Projects/UserPermissions.aspx" title="Project Permissions"  description="" />
+      <siteMapNode url="WF/Projects/ProjectMeetings.aspx" title="Project Updates"  description="" />
+      <siteMapNode url="WF/Projects/ProjectPmApproval.aspx" title="Check Points"  description="" />
+      <siteMapNode url="WF/Projects/ProjectForummaster.aspx" title="Forum"  description="" />
+      <siteMapNode url="WF/Projects/IPD.aspx" title="Inter-Project Dependency"  description="" />
+
+     
+      --><!--<siteMapNode url="ProjectDocuments.aspx" title="Project Documents"  description="" resourceKey="Project Documents" />--><!--
+
+      --><!--Project QA--><!--
+      <siteMapNode url="WF/Projects/QA/QASummary.aspx" title="QA"  description="" >
+        <siteMapNode url="WF/Projects/QA/QAProjectSummary.aspx" title="Project Overview"  description="" />
+        <siteMapNode url="WF/Projects/QA/QACheckList.aspx" title="QA CheckList"  description="" />
+        <siteMapNode url="WF/Projects/QA/QACIPS.aspx" title="CSI"  description=""  resourceKey="CSI"/>
+        <siteMapNode url="WF/Projects/QA/QADocs.aspx" title="Docs"  description="" />
+        <siteMapNode url="WF/Projects/QA/QALessonsLearnt.aspx" title="Lessons Learnt"  description="" />
+        <siteMapNode url="WF/Projects/QA/QAApprove.aspx" title="Approval"  description="" />
+      </siteMapNode>
+      --><!--Project Checkpoint--><!--
+      <siteMapNode url="WF/Projects/Checkpoint/Checkpoint_Summary.aspx" title="Check points"  description="" >
+        <siteMapNode url="WF/Projects/Checkpoint/Checkpoint_Overview.aspx" title="Overview"  description="" />
+        <siteMapNode url="WF/Projects/Checkpoint/Checkpoint_Feedback.aspx" title="Feedback"  description="" />
+        <siteMapNode url="WF/Projects/Checkpoint/QACIPS.aspx" title="CSI"  description="" />
+        <siteMapNode url="WF/Projects/Checkpoint/Checkpoint_Docs.aspx" title="Docs"  description="" />
+        <siteMapNode url="WF/Projects/Checkpoint/Checkpoint_Recommendations.aspx" title="Recommendations"  description="" />
+      <siteMapNode url="WF/Projects/Checkpoint/ProjectCheckpointForm.aspx" title="Form"  description="" />
+      </siteMapNode>
+      --><!-- list --><!--
+      <siteMapNode url="IPD.aspx" title="Inter Project Dependency"  description="" />
+      <siteMapNode url="ProjectForummaster.aspx" title="Forum"  description="" />
+      <siteMapNode url="ProjectPmApproval.aspx" title="Check Points"  description="" />
+      <siteMapNode url="ProjectMeetings.aspx" title="Project Updates"  description="" />
+      <siteMapNode url="UserPermissions.aspx" title="Project Permissions"  description="" />
+      <siteMapNode url="ProjectPlanReocurrence.aspx" title="Project Email Update Schedule"  description="" />
+      <siteMapNode url="ProjectCustomEmail.aspx" title="Custom Alerts"  description="" />
+      <siteMapNode url="adminmasterlists.aspx?type=prj" title="Manage Checklist"  description="" />
+      <siteMapNode url="PortfolioRag.aspx?type=prj" title="Key Milestones"  description="" />
+      <siteMapNode url="ManageTeamMembers.aspx?type=prj" title="Team Structure"  description="" />
+      <siteMapNode url="ProjectInventoryManager.aspx" title="Project Inventory"  description="" >
+        --><!--<siteMapNode url="ProjectDocuments.aspx?k" title="Inventory Documents"  description="" />--><!--
+      </siteMapNode>
+    </siteMapNode>-->
+
+    <!--Inbox -->
+    <!--<siteMapNode url="WF/Inbox/InboxMessage.aspx" title="Inbox"  description="" />-->
+
+    <!--Health Check-->
+    <!--<siteMapNode url="WF/Health/HealthCheckSchedule.aspx" title="Health Check"  description=""  >
+      <siteMapNode url="WF/Health/HealthCheckForm.aspx" title="Health Check Form"  description="" />
+      <siteMapNode url="WF/Health/HealthCheckFormIssues.aspx" title="Health Check Issues"  description="" />
+      <siteMapNode url="WF/Health/HealthCheckFormDocs.aspx" title="Health Check Docs"  description="" />
+      <siteMapNode url="WF/Health/HC/HealthCheckSchedule.aspx" title="Forms"  description=""  >
+        <siteMapNode url="WF/Health/HC/HealthCheckForm.aspx" title="Health Check Form"  description="" />
+      </siteMapNode>
+    </siteMapNode>-->
+
+    <!--Forms-->
+    <!--<siteMapNode url="WF/Health/HC/FormList.aspx" title="Forms"  description=""  >
+      <siteMapNode url="WF/Health/HC/FormDesign.aspx" title="Form Design"  description="" />
+      <siteMapNode url="WF/Health/HC/FormDataPreview.aspx" title="Health Check Issues"  description="" />
+      <siteMapNode url="WF/Health/HC/FormPreview.aspx" title="Health Check Docs"  description="" />
+    </siteMapNode>-->
+
+
+    <!--Dashboard-->
+    <!--<siteMapNode url="WF/Dashboard/DashBoardMain.aspx" title="Projects"  description=""  >
+      <siteMapNode url="WF/Dashboard/Tasks.aspx" title="Tasks"  description="" />
+      <siteMapNode url="WF/Dashboard/DashboardIssues.aspx" title="Issues"  description="" />
+      <siteMapNode url="WF/Dashboard/Risks.aspx" title="Risks"  description="" />
+      <siteMapNode url="WF/Dashboard/DashboardHealthCheck.aspx" title="Health Check"  description="" />
+      <siteMapNode url="WF/Dashboard/ResourceDashboard.aspx" title="My Team"  description="" />
+      <siteMapNode url="WF/Dashboard/PortfolioMain.aspx" title="Customer"  description="" />
+      <siteMapNode url="WF/Dashboard/Programme.aspx" title="Programme"  description="" />
+      <siteMapNode url="WF/Dashboard/CSI.aspx" title="CSI"  description="" />
+    </siteMapNode>-->
+    
+    <!--ServiceDesk Module-->
+    <siteMapNode url="WF/DC/FLSJlist.aspx?type=FLS" title="Jobs"  description="" >
+      <siteMapNode url="WF/DC/FLSForm.aspx" title="Call Details"  description="" />
+      <siteMapNode url="WF/DC/DCServices.aspx" title="Services"  description="" />
+     <siteMapNode url="WF/DC/FLSReport.aspx" title="Report"  description="" />
+      <siteMapNode url="WF/DC/SDFieldsConfig.aspx" title="Configure Fields"  description="" />
+      <siteMapNode url="WF/DC/FLSCustomFormDesigner.aspx" title="Custom Form Designer"  description="" />  
+      <!--<siteMapNode url="WF/CustomerAdmin/SDTeamMember.aspx" title="Service Desk Team"  description="" />  
+       <siteMapNode url="WF/CustomerAdmin/PortfolioSLA.aspx" title="SLA"  description="" />  
+     <siteMapNode url="WF/DC/ServiceDeskHome.aspx" title="Dashboard - Engineer"  description="" />
+     <siteMapNode url="WF/DC/ServiceDeskHomeCustomer.aspx" title="Dashboard - Customer"  description="" />
+    <siteMapNode url="WF/DC/ServiceDeskHomeCategoryCharts.aspx" title="Dashboard - Category"  description="" />
+    <siteMapNode url="WF/DC/ServiceDeskHomeSiteCharts.aspx" title="Dashboard - Site"  description="" />
+    <siteMapNode url="WF/DC/ServiceDeskHomeBillingCharts.aspx" title="Dashboard - Billing"  description="" />-->
+    </siteMapNode>
+    <!--Access Control-->
+    <!--<siteMapNode url="WF/DC/FLSJlist.aspx?type=AccessControl" title="Access Control"  description="" >
+      <siteMapNode url="WF/DC/AccessControl.aspx" title="Call Details"  description="" />
+      <siteMapNode url="WF/DC/AccessControlDefaults.aspx?tab=accesscontrol" title="Access Admin"  description="" />
+      <siteMapNode url="WF/DC/AccessReport.aspx" title="Report"  description="" />
+    </siteMapNode>-->
+    <!--Delivery-->
+    <!--<siteMapNode url="WF/DC/FLSJlist.aspx?type=Delivery" title="Delivery"  description="" >
+      <siteMapNode url="WF/DC/Delivery.aspx" title="Call Details"  description="" />
+      <siteMapNode url="WF/DC/DeliveryDefaults.aspx?tab=delivery" title="Delivery Admin"  description="" />
+      <siteMapNode url="WF/DC/DeliveryReport.aspx" title="Report"  description="" />
+    </siteMapNode>-->
+    <!--Permit to work-->
+    <!--<siteMapNode url="WF/DC/FLSJlist.aspx?type=PermittoWork" title="Permit to Work"  description="" >
+      <siteMapNode url="WF/DC/PermitToWork.aspx" title="Call Details"  description="" />
+      <siteMapNode url="WF/DC/PermitToWorkDefaults.aspx?tab=permittowork" title="Permit Admin"  description="" />
+    <siteMapNode url="WF/DC/Checklist.aspx" title="Checklist"  description="" />
+    </siteMapNode>-->
+    <!--<siteMapNode url="~/SDsummary.aspx" title="Service Desk"  description="" >
+      <siteMapNode url="~/Servicedesk/SDnew_frm.aspx" title="Overview"  description="" />
+      <siteMapNode url="~/Servicedesk/SDdetails_frm.aspx" title="Details"  description="" />
+      <siteMapNode url="~/Servicedesk/SDassignteams_frm.aspx" title="Assigned Teams"  description="" />
+      <siteMapNode url="~/Servicedesk/SDservices_frm.aspx" title="Services"  description="" />
+      <siteMapNode url="~/Servicedesk/SDjournal_frm.aspx" title="Journal"  description="" />
+      <siteMapNode url="~/Servicedesk/SDAssetsMove.aspx" title="Moves"  description="" />
+      <siteMapNode url="~/Servicedesk/SDdocuments_frm.aspx" title="Documents"  description="" />
+      <siteMapNode url="~/Servicedesk/SDnotification_frm.aspx" title="Notification"  description="" />
+      <siteMapNode url="~/Servicedesk/ServiceDeskInventory.aspx" title="Inventory"  description="" />
+      <siteMapNode url="~/Servicedesk/SDServiceUnits.aspx" title="Service Units"  description="" />
+      <siteMapNode url="~/Servicedesk/ServiceDeskDashboard.aspx" title="Dashboard"  description="" />
+      <siteMapNode url="~/SDadmin.aspx?type=sr" title="SD Admin"  description="" />
+      <siteMapNode url="~/SDteam.aspx?type=sr" title="Team Structure"  description="" />
+      <siteMapNode url="~/PortfolioContacts.aspx?type=sr" title="Customer Contacts"  description="" />
+      <siteMapNode url="~/ServiceCatalogue.aspx?type=sr" title="Service Catelogue"  description="" />
+      <siteMapNode url="~/PortfolioSupplier.aspx?type=sr" title="Supplier Information"  description="" />
+      <siteMapNode url="~/DataDictionary.aspx?type=sr" title="Data Dictionary"  description="" />
+      <siteMapNode url="~/Servicedesk/SDUnitStatus.aspx?type=sr" title="Unit Administration"  description="" />
+      <siteMapNode url="~/Servicedesk/SDUnitAdministration.aspx?type=sr" title="Unit Administration"  description="" />
+
+    </siteMapNode>-->
+
+    <!--HealthCheck Module-->
+    <!--<siteMapNode url="CustomerHealthCheckMgmt.aspx?customer=0" title="Health Checks/Audits"  description="" />
+    <siteMapNode url="~/HealthCheckSchedule.aspx" title="Health Checks"  description="" >
+      <siteMapNode url="PortfolioHealthCheck.aspx?type=health" title="Manage Health Checks"  description="" />
+      <siteMapNode url="adminmasterlists.aspx?setval=2&amp;type=health" title="Manage Checklist"  description="" />
+    </siteMapNode>-->
+    <!--Tender Module-->
+    <!--<siteMapNode url="~/RFImain.aspx" title="Tenders"  description="" >
+      <siteMapNode url="RFIProjects.aspx" title="Manage Tenders"  description="" >
+        <siteMapNode url="RFIOverview.aspx" title="Overview"  description="" />
+        <siteMapNode url="RFIQuestionnaire.aspx" title="Pre-qualification Questionnaire"  description="" />
+        <siteMapNode url="RFIAssignVendor.aspx" title="Assign Vendor"  description="" />
+        <siteMapNode url="RFIDocuments.aspx" title="Documents"  description="" />
+        <siteMapNode url="RFIBOM.aspx" title="Bill of Materials"  description="" />
+        <siteMapNode url="RFIScoring.aspx" title="Scoring"  description="" />
+        <siteMapNode url="RFIApprovalBoard.aspx" title="Approval"  description="" />
+        <siteMapNode url="RFIApprovalStatus.aspx" title="View Tenders to Approve/Deny"  description="" />
+        <siteMapNode url="RFISubmissionSummary.aspx" title="Review,Responses &amp; Query"  description="eee" >
+          <siteMapNode url="RFISubmissionQueries.aspx" title="Queries"  description=""    />
+          <siteMapNode url="RFISubmissionDocuments.aspx" title="Documents"  description="" resourceKey="SDocument"  />
+          <siteMapNode url="RFISubmissionBOMOverview.aspx" title="Bill of Materials"  description="" />
+          <siteMapNode url="RFISubmissionBOM.aspx" title="Bill of Materials"  description="" />
+          <siteMapNode url="rfibomcompare.aspx" title="Compare"  description="" />
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode url="RFIAssignedToPanelist.aspx" title="Scoring Process"  description="" >
+        <siteMapNode url="RFIPanelistScoreCard.aspx" title="Scorecard"  description="" />
+        <siteMapNode url="RFIVendorSelection.aspx" title="Vendor Selection"  description="" />
+
+      </siteMapNode>
+
+     
+      <siteMapNode url="TenderDashboard.aspx" title="Tender Dashboard"  description="" />
+      <siteMapNode url="RFIBBBEEScorecard.aspx" title="BBBEE Scorecard"  description="" />
+    </siteMapNode>
+     <siteMapNode url="~/WF/Vendors/RFIVendors.aspx" title="Vendor Managemnet"  description="" >
+
+        <siteMapNode url="~/WF/Vendors/RFIVendorOverview.aspx" title="Company"  description="" />
+        <siteMapNode url="MyTasks.aspx" title="My Tasks"  description="" >
+          <siteMapNode url="MyTasksView.aspx" title="Gantt"  description="" />
+        </siteMapNode>
+        <siteMapNode url="RFIVendorSites.aspx" title="Sites"  description="" />
+        <siteMapNode url="RFIVendorAttributes.aspx" title="Vendor Attributes"  description="" />
+        <siteMapNode url="~/WF/Vendors/RFIVendorServiceCatalog.aspx" title="Service Catalogue"  description="" />
+        <siteMapNode url="RFIVendorContacts.aspx" title="Key Contacts"  description="" />
+        <siteMapNode url="CustomerContracts.aspx" title="Contracts Management"  description="" />
+        <siteMapNode url="CustomersOLA.aspx" title="Contracts Management"  description="" />
+        <siteMapNode url="CustomersSite.aspx" title="Contracts Management"  description="" />
+        <siteMapNode url="CustomersDocuments.aspx" title="Contracts Management"  description="" />
+
+        <siteMapNode url="RFIVendorPerformance.aspx" title="Vendor Performance"  description="" />
+        <siteMapNode url="VendorCustomEmail.aspx" title="Custom Alerts"  description="" />
+        <siteMapNode url="RFIVendorCertifications.aspx" title="Certification"  description="" />
+        <siteMapNode url="RFIVendorBBBEEPointsJournal.aspx" title="BBBEE Points Journal"  description="" />
+        <siteMapNode url="HealthCheckSchedule.aspx?R=Y&amp;type=vendor" title="Health Checks"  description="" />
+        --><!--<siteMapNode url="PartnerSalesTargets.aspx" title="Sales Revenue Targets"  description="" />--><!--
+      </siteMapNode>-->
+    <!--Resource Module-->
+    <!--<siteMapNode url="~/WF/Admin/Timesheet.aspx" title="Resources"  description="" >
+      <siteMapNode url="~/WF/Admin/TimesheetNotSubmit.aspx" title="Timesheet not Submitted"  description="" />
+      <siteMapNode url="~/WF/Admin/TimesheetDeclined.aspx" title="Declined Timesheets"  description="" />
+      <siteMapNode url="~/WF/Admin/TimesheetJournal.aspx" title="Timesheet Journal"  description="" />
+      <siteMapNode url="~/WF/Admin/TimesheetApproverMailAlert.aspx" title="Timesheet Approver Alert"  description="" />
+      <siteMapNode url="~/WF/Admin/TimesheetReminders.aspx" title="Timesheet Reminder"  description="" />
+      <siteMapNode url="~/WF/Admin/Vt.RequestVacation.aspx" title="Vacation Tracker"  description="" >
+        <siteMapNode url="~/WF/Admin/vt.approverequests.aspx" title="Requests Awaiting Approval "  description="" />
+        <siteMapNode url="~/WF/Admin/vt.archivedrequests.aspx" title="Archived"  description="" />
+        <siteMapNode url=" ~/WF/Admin/VT.Journal.aspx" title="Journal"  description="" />
+      </siteMapNode>
+      <siteMapNode url="~/WF/Admin/ResourcePlanner.aspx" title="Resource Planner"  description="" >
+        <siteMapNode url="~/WF/Admin/newshift.aspx?type=shift" title="Shift Patterns"  description="" />
+      </siteMapNode>
+    </siteMapNode>-->
+    <!--Change Control Module-->
+    <!--Customer Section-->
+    <!--<siteMapNode url="~/ChangeControlManagementByCustomer.aspx?customer=0" title="Change Control"  description="" >
+      <siteMapNode url="~/ChangeControlByCustomer.aspx?customer=0" title="Change Control"  description="" />
+      <siteMapNode url="~/ChangeControlTaskByCustomer.aspx?customer=0" title="Tasks"  description="" />
+      <siteMapNode url="~/ChangecontrolRisksByCustomer.aspx?customer=0" title="Risks"  description="" />
+      <siteMapNode url="~/ChangecontrolApprovalByCustomer.aspx?customer=0" title="Approval"  description="" />
+      <siteMapNode url="~/ChangeControlDashBorad.aspx?customer=0" title="Dashboard"  description="" />
+
+    </siteMapNode>-->
+    <!--Admin Section-->
+    <!--<siteMapNode url="~/ChangeControlManagement.aspx" title="Change Control"  description="" >
+      <siteMapNode url="~/ChangeControl.aspx" title="Change Control"  description="" />
+      <siteMapNode url="~/CCScheduledTasks.aspx" title="Tasks"  description="" />
+      <siteMapNode url="~/CCRiskAssessment.aspx" title="Risks"  description="" />
+      <siteMapNode url="~/CCAddApproval.aspx" title="Approval"  description="" />
+      <siteMapNode url="~/CCServiceUnits.aspx" title="Service Units"  description=""  />
+      <siteMapNode url="~/ChangeControlDashBorad.aspx" title="Dashboard"  description="" />
+    </siteMapNode>-->
+
+    <!--Documents Module-->
+    <!--<siteMapNode url="ProjectDocuments.aspx?mode=central" title="Documents"  description="" />-->
+
+    <!--Training Module-->
+    <!--<siteMapNode url="~/Training/trDueSoon.aspx" title="Training"  description="" >
+      <siteMapNode url="~/Training/trBookingRecord.aspx" title="Booking"  description="" />
+      <siteMapNode url="~/Training/trCategory.aspx" title="Admin"  description="">
+        <siteMapNode url="~/Training/trDeptReq.aspx" title="Department Requirements"  description="" />
+        <siteMapNode url="~/Training/trAdminNotification.aspx" title=" Notification"  description="" />
+
+      </siteMapNode>
+    </siteMapNode>-->
+
+    <!--Issue Module-->
+    <!--<siteMapNode url="~/IssueManagement.aspx?project" title="Issues"  description="" />-->
+
+    <!--Inventory Module-->
+    <!--<siteMapNode url="~/WF/Inventory/InventoryManagerPage.aspx" title="Inventory"  description="" >
+      <siteMapNode url="~/WF/Inventory/InventoryAdminDropdown.aspx" title="Inventory Admin"  description="" />
+    </siteMapNode>-->
+
+    <!--Therapy Module-->
+    <!--<siteMapNode url="~/Therapy.aspx" title="Therapy Database"  description="" >
+      <siteMapNode url="~/Therapy/TrialConfiguration.aspx" title="Configure Trials"  description="" />
+      <siteMapNode url="~/Therapy/PatientDetails.aspx" title="Log New Entry"  description="" >
+        <siteMapNode url="~/Therapy/PatientTrialList.aspx" title="All Logged Entries"  description="" />
+      </siteMapNode>
+    </siteMapNode>-->
+    <!--Sales Pipline Module-->
+    <!--<siteMapNode url="~/Sales/SalesPipeline.aspx" title="Sales Pipeline"  description="" >
+      <siteMapNode url="~/Sales/Sales_Opportunity.aspx" title="Opportunity"  description="" />
+      <siteMapNode url="~/Sales/Sales_ProjectedRevenue.aspx" title="Project Revenue"  description="" />
+      <siteMapNode url="~/Sales/Sales_AccountPlan.aspx" title="Account Plan"  description="" />
+      <siteMapNode url="~/Sales/Sales_Actions.aspx" title="Next actions"  description="" />
+      <siteMapNode url="~/Sales/SalesDocuments.aspx" title="Associated Documents"  description="" />
+      <siteMapNode url="~/Sales/Sales_AccountContacts.aspx" title="Account Contacts"  description="" />
+    </siteMapNode>-->
+    <!--My Tasks -->
+    
+    <!--<siteMapNode url="ResourceNewChitChat.aspx" title="My Tasks"  description="" >
+      --><!--<siteMapNode url="MyTasksV2.aspx" title="My Tasks"  description="" >
+        <siteMapNode url="UpdateProject.aspx" title="Overview"  description="" />
+        <siteMapNode url="UpdateProjectList.aspx" title="Tasks"  description="" />
+        <siteMapNode url="UpdateProjectScope.aspx" title="Scope"  description="" />
+        <siteMapNode url="updateProjectVariations.aspx" title="Variations"  description="" />
+        <siteMapNode url="UpdateProjectCIP.aspx" title="CSI"  description="" />
+        <siteMapNode url="UpdateProjectDocs.aspx" title="Docs"  description="" />
+        <siteMapNode url="UpdateForumMaster.aspx" title="Form"  description="" />
+      </siteMapNode>--><!--
+      --><!--<siteMapNode url="MyTasksDocuments.aspx?mode=central" title="Docs"  description="" />
+      <siteMapNode url="MyProjects.aspx?Status=3" title="Completed"  description="" />
+      <siteMapNode url="TimeSheetResourcesDaily.aspx" title="Time Sheet"  description="" />
+      <siteMapNode url="VT.ResourceVacationRequest.aspx" title="Annual Leave"  description="" />--><!--
+
+    </siteMapNode>-->
+
+    <!--My Tasks Customer side -->
+    <!--<siteMapNode url="MyTasks.aspx?customer=0" title="My Tasks"  description="" />-->
+    <!--Timesheet approval Customer side -->
+    <!--<siteMapNode url="CustomerTimesheet.aspx?customer=0" title="Timesheet Approval"  description="">
+      <siteMapNode url="CustomerTimesheet.aspx?customer=0&amp;panel=2" title="Timesheets Journal"  description="" />
+    </siteMapNode>-->
+    <!--Finance Section -->
+    <!--<siteMapNode url="WF/Projects/FMResources.aspx" title="Finance Section"  description="" >
+      --><!--<siteMapNode url="WF/Projects/FMProjects.aspx" title="Projects"  description="" />--><!--
+      --><!--<siteMapNode url="CustomerContracts.aspx" title="Customer Contracts"  description="" >
+        <siteMapNode url="CustomersOLA.aspx" title="Operational Level Agreement"  description="" />
+        <siteMapNode url="CustomersSite.aspx" title="Sites Covered"  description="" />
+      </siteMapNode>--><!--
+      --><!--<siteMapNode url="WF/Projects/FMInvoicing.aspx" title="Invoicing"  description="" />--><!--
+      --><!--<siteMapNode url="WF/Projects/POJournal.aspx" title="PO Database"  description="" >
+        <siteMapNode url="WF/Projects/PODatabase.aspx" title="PO Number"  description="" />
+        <siteMapNode url="WF/Projects/POPurchase.aspx" title="Internal PO"  description="" >
+          <siteMapNode url="WF/Projects/POPurchaseDetails.aspx" title="PO Number"  description="" />
+
+        </siteMapNode>
+      </siteMapNode>--><!--
+      --><!--<siteMapNode url="WF/Projects/BoMSupplierPayments.aspx" title="Supplier Invoices"  description="" />
+      <siteMapNode url="WF/Projects/FMWorkInProgress.aspx" title="Work in Progress"  description="" />
+      <siteMapNode url="WF/Projects/FMSalesForeCast.aspx" title="Revenue Forecast"  description="" />--><!--
+      --><!--<siteMapNode url="WF/Projects/KPIFinancial.aspx" title="KPI"  description="" >
+        <siteMapNode url="WF/Projects/KPIResource.aspx" title="Resources"  description="" />
+        <siteMapNode url="WF/Projects/KPICustomers.aspx" title="Customer"  description="" />
+        <siteMapNode url="WF/Projects/KPIServiceDesk.aspx" title="Service Desk"  description="" />
+        <siteMapNode url="WF/Projects/KPIInternalPerspective.aspx" title="Internal Perspective"  description="" />
+        <siteMapNode url="WF/Projects/KPITarget.aspx" title="Targets"  description="" />
+
+      </siteMapNode>--><!--
+      --><!--<siteMapNode url="WF/Projects/ExportofProjectOverviewdata.aspx" title="Export Data"  description="" >
+        <siteMapNode url="WF/Projects/TimesheetandCostsExport.aspx" title="Timesheet and Costs"  description="" />
+        <siteMapNode url="WF/Projects/IssuesRisksExport.aspx" title="Issues &amp; Risks"  description="" />
+        <siteMapNode url="WF/Projects/AnnualLeaveandAbsenceexport.aspx" title="Annual Leave and Absenceexport"  description="" />
+        <siteMapNode url="WF/Projects/BOMExportDataReport1.aspx" title="BoM Summary"  description="" />
+        <siteMapNode url="WF/Health/Healthcheck_Export.aspx" title="Health Checks"  description="" />
+      </siteMapNode>--><!--
+      --><!--<siteMapNode url="WF/Projects/FMQuotes.aspx" title="Quotes"  description="" />--><!--
+    </siteMapNode>-->
+    <!--Dashboard Section -->
+    <!--<siteMapNode url="DashBoardMain.aspx" title="Dashboards"  description="" >
+      <siteMapNode url="Tasks.aspx" title="Tasks"  description="" />
+      <siteMapNode url="DashboardIssues.aspx" title="Issues"  description="" />
+      <siteMapNode url="Risks.aspx" title="Risks"  description="" />
+      <siteMapNode url="DashboardCaseMgmt.aspx" title="Service Desk"  description="" />
+      <siteMapNode url="DashboardHealthCheck.aspx" title="Health Check"  description="" />
+      <siteMapNode url="ResourceDashboard.aspx" title="Resources"  description="" />
+      <siteMapNode url="PortfolioMain.aspx" title="Customer"  description="" />
+      <siteMapNode url="Programme.aspx" title="Programme"  description="" />
+    </siteMapNode>-->
+    <!--Report Section -->
+    <!--<siteMapNode url="Reports.aspx" title="Reports"  description="" >
+      <siteMapNode url="ProjectSummaryFilteration.aspx" title="Project Reports"  description="" />
+    </siteMapNode>-->
+    <!--Admin Section-->
+    <!--Application Administration -->
+    <!--<siteMapNode url="Admin.aspx?tab=1" title="Application Administration"  description="" >
+      <siteMapNode url="Portfolio.aspx?tab=1" title="Customer"  description="" />
+     
+     
+     
+      <siteMapNode url="AdminDefaultLinks.aspx" title="Default Links"  description="" />
+    </siteMapNode>-->
+    <!--System Administration -->
+   
+    <!--Security Administration -->
+   
+     <!--<siteMapNode url="WF/Admin/ProgrammeManagement.aspx" title="Programme Management"  description="" >
+        <siteMapNode url="WF/Admin/ProgrammeAssessment.aspx" title="Programme Assessment"  description="" />
+        <siteMapNode url="WF/Admin/ProgrammeKeyMilestones.aspx" title="Workstream"  description="" />
+        <siteMapNode url="WF/Admin/ProjectCheckPoints.aspx" title="Check Points"  description="" />
+     <siteMapNode url="WF/Admin/ProgrammePermission.aspx" title="Groups and Permissions"  description="" />
+      </siteMapNode>-->
+      <!--<siteMapNode url="WF/Admin/ManageTeamMembersNew.aspx" title="Groups and Permissions"  description="" />
+       <siteMapNode url="WF/Admin/adminmasterlists.aspx" title="Checklist"  description=""  />-->
+      <siteMapNode url="WF/Admin/UserManagement.aspx?SID=10&amp;Type=CasualLabour" title="Casual Labour"  description=""/>
+     <siteMapNode url="WF/Admin/UserManagement.aspx?Type=Administrators" title="Userlist"  description="">
+       <siteMapNode url="WF/Admin/AdminUsers.aspx" title="User Details"  description=""/>
+       </siteMapNode>
+      <siteMapNode url="WF/Admin/FMRatecard.aspx" title="Finance Ratecard"  description="" />
+       <!--<siteMapNode url="WF/Admin/VTAdmin.aspx" title="Vacation Tracker Admin"  description="" />
+      <siteMapNode url="WF/Admin/QuoteAdmin.aspx" title="Quote Admin"  description="" />-->
+      <siteMapNode url="WF/Admin/PasswordExpiry.aspx" title="Password Expiry"  description="" />
+     <siteMapNode url="WF/Admin/AdminPermissions.aspx" title="Permission Manager"  description=""/>
+        <siteMapNode url="WF/Admin/AdminUserAddress.aspx" title="Address"  description=""/>
+        <siteMapNode url="WF/Admin/AdminUsersRates.aspx" title="Rates"  description=""/>
+        <siteMapNode url="WF/Admin/AdminUsersCertificates.aspx" title="Certificates"  description=""/>
+        <!--<siteMapNode url="WF/Admin/AdminUsersAnnualLeave.aspx" title="Annual Leave"  description=""/>-->
+        <siteMapNode url="WF/Admin/AdminUserPermissions.aspx" title="Permissions"  description=""/>
+        <siteMapNode url="WF/Admin/AdminUsersSkills.aspx" title="Skills/Training"  description=""/>
+        <siteMapNode url="WF/Admin/AdminQuickLinks.aspx" title="Quick Links"  description=""/>
+        <!--<siteMapNode url="WF/Admin/UserMoves.aspx" title="Moves"  description=""/>-->
+   <siteMapNode url="WF/Admin/SystemDefaults.aspx" title="System Setup"  description=""/>
+      <!--<siteMapNode url="WF/Admin/CurrencyConversion.aspx" title="Currency Conversion"  description="" />
+      <siteMapNode url="WF/Admin/FreezePeriods.aspx" title="Freeze Periods"  description="" />
+      <siteMapNode url="WF/Admin/CostCentres.aspx" title="Cost Centres"  description="" />
+      <siteMapNode url="WF/Admin/AdminRisks.aspx" title="Risks"  description="" />
+      <siteMapNode url="WF/Admin/Admin_UsersJournal.aspx" title="Journals"  description="" />
+      <siteMapNode url="WF/Admin/AdminDropDown.aspx" title="Admin Dropdown List"  description="" />-->
+
+  </siteMapNode>
+
+</siteMap>
+

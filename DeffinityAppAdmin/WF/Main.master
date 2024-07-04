@@ -1,0 +1,225 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="DMain" Codebehind="Main.master.cs" %>
+<%@ Register Src="~/WF/Controls/SideMenu.ascx" TagName="SideMenu" TagPrefix="uc1" %>
+<%@ Register Src="~/WF/Controls/TopNavigation.ascx" TagName="Navigation" TagPrefix="uc1" %>
+<%@ Register Src="~/WF/Controls/PageTitle_BreadCrumb.ascx" TagName="Pagetitle_breadcrumb" TagPrefix="uc1" %>
+<%@ Register Src="~/WF/Controls/Footer.ascx" TagName="Footer" TagPrefix="uc1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+    <title></title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Arimo:400,700,400italic"/>
+	<%--<link rel="stylesheet" href="../Content/assets/css/fonts/linecons/css/linecons.css"/>
+	<link rel="stylesheet" href="../Content/assets/css/fonts/fontawesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="../Content/assets/css/bootstrap.css"/>
+	<link rel="stylesheet" href="../Content/assets/css/xenon-core.css"/>
+	<link rel="stylesheet" href="../Content/assets/css/xenon-forms.css" />
+	<link rel="stylesheet" href="../Content/assets/css/xenon-components.css" />
+	<link rel="stylesheet" href="../Content/assets/css/xenon-skins.css" />
+	<link rel="stylesheet" href="../Content/assets/css/custom.css" />--%>
+    <%: System.Web.Optimization.Styles.Render("~/bundles/bootstarpcss") %>
+<link href="Content/AjaxControlToolkit/Styles/Calendar.min.css" rel="stylesheet" />
+	<script src='<%:ResolveClientUrl("~/Content/assets/js/jquery-1.11.1.min.js") %>'></script>
+    
+     <%--<%: System.Web.Optimization.Scripts.Render("~/bundles/jquery") %>--%>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<style>
+     .navbar.horizontal-menu {
+  position: relative;
+  height: 85px;
+  background: #ffffff;
+  margin: 0;
+  /* padding: 0; */
+  z-index: 97;
+  min-height: 0px;
+  -webkit-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.15);
+}
+	</style>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="page-body">
+    <div class="page-loading-overlay">
+		<div class="loader-2"></div>
+	</div>
+    <form id="form1" runat="server">
+        <script type="text/javascript">
+            function load() {
+                Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+            }
+    </script>
+         <script type="text/javascript">
+        $(document).ready(function () {
+            if ($(location).attr('pathname') == '/WF/Projects/ProjectHome.aspx')
+            {
+                $('#SiteMap1').find('span:first').prepend('<i class="fa-home"></i>')
+            }
+            else
+            {
+                $('#SiteMap1').find('span:first').find('a').prepend('<i class="fa-home"></i>')
+            }
+        });
+    </script>
+  <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" LoadScriptsBeforeUI="true">
+       <Scripts>
+           <asp:ScriptReference Path="~/Scripts/AjaxControlToolkit/Bundle" />
+       </Scripts>
+   </asp:ScriptManager>
+        <div class="settings-pane">
+			
+		<a href="#" data-toggle="settings-pane" data-animate="true" id="btnSettings" runat="server">
+			&times;
+		</a>
+		
+		<div class="settings-pane-inner" id="pnlSettings" runat="server">
+			
+			<div class="row">
+				
+				<div class="col-md-3">
+					
+					<div class="user-info">
+						
+						<div class="user-image">
+							<a  id="link_editprofile1" runat="server">
+								<img class="img-responsive img-circle" id="img_user" runat="server" />
+							</a>
+						</div>
+						
+						<div class="user-details">
+							<h3>
+								<%--<a href="extra-profile.html">--%><%:sessionKeys.UName %><%--</a>--%>
+								<!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
+								<%--<span class="user-status is-online"></span>--%>
+							</h3>
+							<%--<p class="user-title">Web Developer</p>--%>
+							<div class="user-links">
+								<a class="btn btn-primary" id="link_editprofile" runat="server">Edit Profile</a>
+								<%--<a href="extra-profile.html" class="btn btn-success">Upgrade</a>--%>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-9 link-blocks-env vertical-top">
+					
+					
+				</div>
+			</div>
+		
+		</div>
+		
+	</div>
+        	<%--<nav class="navbar horizontal-menu navbar-fixed-top"><!-- set fixed position by adding class "navbar-fixed-top" -->
+		
+		<div class="navbar-inner">
+       
+           
+            </div>
+                </nav>--%>
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		 <uc1:SideMenu ID="ctrl_sidemenu" runat="server" />
+		
+						
+		<div class="main-content">
+			 <uc1:Navigation ID="ctrl_Navigation" runat="server" />
+					<script>
+					    jQuery(document).ready(function ($) {
+					        $('a[href="#layout-variants"]').on('click', function (ev) {
+					            ev.preventDefault();
+
+					            var win = { top: $(window).scrollTop(), toTop: $("#layout-variants").offset().top - 15 };
+
+					            TweenLite.to(win, .3, {
+					                top: win.toTop, roundProps: ["top"], ease: Sine.easeInOut, onUpdate: function () {
+					                    $(window).scrollTop(win.top);
+					                }
+					            });
+					        });
+					    });
+			</script>
+			<!-- User Info, Notifications and Menu Bar -->
+			
+			<div class="page-title form-inline">
+				<div class="title-env">
+					<h1 class="title "><asp:ContentPlaceHolder id="page_title" runat="server">
+    </asp:ContentPlaceHolder></h1>
+					<p class="description"><asp:ContentPlaceHolder id="page_description" runat="server">
+    </asp:ContentPlaceHolder></p>
+				</div>
+					<div class="breadcrumb-env">
+								<%--<ol class="breadcrumb bc-1">
+									<li>
+							<a href="dashboard-1.html"><i class="fa-home"></i>Home</a>
+						</li>
+								<li>
+						
+										<a href="tables-basic.html">Tables</a>
+								</li>
+							<li class="active">
+						
+										<strong>Basic Tables</strong>
+								</li>
+								</ol>--%>
+								<%-- <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server"  />
+                    <asp:SiteMapPath ID="SiteMap1" SiteMapProvider="AdminSiteMap" runat="server" 
+                         CurrentNodeStyle-Font-Bold="true" CssClass="breadcrumb bc-1" 
+                        PathSeparator="/" CurrentNodeStyle-CssClass="breadcrumb bc-1 active" 
+                        NodeStyle-CssClass="breadcrumb bc-1" RootNodeStyle-CssClass="breadcrumb bc-1" >
+                    </asp:SiteMapPath>--%>
+				</div>
+					
+			</div>
+			
+             <!--Main Content-->
+        <%--    <div class="row">
+				<div class="col-sm-12">--%>
+             <asp:ContentPlaceHolder id="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+			<%--</div>
+                </div>--%>
+			<!--footer-->
+            <uc1:Footer ID="ctrl_footer" runat="server" />
+		</div>
+	</div>
+        
+	
+
+	<!-- Bottom Scripts -->
+	<%--<script src='<%:ResolveClientUrl("~/Content/assets/js/bootstrap.min.js")%>'></script>
+	<script src='<%:ResolveClientUrl("~/Content/assets/js/TweenMax.min.js")%>'></script>
+	<script src='<%:ResolveClientUrl("~/Content/assets/js/resizeable.js")%>'></script>
+	<script src='<%:ResolveClientUrl("~/Content/assets/js/joinable.js")%>'></script>
+	<script src='<%:ResolveClientUrl("~/Content/assets/js/xenon-api.js")%>'></script>
+	<script src='<%:ResolveClientUrl("~/Content/assets/js/xenon-toggles.js")%>'></script>--%>
+
+	<!-- JavaScripts initializations and stuff -->
+	<%--<script src='<%:ResolveClientUrl("~/Content/assets/js/xenon-custom.js")%>'></script>
+    <script src='<%:ResolveClientUrl("~/Scripts/Utility.js")%>'></script>--%>
+        <%: System.Web.Optimization.Scripts.Render("~/bundles/xenonjs") %>
+   <%: System.Web.Optimization.Styles.Render("~/Content/AjaxControlToolkit/Styles/Bundle") %>
+       
+
+    <asp:ContentPlaceHolder id="Scripts_Section" runat="server">
+    </asp:ContentPlaceHolder>
+        <div style="display:none;visibility:hidden">
+<iframe id="frm_setpage" name="frm_setpage" runat="server" width="100%" frameborder="0" src="~/WF/SessionKeepAlive.aspx" scrolling="no" style="display:none;visibility:hidden" ></iframe>
+</div>
+    </form>
+</body>
+</html>

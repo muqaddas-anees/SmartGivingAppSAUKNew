@@ -1,0 +1,32 @@
+﻿* {
+            font-family: 'Verdana';
+            font-size: 14px;
+            
+        }
+        
+        li {
+            line-height: normal;
+            margin: 5px 0px;
+        }
+        .staticInfo  ol {padding-left: 27px;margin-bottom: 20px;}
+        .staticInfo h3 {margin-left: 25px;}
+        
+        @media print {
+            thead {
+                display: table-header-group;
+            }
+            tfoot {
+                display: table-footer-group;
+            }
+           
+            @page {
+                size: A4;
+            }
+            
+          .page-break{page-break-inside: avoid!important;}
+            /*.page-break {
+                display: block;
+                page-break-after: always;
+            }*/
+            button {display: none;}
+        }

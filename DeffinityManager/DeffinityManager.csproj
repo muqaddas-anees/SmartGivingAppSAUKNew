@@ -1,0 +1,1201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C6B303C2-294F-475C-95F9-EF6908482840}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DeffinityManager</RootNamespace>
+    <AssemblyName>DeffinityManager</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\DLLs\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CKEditor.NET">
+      <HintPath>..\DLLs\CKEditor.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.95.4\lib\net40\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DataTables">
+      <HintPath>..\DLLs\DataTables.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DocX, Version=1.0.0.7, Culture=neutral, PublicKeyToken=76aff241102ee7f2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\DocX.dll</HintPath>
+    </Reference>
+    <Reference Include="Domain">
+      <HintPath>..\DLLs\Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Evyatar.Web.Controls">
+      <HintPath>..\DLLs\Evyatar.Web.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.DataTable.Net.Wrapper">
+      <HintPath>..\DLLs\Google.DataTable.Net.Wrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.3.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.3\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\DeffinityApp\bin\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Outlook\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Outlook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.2.2\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\DLLs\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>..\DLLs\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Preview">
+      <HintPath>..\DLLs\Microsoft.Web.Preview.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="stream-chat-net, Version=0.26.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\stream-chat-net.0.26.0\lib\net46\stream-chat-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="AssetDataBinding.cs" />
+    <Compile Include="Assets.cs" />
+    <Compile Include="AssetsAdminClass.cs" />
+    <Compile Include="AssetsImageManager.cs" />
+    <Compile Include="AssetsMoving.cs" />
+    <Compile Include="Assignement.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AutoComplete.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseCache.cs" />
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BE\ContractorContacts.cs" />
+    <Compile Include="BE\RFI_AssignVendortoProject.cs" />
+    <Compile Include="BE\RFI_AV2PStatus.cs" />
+    <Compile Include="BE\RFI_BOM.cs" />
+    <Compile Include="BE\RFI_BOMVendor.cs" />
+    <Compile Include="BE\RFI_Documents.cs" />
+    <Compile Include="BE\RFI_Main.cs" />
+    <Compile Include="BE\RFI_Panelists.cs" />
+    <Compile Include="BE\RFI_PanelistScore.cs" />
+    <Compile Include="BE\RFI_Query.cs" />
+    <Compile Include="BE\RFI_Questionnaire.cs" />
+    <Compile Include="BE\RFI_ScoreCardItems.cs" />
+    <Compile Include="BE\RFI_Status.cs" />
+    <Compile Include="BE\RFI_SubSection.cs" />
+    <Compile Include="BE\RFI_TradingHistory.cs" />
+    <Compile Include="BE\RFI_Vendor.cs" />
+    <Compile Include="BE\RFI_VendorCertification.cs" />
+    <Compile Include="BE\RFI_VendorSites.cs" />
+    <Compile Include="BLL\AC2P_DocumentsController.cs" />
+    <Compile Include="BLL\ActiveCampaignHelper.cs" />
+    <Compile Include="BLL\AddUserPermissionData.cs" />
+    <Compile Include="BLL\CLPermissionCS.cs" />
+    <Compile Include="BLL\ContractorContacts_Base_SVC.cs" />
+    <Compile Include="BLL\ContractorContacts_SVC.cs" />
+    <Compile Include="BLL\ContractorsBAL.cs" />
+    <Compile Include="BLL\ContractsGroupBAL.cs" />
+    <Compile Include="BLL\CustomerContractBAL.cs" />
+    <Compile Include="BLL\CustomFieldsBAL.cs" />
+    <Compile Include="BLL\DataDictionaryBAL.cs" />
+    <Compile Include="BLL\ExportToExcelController.cs" />
+    <Compile Include="BLL\ForgotPwdTblDetailsBAL.cs" />
+    <Compile Include="BLL\GeneratePolicy.cs" />
+    <Compile Include="BLL\Goods_Receipt.cs" />
+    <Compile Include="BLL\InboxBAL.cs" />
+    <Compile Include="BLL\InventoryBAL.cs" />
+    <Compile Include="BLL\InventoryCategoryBAL.cs" />
+    <Compile Include="BLL\InventoryItemsBAL.cs" />
+    <Compile Include="BLL\InventoryManagerCs.cs" />
+    <Compile Include="BLL\InventoryUseBAL.cs" />
+    <Compile Include="BLL\ManufacturerBAL.cs" />
+    <Compile Include="BLL\PortfolioContactBAL.cs" />
+    <Compile Include="BLL\PortfolioContactLoginDeatilsBAL.cs" />
+    <Compile Include="BLL\PortfolioContactsDepartmentBAL.cs" />
+    <Compile Include="BLL\ProjectAccessCheckBAL.cs" />
+    <Compile Include="BLL\ProjectAdditionalInfoBAL.cs" />
+    <Compile Include="BLL\ProjectAdminGroupBAL.cs" />
+    <Compile Include="BLL\ProjectBAL.cs" />
+    <Compile Include="BLL\ProjectBomSnapShotBAL.cs" />
+    <Compile Include="BLL\ProjectDefaultsBAL.cs" />
+    <Compile Include="BLL\ProjectIssuesBAL.cs" />
+    <Compile Include="BLL\ProjectJournalBAL.cs" />
+    <Compile Include="BLL\ProjectTaskBAL.cs" />
+    <Compile Include="BLL\ProjectTaskCategoryBAL.cs" />
+    <Compile Include="BLL\ProjectTrackerBAL.cs" />
+    <Compile Include="BLL\ResourceScheduleBAL.cs" />
+    <Compile Include="BLL\RFI_AssignVendortoProject_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_AssignVendortoProject_SVC.cs" />
+    <Compile Include="BLL\RFI_AV2PStatus_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_AV2PStatus_SVC.cs" />
+    <Compile Include="BLL\RFI_BOMVendor_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_BOMVendor_SVC.cs" />
+    <Compile Include="BLL\RFI_BOM_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_BOM_SVC.cs" />
+    <Compile Include="BLL\RFI_Documents_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_Documents_SVC.cs" />
+    <Compile Include="BLL\RFI_Main_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_Main_SVC.cs" />
+    <Compile Include="BLL\RFI_PanelistScore_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_PanelistScore_SVC.cs" />
+    <Compile Include="BLL\RFI_Panelists_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_Panelists_SVC.cs" />
+    <Compile Include="BLL\RFI_Query_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_Query_SVC.cs" />
+    <Compile Include="BLL\RFI_Questionnaire_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_Questionnaire_SVC.cs" />
+    <Compile Include="BLL\RFI_ScoreCardItems_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_ScoreCardItems_SVC.cs" />
+    <Compile Include="BLL\RFI_Status_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_Status_SVC.cs" />
+    <Compile Include="BLL\RFI_SubSection_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_SubSection_SVC.cs" />
+    <Compile Include="BLL\RFI_TradingHistory_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_TradingHistory_SVC.cs" />
+    <Compile Include="BLL\RFI_VendorCertification_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_VendorCertification_SVC.cs" />
+    <Compile Include="BLL\RFI_VendorSites_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_VendorSites_SVC.cs" />
+    <Compile Include="BLL\RFI_Vendor_Base_SVC.cs" />
+    <Compile Include="BLL\RFI_Vendor_SVC.cs" />
+    <Compile Include="BLL\SC_ContractorMaterial.cs" />
+    <Compile Include="BLL\ServiceCatalog_Admin.cs" />
+    <Compile Include="BLL\TimesheetAlertBAL.cs" />
+    <Compile Include="BLL\TimesheetBAL.cs" />
+    <Compile Include="BLL\TimesheetRemindersBAL.cs" />
+    <Compile Include="BLL\VTLeaveRequestBAL.cs" />
+    <Compile Include="BLL\WarehouseDetailsBAL.cs" />
+    <Compile Include="BLL\ZipcodeBAL.cs" />
+    <Compile Include="BudgetAlertMail.cs" />
+    <Compile Include="BuildProject.cs" />
+    <Compile Include="BusinessClass.cs" />
+    <Compile Include="CacheNames.cs" />
+    <Compile Include="Cart\CartEntity.cs" />
+    <Compile Include="Cart\CartManager.cs" />
+    <Compile Include="CCService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ChangeControlStatus.cs" />
+    <Compile Include="ChartData.cs" />
+    <Compile Include="Chats.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Chats.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Checkpoint_Summary.cs" />
+    <Compile Include="Chekingtimesheetapprovers.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="CombineScripts.cs" />
+    <Compile Include="CommonConvertions.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Contractors.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConvertTime.cs" />
+    <Compile Include="CostCenter.cs" />
+    <Compile Include="CustomerConfig.cs" />
+    <Compile Include="CustomerFeedbackclass.cs" />
+    <Compile Include="CustomerHelpCenter\HelpCenterEntitys.cs" />
+    <Compile Include="CustomerHelpCenter\HelpCenterManager.cs" />
+    <Compile Include="CustomerHome.cs" />
+    <Compile Include="CustomerSCAutoComplete.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomerScheduleViewer.cs" />
+    <Compile Include="DAL.cs" />
+    <Compile Include="DAL\AC2PDocumentsUpload.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AC2PDocumentsUpload.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AssetsToSoftware.cs">
+      <DependentUpon>AssetsToSoftware.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AssetsToSoftware.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssetsToSoftware.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CLPermissions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CLPermissions.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ContractorContacts_Base_DAL.cs" />
+    <Compile Include="DAL\ContractorContacts_DAL.cs" />
+    <Compile Include="DAL\CustomerContractdb.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerContractdb.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DBAddUserPermisson.cs">
+      <DependentUpon>DBAddUserPermisson.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DBAddUserPermisson.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBAddUserPermisson.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DBUserPermission.cs">
+      <DependentUpon>DBUserPermission.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DB_TimeSheet.cs">
+      <DependentUpon>DB_TimeSheet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DB_TimeSheet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_TimeSheet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ExportToExcel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExportToExcel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\FinanceModule.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinanceModule.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Incident.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Incident.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Inventory.cs">
+      <DependentUpon>Inventory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Inventory.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Inventory.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Inventory1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Inventory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Location.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Location.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DC\BLL\BOMBAL.cs" />
+    <Compile Include="DC\BLL\CallResourceScheduleBAL.cs" />
+    <Compile Include="DC\BLL\CardConnectRestClient.cs" />
+    <Compile Include="DC\BLL\CardConnectRestClientExample.cs" />
+    <Compile Include="DC\BLL\DefaultJobsBAL.cs" />
+    <Compile Include="DC\BLL\HVACDiagnosticsTimeBAL.cs" />
+    <Compile Include="DC\BLL\InvoiceBAL.cs" />
+    <Compile Include="DC\BLL\JobDefaultSettingsBAL.cs" />
+    <Compile Include="DC\BLL\JobTargetAssignedUserBAL.cs" />
+    <Compile Include="DC\BLL\JobTargetBAL.cs" />
+    <Compile Include="DC\BLL\JobTargetCommentBAL.cs" />
+    <Compile Include="DC\BLL\JobTargetsDocBAL.cs" />
+    <Compile Include="DC\BLL\LabourRateSettingsBAL.cs" />
+    <Compile Include="DC\BLL\MailDataProcessBAL.cs" />
+    <Compile Include="DC\BLL\QuickPayBAL.cs" />
+    <Compile Include="DC\BLL\QuotationOptionsBAL.cs" />
+    <Compile Include="DC\BLL\QuoteTemplateBAL.cs" />
+    <Compile Include="DC\BLL\VATByCustomerBAL.cs" />
+    <Compile Include="HealthCheck\BAL\HealthCheck_FormBAL.cs" />
+    <Compile Include="HealthCheck\DAL\HealthCheckMgt.cs">
+      <DependentUpon>HealthCheckMgt.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="PortfolioMgt\BAL\ActivityCategoryBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\ActivityDetailsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\ActivitySubCategoryBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\BlogBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\CampaignTemplateBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\CustomerKeyContactsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\DenominationDetailsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\DenominationGroupDetailsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\EquipmentClientCommunicationBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\ESignatureDetailBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\FaithEducationCategoryBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\FaithEducationDetailBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\FundraisersInfoBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\FundriaserUserStatus.cs" />
+    <Compile Include="PortfolioMgt\BAL\MaintenanceBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\ManufacturerBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\MarketPlaceItemsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\MID_BAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerCategoryBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerDetailBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerHourlyRateBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerMaintenacePlanBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerMaintenacePlanEquipmentBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerMaintenacePlanEquipmentMaterialBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerMaterialBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerPopupSetupBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerPopupTrackBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerPriceDiscountStructureBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerServiceBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerSubCategoryBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerTermsandConditionBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerTimesPerYearBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PartnerTravelTimeBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PaymentCardDetailBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioAdminLoginBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioAdminUserPopContentBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioBillingManagerBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioBillingModulesBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioBillingTypeBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioContactAddressBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioContactLeadsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioContactPaymentDetailsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioContactsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioContactsTagsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioDefaultsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioDistributionListBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioModulesBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioPaymentSettingsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioTrackerLoginBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioTrainingBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioTrainingPurchaseBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortfolioTypeBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortolioBillingBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\PortolioMarginBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\ProductCategoryBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\ProductPolicyTypeBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\ProjectPortfolioBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\SubDenominationDetailsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\TithingAmountBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\TithingCategorySettingBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\TithingDefaultDetailsBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\TithingPaymentTrackerBAL.cs" />
+    <Compile Include="PortfolioMgt\BAL\UserTrackingBAL.cs" />
+    <Compile Include="PortfolioMgt\DAL\Portfolio.cs">
+      <DependentUpon>Portfolio.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="PortfolioMgt\DAL\Portfolio.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Portfolio.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Programme.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Programme.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\projectTask.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectTask.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PurchaseOrderMgt.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseOrderMgt.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\QuoteItemManager.cs" />
+    <Compile Include="DAL\RFI.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RFI.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\RFI_AssignVendortoProject_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_AssignVendortoProject_DAL.cs" />
+    <Compile Include="DAL\RFI_AV2PStatus_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_AV2PStatus_DAL.cs" />
+    <Compile Include="DAL\RFI_BOMVendor_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_BOMVendor_DAL.cs" />
+    <Compile Include="DAL\RFI_BOM_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_BOM_DAL.cs" />
+    <Compile Include="DAL\RFI_Documents_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_Documents_DAL.cs" />
+    <Compile Include="DAL\RFI_Main_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_Main_DAL.cs" />
+    <Compile Include="DAL\RFI_PANELISTSCORES_MAIN.cs" />
+    <Compile Include="DAL\RFI_PanelistScore_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_PanelistScore_DAL.cs" />
+    <Compile Include="DAL\RFI_Panelists_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_Panelists_DAL.cs" />
+    <Compile Include="DAL\RFI_Query_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_Query_DAL.cs" />
+    <Compile Include="DAL\RFI_Questionnaire_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_Questionnaire_DAL.cs" />
+    <Compile Include="DAL\RFI_ScoreCardItems_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_ScoreCardItems_DAL.cs" />
+    <Compile Include="DAL\RFI_Status_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_Status_DAL.cs" />
+    <Compile Include="DAL\RFI_SubSection_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_SubSection_DAL.cs" />
+    <Compile Include="DAL\RFI_TradingHistory_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_TradingHistory_DAL.cs" />
+    <Compile Include="DAL\RFI_VendorCertification_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_VendorCertification_DAL.cs" />
+    <Compile Include="DAL\RFI_VendorSites_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_VendorSites_DAL.cs" />
+    <Compile Include="DAL\RFI_Vendor_Base_DAL.cs" />
+    <Compile Include="DAL\RFI_Vendor_DAL.cs" />
+    <Compile Include="DAL\ServiceCatalogueMaterials.cs">
+      <DependentUpon>ServiceCatalogueMaterials.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ServiceCatalogueMaterials.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceCatalogueMaterials.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ShowMessages.cs" />
+    <Compile Include="StreamChatBAL.cs" />
+    <Compile Include="TagsBAL.cs" />
+    <Compile Include="TimesheetMgt\BAL\ExpensesAccountingCodesBAL.cs" />
+    <Compile Include="TimesheetMgt\BAL\TimeExpenseBAL.cs" />
+    <Compile Include="TimesheetMgt\BAL\TimeExpensesBAL.cs" />
+    <Compile Include="TimesheetMgt\BAL\TimesheetApproverBAL.cs" />
+    <Compile Include="TimesheetMgt\BAL\TimesheetEntryBAL.cs" />
+    <Compile Include="TimesheetMgt\DAL\TimeSheet.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeSheet.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TimesheetMgt.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimesheetMgt.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\UserManagement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserManagement.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ToEmailClass.cs" />
+    <Compile Include="UserMgt\BAL\CompanyBAL.cs" />
+    <Compile Include="UserMgt\BAL\UserMgtBAL.cs" />
+    <Compile Include="UserMgt\BAL\UserSkillBAL.cs" />
+    <Compile Include="UserMgt\DAL\UserMgt.cs">
+      <DependentUpon>UserMgt.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="UserMgt\DAL\UserMgt.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserMgt.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\VT.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VT.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataHelperClass.cs" />
+    <Compile Include="DBCentralAccess.cs" />
+    <Compile Include="DC\BLL\AccessControlBAL.cs" />
+    <Compile Include="DC\BLL\AccessControlJournalBAL.cs" />
+    <Compile Include="DC\BLL\AccessNumberBAL.cs" />
+    <Compile Include="DC\BLL\AssignedChecklistsBAL.cs" />
+    <Compile Include="DC\BLL\CallDetailsBAL.cs" />
+    <Compile Include="DC\BLL\CallDetailsJournalBAL.cs" />
+    <Compile Include="DC\BLL\CategoryBAL.cs" />
+    <Compile Include="DC\BLL\ChecklistitemsBAL.cs" />
+    <Compile Include="DC\BLL\ConditionBAL.cs" />
+    <Compile Include="DC\BLL\CustomerContactsBAL.cs" />
+    <Compile Include="DC\BLL\CustomerDetailsBAL.cs" />
+    <Compile Include="DC\BLL\CustomFormDesignerBAL.cs" />
+    <Compile Include="DC\BLL\DCMailtoManager.cs" />
+    <Compile Include="DC\BLL\DefaultConfigurationToAllCustomer.cs" />
+    <Compile Include="DC\BLL\DefaultDataBAL.cs" />
+    <Compile Include="DC\BLL\DefaultsofAccessControl.cs" />
+    <Compile Include="DC\BLL\DeliveryDefaultsBAL.cs" />
+    <Compile Include="DC\BLL\DeliveryInformationBAL.cs" />
+    <Compile Include="DC\BLL\DeliveryInformationJournalBAL.cs" />
+    <Compile Include="DC\BLL\DeliveryItemWeightBAL.cs" />
+    <Compile Include="DC\BLL\DeliveryTypeBAL.cs" />
+    <Compile Include="DC\BLL\DisplayColumnBAL.cs" />
+    <Compile Include="DC\BLL\DocumentsBAL.cs" />
+    <Compile Include="DC\BLL\FieldsVisibilityBAL.cs" />
+    <Compile Include="DC\BLL\FixedRateTypeBAL.cs" />
+    <Compile Include="DC\BLL\FLSAdditionalInfoBAL.cs" />
+    <Compile Include="DC\BLL\FLSDepartment.cs" />
+    <Compile Include="DC\BLL\FLSDetailsBAL.cs" />
+    <Compile Include="DC\BLL\FLSDetailsJournalBAL.cs" />
+    <Compile Include="DC\BLL\FLSFieldsConfigBAL.cs" />
+    <Compile Include="DC\BLL\FLSSectionConfigBAL.cs" />
+    <Compile Include="DC\BLL\FLSSubject.cs" />
+    <Compile Include="DC\BLL\FLSTimeDetailsBAL.cs" />
+    <Compile Include="DC\BLL\FooterEmail.cs" />
+    <Compile Include="DC\BLL\NotesBAL.cs" />
+    <Compile Include="DC\BLL\OurSiteBAL.cs" />
+    <Compile Include="DC\BLL\PermitToWorkBAL.cs" />
+    <Compile Include="DC\BLL\PermitToWorkJournalBAL.cs" />
+    <Compile Include="DC\BLL\PermitTypeBAL.cs" />
+    <Compile Include="DC\BLL\PolicyTypeBAL.cs" />
+    <Compile Include="DC\BLL\ProjectPortFolioBAL.cs" />
+    <Compile Include="DC\BLL\QuotationBAL.cs" />
+    <Compile Include="DC\BLL\ReceivedInformationBAL.cs" />
+    <Compile Include="DC\BLL\ReceivedInformationJournalBAL.cs" />
+    <Compile Include="DC\BLL\RequestMailFormat.cs" />
+    <Compile Include="DC\BLL\RequestTypeBAL.cs" />
+    <Compile Include="DC\BLL\SecurityAccessMail.cs" />
+    <Compile Include="DC\BLL\ServicePriceJournal.cs" />
+    <Compile Include="DC\BLL\SiteBAL.cs" />
+    <Compile Include="DC\BLL\SourceOfRequestBAL.cs" />
+    <Compile Include="DC\BLL\StatusBAL.cs" />
+    <Compile Include="DC\BLL\StorageLocationBAL.cs" />
+    <Compile Include="DC\BLL\SubCategoryBAL.cs" />
+    <Compile Include="DC\BLL\TypeOfRequestBAL.cs" />
+    <Compile Include="DC\BLL\UnitsExtesionBAL.cs" />
+    <Compile Include="DC\BLL\VisitingPurpose.cs" />
+    <Compile Include="DC\BLL\VisitorsBAL.cs" />
+    <Compile Include="DC\BLL\VisitorsMailStatusBAL.cs" />
+    <Compile Include="DC\DAL\DC.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DC.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DC\services\DCServices.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DefaultDatabind.cs" />
+    <Compile Include="DefaultEntity.cs" />
+    <Compile Include="DeffinityChatDataClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeffinityChatDataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DeffinityChatService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dependencies_NewGantt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DisBindings.cs" />
+    <Compile Include="Email.cs" />
+    <Compile Include="Emailer.cs" />
+    <Compile Include="EmailTemplate.cs" />
+    <Compile Include="ExcelField.cs" />
+    <Compile Include="ExceptionClass.cs" />
+    <Compile Include="FlowChartHelper.cs" />
+    <Compile Include="ForecastManager.cs" />
+    <Compile Include="GetCurrentValues.cs" />
+    <Compile Include="DAL\GoodsReceipt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoodsReceipt.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GridViewGroup.cs" />
+    <Compile Include="GridViewGroupList.cs" />
+    <Compile Include="GridViewHelper.cs" />
+    <Compile Include="GridViewSummary.cs" />
+    <Compile Include="GridViewSummaryList.cs" />
+    <Compile Include="HealthCheck\BAL\HealthCheckBAL.cs" />
+    <Compile Include="HealthCheck\DAL\HealthCheckMgt.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HealthCheckMgt.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="HealthCheck\HealthCheckListEntity.cs" />
+    <Compile Include="HealthCheck\HealthCheckListHelper.cs" />
+    <Compile Include="HealthCheck\HealthCheckListItemsEntity.cs" />
+    <Compile Include="HealthCheck\HealthCheckListItemsHelper.cs" />
+    <Compile Include="HealthCheck\HealthCheckListItemsSortHelper.cs" />
+    <Compile Include="HealthCheck\HealthCheckListSortHelper.cs" />
+    <Compile Include="HealthCheck\HealthCheckState.cs" />
+    <Compile Include="HealthCheck\HealthCommands.cs" />
+    <Compile Include="HealthCheck\PortfolioHealthCheckEntity.cs" />
+    <Compile Include="HealthCheck\PortfolioHealthCheckHelper.cs" />
+    <Compile Include="HealthCheck\Service\HCWebService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ImageManager.cs" />
+    <Compile Include="IncidentManagement\AssetHelper.cs" />
+    <Compile Include="IncidentManagement\AssetsEntity.cs" />
+    <Compile Include="IncidentManagement\ChangeControlApprovalEntity.cs" />
+    <Compile Include="IncidentManagement\ChangeControlApprovalHelper.cs" />
+    <Compile Include="IncidentManagement\ChangeControlEntity.cs" />
+    <Compile Include="IncidentManagement\ChangeControlHelper.cs" />
+    <Compile Include="IncidentManagement\ChangeControlRiskHelper.cs" />
+    <Compile Include="IncidentManagement\ChangeControlRisks.cs" />
+    <Compile Include="IncidentManagement\ChangeSortHelper.cs" />
+    <Compile Include="IncidentManagement\HtmlHijacker.cs" />
+    <Compile Include="IncidentManagement\IncidentAssignTeam.cs" />
+    <Compile Include="IncidentManagement\IncidentChartHelper.cs" />
+    <Compile Include="IncidentManagement\IncidentCommands.cs" />
+    <Compile Include="IncidentManagement\IncidentEntity.cs" />
+    <Compile Include="IncidentManagement\IncidentExcelUpload.cs" />
+    <Compile Include="IncidentManagement\IncidentHelper.cs" />
+    <Compile Include="IncidentManagement\IncidentService_Price.cs" />
+    <Compile Include="IncidentManagement\IncidentSortHelper.cs" />
+    <Compile Include="IncidentManagement\JournalEntity.cs" />
+    <Compile Include="IncidentManagement\JournalHelper.cs" />
+    <Compile Include="IncidentManagement\ResourceEntity.cs" />
+    <Compile Include="IncidentManagement\ResourceHelper.cs" />
+    <Compile Include="IncidentManagement\ServiceEntity.cs" />
+    <Compile Include="IncidentManagement\ServiceHelper.cs" />
+    <Compile Include="IncidentManagement\ServiceManager.cs" />
+    <Compile Include="IncidentManagement\stateClass.cs" />
+    <Compile Include="IncidentManagement\TaskEntity.cs" />
+    <Compile Include="IncidentManagement\TaskHelper.cs" />
+    <Compile Include="InventoryMgr.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LabourManagement\DataBaseNameforLabourTimesheet.cs" />
+    <Compile Include="LabourManagement\LabourBussinessdata.cs" />
+    <Compile Include="LabourManagement\LabourEntity.cs" />
+    <Compile Include="LocationResource.cs" />
+    <Compile Include="LogExceptions.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="MailFormat.cs" />
+    <Compile Include="mailHelperMethods.cs" />
+    <Compile Include="MySampleService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrgChartHelper.cs" />
+    <Compile Include="PageJornal.cs" />
+    <Compile Include="PermissionManager.cs" />
+    <Compile Include="PorfolioContacts1.cs" />
+    <Compile Include="Portfilio.cs" />
+    <Compile Include="PortfolioSLA.cs" />
+    <Compile Include="PriceJournal.cs" />
+    <Compile Include="ProjectAccessCheckSrv.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectDep.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectManagement\Gantt.cs" />
+    <Compile Include="ProjectManagement\IssuesEntity.cs" />
+    <Compile Include="ProjectManagement\IssuesManager.cs" />
+    <Compile Include="ProjectManagement\ProjectEntitys.cs" />
+    <Compile Include="ProjectManagement\ProjectManager.cs" />
+    <Compile Include="ProjectManagement\ProjectMeetingEntity.cs" />
+    <Compile Include="ProjectManagement\ProjectMeetingManager.cs" />
+    <Compile Include="ProjectManagement\ProjectsByResource.cs" />
+    <Compile Include="ProjectManagement\ScopeofWorkEntity.cs" />
+    <Compile Include="ProjectManagement\ScopeofWorkManager.cs" />
+    <Compile Include="ProjectManagement\ServiceCatalogManager.cs" />
+    <Compile Include="ProjectManagement\TaskEntity.cs" />
+    <Compile Include="ProjectManagement\TaskManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProjectPipelineClass.cs" />
+    <Compile Include="ProjectSummaryReportHelper.cs" />
+    <Compile Include="ProjectTasks.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="QueryStringValues.cs" />
+    <Compile Include="QuoteAdminManager.cs" />
+    <Compile Include="QuoteEntity.cs" />
+    <Compile Include="QuoteItemManager.cs" />
+    <Compile Include="QuoteProcedures.cs" />
+    <Compile Include="RandomPassword.cs" />
+    <Compile Include="Repository\AssetRepository.cs" />
+    <Compile Include="Repository\DCRepository.cs" />
+    <Compile Include="Repository\HCRepository.cs" />
+    <Compile Include="Repository\InventoryRepository.cs" />
+    <Compile Include="Repository\IncidentRepository.cs" />
+    <Compile Include="Repository\LocationRepository.cs" />
+    <Compile Include="Repository\PortfolioRepository.cs" />
+    <Compile Include="Repository\ProjectRepository.cs" />
+    <Compile Include="Repository\PurchaseOrderRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\RFIRepository.cs" />
+    <Compile Include="Repository\TimesheetRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="ResourcePlanner.cs" />
+    <Compile Include="ResourcePlanner_Service.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RiseValuation.cs" />
+    <Compile Include="ScriptDeferFilter.cs" />
+    <Compile Include="SDTeam.cs" />
+    <Compile Include="SearchInFiles.cs" />
+    <Compile Include="SearchResults.cs" />
+    <Compile Include="ServiceCatalogSrv.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ServiceMgr.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SessionClass.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SessionTimeOut.cs" />
+    <Compile Include="StaticMethod.cs" />
+    <Compile Include="SubdomainModule.cs" />
+    <Compile Include="Supplier.cs" />
+    <Compile Include="systemdefaults.cs" />
+    <Compile Include="TasksNewVersion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tasks_NewGantt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TeamHelper.cs" />
+    <Compile Include="test.cs" />
+    <Compile Include="testEmail.cs" />
+    <Compile Include="TimeSheetAdmin.cs" />
+    <Compile Include="TimesheetresourceSection.cs" />
+    <Compile Include="TimeSheet_methods.cs" />
+    <Compile Include="Upload.cs" />
+    <Compile Include="Usercertification.cs" />
+    <Compile Include="UserEntity.cs" />
+    <Compile Include="Userjournal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="User_Documents.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="Utill\PdfGenerator.cs" />
+    <Compile Include="Utill\RandomPasswordGenerator.cs" />
+    <Compile Include="VT.AdminEntry.cs" />
+    <Compile Include="VT.Allowance.cs" />
+    <Compile Include="VT.AllowanceHelper.cs" />
+    <Compile Include="VT.Enumerators.cs" />
+    <Compile Include="VT.LeaveApprover.cs" />
+    <Compile Include="VT.LeaveApproverHelper.cs" />
+    <Compile Include="VT.LeaveRequest.cs" />
+    <Compile Include="VT.LeaveRequestHelper.cs" />
+    <Compile Include="VT.PHolidays.cs" />
+    <Compile Include="VT.PHolidaysHelper.cs" />
+    <Compile Include="Worksheet.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.Config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="App_themes\Controls\Controls.skin" />
+    <None Include="Chats.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Chats.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Chats.dbml.layout">
+      <DependentUpon>Chats.dbml</DependentUpon>
+    </None>
+    <None Include="DAL\AC2PDocumentsUpload.xsc">
+      <DependentUpon>AC2PDocumentsUpload.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\AC2PDocumentsUpload.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AC2PDocumentsUpload.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\AC2PDocumentsUpload.xss">
+      <DependentUpon>AC2PDocumentsUpload.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\AssetsToSoftware.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>AssetsToSoftware.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\CLPermissions.xsc">
+      <DependentUpon>CLPermissions.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\CLPermissions.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CLPermissions.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\CLPermissions.xss">
+      <DependentUpon>CLPermissions.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\CustomerContractdb.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>CustomerContractdb.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\DBAddUserPermisson.xsc">
+      <DependentUpon>DBAddUserPermisson.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\DBAddUserPermisson.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBAddUserPermisson.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\DBAddUserPermisson.xss">
+      <DependentUpon>DBAddUserPermisson.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\DBUserPermission.xsc">
+      <DependentUpon>DBUserPermission.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\DBUserPermission.xsd" />
+    <None Include="DAL\DBUserPermission.xss">
+      <DependentUpon>DBUserPermission.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\DB_TimeSheet.xsc">
+      <DependentUpon>DB_TimeSheet.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\DB_TimeSheet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB_TimeSheet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\DB_TimeSheet.xss">
+      <DependentUpon>DB_TimeSheet.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\ExportToExcel.xsc">
+      <DependentUpon>ExportToExcel.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\ExportToExcel.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExportToExcel.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\ExportToExcel.xss">
+      <DependentUpon>ExportToExcel.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\FinanceModule.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>FinanceModule.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\Incident.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Incident.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\Inventory.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Inventory.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\Inventory.xsc">
+      <DependentUpon>Inventory.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\Inventory.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Inventory1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAL\Inventory.xss">
+      <DependentUpon>Inventory.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\Location.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Location.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="PortfolioMgt\DAL\Portfolio.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Portfolio.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\Programme.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Programme.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\projectTask.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>projectTask.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\PurchaseOrderMgt.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PurchaseOrderMgt.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\RFI.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>RFI.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\ServiceCatalogueMaterials.xsc">
+      <DependentUpon>ServiceCatalogueMaterials.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\ServiceCatalogueMaterials.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ServiceCatalogueMaterials.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAL\ServiceCatalogueMaterials.xss">
+      <DependentUpon>ServiceCatalogueMaterials.xsd</DependentUpon>
+    </None>
+    <None Include="TimesheetMgt\DAL\TimeSheet.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>TimeSheet.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\TimesheetMgt.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>TimesheetMgt.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\UserManagement.xsc">
+      <DependentUpon>UserManagement.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\UserManagement.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserManagement.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\UserManagement.xss">
+      <DependentUpon>UserManagement.xsd</DependentUpon>
+    </None>
+    <None Include="UserMgt\DAL\UserMgt.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>UserMgt.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\VT.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>VT.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\XMLSchema1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DC\BLL\FieldsVisibilityBAL.cs.exclude" />
+    <None Include="DC\DAL\DC.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DC.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\GoodsReceipt.xsc">
+      <DependentUpon>GoodsReceipt.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\GoodsReceipt.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GoodsReceipt.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\GoodsReceipt.xss">
+      <DependentUpon>GoodsReceipt.xsd</DependentUpon>
+    </None>
+    <None Include="DeffinityChatDataClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DeffinityChatDataClasses.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="HealthCheck\DAL\HealthCheckMgt.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>HealthCheckMgt.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.3.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.3.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DC\BLL\TextFile.txt" />
+    <Content Include="DC\DAL\TextFile.txt" />
+    <Content Include="DC\services\TextFile.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DC\DAL\DC.dbml.layout">
+      <DependentUpon>DC.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DAL\AssetsToSoftware.dbml.layout">
+      <DependentUpon>AssetsToSoftware.dbml</DependentUpon>
+    </None>
+    <None Include="DAL\Incident.dbml.layout">
+      <DependentUpon>Incident.dbml</DependentUpon>
+    </None>
+    <None Include="DAL\Location.dbml.layout">
+      <DependentUpon>Location.dbml</DependentUpon>
+    </None>
+    <None Include="DAL\Programme.dbml.layout">
+      <DependentUpon>Programme.dbml</DependentUpon>
+    </None>
+    <None Include="DAL\PurchaseOrderMgt.dbml.layout">
+      <DependentUpon>PurchaseOrderMgt.dbml</DependentUpon>
+    </None>
+    <None Include="DAL\RFI.dbml.layout">
+      <DependentUpon>RFI.dbml</DependentUpon>
+    </None>
+    <None Include="DAL\TimesheetMgt.dbml.layout">
+      <DependentUpon>TimesheetMgt.dbml</DependentUpon>
+    </None>
+    <None Include="DAL\VT.dbml.layout">
+      <DependentUpon>VT.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DeffinityChatDataClasses.dbml.layout">
+      <DependentUpon>DeffinityChatDataClasses.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HealthCheck\DAL\HealthCheckMgt.dbml.layout">
+      <DependentUpon>HealthCheckMgt.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PortfolioMgt\DAL\Portfolio.dbml.layout">
+      <DependentUpon>Portfolio.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DAL\FinanceModule.dbml.layout">
+      <DependentUpon>FinanceModule.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UserMgt\DAL\UserMgt.dbml.layout">
+      <DependentUpon>UserMgt.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TimesheetMgt\DAL\TimeSheet.dbml.layout">
+      <DependentUpon>TimeSheet.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DAL\Inventory.dbml.layout">
+      <DependentUpon>Inventory.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DAL\CustomerContractdb.dbml.layout">
+      <DependentUpon>CustomerContractdb.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DAL\projectTask.dbml.layout">
+      <DependentUpon>projectTask.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

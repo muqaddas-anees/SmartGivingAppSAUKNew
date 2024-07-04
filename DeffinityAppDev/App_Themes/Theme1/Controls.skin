@@ -1,0 +1,428 @@
+<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+
+--%>
+<asp:RequiredFieldValidator runat="server" CssClass="fv-plugins-message-container invalid-feedback"></asp:RequiredFieldValidator>
+<asp:RegularExpressionValidator runat="server" CssClass="fv-plugins-message-container invalid-feedback"></asp:RegularExpressionValidator>
+<asp:CompareValidator runat="server" CssClass="fv-plugins-message-container invalid-feedback"></asp:CompareValidator>
+<asp:RangeValidator runat="server" CssClass="fv-plugins-message-container invalid-feedback"></asp:RangeValidator>
+
+ <asp:ValidationSummary runat="server" CssClass="fv-plugins-message-container invalid-feedback" DisplayMode="List"  />
+  
+  <asp:GridView  runat="server"    
+  AutoGenerateColumns="False" ShowFooter="True" CssClass="table table-striped gy-7 gs-7 dataTable" FooterStyle-CssClass="footer_css" PagerStyle-CssClass="pager_css" >
+  <HeaderStyle CssClass="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200" Font-Bold="False"  />    
+ 
+  </asp:GridView> 
+
+<asp:GridView  runat="server"  SkinID="Member_Grid"    
+  AutoGenerateColumns="False" ShowFooter="True" CssClass="table table-small-font table-bordered table-striped table-hover members-table middle-align dataTable" FooterStyle-CssClass="footer_css" PagerStyle-CssClass="pager_css" >
+  <HeaderStyle CssClass="text-center sorting_asc" Font-Bold="False" />    
+  <RowStyle  CssClass="even" />
+  <AlternatingRowStyle CssClass="odd" />
+  </asp:GridView> 
+
+ <asp:GridView  runat="server" SkinID="Custom_Grid"  
+  AutoGenerateColumns="True" ShowFooter="True" CssClass="table table-small-font table-bordered table-striped dataTable" FooterStyle-CssClass="footer_css" PagerStyle-CssClass="pager_css" >
+  <HeaderStyle CssClass="text-center sorting_asc" Font-Bold="False" />    
+  <RowStyle  CssClass="even" />
+  <AlternatingRowStyle CssClass="odd" />
+  </asp:GridView> 
+
+ <asp:GridView  runat="server" SkinID="gv_nested" 
+  AutoGenerateColumns="False" ShowFooter="True" CssClass="table table-small-font table-bordered table-striped dataTable nestedtable" >
+  <HeaderStyle CssClass="text-center sorting_asc" Font-Bold="False" />    
+  <RowStyle  CssClass="even" />
+  <AlternatingRowStyle CssClass="odd" />
+  </asp:GridView> 
+<asp:GridView SkinID="gv_responsive" runat="server"    
+  AutoGenerateColumns="False" ShowFooter="True" CssClass="table table-small-font table-bordered table-striped dataTable responsive" >
+  <HeaderStyle CssClass="text-center sorting_asc" Font-Bold="False" />    
+  <RowStyle  CssClass="even" />
+  <AlternatingRowStyle CssClass="odd" />
+  </asp:GridView> 
+
+ <asp:GridView SkinID="gv_editable" runat="server"    
+  AutoGenerateColumns="False" ShowFooter="True" CssClass="table table-bordered table-striped editable" >
+  <HeaderStyle CssClass="text-center sorting_asc" Font-Bold="False" />    
+  <RowStyle  CssClass="even" />
+  <AlternatingRowStyle CssClass="odd" />
+  </asp:GridView> 
+
+  
+ <asp:GridView SkinID="gvCustomer" runat="server" GridLines="None"   
+  AutoGenerateColumns="False" HorizontalAlign="Left" CellPadding="0" CellSpacing="1" ShowFooter="True" CssClass="sec_table">
+  <HeaderStyle CssClass="table_head" Font-Bold="False" Height="30px" />    
+  <RowStyle  CssClass="even_row" />
+  <AlternatingRowStyle CssClass="odd_row" />
+  </asp:GridView>
+  
+
+<asp:GridView  runat="server"  SkinID="NewGrid" GridLines="None"   
+  AutoGenerateColumns="False" HorizontalAlign="Left" CellPadding="0" CellSpacing="1" ShowFooter="True" CssClass="sec_table">
+  <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" CssClass = "Freezing" />
+  <RowStyle  CssClass="even_row" />
+  <AlternatingRowStyle CssClass="odd_row" />  
+  </asp:GridView> 
+  
+  <asp:DataList SkinID="FilesList" runat="server"  BorderStyle="None" CellPadding="0" CellSpacing="0" BorderWidth="0" >
+  <ItemStyle/>            
+  </asp:DataList>
+    
+  <asp:DataList SkinID="ProgrammeList" runat="server"  CellPadding="0" CellSpacing="1" CssClass="sec_table">
+    <ItemStyle CssClass="even_row"/>      
+    <AlternatingItemStyle CssClass="odd_row" />    
+    </asp:DataList>
+    
+  <asp:DataList runat="server" CellPadding="2" GridLines="Horizontal">
+    <ItemStyle CssClass="even_row"/>      
+    <AlternatingItemStyle CssClass="odd_row" /> 
+    </asp:DataList>    
+   
+   <asp:DataList runat="server" CellPadding="4" ForeColor="#333333" GridLines="Horizontal"  CssClass="sec_table"  SkinID="ListKpi">
+     <ItemStyle CssClass="even_row"/>      
+    <AlternatingItemStyle CssClass="odd_row" /> 
+    </asp:DataList> 
+        
+  <asp:GridView SkinID="gvDefault" runat="server" CellPadding="4" ForeColor="#333333" GridLines="Horizontal">
+    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+    <EditRowStyle BackColor="#999999" />
+    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+  </asp:GridView> 
+
+  <asp:TextBox SkinID="Price" runat="server" CssClass ="form-control form-control-lg " style="text-align:right"></asp:TextBox>  
+<asp:TextBox SkinID="Price_50px" runat="server" CssClass ="form-control form-control-lg " style="text-align:right;width:50px"></asp:TextBox>  
+<asp:TextBox SkinID="Price_60px" runat="server" CssClass ="form-control form-control-lg " style="text-align:right;width:60px"></asp:TextBox>  
+<asp:TextBox SkinID="Price_75px" runat="server" CssClass ="form-control form-control-lg " style="text-align:right;width:75px"></asp:TextBox>  
+<asp:TextBox SkinID="Price_100px" runat="server" CssClass ="form-control form-control-lg " style="text-align:right;width:100px"></asp:TextBox>  
+<asp:TextBox SkinID="Price_125px" runat="server" CssClass ="form-control form-control-lg " style="text-align:right;width:125px"></asp:TextBox>  
+<asp:TextBox SkinID="Price_150px" runat="server" CssClass ="form-control form-control-lg " style="text-align:right;width:150px"></asp:TextBox> 
+<asp:TextBox SkinID="Price_175px" runat="server" CssClass ="form-control form-control-lg " style="text-align:right;width:175px"></asp:TextBox>  
+<asp:TextBox SkinID="Price_200px" runat="server" CssClass ="form-control form-control-lg " style="text-align:right;width:200px"></asp:TextBox> 
+  <asp:TextBox runat="server" CssClass ="form-control form-control-lg " Width="100%"></asp:TextBox>
+  <asp:TextBox SkinID="txt_90" runat="server" CssClass ="form-control form-control-lg " Width="90%"></asp:TextBox>
+  <asp:TextBox SkinID="txt_80" runat="server" CssClass ="form-control form-control-lg " Width="80%"></asp:TextBox>
+  <asp:TextBox SkinID="txt_70" runat="server" CssClass ="form-control form-control-lg " Width="70%"></asp:TextBox>
+  <asp:TextBox SkinID="txt_60" runat="server" CssClass ="form-control form-control-lg " Width="60%"></asp:TextBox>
+  <asp:TextBox SkinID="txt_50" runat="server" CssClass ="form-control form-control-lg " Width="50%"></asp:TextBox>
+  <asp:TextBox SkinID="txt_40" runat="server" CssClass ="form-control form-control-lg " Width="40%"></asp:TextBox>
+  <asp:TextBox SkinID="txt_30" runat="server" CssClass ="form-control form-control-lg " Width="30%"></asp:TextBox>
+  <asp:TextBox SkinID="txt_20" runat="server" CssClass ="form-control form-control-lg " Width="20%"></asp:TextBox>
+
+ <asp:TextBox SkinID="txt_250px" runat="server" CssClass ="form-control form-control-lg " Width="250px" style="width:250px"></asp:TextBox>
+ <asp:TextBox SkinID="txt_225px" runat="server" CssClass ="form-control form-control-lg " Width="225px" style="width:225px"></asp:TextBox>
+ <asp:TextBox SkinID="txt_200px" runat="server" CssClass ="form-control form-control-lg " Width="200px" style="width:200px"></asp:TextBox>
+ <asp:TextBox SkinID="txt_175px" runat="server" CssClass ="form-control form-control-lg " Width="175px" style="width:175px"></asp:TextBox>
+ <asp:TextBox SkinID="txt_150px" runat="server" CssClass ="form-control form-control-lg " Width="150px" style="width:150px"></asp:TextBox>
+ <asp:TextBox SkinID="txt_125px" runat="server" CssClass ="form-control form-control-lg " Width="125px" style="width:125px"></asp:TextBox>
+ <asp:TextBox SkinID="txt_100px" runat="server" CssClass ="form-control form-control-lg " Width="100px" style="width:100px"></asp:TextBox>
+ <asp:TextBox SkinID="txt_75px" runat="server" CssClass ="form-control form-control-lg " Width="75px" style="width:75px"></asp:TextBox>
+<asp:TextBox SkinID="txt_60px" runat="server" CssClass ="form-control form-control-lg " Width="60px" style="width:60px"></asp:TextBox>
+ <asp:TextBox SkinID="txt_50px" runat="server" CssClass ="form-control form-control-lg " Width="50px" style="width:50px"></asp:TextBox>
+ 
+  <asp:TextBox SkinID="txtCalender" runat="server" CssClass="form-control form-control-lg "  Width="125px"></asp:TextBox>  
+  <asp:TextBox SkinID="txtMulti" CssClass="form-control form-control-lg " runat="server" Width="100%" height="50px" />  
+  <asp:TextBox SkinID="txtMulti_80" CssClass="form-control form-control-lg " runat="server" Width="100%" height="80px" />  
+<asp:TextBox SkinID="txtMulti_100" CssClass="form-control form-control-lg " runat="server" Width="100%" height="100px" />  
+<asp:TextBox SkinID="txtMulti_150" CssClass="form-control form-control-lg " runat="server" Width="100%" height="150px" />  
+  <asp:TextBox SkinID="txtEmail" CssClass="form-control form-control-lg " runat="server" Width="250px" /> 
+ <asp:TextBox SkinID="DateNew" CssClass="form-control form-control-lg  input_date_new" runat="server" Width="150px" /> 
+<asp:TextBox SkinID="TimeNew" CssClass="form-control form-control-lg  input_time_new" runat="server" Width="100px" /> 
+  <asp:TextBox SkinID="Date" CssClass="form-control form-control-lg  input_date" runat="server" Width="150px" /> 
+  <asp:TextBox SkinID="Time" CssClass="form-control form-control-lg  input_time" runat="server" Width="100px" />  
+  <asp:TextBox SkinID="txtBootCalender" CssClass="form-control form-control-lg  datepicker" runat="server" Width="50%" />   
+
+  <asp:DropDownList runat="server" data-toggle="dropdown" CssClass="form-select form-select-lg fw-bold" Width="100%"></asp:DropDownList>  
+  <asp:DropDownList SkinID="ddl_90" runat="server" data-toggle="dropdown" CssClass="form-select form-select-lg fw-bold" Width="90%"></asp:DropDownList> 
+  <asp:DropDownList SkinID="ddl_80" runat="server" data-toggle="dropdown" CssClass="form-select form-select-lg fw-bold" Width="80%"></asp:DropDownList> 
+  <asp:DropDownList SkinID="ddl_70" runat="server" data-toggle="dropdown" CssClass="form-select form-select-lg fw-bold" Width="70%"></asp:DropDownList> 
+  <asp:DropDownList SkinID="ddl_60" runat="server" data-toggle="dropdown" CssClass="form-select form-select-lg fw-bold" Width="60%"></asp:DropDownList> 
+  <asp:DropDownList SkinID="ddl_50" runat="server" data-toggle="dropdown" CssClass="form-select form-select-lg fw-bold" Width="50%"></asp:DropDownList> 
+  <asp:DropDownList SkinID="ddl_40" runat="server" data-toggle="dropdown" CssClass="form-select form-select-lg fw-bold" Width="40%"></asp:DropDownList> 
+  <asp:DropDownList SkinID="ddl_30" runat="server" data-toggle="dropdown" CssClass="form-select form-select-lg fw-bold" Width="30%"></asp:DropDownList> 
+  <asp:DropDownList SkinID="ddl_20" runat="server" data-toggle="dropdown" CssClass="form-select form-select-lg fw-bold" Width="20%"></asp:DropDownList>  
+
+ <asp:DropDownList SkinID="ddl_250px" runat="server" CssClass ="form-select form-select-lg fw-bold" Width="250px" style="width:250px"></asp:DropDownList>
+ <asp:DropDownList SkinID="ddl_225px" runat="server" CssClass ="form-select form-select-lg fw-bold" Width="225px" style="width:225px"></asp:DropDownList>
+ <asp:DropDownList SkinID="ddl_200px" runat="server" CssClass ="form-select form-select-lg fw-bold" Width="200px" style="width:200px"></asp:DropDownList>
+ <asp:DropDownList SkinID="ddl_175px" runat="server" CssClass ="form-select form-select-lg fw-bold" Width="175px" style="width:175px"></asp:DropDownList>
+ <asp:DropDownList SkinID="ddl_150px" runat="server" CssClass ="form-select form-select-lg fw-bold" Width="150px" style="width:150px"></asp:DropDownList>
+ <asp:DropDownList SkinID="ddl_125px" runat="server" CssClass ="form-control" Width="125px" style="width:125px"></asp:DropDownList>
+ <asp:DropDownList SkinID="ddl_100px" runat="server" CssClass ="form-select form-select-lg fw-bold" Width="100px" style="width:100px"></asp:DropDownList>
+ <asp:DropDownList SkinID="ddl_75px" runat="server" CssClass ="form-select form-select-lg fw-bold" Width="75px" style="width:75px"></asp:DropDownList>
+ <asp:DropDownList SkinID="ddl_50px" runat="server" CssClass ="form-select form-select-lg fw-bold" Width="50px" style="width:50px"></asp:DropDownList>
+
+<asp:Button class="btn btn-primary" runat="server"  /> 
+<asp:Button class="btn btn-primary" SkinID="btnDefault"  runat="server"  /> 
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnSubmit" Text="Submit" /> 
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnCancel" Text="Cancel"  /> 
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnApply" Text="Apply" /> 
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnAddNew" Text="Add New"  /> 
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnAdd" Text="Add"  /> 
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnUpload" Text="Upload"  />
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnSearch" Text="Search"  />
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnUpdate" Text="Update"  />
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnEdit" Text="Edit"  />
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnNext" Text="Next"  />
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnSave" Text="Save"  />
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnClose" Text="Close"  />
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnNoText" Text="No"  />
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnClear" Text="Clear"  />
+<asp:Button class="btn btn-orange" runat="server" SkinID="btnCopytoAllCustomers" Text="Copy to All Customers"  />
+<asp:Button class="btn btn-primary" runat="server" SkinID="btnView" Text="View"  />
+
+<asp:Button class="btn btn-orange" runat="server" SkinID="btnOrange"  />
+<asp:LinkButton SkinID="btnSubmit" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><span>Submit</span></asp:LinkButton>
+<asp:LinkButton SkinID="btnApply" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span>Apply</span></asp:LinkButton>
+<asp:LinkButton SkinID="btnUpdate" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span>Update</span></asp:LinkButton>
+<asp:LinkButton SkinID="btnAdd" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><span>Add</span></asp:LinkButton>
+<asp:LinkButton SkinID="btnAddNew" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span>Add New</span></asp:LinkButton>
+<asp:LinkButton SkinID="btnEdit" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><span>Edit</span></asp:LinkButton>
+<asp:LinkButton SkinID="btnCancel" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><span>Cancel</span></asp:LinkButton>
+<asp:LinkButton SkinID="btnSearch" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span>Search</span></asp:LinkButton>
+<asp:LinkButton SkinID="btnSave" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span> Save</span></span></asp:LinkButton>
+<asp:LinkButton SkinID="btnCreateNewTicket" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span> Create New Job</span></span></asp:LinkButton>
+<asp:LinkButton SkinID="btnRescheduleVisit" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span> Reschedule Visit</span></span></asp:LinkButton>
+<asp:LinkButton SkinID="btnLogNewTicket" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span> Log New Job</span></span></asp:LinkButton>
+<asp:LinkButton SkinID="btnExporttoExcel" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span> Export to Excel</span></span></asp:LinkButton>
+<asp:LinkButton SkinID="btnExporttoPDF" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span> Export to PDF</span></span></asp:LinkButton>
+
+<asp:LinkButton SkinID="BtnLinkButtonSubmit" runat="server" class="btn btn-primary" data-toggle="tooltip" title="" data-original-title="" Text=""><span>Submit</span></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkButtonAdd" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><i class='fa-plus-square-o'></i><span>Add</span></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkButtonAddNew" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><i class='fa-plus-square-o'></i><span>Add New</span></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkButtonEdit" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><i class='fas fa-pencil-alt'></i><span>Edit</span></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkButtonCancel" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><i class='fas fa-times'></i><span>Cancel</span></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkButtonDelete" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><i class='far fa-trash-alt'></i><span>Delete</span></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkButtonPrint" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><i class='fas fa-print'></i><span>Print</span></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkButtonReport" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><i class='fas fa-chart-pie'></i><span>Report</span></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkButtonSearch" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><i class='fas fa-search'></i><span>Search</span></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkButtonSave" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><i class='fas fa-save'></i><span> Save</span></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkButtonUpload" runat="server" class="btn btn-primary btn-icon btn-icon-standalone" data-toggle="tooltip" title="" data-original-title="" Text=""><i class="fas fa-upload"></i><span>Upload</span></asp:LinkButton>
+
+
+<asp:LinkButton SkinID="BtnLink" runat="server" class="btn btn-sm btn-primary" ></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkButton" runat="server" class="btn btn-link" ></asp:LinkButton> 
+<asp:LinkButton SkinID="LinkGreen_circle" runat="server" style="color:green;"><i class="far fa-circle"></i></asp:LinkButton>
+<asp:LinkButton SkinID="LinkRed_circle" runat="server" style="color:red;"><i class="far fa-circle"></i></asp:LinkButton>
+<asp:LinkButton SkinID="LinkAmber_circle" runat="server" style="color:yellow;"><i class="far fa-circle"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkSave" runat="server" data-toggle="tooltip" title="" data-original-title="Saving"><i class="far fa-save"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkBack" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Back"><i class="fa fa-arrow-left"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkBackText" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Back"><i class="fa fa-arrow-left"></i>Back</asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkNext" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Next" ><i class="fa fa-arrow-right"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkThumbUp" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Thumbs up" style="color:green;"><i class="far fa-thumbs-up"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkThumbDown" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Thumbs down" style="color:grey;"><i class="fa el-thumbs-down"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkDelete" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fas fa-trash-alt"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkUnDelete" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fas fa-trash-alt"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkCancel" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Cancel"><i class="fa fa-times"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkEdit" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkUpdate" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Update"><i class="fas fa-check"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkChange" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Change"><i class="fa fa-retweet"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkAdd" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Add"><i class="fas fa-plus"></i></asp:LinkButton> 
+<asp:LinkButton SkinID="BtnLinkCalender" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Calender"><i class="fa fa-calendar"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkMore" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="More"><i class="fa fa-retweet"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkBarcode" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Barcode"><i class="fa fa-barcode"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkApply" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Apply"><i class="fa fa-arrow-up"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkPrint" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Print"><i class="fas fa-print"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkBin" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fas fa-trash-alt-o"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkSearch" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Search"><i class="fa fa-search"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkHistory" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="History"><i class="fa fa-history"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkCheckIn" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Check in"><i class="fa fa-sign-in"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkCheckOut" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Check Out"><i class="fa fa-sign-out"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkHome" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Home"><i class="fa fa-home"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkPermission" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Permission"><i class="fas fa-lock"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkDownload" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Download"><i class="fa fa-download"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkUpload" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Upload"><i class="fa fa-upload"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkClose" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Close"><i class="fa fa-times"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkCloseNoCss" runat="server"  data-toggle="tooltip" title="" data-original-title=""><i class="fa fa-times"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkList" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="List"><i class="fa fa-list-ul"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkIndent" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="In Indent"><i class="fa fa-indent"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkOutIndent" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Out Indent"><i class="fa fa-outdent"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkLogin" runat="server" class="btn btn-lg btn-primary w-100 mb-5" data-toggle="tooltip" title="" data-original-title="" Text="">Login</asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkDrag" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Move" Text=""><i class="fa fa-arrows"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkFolder" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Folder" Text=""><i class="far fa-folder"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkFolderOpen" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Folder" Text=""><i class="far fa-folder-open"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkFile" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="File" Text=""><i class="fas fa-file"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkGantt" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Gantt" Text=""><i class="el-tasks"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkView" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="View" Text=""><i class="el-eye"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkOk" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Ok" Text=""><i class="el-ok"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkConfig" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Config" Text=""><i class="fa fa-cog"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkCopy" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Copy" Text=""><i class="far fa-copy"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkCut" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Cut" Text=""><i class="fas fa-cut"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkPaste" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Paste" Text=""><i class="fas fa-paste"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkLock" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Check in" Text=""><i class="fas fa-lock"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkUnlock" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Check out" Text=""><i class="fa fa-unlock-alt"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkTransferItems" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Transfer Items" Text=""><i class="fa-plane"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkUp" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Up" Text=""><i class="fa fa-arrow-up"></i></asp:LinkButton>  
+<asp:LinkButton SkinID="BtnLinkDown" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Down" Text=""><i class="fa fa-arrow-down"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkExcel" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Excel" Text=""><i class="fa-file-excel-o"></i></asp:LinkButton>  
+<asp:LinkButton SkinID="BtnLinkPdf" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Pdf" Text=""><i class="fa-file-pdf-o"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkUpload1" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Upload" Text=""><i class="fa-upload"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkException" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="View Exception Reports" Text=""><i class="fa-exclamation-circle"></i></asp:LinkButton>
+<asp:LinkButton SkinID="BtnLinkSUMMARYREPORT" runat="server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Summary Report" Text=""><i class="fas fa-file-text-o"></i></asp:LinkButton>
+  <asp:Label runat="server" class="control-label"></asp:Label>
+ <asp:Label SkinID="Mail" runat="server" Text=""><i class="linecons-mail"></i></asp:Label>
+  <asp:Label SkinID="Info" runat="server" Text=""><i class="fas fa-info"></i></asp:Label>
+  <asp:Label SkinID="Help" runat="server" Text=""><i class="fas fa-info"></i></asp:Label>
+  <asp:Label SkinID="Calender" runat="server" Text="" style="width: 30px;padding-top: 15px;"><i class="fa fa-calendar"></i></asp:Label>
+  <asp:Label SkinID="Loading" runat="server" Text=""><i class="fa fa-spinner"></i></asp:Label>
+  <asp:Label SkinID="Green_circle" runat="server" style="color:green;"><i class="fa fa-circle"></i></asp:Label>
+  <asp:Label SkinID="Red_circle" runat="server" style="color:red;"><i class="fa fa-circle"></i></asp:Label>
+  <asp:Label SkinID="Amber_circle" runat="server" style="color:yellow;"><i class="fa fa-circle"></i></asp:Label>
+  <asp:Label SkinID="folder" runat="server" ><i class="far fa-folder"></i></asp:Label>
+  <asp:Label SkinID="file" runat="server" ><i class="fas fa-file"></i></asp:Label>
+<asp:Label SkinID="Copy" runat="server" ><i class="far fa-copy"></i></asp:Label>
+<asp:Label SkinID="Cut" runat="server" ><i class="fas fa-cut"></i></asp:Label>
+<asp:Label SkinID="Paste" runat="server" ><i class="fas fa-paste"></i></asp:Label>
+<asp:Label SkinID="Lock" runat="server" ><i class="fas fa-lock"></i></asp:Label>
+<asp:Label SkinID="Unlock" runat="server" ><i class="fa fa-unlock-alt"></i></asp:Label>
+<asp:Label SkinID="Gantt" runat="server" ><i class="el-tasks"></i></asp:Label>
+<asp:Label SkinID="Delete" runat="server" ><i class="fas fa-trash-alt"></i></asp:Label>
+<asp:Label SkinID="Add" runat="server" ><i class="fas fa-plus"></i></asp:Label>
+<asp:Label SkinID="Phone" runat="server" ><i class="fa fa-phone-square"></i></asp:Label>
+<asp:Label SkinID="FolderOpen" runat="server" ><i class="far fa-folder-open-o"></i></asp:Label>
+<asp:Label SkinID="RedBackcolor" runat="server" ForeColor="White"  CssClass="text-light-danger bg-danger"></asp:Label>
+<asp:Label SkinID="GreenBackcolor" runat="server" ForeColor="White"  CssClass="text-light-success bg-success"></asp:Label>
+<asp:Label SkinID="RedBackcolorNew" runat="server" ForeColor="White"  CssClass="text-light-danger bg-danger"></asp:Label>
+<asp:Label SkinID="GreenBackcolorNew" runat="server" ForeColor="White"  CssClass="text-light-success bg-success"></asp:Label>
+
+
+
+  <asp:HyperLink SkinID="Linkutilisation" runat="Server" Text="Utilisation" ><i class="fa fa-bar-chart"></i> </asp:HyperLink>
+  <asp:HyperLink SkinID="Button" runat="Server" class="btn btn-primary" ></asp:HyperLink>
+  <asp:HyperLink SkinID="ButtonOrange" runat="Server" class="btn btn-orange" ></asp:HyperLink>
+  <asp:HyperLink SkinID="BackToRisk" runat="Server" class="" Text="Back to Risk"><i class="fa fa-arrow-left"></i> Back to Risks</asp:HyperLink>
+<asp:HyperLink SkinID="btnLogNewTicket" runat="server" class="btn btn-orange btn-icon btn-icon-standalone"><i class='fa-headphones'></i><span> Log New Job</span></span></asp:HyperLink>
+  <asp:HyperLink SkinID="BackToPipeline" runat="Server" class="" Text="Back to Pipeline" NavigateUrl="~/WF/Projects/ProjectPipeline.aspx?Status=2"><i class="fa fa-arrow-left"></i> Back to Pipeline</asp:HyperLink>
+  <asp:HyperLink SkinID="BackLink" runat="Server" class=""><i class="fa fa-arrow-left"></i></asp:HyperLink>
+  <asp:HyperLink SkinID="LinkThumbsUpGray" runat="Server" style="color:grey;" Text="" ><i class="far fa-thumbs-up"></i></asp:HyperLink>
+  <asp:HyperLink SkinID="LinkThumbsUpGreen" runat="Server" style="color:green;" Text="" ><i class="far fa-thumbs-up"></i></asp:HyperLink>
+  <asp:HyperLink SkinID="LinkThumbsUpYellow" runat="Server" style="color:yellow;" Text="" ><i class="far fa-thumbs-up"></i></asp:HyperLink>
+  <asp:HyperLink SkinID="LinkSaving" runat="Server"><i class="far fa-save"></i></asp:HyperLink>
+  <asp:HyperLink SkinID="EditButton" runat="Server" class="btn btn-sm btn-primary" ><i class="fas fa-pencil-alt"></i></asp:HyperLink>
+ <asp:HyperLink SkinID="Editicon" runat="Server" class="btn btn-alt btn-sm btn-default" ><i class="fas fa-pencil-alt"></i></asp:HyperLink>
+  <asp:HyperLink SkinID="ViewCart" Text="View Cart" runat="Server" class="btn btn-sm btn-primary" ></asp:HyperLink>
+  <asp:HyperLink SkinID="LinkPrint" Text="Print" runat="Server" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="Print"><i class="fas fa-print"></i></asp:HyperLink>
+  
+  <asp:HyperLink SkinID="ImgCreateProject"  runat="server" class="btn btn-primary"  Text="Create a New Project" />
+  <asp:HyperLink SkinID="ImgViewCart"  runat="server" class="btn btn-primary" Text="View Cart"/>
+  <asp:HyperLink SkinID="ImgSaveOrder"  runat="server" class="btn btn-primary" Text="Save Order"/>
+ 
+ <ajaxToolkit:CalendarExtender Format="dd/MM/yyyy" runat="server" CssClass="MyCalendar"  FirstDayOfWeek="Monday" >
+                                    </ajaxToolkit:CalendarExtender>
+
+  <asp:Image SkinID="Logo" runat="server" ImageUrl="~/media/Cloud_logo.png" />
+
+<%--
+  <asp:Image SkinID="Calender" runat="server" ImageAlign="AbsMiddle" style="cursor:hand;" ImageUrl="~/media/icon_calender.png"  ToolTip="Pick a date" />  
+  <asp:Image SkinID="RagGreen" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/images/indcate_green.png"  ToolTip="GREEN" />  
+  <asp:Image SkinID="RagRed" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/images/indcate_red.png"  ToolTip="RED" />  
+  <asp:Image SkinID="RagAmber" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/images/indcate_yellow.png"  ToolTip="AMBER" />  
+  <asp:Image SkinID="Back" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/media/btn_back.gif" />    
+  <asp:Image SkinID="LookUp" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/media/btn_look_up.gif" />   
+  <asp:Image SkinID="Drag_Header" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/media/ico_drag_drop.png" />  
+  <asp:Image SkinID="Drag" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/media/ico_drop.png" />  
+  <asp:Image SkinID="Help" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/media/ico_info.gif" /> 
+  <asp:ImageButton SkinID="ImgPrint" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/media/btn_print.gif" />
+  <asp:ImageButton SkinID="ImgApprovalMail" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/media/btn_approval_mail.gif" /> 
+  <asp:ImageButton SkinID="ImgAddChange" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/media/btn_add_change.gif" /> 
+  <asp:ImageButton SkinID="ImgLookUp" runat="server" ImageAlign="AbsMiddle" ImageUrl="~/media/btn_look_up.gif" />  
+  <asp:ImageButton SkinID="ImgProcessOrder"  runat="server" ImageUrl="~/media/btn_process_order.gif"  />
+  <asp:ImageButton SkinID="ImgRequestQuote"  runat="server" ImageUrl="~/media/btn_req_quote.gif"  />
+  <asp:ImageButton SkinID="ImgGetReport"  runat="server" ImageUrl="~/media/btn_get_report.gif"  />
+  <asp:ImageButton SkinID="ImgFilter"  runat="server" ImageUrl="~/media/btn_filter.gif"  />
+  <asp:ImageButton SkinID="ImgLogin"  runat="server" ImageUrl="~/media/btn_login.gif"  />
+  <asp:ImageButton SkinID="ImgCopyProject"  runat="server" ImageUrl="~/media/btn_copy_project.gif"  />
+  <asp:ImageButton SkinID="ImgExportToExcel"  runat="server" ImageUrl="~/media/btn_exp_excel.gif"  />
+  
+  <asp:ImageButton SkinID="ImgCopy"  runat="server" ImageUrl="~/media/btn_copy.gif"  />
+  <asp:ImageButton SkinID="ImgDelCheckList"  runat="server" ImageUrl="~/media/btn_delete_checklist.gif"  />
+  <asp:ImageButton SkinID="ImgAddCheckList"  runat="server" ImageUrl="~/media/btn_add_new_checklist.gif"  />
+  <asp:ImageButton SkinID="ImgInActiveUser"  runat="server" ImageUrl="~/media/btn_show_inactive_user.gif"  />
+  <asp:ImageButton SkinID="ImgUserContacts"  runat="server" ImageUrl="~/media/btn_user_contacts.gif"  />
+  <asp:ImageButton SkinID="ImgAddNewUser"  runat="server" ImageUrl="~/media/btn_add_new_user.gif"  />
+  <asp:ImageButton SkinID="ImgActiveUser"  runat="server" ImageUrl="~/media/btn_show_active_users.gif"  />
+  <asp:ImageButton SkinID="ImgProjectHold"  runat="server" ImageUrl="~/media/btn_place_proj_hold.gif"  />
+  <asp:ImageButton SkinID="ImgProceedProject"  runat="server" ImageUrl="~/media/btn_proce_proj.gif"  />
+  <asp:ImageButton SkinID="ImgRistrict"  runat="server" ImageUrl="~/media/btn_restrict.gif"  />
+  <asp:ImageButton SkinID="ImgClose"  runat="server" ImageUrl="~/media/btn_close.gif"  />
+  <asp:ImageButton SkinID="ImgViewJournal"  runat="server" ImageUrl="~/media/btn_view_journal.gif"  />
+  <asp:ImageButton SkinID="ImgDecline"  runat="server" ImageUrl="~/media/btn_decline.gif"  />
+  <asp:ImageButton SkinID="ImgSaveQA"  runat="server" ImageUrl="~/media/btn_save_QA.gif"  />
+  <asp:ImageButton SkinID="ImgCreate"  runat="server" ImageUrl="~/media/btn_create.gif"  />
+  <asp:ImageButton SkinID="ImgUpdateStatus"  runat="server" ImageUrl="~/images/btn_update_status.gif"  />
+  <asp:ImageButton SkinID="ImgViewReport"  runat="server" ImageUrl="~/images/btn_view_report.gif"  />
+  <asp:ImageButton SkinID="ImgAddtoKB"  runat="server" ImageUrl="~/media/btn_ad_kb.gif"  />
+  <asp:ImageButton SkinID="ImgViewAll"  runat="server" ImageUrl="~/media/btn_view_all.gif"  />
+  <asp:ImageButton SkinID="ImgNewChangeControl"  runat="server" ImageUrl="~/media/btn_new_change_req.gif"  />
+  <asp:ImageButton SkinID="ImgAddtoCart"  runat="server" ImageUrl="~/media/btn_addto_cart.gif"  />
+  <asp:ImageButton SkinID="ImgNew"  runat="server" ImageUrl="~/media/btn_new.gif"  />
+  <asp:ImageButton SkinID="ImgCrateNewCustomer"  runat="server" ImageUrl="~/media/btn_create_new_customer.gif"  />
+  <asp:ImageButton SkinID="ImgSendApproval"  runat="server" ImageUrl="~/media/btn_send_approval.gif"  />
+  <asp:ImageButton SkinID="ImgSaveOrder"  runat="server" ImageUrl="~/media/btn_save_order.gif"  />
+  <asp:ImageButton SkinID="ImgAttach"  runat="server" ImageUrl="~/media/btn_attach.gif"  />
+  <asp:ImageButton SkinID="ImgNewCase"  runat="server" ImageUrl="~/media/btn_log_new_sr.gif"  />
+  <asp:ImageButton SkinID="ImgSubmitUpdate"  runat="server" ImageUrl="~/media/btn_subupdate.gif"  />
+  <asp:ImageButton SkinID="ImgRaiseInvoice"  runat="server" ImageUrl="~/media/btn_raise_invoice.gif"  />
+  <asp:ImageButton SkinID="ImgRaiseVariation"  runat="server" ImageUrl="~/media/btn_raise_new_variation.gif"  />
+  
+  <asp:ImageButton SkinID="ImgAssign"  runat="server" ImageUrl="~/media/btn_assign.gif"  />
+  <asp:ImageButton SkinID="ImgNext"  runat="server" ImageUrl="~/media/btn_next.gif"  />
+  <asp:ImageButton SkinID="ImgBack" runat="server" ImageUrl="~/media/btn_back.gif"  />
+  <asp:ImageButton SkinID="ImgFinished" runat="server" ImageUrl="~/media/btn_finished.gif"  />
+  <asp:ImageButton SkinID="ImgUpload" runat="server" ImageUrl="~/media/btn_upload.gif" />  
+  <asp:ImageButton SkinID="ImgCancel" ImageUrl="~/media/btn_cancel.gif" runat="server" />
+  <asp:ImageButton SkinID="ImgEdit" runat="server" ImageUrl="~/media/btn_edit.gif" />  
+  <asp:ImageButton SkinID="ImgSubmit" runat="server" ImageUrl="~/media/btn_submit.gif" />
+  <asp:ImageButton SkinID="ImgSearch" runat="server" ImageUrl="~/media/btn_search.gif" />
+  <asp:ImageButton SkinID="ImgUpdate" runat="server" ImageUrl="~/media/btn_update.gif" />
+  <asp:ImageButton SkinID="ImgAdd" runat="server" ImageUrl="~/media/btn_ad.gif" />
+  <asp:ImageButton SkinID="ImgAddNew" runat="server" ImageUrl="~/media/btn_add_new.gif" />
+  <asp:ImageButton SkinID="ImgApprove" runat="server" ImageUrl="~/media/btn_approve.gif" />
+  <asp:ImageButton SkinID="ImgReject" runat="server" ImageUrl="~/media/btn_reject.gif" />
+  <asp:ImageButton SkinID="ImgApply" runat="server" ImageUrl="~/media/btn_apply.gif" />
+  <asp:ImageButton SkinID="ImgClear" runat="server" ImageUrl="~/media/btn_clear.gif" />
+  <asp:ImageButton SkinID="ImgNewIncident"  runat="server" ImageUrl="~/media/btn_new_incident.gif"  />
+  <asp:ImageButton SkinID="ImgNewRequest"  runat="server" ImageUrl="~/media/btn_new_rqst.gif"  />
+  <asp:ImageButton SkinID="ImgView"  runat="server" ImageUrl="~/media/btn_view.gif"  />  
+  
+  <asp:ImageButton SkinID="ImgSymCancel" runat="server" ImageUrl="~/media/btn_ico_cancel.gif" ToolTip="Cancel" />
+  <asp:ImageButton SkinID="ImgSymUpdate" runat="server" ImageUrl="~/media/btn_ico_upload.gif" ToolTip="Update/Insert" />
+  <asp:ImageButton SkinID="ImgSymSearch" runat="server" ImageUrl="~/media/ico_search.png" ToolTip="Search" />
+  <asp:ImageButton SkinID="ImgSymEdit" runat="server" ImageUrl="~/media/ico_edit.png" ToolTip="Edit" />
+  <asp:ImageButton SkinID="ImgSymAdd" runat="server" ImageUrl="~/media/btn_add.gif" ToolTip="Add" ImageAlign="AbsMiddle" />
+  <asp:ImageButton SkinID="ImgSymPlus" runat="server" ImageUrl="~/media/add.jpg" ToolTip="Add" ImageAlign="AbsMiddle" />
+  <asp:ImageButton SkinID="ImgSymDel" runat="server" ImageUrl="~/images/icon_delete.png" ImageAlign="AbsMiddle" ToolTip="Delete" />
+  <asp:ImageButton SkinID="ImgSymDelCross" runat="server" ImageUrl="~/media/delete.gif" ImageAlign="AbsMiddle" ToolTip="Delete Image" />
+  <asp:ImageButton SkinID="ImgAddPost" runat="server" ImageUrl="~/media/btn_ad_new_post.gif" />
+  <asp:ImageButton SkinID="ImgReply" runat="server" ImageUrl="~/media/blog_reply.gif" />
+  <asp:ImageButton SkinID="ImgContact" runat="server" ImageUrl="~/media/blog_contact.gif" />
+  <asp:ImageButton SkinID="ImgCreateMeeting" runat="server" ImageUrl="~/media/btn_create_meeting.gif" />
+  <asp:ImageButton SkinID="ImgSave" runat="server" ImageUrl="~/media/btn_save.gif" />
+  <asp:ImageButton SkinID="ImgSubmitForApproval" runat="server" ImageUrl="~/media/btn_send_approval.gif" />
+  <asp:ImageButton SkinID="ImgCancelRequest" runat="server" ImageUrl="~/media/btn_cancel_req.gif" />
+  
+  <asp:ImageButton SkinID="ImgSDview" runat="server" ImageUrl="~/media/btn_sd_view.gif" />
+  <asp:ImageButton SkinID="ImgSDnew" runat="server" ImageUrl="~/media/btn_sd_log_new_sr.gif" />
+ <asp:ImageButton SkinID="ImgAddtoQuote" runat="server" ImageUrl="~/media/btn_add_quote.png" />
+  <asp:ImageButton SkinID="ImgGenerateQuote" runat="server" ImageUrl="~/media/btn_genrate_quote.png" />
+  <asp:ImageButton SkinID="ImgSaveandEmail" runat="server" ImageUrl="~/media/btn_save_email_customer.png" />
+  <asp:ImageButton SkinID="ImgRetruntoSR" runat="server" ImageUrl="~/media/btn_rtn_serv_desk.gif" />
+  
+  
+   --%>

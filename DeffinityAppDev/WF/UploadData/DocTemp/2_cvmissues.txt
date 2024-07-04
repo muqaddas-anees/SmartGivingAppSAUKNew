@@ -1,0 +1,3 @@
+equipements:
+1.After click on add text boxes in readonly
+2.check Eq dropdown select index change

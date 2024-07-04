@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600" viewBox="0 0 800 600" version="1.1">
+	<!--Figure start-->
+	<g transform="rotate (0, 95, 99.5)">
+		<image x="70.96401515151516" y="83.3125" width="48.071969696969695" height="32.375" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/2_switch.svg" />
+	</g>
+	<text y="114.6875"  transform="rotate(0 95 ,120.6875)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="95" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 93, 158.5)">
+		<image x="68.96401515151516" y="142.3125" width="48.071969696969695" height="32.375" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/3_router.svg" />
+	</g>
+	<text y="173.6875"  transform="rotate(0 93 ,179.6875)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="93" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 298, 93.5)">
+		<image x="274" y="69.5" width="48" height="48" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/9_desktop.svg" />
+	</g>
+	<text y="116.5"  transform="rotate(0 298 ,122.5)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="298" dy="12">123-0012</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 362, 95.5)">
+		<image x="338" y="71.5" width="48" height="48" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/9_desktop.svg" />
+	</g>
+	<text y="118.5"  transform="rotate(0 362 ,124.5)"  font-family="Arial"  font-size="12"  fill=" #ff0000"  text-anchor="middle" >
+		<tspan x="362" dy="12">123-0013</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 425, 94.5)">
+		<image x="401" y="70.5" width="48" height="48" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/9_desktop.svg" />
+	</g>
+	<text y="117.5"  transform="rotate(0 425 ,123.5)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="425" dy="12">123-0014</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 231.59282, 93.8652)">
+		<image x="218.66999350372325" y="73.2585307221533" width="25.84565299255349" height="41.213338555693404" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/11_pda.svg" />
+	</g>
+	<text y="112.02694"  transform="rotate(0 231.59282 ,118.02694)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="231.59282" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+
+	<!--Figure start-->
+	<g transform="rotate (0, 506, 98.5)">
+		<image x="484.53205263157895" y="79.95949999999999" width="42.93589473684211" height="37.081" xlink:href="http://69.41.185.218/xactdemo/Whiteboard/lib/sets/network/12_phone.svg" />
+	</g>
+	<text y="116.0405"  transform="rotate(0 506 ,122.0405)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="506" dy="12">Text</tspan>
+	</text>
+	<!--Figure end-->
+<polyline points="516,161 117.375,158.5 " style="stroke:#000000;fill:none;stroke-width:1.005;stroke-linecap:butt;stroke-linejoin:miter;" />
+	<path d=" M117.375,158.5 L130.31808982896277,166.0813208400252 M117.375,158.5 L130.4121613561836,151.08161582466684"  style="stroke:#000000;fill:none;stroke-width:1.005;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<polygon points="316.6875,153.25 316.6875,153.25 316.6875,165.25 316.6875,165.25 "  style="stroke:none;fill:#FFFFFF;stroke-width:none;stroke-linecap:butt;stroke-linejoin:miter;"  />
+	<text y="153.25"  transform="rotate(0 316.6875 ,159.25)"  font-family="Arial"  font-size="12"  fill=" #000000"  text-anchor="middle" >
+		<tspan x="316.6875" dy="12"></tspan>
+	</text>
+</svg>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$("input[id^='ctrl']").css("background-color", "yellow");});
+
+            $("input[id^='ctrl']").each(function (index) {
+                alert( $(this).attr('id'));
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <input id="ctrl1" name="ctrl1" type="text" value="Chinese">
+    <input id="ctrl2" name="ctrl2" type="checkbox" value="English" checked="checked">
+    <select id="ctrl3" name="ctrl3" type="text" value="Germany">
+        <option>teste</option>
+        </select>
+    <input id="ctrl4" name="ctrl4" type="radio" value="Norwegian">
+
+    <p>This selector selects all input fields with the attribute name that starts with 'nation'.</p>
+
+</body>
+</html>

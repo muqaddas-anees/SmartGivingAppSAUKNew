@@ -1,0 +1,246 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DeffinityManager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DBstring" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DBCentral" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=DBCentral;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=DBCentral;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DBAssetsGenString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=69.41.185.219;Initial Catalog=Gendata;User ID=sa&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=69.41.185.219;Initial Catalog=Gendata;User ID=sa</Value>
+    </Setting>
+    <Setting Name="DeffinityEflairConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=.;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa1;Password=ems&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa1;Password=ems</Value>
+    </Setting>
+    <Setting Name="DeffinityConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=69.41.185.219;Initial Catalog=DeffinityEflair;User ID=sa&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=69.41.185.219;Initial Catalog=DeffinityEflair;User ID=sa</Value>
+    </Setting>
+    <Setting Name="XactDemo1DineshConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-62-PC\SQLSERVER2012;Initial Catalog=XactDemo1Dinesh;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-62-PC\SQLSERVER2012;Initial Catalog=XactDemo1Dinesh;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityEflairConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityEflairConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityEflairConnectionString3" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\MSSQL2012;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\MSSQL2012;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityEflairConnectionString4" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=DeffinityEflair;Persist Security Info=True;User ID=sa</Value>
+    </Setting>
+    <Setting Name="XactDemo1ConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactDemo1;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactDemo1;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="XactDemoDineshConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-62-PC\SQLSERVER2012;Initial Catalog=XactDemoDinesh;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-62-PC\SQLSERVER2012;Initial Catalog=XactDemoDinesh;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="XactDemoConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactDemo;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactDemo;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="XactNewConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="XactNewConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityLibertyConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=DeffinityLibertyDev;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=DeffinityLibertyDev;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityLibertyDevConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS;Initial Catalog=DeffinityLibertyDev;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS;Initial Catalog=DeffinityLibertyDev;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityLibertyDevConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityLibertyDev;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityLibertyDev;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityLibertyDevNewConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityLibertyDevNew;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityLibertyDevNew;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityFirstDataConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityFirstData;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityFirstData;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityFirstDataConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityFirstData;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityFirstData;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityFirstDataConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2014;Initial Catalog=DeffinityFirstData;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2014;Initial Catalog=DeffinityFirstData;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="DeffinityFirstDataDevConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2014;Initial Catalog=DeffinityFirstDataDev;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2014;Initial Catalog=DeffinityFirstDataDev;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="FaithUnionHubDBConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2014;Initial Catalog=FaithUnionHubDB;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2014;Initial Catalog=FaithUnionHubDB;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="FaithUnionHubDBConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2014;Initial Catalog=FaithUnionHubDB;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2014;Initial Catalog=FaithUnionHubDB;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="SmartGivingDBConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2014;Initial Catalog=SmartGivingDB;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2014;Initial Catalog=SmartGivingDB;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="SmartGivingDBConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2019;Initial Catalog=SmartGivingDB;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2019;Initial Catalog=SmartGivingDB;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="PlegitDBConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2019;Initial Catalog=PlegitDB;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2019;Initial Catalog=PlegitDB;Persist Security Info=True;User ID=sa;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="PlegitDBConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2019;Initial Catalog=PlegitDB;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=LAPTOP-R25MBTNK\SQLEXPRESS2019;Initial Catalog=PlegitDB;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="PlegitDBConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=MuQaddas\MSSQLSERVER01;Initial Catalog=PlegitDB;Persist Security Info=True;User ID=sada;Password=ems;TrustServerCertificate=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=MuQaddas\MSSQLSERVER01;Initial Catalog=PlegitDB;Persist Security Info=True;User ID=sada;Password=ems;TrustServerCertificate=True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

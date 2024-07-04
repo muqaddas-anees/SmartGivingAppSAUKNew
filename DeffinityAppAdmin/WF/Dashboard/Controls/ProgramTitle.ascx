@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="controls_ProgramTitle1" Codebehind="ProgramTitle.ascx.cs" %>
+<span class="space_r50 float_l">Programme: <b><%=sessionKeys.ProgrammeName %></b></span>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityEflair" EntityNamespace="TimesheetMgt.Entity" ContextNamespace="TimesheetMgt.DAL" Class="TimesheetMgtDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityEflair;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TimesheetEntryMethod" Member="TimesheetEntryMethods">
+    <Type Name="TimesheetEntryMethod">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntryMethod" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimesheetEntryCustom" Member="TimesheetEntryCustoms">
+    <Type Name="TimesheetEntryCustom">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TimesheetEntryTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FromTime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="ToTime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="Daytype" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_TimesheetEntryCustom" Member="v_TimesheetEntryCustoms">
+    <Type Name="v_TimesheetEntryCustom">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TimesheetEntryTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FromTime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="ToTime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="Daytype" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TimesheetEntryTypeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TimesheetCategoryName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="MainTab.master.cs" Inherits="DeffinityAppDev.MainTab" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+      <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="page_title" runat="server">
+     <asp:ContentPlaceHolder id="page_title" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="page_description" runat="server">
+     <asp:ContentPlaceHolder id="page_description" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+     <asp:ContentPlaceHolder id="Tabs" runat="server">
+    </asp:ContentPlaceHolder>
+
+     <asp:ContentPlaceHolder id="MainContent" runat="server">
+
+
+    </asp:ContentPlaceHolder>
+
+</asp:Content>
+<asp:Content ID="Content8" ContentPlaceHolderID="Scripts_Section" runat="server">
+    <asp:ContentPlaceHolder ID="Scripts_Section"  runat="server">
+</asp:ContentPlaceHolder>
+</asp:Content>

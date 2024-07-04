@@ -1,0 +1,1989 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PlegitDB" EntityNamespace="ProjectMgt.Entity" ContextNamespace="ProjectMgt.DAL" Class="projectTaskDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ProjectStatus" Member="ProjectStatus">
+    <Type Name="ProjectStatus">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectValuationItems" Member="ProjectValuationItems">
+    <Type Name="ProjectValuationItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectValuationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemDescription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PercentComplete" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClaimedTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Type" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectBenefit" Member="ProjectBenefits">
+    <Type Name="ProjectBenefit">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Projectreference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Target" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ReportCycle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BenfitID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectBenefitType" Member="ProjectBenefitTypes">
+    <Type Name="ProjectBenefitType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_GoodsReceiptBOM" Member="GoodsReceiptBOMDetails">
+    <Type Name="GoodsReceiptBOMDetails">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NextDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GoodsRecieptBOM" Member="GoodsRecieptBOMs">
+    <Type Name="GoodsRecieptBOM">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NextDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectsWatched" Member="ProjectsWatcheds">
+    <Type Name="ProjectsWatched">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SupplierQUOTE_ITEMS" Member="SupplierQUOTE_ITEMs">
+    <Type Name="SupplierQUOTE_ITEM">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="QuoteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemDesc" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Category" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Portfolio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectValuations" Member="ProjectValuations">
+    <Type Name="ProjectValuation">
+      <Column Name="ValuationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateRaised" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Value" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentRecieved" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RaisedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvoiceReference" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="InvoiceStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VATPercentage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ActualDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ForecastExpenditure" Member="ForecastExpenditures">
+    <Type Name="ForecastExpenditure">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="forecastspend" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="actualspend" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RemainderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TermType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemStatus" Member="ItemStatus">
+    <Type Name="ItemStatus">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectBenefitItems" Member="ProjectBenefitItems">
+    <Type Name="ProjectBenefitItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BenefitID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Period" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Achievement" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CumulativeTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TargetPeriod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Planned" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Actual" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MasterTemplate" Member="MasterTemplates">
+    <Type Name="MasterTemplate">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GroupOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Locked" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Active" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ChecklistType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectClass" Member="ProjectClasses">
+    <Type Name="ProjectClass">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClassName" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MasterTemplateItems" Member="MasterTemplateItems">
+    <Type Name="MasterTemplateItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PositionInList" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemDescription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="RAGRequired" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AmberDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RedDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MasterTemplateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GrossProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WorstCaseTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BestCaseTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MostLikelyCaseTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WCExtension" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BCExtension" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MCExtension" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IndentLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KPI_Category" Member="KPI_Categories">
+    <Type Name="KPI_Category">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="KpiCatogeryName" Type="System.String" DbType="VarChar(350)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KPI_LablesName" Member="KPI_LablesNames">
+    <Type Name="KPI_LablesName">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LabelsName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="KPICategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LabelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KPI_TargetValues" Member="KPI_TargetValues">
+    <Type Name="KPI_TargetValue">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="KPI_LabelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TargetValues" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TargetYears" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="pagetype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectClassByProjectReference" Member="ProjectClassByProjectReferences">
+    <Type Name="ProjectClassByProjectReference">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClassID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClassItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DateAudited" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AuditedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectGoal" Member="ProjectGoals">
+    <Type Name="ProjectGoal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResourceName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectGoalRole" Member="ProjectGoalRoles">
+    <Type Name="ProjectGoalRole">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerRagAlert" Member="CustomerRagAlerts">
+    <Type Name="CustomerRagAlert">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Issue" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProgrammeManagement_Recur" Member="ProgrammeManagement_Recurs">
+    <Type Name="ProgrammeManagement_Recur">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RecurWeekOn" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WeekDayName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndAfter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReCurrencePattern" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReCurrenceRange" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HealthCheckId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecurrEndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CompletedRecurr" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TempDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProgrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubprogrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectPlan_Recur" Member="ProjectPlan_Recurs">
+    <Type Name="ProjectPlan_Recur">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RecurWeekOn" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WeekDayName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndAfter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReCurrencePattern" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReCurrenceRange" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HealthCheckId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecurrEndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CompletedRecurr" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TempDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProgrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubprogrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectClassToChecklist" Member="ProjectClassToChecklists">
+    <Type Name="ProjectClassToChecklist">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MasterChecklistID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClassID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="assignedStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_ProjectClassToChecklist" Member="ProjectClassToChecklist_Details">
+    <Type Name="ProjectClassToChecklist_Details">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MasterChecklistID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClassID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="assignedStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MasterChecklistName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ClassName" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="assignedStatusName" Type="System.String" DbType="NVarChar(21)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AC2P_Risks" Member="AC2P_Risks">
+    <Type Name="AC2P_Risk">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AC2PID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectGroup" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RiskReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateRaised" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Co_ordinator" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MinimumCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MaximumCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RiskType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReportStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClosureCriteria" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Delay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DegreeofImpact" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NextReviewDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Probability" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Exposure" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AC2P_RiskItems" Member="AC2P_RiskItems">
+    <Type Name="AC2P_RiskItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AC2PID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RiskReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MitigationAction" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ActionDeadline" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="RagStaus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Resolution" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dependencies" Member="Dependencies">
+    <Type Name="Dependency">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="true" />
+      <Column Name="[From]" Member="From" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[To]" Member="To" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tasks" Member="Tasktbs">
+    <Type Name="Tasktb">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsLeaf" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PercentDone" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Priority" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Duration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="refid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="completionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="percentComplete" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedResources" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="[index]" Member="index" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="currID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RAG" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="QA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RAGRequired" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ProjectStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectEndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectTaskJournal" Member="ProjectTaskJournals">
+    <Type Name="ProjectTaskJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Projectreference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ActualStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ActualEndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ChangedbyUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PercentComplete" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_ShopItems_vendor" Member="ShopItems_vendorDetails">
+    <Type Name="ShopItems_vendorDetails">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Image" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Category" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceType" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="VID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VendorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BOM_TypesDUP" Member="BOM_TypesDUPs">
+    <Type Name="BOM_TypesDUP">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WorksheetNameDUP" Type="System.String" DbType="NVarChar(450)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="worksheetid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Resources" Member="Resources">
+    <Type Name="Resource">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_ProjectTaskAssignment" Member="ProjectTaskAssignments">
+    <Type Name="ProjectTaskAssignment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="true" />
+      <Column Name="TaskId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ResourceId" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="Units" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_ProjectTaskDependency" Member="ProjectTaskDeps">
+    <Type Name="ProjectTaskDep">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="true" />
+      <Column Name="Task_From" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Task_To" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[From]" Member="From" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[To]" Member="To" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Assignments" Member="Assignments">
+    <Type Name="Assignment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="true" />
+      <Column Name="TaskId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ResourceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Units" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AssignedContractorsToProjects" Member="AssignedContractorsToProjects">
+    <Type Name="AssignedContractorsToProject">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorsName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TemplateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OpsStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompletionDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateOpsApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="RAGScore" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Exceptions" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="Variations" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="DateRejected" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ReasonForRejection" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="QAApprovalDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="QARejectedDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="QARejectedReason" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PComments" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DateQACertificateIssued" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="P2PNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FinancialComments" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="AmberEmail" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="RedEmail" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="MilestoneDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CoolingOffPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Period" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HourlyRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HourlyRateType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxHoursAllocated" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="NotificationRemainingHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TotalHoursBooked" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Utilisation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="copyid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_ProjectTasks" Member="ProjectTasks">
+    <Type Name="ProjectTasks" Id="ID1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PercentDone" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Priority" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="parentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RAG" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="QA" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="RAGRequired" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ProjectStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectEndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ListPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Duration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DurationUnit" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="[index]" Member="index" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="depth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" CanBeNull="false" />
+      <Column Name="AssignedResources" Type="System.String" CanBeNull="false" />
+      <Column Name="AssignedResourceNames" Type="System.String" CanBeNull="false" />
+      <Column Name="CheckPointID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TeamIds" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectBOMSupRequisitions" Member="ProjectBOMSupRequisitions">
+    <Type Name="ProjectBOMSupRequisition">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DateRequired" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DeliveryAddress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Notes1" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Notes2" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="POID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QuoteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RAGSections" Member="RAGSections">
+    <Type Name="RAGSection">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RAGSectionstoPortfolio" Member="RAGSectionstoPortfolios">
+    <Type Name="RAGSectionstoPortfolio">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RAGDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RAGSectionName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ProgrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubProgrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RAGSectiontoProject" Member="RAGSectiontoProjects">
+    <Type Name="RAGSectiontoProject">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RAGSectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KeyIssue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RAGStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PlannedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LatestDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ActualDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProgrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectIssues" Member="ProjectIssues">
+    <Type Name="ProjectIssue">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Projectreference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Issue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AssignTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ScheduledDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssuseType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpectedOutcome" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RaisedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Datechecked" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="IssueRaisedby" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Location" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateCompleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IssueSection" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NextReviewDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EnableCust" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RAGStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActionPlan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SignOff" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SignOffBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SignOffDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectIssueComments" Member="ProjectIssueComments">
+    <Type Name="ProjectIssueComment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssueRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CommentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SubmitteBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LessonsLearnt" Member="LessonsLearnts">
+    <Type Name="LessonsLearnt">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RemediationActions" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BusinessImpact" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IdentifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateRaised" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateInProgress" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateCompleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IssueLessonLearnt" Member="IssueLessonLearnts">
+    <Type Name="IssueLessonLearnt">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IssueRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LessonLearntID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AssignCheckPointCheckList" Member="AssignCheckPointCheckLists">
+    <Type Name="AssignCheckPointCheckList">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TemplateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChecklistCustomerComments" Member="ChecklistCustomerComments">
+    <Type Name="ChecklistCustomerComment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SubmittedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CommentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OperationsOwners" Member="OperationsOwners">
+    <Type Name="OperationsOwner">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OperationsOwners" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Visible" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ProgrammOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateofReview" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Attendees" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ResourceIssues" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TechnicalNotes" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BusinessImpact" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PerformanceReview" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AOB" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TargetSLAPercentCompleted" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpectedStartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ExpectedEndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CostCenter" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaximumBudget" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Justification" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BenefitsToOrganisation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StrategicFitAlignment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VisionStatement" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RisksAndIssues" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ResourcesRequired" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Approve" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MasterProgramme" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectsSalesStaff" Member="ProjectsSalesStaffs">
+    <Type Name="ProjectsSalesStaff">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectJournal" Member="ProjectJournals">
+    <Type Name="ProjectJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ProjectDescription" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="CostCentre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerEmail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="OwnerContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CompletedDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ProjectStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectComments" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="ProjectEndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="QADesignate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QACheckListID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PTSNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MTE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DatePending" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateLive" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="BudgetaryCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BudgetaryCostLevel3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ActualCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DateAuthorised" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateQAApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ScheduledQADate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="BaseCurrency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Portfolio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Custom1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Custom2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BuyingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GrossProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectForecast" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PendingCosts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccrualsPriorFinancial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AccrualsCurrentFinancial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CurrentMonthAccrual" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalAccruals" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectCostForecast" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinancialComments" Type="System.String" DbType="NVarChar(1500)" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerInfo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Priority" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="RAGstatus" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgrammeSLADateCompleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProgrammeSLATimeCompleted" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProgrammeSLAMeet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TotalTimeTake" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategorySLATotalTimeTake" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategorySLAMeet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WeekCommencingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ViewCustomer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RequestorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RequestorEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SubProgramme" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerReference" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="POCheck" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="showbenefit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EnableEmail" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DescriptionofWorks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SalesStaffID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectTrackerJournal" Member="ProjectTrackerJournals">
+    <Type Name="ProjectTrackerJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WorksheetID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PreviousValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ValueNow" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomFields" Member="CustomFields">
+    <Type Name="CustomField">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FieldLable" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="FieldType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FieldValue" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="CustomField_ProjectAdditionalInfo" Member="ProjectAdditionalInfos" ThisKey="ID" OtherKey="CustomFieldID" Type="ProjectAdditionalInfo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectAdditionalInfo" Member="ProjectAdditionalInfos">
+    <Type Name="ProjectAdditionalInfo">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomFieldID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomFieldValue" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="CustomField_ProjectAdditionalInfo" Member="CustomField" ThisKey="CustomFieldID" OtherKey="ID" Type="CustomField" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Team" Member="Teams">
+    <Type Name="Team">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TeamName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Team_Team" Member="Team2" ThisKey="ID" OtherKey="ID" Type="Team" Cardinality="One" />
+      <Association Name="Team_TeamMember" Member="TeamMembers" ThisKey="ID" OtherKey="TeamID" Type="TeamMember" />
+      <Association Name="Team_Team" Member="Team1" ThisKey="ID" OtherKey="ID" Type="Team" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TeamMember" Member="TeamMembers">
+    <Type Name="TeamMember">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Skills" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Team_TeamMember" Member="Team" ThisKey="TeamID" OtherKey="ID" Type="Team" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectAccessCheck" Member="ProjectAccessChecks">
+    <Type Name="ProjectAccessCheck">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectTaskCategory" Member="ProjectTaskCategories">
+    <Type Name="ProjectTaskCategory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectAssignedTeam" Member="ProjectAssignedTeams">
+    <Type Name="ProjectAssignedTeam">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Manufacturer" Member="Manufacturers">
+    <Type Name="Manufacturer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_ProjectBOM" Member="ProjectBOMDetils">
+    <Type Name="ProjectBOMDetils">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkSheetID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Unit" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Qty" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Material" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Labour" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Mics" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Worksheet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QtyReceived" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ExpectedShipmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NextShipmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="GP" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="sellingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="qtyordered" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="serviceCatLogType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumberComplete" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ManufactureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Manufacturer" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectAdminGroup" Member="ProjectAdminGroups">
+    <Type Name="ProjectAdminGroup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectBudgetedHoursPM" Member="ProjectBudgetedHoursPMs">
+    <Type Name="ProjectBudgetedHoursPM">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectBudgetedHoursStaff" Member="ProjectBudgetedHoursStaffs">
+    <Type Name="ProjectBudgetedHoursStaff">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectTaskBOM" Member="ProjectTaskBOMs">
+    <Type Name="ProjectTaskBOM">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Taskid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="QTY_Required" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CheckPointCheckListItems" Member="CheckPointCheckListItems">
+    <Type Name="CheckPointCheckListItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemDescription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ClosedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BOM_Type_TemplateItems" Member="BOM_Type_TemplateItems">
+    <Type Name="BOM_Type_TemplateItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WorkSheetID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Unit" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Material" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Labour" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Mics" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="oldItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="oldtype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellingTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="serviceCatLogID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="serviceCatLogTypeCurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="serviceCatLogType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumberComplete" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ManufactureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CurrencyList" Member="CurrencyLists">
+    <Type Name="CurrencyList">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CurrencyName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ShortCurrencyName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Display" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="En_Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IssueType" Member="IssueTypes">
+    <Type Name="IssueType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IssueTypeName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_ProjectTaskDetails" Member="V_ProjectTaskDetails">
+    <Type Name="V_ProjectTaskDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemDescription" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ListPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PercentComplete" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IncludeInValuation" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="ProjectStartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ProjectEndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="RAGRequired" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="AmberDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RedDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DependencyItem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IndentLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemStatus1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QA" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SellingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GrossProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Defects" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckPoint_Notes1" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Resources" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="TaskList" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WorstCaseTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BestCaseTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MostLikelyCaseTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WCExtension" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BCExtension" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MCExtension" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CheckPoint_Notes" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CompletionDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CompletedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RAGStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GoodsReceiptSaving" Member="GoodsReceiptSavings">
+    <Type Name="GoodsReceiptSaving">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="projectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BOMId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BudgetQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActualQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UnitCostSaving" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="S_type" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_ProjectDetails" Member="ProjectDetails">
+    <Type Name="ProjectDetails">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ProjectDescription" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="CostCentre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerEmail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="OwnerContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CompletedDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ProjectStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectComments" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="ProjectEndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="QADesignate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QACheckListID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PTSNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MTE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DatePending" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateLive" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="BudgetaryCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BudgetaryCostLevel3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ActualCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DateAuthorised" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateQAApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ScheduledQADate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="BaseCurrency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Portfolio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Custom1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Custom2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BuyingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GrossProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectForecast" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PendingCosts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccrualsPriorFinancial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AccrualsCurrentFinancial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CurrentMonthAccrual" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalAccruals" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectCostForecast" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinancialComments" Type="System.String" DbType="NVarChar(1500)" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerInfo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Priority" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="RAGstatus" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgrammeSLADateCompleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProgrammeSLATimeCompleted" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProgrammeSLAMeet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TotalTimeTake" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategorySLATotalTimeTake" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategorySLAMeet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WeekCommencingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ViewCustomer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RequestorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RequestorEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SubProgramme" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerReference" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="POCheck" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="showbenefit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EnableEmail" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DescriptionofWorks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SalesStaffID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MinusMCD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectManager" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProgrammeName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SubProgrammeName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="OwnerName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CountryName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CityName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectStatusName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectReferenceWithPrefix" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PrimaryQAName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ProjectManagerName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectTaskItems" Member="ProjectTaskItems">
+    <Type Name="ProjectTaskItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemDescription" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="MasterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ListPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CompletionDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="RAGStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PercentComplete" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RAGRequired" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="AmberDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RedDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectStartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ProjectEndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ChangeFlag" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ChangeDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DependencyItem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IndentLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IncludeInValuation" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="QA" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="SellingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GrossProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CompletedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CostTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SellingTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WorstCaseTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BestCaseTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MostLikelyCaseTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WCExtension" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BCExtension" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MCExtension" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Defects" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckPoint_Notes" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AmberPercent" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RedPercent" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ForecastDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RequiredBy" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Priority" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Fee" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Cost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ResourceFee" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ResourceCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ResourceProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EstimatedHrs" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="isMilestone" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="gid" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="copyid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isLeaf" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AssignedResources" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Duration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DurationUnit" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="[index]" Member="index" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="depth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckPointID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedToCustomerUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SchedulingMode" Type="System.String" DbType="NVarChar(1020)" CanBeNull="true" />
+      <Column Name="BaselinePercentDone" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cls" Type="System.String" DbType="NVarChar(1020)" CanBeNull="true" />
+      <Column Name="CalendarId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="expanded" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Effort" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="EffortUnit" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ConstraintType" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ConstraintDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ManuallyScheduled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Draggable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Resizable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Rollup" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ShowInTimeline" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(1020)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Calendars" Member="Calendars">
+    <Type Name="Calendar">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="parentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DaysPerMonth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DaysPerWeek" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HoursPerDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WeekendsAreWorkdays" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="WeekendFirstDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WeekendSecondDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DefaultAvailability" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CalendarDays" Member="CalendarDays">
+    <Type Name="CalendarDay">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="calendarId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Typ" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+      <Column Name="Dt" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Availability" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Weekday" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OverrideStartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="OverrideEndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IsWorkingDay" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Cls" Type="System.String" DbType="NVarChar(45)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Projects" Member="Projects">
+    <Type Name="Project">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ProjectDescription" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="CostCentre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerEmail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="OwnerContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CompletedDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ProjectStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectComments" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="ProjectEndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="QADesignate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QACheckListID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PTSNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MTE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DatePending" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateLive" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="BudgetaryCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BudgetaryCostLevel3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ActualCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DateAuthorised" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateQAApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ScheduledQADate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="BaseCurrency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Portfolio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Custom1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Custom2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BuyingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GrossProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectForecast" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PendingCosts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccrualsPriorFinancial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AccrualsCurrentFinancial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CurrentMonthAccrual" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalAccruals" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectCostForecast" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinancialComments" Type="System.String" DbType="NVarChar(1500)" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerInfo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Priority" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="RAGstatus" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgrammeSLADateCompleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProgrammeSLATimeCompleted" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProgrammeSLAMeet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TotalTimeTake" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategorySLATotalTimeTake" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategorySLAMeet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WeekCommencingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ViewCustomer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RequestorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RequestorEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SubProgramme" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerReference" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="POCheck" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="showbenefit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EnableEmail" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DescriptionofWorks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SalesStaffID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MinusMCD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectManager" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedSalesExecutive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GoodsReceipt" Member="GoodsReceipts">
+    <Type Name="GoodsReceipt">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Item" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpectedShipmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NextShipmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="QtyOrdered" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QtyReceived" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OutStandingQty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AuthorizedPay" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ServiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Types" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubcategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectItems" Member="ProjectItems">
+    <Type Name="ProjectItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AC2PID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemDescription" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="MasterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ListPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CompletionDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="RAGStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PercentComplete" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RAGRequired" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="AmberDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RedDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectStartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ProjectEndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ChangeFlag" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ChangeDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DependencyItem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IndentLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IncludeInValuation" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="QA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SellingPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GrossProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PercentCompleted" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Utilisation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Units" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectBOM" Member="ProjectBOMs">
+    <Type Name="ProjectBOM">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkSheetID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Unit" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Material" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Labour" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Mics" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="oldItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="oldtype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellingTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="serviceCatLogID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="serviceCatLogTypeCurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="serviceCatLogType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumberComplete" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ManufactureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GoodsReceiptJournal" Member="GoodsReceiptJournals">
+    <Type Name="GoodsReceiptJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QtyOrdered" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QtyRec" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QtyRemain" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DateRecevied" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="QtyReceived" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectTaskDependency" Member="ProjectTaskDependencies">
+    <Type Name="ProjectTaskDependency">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskDependent" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TaskDependingOn" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cls" Type="System.String" DbType="NVarChar(1020)" CanBeNull="true" />
+      <Column Name="Lag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LagUnit" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TaskSegments" Member="TaskSegments">
+    <Type Name="TaskSegment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Duration" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="DurationUnit" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Cls" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectSnapShot" Member="ProjectSnapShots">
+    <Type Name="ProjectSnapShot">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateTimeCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ProjectSnapShot_GoodsReceiptJournal1" Member="GoodsReceiptJournal1s" ThisKey="Id" OtherKey="SnapId" Type="GoodsReceiptJournal1" />
+      <Association Name="ProjectSnapShot_ExternalExpensesJournal" Member="ExternalExpensesJournals" ThisKey="Id" OtherKey="SnapId" Type="ExternalExpensesJournal" />
+      <Association Name="ProjectSnapShot_ProjectPMHoursJournal" Member="ProjectPMHoursJournals" ThisKey="Id" OtherKey="SnapId" Type="ProjectPMHoursJournal" />
+      <Association Name="ProjectSnapShot_ProjectBOMJournal" Member="ProjectBOMJournals" ThisKey="Id" OtherKey="SnapId" Type="ProjectBOMJournal" />
+      <Association Name="ProjectSnapShot_BOM_TypesJournal" Member="BOM_TypesJournals" ThisKey="Id" OtherKey="SnapId" Type="BOM_TypesJournal" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GoodsReceiptJournal" Member="GoodsReceiptJournal1s">
+    <Type Name="GoodsReceiptJournal1">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SnapId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Item" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpectedShipmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NextShipmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="QtyOrdered" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QtyReceived" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OutStandingQty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AuthorizedPay" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ServiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Types" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BOMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubcategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GoodsReceiptId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ProjectSnapShot_GoodsReceiptJournal1" Member="ProjectSnapShot" ThisKey="SnapId" OtherKey="Id" Type="ProjectSnapShot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_ProjectBOMJournal" Member="v_ProjectBOMJournals">
+    <Type Name="v_ProjectBOMJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkSheetID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SnapId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BomJId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowDataChanged" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Unit" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Qty" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Material" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Labour" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Mics" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Worksheet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyReceived" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ExpectedShipmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NextShipmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="GP" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="sellingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="qtyordered" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="serviceCatLogType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumberComplete" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ManufactureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Manufacturer" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExternalExpensesJournal" Member="ExternalExpensesJournals">
+    <Type Name="ExternalExpensesJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SnapId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ExpensesentrytypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ExternalExpensesDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UnitCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Expensed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ForecastValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ExpenseTblId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ProjectSnapShot_ExternalExpensesJournal" Member="ProjectSnapShot" ThisKey="SnapId" OtherKey="Id" Type="ProjectSnapShot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectPMHoursJournal" Member="ProjectPMHoursJournals">
+    <Type Name="ProjectPMHoursJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SnapId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionType" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="WCDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PMHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="ProjectPMHoursId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ProjectSnapShot_ProjectPMHoursJournal" Member="ProjectSnapShot" ThisKey="SnapId" OtherKey="Id" Type="ProjectSnapShot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectBOMJournal" Member="ProjectBOMJournals">
+    <Type Name="ProjectBOMJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SnapId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkSheetID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Unit" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Material" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Labour" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Mics" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="oldItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="oldtype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellingTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="serviceCatLogID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="serviceCatLogTypeCurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="serviceCatLogType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumberComplete" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ManufactureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectBOMId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ProjectSnapShot_ProjectBOMJournal" Member="ProjectSnapShot" ThisKey="SnapId" OtherKey="Id" Type="ProjectSnapShot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BOM_TypesJournal" Member="BOM_TypesJournals">
+    <Type Name="BOM_TypesJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SnapId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="copy_WorkSheetID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Created_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BOM_TypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ProjectSnapShot_BOM_TypesJournal" Member="ProjectSnapShot" ThisKey="SnapId" OtherKey="Id" Type="ProjectSnapShot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceCatalog_category" Member="ServiceCatalog_categories">
+    <Type Name="ServiceCatalog_category">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MasterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BOM_Types" Member="BOM_Types">
+    <Type Name="BOM_Type">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="copy_WorkSheetID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Created_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BOM_Type_BOMDeletedWorksheet" Member="BOMDeletedWorksheets" ThisKey="ID" OtherKey="Wotksheetid" Type="BOMDeletedWorksheet" />
+      <Association Name="BOM_Type_BOMDeletedWorksheet1" Member="BOMDeletedWorksheets1" ThisKey="ID" OtherKey="Wid" Type="BOMDeletedWorksheet" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BOMDeletedWorksheets" Member="BOMDeletedWorksheets">
+    <Type Name="BOMDeletedWorksheet">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="deleteedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeleteOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Recover" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Wid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Wotksheetid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BOM_Type_BOMDeletedWorksheet" Member="BOM_Type" ThisKey="Wotksheetid" OtherKey="ID" Type="BOM_Type" IsForeignKey="true" />
+      <Association Name="BOM_Type_BOMDeletedWorksheet1" Member="BOM_Type1" ThisKey="Wid" OtherKey="ID" Type="BOM_Type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Project_CreditNote" Member="Project_CreditNotes">
+    <Type Name="Project_CreditNote">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CreditValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DateandTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Appliedby" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectDefaults" Member="ProjectDefaults">
+    <Type Name="ProjectDefault">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectOwner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="JobDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="OwnerEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerTel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerMobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QALevels" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectReferencePrefix" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WebURL" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="CertLine1" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CertTopBorderLocation" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CertBottomBorderLocation" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CertLogoLocation" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CertAuthority1Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CertAuthority1Title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CertAuthority1SignatureLocation" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CertAuthority2Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CertAuthority2Title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CertAuthority2SignatureLocation" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DefaultCurrency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FilePath" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmailSuffix" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Custom1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Custom2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Projects" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApprovalBoardEmail" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Case_Custom1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PMs" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Resources" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromEmail" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Enablejournal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProjectRef_StartID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AnnualYearStart" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="AnnualYearEnd" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ProjectRef_Reset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectRef_Increment" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Case_Custom5" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom6" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom7" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom8" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom9" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom10" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom11" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom12" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom13" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom14" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom15" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Case_Custom16" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FinanceDistributionEmail" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FinancialYearStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FinancialYearEnd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Culture" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ForcePeriodicPwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PwdChangeDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NoDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoundUp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HalfDay" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="FullDay" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="copyrighttext" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ProjectCancel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgSele" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectClass" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProjectUpdateEmail" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CustomerLogo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RequistionPrefix" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="RequistionStarting" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequistionIncBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dlt_password" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="Timesheet_Customer_Duel_check" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Basicholidayallowancefornewjoiners" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Town" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Postcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Chat_API_key" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Chat_API_Secret" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LocalDocumentPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CountryName" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="City_Display" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="State_Display" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Zipcode" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Phonecode" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Payment_Merchant_ID" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Payment_Merchant_key" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Payment_Salt_Pass" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Payment_Host" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Paymet_Percentage" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.ProjectTaskPlanner_Resources" Method="ProjectTaskPlanner_Resources">
+    <ElementType Name="ProjectTaskPlanner_ResourcesResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ResourceView_Leave" Method="ResourceView_Leave">
+    <Parameter Name="ResourceId" Parameter="resourceId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ResourceView_LeaveResult">
+      <Column Name="AbsenseTypeName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="FromDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Todate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="days" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ProjectItems_Insert" Method="ProjectItems_Insert">
+    <Parameter Name="taskid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ResourceID" Parameter="resourceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="projectrefernce" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ResourceSearch" Method="ResourceSearch">
+    <Parameter Name="FreeText" Parameter="freeText" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Level" Parameter="level" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="ResourceSearchResult1">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NoLiveProjects" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoPendingProjects" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateAvailable" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="skillList" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ResourceView_Projects" Method="ResourceView_Projects">
+    <Parameter Name="ContractorID" Parameter="contractorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProjectStatusID" Parameter="projectStatusID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ResourceView_ProjectsResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ProjectReferenceWithPrefix" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+      <Column Name="ProjectEndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ProjectTaskItems_DateUpdate" Method="ProjectTaskItems_DateUpdate">
+    <Parameter Name="taskid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Sdate" Parameter="sdate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="edate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ResourceID" Parameter="resourceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="projectrefernce" Type="System.Int32" DbType="Int" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DN_GetProjectTaks" Method="DN_GetProjectTaks">
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <Parameter Name="contractorID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DN_GetProjectTaksResult">
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTask" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DN_TimeSheet_ProjectTile" Method="DN_TimeSheet_ProjectTile">
+    <Parameter Name="ContractorID" Parameter="contractorID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DN_TimeSheet_ProjectTileResult">
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(173)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DN_TimeSheet_ProjectTitle" Method="DN_TimeSheet_ProjectTitle">
+    <Parameter Name="ContractorID" Parameter="contractorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Portfolio" Parameter="portfolio" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DN_TimeSheet_ProjectTitleResult">
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(173)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DN_TimeSheetBook_ProjectTile" Method="DN_TimeSheetBook_ProjectTile">
+    <Parameter Name="projectPortfolio" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DN_TimeSheetBook_ProjectTileResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(173)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DN_TimesheetEntry" Method="DN_TimesheetEntry">
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Activity" Parameter="activity" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="AssignType" Parameter="assignType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ResourceID" Parameter="resourceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="entryid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Timesheetdate" Parameter="timesheetdate" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="hours" Type="System.Double" DbType="Float" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(1000)" />
+    <Parameter Name="SiteID" Parameter="siteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProjectTaskID" Parameter="projectTaskID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="output" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SA_ProjectBenefitBudget" Method="SA_ProjectBenefitBudget">
+    <Parameter Name="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="toDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Programme" Parameter="programme" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ProjectTask_Dependencey" Method="ProjectTask_Dependencey">
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ProjectTask_DependenceyResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Task_From" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Task_To" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[From]" Member="From" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[To]" Member="To" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Project_AssignedTo_ProjectPlan" Method="Project_AssignedTo_ProjectPlan">
+    <Parameter Name="ProjectRefrence" Parameter="projectRefrence" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Project_AssignedTo_ProjectPlanResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.insertUpdateProjectItems_NewGanttChart" Method="insertUpdateProjectItems_NewGanttChart">
+    <Parameter Name="ItemDescription" Parameter="itemDescription" Type="System.String" DbType="VarChar(1000)" />
+    <Parameter Name="isLeaf" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="ParentID" Parameter="parentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PercentComplete" Parameter="percentComplete" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CompletionDate" Parameter="completionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Priority" Parameter="priority" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="AssignedResources" Parameter="assignedResources" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ListPosition" Parameter="listPosition" Type="System.Int32" DbType="Int" />
+    <Parameter Name="currentTaskID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StatusID" Parameter="statusID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TaskID" Parameter="taskID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="RAG" Parameter="rAG" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="QA" Parameter="qA" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="RAGRequired" Parameter="rAGRequired" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="ProjectStartDate" Parameter="projectStartDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ProjectEndDate" Parameter="projectEndDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ProjectTask_Task" Method="ProjectTask_Task">
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ProjectTask_TaskResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PercentDone" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsLeaf" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Priority" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AssignedResources" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RAG" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="QA" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="RAGRequired" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectStartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectEndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="[index]" Member="index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ProjectTask_Details" Method="ProjectTask_Details">
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.Quote_SelectQuoteItemsByQuoteID" Method="Quote_SelectQuoteItemsByQuoteID">
+    <Parameter Name="QuoteID" Parameter="quoteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="WorksheetID" Parameter="worksheetID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Quote_SelectQuoteItemsByQuoteIDResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuoteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemDesc" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="worksheet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="unit" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Material" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Labour" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Mics" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.QuoteMain_SelectByQuoteID" Method="QuoteMain_SelectByQuoteID">
+    <Parameter Name="QuoteID" Parameter="quoteID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <ElementType Name="QuoteMain_SelectByQuoteIDResult">
+      <Column Name="ProjectReference" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ProjectDescription" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="QuoteRef" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Header" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Footer" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Date" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="subTotal" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="VAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Logolink" Type="System.String" DbType="NVarChar(186)" CanBeNull="true" />
+      <Column Name="VATTotal" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="DescriptionofWorks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RequesterName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RequesterEmail" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RequesterPhoneNo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.LessonLearntSelectByProjectRef" Method="LessonLearntSelectByProjectRef">
+    <Parameter Name="ProjectRef" Parameter="projectRef" Type="System.Int32" DbType="Int" />
+    <ElementType Name="LessonLearntSelectByProjectRefResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RemediationActions" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BusinessImpact" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IdentifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateRaised" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateInProgress" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateCompleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IdentifiedByName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AssignedToName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="StatusName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Projects_DashboardFinanceChart" Method="Projects_DashboardFinanceChart">
+    <Parameter Name="projectreference" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Projects_DashboardFinanceChartResult">
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BudgetedCost" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ActaulCost" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="VariationsApproved" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="VariationsPendingApproval" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Projects_DashboardBasicSummary" Method="Projects_DashboardBasicSummary">
+    <ElementType Name="Projects_DashboardBasicSummaryResult">
+      <Column Name="totalPendingprojects" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="liveprojects" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="totalbudget" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="totallivebudget" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="totalmembers" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="totalactivemembers" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="totalissues" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="totalactiveissues" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SnapDataInsertIntoJournal" Method="SnapDataInsertIntoJournal">
+    <Parameter Name="ProjectID" Parameter="projectID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="CreatedBy" Parameter="createdBy" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.vtEnddate" Method="vtEnddate" IsComposable="true">
+    <Parameter Name="year" Type="System.Int32" DbType="Int" />
+    <Return Type="System.DateTime" />
+  </Function>
+  <Function Name="dbo.UpdateWorkSheetNameInJournal" Method="UpdateWorkSheetNameInJournal">
+    <Parameter Name="WorkSheetId" Parameter="workSheetId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="VarChar(150)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.fnGetYear" Method="fnGetYear" IsComposable="true">
+    <Parameter Name="Today" Parameter="today" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="fnGetYearResult">
+      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Projects_DashboardSummary" Method="Projects_DashboardSummary">
+    <ElementType Name="Projects_DashboardSummaryResult">
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectReferenceWithPrefix" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+      <Column Name="ProjectTitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BudgetaryCost" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TaskCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GreenCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RedCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TasksPercent" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IssueCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

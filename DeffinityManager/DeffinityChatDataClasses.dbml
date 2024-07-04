@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="XactDemo" Class="DeffinityChatDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=XactDemo;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblArticleLike" Member="tblArticleLikes">
+    <Type Name="tblArticleLike">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ArticleID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LikeDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Contractors" Member="Contractors">
+    <Type Name="Contractor">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="SID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GroupOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeApproveID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NormalBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NormalSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EmploymentStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReleaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpClassification" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondTSApprover" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CasualLabourType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isFirstlogin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ForcePeriodicPwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerAccountTeamChat" Member="CustomerAccountTeamChats">
+    <Type Name="CustomerAccountTeamChat">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Team" Member="Teams">
+    <Type Name="Team">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TeamName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Team_Team" Member="Team2" ThisKey="ID" OtherKey="ID" Type="Team" Cardinality="One" />
+      <Association Name="Team_Team" Member="Team1" ThisKey="ID" OtherKey="ID" Type="Team" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDeffinityChat" Member="tblDeffinityChats">
+    <Type Name="tblDeffinityChat">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticleID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ArticleDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FilePath" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Filesize" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="FileType" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Filedesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LinkUrl" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="LinkName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ArticleDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Module" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Mailsent" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDeffinityChatComment" Member="tblDeffinityChatComments">
+    <Type Name="tblDeffinityChatComment">
+      <Column Name="CommentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ArticleID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ArticleCommentID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CommentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CommentDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Mailsent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.DeffinityChat_Delete" Method="DeffinityChat_Delete">
+    <Parameter Name="ArticleID" Parameter="articleID" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeffinityChatComment_Delete" Method="DeffinityChatComment_Delete">
+    <Parameter Name="ArticleCommentID" Parameter="articleCommentID" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeffinityChatComment_Insert" Method="DeffinityChatComment_Insert">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticleID" Parameter="articleID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ArticleCommentID" Parameter="articleCommentID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CommentDate" Parameter="commentDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CommentDesc" Parameter="commentDesc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeffinityChat_Select" Method="DeffinityChat_Select">
+    <ElementType Name="DeffinityChat_SelectResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticleID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ArticleDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FilePath" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Filesize" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="FileType" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Filedesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LinkUrl" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="LinkName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ArticleDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeffinityChatComment_Select" Method="DeffinityChatComment_Select">
+    <Parameter Name="ArticleID" Parameter="articleID" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="DeffinityChatComment_SelectResult">
+      <Column Name="CommentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ArticleID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ArticleCommentID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CommentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CommentDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeffinityArticleLike_Insert" Method="DeffinityArticleLike_Insert">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticleID" Parameter="articleID" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeffinityArticleLike_Delete" Method="DeffinityArticleLike_Delete">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticleID" Parameter="articleID" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeffinityArticleLike_Select" Method="DeffinityArticleLike_Select">
+    <ElementType Name="DeffinityArticleLike_SelectResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ArticleID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LikeDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeffinityChat_Customers" Method="DeffinityChat_Customers">
+    <Parameter Name="ArticleID" Parameter="articleID" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="DeffinityChat_CustomersResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="SID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GroupOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeApproveID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NormalBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NormalSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EmploymentStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReleaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpClassification" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondTSApprover" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CasualLabourType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isFirstlogin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ForcePeriodicPwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CustomerAccountTeam_Select" Method="CustomerAccountTeam_Select">
+    <Parameter Name="status" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="PortfolioID" Parameter="portfolioID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CustomerAccountTeam_SelectResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="SID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GroupOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeApproveID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NormalBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NormalSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EmploymentStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReleaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpClassification" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondTSApprover" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CasualLabourType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isFirstlogin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ForcePeriodicPwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CustomerAccountTeam_Delete" Method="CustomerAccountTeam_Delete">
+    <Parameter Name="UserIDS" Parameter="userIDS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PortfolioID" Parameter="portfolioID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CustomerAccountTeam_Insert" Method="CustomerAccountTeam_Insert">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PortfolioID" Parameter="portfolioID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ProjectTeamChat" Method="ProjectTeamChat">
+    <Parameter Name="ProjectReference" Parameter="projectReference" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ProjectTeamChatResult">
+      <Column Name="Name" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeffinityChat_InsertFile" Method="DeffinityChat_InsertFile">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticleID" Parameter="articleID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ArticleDate" Parameter="articleDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="FilePath" Parameter="filePath" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Filename" Parameter="filename" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Filesize" Parameter="filesize" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Filedesc" Parameter="filedesc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Module" Parameter="module" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="ModuleID" Parameter="moduleID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeffinityChat_InsertLink" Method="DeffinityChat_InsertLink">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticleID" Parameter="articleID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ArticleDate" Parameter="articleDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="LinkUrl" Parameter="linkUrl" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="LinkName" Parameter="linkName" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="Module" Parameter="module" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="ModuleID" Parameter="moduleID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeffinityChat_InsertShare" Method="DeffinityChat_InsertShare">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticleID" Parameter="articleID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ArticleDesc" Parameter="articleDesc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ArticleDate" Parameter="articleDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Module" Parameter="module" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="ModuleID" Parameter="moduleID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeffinityChat_CustomerByID" Method="DeffinityChat_CustomerByID">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DeffinityChat_CustomerByIDResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContractorName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="SID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GroupOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeApproveID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NormalBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NormalSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeBuyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OvertimeSellingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EmploymentStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReleaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpClassification" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondTSApprover" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CasualLabourType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isFirstlogin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ForcePeriodicPwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeffinityChat_SelectBYModuleID" Method="DeffinityChat_SelectBYModuleID">
+    <Parameter Name="ModuleID" Parameter="moduleID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Module" Parameter="module" Type="System.String" DbType="VarChar(15)" />
+    <ElementType Name="DeffinityChat_SelectBYModuleIDResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticleID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ArticleDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FilePath" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Filesize" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="FileType" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Filedesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LinkUrl" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="LinkName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ArticleDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Module" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Mailsent" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

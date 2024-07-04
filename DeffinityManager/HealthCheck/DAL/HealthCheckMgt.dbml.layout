@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.625, 18" name="HealthCheckMgt">
+  <DataContextMoniker Name="/HealthCheckDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f0f922bd-c526-4018-a1b6-a1f8c61781af" absoluteBounds="6.125, 2, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/HealthCheckDataContext/HealthCheckList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4c18af20-1e27-4432-ba0c-9d48f7d3f42c" absoluteBounds="6.1400000000000006, 2.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5ddc5f0f-22d7-4d8e-9857-8fd81c5558b2" absoluteBounds="0.75, 1.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/HealthCheckDataContext/HealthCheck_Form" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a866e5ad-8129-4ee5-abf5-1ac16b1472a0" absoluteBounds="0.765, 2.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1d720ac0-e4e3-4ee3-bca3-ccaf898912a9" absoluteBounds="8.875, 2.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/HealthCheckDataContext/HealthCheckNameMailID" />
+      <nestedChildShapes>
+        <elementListCompartment Id="29469b4b-c8c5-4c8c-8f90-4818815df4b1" absoluteBounds="8.89, 3.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0afbcfc9-e59a-4a6c-b68c-5576ba5d5877" absoluteBounds="9.375, 5.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/HealthCheckDataContext/HealthCheck_FormAssignToCall" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3770cbf0-b480-4a2a-a960-e4c101bf5c45" absoluteBounds="9.39, 5.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.90625); (11.15625 : 1.90625); (11.15625 : 5.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HealthCheckDataContext/HealthCheck_Form/HealthCheck_Form_HealthCheck_FormAssignToCall" />
+      <nodes>
+        <classShapeMoniker Id="5ddc5f0f-22d7-4d8e-9857-8fd81c5558b2" />
+        <classShapeMoniker Id="0afbcfc9-e59a-4a6c-b68c-5576ba5d5877" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7c03ee05-9473-48a7-9daf-99abf1fdd823" absoluteBounds="4, 4.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/HealthCheckDataContext/HealthCheck_FormData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a012bf3b-e6fd-486e-9f1c-b35a6557323c" absoluteBounds="4.015, 5.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="443e399a-88bb-462a-83d0-6a27760cf0fb" absoluteBounds="4, 2.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/HealthCheckDataContext/HealthCheck_FormPanel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="14d7e1a0-cbb5-4dd1-bc64-056018596ccf" absoluteBounds="4.015, 2.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.97679768880208); (4 : 2.97679768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HealthCheckDataContext/HealthCheck_Form/HealthCheck_Form_HealthCheck_FormPanel" />
+      <nodes>
+        <classShapeMoniker Id="5ddc5f0f-22d7-4d8e-9857-8fd81c5558b2" />
+        <classShapeMoniker Id="443e399a-88bb-462a-83d0-6a27760cf0fb" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5981048b-5a76-4ab5-b4ec-8f8ea3246048" absoluteBounds="4, 7, 2, 1.3862939453125">
+      <DataClassMoniker Name="/HealthCheckDataContext/HealthCheck_FormAssignToProjectTask" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c83dcf2d-43dc-48fd-a129-76ec568b8cd4" absoluteBounds="4.015, 7.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 3.45359537760417); (3.125 : 3.82859537760417); (3.125 : 7.69314697265625); (3.29166666666667 : 7.69314697265625 : JumpStart); (3.45833333333333 : 7.69314697265625 : JumpEnd); (4 : 7.69314697265625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HealthCheckDataContext/HealthCheck_Form/HealthCheck_Form_HealthCheck_FormAssignToProjectTask" />
+      <nodes>
+        <classShapeMoniker Id="5ddc5f0f-22d7-4d8e-9857-8fd81c5558b2" />
+        <classShapeMoniker Id="5981048b-5a76-4ab5-b4ec-8f8ea3246048" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="94022d5a-bc0d-455a-882f-5189450914cf" absoluteBounds="6.5, 5.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/HealthCheckDataContext/HealthCheck_Configurator" />
+      <nestedChildShapes>
+        <elementListCompartment Id="07b21662-4213-4c6e-b4f2-1e82d47d7a8e" absoluteBounds="6.515, 6.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4ba391ce-33ed-4553-b821-9d400551b77b" absoluteBounds="9, 7.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/HealthCheckDataContext/DN_Customerlogo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="88cde01c-7f4b-414b-9179-1f3fc8a4b3b4" absoluteBounds="9.015, 7.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6d2d4649-7a32-4803-825e-0d69c113b57e" absoluteBounds="1.125, 9.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/HealthCheckDataContext/App_Permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b6f84b1f-3693-46da-a3f0-49c7f01d096d" absoluteBounds="1.1400000000000001, 10.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bfaa3a89-9a81-49f9-b191-ddd6e8ebe56c" absoluteBounds="4.5, 10.125, 2, 2.5401025390625">
+      <DataClassMoniker Name="/HealthCheckDataContext/AppManager" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0bbcd614-a779-445b-85dd-ea221db75ce3" absoluteBounds="4.515, 10.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.718748 : 3.45359537760417); (1.718748 : 4.25); (3.04166666666667 : 4.25 : JumpStart); (3.20833333333333 : 4.25 : JumpEnd); (3.375 : 4.25); (3.375 : 11.3950512695312); (4.5 : 11.3950512695312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HealthCheckDataContext/HealthCheck_Form/HealthCheck_Form_AppManager" />
+      <nodes>
+        <classShapeMoniker Id="5ddc5f0f-22d7-4d8e-9857-8fd81c5558b2" />
+        <classShapeMoniker Id="bfaa3a89-9a81-49f9-b191-ddd6e8ebe56c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c3b495ed-4460-4508-b414-4a6a22a44ff0" absoluteBounds="7.5, 10, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/HealthCheckDataContext/AppManagerAssignedForm" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b66ca6be-808b-4de2-a2d5-683b27235f16" absoluteBounds="7.515, 10.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.5 : 11.3950512695312); (7.5 : 11.3950512695312)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HealthCheckDataContext/AppManager/AppManager_AppManagerAssignedForm" />
+      <nodes>
+        <classShapeMoniker Id="bfaa3a89-9a81-49f9-b191-ddd6e8ebe56c" />
+        <classShapeMoniker Id="c3b495ed-4460-4508-b414-4a6a22a44ff0" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="3f133815-2e7f-4cac-a36d-e90c5c89d9d3" absoluteBounds="1, 12.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/HealthCheckDataContext/gridColumnsVisibility" />
+      <nestedChildShapes>
+        <elementListCompartment Id="94607258-b2f1-41f8-b959-8d14cdedc028" absoluteBounds="1.0150000000000001, 12.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ccab2ee2-36cb-4108-9396-76d0d06be7a3" absoluteBounds="0.5, 4.5, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/HealthCheckDataContext/HealthCheck_FormControl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2103c21e-2294-4894-9ab0-2efc8031422b" absoluteBounds="0.51500000000000012, 4.96, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 5.51044840494792); (3.04166666666667 : 5.51044840494792 : JumpStart); (3.20833333333333 : 5.51044840494792 : JumpEnd); (3.29166666666667 : 5.51044840494792 : JumpStart); (3.45833333333333 : 5.51044840494792 : JumpEnd); (4 : 5.51044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HealthCheckDataContext/HealthCheck_FormControl/HealthCheck_FormControl_HealthCheck_FormData" />
+      <nodes>
+        <classShapeMoniker Id="ccab2ee2-36cb-4108-9396-76d0d06be7a3" />
+        <classShapeMoniker Id="7c03ee05-9473-48a7-9daf-99abf1fdd823" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 5.00522420247396); (3.04166666666667 : 5.00522420247396 : JumpStart); (3.20833333333333 : 5.00522420247396 : JumpEnd); (3.29166666666667 : 5.00522420247396 : JumpStart); (3.45833333333333 : 5.00522420247396 : JumpEnd); (4 : 5.00522420247396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HealthCheckDataContext/HealthCheck_FormControl/HealthCheck_FormControl_HealthCheck_FormData1" />
+      <nodes>
+        <classShapeMoniker Id="ccab2ee2-36cb-4108-9396-76d0d06be7a3" />
+        <classShapeMoniker Id="7c03ee05-9473-48a7-9daf-99abf1fdd823" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4 : 3.88304768880208); (1.80208133333333 : 3.88304768880208 : JumpStart); (1.63541466666667 : 3.88304768880208 : JumpEnd); (0.59375 : 3.88304768880208); (0.59375 : 4.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HealthCheckDataContext/HealthCheck_FormPanel/HealthCheck_FormPanel_HealthCheck_FormControl" />
+      <nodes>
+        <classShapeMoniker Id="443e399a-88bb-462a-83d0-6a27760cf0fb" />
+        <classShapeMoniker Id="ccab2ee2-36cb-4108-9396-76d0d06be7a3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4 : 4.09777634440104); (3.20833333333333 : 4.09777634440104 : JumpStart); (3.04166666666667 : 4.09777634440104 : JumpEnd); (1.80208133333333 : 4.09777634440104 : JumpStart); (1.63541466666667 : 4.09777634440104 : JumpEnd); (0.6250025 : 4.09777634440104); (0.6250025 : 4.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HealthCheckDataContext/HealthCheck_FormPanel/HealthCheck_FormPanel_HealthCheck_FormControl1" />
+      <nodes>
+        <classShapeMoniker Id="443e399a-88bb-462a-83d0-6a27760cf0fb" />
+        <classShapeMoniker Id="ccab2ee2-36cb-4108-9396-76d0d06be7a3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="68bc5567-d38b-4302-a866-3749f69809d7" absoluteBounds="1, 14, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/HealthCheckDataContext/HealthCheck_Recur" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e7f4b845-3fb7-4fca-8b61-a4817f090e0b" absoluteBounds="1.0150000000000001, 14.46, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

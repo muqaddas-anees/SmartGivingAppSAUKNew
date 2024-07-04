@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="XactDemo" EntityNamespace="Finance.Entity" ContextNamespace="Finance.DAL" Class="FinanceModuleDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=EMS-PC\SQLEXPRESS2014;Initial Catalog=DeffinityEflair;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.FinanceRateCard" Member="FinanceRateCards">
+    <Type Name="FinanceRateCard">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CardClassfication" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RateType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DailyRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HourlyRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ClassType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExperienceClassification" Member="ExperienceClassifications">
+    <Type Name="ExperienceClassification">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ExpClassification" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FMOverheadCosts" Member="FMOverheadCosts">
+    <Type Name="FMOverheadCost">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CostName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Cost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CostPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CostPerYear" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinancialPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FMApportionCosts" Member="FMApportionCosts">
+    <Type Name="FMApportionCost">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProgrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubProgrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PerCostAppor" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Cost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FinancialYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VariationBreakdownHours" Member="VariationBreakdownHours">
+    <Type Name="VariationBreakdownHour">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VariationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdditionalHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="WCDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AssignedContractorsToProjects" Member="AssignedContractorsToProjects">
+    <Type Name="AssignedContractorsToProject">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorsName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TemplateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OpsStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompletionDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateOpsApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="RAGScore" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Exceptions" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="Variations" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="DateRejected" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ReasonForRejection" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="QAApprovalDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="QARejectedDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="QARejectedReason" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PComments" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DateQACertificateIssued" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="P2PNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FinancialComments" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="AmberEmail" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="RedEmail" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="MilestoneDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CoolingOffPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Period" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HourlyRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HourlyRateType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxHoursAllocated" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="NotificationRemainingHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TotalHoursBooked" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Utilisation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="copyid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="PMHours">
+    <Type Name="PMHours">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="ResourceName" Type="System.String" DbType="NVarchar(500)" CanBeNull="false" />
+      <Column Name="SectionType" Type="System.String" DbType="NVarchar(100)" CanBeNull="false" />
+      <Column Name="MaxHoursAllocated" Type="System.Decimal" DbType="decimal(18,2)" CanBeNull="false" />
+      <Column Name="TotalHoursBooked" Type="System.Decimal" DbType="decimal(18,2)" CanBeNull="false" />
+      <Column Name="NotificationRemainingHours" Type="System.Decimal" DbType="decimal(18,2)" CanBeNull="false" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="int" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectPMHours" Member="ProjectPMHours">
+    <Type Name="ProjectPMHour">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionType" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="WCDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PMHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DeviationReport" Member="DeviationReports">
+    <Type Name="DeviationReport">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AC2PID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequesterName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MobileNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CRSProjectManager" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TIProjectManager" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BusinessHead" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BusinessGroup" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ProjectName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ProjectLocation" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ScopeOfProject" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DetailedExplanation" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="Justification" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="ProposedCompensation" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="ExpectedRemediationDate" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MARS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DeviationValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IndirectCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="VariationForcast" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Approversname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ApproversEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ApprovalStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateRaised" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="VariationCostForcast" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdditionalPMHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CustomerInstructionNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PercentageComplete" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Expensesentrytype" Member="Expensesentrytypes">
+    <Type Name="Expensesentrytype">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ExpensesentryType" Member="ExpensesentryType1" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="BuyingPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="sellingPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExternalExpenses" Member="ExternalExpenses">
+    <Type Name="ExternalExpense">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ExpensesentrytypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ExternalExpensesDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WCDateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UnitCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Expensed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ForecastValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.FM_OverheadCostsSelectAll" Method="FM_OverheadCostsSelectAll">
+    <Parameter Name="FYear" Parameter="fYear" Type="System.Int32" DbType="Int" />
+    <ElementType Name="FM_OverheadCostsSelectAllResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CostName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Cost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CostPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CostPerYear" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FinancialPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FMApportionCostsSelectAll" Method="FMApportionCostsSelectAll">
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FinancialYear" Parameter="financialYear" Type="System.Int32" DbType="Int" />
+    <ElementType Name="FMApportionCostsSelectAllResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubProgrammeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PerCostAppor" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Cost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProjectReference" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FinancialYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

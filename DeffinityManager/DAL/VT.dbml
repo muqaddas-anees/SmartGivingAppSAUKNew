@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityEflair" EntityNamespace="Deffinity.VT.Entity" ContextNamespace="Deffinity.VT.DAL" Class="VTDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=69.41.185.219;Initial Catalog=DeffinityEflair;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="VT.LeaveRequest" Member="LeaveRequests">
+    <Type Name="LeaveRequest">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AbsenseType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FromDatePeriod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ToDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ToDatePeriod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ApprovalStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Days" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateRequested" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="RequestNotes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MemberID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Site" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MemberUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApproverNotes" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FromMeridian" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToMeridian" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="VT.AbsenseType" Member="AbsenseTypes">
+    <Type Name="AbsenseType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="VT.ApprovalStatus" Member="ApprovalStatus">
+    <Type Name="ApprovalStatus">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="VT.LeaveRequestJournal" Member="LeaveRequestJournals">
+    <Type Name="LeaveRequestJournal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AbsenseType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FromDatePeriod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ToDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ToDatePeriod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ApprovalStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Days" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateRequested" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="RequestNotes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MemberID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Site" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MemberUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApproverNotes" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FromMeridian" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToMeridian" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RequestID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="Histories">
+    <Type Name="History">
+      <Column Name="FieldName" Type="System.String" DbType="NVarchar(50)" CanBeNull="true" />
+      <Column Name="FieldValue" Type="System.String" DbType="Nvarchar(100)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="Nvarchar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,48 @@
+.cellDate {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; CURSOR: hand; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #999999; TEXT-DECORATION: none
+}
+.cellDay {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #666666; TEXT-DECORATION: none
+}
+.cellDaySunday {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #990000; TEXT-DECORATION: none
+}
+.cellDateSunday {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; CURSOR: hand; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #d74848; TEXT-DECORATION: none
+}
+.cboMonth {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 10px; BORDER-LEFT: medium none; COLOR: #000000; BORDER-BOTTOM: medium none; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #cccccc
+}
+.cboYear {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 10px; BORDER-LEFT: medium none; COLOR: #000000; BORDER-BOTTOM: medium none; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #cccccc
+}
+.cellClose {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #000000
+}
+.cellHead {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #000000; TEXT-DECORATION: none
+}
+.tableBgBorder {
+	BACKGROUND-COLOR: #cccccc
+}
+.linkClose {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.cellDateOver {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; CURSOR: hand; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #666666; TEXT-DECORATION: none
+}
+.cellDateOverSunday {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; CURSOR: hand; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #990000; TEXT-DECORATION: none
+}
+.cellEmpty {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.linkArrow {
+	FONT-WEIGHT: bold; FONT-SIZE: 8px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.cellDateToday {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; CURSOR: hand; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #0099ff; TEXT-DECORATION: none
+}
+.cellDateOverToday {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; CURSOR: hand; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #0066cc; TEXT-DECORATION: none
+}

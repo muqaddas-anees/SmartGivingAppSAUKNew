@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 24.75" name="TimeSheet">
+  <DataContextMoniker Name="/TimeSheetDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5c325d09-1aa6-4554-97ea-716721c32f9c" absoluteBounds="0.625, 0.625, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimesheetWCDate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f50fb056-fb14-4fba-ab7f-63cde6dc8f11" absoluteBounds="0.63999999999999968, 1.085, 1.9700000000000002, 1.7878011067708333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e1af9daf-a813-4d9f-9877-a6e5c1cf7e36" absoluteBounds="0.625, 3.125, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimesheetEntryType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fbed3bb7-e09c-479f-b187-e526278de6d5" absoluteBounds="0.64000000000000012, 3.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a97c7760-6a6c-4be2-9b4e-6fdd7d8b97de" absoluteBounds="0.625, 4.75, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimeSheetApproveType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f2dd8b0-f3cb-45c8-afce-7276a3ddee5b" absoluteBounds="0.64, 5.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="28367510-aa3e-4491-aa57-3be21eb43193" absoluteBounds="0.625, 6.25, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimeSheetKey" />
+      <nestedChildShapes>
+        <elementListCompartment Id="879c84d8-dc2b-462a-947f-e70ddb480b23" absoluteBounds="0.64, 6.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f38994fd-79b0-432f-86d0-00f1cd6fe6c4" absoluteBounds="5.375, 0.75, 2, 6.0015283203125">
+      <DataClassMoniker Name="/TimeSheetDataContext/V_TimesheetDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="afd9cedd-fb97-4040-a56e-31027ae7d56a" absoluteBounds="5.39, 1.21, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c5f4838d-772a-41fb-bd6c-1ff7b59b5227" absoluteBounds="7.625, 0.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimesheetApproverEmail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9107b717-702b-421c-a342-12f82f59a202" absoluteBounds="7.64, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ab53339c-0e4f-4d6b-8d8b-984d0754bb84" absoluteBounds="5.375, 7.25, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimesheetCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4e948b21-2d17-4b11-a48e-682511899f48" absoluteBounds="5.39, 7.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="759956ce-5af2-44c8-a84f-067bfd4ce27a" absoluteBounds="8, 3.125, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimeSheetRate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8308988-5c9e-42f5-a684-fcdff9a67950" absoluteBounds="8.015, 3.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="976b6fb2-bf63-411c-91fa-88e769aea90d" absoluteBounds="1.375, 8.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimesheetRemindersTbl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="30841f75-e4a4-4a24-9d59-2e3405d2c445" absoluteBounds="1.3900000000000001, 9.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a40acdd6-44b2-4d9e-9c3f-30f7f64eb1cc" absoluteBounds="1.25, 10.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimesheetApprover" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d3ff2272-0524-4da1-9625-ac21153c1d87" absoluteBounds="1.2650000000000001, 11.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="52ebef39-4573-4d0e-8bba-4840b8c06a5e" absoluteBounds="2.875, 0.625, 2, 9.4629541015625">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimesheetEntry" />
+      <nestedChildShapes>
+        <elementListCompartment Id="920b763a-4ec6-43e7-aa25-e09154f57526" absoluteBounds="2.89, 1.085, 1.9700000000000002, 8.9029541015625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d45f2853-2f21-40b0-aad9-34acb0300c33" absoluteBounds="3.625, 10.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TimeSheetDataContext/ExpensesAccountingCode" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a7d062bb-36cc-4b45-ad26-a79a89e3e666" absoluteBounds="3.64, 11.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1c84a93e-ed33-4815-bca0-a9f593ebcfe0" absoluteBounds="4, 12.75, 2, 11.7705712890625">
+      <DataClassMoniker Name="/TimeSheetDataContext/v_timesheetentry" />
+      <nestedChildShapes>
+        <elementListCompartment Id="479dfb98-0ee3-4a1c-a6f4-bb13243c05c8" absoluteBounds="4.015, 13.21, 1.9700000000000002, 11.2105712890625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="13a125f1-9faa-4aad-8850-e3108bdb9147" absoluteBounds="7, 11, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/TimeSheetDataContext/TimeExpense" />
+      <nestedChildShapes>
+        <elementListCompartment Id="72e2410e-36f4-43fb-9bbb-34810dca2bfe" absoluteBounds="7.015, 11.46, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d0e91655-3129-44d7-9daf-e7b4c1623be1" absoluteBounds="1.375, 12.625, 2, 5.4246240234375">
+      <DataClassMoniker Name="/TimeSheetDataContext/v_TimeExpense" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cbe3635-e6e0-4c04-a6bc-016e8b3b1121" absoluteBounds="1.3900000000000001, 13.085, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

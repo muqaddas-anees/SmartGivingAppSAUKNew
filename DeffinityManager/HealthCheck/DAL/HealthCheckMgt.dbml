@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityFirstData" EntityNamespace="HealthCheckMgt.Entity" ContextNamespace="HealthCheckMgt.DAL" Class="HealthCheckDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.HealthCheckList" Member="HealthCheckLists">
+    <Type Name="HealthCheckList">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioHealthCheckID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateRaised" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="AssignedTeam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Location" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Issue" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="IssueStatus" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="RAG" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Assignmember" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthCheck_Forms" Member="HealthCheck_Forms">
+    <Type Name="HealthCheck_Form">
+      <Column Name="FormID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FormName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FormBackColor" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="HealthCheck_Form_HealthCheck_FormAssignToCall" Member="HealthCheck_FormAssignToCalls" ThisKey="FormID" OtherKey="FormID" Type="HealthCheck_FormAssignToCall" />
+      <Association Name="HealthCheck_Form_HealthCheck_FormPanel" Member="HealthCheck_FormPanels" ThisKey="FormID" OtherKey="FormID" Type="HealthCheck_FormPanel" />
+      <Association Name="HealthCheck_Form_HealthCheck_FormAssignToProjectTask" Member="HealthCheck_FormAssignToProjectTasks" ThisKey="FormID" OtherKey="FormID" Type="HealthCheck_FormAssignToProjectTask" />
+      <Association Name="HealthCheck_Form_AppManager" Member="AppManagers" ThisKey="FormID" OtherKey="FormID" Type="AppManager" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthCheckNameMailID" Member="HealthCheckNameMailIDs">
+    <Type Name="HealthCheckNameMailID">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioHealthCheckID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmailID" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthCheck_FormAssignToCall" Member="HealthCheck_FormAssignToCalls">
+    <Type Name="HealthCheck_FormAssignToCall">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CallID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FormID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="HealthCheck_Form_HealthCheck_FormAssignToCall" Member="HealthCheck_Form" ThisKey="FormID" OtherKey="FormID" Type="HealthCheck_Form" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthCheck_FormData" Member="HealthCheck_FormDatas">
+    <Type Name="HealthCheck_FormData">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HealthCheckID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ControlID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ControlValue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Section" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="HealthCheck_FormControl_HealthCheck_FormData" Member="HealthCheck_FormControl" ThisKey="ControlID" OtherKey="ControlID" Type="HealthCheck_FormControl" IsForeignKey="true" />
+      <Association Name="HealthCheck_FormControl_HealthCheck_FormData1" Member="HealthCheck_FormControl1" ThisKey="ControlID" OtherKey="ControlID" Type="HealthCheck_FormControl" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthCheck_FormPanels" Member="HealthCheck_FormPanels">
+    <Type Name="HealthCheck_FormPanel">
+      <Column Name="PanelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FormID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PanelName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PanelBackColor" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PanelRows" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PanelColumns" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PnlPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="HealthCheck_FormPanel_HealthCheck_FormControl" Member="HealthCheck_FormControls" ThisKey="PanelID" OtherKey="PanelID" Type="HealthCheck_FormControl" />
+      <Association Name="HealthCheck_FormPanel_HealthCheck_FormControl1" Member="HealthCheck_FormControls1" ThisKey="PanelID" OtherKey="PanelID" Type="HealthCheck_FormControl" />
+      <Association Name="HealthCheck_Form_HealthCheck_FormPanel" Member="HealthCheck_Form" ThisKey="FormID" OtherKey="FormID" Type="HealthCheck_Form" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthCheck_FormAssignToProjectTask" Member="HealthCheck_FormAssignToProjectTasks">
+    <Type Name="HealthCheck_FormAssignToProjectTask">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FormID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="HealthCheck_Form_HealthCheck_FormAssignToProjectTask" Member="HealthCheck_Form" ThisKey="FormID" OtherKey="FormID" Type="HealthCheck_Form" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthCheck_Configurator" Member="HealthCheck_Configurators">
+    <Type Name="HealthCheck_Configurator">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FieldId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="visibility" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DN_Customerlogo" Member="DN_Customerlogos">
+    <Type Name="DN_Customerlogo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmailTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_Permissions" Member="App_Permissions">
+    <Type Name="App_Permission">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PermissionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AppId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AppManager" Member="AppManagers">
+    <Type Name="AppManager">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="FormID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Icon" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ChildFormId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EngineerView" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CustomerView" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="AppManager_AppManagerAssignedForm" Member="AppManagerAssignedForms" ThisKey="ID" OtherKey="AppID" Type="AppManagerAssignedForm" />
+      <Association Name="HealthCheck_Form_AppManager" Member="HealthCheck_Form" ThisKey="FormID" OtherKey="FormID" Type="HealthCheck_Form" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AppManagerAssignedForm" Member="AppManagerAssignedForms">
+    <Type Name="AppManagerAssignedForm">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AppID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FormName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Form_Type" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ParentFormId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="AppManager_AppManagerAssignedForm" Member="AppManager" ThisKey="AppID" OtherKey="ID" Type="AppManager" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.gridColumnsVisibility" Member="gridColumnsVisibilities">
+    <Type Name="gridColumnsVisibility">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Appid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ColumnId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Visibility" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthCheck_FormControls" Member="HealthCheck_FormControls">
+    <Type Name="HealthCheck_FormControl">
+      <Column Name="ControlID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PanelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeOfField" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ControlLabelName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ControlValue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DefaultText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MinValue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaxValue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ListValues" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mandatory" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RowIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ColumnIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ListPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ControlWidth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ControlPosition" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Height" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CblPosition" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="columnlist" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="TypeofFieldInTbl" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Helptext" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="HealthCheck_FormControl_HealthCheck_FormData" Member="HealthCheck_FormDatas" ThisKey="ControlID" OtherKey="ControlID" Type="HealthCheck_FormData" />
+      <Association Name="HealthCheck_FormControl_HealthCheck_FormData1" Member="HealthCheck_FormDatas1" ThisKey="ControlID" OtherKey="ControlID" Type="HealthCheck_FormData" />
+      <Association Name="HealthCheck_FormPanel_HealthCheck_FormControl" Member="HealthCheck_FormPanel" ThisKey="PanelID" OtherKey="PanelID" Type="HealthCheck_FormPanel" IsForeignKey="true" />
+      <Association Name="HealthCheck_FormPanel_HealthCheck_FormControl1" Member="HealthCheck_FormPanel1" ThisKey="PanelID" OtherKey="PanelID" Type="HealthCheck_FormPanel" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HealthCheck_Recur" Member="HealthCheck_Recurs">
+    <Type Name="HealthCheck_Recur">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RecurWeekOn" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WeekDayName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndAfter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReCurrencePattern" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReCurrenceRange" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HealthCheckId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecurrEndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CompletedRecurr" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TempDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Duration" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

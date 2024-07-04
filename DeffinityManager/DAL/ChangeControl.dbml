@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DeffinityEflair" EntityNamespace="ChangeControlMgt.Entity" ContextNamespace="ChangeControlMgt.DAL" Class="ChangeControlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=DeffinityEflair;User ID=sa1;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ChangeControl" Member="ChangeControls">
+    <Type Name="ChangeControl">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IncidentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ChangeDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Justification" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateRaised" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TargetReleaseDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ResourceImpact" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="RequesterName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RequesterEmailID" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TargetStartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="RaisedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RelatesToProjectRef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RelatesToServiceRequest" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EstimatedCost" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EstimatedDaysRequired" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RequesterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CoOrdinator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateLogged" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InHandTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ClosedTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InHandSLAMet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClosedSLAMet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AreaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PriorityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SiteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ChangeControl_ChangeControl_Risk" Member="ChangeControl_Risks" ThisKey="ID" OtherKey="ChangeControlID" Type="ChangeControl_Risk" />
+      <Association Name="ChangeControl_ChangeControl_Task" Member="ChangeControl_Tasks" ThisKey="ID" OtherKey="ChangeControlID" Type="ChangeControl_Task" />
+      <Association Name="ChangeControl_ChangeControl_Approval" Member="ChangeControl_Approvals" ThisKey="ID" OtherKey="ChangeControlID" Type="ChangeControl_Approval" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChangeControl_Risk" Member="ChangeControl_Risks">
+    <Type Name="ChangeControl_Risk">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChangeControlID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Risk" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="RollBackPlan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TestPlan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ChangeControl_ChangeControl_Risk" Member="ChangeControl" ThisKey="ChangeControlID" OtherKey="ID" Type="ChangeControl" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChangeControl_Task" Member="ChangeControl_Tasks">
+    <Type Name="ChangeControl_Task">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChangeControlID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Task" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="OriginalDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NewDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Change" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="ChangeControl_ChangeControl_Task" Member="ChangeControl" ThisKey="ChangeControlID" OtherKey="ID" Type="ChangeControl" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChangeControlAdmin" Member="ChangeControlAdmins">
+    <Type Name="ChangeControlAdmin">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChangeControl_Approval" Member="ChangeControl_Approvals">
+    <Type Name="ChangeControl_Approval">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChangeControlID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ApprovalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DateApproved" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="ChangeControl_ChangeControl_Approval" Member="ChangeControl" ThisKey="ChangeControlID" OtherKey="ID" Type="ChangeControl" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

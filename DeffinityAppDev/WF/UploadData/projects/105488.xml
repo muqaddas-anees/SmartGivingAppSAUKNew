@@ -1,0 +1,395 @@
+
+ 
+ 
+<anygantt>
+  <styles>
+    <defaults>
+      <summary>
+        <task_style>
+          <tooltip enabled="true">
+            <font render_as_html="true"/>
+           <text> <![CDATA[<font face='Verdana' size='10'><p><font color='#770000' face='Verdana' size='10'><b>{%Name}</b></font></p> 
+ Actual Start Date: <p><font color='#007700'>{%startdate}{dateTimeFormat:%dd/%MM/%yyyy} </font></p> 
+ Actual End Date:  <p><font color='#007700'>{%enddate}{dateTimeFormat:%dd/%MM/%yyyy} </font></p> 
+ Duration: <p><font color='#0055AA'><br/><b>{%duration1}</b></font></p> 
+ Complete: <p><font color='#494949'><b>{%Complete}%</b></font></p></font>]]> </text>
+          </tooltip>
+          <row>
+            <fill enabled="false"/>
+          </row>
+          <row_datagrid>
+            <cell>
+              <font bold="true" size="9"/>
+              <states>
+                <hover>
+                  <font underline="true"/>
+                </hover>
+                <pushed>
+                  <fill type="Solid" color="#E77373" opacity="0.5"/>
+                </pushed>
+                <selected_normal>
+                  <fill type="Solid" color="#E77373" opacity="0.5"/>
+                </selected_normal>
+                <selected_hover>
+                  <fill type="Solid" color="#E77373" opacity="0.5"/>
+                </selected_hover>
+              </states>
+            </cell>
+          </row_datagrid>
+          <actual>
+            <bar_style>
+              <labels>
+                <label anchor="Right" valign="Center" halign="Far">
+                  <text>{%Complete}%</text>
+                </label>
+                <!--
+                <label anchor="Left" valign="Center" halign="Near">
+                  <text>{%Name}</text>
+                </label>
+                -->
+                </labels>
+              <middle shape="HalfTop">
+                <border type="Solid" color="#000000"/>
+                <fill type="Solid" color="#333333"/>
+              </middle>
+              <start>
+                <marker type="Arrow">
+                  <border type="Solid" color="#000000"/>
+                  <fill type="Solid" color="#333333"/>
+                </marker>
+              </start>
+              <end>
+                <marker type="Arrow">
+                  <border type="Solid" color="#000000"/>
+                  <fill type="Solid" color="#333333"/>
+                </marker>
+              </end>
+              <states>
+                <hover>
+                  <middle shape="HalfTop">
+                    <border type="Solid" color="#000000"/>
+                    <fill type="Solid" color="#777777"/>
+                  </middle>
+                  <start>
+                    <marker type="Arrow">
+                      <border type="Solid" color="#000000"/>
+                      <fill type="Solid" color="#777777"/>
+                    </marker>
+                  </start>
+                  <end>
+                    <marker type="Arrow">
+                      <border type="Solid" color="#000000"/>
+                      <fill type="Solid" color="#777777"/>
+                    </marker>
+                  </end>
+                </hover>
+                <selected_hover>
+                  <middle shape="HalfTop">
+                    <border type="Solid" color="#000000"/>
+                    <fill type="Solid" color="#E77373"/>
+                  </middle>
+                  <start>
+                    <marker type="Arrow">
+                      <border type="Solid" color="#000000"/>
+                      <fill type="Solid" color="#E77373"/>
+                    </marker>
+                  </start>
+                  <end>
+                    <marker type="Arrow">
+                      <border type="Solid" color="#000000"/>
+                      <fill type="Solid" color="#E77373"/>
+                    </marker>
+                  </end>
+                </selected_hover>
+                <selected_normal>
+                  <middle shape="HalfTop">
+                    <border type="Solid" color="#000000"/>
+                    <fill type="Solid" color="#E77373"/>
+                  </middle>
+                  <start>
+                    <marker type="Arrow">
+                      <border type="Solid" color="#000000"/>
+                      <fill type="Solid" color="#E77373"/>
+                    </marker>
+                  </start>
+                  <end>
+                    <marker type="Arrow">
+                      <border type="Solid" color="#000000"/>
+                      <fill type="Solid" color="#E77373"/>
+                    </marker>
+                  </end>
+                </selected_normal>
+              </states>
+            </bar_style>
+          </actual>
+          <progress>
+            <bar_style>
+              <middle shape="ThinBottom">
+                <fill type="Solid" color="#F1C95A"/>
+                <border enabled="true" color="#665300"/>
+              </middle>
+            </bar_style>
+          </progress>
+        </task_style>
+      </summary>
+      <task>
+        <task_style>
+          <tooltip enabled="true">
+            <font render_as_html="true"/>
+              <text> <![CDATA[<font face='Verdana' size='10'><p><font color='#770000' face='Verdana' size='10'><b>{%Name}</b></font></p> 
+ Actual Start Date: <p><font color='#007700'>{%startdate}{dateTimeFormat:%dd/%MM/%yyyy} </font></p> 
+ Actual End Date:  <p><font color='#007700'>{%enddate}{dateTimeFormat:%dd/%MM/%yyyy} </font></p> 
+ Duration: <p><font color='#0055AA'><br/><b>{%duration1}</b></font></p> 
+ Complete: <p><font color='#494949'><b>{%Complete}%</b></font></p></font>]]> </text>
+          </tooltip>
+
+          <row>
+            <fill enabled="false"/>
+          </row>
+          <row_datagrid>
+            <cell>
+              <states>
+                <hover>
+                  <font underline="true"/>
+                </hover>
+                <pushed>
+                  <fill type="Solid" color="#E77373" opacity="0.5"/>
+                </pushed>
+                <selected_normal>
+                  <fill type="Solid" color="#E77373" opacity="0.5"/>
+                </selected_normal>
+                <selected_hover>
+                  <fill type="Solid" color="#E77373" opacity="0.5"/>
+                </selected_hover>
+              </states>
+            </cell>
+          </row_datagrid>
+          <actual>
+            <bar_style>
+              <labels>
+                <label anchor="Right" valign="Center" halign="Far">
+                  <text>{%Complete}%</text>
+                </label>
+                <!--
+                <label anchor="Left" valign="Center" halign="Near">
+                  <text>{%Name}</text>
+                </label>
+                -->
+              </labels>
+              <middle shape="Full">
+                <fill type="Solid" color="#BDD3FC"/>
+                <border type="Solid" color="#7A88A6"/>
+              </middle>
+              <states>
+                <hover>
+                  <middle shape="Full">
+                    <fill type="Solid" color="#E7EEFC"/>
+                    <border type="Solid" color="#7A88A6"/>
+                  </middle>
+                </hover>
+                <selected_hover>
+                  <middle shape="Full">
+                    <fill type="Solid" color="#FCBDCD"/>
+                    <border type="Solid" color="#A67A83"/>
+                  </middle>
+                </selected_hover>
+                <selected_normal>
+                  <middle shape="Full">
+                    <fill type="Solid" color="#FCBDCD"/>
+                    <border type="Solid" color="#A67A83"/>
+                  </middle>
+                </selected_normal>
+              </states>
+            </bar_style>
+          </actual>
+          <progress>
+            <bar_style>
+              <middle shape="ThinCenter">
+                <fill type="Solid" color="#6A68F9"/>
+                <border type="Solid" color="#4463A6"/>
+              </middle>
+              <states>
+                <hover>
+                  <middle shape="ThinCenter">
+                    <fill type="Solid" color="#9997F9"/>
+                    <border type="Solid" color="#4463A6"/>
+                  </middle>
+                </hover>
+                <selected_normal>
+                  <middle shape="ThinCenter">
+                    <fill type="Solid" color="#F97968"/>
+                    <border type="Solid" color="#A64459"/>
+                  </middle>
+                </selected_normal>
+                <selected_hover>
+                  <middle shape="ThinCenter">
+                    <fill type="Solid" color="#F97968"/>
+                    <border type="Solid" color="#A64459"/>
+                  </middle>
+                </selected_hover>
+              </states>
+            </bar_style>
+          </progress>
+        </task_style>
+      </task>
+      <milestone>
+        <task_style>
+          <tooltip enabled="true">
+            <font render_as_html="true"/>
+            <text>
+              <![CDATA[<p><font color="#770000" face="Verdana" size="10"><b>{%Name}</b></font></p>
+<p><font color="#007700" face="Verdana" size="10"><b>{%task_startdate}</b></font></p>
+]]>
+            </text>
+          </tooltip>
+          <actual>
+            <bar_style>
+              <labels>
+                <label anchor="Left" valign="Center" halign="Near">
+                  <text>{%Name}</text>
+                </label>
+              </labels>
+              <start>
+                <marker type="Rhomb">
+                  <border type="Solid" color="Green"/>
+                  <fill type="Solid" color="#54D554"/>
+                </marker>
+              </start>
+              <states>
+                <hover>
+                  <start>
+                    <marker type="Rhomb">
+                      <border type="Solid" color="Green"/>
+                      <fill type="Solid" color="#8BF78B"/>
+                    </marker>
+                  </start>
+                </hover>
+                <selected_hover>
+                  <start>
+                    <marker type="Rhomb">
+                      <fill type="Solid" color="#F97968"/>
+                      <border type="Solid" color="#A64459"/>
+                    </marker>
+                  </start>
+                </selected_hover>
+                <selected_normal>
+                  <start>
+                    <marker type="Rhomb">
+                      <fill type="Solid" color="#F97968"/>
+                      <border type="Solid" color="#A64459"/>
+                    </marker>
+                  </start>
+                </selected_normal>
+              </states>
+            </bar_style>
+          </actual>
+        </task_style>
+      </milestone>
+      <connector>
+        <connector_style>
+          <line type="Solid" color="#595959"/>
+        </connector_style>
+      </connector>
+    </defaults>
+  </styles>
+  <settings>
+  <locale>
+ <date_time_format week_starts_from_monday="True">
+  </date_time_format>
+  </locale>
+    <navigation enabled="false" position="Top" size="30">
+      <buttons collapse_expand_button="true" align="Far"/>
+      <text>Custom Elements Styling</text>
+      <font face="Verdana" size="10" bold="true" color="White"/>
+      <background>
+        <fill type="Gradient">
+          <gradient>
+            <key color="#B0B0B0" position="0"/>
+            <key color="#A0A0A0" position="0.3"/>
+            <key color="#999999" position="0.5"/>
+            <key color="#A0A0A0" position="0.7"/>
+            <key color="#B0B0B0" position="1"/>
+          </gradient>
+        </fill>
+        <border type="Solid" color="#494949"/>
+      </background>
+
+    </navigation>
+    <background enabled="false"/>
+ <editing allow_edit='true'><rounding><date unit='Day' step='1'/><progress step='1'/></rounding></editing>
+    
+    <context_menu save_as_image="false" version_info="false" print_chart="false" about_anygantt="false" />
+
+  </settings>
+  <datagrid enabled="true" show_tooltip="False">
+    <columns>
+      <column width="30">
+        <header>
+          <text>#</text>
+        </header>
+        <format>{%RowNum}</format>
+      </column>
+      <column cell_align="LeftLevelPadding" width="200">
+        <header>
+          <text>Task Name</text>
+        </header>
+        <format>{%Name}</format>
+      </column>
+      <column>
+        <header>
+          <text>Start Date</text>
+        </header>
+        <format>{%task_startdate}</format>
+      </column>
+      <column>
+        <header>
+          <text>End Date</text>
+        </header>
+        <format>{%task_enddate}</format>
+      </column>
+      <column>
+        <header>
+          <text>Actual Start Date</text>
+        </header>
+        <format>{%startdate}{dateTimeFormat:%dd/%MM/%yyyy}</format>
+      </column>
+      <column>
+        <header>
+          <text>Actual End Date</text>
+        </header>
+        <format>{%enddate}{dateTimeFormat:%dd/%MM/%yyyy}</format>
+      </column>
+      <column>
+        <header>
+          <text>Progress</text>
+        </header>
+        <format>{%Complete}%</format>
+      </column>
+      <column>
+        <header>
+          <text>Duration</text>
+        </header>
+        <format>{%duration1}</format>
+      </column>
+    </columns>
+  </datagrid>
+  <timeline>
+    <plot line_height="24" item_height="16">
+      <non_working_days show="true"/>
+      <non_working_hours show="true"/>
+       <grid>
+        <vertical>
+          <line enabled="true" />
+        </vertical>
+      </grid>
+    </plot>
+    <scale show_start="2009.8.15 0.0" show_end="2010.12.28 0.0" lines="3" height="60">
+      <zoom allow_animation="true"/>
+      <bottom_line color="#696969"/>
+    </scale>
+  </timeline>
+  <project_chart>
+    <auto_summary enabled="True" real_time_update="False" progress_update="True"/>
+    <tasks><task id='1' name='AA Infrastructure Projects' parent='' progress='0%' actual_start='2012.08.08.00.00' actual_end='2012.08.09.23.59'><attributes><attribute name='task_startdate'>08/08/2012</attribute><attribute name='task_enddate'>09/08/2012</attribute><attribute name='startdate'>08/08/2012</attribute><attribute name='enddate'>09/08/2012</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>100</attribute><attribute name='redpercent'>100</attribute><attribute name='itemstatus'>1</attribute><attribute name='resourceids'></attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'></attribute><attribute name='taskid'>11355</attribute><attribute name='indentlevel'>0</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>2</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='2' name='Quote customer' parent='1' progress='100%' actual_start='2012.08.08.00.00' actual_end='2012.08.13.23.59'><attributes><attribute name='task_startdate'>08/08/2012</attribute><attribute name='task_enddate'>09/08/2012</attribute><attribute name='startdate'>08/08/2012</attribute><attribute name='enddate'>13/08/2012</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>3</attribute><attribute name='resourceids'></attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'></attribute><attribute name='taskid'>11356</attribute><attribute name='indentlevel'>1</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>6</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='3' name='PO Received' parent='1' progress='100%' actual_start='2012.08.08.00.00' actual_end='2012.08.13.23.59'><attributes><attribute name='task_startdate'>08/08/2012</attribute><attribute name='task_enddate'>09/08/2012</attribute><attribute name='startdate'>08/08/2012</attribute><attribute name='enddate'>13/08/2012</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>3</attribute><attribute name='resourceids'></attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'></attribute><attribute name='taskid'>11357</attribute><attribute name='indentlevel'>1</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>6</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='4' name='Create Detailed Project Plan' parent='1' progress='100%' actual_start='2012.08.08.00.00' actual_end='2012.08.14.23.59'><attributes><attribute name='task_startdate'>08/08/2012</attribute><attribute name='task_enddate'>09/08/2012</attribute><attribute name='startdate'>08/08/2012</attribute><attribute name='enddate'>14/08/2012</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>3</attribute><attribute name='resourceids'></attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'></attribute><attribute name='taskid'>11358</attribute><attribute name='indentlevel'>1</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>7</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='5' name='Carry Out Work' parent='1' progress='0%' actual_start='2011.10.24.00.00' actual_end='2013.01.06.23.59'><attributes><attribute name='task_startdate'>24/10/2011</attribute><attribute name='task_enddate'>28/10/2011</attribute><attribute name='startdate'>24/10/2011</attribute><attribute name='enddate'>06/01/2013</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>1</attribute><attribute name='resourceids'>181</attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'>Note on work item</attribute><attribute name='taskid'>8240</attribute><attribute name='indentlevel'>1</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>441</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='6' name='New Task for Indent Test' parent='5' progress='36%' actual_start='2012.08.22.00.00' actual_end='2012.09.15.23.59'><attributes><attribute name='task_startdate'>17/07/2012</attribute><attribute name='task_enddate'>20/07/2012</attribute><attribute name='startdate'>22/08/2012</attribute><attribute name='enddate'>15/09/2012</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>3</attribute><attribute name='resourceids'></attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'>Test for Sascha</attribute><attribute name='taskid'>11209</attribute><attribute name='indentlevel'>2</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>25</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='7' name='October Task' parent='5' progress='21%' actual_start='2012.10.01.00.00' actual_end='2012.10.31.23.59'><attributes><attribute name='task_startdate'>01/10/2011</attribute><attribute name='task_enddate'>31/10/2011</attribute><attribute name='startdate'>01/10/2012</attribute><attribute name='enddate'>31/10/2012</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>3</attribute><attribute name='resourceids'></attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'></attribute><attribute name='taskid'>8473</attribute><attribute name='indentlevel'>2</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>31</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='8' name='Task X' parent='5' progress='0%' actual_start='2012.12.06.00.00' actual_end='2013.02.23.23.59'><attributes><attribute name='task_startdate'>25/07/2012</attribute><attribute name='task_enddate'>30/07/2012</attribute><attribute name='startdate'>06/12/2012</attribute><attribute name='enddate'>23/02/2013</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>1</attribute><attribute name='resourceids'>143</attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'></attribute><attribute name='taskid'>11280</attribute><attribute name='indentlevel'>2</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>80</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='9' name='Carry out more work' parent='1' progress='0%' actual_start='2012.08.08.00.00' actual_end='2012.08.09.23.59'><attributes><attribute name='task_startdate'>08/08/2012</attribute><attribute name='task_enddate'>09/08/2012</attribute><attribute name='startdate'>08/08/2012</attribute><attribute name='enddate'>09/08/2012</attribute><attribute name='rag'>Y         </attribute><attribute name='amberdays'>1</attribute><attribute name='reddays'>3</attribute><attribute name='amberpercent'>100</attribute><attribute name='redpercent'>100</attribute><attribute name='itemstatus'>1</attribute><attribute name='resourceids'></attribute><attribute name='ragrequired'>Y         </attribute><attribute name='notes'></attribute><attribute name='taskid'>11359</attribute><attribute name='indentlevel'>1</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>2</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='10' name='November Task' parent='9' progress='0%' actual_start='2012.11.01.00.00' actual_end='2012.11.30.23.59'><attributes><attribute name='task_startdate'>01/11/2011</attribute><attribute name='task_enddate'>30/11/2011</attribute><attribute name='startdate'>01/11/2012</attribute><attribute name='enddate'>30/11/2012</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>3</attribute><attribute name='resourceids'>181,358</attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'></attribute><attribute name='taskid'>8474</attribute><attribute name='indentlevel'>2</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>30</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='11' name='QA' parent='1' progress='0%' actual_start='2013.03.08.00.00' actual_end='2013.03.09.23.59'><attributes><attribute name='task_startdate'>08/08/2012</attribute><attribute name='task_enddate'>09/08/2012</attribute><attribute name='startdate'>08/03/2013</attribute><attribute name='enddate'>09/03/2013</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>1</attribute><attribute name='resourceids'></attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'></attribute><attribute name='taskid'>11360</attribute><attribute name='indentlevel'>1</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>2</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task><task id='12' name='Customer Sign-off' parent='1' progress='0%' actual_start='2013.07.09.00.00' actual_end1='2013.07.09.23.59'><attributes><attribute name='task_startdate'>09/08/2012</attribute><attribute name='task_enddate'>09/08/2012</attribute><attribute name='startdate'>09/07/2013</attribute><attribute name='enddate'>09/07/2013</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>2</attribute><attribute name='resourceids'></attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'></attribute><attribute name='taskid'>11361</attribute><attribute name='indentlevel'>1</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>1</attribute><attribute name='ismilestone'>true</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>227</attribute></attributes></task><task id='13' name='Invoice' parent='1' progress='0%' actual_start='2013.07.15.00.00' actual_end='2013.07.18.23.59'><attributes><attribute name='task_startdate'>08/08/2012</attribute><attribute name='task_enddate'>09/08/2012</attribute><attribute name='startdate'>15/07/2013</attribute><attribute name='enddate'>18/07/2013</attribute><attribute name='rag'>N         </attribute><attribute name='amberdays'>0</attribute><attribute name='reddays'>0</attribute><attribute name='amberpercent'>0</attribute><attribute name='redpercent'>0</attribute><attribute name='itemstatus'>1</attribute><attribute name='resourceids'></attribute><attribute name='ragrequired'>N         </attribute><attribute name='notes'></attribute><attribute name='taskid'>11362</attribute><attribute name='indentlevel'>1</attribute><attribute name='qa'>N</attribute><attribute name='includeinvaluation'>0</attribute><attribute name='reoccurRange'>0</attribute><attribute name='dayName'></attribute><attribute name='duration1'>4</attribute><attribute name='ismilestone'>false</attribute><attribute name='categoryid'>0</attribute><attribute name='projectstatus'>2</attribute><attribute name='TeamID'>0</attribute><attribute name='checkpointid'>0</attribute></attributes></task></tasks><connectors><connector type='FinishStart' from='10' to='8'/><connector type='FinishStart' from='11' to='13'/><connector type='FinishStart' from='12' to='13'/><connector type='FinishStart' from='8' to='11'/></connectors>
+  </project_chart>
+</anygantt>

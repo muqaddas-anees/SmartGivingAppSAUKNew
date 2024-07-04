@@ -1,0 +1,9 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MainTab.master" AutoEventWireup="true" CodeBehind="NestedMasterPage1.master.cs" Inherits="DeffinityAppDev.NestedMasterPage1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="page_title" runat="server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Tabs" runat="server">
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
+</asp:Content>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+     
+    <siteMapNode url="~/WF/Portal/Home.aspx" title="Home"  description="">
+        <!--<siteMapNode url="~/WF/Portal/CustomerHome.aspx?customer=0" title="My Projects"  description="" >
+          <siteMapNode url="CustomerProjectOverview.aspx" title="Project Tasks"  description="" />
+          <siteMapNode url="CustomerProjectDocuments.aspx" title="Project Files"  description="" />
+        </siteMapNode>-->
+      <!--<siteMapNode url="~/WF/Portal/SDsummary.aspx?customer=0" title="Log a Call"  description="" />-->
+      <!--<siteMapNode url="~/WF/Portal/CustomerSC.aspx" title="Browse Service Catelogue"  description="" >
+        <siteMapNode url="~/WF/Portal/NewOrder.aspx" title="Details"  description="" />
+      </siteMapNode>-->
+      <siteMapNode url="~/WF/DC/FLSCustomer.aspx" title="Job"  description="" />
+      <siteMapNode url="~/WF/DC/DCCustomerJlist.aspx?type=FLS" title="Job"  description="" >
+      </siteMapNode>
+       <!--<siteMapNode url="~/WF/DC/DCCustomerJlist.aspx?type=Delivery" title="Delivery"  description="" >
+        <siteMapNode url="~/WF/DC/DeliveryCustomer.aspx" title="Delivery"  description="" />
+      </siteMapNode>-->
+       <!--<siteMapNode url="~/WF/DC/DCCustomerJlist.aspx?type=AccessControl" title="Access Control"  description="" >
+        <siteMapNode url="~/WF/DC/CustomerAccessControl.aspx" title="Access Control"  description="" />
+      </siteMapNode>-->
+      <!--<siteMapNode url="~/WF/DC/DCCustomerJlist.aspx?type=PermittoWork" title="Permit to Work"  description="" >
+        <siteMapNode url="~/WF/DC/PermitToWorkCustomer.aspx" title="Permit to Work"  description="" />
+       <siteMapNode url="~/WF/DC/ChecklistCustomer.aspx" title="Checklist"  description="" />
+      </siteMapNode>-->
+      
+      <!--<siteMapNode url="~/WF/Portal/CustomerHealthCheckMgmt.aspx" title="Health check"  description="" />-->
+      <!--<siteMapNode url="~/WF/Portal/CustomerDocs.aspx" title="Document Library"  description="" />-->
+      <!--<siteMapNode url="~/WF/Portal/CustomerResourcePlanner.aspx" title="Resource Planner"  description="" />
+      <siteMapNode url="~/WF/Portal/FlowChartDownLoad.aspx" title="Processes &amp; Procedures"  description="" />
+      <siteMapNode url="~/WF/Portal/OrgnChartsDownLoad.aspx" title="Organisation Charts"  description="" />-->
+      
+      <!--<siteMapNode url="~/WF/Portal/CustomerTimesheet.aspx?customer=0" title="Timesheet"  description="" />
+      <siteMapNode url="~/WF/Portal/CustomerSDUnits.aspx?customer=0" title="Unit Consumption Dashboard"  description="" />
+      <siteMapNode url="~/WF/Portal/CustomerMyTasks.aspx?customer=0" title="My Tasks"  description="" />-->
+        <!--<siteMapNode url="" title=""  description="" />-->
+    </siteMapNode>
+</siteMap>

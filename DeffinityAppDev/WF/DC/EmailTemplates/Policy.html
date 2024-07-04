@@ -1,0 +1,926 @@
+﻿<!DOCTYPE html>
+<meta charset="UTF-8" />
+<html>
+
+<head>
+    <title>Liberty Home Guard</title>
+   
+    <style type="text/css">
+        * {
+            font-family: 'Verdana';
+            font-size: 14px;
+            
+        }
+        
+        li {
+            line-height: normal;
+            margin: 5px 0px;
+        }
+        /*.staticInfo  ol {padding-left: 27px;margin-bottom: 20px;}*/
+        .staticInfo  ol {padding-left: 27px;}
+        .staticInfo h3 {margin-left: 25px;}
+        .keep-together {
+    page-break-inside: avoid;
+}
+
+.break-before {
+    page-break-before: always;
+}
+
+.break-after {
+    page-break-after: always;
+}
+        /*@media print
+{
+            
+  table { page-break-after:auto }
+  tr    { page-break-inside:avoid; page-break-after:auto }
+  td    { page-break-inside:avoid; page-break-after:auto }
+  thead { display:table-header-group }
+  tfoot { display:table-footer-group }
+}*/
+        @media print {
+            /*table thead {
+    display: table-row-group;
+  }*/
+            thead {
+                display: table-header-group;
+                padding-bottom:30px;
+            }
+            tfoot {
+                display: table-footer-group;
+            }
+            tr    { page-break-inside:avoid; page-break-after:auto }
+  td    { page-break-inside:avoid; page-break-after:auto }
+            @page {
+                size: A4;
+            }
+         
+            .page-break {
+                /*display: block;*/
+                page-break-after: always;
+            }
+            button {display: none;}
+        }
+
+
+    </style>
+    <!--<style type="text/css" media="screen,print">
+        /* Page Breaks */
+
+        /***Always insert a page break before the element***/
+        .pb_before {
+            page-break-before: always !important;
+        }
+
+        /***Always insert a page break after the element***/
+        .pb_after {
+            page-break-after: always !important;
+        }
+
+        /***Avoid page break before the element (if possible)***/
+        .pb_before_avoid {
+            page-break-before: avoid !important;
+        }
+
+        /***Avoid page break after the element (if possible)***/
+        .pb_after_avoid {
+            page-break-after: avoid !important;
+        }
+
+        /* Avoid page break inside the element (if possible) */
+        .pbi_avoid {
+            page-break-inside: avoid !important;
+        }
+    </style>-->
+
+
+</head>
+
+<body>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mainTbl">
+        
+        <thead>
+            <tr>
+                <td align="center">
+                	<table cellpadding="0" width="750" cellspacing="0">
+                		<tr>
+                			<td style="padding: 0px;height: 50px;">
+                                <img src="https://libertyhomeguard.deffinity.com/WF/DC/EmailTemplates/images/LHG_logo.png" style="width: 300px">
+                			</td>
+                		</tr>
+                	</table>
+                    
+                </td>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+                <td align="center">
+                    
+                        <table cellpadding="0" width="750" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td bgcolor="#024a5b" align="center" style="color: #fff;padding: 10px;font-size: 53px;font-weight: bold">CONTRACT AGREEMENT</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="/*background-color: #e94753;*/font-size: 26px;
+    color: #fff;
+    padding: 10px 47px 10px 10px;
+    margin: 10px 10px 0px;
+    width: 320px;
+    font-weight: bold;
+    background-image: url(https://libertyhomeguard.deffinity.com/WF/DC/EmailTemplates/images/account_summry.png);
+    background-size: cover;
+    background-position: 100% 44%;
+    background-repeat: no-repeat;">ACCOUNT SUMMARY:</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table width="98%" cellpadding="10" cellspacing="0" style="background-image: url(https://libertyhomeguard.deffinity.com/WF/DC/EmailTemplates/images/account_summry_info_bg.png);background-repeat: no-repeat;margin-left: 2%;">
+                                            <tr>
+                                                <td width="58%" valign="top">
+                                                    <p style="margin-top: 0px;border-right: 1px solid #000;padding: 0px 10px">
+                                                        AGREEMENT NUMBER: [Policynumber]
+                                                        <br /> AGREEMENT HOLDING PERIOD: [Policystarts] DAYS
+                                                        <br /> AGREEMENT TERM: [Startdate] - [Expirydate]
+                                                        <br />
+                                                        <br /> PROPERTY COVERED:
+                                                        <br /> [Address]
+                                                        <br />
+                                                        <br /> PROPERTY TYPE:
+                                                        <br /> [Propertytype]
+                                                        <br /> Residence [Other] 5,000 sq.ft.
+                                                    </p>
+                                                </td>
+                                                <td valign="top">
+                                                    <p style="margin-top: 0px; padding: 0px 20px;">
+                                                        PAYMENT TYPE: [Paymenttype]
+                                                        <br /> AGREEMENT PRICE: $[Price]
+                                                        <br /> Purchase Date: [Purchasedate]
+                                                        <br /> Trade Service Call Fee
+                                                        <br /> (“Deductible”): $[Deductible]
+                                                        <br />
+                                                    </p>
+                                                    <figure>
+                                                        <img src="https://libertyhomeguard.deffinity.com/WF/DC/EmailTemplates/images/LHG_image.png" alt="" />
+                                                    </figure>
+                                                    <p>* Includes applicable sales tax</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#024a5b" align="center" style="border-top:2px solid #000;border-bottom:2px solid #000; color: #fff;padding:10px;font-size: 22px;font-weight: bold">PLEASE VERIFY THAT YOUR INFORMATION IS CORRECT</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0px 10px;">
+                                        <table width="100%" style="margin-bottom: 20px;" cellspacing="0">
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        CUSTOMER CONTACT: [Contactname]
+                                                        <br /><br /> PHONE NUMBER: [Contactno]
+                                                        <br /> EMAIL ADDRESS: [Contactemail]
+                                                    </p>
+                                                </td>
+                                                <td valign="top">
+                                                    <p>
+                                                        MAILING ADDRESS:
+                                                        <br /> [Billingaddress]
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#024a5b" align="center" style="color: #fff;padding:10px;font-size: 24px;font-weight: bold">IMPORTANT ACCOUNT INFORMATION</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0px 10px;">
+                                        <p style="margin-bottom: 0px;">Managing your home warranty just got easier with libertyhomeguard.com/my-account! With libertyhomeguard.com/my-account, you now have the convenience of:</p>
+                                        <ul style="margin-top: 0px;padding-left: 20px;">
+                                            <li style="margin: 0px;">Mobile-friendly access</li>
+                                            <li style="margin: 0px;">Quick and easy service requests</li>
+                                            <li style="margin: 0px;">Simple contract renewals</li>
+                                            <li style="margin: 0px;">View your coverage and download your contract anytime</li>
+                                        </ul>
+                                        <p>Accessing your account is just a click away. Register today at libertyhomeguard.com/my-account</p>
+                                        <hr>
+                                        <h5 align="center" style="font-size: 14px;font-weight: normal;margin-top:10px;">INTERESTED IN OTHER COVERAGE OPTIONS? WE CAN HELP. VISIT US AT LIBERTYHOMEGUARD.COM OR CALL (833) 544-8273</h5>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                  <br />
+                   
+                  <!--<div style="padding-bottom:200px;width:100%">&nbsp;</div>-->
+</td>
+            </tr>
+            <tr>
+                <td align="center">
+                   
+                        <table cellpadding="0" width="750" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <div style="font-size: 16px;color: #fff;padding:15px 10px;font-weight: bold;width:540px;display: inline-block;
+                                background-image: url(https://libertyhomeguard.deffinity.com/WF/DC/EmailTemplates/images/selected_cov_bg.png);
+                                background-size: cover;
+                                background-position: 100% 44%;
+                                background-repeat: no-repeat;">YOU HAVE SELECTED THE COVERAGE SHOWN BELOW:</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="color: #024a5b;">
+                                    <table width="98%" cellpadding="10" cellspacing="0" style="background-image: url(https://libertyhomeguard.deffinity.com/WF/DC/EmailTemplates/images/productName_bg.png);background-repeat: no-repeat;margin-left: 2%;">
+                                        <tr>
+                                            <td>
+                                                <div style="padding-left: 10px;">
+                                                    <h2 style="margin-bottom: 0px;font-weight: normal;font-size: 18px;margin-top:0px;">PRODUCT NAME: <span style="color: #e94753">[Policytype]</span></h2>
+                                                    <h3 style="margin-top: 10px;font-weight: normal;margin-bottom:0px;">TRADE SERVICE CALL FEE: <span style="color: #000">$[Deductible]</span></h3>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" cellpadding="0" cellspacing="0" style="border:2px solid #999;border-collapse: collapse;">
+                                        <tr>
+                                            <td bgcolor="#024a5b" align="center" style="font-size: 20px;color: #fff;padding:5px 10px;font-weight: bold;">COVERED ITEMS</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                [policydetails]
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                   
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </td>
+            </tr>
+            
+            <tr>
+                <td align="center">
+                    <div class="page-break" style="page-break-after: always;"></div>
+                        <table cellpadding="0" width="750" cellspacing="0" class="staticInfo" style="padding-top:50px">
+                            <tr>
+                                <td>
+                                    <h3 style="font-size: 18px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">A. Terms & Definitions</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol style="color: #024a5b;">
+                                        <li>“We”, “Us”, “LHG”, and “Our” (upper case or lower case) are references to the obligor and administrator of this agreement Liberty Home Guard LLC.</li>
+                                        <li>The term “Agreement” refers to this home service contract.</li>
+                                        <li>“You” and “Your” (upper case or lower case) are references to the person who has entered into or been provided an Agreement with LHG and/or any permitted transferees of this agreement.</li>
+                                        <li>“Covered Item” are the systems, components, and parts stated as covered in your account summary and are subject to the limitations, exclusions, and provisions set forth in this Agreement.</li>
+                                        <li>“LHG’s Service Cost” refers to Liberty Home Guard’s total cost to provide service under your agreement.</li>
+                                        <li>“Service Contractor” refers to a technician selected and approved by LHG in the trade applicable to your request.</li>
+                                        <li>“Effective Date” refers to the start date when coverage under this agreement begins located in your Account Summary.</li>
+                                        <li>“Trade Service Call Fee” or “Deductible” refers to the payment that must be made before any Service Contractor is dispatched and is set forth in your Account Summary.</li>
+                                        <li>“Agreement Costs” refers to your Agreement Price and Trade Service Call Fee. Both are set forth in your Account Summary.</li>
+                                        <li>“Agreement Term” refers to the date that your Agreement is in effect and is set forth in your Account Summary.</li>
+                                        <li>“HVAC” refers to heating ventilation and air conditioning systems.</li>
+                                        <li>“Account Summary” refers to the high-level overview of this Agreement found in pages X & Y.</li>
+                                        <li>“Normal Wear and Tear” refers to a mechanical breakdown of a covered item as a result of normal use following the guidelines of the manufacturer.</li>
+                                        <li>“Malfunction” and “Failure” both refer to a breakdown in the functioning of a covered item caused by ordinary use.</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3 style="font-size: 18px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">B. Your Agreement</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ol>
+                                        <li>
+                                            <b style="color:#024a5b">Your Agreement with Liberty Home Guard (LHG) consists of:</b>
+                                            <ol type="a">
+                                                <li>the Account Summary provided to you by LHG; and Sections A-K of this Agreement</li>
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            <b style="color:#024a5b">Coverage under your agreement:</b>
+                                            <ol type="a">
+                                                <li>This Agreement is a service contract and not a contract of insurance.</li>
+                                                <li>Includes only specified coverage for the “Covered Items” stated as covered in your Account Summary, and is subject to the limitations, exclusions, and provisions set forth in this Agreement. So you understand your specific coverage, please read your Agreement carefully.</li>
+                                                <li>Is for a Covered Item Malfunction occurring during your Agreement Term caused by Normal Wear and Tear.</li>
+                                                <li>Except as provided in the following subsection (e), Covered Items must be installed within the confines of the structural walls of the main foundation of the home within an attached or detached fully enclosed garage capable of parking one or more motor vehicles.</li>
+                                                <li>The following may be Covered Items (if included in your Agreement) if they are installed and manufactured for outside use or located in a structure which fully protects them from the elements: Air Conditioning, Heating, electrical Panel, Water Heater, Cleanout, Pressure Regulator, Exterior Well Pump, Septic Tank, Sewage Ejector Pumps, or Pool and/or Spa Equipment.</li>
+                                                <li>Is for your owned or rented residential property as it has been represented to LHG.</li>
+                                            </ol>
+                                        </li>
+                                       
+                                        <li style="line-height: normal;">
+                                            <b style="color:#024a5b;margin-bottom:0px; line-height: normal;">Repair or Replacement: When addressing a Covered Item Malfunction, LHG will <br> make arrangements in accordance with your Agreement to repair or replace the Covered item.</b>
+                                            <ol type="a">
+
+                                                <li>
+                                                    <p>In some instances, LHG will offer a cash reimbursement to you directly for repair or replacement. If LHG makes the determination under the circumstances described below that a cash reimbursement directly to you for repair or replacement will be paid, LHG will make such payment to you within 30 days after the LHG determination is communicated to you. LHG will not perform the same repair or replacement of a Covered Item that has been the subject of a cash or credit reimbursement during any term of any agreement between you and LHG unless you first produce applicable proof of repair or replacement of that Covered Item to LHG’s reasonable satisfaction. LHG may offer you the option for a Credit reimbursement under special programs LHG has entered into with third parties, if you select the credit option, that will forego any entitlement for a cash reimbursement or repair and/or replacement services as specified under this contract.</p>
+                                                    <div class="page-break" style="page-break-after: always;"></div>
+                                                    <ol type="i">
+                                                        <li style="padding-top:60px">
+                                                            When LHG’s combined cost of diagnosis and repair or replacement is estimated to exceed a stated Agreement dollar limit, LHG may not provide repair or replacement services but will instead reimburse you for services performed up to an amount equal to the remaining Agreement dollar limit (after the amount of expenditure by LHG under that Agreement dollar limit is subtracted from the total Agreement dollar limit).
+                                                        </li>
+                                                       
+                                                        <li>
+                                                            If LHG determines, in its sole reasonable discretion, that circumstances beyond LHG’s control prevent or hamper LHG from providing a proper repair or replacement of a Covered Item, LHG may provide you cash in lieu of LHG’s cost of such repair or replacement services. These circumstances may include but are not limited to:
+                                                            <ol type="a">
+                                                                <li>
+                                                                    A Covered Item that, after repair or replacement, would become or remain non-compliant with laws, regulations, or code requirements; or
+                                                                </li>
+                                                                <li>A Covered Item that is not repairable and a replacement item is no longer available.</li>
+                                                            </ol>
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    When making Covered Item repairs or replacements, LHGs reserves the right to rebuild existing parts, install rebuilt parts, and/or to use non-original manufacturer parts. LHG will use reasonable efforts to install Covered Items or parts of Covered Items of similar capacity, and capability, but LHG is not responsible for matching dimensions, color, or brand. LHG is not responsible for repairing, replacing, or matching any feature of a Covered item that does not contribute to the primary function of that Covered Item
+                                                </li>
+                                                <li>LHG will not repair or replace Covered Item Malfunctions covered by the warranty of a manufacturer, distributor, builder, or by an extended warranty issued by any of the foregoing or by a third party.</li>
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            <b style="color:#024a5b">Your Agreement Term and Costs<br>NOTE: See your Account Summary pages for your specific Contract Term and Agreement Price.</b>
+                                            <ol type="a">
+                                                <li>
+                                                    Your Agreement Term and your Agreement Costs are set forth in your Account Summary. Your Agreement Price is due and payable as your Account Summary specifies, and your Trade Service Call Fee is due and payable upon a request for service under your Agreement as described in Section B below. Additional costs may apply in accordance with other sections of this Home Protection Plan. All limits and caps set forth below will reset every 365 days during the Agreement term from the Effective Date of this agreement:
+                                                </li>
+                                                <li>
+                                                    NEW CUSTOMER: New Customer contract term begins upon the date stated on your Contract Agreement pages (“Effective Date”) and continues for one year from that date (unless LHG approves an alternative contract term in writing) and provided Agreement Costs are received by LHG.
+                                                </li>
+                                                <li>
+                                                    RENEWAL CUSTOMER: Renewal Customer is an existing LHG customer whose contract LHG has offered to renew. Renewal Customer contract term begins upon expiration of previous contract term and continues for one year (unless LHG approves an alternative contract term in writing) provided the Agreement Price is received by LHG within 45 days after expiration. (See Section I. RENEWAL)
+                                                </li>
+                                                <li>TRANSFER OF OWNERSHIP: If the covered property changes ownership during the contract term, you are required to call the Sales phone number on the Account Summary pages to transfer coverage to the new owner.</li>
+
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            <b style="color:#024a5b">Coverage under this agreement is for no more than one unit, system, or appliance unless additional fees are paid. If no additional fees are paid, covered unit, system, or appliance is at Our sole discretion; certain limits of liability apply to Covered Items (See Section H. Limitations and Exclusions)</b>
+                                        </li>
+                                    </ol>
+                                </td>
+                            </tr>
+                          
+                        </table>
+                    <div class="page-break" style="page-break-after: always;"></div>
+
+                    <table cellpadding="0" width="750" cellspacing="0" class="staticInfo" style="padding-top:50px">
+                        <tr>
+                            <td>
+                                <h3 style="font-size: 18px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">C. Requesting Service</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ol style="margin-top:0px;padding-top:0px">
+                                    <li>
+                                        <b style="color:#024a5b">To Request Service 24 hours a day – 7 days a week, visit LibertyHomeGuard.com/my-account or call (833) 544-8273</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">LHG must be notified as soon as the Malfunction is discovered and prior to expiration of the contract term.</b>
+                                        <ol type="a">
+                                            <li>LHG will accept service requests 24 hours a day, 7 days a week.</li>
+                                            <li>LHG will not provide service until all past due Trade Service Call Fees and other Agreement costs have been paid.</li>
+                                            <li>LHG will not reimburse for services performed without its prior approval.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">LHG has the right to select an LHG authorized Service Contractor to perform the service.</b>
+                                        <ol type="a">
+                                            <li>The services will be initiated under normal circumstances within 48 hours after your service request is made to LHG.</li>
+                                            <li>The Service Contractor will contact you to schedule your service appointment. The appointment will be scheduled for service to be performed during normal business hours.</li>
+                                            <li>LHG will determine what services constitute an emergency and will make reasonable efforts to expedite emergency service.</li>
+                                            <li>LHG will accept your request to expedite scheduling of non-emergency service only when a Service Contractor is available. If the Service Contractor agrees to expedite scheduling of a non-emergency service request, you may be required to pay an additional fee.</li>
+                                            <li>LHG reserves the right to obtain a second opinion, at LHG’s expense. LHG will consider the merits of all opinions and decide, in LHG’s sole discretion, whether to accept coverage.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">In the event LHG authorizes or requests you to contact an independent service contractor to perform a covered service, LHG will provide reimbursement for an authorized amount of the cost you incur for the repair or replacement services. Acceptable proof of the repair and your actual itemized costs must be provided to and approved by LHG before any reimbursement will be paid. LHG may refuse to provide or continue service to you for the following reasons:</b>
+                                        <ol type="a">
+                                            <li>Breach of your Agreement by you until such breach is cured to LHG’s reasonable satisfaction;</li>
+                                            <li>Upon discovering fraud or misrepresentation of material facts to LHG by you related to your Agreement; or</li>
+                                            <li>In the event you threaten to harm, or actually harm, the safety or well-being of LHG, any employee of LHG, a Service Contractor, any property of LHG or the Service Contractor.</li>
+                                        </ol>
+                                    </li>
+                                    <br>
+                                    <li>
+                                        <b style="color:#024a5b">Trade Service Call Fee: The amount of your Trade Service Call Fee is listed in yourAccount Summary. You are required to pay a Trade Service Call Fee for each service  request you submit to LHG.</b>
+                                        <ol type="a">
+                                            <li>A Trade Service Call Fee will apply to only one covered item per dispatch. If additional Covered Items require service an additional Trade Service Call Fee will be applied.</li>
+                                            <li>If a particular repair or replacement fails within 60 days, LHG will send a Service Contractor to repair the Failure and you will not be charged an additional Trade Service Call Fee.</li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3 style="font-size: 17px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">D. Systems Guard - The following coverages and exclusions to coverage apply if you elected the Systems Guard coverage under this Agreement.</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="font-size: 16px;color: #e94753;font-weight: bold;margin:10px 0px;">
+                                    NOTE: See Section H.9 for applicable Covered Item dollar limits.
+                                    <br>HVAC NOTE: Coverage available on HVAC systems up to a 5-ton capacity
+                                </div>
+                                <ol type="1">
+                                    <li>
+                                        <b style="color:#024a5b">Air Conditioning</b>
+                                        <ol type="a">
+                                            <li>COVERED: Ducted electric central air conditioning, ducted electric wall air conditioning. All components and parts, for units below 13 SEER and when we are unable to facilitate repair/replacement of failed covered equipment at the current SEER rating, repair/replacement will be performed with 13 SEER equipment and/or 7.7 HSPF or higher compliant, except:</li>
+                                            <li>NOT COVERED: Gas air conditioning systems – Condenser casings – Registers and Grills – Filters – Electronic air cleaners – Window units – Non-ducted wall units – Water towers – Humidifiers – Improperly sized units – Chillers – All exterior condensing, cooling and pump pads – Roof mounts, jacks, stands or supports – Condensate pumps – Commercial grade equipment – Cost for crane rentals – Air conditioning with mismatched condensing unit and evaporative coil per manufacturer specifications – Improper use of metering devices – Thermal expansion valves – Refrigerant conversion – Leak detections – Water leaks – Drain line stoppages – Noise – geothermal piping and wells – electrical supply. No more than two systems covered unless additional coverage purchased separately at time of enrollment. We will not pay for any modifications necessitated by the repair of existing equipment or the installation of new equipment.</li>
+                                        </ol>
+                                        <div class="page-break" style="page-break-after: always;"></div>
+                                    </li>
+                                   
+                                    <li>
+                                        <b style="color:#024a5b;padding-top:50px" >Heating System</b>
+                                        <ol type="a">
+                                            <li>COVERED ITEMS: All components and parts necessary for the operation of the heating system, One Circulating Pump Annually, reversing valves, freon lines. For units below 13 SEER and when we are unable to facilitate repair/ eplacement of failed covered equipment at the current SEER rating, repair/replacement will be performed with 13 SEER equipment and/or 7.7 HSPF or higher compliant, except:</li>
+                                            <li>NOT COVERED: All components and parts relating to geothermal, water source heat pumps including: outside or underground piping, components for geothermal and/or water source heat pumps, re-drilling of wells for geothermal and/or water source heat pumps, and well pump components for geothermal and/or water source heat pumps. Access – Radiators or valves – Baseboard casings – Radiant heating – Dampers – Valves – Fuel storage tanks – Portable units – Solar heating systems – Fireplaces and key valves – Filters – Line dryers and filters – Oil filters, nozzles, or strainers – Registers – Backflow preventers – Evaorator coil pan – Primary or secondary drain pans – Grills – Clocks – Timers – Add-ons for zoned systems - Heat lamps - Humidifiers Flues and vents – Improperly Sized heating systems – Mismatched Systems – Chimneys – Pellet Stoves – Cable Heat (in ceiling) – Wood/coal/pellet units (even if only source of heating) — Calcium build-up – Routine maintenance.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Ductwork</b>
+                                        <ol type="a">
+                                            <li>COVERED: Leaks or breaks in ductwork (sheet metal, duct board, and flex duct including vapor barrier) from heating and/or air conditioning unit(s) including registers or grills, except:</li>
+                                            <li>NOT COVERD: Registers and grills – Insulation – Vents, flues and breaching – Ductwork exposed to outside elements – Improperly sized ductwork – Separation due to settlement and/or lack of support – Damper motors – air cleaner cabinets – Diagnostic testing of, or locating leaks to ductwork, including but not limited to, as required by any federal, state or local law, ordinance or regulation, or when required due to the installation or replacement of system equipment.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Plumbing</b>
+                                        <ol type="a">
+                                            <li>COVERED: Leaks and breaks of water, drain, gas, waste or vent lines, except if caused by freezing or roots – Toilet tanks, bowls and mechanisms (replaced
+with builder’s grade as necessary), toilet wax ring seals – Valves for shower, tub, and diverter angle stops, rinses and gate valves – Built-in bathtub whirlpool
+motor and pump assemblies – Stoppages/Clogs in drain and sewer lines up to 100 feet from access point. Mainline stoppages are only covered if there is an
+accessible ground level clean out, except:</li>
+                                            <li>NOT COVERED: Stoppages and clogs in drain and sewer lines, (including auxillary sewage waste lines or shared waste lines) that cannot be cleared by cable
+or due to roots, collapsed, broken, or damaged lines outside the connes of the main foundation (even if within 100 feet of access point) – Access to drain or
+sewer lines from vent or removal of water closets – Cost to locate, access or install ground level clean out – Slab leaks – Polybutylene or Quest piping –
+Galvanized drain lines – Hose Bibs – Drum traps – Flange – Collapse of or damage to water, drain, gas, waste or vent lines caused by freezing, settlement
+and/or roots – Faucets, xtures, cartridges, shower heads & shower arms – Baskets and strainers – Popup assemblies – Bathtubs and showers – Cracked
+porcelain – Glass – Shower enclosures and base pans – Roman tubs – Bath tub drain mechanisms – Sinks – Toilet lids and seats – Cabling or grouting –
+Whirlpool jets – Whirlpool control panel – Septic tanks – Sewage ejector pumps – Water softeners – Pressure regulators – Flood Control Gate or Check valves –
+Stoppage Due to Main Line Collapse – Caulking – Shower Enclosures – Tile – Water Filtration Systems – Water Softener – Iron Breakers – Sink Replacement –
+Pressure Regulating Valves – Inadequate or excessive water pressure – Flow restrictions in fresh water lines caused by rust, corrosion or chemical deposits –
+Holding or storage tanks – Saunas and/or steam rooms – Sump Pumps unless optional additional Sump Pump Coverage purchased.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Electrical</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, including built-in bathroom exhaust fans, except:</li>
+                                            <li>NOT COVERED: Carbon monoxide alarms, smoke detectors, detectors or related systems – Intercoms and doorbell systems associated with intercoms – Fixtures and lamps – Smart home and communicating devices – Inadequate wiring capacity – olar power systems and panels – Solar Components – Energy Management Systems – Direct current (D.C.) wiring or components – Attic exhaust fans – Commercial grade equipment – Auxiliary or sub panels – Broken or severed wires – Rerunning of new wiring for broken wires – Wire tracing Garage door openers – Central vacuum systems – Damage due to power Failure or surge – Circuit overload</li>
+
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Water Heater</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, including circulating pumps, except:</li>
+                                            <li>NOT COVERED: Access – Insulation blankets – Pressure reducing valve – Sediment build-up – Rust and corrosion – Main, Holding or storage tanks – Vents and flues – Thermal expansion tanks – Low boy and/or Squat water heaters – Solar water heaters – Tankless water heaters – Solar components – Fuel, holding or storage tanks – Noise – Energy management systems – Commercial grade equipment and units exceeding 75 gallons – Drain pans and drain lines.</li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                    <div class="page-break" style="page-break-after: always;"></div>
+                    <table cellpadding="0" width="750" cellspacing="0" class="staticInfo" style="padding-top:50px">
+                        <tr>
+                            <td>
+                                <h3 style="font-size: 17px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">E. APPLIANCE GUARD - The following coverages and exclusions to coverage apply if you elected the Appliance Guard coverage under this Agreement.</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="font-size: 16px;color: #e94753;font-weight: bold;margin:10px 0px;">NOTE: See Section H.9 for applicable Covered Item dollar limits.</div>
+                                <br>
+                                <ol type="1">
+                                    <li>
+                                        <b style="color:#024a5b">Clothes Washer</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, except:</li>
+                                            <li>NOT COVERED: Noise – Plastic mini-tubs – Soap dispensers – Filter screens – Knobs and dials – Door seals – Hinges – Glass – Leveling and balancing – Damage to clothing.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Clothes Dryer</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, except:</li>
+                                            <li>NOT COVERED: Noise – Venting – Lint screens – Knobs and dials – Doors – Door seals – Hinges – Glass – Leveling and balancing – Damage to clothing.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Kitchen Refrigerator (must be located in the Kitchen)</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, including integral freezer unit, except:</li>
+                                            <li>NOT COVERED: Racks – Shelves – Lighting and handles – Freon – Ice makers, ice crushers, beverage dispensers and their respective equipment – Water lines and valve to ice maker – Line restrictions – Leaks of any kind – Interior thermal shells – Freezers which are not an integral part of the refrigerator – Wine coolers or mini refrigerators – Food spoilage – Doors – Door seals and gaskets – Hinges – Glass – Audio/Visual equipment and internet connection components.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Built-In Microwave</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, except:</li>
+                                            <li>NOT COVERED: Doors – Hinges – Handles – Doors – Door glass – Lights – Interior linings – Trays – Clocks – Shelves – Portable or counter top units – Arcing – Meat probe assemblies – Rotisseries.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Dishwasher</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, except:</li>
+                                            <li>NOT COVERED: Racks – Baskets – Rollers – Hinges – Handles – Doors – Door gaskets – Damage caused by broken glass</li>
+                                        </ol>
+                                    </li>
+                                    <br>
+                                    <li>
+                                        <b style="color:#024a5b">In-Sink Garbage Disposal</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, except:</li>
+                                            <li>NOT COVERED: Problems and/or jams caused by bones, glass, or foreign objects other than food</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Range / Oven / Cooktop</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, except:</li>
+                                            <li>NOT COVERED: Clocks (unless affecting the cooking function of the unit) – Meat probe assemblies – Rotisseries – Racks – Handles – Knobs – Door seals – Doors – Hinges – Lighting and handles – Glass – Sensi-heat burners will only be replaced with standard burners</li>
+                                        </ol>
+                                    </li>
+                                    <br>
+                                    <li>
+                                        <b style="color:#024a5b">Ceiling and Exhaust Fan</b>
+                                        <ol type="a">
+                                            <li>COVERED: Motors – Switches – Controls – Bearings, except:</li>
+                                            <li>NOT COVERED: Fans – Blades – Belts – Shutters – Filters – Lighting. Note: Builder's standard is used when replacement is necessary.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Garage Door Opener</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, except:</li>
+                                            <li>NOT COVERED: Garage doors – Hinges – Springs – Sensors – Chains – Travelers – Tracks – Rollers – Remote receiving and/or transmitting devices.</li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3 style="font-size: 18px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">F. TOTAL HOME GUARD</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="font-size: 16px;color: #e94753;font-weight: bold;margin:10px 0px;">Includes all Items in Sections D. and E.</div>
+                            </td>
+                        </tr>
+                       
+                    </table>
+                    <div class="page-break" style="page-break-after: always;"></div>
+                    <table cellpadding="0" width="750" cellspacing="0" class="staticInfo" style="padding-top:50px">
+                        <tr>
+                            <td>
+                                <h3 style="font-size: 18px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">G. ADDITIONAL OPTIONAL ITEMS</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="font-size: 16px;color: #e94753;font-weight: bold;margin:10px 0px;">Coverage for items in Section G is available at an additional cost. NOTE: See Section H.9 for applicable Covered Item dollar limits..</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ol>
+                                    <li>
+                                        <b style="color:#024a5b">Pool and/or Spa Equipment</b>
+                                        <ol type="a">
+                                            <li>COVERED: Both pool and built-in spa equipment (exterior hot tub and whirlpool) are covered if they utilize common equipment. If they do not utilize common equipment, then only one or the other is covered unless an additional fee is paid. Coverage applies to above ground, accessible working components and parts of the heating, pumping and filtration system as follows: Heater – Pump – Motor – Filter – Filter timer – Gaskets – Blower – Timer – Valves, limited to back flush, actuator, check, and 2 and 3-way valves – Relays and switches – Pool sweep motor and pump – Above ground plumbing pipes and wiring, except:</li>
+                                            <li>NOT COVERED: Portable or above ground pools/spas – Control panels and electronic boards – Lights – Liners – Maintenance – Structural defects – Solar equipment – Jets – Ornamental fountains, waterfalls and their pumping systems – Pool cover and related equipment – Fill line and fill valve – Built-in or detachable cleaning equipment such as, but not limited to, pool sweeps, pop up heads – Turbo valves, skimmers, chlorinators, and ionizers – Fuel storage tanks – Disposable filtration mediums – Cracked or corroded casings – Grids – Cartridges – Heat pump – Salt water generators and components. We will pay no more than $500 per contract term for access, diagnosis and repair and/or replacement.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Septic System Pumping & Septic Sewage Ejector Pump</b>
+                                        <ol type="a">
+                                            <li>COVERED: Main line stoppages/clogs (one time only, and must have existing access or clean out). If a stoppage is due to a septic tank back up, then we will pump the septic tank one time during the term of the plan. Coverage can only become effective if a septic certification was completed within 90 days prior to close of sale. We reserve the right to request a copy of the certification prior to service dispatch.</li>
+                                            <li>NOT COVERED: The cost of gaining or finding access to the septic tank and the cost of sewer hook ups – Disposal of waste – Chemical treatments – Tanks – Leach lines – Cesspools – Mechanical pumps/systems. LHG is not responsible for environmental impact.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Well Pump</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts of well pump utilized for main dwelling only, except:</li>
+                                            <li>NOT COVERED: Holding or storage tanks – Digging – Locating pump – Pump retrieval – Redrilling of wells – Well casings – Pressure tanks – Pressure switches and gauges – Check valve – Relief valve – Drop pipe – Piping or electrical lines leading to or connecting pressure tank and main dwelling including wiring from control box to the pump – Booster pumps – Well pump and well pump components for geothermal and/or water source heat pumps.</li>
+                                        </ol>
+                                    </li>
+
+                                    <li>
+                                        <b style="color:#024a5b">Sump Pump</b>
+                                        <ol type="a">
+                                            <li>COVERED: Permanently installed sump pump for ground water, within the foundation of  the home or attached garage, except:</li>
+                                            <br>
+                                            <li>NOT COVERED: Sewage ejector pumps – Portable pumps – Backflow preventers – Check valves – Piping modifications for new installs</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Central Vacuum</b>
+                                        <ol type="a">
+                                            <li>COVERED: All mechanical system components and parts, except:</li>
+                                            <li>NOT COVERED: Ductwork – Hoses – Blockages – Accessories.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Stand Alone Freezer</b>
+                                        <ol type="a">
+                                            <li>COVERED: All parts and components that affect the operation of the unit, except:</li>
+                                            <li>NOT COVERED: Ice-makers, crushers, dispensers and related equipment – Internal shell – Racks – Shelves – Glass displays – Lights – Knobs and caps – Dials – Doors – Door seals and gaskets – Door hinges – Door handles – Glass – Condensation pans – Clogged drains and ogged lines – Grates – Food spoilage – Freon – Disposal and recapture of Freon.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Second Refrigerator</b>
+                                        <ol type="a">
+                                            <li>COVERED: All components and parts, including integral freezer unit, except:</li>
+                                            <li>NOT COVERED: Racks – Shelves – Lighting and handles – Freon – Ice makers, ice crushers, beverage dispensers and their respective equipment – Water lines and valve to ice maker – Line restrictions – Leaks of any kind – Interior thermal shells – Freezers which are not an integral part of the refrigerator – Food spoilage – Doors – Door seals and gaskets – Hinges – Glass – Audio/Visual equipment and internet connection components.</li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </td>
+                        </tr>
+                      
+                    </table>
+
+                    <div class="page-break" style="page-break-after: always;"></div>
+                    <table cellpadding="0" width="750" cellspacing="0" class="staticInfo" style="padding-top:50px">
+                        <tr>
+                            <td>
+                                <h3 style="font-size: 18px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">H. LIMITATIONS AND EXCLUSIONS</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ol>
+                                    <li>
+                                        <b style="color:#024a5b">Your agreement does not cover:</b>
+                                        <ol type="a">
+                                            <li>Routine maintenance (you are responsible for providing maintenance and cleaning of Covered Items as specified by the manufacturer or as generally required for proper Covered Item operation);</li>
+                                            <li>A Malfunction of a Covered Item due to lack of, or excess of, capacity in the Covered Item;</li>
+                                            <li>Flues, venting, chimneys, and exhaust lines;</li>
+                                            <li>Electronic, computerized, or other home management and/or automation systems;</li>
+                                            <li>Remote controls and associated equipment;</li>
+                                            <li>Replaceable filters associated with any Covered Item;</li>
+                                            <li>Lighting fixtures and light bulbs;</li>
+                                            <li>Radon and other leak detection monitoring systems and fire sprinkler systems;</li>
+                                            <li>Solar items, systems, and components of Covered Items;</li>
+                                            <li>Repair or remediation of cosmetic defects;</li>
+                                            <li>Repair, replacement, installation, or modification of any Covered Item, or part thereof, that has been determined to be defective by the Consumer Product Safety Commission or other similar regulatory entity or for which a manufacturer or distributor has issued a warning, recall, or determination of defect;</li>
+                                            <li>Covered Item modifications, upgrades, repairs, or replacements required to comply with any federal, state, or local laws, regulations, or ordinances, utility regulations, or building or zoning code requirements; and</li>
+                                            <li>Rust or corrosion of the Covered Item including malfunctions or improper operation due to rust or corrosion</li>
+                                            <li>Improper installation, repair, or modification of the Covered Item;</li>
+                                            <li>Disposal of appliance, system or component, including, but not limited to the following items: condensing units, evaporator coils, compressors, capacitors, refrigerators, freezers, water heaters, and any system or appliance which contains dangerous or hazardous materials. You will be charged an additional fee by the Service Contractor if this is required to perform service.</li>
+                                            <li>Installation where component units of the Covered Item were not properly matched to each other for proper operation; or</li>
+                                            <li>Insufficient maintenance of the Covered Item.</li>
+                                            <li>Commercial grade equipment, systems or appliances. Commercial property or premises converted into a business or to which the general public is invited for business purposes including, but not limited to, day care centers, fraternity/sorority houses, and nursing/care homes.</li>
+                                            <li>Cranes or other specialty vehicles or equipment required to install, remove, or access Covered Items in order to provide services under your Agreement. You may be charged an additional fee by the Service Contractor if such vehicles or equipment are required to perform service.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">All covered items must be in place and in proper working order on the effective date of this home warranty contract. This contract does not cover any known or unknown pre-existing conditions.</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Except as otherwise specified in your Agreement, LHG is not responsible or liable for performing service, or paying remediation costs, involving hazardous or toxic materials or other waste included but not limited to: mold, lead paint, asbestos, mold, mildew, bio-organic growth, rot, fungus, pest damage of any nature or kind, nor costs or expenses associated with providing, refrigerant recovery, recycling, reclaiming or disposal.</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Except as otherwise specified in your Agreement, LHG is not responsible or liable for:</b>
+                                        <ol type="a">
+                                            <li>Providing or securing access to Covered Items; including costs to remove and replace any built-in appliances, cabinets, floor coverings or other obstructions impeding access to walls, ceilings, and/or floors</li>
+                                            <li>Costs of construction, carpentry, or other modifications necessary to remove, relocate, or install a Covered Item or part thereof</li>
+                                            <li>Restoration of any wall or floor coverings, cabinets, counter tops, tiles, paint, or the like.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">We will provide access to Plumbing systems and Ductwork through unobstructed walls, ceilings or floors, only, and will return the access opening to rough finish condition subject to the Limits of Liability in Section H.9</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">LHG is not responsible or liable for the cost or conduct of testing required by statute or regulation associated with the repair or replacement of Covered Items or components.</b>
+                                        <div class="page-break" style="page-break-after: always;"></div>
+                                    </li>
+                                    <li style="padding-top:50px">
+                                        <b style="color:#024a5b">LHG is not responsible for modifications necessitated by the repair of existing equipment or the installation of new equipment including incompatibility of existing equipment with replacement equipment or systems</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">LHG is not responsible or liable for Covered Item repairs or replacements when a Malfunction is due to:</b>
+                                        <ol type="a">
+                                            <li>Misuse, abuse, or mistreatment, including but not limited to removal of parts and damage, by people, pests, or pets;</li>
+                                            <li>Accidents, fire, freezing, water damage, electrical failure or surge, or excessive or inadequate water pressure;</li>
+                                            <li>Lightning, mud, earthquake, soil movement, storms, or other acts of God;</li>
+                                            <li>Acts of war or terrorism;</li>
+                                            <li>A manufacturer’s improper design, materials, or formulations; a defective manufacturing process; or other manufacturing defects.</li>
+                                        </ol>
+
+                                    </li>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <li>
+                                        <b style="color:#024a5b">LIMITS OF LIABILITY</b>
+                                        <ol type="a">
+                                            <li>
+                                                The following Covered Item dollar limits reset every 365 days during the Agreement Term from the Effective Date of this Agreement:
+                                                <ol type="i">
+                                                    <li>Access, diagnosis, and repair/replacement of all Covered Items are limited to ($1,500) per Covered Item, except as follows:</li>
+                                                    <li>Access, diagnosis, and repair/replacement is limited to ($500) per every Agreement 365 Days for the items identified in sections D.6, G.1, and G.2.</li>
+                                                    <li>As part of any other applicable Covered Item dollar limit, coverage for refrigerant installation is limited to ($10) per pound</li>
+                                                    <li>Professional series or like appliances such as, but not limited to, brand names such as Sub Zero, Viking, Wolf, Bosch, Jenn-Air, GE Monogram, and Thermador, etc. are limited to coverage of up to ($1,000) in aggregate.</li>
+                                                    <li>If plumbing or ductwork is accessible only through a concrete floor, wall, or ceiling, LHG will provide coverage up to ($500) total per Agreement for access to, repair to, or replacement of such plumbing or ductwork, including return of access openings to a rough finish.</li>
+                                                    <li>For the Sump Pumps optional add on, Piping Modifications for new installs are limited to $150</li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Except to the extent caused by LHG or its Service Contractors, LHG will not be liable for any violations by you or by third parties of federal, state, or local laws, regulations, or guidelines relating to Covered Items, and will not perform repairs or replacements that will or may violate any current federal, state, or local laws, regulations, or guidelines.</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">LHG is not responsible or liable for special, secondary, incidental, indirect, consequential, exemplary, or other related damage resulting from the Malfunction of any Covered Item, or LHG’s or a Service Contractor’s neglect or delay in providing, or failing to provide, repair or replacement of such Covered Item, including, but not limited to, food spoilage, loss of income, utility bills, additional living expenses, or  ersonal and/or real property damage.</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">LHG is not responsible or liable for any delay in service or failure to provide service caused by conditions beyond LHG’s control.</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">Except as otherwise provided herein, systems and appliances shared by separate residential properties are not covered.</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">If your Agreement is for a duplex, triplex, or fourplex residential property, then all units within the residential property must be covered by an appropriate LHG Agreement for coverage to apply to shared systems and appliances.</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">If your Agreement is for a multi-unit residential property other than those specified in H.14 above, then only items contained within the confines of each individual residential property are covered. Shared systems and appliances are not covered.</b>
+                                    </li>
+                                    <li>
+                                        <b style="color:#024a5b">We are not responsible for providing access to or closing access from any covered item which is concrete-encased or otherwise obstructed or inaccessible.</b>
+                                    </li>
+
+                                </ol>
+                            </td>
+                        </tr>
+                      
+                    </table>
+                    <div class="page-break" style="page-break-after: always;"></div>
+                    <table cellpadding="0" width="750" cellspacing="0" class="staticInfo" style="padding-top:50px">
+                        <tr>
+                            <td>
+                                <h3 style="font-size: 18px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">I. Renewal</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ol>
+                                    <li>
+                                        LHG may, in its sole discretion, elect to renew this contract. In the event we elect to renew your contract, you will be notified of the terms within 60 days prior to expiration of your contract. Unless you notify LHG prior to expiration of your contract, your contract will be automatically renewed and you will be charged an applicable Agreement Price.
+                                    </li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3 style="font-size: 18px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">J. Cancellation</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ol>
+                                    <li>
+                                        Your Right to Cancel and How Refunds Will Be Calculated. You may cancel this Agreement for any reason at any time. If You cancel this Agreement within the first 30 days from the Effective Date of this Agreement, We will refund to you the full Agreement Cost, less a cancellation fee of $50 and the cost of any claims paid. If You cancel this Agreement after 30 days rom the Effective Date of this Agreement, We will refund to you a prorated refund of the Agreement Cost based on months remaining on the term of Your agreement, less a cancellation fee of $50 and the cost of any claims paid.
+                                    </li>
+                                    <li>Our Right to Cancel and How Refunds Will Be Calculated. We may cancel this Agreement for (1) your nonpayment of the Agreement Price of Trade Service Call Fee when due, (2) Your material breach of any provision of this Agreement, (3) fraud or material misrepresentation of facts by You in relation to obtaining this Agreement or making a claim under this Agreement, (4) threatened or actual harm by You to LHG employees or Service Contractors or any property of LHG or the Service Contractor. If We cancel this Agreement, We will refund to You a prorated refund of the Agreement Cost based on months remaining on the term of Your agreement, less any claims paid. If We cancel this Agreement we will send you written notice stating the reason for and effective date of cancellation to Your last known address in Our records at least 15 days prior to the effective date of cancellation, unless the reason for cancellation is Your nonpayment in which case no notice is required.</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>
+                                <h3 style="font-size: 18px;color: #e94753;border-bottom: 2px solid #e94753;margin-bottom: 5px;">K. Miscellaneous</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ol>
+                                    <li>The obligations of LHG under your Agreement are backed by the full faith and credit of LHG.</li>
+                                    <li>MANDATORY ARBITRATION. The parties agree to mediate in good faith, before resorting to mandatory arbitration. Unless you make written application to LHG and LHG agrees in writing to allow you to bring a small claims lawsuit against LHG solely in your individual capacity, any claim, dispute or controversy, regarding any contract, tort, statute, or otherwise (“Claim”), arising out of or relating to this agreement or the relationships among the parties hereto shall be resolved by one arbitrator through binding arbitration administered by the American Arbitration Association (“AAA”), under the AAA Commercial or Consumer, as applicable, Rules in effect at the time the Claim is filed (“AAA Rules”). Copies of the AAA Rules and forms can be located at www.adr.org, or by calling 1-800-778-7879. The arbitrator’s decision shall be final, binding, and non-appealable. Judgment upon the award may be entered and enforced in any court having jurisdiction. This clause is made pursuant to a transaction involving interstate commerce and shall be governed by the Federal Arbitration Act. Neither party shall sue the other party other than as provided herein or for enforcement of this clause or of the arbitrator’s award; any such suit may be brought only in Federal District Court for the District or, if any such court lacks jurisdiction, in any state court that has jurisdiction. The arbitrator, and not any federal, state, or local court, shall have exclusive authority to resolve any dispute relating to the interpretation, applicability, unconscionability, arbitrability, enforceability or formation of this Agreement including any claim that all or any part of the Agreement is void or voidable. However, the preceding sentence shall not apply to the clause entitled “Class Action Waiver.”</li>
+                                    <li>CLASS ACTION WAIVER. Any Claim must be brought in the parties’ individual capacity, and not as a plaintiff or class member in any purported class, collective, representative, multiple plaintiff, or similar proceeding (“Class Action”). The parties expressly waive any ability to maintain any Class Action in any forum. The arbitrator shall not have authority to combine or aggregate similar claims or conduct any Class Action nor make an award to any person or entity not a party to the arbitration. Any claim that all or part of this Class Action Waiver is unenforceable, unconscionable, void, or voidable may be determined only by a court of competent jurisdiction and not by an arbitrator. THE PARTIES UNDERSTAND THAT THEY WOULD HAVE HAD A RIGHT TO LITIGATE THROUGH A COURT, TO HAVE A JUDGE OR JURY DECIDE THEIR CASE AND TO BE PARTY TO A CLASS OR REPRESENTATIVE ACTION, HOWEVER, THEY UNDERSTAND AND CHOOSE TO HAVE ANY CLAIMS DECIDED INDIVIDUALLY, THROUGH ARBITRATION.</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <div class="page-break"></div>
+                                <div>
+                                    <br><br><br>
+                                    <img src="https://libertyhomeguard.deffinity.com/WF/DC/EmailTemplates/images/last_LHG_logo_1.png" width="600" />
+                                    <br><br><br><br><br>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+        </tbody>
+       
+        <tfoot>
+            <tr>
+                <td align="center">
+                    <table cellpadding="0" width="750" cellspacing="0">
+                        <tr>
+                            <td width="270px">
+                                <img src="https://libertyhomeguard.deffinity.com/WF/DC/EmailTemplates/images/footer_left.png" width="250">
+                            </td>
+                            <td valign="bottom">
+                                <p>
+                                    To Request Service 24 hours a day - 7 days a week
+                                    <br> Visit <span style="color: #024a5b">LIBERTYHOMEGUARD.com</span> or call <span style="color: #e94753">(833) 544-8273</span>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+</html>

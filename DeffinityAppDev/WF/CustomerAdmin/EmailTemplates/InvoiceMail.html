@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        table td {
+            padding: 5px;
+        }
+
+        .hdr1 {
+            font-size: 18px;
+            padding-top: 15px;
+            text-align: right;
+        }
+
+        .hilite {
+            color: #4b0049;
+        }
+
+        .hdr td {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            background: #8595a6;
+            text-align: left;
+        }
+
+        .cont_row td {
+            border: #8595a6 1px solid;
+            color: #219de6;
+            font-weight: bold
+        }
+
+        .bo_line {
+            border-bottom: #999 10px solid;
+        }
+
+        .hdrt {
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            background: #8595a6;
+            text-align: left;
+        }
+
+        .even_row {
+            background: #f2f9ec;
+        }
+
+        .odd_row {
+            background: #f5f5fa;
+        }
+
+        .tab_header {
+            background: #a3a3a3;
+            color: #fff;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table align="center" width="600" style="border:5px solid #b3b3b3; margin-top:10px;" cellspacing="0" cellpadding="0">
+            <!--<tr>
+        <td height="30" valign="top">
+            <img src="[Logo]" id="im" alt="" style="float: left" />
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td height="9" colspan="2"><img src="[border]" height="5px" ID="ImgBorder" runat="server" width="600" /></td>
+    </tr>-->
+            <tr>
+                <td colspan="2">
+                    <table>
+
+                        <tr>
+
+
+                            <td style="width:400px;padding-top:30px" height="50">
+
+                                <img src="[Logo]" id="im" alt="" style="float: left" />
+
+                            </td>
+                            <td colspan="1" style="width:190px;padding-top:30px">
+                                <label style="font-size:20px"><b> Invoice </b></label>
+                                <br />
+                                <label>No:<b> [invoiceno]</b></label>  <br />
+                                <label>Date: [date]</label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td height="9" colspan="2"><img src="[border]" height="5px" ID="ImgBorder" runat="server" width="600" /></td>
+            </tr>
+            <tr>
+                <td width="290" style="width:290px;padding-top:30px;vertical-align:top;">
+                    <label><b> Client</b></label>
+                    <br />
+                    [tobill]
+                </td>
+                <td width="290" style="width:290px;padding-top:30px;vertical-align:top;">
+                    <label><b> Contact  us</b></label>
+                    <br />
+                    [frombill]
+                </td>
+            </tr>
+
+            <!--<tr>
+        <td height="9" colspan="2"><img src="[border]" height="5px" ID="ImgBorder" runat="server" width="600" /></td>
+    </tr>-->
+            <!--<tr>
+        <td style="padding-top: 10px;" colspan="2">
+            Dear <b>[name]</b>
+            <br />
+        </td>
+    </tr>-->
+            <tr>
+
+                <td style="padding-top:30px;" colspan="2">
+
+                    <table style="width:100%">
+                        <thead>
+                            <tr style="background-color:silver;height:30px;">
+                                <th width="25">
+                                    #
+                                </th>
+                                <th> Description </th>
+                                <th width="75">Quantity</th>
+                                <th width="75">Unit Price</th>
+                                <th width="75">Sub Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    1
+                                </td>
+                                <td> [itemdescription] </td>
+                                <td style="text-align:right;">[qty]</td>
+                                <td style="text-align:right;">[price]</td>
+                                <td style="text-align:right;">[subtotal]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-top: 10px;">
+                </td>
+                <td style="        padding-top: 10px;
+        float: right;
+        text-align: right;">
+
+                    <table width="150" style="float:right;text-align:right;">
+                        <tbody>
+                            <tr>
+                                <td style="text-align:right;">Sub Total:</td>
+                                <td style="float:right;text-align:right;">[subtotal]</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:right;">Tax:</td>
+                                <td style="float:right;text-align:right;">[tax]</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:right;"><b>Total</b>:</td>
+                                <td style="float:right;text-align:right;"><b> [total]</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </td>
+            </tr>
+            <!--<tr>
+        <td style="padding-top: 10px;" colspan="2">
+            Thank you,
+        </td>
+    </tr>
+    <tr>
+        <td style="padding-top: 10px;"><a href="[Link]">[Link]</a> </td>
+    </tr>-->
+
+        </table>
+    </div>
+</body>
+</html>

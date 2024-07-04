@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="DeffinityEflair" EntityNamespace="ProgrammeMgt.Entity" ContextNamespace="ProgrammeMgt.DAL" Class="ProgrammeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=69.41.185.219;Initial Catalog=DeffinityEflair;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.OperationsOwners" Member="OperationsOwners">
+    <Type Name="OperationsOwner">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OperationsOwners" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Visible" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ProgrammOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateofReview" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Attendees" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ResourceIssues" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TechnicalNotes" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BusinessImpact" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PerformanceReview" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AOB" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TargetSLAPercentCompleted" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExpectedStartDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ExpectedEndDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CostCenter" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaximumBudget" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Justification" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BenefitsToOrganisation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StrategicFitAlignment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VisionStatement" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RisksAndIssues" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ResourcesRequired" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Approve" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MasterProgramme" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
