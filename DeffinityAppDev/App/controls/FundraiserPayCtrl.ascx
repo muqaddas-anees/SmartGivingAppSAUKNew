@@ -12,17 +12,25 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        updateDropdown();
+       
 
 
         $('#<%= txtAmountTotal.ClientID %>').on('input', function () {
-            updateDropdown();
+            updateSliderValue();
         });
 
         $('#<%= lblplatfee.ClientID %>').on('change', function () {
             setFee();
         });
     });
+    function updateSliderValue(slider) {
+        var valueLabel = document.getElementById("sliderValueLabel");
+        var amount = parseFloat($('#<%= txtAmountTotal.ClientID %>').val());
+        var dropdown = $('#<%= lblplatfee.ClientID %>');
+        var percentage = parseFloat(slider.value) / 100;
+
+        valueLabel.innerHTML = slider.value + '%' +' '+'£' + (amount * percentage).toFixed(2) ;
+    }
 
     function updateDropdown() {
       
@@ -52,6 +60,73 @@
     }
     </script>
 <style>
+         .slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    align-content: center;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+           .slider-label {
+        position: relative;
+        margin:10px;
+        background-color: #fff;
+        color: #333;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 18px;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.2s;
+         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow */
+    }
+
+    .slider-container:hover .slider-label,
+    input[type=range]:hover + .slider-label,
+    input[type=range]:focus + .slider-label {
+        visibility: visible;
+        opacity: 1;
+    }
+      input[type=range].form-control,
+        input[type=range].form-control-lg {
+            all: unset;
+            width: 500px;
+            height: 5px; /* Reduced height */
+            background: #ccc; /* Grayish background color */
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+        }
+        input[type=range].form-control:hover,
+        input[type=range].form-control-lg:hover {
+            opacity: 1;
+        }
+        input[type=range].form-control::-webkit-slider-thumb,
+        input[type=range].form-control-lg::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: green;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        input[type=range].form-control::-moz-range-thumb,
+        input[type=range].form-control-lg::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: green;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .smaller-text {
+    font-size: 14px;
+    color: #888; /* Greyish color */
+    margin-top:15px;
+}
            .mycheckBig input {width:18px; height:18px;}
            .mycheckBig label {padding-left:8px}
        </style>
@@ -226,12 +301,21 @@
 </asp:ListView>
                                                                  </div>
                                                             </div>
-                                                          <div class="row  mb-6 d-flex d-inline">
-                                                                <div class="col-lg-12 mb-6 d-flex d-inline justify-content-between">
-                                                                    <asp:Label ID="lblplatform" runat="server" style="font-size:20px;margin-left:5px;margin-right:5px" Text="Please help the <charity name> by contributing towards the platform fee:"></asp:Label>
-                                                                    <asp:DropDownList id="lblplatfee" runat="server" ClientIDMode="Static" CssClass="form-select form-select-lg fw-bold" style="width:200px;width:200px;font-size: 20px;"></asp:DropDownList>
-                                                                    </div>
-                                                              </div>
+                                                          <div class="row mb-6 d-flex d-inline">
+            <div class="col-lg-12 mb-6 d-inline justify-content-between">
+<asp:Label ID="lblplatform" runat="server" style="">
+  <div>  <span style="font-size:20px"> Please help the <charity name> by contributing towards the platform fee:<br /></span></div>
+     <div class="smaller-text">  <span class="smaller-text"> Plegit does not charge <charity name> a fee, but we rely on your generous contribution to support the platform and help more people ❤️</span></div>
+
+</asp:Label>
+
+                <div class="slider-container">
+                                        <span id="sliderValueLabel" class="slider-label">15%</span>
+
+                    <asp:TextBox ID="lblplatfee" runat="server" CssClass="" Style="width:500px;height:10px;border-radius:5px" TextMode="Range" Min="5" Max="30" Value="15" OnInput="updateSliderValue(this)" AutoPostBack="false"></asp:TextBox>
+                </div>
+            </div>
+        </div>
                                                            <div class="row  mb-6 d-flex d-inline">
                                                                 <div class="col-lg-12">
                                                        <asp:CheckBox ID="chkAnonymously" runat="server" Text=" " Font-Size="20px" CssClass="mycheckBig" ClientIDMode="Static" />

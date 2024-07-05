@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/intro.js":
-/*!******************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/intro.js ***!
-  \******************************************************************/
+/***/ "../demo1/src/js/custom/intro.js":
+/*!***************************************!*\
+  !*** ../demo1/src/js/custom/intro.js ***!
+  \***************************************/
 /***/ ((module) => {
 
 
@@ -232,7 +232,7 @@ KTUtil.onDOMContentLoaded(function() {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("../../../themes/metronic/html/demo4/src/js/custom/intro.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("../demo1/src/js/custom/intro.js");
 /******/ 	
 /******/ })()
 ;

@@ -79,7 +79,7 @@
                 <span id="amountraised" class="raised fw-bolder">
                     
                 </span>
-                   <p class="fs-2"> raised of    <asp:Label ID="lblTarget" runat="server" Text=""></asp:Label>  </p>
+                   <p class="fs-2"> Raised of    <asp:Label ID="lblTarget" runat="server" Text=""></asp:Label>  </p>
                     </div>
                 <div class="d-flex flex-wrap align-center flex-center" style="min-width: 350px;align-content:center">
 
@@ -87,11 +87,11 @@
 
                         <div class="position-absolute translate-middle start-50 top-75 d-flex flex-column flex-center">
 
-                            <span class="fs-1 fw-bold text-gray-400 mb-10"></span>
+                            <p class="fs-1 fw-bold text-gray-400 mb-10"></p>
                         </div>
                         <div id="progress-bar" class="progress-bar"></div>
                     </div>
-                    Days left <span id="days"></span>, Total Supporters <span id="supporters"></span>
+                   <p> Days left <span id="days"></span>, Total Supporters <span id="supporters"></span></p>
                 </div>
             </div>
         </div>

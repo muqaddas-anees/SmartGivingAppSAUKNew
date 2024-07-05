@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/complete.js":
-/*!************************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/complete.js ***!
-  \************************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/offer-a-deal/bundle/complete.js":
+/*!*********************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/offer-a-deal/bundle/complete.js ***!
+  \*********************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -43,10 +43,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/details.js":
-/*!***********************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/details.js ***!
-  \***********************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/offer-a-deal/bundle/details.js":
+/*!********************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/offer-a-deal/bundle/details.js ***!
+  \********************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -200,10 +200,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/finance.js":
-/*!***********************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/finance.js ***!
-  \***********************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/offer-a-deal/bundle/finance.js":
+/*!********************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/offer-a-deal/bundle/finance.js ***!
+  \********************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -350,10 +350,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/main.js":
-/*!********************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/main.js ***!
-  \********************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/offer-a-deal/bundle/main.js":
+/*!*****************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/offer-a-deal/bundle/main.js ***!
+  \*****************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -415,10 +415,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/type.js":
-/*!********************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/type.js ***!
-  \********************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/offer-a-deal/bundle/type.js":
+/*!*****************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/offer-a-deal/bundle/type.js ***!
+  \*****************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -558,14 +558,14 @@ if ( true && typeof module.exports !== 'undefined') {
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!************************************************************************************!*\
-  !*** ../../../themes/metronic/html/tools/webpack/js/custom/modals/offer-a-deal.js ***!
-  \************************************************************************************/
-window.KTModalOfferADealComplete = __webpack_require__(/*! @/src/js/custom/modals/offer-a-deal/bundle/complete.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/complete.js");
-window.KTModalOfferADealDetails = __webpack_require__(/*! @/src/js/custom/modals/offer-a-deal/bundle/details.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/details.js");
-window.KTModalOfferADealFinance = __webpack_require__(/*! @/src/js/custom/modals/offer-a-deal/bundle/finance.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/finance.js");
-window.KTModalOfferADealType = __webpack_require__(/*! @/src/js/custom/modals/offer-a-deal/bundle/type.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/type.js");
-window.KTModalOfferADeal = __webpack_require__(/*! @/src/js/custom/modals/offer-a-deal/bundle/main.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/offer-a-deal/bundle/main.js");
+/*!**************************************************!*\
+  !*** ./webpack/js/custom/modals/offer-a-deal.js ***!
+  \**************************************************/
+window.KTModalOfferADealComplete = __webpack_require__(/*! @/src/js/custom/modals/offer-a-deal/bundle/complete.js */ "../demo1/src/js/custom/modals/offer-a-deal/bundle/complete.js");
+window.KTModalOfferADealDetails = __webpack_require__(/*! @/src/js/custom/modals/offer-a-deal/bundle/details.js */ "../demo1/src/js/custom/modals/offer-a-deal/bundle/details.js");
+window.KTModalOfferADealFinance = __webpack_require__(/*! @/src/js/custom/modals/offer-a-deal/bundle/finance.js */ "../demo1/src/js/custom/modals/offer-a-deal/bundle/finance.js");
+window.KTModalOfferADealType = __webpack_require__(/*! @/src/js/custom/modals/offer-a-deal/bundle/type.js */ "../demo1/src/js/custom/modals/offer-a-deal/bundle/type.js");
+window.KTModalOfferADeal = __webpack_require__(/*! @/src/js/custom/modals/offer-a-deal/bundle/main.js */ "../demo1/src/js/custom/modals/offer-a-deal/bundle/main.js");
 
 })();
 

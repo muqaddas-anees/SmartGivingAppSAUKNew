@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/budget.js":
-/*!************************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/budget.js ***!
-  \************************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/create-project/bundle/budget.js":
+/*!*********************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/create-project/bundle/budget.js ***!
+  \*********************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -152,10 +152,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/complete.js":
-/*!**************************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/complete.js ***!
-  \**************************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/create-project/bundle/complete.js":
+/*!***********************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/create-project/bundle/complete.js ***!
+  \***********************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -195,10 +195,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/files.js":
-/*!***********************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/files.js ***!
-  \***********************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/create-project/bundle/files.js":
+/*!********************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/create-project/bundle/files.js ***!
+  \********************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -283,10 +283,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/main.js":
-/*!**********************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/main.js ***!
-  \**********************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/create-project/bundle/main.js":
+/*!*******************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/create-project/bundle/main.js ***!
+  \*******************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -352,10 +352,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/settings.js":
-/*!**************************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/settings.js ***!
-  \**************************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/create-project/bundle/settings.js":
+/*!***********************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/create-project/bundle/settings.js ***!
+  \***********************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -534,10 +534,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/targets.js":
-/*!*************************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/targets.js ***!
-  \*************************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/create-project/bundle/targets.js":
+/*!**********************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/create-project/bundle/targets.js ***!
+  \**********************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -720,10 +720,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/team.js":
-/*!**********************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/team.js ***!
-  \**********************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/create-project/bundle/team.js":
+/*!*******************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/create-project/bundle/team.js ***!
+  \*******************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -787,10 +787,10 @@ if ( true && typeof module.exports !== 'undefined') {
 
 /***/ }),
 
-/***/ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/type.js":
-/*!**********************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/type.js ***!
-  \**********************************************************************************************/
+/***/ "../demo1/src/js/custom/modals/create-project/bundle/type.js":
+/*!*******************************************************************!*\
+  !*** ../demo1/src/js/custom/modals/create-project/bundle/type.js ***!
+  \*******************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -932,17 +932,17 @@ if ( true && typeof module.exports !== 'undefined') {
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!**************************************************************************************!*\
-  !*** ../../../themes/metronic/html/tools/webpack/js/custom/modals/create-project.js ***!
-  \**************************************************************************************/
-window.KTModalCreateProjectBudget = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/budget.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/budget.js");
-window.KTModalCreateProjectComplete = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/complete.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/complete.js");
-window.KTModalCreateProjectFiles = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/files.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/files.js");
-window.KTModalCreateProjectSettings = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/settings.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/settings.js");
-window.KTModalCreateProjectTargets = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/targets.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/targets.js");
-window.KTModalCreateProjectTeam = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/team.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/team.js");
-window.KTModalCreateProjectType = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/type.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/type.js");
-window.KTModalCreateProject = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/main.js */ "../../../themes/metronic/html/demo4/src/js/custom/modals/create-project/bundle/main.js");
+/*!****************************************************!*\
+  !*** ./webpack/js/custom/modals/create-project.js ***!
+  \****************************************************/
+window.KTModalCreateProjectBudget = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/budget.js */ "../demo1/src/js/custom/modals/create-project/bundle/budget.js");
+window.KTModalCreateProjectComplete = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/complete.js */ "../demo1/src/js/custom/modals/create-project/bundle/complete.js");
+window.KTModalCreateProjectFiles = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/files.js */ "../demo1/src/js/custom/modals/create-project/bundle/files.js");
+window.KTModalCreateProjectSettings = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/settings.js */ "../demo1/src/js/custom/modals/create-project/bundle/settings.js");
+window.KTModalCreateProjectTargets = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/targets.js */ "../demo1/src/js/custom/modals/create-project/bundle/targets.js");
+window.KTModalCreateProjectTeam = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/team.js */ "../demo1/src/js/custom/modals/create-project/bundle/team.js");
+window.KTModalCreateProjectType = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/type.js */ "../demo1/src/js/custom/modals/create-project/bundle/type.js");
+window.KTModalCreateProject = __webpack_require__(/*! @/src/js/custom/modals/create-project/bundle/main.js */ "../demo1/src/js/custom/modals/create-project/bundle/main.js");
 
 })();
 
