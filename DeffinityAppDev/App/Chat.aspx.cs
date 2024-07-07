@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using UserMgt.BAL;
 using DeffinityManager; // Make sure to include the namespace of your DataContext
 
-namespace PlegitVolunteerss
+namespace DeffinityAppDev
 {
     public partial class Chat : System.Web.UI.Page
     {
@@ -21,7 +21,22 @@ namespace PlegitVolunteerss
         private void PopulateChatContacts()
         {
             int sid = 1; // Example SID value
+
+            if (!string.IsNullOrEmpty(sessionKeys.Message))
+            {
+                DeffinityManager.ShowMessages.ShowSuccessMsg(this.Page, sessionKeys.Message, string.Empty);
+                sessionKeys.Message = string.Empty;
+            }
+
+
+
+         
+
+
             List<UserMgt.Entity.Contractor> contractors;
+            String devemail = sessionKeys.UEmail;
+            String devname = sessionKeys.UName;
+            int devid = sessionKeys.UID;
 
             using (ContractorsBAL contractorsBAL = new ContractorsBAL())
             {
@@ -30,23 +45,26 @@ namespace PlegitVolunteerss
 
             foreach (var contractor in contractors)
             {
+                if (contractor.SID!=1) {
+                    continue;
+                }
                 var userHtml = $@"
-                <div class='d-flex flex-stack py-4'>
-                    <div class='d-flex align-items-center'>
-                        <div class='symbol symbol-45px symbol-circle'>
-                            <span class='symbol-label bg-light-danger text-danger fs-6 fw-bolder'>{contractor.ContractorName.Substring(0, 1)}</span>
-                            <div class='symbol-badge bg-success start-100 top-100 border-4 h-8px w-8px ms-n2 mt-n2'></div>
-                        </div>
-                        <div class='ms-5'>
-                            <a href='#' class='fs-5 fw-bold text-gray-900 text-hover-primary mb-2'>{contractor.ContractorName}</a>
-                            <div class='fw-semibold text-muted'>{contractor.LoginName}</div>
-                        </div>
-                    </div>
-                    <div class='d-flex flex-column align-items-end ms-2'>
-                        <span class='text-muted fs-7 mb-1'>1s ago</span>
-                        <span class='badge badge-sm badge-circle badge-light-warning'>9</span>
-                    </div>
-                </div>";
+<div class='d-flex flex-stack py-4 hover-effect' onclick='startchat({devemail},{contractor.EmailAddress})'>
+    <div class='d-flex align-items-center'>
+        <div class='symbol symbol-45px symbol-circle'>
+            <span class='symbol-label bg-light-danger text-danger fs-6 fw-bolder'>{contractor.ContractorName.Substring(0, 1)}</span>
+            <div class='symbol-badge bg-success start-100 top-100 border-4 h-8px w-8px ms-n2 mt-n2'></div>
+        </div>
+        <div class='ms-5'>
+            <a href='#' class='fs-5 fw-bold text-gray-900 text-hover-primary mb-2' id='contactname'>{contractor.ContractorName}</a>
+            <div class='fw-semibold text-muted'>{contractor.LoginName}</div>
+        </div>
+    </div>
+    <div class='d-flex flex-column align-items-end ms-2'>
+</div>
+</div>";
+
+
 
                 kt_chat_contacts_body.InnerHtml += userHtml;
             }

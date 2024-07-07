@@ -5,18 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <title>Metronic - The World's #1 Selling Bootstrap Admin Template by KeenThemes</title>
-    <meta charset="utf-8" />
-    <meta name="description" content="The most advanced Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions. Grab your copy now and get life-time updates for free." />
-    <meta name="keywords" content="metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel starter kits, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Metronic - The World's #1 Selling Bootstrap Admin Template by KeenThemes" />
-    <meta property="og:url" content="https://keenthemes.com/metronic" />
-    <meta property="og:site_name" content="Metronic by Keenthemes" />
-    <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link rel="shortcut icon" href="../assets/media/logos/favicon.ico" />
+    <title>Donors</title>
+  
+
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     <!--end::Fonts-->
@@ -46,22 +37,19 @@
                                 <!--begin::Page title-->
                                 <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
                                     <!--begin::Title-->
-                                    <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">Project Users</h1>
+                                    <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">Members</h1>
                                     <!--end::Title-->
                                     <!--begin::Breadcrumb-->
                                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
                                         <!--begin::Item-->
                                         <li class="breadcrumb-item text-muted">
-                                            <a href="index.html" class="text-muted text-hover-primary">Home</a>
+                                            <a href="/app/home.aspx" class="text-muted text-hover-primary">Home</a>
                                         </li>
                                         <!--end::Item-->
                                         <!--begin::Item-->
-                                        <li class="breadcrumb-item">
-                                            <span class="bullet bg-gray-500 w-5px h-2px"></span>
-                                        </li>
+                                    
                                         <!--end::Item-->
                                         <!--begin::Item-->
-                                        <li class="breadcrumb-item text-muted">Apps</li>
                                         <!--end::Item-->
                                         <!--begin::Item-->
                                         <li class="breadcrumb-item">
@@ -77,9 +65,7 @@
                                 <!--end::Page title-->
                                 <!--begin::Actions-->
                                 <div class="d-flex align-items-center gap-2 gap-lg-3">
-                                    <a href="#" class="btn btn-flex btn-outline btn-color-gray-700 btn-active-color-primary bg-body h-40px fs-7 fw-bold" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">Add Member</a>
-                                    <a href="#" class="btn btn-flex btn-primary h-40px fs-7 fw-bold" data-bs-toggle="modal" data-bs-target="#kt_modal_create_campaign">New Campaign</a>
-                                </div>
+</div>
                                 <!--end::Actions-->
                             </div>
                             <!--end::Toolbar wrapper-->
@@ -98,51 +84,14 @@
                             <div class="d-flex flex-wrap flex-stack pb-7">
                                 <!--begin::Title-->
                                 <div class="d-flex flex-wrap align-items-center my-1">
-                                    <h3 class="fw-bold me-5 my-1">Users (38)</h3>
+                                    <h3 class="fw-bold me-5 my-1">Members</h3>
                                     <!--begin::Search-->
-                                    <div class="d-flex align-items-center position-relative my-1">
-                                        <i class="ki-outline ki-magnifier fs-3 position-absolute ms-3"></i>
-                                        <input type="text" id="kt_filter_search" class="form-control form-control-sm form-control-solid w-150px ps-10" placeholder="Search">
-                                    </div>
+                                  
                                     <!--end::Search-->
                                 </div>
                                 <!--end::Title-->
                                 <!--begin::Controls-->
-                                <div class="d-flex flex-wrap my-1">
-                                    <!--begin::Tab nav-->
-                                    <ul class="nav nav-pills me-6 mb-2 mb-sm-0" role="tablist">
-                                        <li class="nav-item m-0" role="presentation">
-                                            <a class="btn btn-sm btn-icon btn-light btn-color-muted btn-active-primary me-3 active" data-bs-toggle="tab" href="#kt_project_users_card_pane" aria-selected="true" role="tab">
-                                                <i class="ki-outline ki-element-plus fs-2"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item m-0" role="presentation">
-                                            <a class="btn btn-sm btn-icon btn-light btn-color-muted btn-active-primary" data-bs-toggle="tab" href="#kt_project_users_table_pane" aria-selected="false" tabindex="-1" role="tab">
-                                                <i class="ki-outline ki-row-horizontal fs-2"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <!--end::Tab nav-->
-                                    <!--begin::Actions-->
-                                    <div class="d-flex my-0">
-                                        <!--begin::Select-->
-                                        <select name="status" data-control="select2" data-hide-search="true" data-placeholder="Filter" class="form-select form-select-sm form-select-solid w-150px me-5 select2-hidden-accessible" data-select2-id="select2-data-7-z6qx" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
-                                            <option value="1" data-select2-id="select2-data-9-0kjf">Recently Updated</option>
-                                            <option value="2">Last Month</option>
-                                            <option value="3">Last Quarter</option>
-                                            <option value="4">Last Year</option>
-                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-8-tu62" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-sm form-select-solid w-150px me-5" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-status-2l-container" aria-controls="select2-status-2l-container"><span class="select2-selection__rendered" id="select2-status-2l-container" role="textbox" aria-readonly="true" title="Recently Updated">Recently Updated</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                        <!--end::Select-->
-                                        <!--begin::Select-->
-                                        <select name="status" data-control="select2" data-hide-search="true" data-placeholder="Export" class="form-select form-select-sm form-select-solid w-100px select2-hidden-accessible" data-select2-id="select2-data-10-2mji" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
-                                            <option value="1" data-select2-id="select2-data-12-miq2">Excel</option>
-                                            <option value="1">PDF</option>
-                                            <option value="2">Print</option>
-                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-11-v22x" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-sm form-select-solid w-100px" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-status-56-container" aria-controls="select2-status-56-container"><span class="select2-selection__rendered" id="select2-status-56-container" role="textbox" aria-readonly="true" title="Excel">Excel</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                        <!--end::Select-->
-                                    </div>
-                                    <!--end::Actions-->
-                                </div>
+                                
                                 <!--end::Controls-->
                             </div>
                             <!--end::Toolbar-->

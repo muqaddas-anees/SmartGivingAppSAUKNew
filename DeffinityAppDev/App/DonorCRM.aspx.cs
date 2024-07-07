@@ -1,10 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using DeffinityAppDev;
+using Newtonsoft.Json;
+using PortfolioMgt.DAL;
+using PortfolioMgt.Entity;
+using StreamChat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
 using UserMgt.BAL;
+using static QRCoder.PayloadGenerator.SwissQrCode;
 
 namespace DonorCRM
 {
@@ -16,16 +21,10 @@ namespace DonorCRM
 
             if (!IsPostBack)
             {
-                if (!string.IsNullOrEmpty(contactType))
-                {
-                    LoadContactsByType(contactType);
-                }
-                else
-                {
-                    LoadAllContacts();
-                }
-                DisplayCategoryCounts();
-            }
+
+                LoadAllContacts();
+
+             }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -33,91 +32,26 @@ namespace DonorCRM
             string name = txtName.Value;
             string companyName = txtCompanyName.Value;
             string email = txtEmail.Value;
-            string phone = txtPhone.Value;
-            string city = txtCity.Value;
-            string notes = txtNotes.Value;
+
             Response.Clear();
             Response.Redirect(name);
-            /*
-                        // Build categories list
-                        List<string> selectedCategories = new List<string>();
-                        if (chkDonors.Checked) selectedCategories.Add("Donors");
-                        if (chkVolunteers.Checked) selectedCategories.Add("Volunteers");
-                        if (chkLeads.Checked) selectedCategories.Add("Leads");
-                        if (chkSponsors.Checked) selectedCategories.Add("Sponsors");
 
-                        // Create a new contractor object
-                        var newContractor = new UserMgt.Entity.Contractor
-                        {
-                            ContractorName = name,
-                            Company = companyName,
-                            EmailAddress = email,
-                            ContactNumber = phone,
-                            SID = GetSIDFromCategories(selectedCategories), // Assume SID is set based on selected categories
-                            Status = UserStatus.Active, // Assuming default status is Active
-                            CreatedDate = DateTime.Now,
-                            ModifiedDate = DateTime.Now,
-                            isFirstlogin = 0,
-                            ResetPassword = false
-                        };
-
-                        // Save the new contractor
-                        int newContractorId = UserMgt.BAL.ContractorsBAL.InsertContractor(newContractor);
-
-                        if (newContractorId > 0)
-                        {
-                            // Create user detail for the new contractor
-                            var userDetail = new UserMgt.Entity.UserDetail
-                            {
-                                UserId = newContractorId,
-                                City = city,
-                                Notes = notes
-                            };
-
-                            // Save user detail
-                            UserMgt.BAL.ContractorsBAL.InsertUserDetail(userDetail);
-
-                            // Redirect to Index page with default behavior (show all contacts)
-                            Response.Redirect("Index.aspx");
-                        }
-                        else
-                        {
-                            // Handle error if contractor insertion fails
-                            // You can add error handling logic here
-                            // For example, show an error message to the user
-                        }*/
         }
 
         // Helper method to determine SID based on selected categories
-        private int GetSIDFromCategories(List<string> selectedCategories)
-        {
-            // Implement your logic here to determine SID based on selected categories
-            // For example, return UserType.Donor if "Donors" category is selected
-            // You should customize this based on your application's business logic
-            // Defaulting to 2 for demonstration purposes, assuming it corresponds to a type like "Donor"
-            return 2;
-        }
+
 
         private void LoadAllContacts()
         {
-            var iList = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany().Where(o => o.SID == UserType.Donor).ToList();
+            var iList = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany().Where(o => o.CompanyID == sessionKeys.PortfolioID).ToList();// //PortfolioMgt.BAL.ProjectPortfolioBAL.ProjectPortfolioBAL_SelectAll().ToList();
             ;
 
+            iList = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany().Where(o => o.CompanyID == sessionKeys.PortfolioID).Where(o => o.SID == UserType.Donor).ToList();
 
             LoadContacts(iList);
         }
 
-        private void LoadContactsByType(string contactType)
-        {
-            int sidValue = GetSIDValue(contactType);
 
-            var iList = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany()
-              /*  .Where(o => o.CompanyID == sessionKeys.PortfolioID)*/
-                .Where(o => o.SID == sidValue)
-                .ToList();
-
-            LoadContacts(iList);
-        }
 
         private int GetSIDValue(string contactType)
         {
@@ -139,21 +73,39 @@ namespace DonorCRM
         private void LoadContacts(List<UserMgt.Entity.v_contractor> contacts)
         {
             List<object> contactObjects = new List<object>();
+            string ConnectionString = System.Configuration.ConfigurationManager.AppSettings["DBstring"];
+            ContractorRolesDataContext context = new ContractorRolesDataContext(ConnectionString);
 
             foreach (var contact in contacts)
             {
-                // Construct JSON object including categories
+                // Query roles for the current contractor
+                var contractorRoles = from role in context.tblRoles
+                                      where role.ContractorID == contact.ID // Assuming ID is the ContractorID in v_contractor
+                                      select role.RoleType;
+                List<TithingPaymentTracker> payments;
+                List<ActivityBooking> Activity;
+
+                using (PortfolioMgt.DAL.PortfolioDataContext db = new PortfolioDataContext())
+                {
+                    payments = db.TithingPaymentTrackers
+                                .Where(p => p.LoggedByID == contact.ID)
+                                .ToList();
+                   
+                }
+
+                // Calculate total donations raised
+                double donationsRaised = payments.Sum(p => p.PaidAmount ?? 0);
+                // Construct JSON object including roles
                 var contactObject = new
                 {
                     Name = contact.ContractorName,
                     Email = contact.EmailAddress,
-                    AvatarUrl = "assets/media/avatars/300-6.jpg",
-                    CompanyName = contact.Company,
-                    Phone = contact.ContactNumber,
-                  //  City = contact.City,
+                CompanyName = contact.Company,
+                imgurl =GetImageUrl(contact.ID.ToString()),
+ Phone = contact.ContactNumber,
+                DonationsRaised = donationsRaised,
                     Country = contact.Country,
-                   // Notes = contact.Notes,
-                    Categories = contact.SID // Assuming there's a Categories property
+                    Roles = contractorRoles.ToArray() // Convert roles to an array
                 };
 
                 // Add to contacts list
@@ -166,46 +118,76 @@ namespace DonorCRM
             // Inject JSON array into client-side script
             var scriptTag = new LiteralControl();
             scriptTag.Text = $@"
-                <script type='text/javascript'>
-                    var contacts = {jsonContacts};
-                    console.log('Loaded {contactObjects.Count} contacts from server.');
-                    // You can now use 'contacts' array in your JavaScript code
-                </script>
-            ";
+        <script type='text/javascript'>
+            var contacts = {jsonContacts};
+            console.log(contacts);
+            console.log('Loaded {contactObjects.Count} contacts from server.');
+            // You can now use 'contacts' array in your JavaScript code
+        </script>
+    ";
 
             // Register script to be executed when page renders
             Page.Header.Controls.Add(scriptTag);
 
             // Display contacts in HTML (optional, if needed)
             DisplayContactsInHTML(contacts);
+            DisplayCategoryCounts(contacts);
         }
-
-        private void DisplayCategoryCounts()
+        private void DisplayCategoryCounts(List<UserMgt.Entity.v_contractor> contacts)
         {
-            var allContacts = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany()
-                .Where(o => o.CompanyID == sessionKeys.PortfolioID)
-                .ToList();
+            // Initialize counts
+            int allCount = 0;
+            int donorsCount = 0;
+            int volunteersCount = 0;
+            int leadsCount = 0;
+            int sponsorsCount = 0;
+            string ConnectionString = System.Configuration.ConfigurationManager.AppSettings["DBstring"];
+            ContractorRolesDataContext context = new ContractorRolesDataContext(ConnectionString);
 
-            int allCount = allContacts.Count;
-            int donorsCount = allContacts.Count(o => o.SID == 2); // Donors
-            int volunteersCount = allContacts.Count(o => o.SID == 4); // Volunteers
-            int leadsCount = allContacts.Count(o => o.SID == 3); // Leads
-            int sponsorsCount = allContacts.Count(o => o.SID == 1); // Sponsors (assuming based on SID)
+            foreach (var contact in contacts)
+            {
+                // Fetch roles for the current contractor from tblRoles
+
+                var contractorRoles = context.tblRoles
+                                               .Where(r => r.ContractorID == contact.ID)  // Filter roles for current contractor
+                                               .ToList();
+
+                // Check each role type for the current contractor
+                bool isDonor = contractorRoles.Any(r => r.RoleType == "Donor");
+                bool isVolunteer = contractorRoles.Any(r => r.RoleType == "Volunteer");
+                bool isLead = contractorRoles.Any(r => r.RoleType == "Lead");
+                bool isSponsor = contractorRoles.Any(r => r.RoleType == "Sponsor");
+
+                // Increment counts based on role presence
+                if (isDonor) donorsCount++;
+                if (isVolunteer) volunteersCount++;
+                if (isLead) leadsCount++;
+                if (isSponsor) sponsorsCount++;
+
+                // Increment total count of roles
+                allCount += contractorRoles.Count();
+            }
 
             // Inject counts into client-side script or display in HTML
             var scriptTag = new LiteralControl();
             scriptTag.Text = $@"
-                <script type='text/javascript'>
-                    var allCount = {allCount};
-                    var donorsCount = {donorsCount};
-                    var volunteersCount = {volunteersCount};
-                    var leadsCount = {leadsCount};
-                    var sponsorsCount = {sponsorsCount};
-                    console.log('Counts: Donors=' + donorsCount + ', Volunteers=' + volunteersCount + ', Leads=' + leadsCount + ', Sponsors=' + sponsorsCount);
-                </script>";
+        <script type='text/javascript'>
+            var allCount = {allCount};
+            var donorsCount = {donorsCount};
+            var volunteersCount = {volunteersCount};
+            var leadsCount = {leadsCount};
+            var sponsorsCount = {sponsorsCount};
+            console.log('Counts: Donors=' + donorsCount + ', Volunteers=' + volunteersCount + ', Leads=' + leadsCount + ', Sponsors=' + sponsorsCount);
+        </script>";
 
             // Register script to be executed when page renders
             Page.Header.Controls.Add(scriptTag);
+        }
+
+        protected static string GetImageUrl(string contactsId)
+        {
+
+            return "/ImageHandler.ashx?id=" + contactsId + "&s=" + ImageManager.file_section_user; //"img + "?r=" + DateTime.Now.TimeOfDay.Milliseconds.ToString();
         }
 
         private void DisplayContactsInHTML(List<UserMgt.Entity.v_contractor> contacts)
@@ -216,32 +198,30 @@ namespace DonorCRM
             {
                 string name = contact.ContractorName;
                 string email = contact.EmailAddress;
-                string avatarUrl = "assets/media/avatars/300-6.jpg";
                 string companyName = contact.Company;
                 string phone = contact.ContactNumber;
-                string city = "Islamabad";
-                string country = "Pakistan";
-                string notes = " ";
-
+                string contactid = contact.ID.ToString();
+                string imgurl = GetImageUrl(contactid);
                 html.Append(string.Format(@"
-                    <div class='d-flex flex-stack py-4' onclick='displayContactDetails(""{0}"")'>
-                        <div class='d-flex align-items-center'>
-                            <div class='symbol symbol-40px symbol-circle'>
-                                <img alt='Pic' src='{1}'>
-                                <div class='symbol-badge bg-success start-100 top-100 border-4 h-15px w-15px ms-n2 mt-n2'></div>
-                            </div>
-                            <div class='ms-4'>
-                                <a href='apps/contacts/view-contact.html' class='fs-6 fw-bold text-gray-900 text-hover-primary mb-2'>{2}</a>
-                                <div class='fw-semibold fs-7 text-muted'>{0}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='separator separator-dashed d-none'></div>
-                ", email, avatarUrl, name));
-            }
+    <div style='display: flex; align-items: center;cursor:pointer;' class='text-hover-primary contact-item py-4' onclick='displayContactDetails(&quot;{2}&quot;)'>
+        <div class='symbol symbol-40px symbol-circle'>
+            <img alt='Pic' src='{1}'>
+            <div class='symbol-badge bg-success start-100 top-100 border-4 h-15px w-15px ms-n2 mt-n2'></div>
+        </div>
+        
+        <div style='margin-left: 30px;' class='ms-4'>
+            <a class='fs-6 fw-bold text-gray-900 text-hover-primary mb-2'>{2}</a>
+            <div class='fw-semibold fs-7 text-muted'>{3}</div>
+        </div>
+    </div>
+    <div class='separator separator-dashed'></div>
+", contactid, ResolveUrl(imgurl), email, name));
 
-            // Display the HTML in a literal or another control
-            ContactsListLiteral.Text = html.ToString();
+
+
+                // Display the HTML in a literal or another control
+                ContactsListLiteral.Text = html.ToString();
+            }
         }
     }
 }

@@ -455,6 +455,14 @@
 													<asp:ListItem  Value="2" Text="Donor" ></asp:ListItem>
 													<asp:ListItem  Value="3" Text="Participant" ></asp:ListItem>
 													</asp:RadioButtonList>
+
+
+													<asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="mycheckBig">
+    <asp:ListItem Value="Donor" Text="Donor"></asp:ListItem>
+    <asp:ListItem Value="Volunteer" Text="Volunteer"></asp:ListItem>
+    <asp:ListItem Value="Lead" Text="Lead"></asp:ListItem>
+    <asp:ListItem Value="Sponsor" Text="Sponsor"></asp:ListItem>
+</asp:CheckBoxList>
 												<div class="fv-plugins-message-container invalid-feedback"></div></div>
 												<!--end::Col-->
 											</div>

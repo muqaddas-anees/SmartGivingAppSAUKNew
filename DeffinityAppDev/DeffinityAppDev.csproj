@@ -528,14 +528,14 @@
       <DependentUpon>chartdata.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="App\Chat.aspx.cs">
-      <DependentUpon>Chat.aspx</DependentUpon>
+    <Compile Include="App\chat.aspx.cs">
+      <DependentUpon>chat.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App\Chat.aspx.designer.cs">
-      <DependentUpon>Chat.aspx</DependentUpon>
+    <Compile Include="App\chat.aspx.designer.cs">
+      <DependentUpon>chat.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App\ChatHub.cs" />
+    <Compile Include="ChatHub.cs" />
     <Compile Include="App\CommentsService.asmx.cs">
       <DependentUpon>CommentsService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -1026,6 +1026,11 @@
       <DependentUpon>CheckBalance.aspx</DependentUpon>
     </Compile>
     <Compile Include="ContentSecurityPolicyModule.cs" />
+    <Compile Include="ContractorRoles.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContractorRoles.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ActivateController.cs" />
     <Compile Include="Controllers\InstanceController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -4795,7 +4800,7 @@
     <Content Include="App\autocomplete.asmx" />
     <Content Include="App\AutoComplete.aspx" />
     <Content Include="App\chartdata.asmx" />
-    <Content Include="App\Chat.aspx" />
+    <Content Include="App\chat.aspx" />
     <Content Include="App\CommentsService.asmx" />
     <Content Include="App\controls\ActivitiesCtrl.ascx" />
     <Content Include="App\controls\DonationReportTabs.ascx" />
@@ -14046,6 +14051,14 @@
     <Content Include="assets\plugins\global\fonts\keenicons\keenicons-solid.eot" />
     <Content Include="assets\plugins\global\fonts\keenicons\keenicons-solid.ttf" />
     <Content Include="assets\plugins\global\fonts\keenicons\keenicons-solid.woff" />
+    <Content Include="ContractorRoles.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ContractorRoles.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="ContractorRoles.dbml.layout">
+      <DependentUpon>ContractorRoles.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />
@@ -20370,6 +20383,9 @@
       <Project>{c6b303c2-294f-475c-95f9-ef6908482840}</Project>
       <Name>DeffinityManager</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

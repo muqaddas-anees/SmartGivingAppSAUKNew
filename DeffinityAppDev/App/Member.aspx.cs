@@ -965,16 +965,14 @@ namespace DeffinityAppDev.App
                     try
                     {
                         var value = cRep.GetAll().Where(o => o.ID == uid).FirstOrDefault();
-                        value.ContractorName = txtFirstName.Text.Trim() ;
+                        value.ContractorName = txtFirstName.Text.Trim();
                         value.LastName = txtSurname.Text.Trim();
                         value.EmailAddress = txtEmailAddress.Text;
                         value.LoginName = txtEmailAddress.Text;
                         if (txtPassword.Text.Trim().Length > 0)
-{
-                            value.Password = Deffinity.Users.Login.GeneratePasswordString(txtPassword.Text.Trim());// FormsAuthentication.HashPasswordForStoringInConfigFile(txtPassword.Text.Trim(), "SHA1");
+                        {
+                            value.Password = Deffinity.Users.Login.GeneratePasswordString(txtPassword.Text.Trim());
                         }
-                        //1 - Admin
-                       // value.SID = Convert.ToInt32(ddlPermission.SelectedValue);
                         value.CreatedDate = DateTime.Now;
                         value.ModifiedDate = DateTime.Now;
                         value.Status = ddlStatus.SelectedValue;
@@ -982,7 +980,6 @@ namespace DeffinityAppDev.App
                         value.ResetPassword = false;
                         value.Company = ddlCompany.SelectedValue;
                         value.ContactNumber = txtContactNumber.Text;
-
                         cRep.Edit(value);
                     }
                     catch (Exception ex)
@@ -992,33 +989,53 @@ namespace DeffinityAppDev.App
 
                     try
                     {
-                        //    if (cvRep.GetAll().Where(o => o.LoginName.ToLower() == value.LoginName.ToLower() && o.Status == UserStatus.Active && o.SID == UserType.SmartPros).Count() == 0)
-                        //{
                         var cdRep = new UserRepository<UserMgt.Entity.UserDetail>();
                         var cdEntity = cdRep.GetAll().Where(o => o.UserId == uid).FirstOrDefault();
-                        //}
                         cdEntity.Address1 = txtAddress.Text;
                         cdEntity.Country = Convert.ToInt32(ddlCountry.SelectedValue);
                         cdEntity.PostCode = txtZipcode.Text;
                         cdEntity.State = txtState.Text;
-                        //cdEntity.SubDenominationDetailsID = pDetails.SubDenominationDetailsID;
-                        //cdEntity.DenominationDetailsID = pDetails.DenominationDetailsID;
                         cdEntity.Town = txtTown.Text;
-                        cdEntity.UserId = uid;
-                        //cdEntity.DenominationDetailsID = Convert.ToInt32(ddlReligion.SelectedValue);
-                        //cdEntity.SubDenominationDetailsID = Convert.ToInt32(ddlDenimination.SelectedValue);
                         cdRep.Edit(cdEntity);
                     }
                     catch (Exception ex)
                     {
                         LogExceptions.WriteExceptionLog(ex);
                     }
+
+                    // Store role in tblRoles if QueryStringValues.Type is "2" (Donor role)
+                    if (QueryStringValues.Type == "2")
+                    {
+                        try
+                        {
+                            string ConnectionString = System.Configuration.ConfigurationManager.AppSettings["DBstring"];
+                            ContractorRolesDataContext context = new ContractorRolesDataContext(ConnectionString);
+
+                            // Check if the role already exists
+                         
+
+                      
+                                // Add new role
+                                var newRole = new tblRole
+                                {
+                                    ContractorID = uid,
+                                    RoleType = CheckBoxList1.SelectedValue // Assuming "Donor" is the role name for QueryStringValues.Type == "2"
+                                                             // Add other properties as needed
+                                };
+                                context.tblRoles.InsertOnSubmit(newRole);
+                                context.SubmitChanges();
+                            }
+                        
+                        catch (Exception ex)
+                        {
+                            LogExceptions.WriteExceptionLog(ex);
+                        }
+                    }
+
                     uploadLogo(uid);
-                    img.ImageUrl = "~/ImageHandler.ashx?id=" + uid.ToString() + "&s=" + ImageManager.file_section_user; //GetImageUrl(uid.ToString());
+                    img.ImageUrl = "~/ImageHandler.ashx?id=" + uid.ToString() + "&s=" + ImageManager.file_section_user;
                     userid = uid;
                     sessionKeys.Message = Resources.DeffinityRes.UpdatedSuccessfully;
-
-                    //
                 }
             }
             else
@@ -1027,7 +1044,8 @@ namespace DeffinityAppDev.App
                 var cvRep = new UserRepository<v_contractor>();
                 string pw = "Smart@2022";
                 userid = 0;
-                try {
+                try
+                {
                     var value = new UserMgt.Entity.Contractor();
                     value.ContractorName = txtFirstName.Text.Trim();
                     value.LastName = txtSurname.Text.Trim();
@@ -1035,25 +1053,22 @@ namespace DeffinityAppDev.App
                     value.LoginName = txtEmailAddress.Text;
                     if (txtPassword.Text.Trim().Length > 0)
                     {
-                        value.Password = Deffinity.Users.Login.GeneratePasswordString(txtPassword.Text.Trim());// FormsAuthentication.HashPasswordForStoringInConfigFile(txtPassword.Text.Trim(), "SHA1");
+                        value.Password = Deffinity.Users.Login.GeneratePasswordString(txtPassword.Text.Trim());
                     }
                     else
                     {
-                        value.Password = Deffinity.Users.Login.GeneratePasswordString(pw);// FormsAuthentication.HashPasswordForStoringInConfigFile(pw, "SHA1");
+                        value.Password = Deffinity.Users.Login.GeneratePasswordString(pw);
                     }
-                    //1 - Admin
-                    //value.SID = UserType.SmartPros;
                     value.SID = Convert.ToInt32(ddlPermission.SelectedValue);
                     value.CreatedDate = DateTime.Now;
                     value.ModifiedDate = DateTime.Now;
                     value.Status = ddlStatus.SelectedValue;
                     value.isFirstlogin = 0;
                     value.ResetPassword = false;
-                    value.Company = ddlCompany.SelectedValue; //txtcompany.Text.Trim();
-
+                    value.Company = ddlCompany.SelectedValue;
                     value.ContactNumber = txtContactNumber.Text.Trim();
-                    //DOnor
-                    if(QueryStringValues.Type == "2")
+
+                    if (QueryStringValues.Type == "2")
                     {
                         if (cvRep.GetAll().Where(o => o.LoginName.ToLower().Trim() == value.LoginName.ToLower().Trim() && o.SID == UserType.Donor && o.CompanyID == sessionKeys.PortfolioID).Count() == 0)
                         {
@@ -1062,14 +1077,11 @@ namespace DeffinityAppDev.App
                         }
                         else
                         {
-                           // sessionKeys.ErrorMessage = "Email already exists. Please try again ";
-                            DeffinityManager.ShowMessages.ShowErrorAlert(this.Page,  "Email already exists. Please try again ", "Ok");
+                            DeffinityManager.ShowMessages.ShowErrorAlert(this.Page, "Email already exists. Please try again ", "Ok");
                         }
                     }
                     else
                     {
-                        //member
-
                         if (cvRep.GetAll().Where(o => o.LoginName.ToLower().Trim() == value.LoginName.ToLower().Trim() && o.SID != UserType.Donor).Count() == 0)
                         {
                             cRep.Add(value);
@@ -1080,10 +1092,6 @@ namespace DeffinityAppDev.App
                             DeffinityManager.ShowMessages.ShowErrorAlert(this.Page, "Email already exists. Please try again ", "Ok");
                         }
                     }
-
-                  
-                    
-
                 }
                 catch (Exception ex)
                 {
@@ -1094,20 +1102,14 @@ namespace DeffinityAppDev.App
                 {
                     try
                     {
-
                         var cdRep = new UserRepository<UserMgt.Entity.UserDetail>();
                         var cdEntity = new UserMgt.Entity.UserDetail();
                         cdEntity.Address1 = txtAddress.Text;
                         cdEntity.Country = Convert.ToInt32(ddlCountry.SelectedValue);
                         cdEntity.PostCode = txtZipcode.Text;
                         cdEntity.State = txtState.Text;
-                        //cdEntity.SubDenominationDetailsID = pDetails.SubDenominationDetailsID;
-                        //cdEntity.DenominationDetailsID = pDetails.DenominationDetailsID;
                         cdEntity.Town = txtTown.Text;
                         cdEntity.UserId = userid;
-                        //cdEntity.DenominationDetailsID = Convert.ToInt32(ddlReligion.SelectedValue);
-                        //cdEntity.SubDenominationDetailsID = Convert.ToInt32(ddlDenimination.SelectedValue);
-
                         cdRep.Add(cdEntity);
                     }
                     catch (Exception ex)
@@ -1127,10 +1129,11 @@ namespace DeffinityAppDev.App
                     {
                         LogExceptions.WriteExceptionLog(ex);
                     }
+
                     try
                     {
                         uploadLogo(userid);
-                        img.ImageUrl = "~/ImageHandler.ashx?id=" + userid + "&s=" + ImageManager.file_section_user; // GetImageUrl(userid.ToString());
+                        img.ImageUrl = "~/ImageHandler.ashx?id=" + userid + "&s=" + ImageManager.file_section_user;
                     }
                     catch (Exception ex)
                     {
@@ -1140,11 +1143,12 @@ namespace DeffinityAppDev.App
                     sessionKeys.Message = Resources.DeffinityRes.Addedsuccessfully;
                     userid = userid;
                 }
-                // Response.Redirect("~/App/Member.aspx?mid=" + value.ID);
             }
 
             return userid;
         }
+
+
         protected void btnSaveChanges_Click(object sender, EventArgs e)
         {
             try

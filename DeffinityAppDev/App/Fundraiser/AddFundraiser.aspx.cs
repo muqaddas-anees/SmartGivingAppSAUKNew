@@ -411,10 +411,18 @@ namespace DeffinityAppDev.App.Fundraiser
             if (imgBanner.PostedFile.FileName.Length > 0)
             {
                 Bitmap upBmp = (Bitmap)Bitmap.FromStream(imgBanner.PostedFile.InputStream);
-                ImageManager.SaveTithingImage_setpath(imgBanner.FileBytes, tithingid.ToString(), Deffinity.systemdefaults.GetLogoFolderPath());
-                // DisplayLogo();
+                ImageManager.SaveTithingImage_setpath(imgBanner.FileBytes, $"{tithingid}_1", Deffinity.systemdefaults.GetLogoFolderPath());
             }
-
+            if (imgBanner1.PostedFile.FileName.Length > 0)
+            {
+                Bitmap upBmp = (Bitmap)Bitmap.FromStream(imgBanner1.PostedFile.InputStream);
+                ImageManager.SaveTithingImage_setpath(imgBanner1.FileBytes, $"{tithingid}_2", Deffinity.systemdefaults.GetLogoFolderPath());
+            }
+            if (imgBanner2.PostedFile.FileName.Length > 0)
+            {
+                Bitmap upBmp = (Bitmap)Bitmap.FromStream(imgBanner2.PostedFile.InputStream);
+                ImageManager.SaveTithingImage_setpath(imgBanner2.FileBytes, $"{tithingid}_3", Deffinity.systemdefaults.GetLogoFolderPath());
+            }
         }
         private void LogoUpLoad(int tithingid)
         {

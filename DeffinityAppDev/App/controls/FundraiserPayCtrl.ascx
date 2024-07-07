@@ -220,7 +220,7 @@
 
         <div class="col-xxl-12">
 
-             <div class="card card-xxl-stretch" >
+             <div id="donationsraised" class="card card-xxl-stretch" >
 											<!--begin::Header-->
 											<div class="card-header border-0 py-5">
 												<h3 class="card-title fw-bolder text-white"> </h3>
@@ -940,7 +940,13 @@
 
          });
 
+         var inputElement = document.getElementById('FaithGivingListCtrl_FundraiserPayCtrl_lblplatfee');
 
+         // Check if the element exists
+         if (inputElement) {
+             // Set the step attribute to 5
+             inputElement.setAttribute('step', '5');
+         }
 
 
          $('#txtAmountTotal').on('keyup', function (e) {
@@ -1246,15 +1252,17 @@
 
          $("#hplatformfeepercent").val(pval);
 
-
+         console.log(t + " pla" + pval)
+         console.log(t + pval)
          var pr = 0;
-         var t_total = (t + pval).toFixed(2);
+         var t_total = (t + (pval/100)).toFixed(2);
          $('#lblfee').html(pval);
          $('#hamount').val(t_total);
          $('#lblptotal').html('£' + t_total);
 
 
      }
+
      //  setFee();
 
      //function for is checked

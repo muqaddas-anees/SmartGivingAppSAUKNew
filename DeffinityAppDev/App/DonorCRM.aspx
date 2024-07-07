@@ -1,34 +1,34 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DonorCRM.aspx.cs" Inherits="DonorCRM.WebForm1" %>
 
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <base href="../../">
-    <title>Metronic - The World's #1 Selling Bootstrap Admin Template by KeenThemes</title>
+    <title>Donor CRM</title>
     <meta charset="utf-8">
-    <meta name="description" content="The most advanced Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony &amp; Laravel versions. Grab your copy now and get life-time updates for free.">
-    <meta name="keywords" content="metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony &amp; Laravel starter kits, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Metronic - The World's #1 Selling Bootstrap Admin Template by KeenThemes">
-    <meta property="og:url" content="https://keenthemes.com/metronic">
-    <meta property="og:site_name" content="Metronic by Keenthemes">
-    <link rel="canonical" href="https://preview.keenthemes.com/metronic8">
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico">
+
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700">
     <!--end::Fonts-->
     <!--begin::Vendor Stylesheets(used for this page only)-->
-    <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css">
     <!--end::Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css">
     <!--end::Global Stylesheets Bundle-->
     <script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
+	<style>
+		.contact-item {
+    transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+}
+
+.contact-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+}
+	</style>
 </head>
 <body>
     <div class="d-flex">
@@ -88,7 +88,7 @@
 								
 							</div>
 							<div id="sidemenu_link_members" data-kt-menu-trigger="click" data-kt-menu-placement="right-start" data-kt-menu-flip="bottom" class="menu-item py-2">
-								<span class="menu-link " title="" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right" data-bs-original-title="Donor CRM" data-kt-initialized="1">
+								<span class="menu-link " title="" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right" data-bs-original-title="s CRM" data-kt-initialized="1">
 									<span class="menu-icon">
 										<i class="fas fa-user-cog fs-2"></i>
 									</span>
@@ -463,13 +463,13 @@
                     <!--begin::Page title-->
                     <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
                         <!--begin::Title-->
-                        <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">Add New Contact</h1>
+                        <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">Donor CRM</h1>
                         <!--end::Title-->
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
                             <!--begin::Item-->
                             <li class="breadcrumb-item text-muted">
-                                <a href="index.html" class="text-muted text-hover-primary">Home</a>
+                                <a href="/app/dashboard.aspx" class="text-muted text-hover-primary">Home</a>
                             </li>
                             <!--end::Item-->
                             <!--begin::Item-->
@@ -478,7 +478,7 @@
                             </li>
                             <!--end::Item-->
                             <!--begin::Item-->
-                            <li class="breadcrumb-item text-muted">Apps</li>
+                            <li class="breadcrumb-item text-muted">Donor CRM</li>
                             <!--end::Item-->
                             <!--begin::Item-->
                             <li class="breadcrumb-item">
@@ -486,17 +486,14 @@
                             </li>
                             <!--end::Item-->
                             <!--begin::Item-->
-                            <li class="breadcrumb-item text-muted">Contacts</li>
+                          
                             <!--end::Item-->
                         </ul>
                         <!--end::Breadcrumb-->
                     </div>
                     <!--end::Page title-->
                     <!--begin::Actions-->
-                    <div class="d-flex align-items-center gap-2 gap-lg-3">
-                        <a href="#" class="btn btn-flex btn-outline btn-color-gray-700 btn-active-color-primary bg-body h-40px fs-7 fw-bold" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">Add Member</a>
-                        <a href="#" class="btn btn-flex btn-primary h-40px fs-7 fw-bold" data-bs-toggle="modal" data-bs-target="#kt_modal_create_campaign">New Campaign</a>
-                    </div>
+                    
                     <!--end::Actions-->
                 </div>
                 <!--end::Toolbar wrapper-->
@@ -529,29 +526,29 @@
     <div class="d-flex flex-column gap-5">
         <!--begin::Contact group-->
            <div class="d-flex flex-stack">
-       <a href="#" class="fs-6 fw-bold text-gray-800 text-hover-primary active">All Contacts</a>
+       <a href="#" class="fs-6 fw-bold text-gray-800 ">All Contacts</a>
        <div id="all_contacts_badge" class="badge badge-light-primary"></div>
    </div>
         <div class="d-flex flex-stack">
-            <a href="Index.aspx?type=Donors" class="fs-6 fw-bold text-gray-800 text-hover-primary  active">Donors</a>
+            <a  class="fs-6 fw-bold text-gray-800">Donors</a>
             <div id="donors_badge" class="badge badge-light-primary"></div>
         </div>
         <!--begin::Contact group-->
         <!--begin::Contact group-->
         <div class="d-flex flex-stack">
-            <a href="Index.aspx?type=Volunteers" class="fs-6 fw-bold text-gray-800 text-hover-primary">Volunteers</a>
+            <a  class="fs-6 fw-bold text-gray-800 ">Volunteers</a>
             <div id="volunteers_badge" class="badge badge-light-primary"></div>
         </div>
         <!--begin::Contact group-->
         <!--begin::Contact group-->
         <div class="d-flex flex-stack">
-            <a href="Index.aspx?type=Leads" class="fs-6 fw-bold text-gray-800 text-hover-primary">Leads</a>
+            <a  class="fs-6 fw-bold text-gray-800 ">Leads</a>
             <div id="leads_badge" class="badge badge-light-primary"></div>
         </div>
         <!--begin::Contact group-->
         <!--begin::Contact group-->
         <div class="d-flex flex-stack">
-            <a href="Index.aspx?type=Sponsors" class="fs-6 fw-bold text-gray-800 text-hover-primary">Sponsors</a>
+            <a class="fs-6 fw-bold text-gray-800">Sponsors</a>
             <div id="sponsors_badge" class="badge badge-light-primary"></div>
         </div>
         <!--begin::Contact group-->
@@ -564,19 +561,13 @@
     <div class="separator my-7"></div>
     <!--begin::Separator-->
     <!--begin::Add contact group-->
-    <label class="fs-6 fw-semibold form-label">Add new group</label>
-    <div class="input-group">
-        <input type="text" class="form-control form-control-solid" placeholder="Group name">
-        <button type="button" class="btn btn-icon btn-light">
-            <i class="ki-outline ki-plus-square fs-2"></i>
-        </button>
-    </div>
+   
     <!--end::Add contact group-->
     <!--begin::Separator-->
     <div class="separator my-7"></div>
     <!--begin::Separator-->
     <!--begin::Add new contact-->
- <a onclick="clearForm()"  class="btn btn-primary w-100">
+ <a onclick="clearForm()" href="/app/member.aspx?type=2"  class="btn btn-primary w-100">
 													<i class="ki-outline ki-badge fs-2"></i>Add new contact</a>
 
     <!--end::Add new contact-->
@@ -598,7 +589,7 @@
                                     <i class="ki-outline ki-magnifier fs-3 text-gray-500 position-absolute top-50 ms-5 translate-middle-y"></i>
                                     <!--end::Icon-->
                                     <!--begin::Input-->
-                                    <input type="text" class="form-control form-control-solid ps-13" name="search" value="" placeholder="Search contacts">
+                                    <input type="text" id="searchContacts" class="form-control form-control-solid ps-13" name="search" value="" placeholder="Search contacts">
                                     <!--end::Input-->
                                 </form>
                                 <!--end::Form-->
@@ -644,51 +635,46 @@
                                     <!--begin::Input group-->
                                     <div class="mb-7">
                                         <!--begin::Label-->
-                                        <label class="fs-6 fw-semibold mb-3">
-                                            <span>Update Avatar</span>
-                                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Allowed file types: png, jpg, jpeg." data-bs-original-title="Allowed file types: png, jpg, jpeg." data-kt-initialized="1">
-                                                <i class="ki-outline ki-information fs-7"></i>
-                                            </span>
-                                        </label>
+                                    
                                         <!--end::Label-->
                                         <!--begin::Image input wrapper-->
                                         <div class="mt-1">
                                             <!--begin::Image placeholder-->
                                             <style>
                                                 .image-input-placeholder {
-                                                    background-image: url('assets/media/svg/files/blank-image.svg');
+                                                    background-image: url('../assets/media/svg/files/blank-image.svg');
                                                 }
 
                                                 [data-bs-theme="dark"] .image-input-placeholder {
-                                                    background-image: url('assets/media/svg/files/blank-image-dark.svg');
+                                                    background-image: url('../assets/media/svg/files/blank-image-dark.svg');
                                                 }
                                             </style>
+											<div class="image-input image-input-outline image-input-placeholder image-input-empty image-input-empty" id="bgimg" data-kt-image-input="true">
+																	<!--begin::Preview existing avatar-->
+																	<div class="image-input-wrapper w-100px h-100px" style="background-image: url('')"></div>
+																	<!--end::Preview existing avatar-->
+																	<!--begin::Edit-->
+																	<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" aria-label="Change avatar" data-bs-original-title="Change avatar" data-kt-initialized="1">
+																		<i class="ki-outline ki-pencil fs-7"></i>
+																		<!--begin::Inputs-->
+																		<input type="file" name="avatar" accept=".png, .jpg, .jpeg">
+																		<input type="hidden" name="avatar_remove">
+																		<!--end::Inputs-->
+																	</label>
+																	<!--end::Edit-->
+																	<!--begin::Cancel-->
+																	<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" aria-label="Cancel avatar" data-bs-original-title="Cancel avatar" data-kt-initialized="1">
+																		<i class="ki-outline ki-cross fs-2"></i>
+																	</span>
+																	<!--end::Cancel-->
+																	<!--begin::Remove-->
+																	<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" aria-label="Remove avatar" data-bs-original-title="Remove avatar" data-kt-initialized="1">
+																		<i class="ki-outline ki-cross fs-2"></i>
+																	</span>
+																	<!--end::Remove-->
+																</div>
                                             <!--end::Image placeholder-->
                                             <!--begin::Image input-->
-                                            <div class="image-input image-input-outline image-input-placeholder image-input-empty image-input-empty" data-kt-image-input="true">
-                                                <!--begin::Preview existing avatar-->
-                                                <div class="image-input-wrapper w-100px h-100px" style="background-image: url('')"></div>
-                                                <!--end::Preview existing avatar-->
-                                                <!--begin::Edit-->
-                                                <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" aria-label="Change avatar" data-bs-original-title="Change avatar" data-kt-initialized="1">
-                                                    <i class="ki-outline ki-pencil fs-7"></i>
-                                                    <!--begin::Inputs-->
-                                                    <input type="file" name="avatar" accept=".png, .jpg, .jpeg">
-                                                    <input type="hidden" name="avatar_remove">
-                                                    <!--end::Inputs-->
-                                                </label>
-                                                <!--end::Edit-->
-                                                <!--begin::Cancel-->
-                                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" aria-label="Cancel avatar" data-bs-original-title="Cancel avatar" data-kt-initialized="1">
-                                                    <i class="ki-outline ki-cross fs-2"></i>
-                                                </span>
-                                                <!--end::Cancel-->
-                                                <!--begin::Remove-->
-                                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" aria-label="Remove avatar" data-bs-original-title="Remove avatar" data-kt-initialized="1">
-                                                    <i class="ki-outline ki-cross fs-2"></i>
-                                                </span>
-                                                <!--end::Remove-->
-                                            </div>
                                             <!--end::Image input-->
                                         </div>
                                         <!--end::Image input wrapper-->
@@ -731,6 +717,18 @@
             <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
         </div>
     </div>
+	    <div class="col">
+        <div class="fv-row mb-7 fv-plugins-icon-container">
+            <label class="fs-6 fw-semibold form-label mt-3">
+                <span class="required">Donations Raised</span>
+                <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                    <i class="ki-outline ki-information fs-7"></i>
+                </span>
+            </label>
+            <input runat="server" id="DonationsRaised" type="text" class="form-control form-control-solid" name="DonationsRaised" value="">
+            <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+        </div>
+    </div>
     <div class="col">
         <div class="fv-row mb-7">
             <label class="fs-6 fw-semibold form-label mt-3">
@@ -745,29 +743,10 @@
 </div>
 
 <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
-    <div class="col">
-        <div class="fv-row mb-7">
-            <label class="fs-6 fw-semibold form-label mt-3">
-                <span>City</span>
-                <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's city of residence (optional)." data-bs-original-title="Enter the contact's city of residence (optional)." data-kt-initialized="1">
-                    <i class="ki-outline ki-information fs-7"></i>
-                </span>
-            </label>
-            <input runat="server" id="txtCity" type="text" class="form-control form-control-solid" name="city" value="">
-        </div>
-    </div>
-    
-</div>
 
-<div class="fv-row mb-7">
-    <label class="fs-6 fw-semibold form-label mt-3">
-        <span>Notes</span>
-        <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter any additional notes about the contact (optional)." data-bs-original-title="Enter any additional notes about the contact (optional)." data-kt-initialized="1">
-            <i class="ki-outline ki-information fs-7"></i>
-        </span>
-    </label>
-    <textarea id="txtNotes" class="form-control form-control-solid" runat="server" name="notes"></textarea>
-</div>
+    
+
+
 
 <!-- Checkbox Group -->
 <div class="fv-row mb-7">
@@ -776,15 +755,15 @@
         <input runat="server" id="chkDonors" type="checkbox" class="form-check-input" name="categories" value="Donors">
         <label for="chkDonors" class="form-check-label">Donors</label>
     </div>
-    <div class="form-check">
+    <div class="form-check mt-5">
         <input runat="server" id="chkVolunteers" type="checkbox" class="form-check-input" name="categories" value="Volunteers">
         <label for="chkVolunteers" class="form-check-label">Volunteers</label>
     </div>
-    <div class="form-check">
+    <div class="form-check mt-5">
         <input runat="server" id="chkLeads" type="checkbox" class="form-check-input" name="categories" value="Leads">
         <label for="chkLeads" class="form-check-label">Leads</label>
     </div>
-    <div class="form-check">
+    <div class="form-check mt-5">
         <input runat="server" id="chkSponsors" type="checkbox" class="form-check-input" name="categories" value="Sponsors">
         <label for="chkSponsors" class="form-check-label">Sponsors</label>
     </div>
@@ -792,16 +771,7 @@
 
 <!-- Action Buttons -->
 <div class="d-flex justify-content-end">
-    <button type="reset" data-kt-contacts-type="cancel" class="btn btn-light me-3">Cancel</button>
-<asp:Button
-    ID="btnSave"
-    runat="server"
-    CssClass="btn btn-primary"
-    Text="Save"
-    OnClick="btnSave_Click"
-    data-kt-contacts-type="submit"
-    OnClientClick="return false;" />
-                                            
+ 
                                         <!--end::Button-->
                                     </div>
                                     <!--end::Action buttons-->
@@ -821,7 +791,24 @@
         <!--end::Content-->
     </div></div>
 
-    <script>var hostUrl = "assets/";
+    <script>var hostUrl = "../assets/";
+    
+        document.getElementById('searchContacts').addEventListener('input', function () {
+            var filter = this.value.toLowerCase();
+            var contacts = document.getElementsByClassName('contact-item');
+
+            for (var i = 0; i < contacts.length; i++) {
+                var contactName = contacts[i].querySelector('a').textContent.toLowerCase();
+                var contactEmail = contacts[i].querySelector('div.fw-semibold').textContent.toLowerCase();
+
+                if (contactName.includes(filter) || contactEmail.includes(filter)) {
+                    contacts[i].style.display = '';
+                } else {
+                    contacts[i].style.display = 'none';
+                    console.log(contacts[i].style);
+                }
+            }
+        });
         document.getElementById('all_contacts_badge').innerHTML = allCount;
         document.getElementById('volunteers_badge').innerText = volunteersCount;
         document.getElementById('donors_badge').innerText = donorsCount;
@@ -830,21 +817,52 @@
         function displayContactDetails(email) {
             var contact = contacts.find(c => c.Email === email); // Assuming contacts array is accessible
 
+
+
+
+
+
+			var checkbox1 = document.getElementById('chkDonors');
+			var checkbox2 = document.getElementById('chkVolunteers');
+			var checkbox3 = document.getElementById('chkLeads');
+			var checkbox4 = document.getElementById('chkSponsors');
+			checkbox1.checked = false;
+			checkbox2.checked = false;
+			checkbox3.checked = false;
+            checkbox4.checked = false;
+			
+
+
+
             if (contact) {
                 document.getElementById('txtName').value = contact.Name;
                 document.getElementById('txtCompanyName').value = contact.CompanyName;
                 document.getElementById('txtEmail').value = contact.Email;
-                document.getElementById('txtPhone').value = contact.Phone;
-                document.getElementById('txtCity').value = contact.City;
-                document.getElementById('txtNotes').value = contact.Notes;
+				document.getElementById('txtPhone').value = contact.Phone;
+				document.getElementById('DonationsRaised').value = contact.DonationsRaised;
+                document.getElementById('bgimg').style.backgroundImage = `url('${contact.imgurl}')`;
+                console.log(`url('${contact.imgurl}')`)
+                console.log(document.getElementById('bgimg'));
 
-                
+             
+                if (contact.Categories == 2) {
+                    var checkbox = document.getElementById('chkDonors');
+                 if (checkbox) {
+                    checkbox.checked = true;
+                 }
+                }
+                if (contact.Categories == 4) {
+                    var checkbox = document.getElementById('chkVolunteers');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                }
 
-                document.getElementById('txtNotes').value = contact.Notes;
-
-                contact.Categories.forEach(category => {
+                contact.Roles.forEach(category => {
                     console.log(category);
-                    var checkbox = document.getElementById('chk' + category);
+					var checkbox = document.getElementById('chk' + category + 's');
+                   
+
                     if (checkbox) {
                         checkbox.checked = true;
                     }
@@ -883,20 +901,20 @@
         console.log(contacts);
     </script>
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="assets/plugins/global/plugins.bundle.js"></script>
-    <script src="assets/js/scripts.bundle.js"></script>
+    <script src="../assets/plugins/global/plugins.bundle.js"></script>
+    <script src="../assets/js/scripts.bundle.js"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Vendors Javascript(used for this page only)-->
-    <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script src="../assets/plugins/custom/datatables/datatables.bundle.js"></script>
     <!--end::Vendors Javascript-->
     <!--begin::Custom Javascript(used for this page only)-->
-    <script src="assets/js/custom/apps/contacts/edit-contact.js"></script>
-    <script src="assets/js/widgets.bundle.js"></script>
-    <script src="assets/js/custom/widgets.js"></script>
-    <script src="assets/js/custom/apps/chat/chat.js"></script>
-    <script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-    <script src="assets/js/custom/utilities/modals/create-campaign.js"></script>
-    <script src="assets/js/custom/utilities/modals/users-search.js"></script>
+    <script src="../assets/js/custom/apps/contacts/edit-contact.js"></script>
+    <script src="../assets/js/widgets.bundle.js"></script>
+    <script src="../assets/js/custom/widgets.js"></script>
+    <script src="../assets/js/custom/apps/chat/chat.js"></script>
+    <script src="../assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+    <script src="../assets/js/custom/utilities/modals/create-campaign.js"></script>
+    <script src="../assets/js/custom/utilities/modals/users-search.js"></script>
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
 </body>

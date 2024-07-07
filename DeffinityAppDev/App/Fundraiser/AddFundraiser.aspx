@@ -118,6 +118,10 @@
 			 <div class="row">
 				 <div class="col-lg-6">
 					  <asp:FileUpload runat="server" id="imgBanner" CssClass="form-control" Text="Upload" />
+					 					  <asp:FileUpload runat="server" id="imgBanner1" CssClass="form-control mt-3" Text="Upload" />
+
+					 					  <asp:FileUpload runat="server" id="imgBanner2" CssClass="form-control mt-3" Text="Upload" />
+
 					 <br />
 					 <asp:Button ID="btnSaveBanner" runat="server" OnClick="btnSaveBanner_Click" Text="Upload" />
 
@@ -146,7 +150,7 @@
 
 			 <div class="row mb-6">
 				 <div class="col-lg-6">
-				 <asp:TextBox id="txtcurrenyValue" runat="server" Text="0.00" SkinID="Price_200px" MaxLength="15"></asp:TextBox>
+<asp:TextBox id="txtcurrenyValue" runat="server" Text="0" SkinID="Price_200px" MaxLength="15" oninput="formatNumberWithCommas(this)"></asp:TextBox>
 					 </div>
 			 </div>
 
@@ -325,7 +329,23 @@
 
 			 </div>
 		</div>
+	<script type="text/javascript">
+        function formatNumberWithCommas(input) {
+            // Remove all non-digit characters, except the decimal point
+            let value = input.value.replace(/[^0-9.]/g, '');
 
+            // Split the value into the whole number and the decimal part
+            let parts = value.split('.');
+            let wholePart = parts[0];
+            let decimalPart = parts.length > 1 ? '.' + parts[1] : '';
+
+            // Add commas to the whole part
+            wholePart = wholePart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            // Set the formatted value back to the input
+            input.value = wholePart + decimalPart;
+        }
+</script>
 	<asp:HiddenField ID="hid" runat="server" Value="0" />
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="Scripts_Section" runat="server">

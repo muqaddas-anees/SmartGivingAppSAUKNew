@@ -365,14 +365,14 @@
     <Compile Include="App\CharityChampions.aspx.designer.cs">
       <DependentUpon>CharityChampions.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App\Chat.aspx.cs">
-      <DependentUpon>Chat.aspx</DependentUpon>
+    <Compile Include="App\chat.aspx.cs">
+      <DependentUpon>chat.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App\Chat.aspx.designer.cs">
-      <DependentUpon>Chat.aspx</DependentUpon>
+    <Compile Include="App\chat.aspx.designer.cs">
+      <DependentUpon>chat.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App\ChatHub.cs" />
+    <Compile Include="ChatHub.cs" />
     <Compile Include="App\Contacts.aspx.cs">
       <DependentUpon>Contacts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -703,7 +703,7 @@
     <Compile Include="App\WebService\DataServices.asmx.cs">
       <DependentUpon>DataServices.asmx</DependentUpon>
     </Compile>
-    <Content Include="App\Chat.aspx" />
+    <Content Include="App\chat.aspx" />
     <Content Include="App\EmailSettings.aspx" />
     <Content Include="App\EmailTemplates\default.htm" />
     <Content Include="App\PendingOrganizations.aspx" />

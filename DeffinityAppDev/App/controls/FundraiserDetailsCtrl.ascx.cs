@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TuesPechkin;
 
 namespace DeffinityAppDev.App.controls
 {
@@ -105,8 +106,15 @@ namespace DeffinityAppDev.App.controls
                  
                     // lblTarget.Text = "Target: " + string.Format("{0:C0}",  dlist.DefaultTarget);
                     lblTarget.Text = string.Format("{1}{0:N0}", dlist.DefaultTarget, Deffinity.Utility.GetCurrencySymbol());// string.Format("{0:C0}", dlist.DefaultTarget);
-                   // imgQR.ImageUrl = "~/WF/UploadData/Events/" + dlist.unid + ".png"; ;
-                    imgcenterimage.ImageUrl = GetImageUrl(dlist.ID.ToString());
+                                                                                                                            // imgQR.ImageUrl = "~/WF/UploadData/Events/" + dlist.unid + ".png"; ;
+                    List<string> imageUrls = GetImageUrls(dlist.ID.ToString());
+
+                    if (imageUrls != null && imageUrls.Count > 0)
+                    {
+                        imgcenterimage.ImageUrl = imageUrls[0];
+                        imgcenterimage1.ImageUrl = imageUrls[1];
+                        imgcenterimage2.ImageUrl = imageUrls[2];
+                    }
                     lblTitle.Text = dlist.Title;
                    // lblTitle1.Text= dlist.Title;
                     lblDescription.Text = dlist.Description;
@@ -119,6 +127,7 @@ namespace DeffinityAppDev.App.controls
 
 
                     SetQRCode(dlist.unid);
+                    AddShareModal(dlist.unid,dlist.SocialTitle);
                     // if (f != null)
                     if((dlist.FundraiserDetails ?? "").Length >0)
                     {
@@ -161,12 +170,21 @@ namespace DeffinityAppDev.App.controls
                     gridtopdonors.DataSource = rList.Where(o=>o.Amount >0).ToList();
                     gridtopdonors.DataBind();
 
-
-                    totalsupporters.Value = "6"; //I am confused how to get this value
+                    var userlist1 = PortfolioMgt.BAL.TithingPaymentTrackerBAL.TithingPaymentTrackerBAL_SelectAll()
+                        .Where(o => o.FundriserUNID == QueryStringValues.UNID)
+                        .GroupBy(o => o.LoggedByID)  // Group by LoggedBy
+                        .Select(g => new
+                        {
+                            LoggedBy = g.Key,  // Get the LoggedBy value
+                            SupporterCount = g.Select(x => x.LoggedByID).Distinct().Count()  // Count distinct occurrences
+                        })
+                        .ToList();
+                    totalsupporters.Value = userlist1.Count().ToString(); //I am confused how to get this value
                     hraised.Value = string.Format("{0:F2}", userlist.Select(o=>o.PaidAmount).Sum());
                     hremaing.Value = string.Format("{0:F2}", dlist.DefaultTarget - userlist.Select(o => o.PaidAmount).Sum());
                     if (dlist.EndDate.HasValue)
                     {
+                        
                         // Get the end date from dlist
                         DateTime endDate = dlist.EndDate.Value; // Access the underlying DateTime value
 
@@ -202,6 +220,46 @@ namespace DeffinityAppDev.App.controls
             {
                 LogExceptions.WriteExceptionLog(ex);
             }
+        }
+
+        private void AddShareModal(string id,string Name)
+        {
+            string donationLink = Deffinity.systemdefaults.GetWebUrl() + "/FundraiserView.aspx?unid=" + id;
+          
+
+            // Construct the message
+            string message = $"Support our fundraiser '{Name}' by making a donation here: \n {donationLink}";
+
+            // Encode the message for URL
+            string encodedMessage = Uri.EscapeDataString(message);
+            string whatsapplink = "https://api.whatsapp.com/send?text=" + encodedMessage;
+            string telegramlink=$"https://t.me/share/url?url={donationLink}&text={encodedMessage}";
+            string modalHtml = $@"
+ <div class=""popup"">
+    <header>
+      <span>Share Modal</span>
+      <div class=""close""><i class=""uil uil-times""></i></div>
+    </header>
+    <div class=""content"">
+      <p>Share this link via</p>
+      <ul class=""icons"">
+        <a href=""#""><i class=""fab fa-facebook-f""></i></a>
+        <a href=""#""><i class=""fab fa-twitter""></i></a>
+        <a href=""{whatsapplink}""><i class=""fab fa-whatsapp""></i></a>
+        <a href=""{telegramlink}""><i class=""fab fa-telegram-plane""></i></a>
+      </ul>
+      <p>Or copy link</p>
+      <div class=""field"">
+        <i class=""url-icon uil uil-link""></i>
+        <input type=""text"" readonly value=""{donationLink}"">
+        <button>Copy</button>
+      </div>
+    </div>
+  </div>
+";
+
+            // Add the modal HTML to the Panel's Controls collection
+            sharemodal1.Controls.Add(new LiteralControl(modalHtml));
         }
         private string getDonorName(TithingPaymentTracker t)
         {
@@ -316,6 +374,10 @@ namespace DeffinityAppDev.App.controls
             try
             {
                 string code = Deffinity.systemdefaults.GetWebUrl() + "/FundraiserView.aspx?unid=" + unid;
+
+
+
+
                 QRCodeGenerator qrGenerator = new QRCodeGenerator();
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode(code, QRCodeGenerator.ECCLevel.Q);
                 QRCode qrCode = new QRCode(qrCodeData);
@@ -415,33 +477,19 @@ namespace DeffinityAppDev.App.controls
 
 
         }
-        protected static string GetImageUrl(string contactsId)
+        protected static List<string> GetImageUrls(string tithingId)
         {
-            //contactsId = sessionKeys.UID.ToString();
+            List<string> imageUrls = new List<string>();
 
-            //bool isOriginal = false;
+            for (int i = 1; i <= 3; i++) // Adjusting the loop to start from 1 to 3
+            {
+                string imgUrl = "~/ImageHandler.ashx?id=" + tithingId + "_" + i + "&s=" + ImageManager.file_section_fundriser;
+                imageUrls.Add(imgUrl);
+            }
 
-            //string img = string.Empty;
-            //contactsId = GetMasterID(contactsId);
-
-            //string filepath = HttpContext.Current.Server.MapPath("~/WF/UploadData/Tithing/") + "Tithing_org_" + contactsId.ToString() + ".png";
-
-            //if (System.IO.File.Exists(filepath))
-            //{
-
-            //    img = string.Format("~/WF/UploadData/Tithing/Tithing_org_{0}.png", contactsId.ToString());
-            //    // string navUrl = string.Format("DisplayUser.aspx?userid={0}", contactsId.ToString());
-            //    //img = string.Format("<img src='{0}' />", imgurl);
-            //}
-            //else
-            //{
-            //    img = "~/WF/UploadData/Users/ThumbNailsMedium/Tithing_0.png";
-            //    //img = string.Format("<img src='{0}'  width='50px' height='50px'  />", imgurl);
-            //}
-            //return img + "?r=" + DateTime.Now.TimeOfDay.Milliseconds.ToString();
-            // +"/" + eImageType.ToString() + "/" + a_gId.ToString() + ".png"; 
-            return "~/ImageHandler.ashx?id=" + contactsId.ToString() + "&s=" + ImageManager.file_section_fundriser;
+            return imageUrls;
         }
+
         private static string GetMasterID(string id)
         {
             string retId = "";

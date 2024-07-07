@@ -21,9 +21,11 @@ namespace DeffinityAppDev
                 }
 
 
+
                 lblOrgName.Text = sessionKeys.PortfolioName;
                 imguser.Src = imguser1.Src = "~/ImageHandler.ashx?id="+ sessionKeys.UID.ToString()+ "&s=user";
                 lblUserName.Text = sessionKeys.UName;
+
                 //  linkProfile.HRef = string.Format("~/App/Member.aspx?mid={0}",sessionKeys.UID.ToString());
                
                if(sessionKeys.SID == 3)

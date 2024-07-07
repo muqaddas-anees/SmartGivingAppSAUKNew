@@ -64,16 +64,10 @@ namespace Permissions
                   };
 
                   // Serialize the object to JSON
-                  JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
-                  string jsonData = jsSerializer.Serialize(responseData);
-
-                  // Create the script tag with the JSON data
-                  string scriptTag = $"<script type='text/javascript'>var responseData = {jsonData}; console.log(responseData); alert('hello');</script>";
-
+             
                   // Write the script tag to the response
 
                   // Write the script tag to the response
-                  Response.Write(scriptTag);
                   var data = from pc in personCategories
                              join c in categories on pc.Category_ID equals c.Category_ID
                              where contractorDictionary.ContainsKey(pc.Person_ID)
@@ -84,7 +78,7 @@ namespace Permissions
                                  CreatedDate = contractorDictionary[pc.Person_ID].CreatedDate
                              };
 
-                  foreach (var item in data)
+                foreach (var item in data)
                   {
                       string categoryName = item.CategoryName;
                       string contractorName = item.Contractor.ContractorName;
@@ -94,24 +88,17 @@ namespace Permissions
                       string roleClass = GetRoleColor(contractorRole);
                       string roleHtml = $"<a href=\"apps/user-management/roles/view.html\" class=\"badge badge-light-{roleClass} fs-7 m-1\">{contractorRole}</a>";
 
-                      string rowHtml = $@"
-  <tr class='table-row-dark'>
-      <td>{categoryName}</td>
-      <td>{contractorName}</td>
-      <td>{roleHtml}</td>
-      <td data-order='{createdDate:yyyy-MM-ddTHH:mm:sszzz}'>{createdDate:dd MMM yyyy, hh:mm tt}</td>
-      <td class='text-end'>
-          <button class='btn btn-icon btn-active-light-primary w-30px h-30px me-3' data-bs-toggle='modal' data-bs-target='#kt_modal_update_permission'>
-              <i class='ki-outline ki-setting-3 fs-3'></i>
-          </button>
-          <button class='btn btn-icon btn-active-light-primary w-30px h-30px' data-kt-permissions-table-filter='delete_row'>
-              <i class='ki-outline ki-trash fs-3'></i>
-          </button>
-      </td>
-  </tr>";
+                    string rowHtml = $@"
+<tr class='table-row-dark'>
+    <td class='min-w-125px sorting text-center' style='width: 200px;'>{categoryName}</td>
+    <td class='min-w-125px sorting_disabled text-center' style='width: 250px;'>{contractorName}</td>
+    <td class='text-end min-w-125px sorting_disabled text-center' style='width: 200px;'>{roleHtml}</td>
+    <td class='min-w-125px sorting text-center' style='width: 200px;' data-order='{createdDate:yyyy-MM-ddTHH:mm:sszzz}'>{createdDate:dd MMM yyyy, hh:mm tt}</td>
+</tr>";
 
-                      // Add the rowHtml to the table body
-                      tablepermission.InnerHtml += rowHtml;
+
+                    // Add the rowHtml to the table body
+                    tablepermission.InnerHtml += rowHtml;
                   }
               }
           }

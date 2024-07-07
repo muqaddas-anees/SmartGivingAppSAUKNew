@@ -32,6 +32,7 @@ using Path = System.IO.Path;
 using Microsoft.Extensions.Logging;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 using iText.Kernel.Geom;
+using Infragistics.WebUI.Shared;
 
 namespace DeffinityAppDev.App
 {
@@ -361,7 +362,10 @@ namespace DeffinityAppDev.App
             //}
             //return img + "?r=" + DateTime.Now.TimeOfDay.Milliseconds.ToString();
             // +"/" + eImageType.ToString() + "/" + a_gId.ToString() + ".png"; 
-            return "../../ImageHandler.ashx?id=" + contactsId + "&s=" + ImageManager.file_section_fundriser; //"img + "?r=" + DateTime.Now.TimeOfDay.Milliseconds.ToString();
+            string imgUrl = "~/ImageHandler.ashx?id=" + contactsId + "_" + 1 + "&s=fundriser" + ImageManager.file_section_fundriser;
+
+            return imgUrl;
+
         }
 
 

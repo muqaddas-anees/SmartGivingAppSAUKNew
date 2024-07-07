@@ -1,5 +1,10 @@
 ﻿using DeffinityAppDev;
+using DocumentFormat.OpenXml.Spreadsheet;
+using PortfolioMgt.DAL;
+using PortfolioMgt.Entity;
 using System;
+using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
@@ -13,7 +18,6 @@ namespace Users
             if (!IsPostBack)
             {
                 LoadUserData();
-                LoadTableUserData();
             }
         }
 
@@ -40,9 +44,7 @@ namespace Users
                              Name = p.ContractorName ?? "No Name",
                              JobTitle = p.Type ?? "No Job Title",
                              Company = p.Company ?? "No Company",
-                             Earnings = p.NormalBuyingRate.GetValueOrDefault(0), // Default to 0 if null
                              Tasks = GetPendingTasksCount(p.ID), // Fetch pending tasks count here
-                             Sales = p.OvertimeBuyingRate.GetValueOrDefault(0), // Default to 0 if null
                              SID = p.SID.GetValueOrDefault(0) // Default to 0 if null
                          }).OrderBy(u => u.Name)
                          .Skip((currentPage - 1) * itemsPerPage)
@@ -51,109 +53,81 @@ namespace Users
 
             foreach (var user in rData)
             {
-                   
+                // Fetch payments for the current user
+                List<TithingPaymentTracker> payments;
+                List<ActivityBooking> Activity;
 
+                using (PortfolioMgt.DAL.PortfolioDataContext db = new PortfolioDataContext())
+                {
+                    payments = db.TithingPaymentTrackers
+                                .Where(p => p.LoggedByID == user.ID)
+                                .ToList();
+                    Activity = db.ActivityBookings
+                             .Where(p => p.BookedBy == user.ID)
+                             .ToList();
+                }
+
+                // Calculate total donations raised
+                double donationsRaised = payments.Sum(p => p.PaidAmount ?? 0);
+                double EventTicketSales = Activity.Sum(p => p.BookedSolts ?? 0);
+
+                // Generate initial for name
+                var nameInitial = string.IsNullOrEmpty(user.Name) ? "?" : user.Name.Substring(0, 1);
+
+                // Build HTML for each user card
                 html.Append($@"
-                    <div class='col-md-6 col-xxl-4'>
-                        <!--begin::Card-->
-                        <div class='card'>
-                            <!--begin::Card body-->
-                            <div class='card-body d-flex flex-center flex-column pt-12 p-9'>
-                                <!--begin::Avatar-->
-                                <div class='symbol symbol-65px symbol-circle mb-5'>
-                               <span class='symbol-label fs-2x fw-semibold text-info bg-light-info'>{user.Name.Substring(0, 1)}</span>
-                                    <div class='bg-success position-absolute border border-4 border-body h-15px w-15px rounded-circle translate-middle start-100 top-100 ms-n3 mt-n3'></div>
-                                </div>
-                                <!--end::Avatar-->
-                                <!--begin::Name-->
-                                <a href='#' class='fs-4 text-gray-800 text-hover-primary fw-bold mb-0'>{user.Name}</a>
-                                <!--end::Name-->
-                                <!--begin::Position-->
-                                <div class='fw-semibold text-gray-500 mb-6'>{GetSIDLabel(user.SID)} at {user.Company}</div>
-                                <!--end::Position-->
-                                <!--begin::Info-->
-                                <div class='d-flex flex-center flex-wrap'>
-                                    <!--begin::Stats-->
-                                    <div class='border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3'>
-                                        <div class='fs-6 fw-bold text-gray-700'>{user.Earnings}</div>
-                                        <div class='fw-semibold text-gray-500'>Donations Raised</div>
-                                    </div>
-                                    <!--end::Stats-->
-                                    <!--begin::Stats-->
-                                    <div class='border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3'>
-                                        <div class='fs-6 fw-bold text-gray-700'>{user.Tasks}</div>
-                                        <div class='fw-semibold text-gray-500'>Pending Tasks</div>
-                                    </div>
-                                    <!--end::Stats-->
-                                    <!--begin::Stats-->
-                                    <div class='border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3'>
-                                        <div class='fs-6 fw-bold text-gray-700'>{user.Sales}</div>
-                                        <div class='fw-semibold text-gray-500'>Event Ticket Sales</div>
-                                    </div>
-                                    <!--end::Stats-->
-                                </div>
-                                <!--end::Info-->
-                            </div>
-                            <!--end::Card body-->
+            <div class='col-md-6 col-xxl-4'>
+                <!--begin::Card-->
+                <div class='card'>
+                    <!--begin::Card body-->
+                    <div class='card-body d-flex flex-center flex-column pt-12 p-9'>
+                        <!--begin::Avatar-->
+                        <div class='symbol symbol-65px symbol-circle mb-5'>
+                            <span class='symbol-label fs-2x fw-semibold text-info bg-light-info'>{nameInitial}</span>
                         </div>
-                        <!--end::Card-->
-                    </div>");
+                        <!--end::Avatar-->
+                        <!--begin::Name-->
+                        <a href='#' class='fs-4 text-gray-800 text-hover-primary fw-bold mb-0'>{user.Name}</a>
+                        <!--end::Name-->
+                        <!--begin::Position-->
+                        <div class='fw-semibold text-gray-500 mb-6'>{GetSIDLabel(user.SID)} at {user.Company}</div>
+                        <!--end::Position-->
+                        <!--begin::Info-->
+                        <div class='d-flex flex-center flex-wrap'>
+                            <!--begin::Stats-->
+                            <div class='border border-gray-300 text-center border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3'>
+                                <div class='fs-6 fw-bold text-gray-700'>{donationsRaised}</div>
+                                <div class='fw-semibold text-gray-500'>Donations Raised</div>
+                            </div>
+                            <!--end::Stats-->
+                            <!--begin::Stats-->
+                            <div class='border border-gray-300 text-center border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3'>
+                                <div class='fs-6 fw-bold text-gray-700'>{user.Tasks}</div>
+                                <div class='fw-semibold text-gray-500'>Pending Tasks</div>
+                            </div>
+                            <!--end::Stats-->
+                            <!--begin::Stats-->
+                            <div class='border border-gray-300 border-dashed text-center rounded min-w-80px py-3 px-4 mx-2 mb-3'>
+                                <div class='fs-6 fw-bold text-gray-700'>{EventTicketSales}</div>
+                                <div class='fw-semibold text-gray-500'>Event Ticket Sales</div>
+                            </div>
+                            <!--end::Stats-->
+                        </div>
+                        <!--end::Info-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Card-->
+            </div>");
             }
 
+            // Output HTML to userCards div
             userCards.InnerHtml = html.ToString();
 
+            // Generate pagination controls
             GeneratePaginationControls(currentPage, itemsPerPage);
         }
 
-        private void LoadTableUserData()
-        {
-            StringBuilder html = new StringBuilder();
-
-            // Replace PlegitDBEntities with your data retrieval logic
-            var iList = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany();
-
-            var usersQuery = (from p in iList
-                              select new
-                              {
-                                  Name = p.ContractorName,
-                                  JobTitle = p.Type,
-                                  Company = p.Company,
-                                  Earnings = p.NormalBuyingRate,
-                                  Tasks = GetPendingTasksCount(p.ID), // Fetch pending tasks count here
-                                  Sales = p.OvertimeBuyingRate,
-                                  // Assuming ImageData holds the profile image URL or path
-                              }).ToList();
-
-            foreach (var user in usersQuery)
-            {
-                html.Append($@"
-                    <tr class='odd'>
-                        <td>
-                            <div class='d-flex align-items-center'>
-                                <div class='me-5 position-relative'>
-                                    <div class='symbol symbol-35px symbol-circle'>
-                                        <img alt='Pic' src='{"user.ProfileImg"}'>
-                                    </div>
-                                </div>
-                                <div class='d-flex flex-column justify-content-center'>
-                                    <a href='#' class='mb-1 text-gray-800 text-hover-primary'>{user.Name}</a>
-                                    <div class='fw-semibold fs-6 text-gray-500'>{user.JobTitle} at {user.Company}</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td data-order='{user.Tasks}'>{user.Tasks}</td>
-                        <td>${user.Sales}</td>
-                        <td>
-                            <span class='badge badge-light-info fw-bold px-4 py-3'>{user.Earnings}</span>
-                        </td>
-                        <td class='text-end'>
-                            <a href='#' class='btn btn-light btn-sm'>View</a>
-                        </td>
-                    </tr>");
-            }
-
-            userTableBody.InnerHtml = html.ToString();
-        }
 
         private void GeneratePaginationControls(int currentPage, int itemsPerPage)
         {

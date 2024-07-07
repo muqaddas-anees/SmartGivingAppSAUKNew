@@ -66,7 +66,7 @@
 										</div>
 									</div>--%>
 									<div class="menu-item">
-										<a class="menu-link" href='<%:ResolveClientUrl("~/App/Members.aspx?type=2")%>'>
+										<a class="menu-link" href='<%:ResolveClientUrl("~/App/DonorCRM.aspx")%>'>
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
 											</span>

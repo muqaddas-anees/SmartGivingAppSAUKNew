@@ -33,6 +33,24 @@ namespace DeffinityAppDev.App.controls
         protected global::System.Web.UI.WebControls.Image imgcenterimage;
 
         /// <summary>
+        /// imgcenterimage1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgcenterimage1;
+
+        /// <summary>
+        /// imgcenterimage2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgcenterimage2;
+
+        /// <summary>
         /// hmoney control.
         /// </summary>
         /// <remarks>
@@ -121,6 +139,15 @@ namespace DeffinityAppDev.App.controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgQR;
+
+        /// <summary>
+        /// sharemodal1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sharemodal1;
 
         /// <summary>
         /// pnl_topdonors control.
