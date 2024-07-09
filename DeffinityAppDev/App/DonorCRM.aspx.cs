@@ -29,7 +29,7 @@ namespace DonorCRM
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string name = txtName.Value;
+            string name = txtFirstName.Value;
             string companyName = txtCompanyName.Value;
             string email = txtEmail.Value;
 
@@ -98,7 +98,8 @@ namespace DonorCRM
                 // Construct JSON object including roles
                 var contactObject = new
                 {
-                    Name = contact.ContractorName,
+                    FirstName = contact.ContractorName,
+                    LastName=contact.LastName,
                     Email = contact.EmailAddress,
                 CompanyName = contact.Company,
                 imgurl =GetImageUrl(contact.ID.ToString()),

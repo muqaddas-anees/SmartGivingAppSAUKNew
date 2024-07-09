@@ -13,6 +13,10 @@
 		.txt_right{
 			text-align:right;
 		}
+		.img-banner{
+			height:200px;
+			width:300px;
+		}
 	</style>
      <div class="card mb-5 mb-xl-10">
 		 <div class="card-body">
@@ -116,21 +120,37 @@
 	 <div class="row mb-6"><label> The banner should be 1920 X 1080 pixels for the best quality. </label> </div>
 
 			 <div class="row">
+				 <div class="d-flex align-center justify-content-around align-items-center">
 				 <div class="col-lg-6">
-					  <asp:FileUpload runat="server" id="imgBanner" CssClass="form-control" Text="Upload" />
-					 					  <asp:FileUpload runat="server" id="imgBanner1" CssClass="form-control mt-3" Text="Upload" />
+					 
+					 <asp:FileUpload runat="server" id="imgBanner" CssClass="form-control" Text="Upload" />
+					
+				 </div> 
+					 					   <asp:Image ID="img" runat="server" CssClass="img-responsive img-banner" style="max-height:250px" />
+</div>
+				  <div class="d-flex mt-3 align-center justify-content-around align-items-center">
+ <div class="col-lg-6">
+					 <asp:FileUpload runat="server" id="imgBanner1" CssClass="form-control mt-3" Text="Upload" />
+	 </div>
+					  					   <asp:Image ID="img1" runat="server" CssClass="img-responsive img-banner" style="max-height:250px" />
 
-					 					  <asp:FileUpload runat="server" id="imgBanner2" CssClass="form-control mt-3" Text="Upload" />
-
+					  </div>
+				  <div class="d-flex align-center mt-3 justify-content-around align-items-center">
+ <div class="col-lg-6">
+					<asp:FileUpload runat="server" id="imgBanner2" CssClass="form-control mt-3" Text="Upload" />
+	 </div>
+					   <asp:Image ID="img2" runat="server" CssClass="img-responsive img-banner" style="max-height:250px" />
+</div>
 					 <br />
+
+				   <div class="col-lg-6">
 					 <asp:Button ID="btnSaveBanner" runat="server" OnClick="btnSaveBanner_Click" Text="Upload" />
 
-				 </div>
-				  <div class="col-lg-6">
-					   <asp:Image ID="img" runat="server" CssClass="img-responsive" style="max-height:250px" />
+				 
+				
 				 </div>
 
-			 </div>
+			 
 			
 
 			 </div>

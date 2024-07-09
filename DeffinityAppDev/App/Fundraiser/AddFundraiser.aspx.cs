@@ -62,7 +62,11 @@ namespace DeffinityAppDev.App.Fundraiser
                             }
                             txtDescriptionArea.Text = tithingDetail.Description;
                             txtcurrenyValue.Text = string.Format("{0:F2}", tithingDetail.DefaultTarget);
-                            img.ImageUrl = "~/ImageHandler.ashx?id=" + tithingDetail.ID + "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(tithingDetail.ID.ToString());
+
+                            img.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "_1" + "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+                            img1.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "_2" + "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+                            img2.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "_3" + "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+
                             imglogoShow.ImageUrl= "~/ImageHandler.ashx?id=" + tithingDetail.ID + "&s=" + ImageManager.file_section_fundriser_logo;// GetLogoImageUrl(tithingDetail.ID.ToString());
                             chkActive.Checked = tithingDetail.EnableP2P??false;
                             chkWall.Checked = tithingDetail.ShowProgress??false;
@@ -170,7 +174,10 @@ namespace DeffinityAppDev.App.Fundraiser
                     LogoUpLoad(value.ID);
 
 
-                    img.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+                    img.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID +"_1"+ "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+                    img1.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "_2"+ "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+                    img2.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "_3"+ "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+
                     imglogoShow.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "&s=" + ImageManager.file_section_fundriser_logo;//  GetLogoImageUrl(value.ID.ToString());
 
                 }
@@ -219,7 +226,11 @@ namespace DeffinityAppDev.App.Fundraiser
                    
                     BannerUpLoad(value.ID);
                     LogoUpLoad(value.ID);
-                    img.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+
+                    img.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "_1" + "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+                    img1.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "_2" + "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+                    img2.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "_3" + "&s=" + ImageManager.file_section_fundriser;// GetImageUrl(value.ID.ToString());
+
                     imglogoShow.ImageUrl = "~/ImageHandler.ashx?id=" + value.ID + "&s=" + ImageManager.file_section_fundriser_logo;//  GetLogoImageUrl(value.ID.ToString());
 
 

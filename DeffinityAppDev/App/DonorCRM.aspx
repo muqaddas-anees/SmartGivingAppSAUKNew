@@ -682,17 +682,28 @@
                                     <!--end::Input group-->
                                     <!--begin::Input group-->
                                  
-
-                                         <div class="fv-row mb-7 fv-plugins-icon-container">
+									<div class="fv-row mb-7 fv-plugins-icon-container">
     <label class="fs-6 fw-semibold form-label mt-3">
-        <span class="required">Name</span>
-        <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's name." data-bs-original-title="Enter the contact's name." data-kt-initialized="1">
+        <span class="">First Name</span>
+        <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's first name." data-bs-original-title="Enter the contact's first name." data-kt-initialized="1">
             <i class="ki-outline ki-information fs-7"></i>
         </span>
     </label>
-    <input runat="server" id="txtName" type="text" class="form-control form-control-solid" name="name" value="">
+    <input runat="server" readonly id="txtFirstName" type="text" class="form-control form-control-solid" name="firstName" value="">
     <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
 </div>
+
+<div class="fv-row mb-7 fv-plugins-icon-container">
+    <label class="fs-6 fw-semibold form-label mt-3">
+        <span class="">Last Name</span>
+        <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's last name." data-bs-original-title="Enter the contact's last name." data-kt-initialized="1">
+            <i class="ki-outline ki-information fs-7"></i>
+        </span>
+    </label>
+    <input runat="server" readonly id="txtLastName" type="text" class="form-control form-control-solid" name="lastName" value="">
+    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+</div>
+
 
 <div class="fv-row mb-7">
     <label class="fs-6 fw-semibold form-label mt-3">
@@ -701,31 +712,31 @@
             <i class="ki-outline ki-information fs-7"></i>
         </span>
     </label>
-    <input runat="server" id="txtCompanyName" type="text" class="form-control form-control-solid" name="company_name" value="">
+    <input runat="server" readonly id="txtCompanyName" type="text" class="form-control form-control-solid" name="company_name" value="">
 </div>
 
 <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
     <div class="col">
         <div class="fv-row mb-7 fv-plugins-icon-container">
             <label class="fs-6 fw-semibold form-label mt-3">
-                <span class="required">Email</span>
+                <span class="">Email</span>
                 <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
                     <i class="ki-outline ki-information fs-7"></i>
                 </span>
             </label>
-            <input runat="server" id="txtEmail" type="email" class="form-control form-control-solid" name="email" value="">
+            <input runat="server" readonly id="txtEmail" type="email" class="form-control form-control-solid" name="email" value="">
             <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
         </div>
     </div>
 	    <div class="col">
         <div class="fv-row mb-7 fv-plugins-icon-container">
             <label class="fs-6 fw-semibold form-label mt-3">
-                <span class="required">Donations Raised</span>
+                <span class="">Donations Raised</span>
                 <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
                     <i class="ki-outline ki-information fs-7"></i>
                 </span>
             </label>
-            <input runat="server" id="DonationsRaised" type="text" class="form-control form-control-solid" name="DonationsRaised" value="">
+            <input runat="server" readonly id="DonationsRaised" type="text" class="form-control form-control-solid" name="DonationsRaised" value="">
             <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
         </div>
     </div>
@@ -737,7 +748,7 @@
                     <i class="ki-outline ki-information fs-7"></i>
                 </span>
             </label>
-            <input runat="server" id="txtPhone" type="text" class="form-control form-control-solid" name="phone" value="">
+            <input runat="server" readonly id="txtPhone" type="text" class="form-control form-control-solid" name="phone" value="">
         </div>
     </div>
 </div>
@@ -835,7 +846,8 @@
 
 
             if (contact) {
-                document.getElementById('txtName').value = contact.Name;
+				document.getElementById('txtFirstName').value = contact.FirstName;
+                document.getElementById('txtLastName').value = contact.LastName;
                 document.getElementById('txtCompanyName').value = contact.CompanyName;
                 document.getElementById('txtEmail').value = contact.Email;
 				document.getElementById('txtPhone').value = contact.Phone;

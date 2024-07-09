@@ -123,6 +123,15 @@ namespace DeffinityAppDev.App.Fundraiser
         protected global::System.Web.UI.WebControls.FileUpload imgBanner;
 
         /// <summary>
+        /// img control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image img;
+
+        /// <summary>
         /// imgBanner1 control.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,15 @@ namespace DeffinityAppDev.App.Fundraiser
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload imgBanner1;
+
+        /// <summary>
+        /// img1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image img1;
 
         /// <summary>
         /// imgBanner2 control.
@@ -141,6 +159,15 @@ namespace DeffinityAppDev.App.Fundraiser
         protected global::System.Web.UI.WebControls.FileUpload imgBanner2;
 
         /// <summary>
+        /// img2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image img2;
+
+        /// <summary>
         /// btnSaveBanner control.
         /// </summary>
         /// <remarks>
@@ -148,15 +175,6 @@ namespace DeffinityAppDev.App.Fundraiser
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveBanner;
-
-        /// <summary>
-        /// img control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img;
 
         /// <summary>
         /// txtcurrenyValue control.

@@ -27,9 +27,9 @@
         var valueLabel = document.getElementById("sliderValueLabel");
         var amount = parseFloat($('#<%= txtAmountTotal.ClientID %>').val());
         var dropdown = $('#<%= lblplatfee.ClientID %>');
-        var percentage = parseFloat(slider.value) / 100;
+        var percentage = parseFloat(slider.value) ;
 
-        valueLabel.innerHTML = slider.value + '%' +' '+'£' + (amount * percentage).toFixed(2) ;
+        valueLabel.innerHTML = '£' + ((amount + percentage)-10).toFixed(2) ;
     }
 
     function updateDropdown() {
@@ -84,9 +84,9 @@
          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow */
     }
 
-    .slider-container:hover .slider-label,
-    input[type=range]:hover + .slider-label,
-    input[type=range]:focus + .slider-label {
+    .slider-container .slider-label,
+    input[type=range] + .slider-label,
+    input[type=range] + .slider-label {
         visibility: visible;
         opacity: 1;
     }
@@ -100,8 +100,8 @@
             opacity: 0.7;
             transition: opacity .2s;
         }
-        input[type=range].form-control:hover,
-        input[type=range].form-control-lg:hover {
+        input[type=range].form-control,
+        input[type=range].form-control-lg {
             opacity: 1;
         }
         input[type=range].form-control::-webkit-slider-thumb,
@@ -310,9 +310,9 @@
 </asp:Label>
 
                 <div class="slider-container">
-                                        <span id="sliderValueLabel" class="slider-label">15%</span>
+                                        <span id="sliderValueLabel" class="slider-label">10£</span>
 
-                    <asp:TextBox ID="lblplatfee" runat="server" CssClass="" Style="width:500px;height:10px;border-radius:5px" TextMode="Range" Min="5" Max="30" Value="15" OnInput="updateSliderValue(this)" AutoPostBack="false"></asp:TextBox>
+                    <asp:TextBox ID="lblplatfee" runat="server" CssClass="" Style="width:500px;height:10px;border-radius:5px" TextMode="Range" Min="0" Max="100" Value="10" OnInput="updateSliderValue(this)" AutoPostBack="false"></asp:TextBox>
                 </div>
             </div>
         </div>
@@ -1255,10 +1255,12 @@
          console.log(t + " pla" + pval)
          console.log(t + pval)
          var pr = 0;
-         var t_total = (t + (pval/100)).toFixed(2);
+         var t_total = (t + (pval)).toFixed(2);
          $('#lblfee').html(pval);
          $('#hamount').val(t_total);
          $('#lblptotal').html('£' + t_total);
+
+
 
 
      }
