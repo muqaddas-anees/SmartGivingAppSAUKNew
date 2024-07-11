@@ -2,12 +2,15 @@
 using AjaxControlToolkit.HtmlEditor.ToolbarButtons;
 using DC.BLL;
 using DC.Entity;
+using DeffinityManager.PortfolioMgt;
 using DocumentFormat.OpenXml.Wordprocessing;
 using StreamChat;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using PortfolioMgt.DAL;
+using PortfolioMgt.Entity;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -1008,8 +1011,7 @@ namespace DeffinityAppDev.App
                     {
                         try
                         {
-                            string ConnectionString = System.Configuration.ConfigurationManager.AppSettings["DBstring"];
-                            ContractorRolesDataContext context = new ContractorRolesDataContext(ConnectionString);
+                            PortfolioDataContext context = new PortfolioDataContext();
 
                             // Check if the role already exists
                          

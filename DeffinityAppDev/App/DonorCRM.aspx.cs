@@ -73,8 +73,7 @@ namespace DonorCRM
         private void LoadContacts(List<UserMgt.Entity.v_contractor> contacts)
         {
             List<object> contactObjects = new List<object>();
-            string ConnectionString = System.Configuration.ConfigurationManager.AppSettings["DBstring"];
-            ContractorRolesDataContext context = new ContractorRolesDataContext(ConnectionString);
+            PortfolioDataContext context = new PortfolioDataContext();
 
             foreach (var contact in contacts)
             {
@@ -142,8 +141,7 @@ namespace DonorCRM
             int volunteersCount = 0;
             int leadsCount = 0;
             int sponsorsCount = 0;
-            string ConnectionString = System.Configuration.ConfigurationManager.AppSettings["DBstring"];
-            ContractorRolesDataContext context = new ContractorRolesDataContext(ConnectionString);
+            PortfolioDataContext context = new PortfolioDataContext();
 
             foreach (var contact in contacts)
             {

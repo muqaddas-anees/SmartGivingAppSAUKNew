@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PlegitDB" EntityNamespace="PortfolioMgt.Entity" ContextNamespace="PortfolioMgt.DAL" Class="PortfolioDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=EMS-PC\SQLEXPRESS4;Initial Catalog=XactNew;Persist Security Info=True;User ID=sa;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="DBstring" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MuQaddas\MSSQLSERVER01;Initial Catalog=PlegitDB;Persist Security Info=True;User ID=sada;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60;Trust Server Certificate=True" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="PlegitDBConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.V_ProjectDetails" Member="ProjectDetails">
     <Type Name="ProjectDetail">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
@@ -2371,6 +2371,13 @@
       <Column Name="Button2Link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="EmailBannerLink" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SignatureText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblRole" Member="tblRoles">
+    <Type Name="tblRole">
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContractorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimeSheetResource_AddUpdateWcDate" Method="TimeSheetResource_AddUpdateWcDate">

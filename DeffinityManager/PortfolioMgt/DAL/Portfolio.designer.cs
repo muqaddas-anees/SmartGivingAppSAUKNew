@@ -409,10 +409,13 @@ namespace PortfolioMgt.DAL
     partial void InserttblEmailTemplate(PortfolioMgt.Entity.tblEmailTemplate instance);
     partial void UpdatetblEmailTemplate(PortfolioMgt.Entity.tblEmailTemplate instance);
     partial void DeletetblEmailTemplate(PortfolioMgt.Entity.tblEmailTemplate instance);
+    partial void InserttblRole(PortfolioMgt.Entity.tblRole instance);
+    partial void UpdatetblRole(PortfolioMgt.Entity.tblRole instance);
+    partial void DeletetblRole(PortfolioMgt.Entity.tblRole instance);
     #endregion
 		
 		public PortfolioDataContext() : 
-				base(global::DeffinityManager.Properties.Settings.Default.DBstring, mappingSource)
+				base(global::DeffinityManager.Properties.Settings.Default.PlegitDBConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1622,6 +1625,14 @@ namespace PortfolioMgt.DAL
 			get
 			{
 				return this.GetTable<PortfolioMgt.Entity.tblEmailTemplate>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.tblRole> tblRoles
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.tblRole>();
 			}
 		}
 		
@@ -46737,6 +46748,116 @@ namespace PortfolioMgt.Entity
 					this._SignatureText = value;
 					this.SendPropertyChanged("SignatureText");
 					this.OnSignatureTextChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblRole")]
+	public partial class tblRole : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RoleID;
+		
+		private System.Nullable<int> _ContractorID;
+		
+		private string _RoleType;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRoleIDChanging(int value);
+    partial void OnRoleIDChanged();
+    partial void OnContractorIDChanging(System.Nullable<int> value);
+    partial void OnContractorIDChanged();
+    partial void OnRoleTypeChanging(string value);
+    partial void OnRoleTypeChanged();
+    #endregion
+		
+		public tblRole()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RoleID
+		{
+			get
+			{
+				return this._RoleID;
+			}
+			set
+			{
+				if ((this._RoleID != value))
+				{
+					this.OnRoleIDChanging(value);
+					this.SendPropertyChanging();
+					this._RoleID = value;
+					this.SendPropertyChanged("RoleID");
+					this.OnRoleIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContractorID", DbType="Int")]
+		public System.Nullable<int> ContractorID
+		{
+			get
+			{
+				return this._ContractorID;
+			}
+			set
+			{
+				if ((this._ContractorID != value))
+				{
+					this.OnContractorIDChanging(value);
+					this.SendPropertyChanging();
+					this._ContractorID = value;
+					this.SendPropertyChanged("ContractorID");
+					this.OnContractorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleType", DbType="NVarChar(100)")]
+		public string RoleType
+		{
+			get
+			{
+				return this._RoleType;
+			}
+			set
+			{
+				if ((this._RoleType != value))
+				{
+					this.OnRoleTypeChanging(value);
+					this.SendPropertyChanging();
+					this._RoleType = value;
+					this.SendPropertyChanged("RoleType");
+					this.OnRoleTypeChanged();
 				}
 			}
 		}

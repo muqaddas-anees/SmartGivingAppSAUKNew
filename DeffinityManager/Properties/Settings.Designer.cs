@@ -370,5 +370,17 @@ namespace DeffinityManager.Properties {
                 return ((string)(this["PlegitDBConnectionString2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MuQaddas\\MSSQLSERVER01;Initial Catalog=PlegitDB;Persist Security Info" +
+            "=True;User ID=sada;Password=ems;Pooling=True;Min Pool Size=0;Max Pool Size=100;C" +
+            "onnect Timeout=60;TrustServerCertificate=True")]
+        public string PlegitDBConnectionString3 {
+            get {
+                return ((string)(this["PlegitDBConnectionString3"]));
+            }
+        }
     }
 }

@@ -846,12 +846,12 @@
 
 
             if (contact) {
-				document.getElementById('txtFirstName').value = contact.FirstName;
-                document.getElementById('txtLastName').value = contact.LastName;
-                document.getElementById('txtCompanyName').value = contact.CompanyName;
-                document.getElementById('txtEmail').value = contact.Email;
-				document.getElementById('txtPhone').value = contact.Phone;
-				document.getElementById('DonationsRaised').value = contact.DonationsRaised;
+				document.getElementById('txtFirstName').value = contact.FirstName || "";
+                document.getElementById('txtLastName').value = contact.LastName || "";
+                document.getElementById('txtCompanyName').value = contact.CompanyName || "";
+                document.getElementById('txtEmail').value = contact.Email || "";
+				document.getElementById('txtPhone').value = contact.Phone || "";
+				document.getElementById('DonationsRaised').value = contact.DonationsRaised || "";
                 document.getElementById('bgimg').style.backgroundImage = `url('${contact.imgurl}')`;
                 console.log(`url('${contact.imgurl}')`)
                 console.log(document.getElementById('bgimg'));

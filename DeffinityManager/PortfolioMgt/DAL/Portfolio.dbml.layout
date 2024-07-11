@@ -946,5 +946,11 @@
         <elementListCompartment Id="1e314807-dd78-4fcc-8d2c-ddeff9cd2a2d" absoluteBounds="0.515, 142.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="55c4c260-256d-4ee5-bdae-ca3af0d52da8" absoluteBounds="0.875, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PortfolioDataContext/tblRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1d93ba31-0413-466a-aea9-8a4bf17a8c27" absoluteBounds="0.89, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
