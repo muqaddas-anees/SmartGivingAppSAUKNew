@@ -2,12 +2,14 @@
 using Newtonsoft.Json;
 using PortfolioMgt.DAL;
 using PortfolioMgt.Entity;
+using RestSharp.Extensions;
 using StreamChat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using UserMgt.BAL;
 using static QRCoder.PayloadGenerator.SwissQrCode;
 
@@ -29,12 +31,7 @@ namespace DonorCRM
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string name = txtFirstName.Value;
-            string companyName = txtCompanyName.Value;
-            string email = txtEmail.Value;
-
-            Response.Clear();
-            Response.Redirect(name);
+          
 
         }
 
@@ -97,6 +94,8 @@ namespace DonorCRM
                 // Construct JSON object including roles
                 var contactObject = new
                 {
+                    ID=contact.ID,
+                    SID=contact.SID,
                     FirstName = contact.ContractorName,
                     LastName=contact.LastName,
                     Email = contact.EmailAddress,
@@ -117,7 +116,7 @@ namespace DonorCRM
 
             // Inject JSON array into client-side script
             var scriptTag = new LiteralControl();
-            scriptTag.Text = $@"
+            string scriptText = $@"
         <script type='text/javascript'>
             var contacts = {jsonContacts};
             console.log(contacts);
@@ -127,7 +126,7 @@ namespace DonorCRM
     ";
 
             // Register script to be executed when page renders
-            Page.Header.Controls.Add(scriptTag);
+            ((HtmlGenericControl)scripts2).InnerHtml = scriptText;
 
             // Display contacts in HTML (optional, if needed)
             DisplayContactsInHTML(contacts);
@@ -153,23 +152,25 @@ namespace DonorCRM
 
                 // Check each role type for the current contractor
                 bool isDonor = contractorRoles.Any(r => r.RoleType == "Donor");
+                
                 bool isVolunteer = contractorRoles.Any(r => r.RoleType == "Volunteer");
                 bool isLead = contractorRoles.Any(r => r.RoleType == "Lead");
                 bool isSponsor = contractorRoles.Any(r => r.RoleType == "Sponsor");
 
                 // Increment counts based on role presence
-                if (isDonor) donorsCount++;
+                if (isDonor || contact.SID==2) donorsCount++;
+                if (contact.SID == 2) allCount++;
                 if (isVolunteer) volunteersCount++;
                 if (isLead) leadsCount++;
                 if (isSponsor) sponsorsCount++;
 
                 // Increment total count of roles
-                allCount += contractorRoles.Count();
+             
             }
 
             // Inject counts into client-side script or display in HTML
             var scriptTag = new LiteralControl();
-            scriptTag.Text = $@"
+           string scriptText = $@"
         <script type='text/javascript'>
             var allCount = {allCount};
             var donorsCount = {donorsCount};
@@ -180,7 +181,7 @@ namespace DonorCRM
         </script>";
 
             // Register script to be executed when page renders
-            Page.Header.Controls.Add(scriptTag);
+            ((HtmlGenericControl)scripts).InnerHtml = scriptText;
         }
 
         protected static string GetImageUrl(string contactsId)
