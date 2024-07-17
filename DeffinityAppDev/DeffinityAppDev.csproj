@@ -535,6 +535,13 @@
     <Compile Include="App\chat.aspx.designer.cs">
       <DependentUpon>chat.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App\controls\VideoCtrl.ascx.cs">
+      <DependentUpon>VideoCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\controls\VideoCtrl.ascx.designer.cs">
+      <DependentUpon>VideoCtrl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ChatHub.cs" />
     <Compile Include="App\CommentsService.asmx.cs">
       <DependentUpon>CommentsService.asmx</DependentUpon>
@@ -4818,6 +4825,7 @@
     <Content Include="App\controls\taithingNewCtrl.ascx" />
     <Content Include="App\controls\TithingCategoryTabs.ascx" />
     <Content Include="App\controls\TithingNewCtrl.ascx" />
+    <Content Include="App\controls\VideoCtrl.ascx" />
     <Content Include="App\Dashboard.aspx" />
     <Content Include="App\DefaultSettings.aspx" />
     <Content Include="App\DonorCRM.aspx" />

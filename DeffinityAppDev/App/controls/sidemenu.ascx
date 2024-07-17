@@ -49,6 +49,57 @@
 								</a>
 								
 							</div>
+								<div data-kt-menu-trigger="click" data-kt-menu-placement="right-start" data-kt-menu-flip="bottom" class="menu-item py-2" id="Div6" runat="server">
+								<span class="menu-link " title="" data-bs-toggle="tooltip" 
+									data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right"  data-bs-original-title="Use this section to log donations">
+									<span class="menu-icon">
+										<i class="bi bi-play-circle-fill fs-2"></i>
+									</span>
+									<span class="menu-title">Donations</span>
+									<span class="menu-arrow"></span>
+								</span>
+								<div class="menu-sub menu-sub-accordion menu-active-bg">
+									<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+										<%--<div class="menu-item">
+										<div class="menu-content">
+											<span class="menu-section fs-5 fw-bolder ps-1 py-1">Members</span>
+										</div>
+									</div>--%>
+										<div class="menu-item">
+										<a class="menu-link" href='<%:ResolveClientUrl("~//App/Donations.aspx")%>'>
+											<span class="menu-bullet">
+												<span class="bullet bullet-dot"></span>
+											</span>
+											<span class="menu-title">Donate</span>
+										</a>
+									</div>
+									<div class="menu-item">
+										<a class="menu-link" href='<%:ResolveClientUrl("~/App/OtherDonationList.aspx?type=inkind")%>'>
+											<span class="menu-bullet">
+												<span class="bullet bullet-dot"></span>
+											</span>
+											<span class="menu-title">In-Kind Donations</span>
+										</a>
+									</div>
+									<div class="menu-item">
+										<a class="menu-link" href='<%:ResolveClientUrl("~/App/OtherDonationList.aspx?type=cash")%>'>
+											<span class="menu-bullet">
+												<span class="bullet bullet-dot"></span>
+											</span>
+											<span class="menu-title">Cash Donations</span>
+										</a>
+									</div>
+										<div class="menu-item">
+										<a class="menu-link" href='<%:ResolveClientUrl("~/App/DashboardReport.aspx")%>'>
+											<span class="menu-bullet">
+												<span class="bullet bullet-dot"></span>
+											</span>
+											<span class="menu-title">Report</span>
+										</a>
+									</div>
+										</div>
+								</div>
+							</div>
 							<div data-kt-menu-trigger="click" data-kt-menu-placement="right-start" data-kt-menu-flip="bottom" class="menu-item py-2" id="link_members" runat="server">
 								<span class="menu-link " title="" data-bs-toggle="tooltip" 
 									data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right"  data-bs-original-title="Donor CRM">

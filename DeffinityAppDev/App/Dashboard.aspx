@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="TaithingDashboardV2.aspx.cs" Inherits="DeffinityAppDev.App.TaithingDashboardV2" %>
 
+<%@ Register Src="~/App/controls/VideoCtrl.ascx" TagPrefix="Pref" TagName="VideoCtrl" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="page_title" runat="server">
@@ -8,7 +11,104 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="page_description" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-   
+      <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6 mb-6" id="pnlmidcheck" runat="server">
+										
+										<span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"></rect>
+												<rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black"></rect>
+												<rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"></rect>
+											</svg>
+										</span>
+										
+										<div class="d-flex flex-stack flex-grow-1">
+											
+											<div class="fw-bold">
+												<h4 class="text-gray-900 fw-bolder"><asp:Label ID="lblMIDTitle" runat="server" Text="We need your attention!"></asp:Label></h4>
+												<div class="fs-6 text-gray-700"><asp:Label ID="lblMIDDescription" runat="server"></asp:Label><asp:Label ID="lblnofdays" runat="server" Text="Stripe Activation Required. Please click here to get started"></asp:Label> 
+													<asp:Button ID="btnView" runat="server" SkinID="btnDefault" Text="Get Started with Stripe" ClientIDMode="Static" OnClick="btnView_Click" />
+													</div>
+											</div>
+											
+										</div>
+										
+									</div>
+
+
+    <div class="card mb-5 mb-xl-10">
+								<div class="card-body pt-9 pb-0">
+									<!--begin::Navs-->
+									<div class="d-flex overflow-auto h-55px">
+										<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder flex-nowrap">
+											<!--begin::Nav item-->
+											<li class="nav-item">
+												<a class="nav-link text-active-primary me-6" href="../App/Dashboard.aspx?type=1">Introduction</a>
+											</li>
+										
+											<li class="nav-item">
+												<a class="nav-link text-active-primary me-6" href="../App/Dashboard.aspx?type=2" >Dashboard</a>
+											</li>
+                                           
+										</ul>
+									</div>
+									<!--begin::Navs-->
+								</div>
+							</div>
+
+
+
+<script type="text/javascript">
+
+    function activeNewTab(name) {
+        $(".nav-stretch a").each(function (index, element) {
+            //  $(element).attr('class', 'nav-link text-active-primary me-6');
+            var cu = name.toLowerCase();
+            var ck = $(element).html().toLowerCase();
+
+            //var cu = $(location).attr('href').toLowerCase();
+            //var ck = $(element).attr('href').toLowerCase().replace('..', '');
+            console.log('cu:' + cu);
+            console.log('ck:' + ck);
+            // if (cu.indexOf($.trim(ck)) > -1) {
+            if (cu === ck) {
+                debugger;
+                $(element).attr('class', 'nav-link text-active-primary me-6 active');
+                //$(element).closest('li').attr('class', 'active');
+            }
+
+
+        });
+    }
+    $(document).ready(function () {
+        var _type = getQuerystring('type');
+        //alert(_type);
+        if (_type == "2") {
+            activeNewTab("Dashboard");
+        }
+        else {
+            activeNewTab("Introduction");
+        }
+
+    });
+
+    function showtab(t) {
+        if (t == "2") {
+            activeNewTab("Dashboard");
+        }
+        else {
+            activeNewTab("Introduction");
+        }
+    }
+</script>
+
+
+
+
+
+    <div class="row" id="pnl1" runat="server">
+     <Pref:VideoCtrl runat="server" id="VideoCtrl" />
+
+        </div>
      <style>
         
         /* Custom styles for the checkmarks */
@@ -70,29 +170,8 @@
 
     <link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" />
     <script src="../assets/plugins/global/plugins.bundle.js"></script>
-    
-    <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6 mb-6" id="pnlmidcheck" runat="server">
-										
-										<span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-												<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"></rect>
-												<rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black"></rect>
-												<rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"></rect>
-											</svg>
-										</span>
-										
-										<div class="d-flex flex-stack flex-grow-1">
-											
-											<div class="fw-bold">
-												<h4 class="text-gray-900 fw-bolder"><asp:Label ID="lblMIDTitle" runat="server" Text="We need your attention!"></asp:Label></h4>
-												<div class="fs-6 text-gray-700"><asp:Label ID="lblMIDDescription" runat="server"></asp:Label><asp:Label ID="lblnofdays" runat="server" Text="Stripe Activation Required. Please click here to get started"></asp:Label> 
-													<asp:Button ID="btnView" runat="server" SkinID="btnDefault" Text="Get Started with Stripe" ClientIDMode="Static" OnClick="btnView_Click" />
-													</div>
-											</div>
-											
-										</div>
-										
-									</div>
+   
+   <div class="row" id="pnl2" runat="server">
 
     <div class="card mb-5 mb-xl-10">
         <!--begin::Card header-->
@@ -102,14 +181,14 @@
                 <h3 class="fw-bolder m-0">Dashboard</h3>
             </div>
             <div class="card-toolbar gap-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="">
-                 <a class="btn btn-video" style="background-color:#50CD89;color:white;"  data-class="d-block" data-fslightbox="lightbox-vimeo" href="#vimeo">
+                 <a class="btn btn-video" style="background-color:#50CD89;color:white;display:none;visibility:hidden"  data-class="d-block" data-fslightbox="lightbox-vimeo" href="#vimeo">
    <i class="bi bi-camera-video-fill btn-weight fs-4 me-2 btn-weight"></i> Video Tutorial</a>
                   <iframe id="vimeo" style="display:none" src="https://player.vimeo.com/video/823463217?h=13ce42bbd5" width="1920px" height="1080px" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
-                <asp:Button ID="btnTithing" runat="server" CssClass="btn btn-primary" Text="Donate" OnClick="btnTithing_Click"     />
-                 <asp:Button ID="btnDonation_kind" runat="server" CssClass="btn btn-primary" Text="In-Kind Donations" OnClick="btnDonation_kind_Click"     />
-                 <asp:Button ID="btnDonation_Cash" runat="server" CssClass="btn btn-primary" Text="Cash Donations" OnClick="btnDonation_Cash_Click"     />
+                <asp:Button ID="btnTithing" runat="server" CssClass="btn btn-primary" Text="Donate" OnClick="btnTithing_Click"  Visible="false"    />
+                 <asp:Button ID="btnDonation_kind" runat="server" CssClass="btn btn-primary" Text="In-Kind Donations" OnClick="btnDonation_kind_Click" Visible="false"     />
+                 <asp:Button ID="btnDonation_Cash" runat="server" CssClass="btn btn-primary" Text="Cash Donations" OnClick="btnDonation_Cash_Click"  Visible="false"    />
                <%--  <asp:Button ID="btnCategory" runat="server" CssClass="btn btn-light" Text="Donation Categories" OnClick="btnCategory_Click" style="margin-right:10px"     />--%>
-                 <asp:Button ID="btnReport" runat="server" CssClass="btn btn-primary" Text="View Report" OnClick="btnReport_Click"     />
+                 <asp:Button ID="btnReport" runat="server" CssClass="btn btn-primary" Text="View Report" OnClick="btnReport_Click"    Visible="false"  />
               
                 <%-- <asp:Button ID="btnUpload" runat="server" CssClass="btn btn-primary" Text="Add New Category" OnClick="btnAddOrganization_Click"       />--%>
             </div>
@@ -120,6 +199,9 @@
     </div>
       <div class="card-header border-0 cursor-pointer mb-6" >
              <div class="card-body ">
+
+                
+
       <div class="row">
           <label class="col-lg-1 col-form-label fw-bold fs-6">From Date</label>
            <div class="col-lg-2">
@@ -427,6 +509,10 @@
       <%-- </div>--%>
         </div>
 </asp:Panel>
+
+
+</div>
+
     <script>
         $(document).ready(function () {
            <%-- $('#<%=txtNewPwd.ClientID%>').on('input', function(){

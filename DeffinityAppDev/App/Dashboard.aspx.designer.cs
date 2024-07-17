@@ -69,6 +69,33 @@ namespace DeffinityAppDev.App
         protected global::System.Web.UI.WebControls.Button btnView;
 
         /// <summary>
+        /// pnl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnl1;
+
+        /// <summary>
+        /// VideoCtrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DeffinityAppDev.App.controls.VideoCtrl VideoCtrl;
+
+        /// <summary>
+        /// pnl2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnl2;
+
+        /// <summary>
         /// btnTithing control.
         /// </summary>
         /// <remarks>

@@ -127,7 +127,7 @@ namespace DeffinityAppDev.App.controls
 
 
                     SetQRCode(dlist.unid);
-                    AddShareModal(dlist.unid,dlist.SocialTitle);
+                    AddShareModal(dlist.unid,dlist.DefaultBanner);
                     // if (f != null)
                     if((dlist.FundraiserDetails ?? "").Length >0)
                     {
@@ -228,31 +228,32 @@ namespace DeffinityAppDev.App.controls
           
 
             // Construct the message
-            string message = $"Support our fundraiser '{Name}' by making a donation here: \n {donationLink}";
+            string message = $"Support our fundraiser '{Name} by making a donation here: \n {donationLink}";
 
             // Encode the message for URL
             string encodedMessage = Uri.EscapeDataString(message);
             string whatsapplink = "https://api.whatsapp.com/send?text=" + encodedMessage;
             string telegramlink=$"https://t.me/share/url?url={donationLink}&text={encodedMessage}";
+            string xLink = "https://x.com/intent/post?text=" + encodedMessage;
             string modalHtml = $@"
  <div class=""popup"">
     <header>
-      <span>Share Modal</span>
-      <div class=""close""><i class=""uil uil-times""></i></div>
+      <span style='font-size:16px;'>Giving is better together &#10084;&#65039;</span>
+      <div class=""close""><i class=""fa fa-times""></i></div>
     </header>
     <div class=""content"">
       <p>Share this link via</p>
       <ul class=""icons"">
         <a href=""#""><i class=""fab fa-facebook-f""></i></a>
-        <a href=""#""><i class=""fab fa-twitter""></i></a>
+        <a href=""{xLink}""><i class=""bi bi-twitter-x"">X</i></a>
         <a href=""{whatsapplink}""><i class=""fab fa-whatsapp""></i></a>
         <a href=""{telegramlink}""><i class=""fab fa-telegram-plane""></i></a>
       </ul>
       <p>Or copy link</p>
       <div class=""field"">
-        <i class=""url-icon uil uil-link""></i>
+        <i class=""url-icon fa fa-link""></i>
         <input type=""text"" readonly value=""{donationLink}"">
-        <button>Copy</button>
+        <button type='button'>Copy</button>
       </div>
     </div>
   </div>
@@ -399,7 +400,6 @@ namespace DeffinityAppDev.App.controls
                     // plBarCode.Controls.Add(imgBarCode);
                 }
                 // imgQR.ImageUrl = "~/WF/UploadData/Events/" + unid + ".png";
-                imgQR.ImageUrl = "~/ImageHandler.ashx?id=" + unid + "&s=" + ImageManager.file_section_fundriser_qr;
 
             }
             catch (Exception ex)

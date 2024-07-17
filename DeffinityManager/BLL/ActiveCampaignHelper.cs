@@ -42,7 +42,7 @@ namespace DeffinityManager.BLL
             return null;  // No contact found
         }
 
-        public int? EnsureContact(string email, string firstName, string lastName)
+        public int? EnsureContact(string email, string firstName, string lastName, string organizationName = "")
         {
             // Check if the contact already exists
             var existingContactId = GetContactIdByEmail(email);
@@ -52,9 +52,9 @@ namespace DeffinityManager.BLL
             }
 
             // Create the contact if it does not exist
-            return CreateContact(email, firstName, lastName);
+            return CreateContact(email, firstName, lastName, organizationName);
         }
-        public int? CreateContact(string email, string firstName, string lastName)
+        public int? CreateContact(string email, string firstName, string lastName, string organizationName = "")
         {
             var request = new RestRequest("api/3/contacts", Method.POST);
             request.AddJsonBody(new
@@ -63,7 +63,11 @@ namespace DeffinityManager.BLL
                 {
                     email = email,
                     firstName = firstName,
-                    lastName = lastName
+                    lastName = lastName,
+                    fieldValues = new List<object>
+            {
+                new { field = "1", value = organizationName }  // Replace "1" with the actual Field ID of your custom field
+            }
                 }
             });
 
@@ -155,6 +159,60 @@ namespace DeffinityManager.BLL
 
             // Create the tag if it does not exist
             return CreateTag(tagName);
+        }
+
+
+
+
+        public bool RemoveTagFromContact(int contactId, int tagId)
+        {
+            var request = new RestRequest($"api/3/contactTags", Method.GET);
+            request.AddParameter("filters[contact]", contactId);
+            request.AddParameter("filters[tag]", tagId);
+
+            var response = client.Execute(request);
+            if (response.IsSuccessful)
+            {
+                var data = JsonConvert.DeserializeObject<dynamic>(response.Content);
+                foreach (var contactTag in data.contactTags)
+                {
+                    var deleteRequest = new RestRequest($"api/3/contactTags/{contactTag.id}", Method.DELETE);
+                    var deleteResponse = client.Execute(deleteRequest);
+                    if (!deleteResponse.IsSuccessful)
+                    {
+                        // Log error or handle it as needed
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public void RemoveTagByEmailAndTagName(string email, string tagName)
+        {
+            var contactId = GetContactIdByEmail(email);
+            if (contactId == null)
+            {
+                Console.WriteLine("Contact not found.");
+                return;
+            }
+
+            var tagId = GetTagIdByName(tagName);
+            if (tagId == null)
+            {
+                Console.WriteLine("Tag not found.");
+                return;
+            }
+
+            if (RemoveTagFromContact(contactId.Value, tagId.Value))
+            {
+                Console.WriteLine("Tag removed successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Failed to remove tag.");
+            }
         }
     }
 }

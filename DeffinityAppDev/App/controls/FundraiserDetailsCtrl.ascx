@@ -5,6 +5,8 @@
 
 <link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" />
 <script src="../assets/plugins/global/plugins.bundle.js"></script>
+<!-- Option 1: Include in HTML -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <%--  <link href="assets/main.css?v=5" type="text/css" rel="stylesheet">--%>
 <style>
     .view-modal, .popup{
@@ -180,11 +182,37 @@ header .close:hover{
 .field button:hover{
   background: #8d39fa;
 }
-    .img-resize{
-        width:70vw;
-        height:70vh;
-        background-size:cover;
+/* Default styling for large screens */
+.img-resize {
+    width: 70vw;
+    height: 70vh;
+    background-size: cover;
+}
+
+/* Medium screens */
+@media (max-width: 1024px) {
+    .img-resize {
+        width: 80vw;
+        height: 60vh;
     }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+    .img-resize {
+        width: 90vw;
+        height: 50vh;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .img-resize {
+        width: 100vw;
+        height: 40vh;
+    }
+}
+
     #shareBtn{
     letter-spacing: 2px;
     font-weight: 600;
@@ -456,7 +484,7 @@ header .close:hover{
                         <div id="progress-bar" class="progress-bar"></div>
                     </div>
                 </div>
-                                   <p class="text-center"> Days left <span id="days"></span>, Total Supporters <span id="supporters"></span></p>
+                                   <p class="text-center"> Days left: <span id="days"></span> , Total Supporters: <span id="supporters"></span></p>
 
            <button type="button" class="btn view-modal1" id="openModalBtn" style="
     border-radius: 65px;
@@ -471,16 +499,6 @@ header .close:hover{
             </div>
         </div>
 
-        <div class="card mb-5 mb-xl-10" id="pnl_QRcode" runat="server">
-            <div class="card-header border-0 cursor-pointer" data-bs-target="#kt_account_profile_details" aria-controls="kt_account_profile_details">
-                <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0 d-flex justify-content-center">QR Code</h3>
-                </div>
-            </div>
-            <div class="card-body border-top p-9">
-                <asp:Image ID="imgQR" runat="server" CssClass="img-fluid" />
-            </div>
-        </div>
 
         <div id="sharemodal1" runat="server">
 

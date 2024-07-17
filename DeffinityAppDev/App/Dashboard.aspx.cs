@@ -1,7 +1,10 @@
 ﻿using AjaxControlToolkit.HtmlEditor.ToolbarButtons;
+using DeffinityManager.BLL;
+using PortfolioMgt.Entity;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -31,6 +34,17 @@ namespace DeffinityAppDev.App
                         sessionKeys.ErrorMessage = "";
                     }
                    
+                    if(QueryStringValues.Type == "2")
+                    {
+                        pnl1.Visible = false;
+                        pnl2.Visible = true;
+                    }
+                    else
+                    {
+                        pnl1.Visible = true;
+                        pnl2.Visible = false;
+                    }
+
                     var sdate = Deffinity.Utility.StartDateOfMonth(Convert.ToDateTime(DateTime.Now.ToShortDateString()));
                     var edate = Deffinity.Utility.EndDateOfMonth(Convert.ToDateTime(DateTime.Now.ToShortDateString()));
 
@@ -77,21 +91,49 @@ namespace DeffinityAppDev.App
             try
             {
 
+
                 var pj = PortfolioMgt.BAL.ProjectPortfolioBAL.ProjectPortfolioBAL_SelectByID(sessionKeys.PortfolioID);
 
-
-                pnlmidcheck.Visible = false;
-                var d = PortfolioMgt.BAL.PortfolioPaymentSettingsBAL.PortfolioPaymentSettingsBAL_SelectAll().Where(o => o.PortfolioID == sessionKeys.PortfolioID).FirstOrDefault();
-                if (d != null)
+                if (pj.OrgarnizationStatus == "Pending" || pj.OrgarnizationStatus == "Pending Approval")
                 {
-                    if ((d.Vendor ?? "").Length == 0)
+
+                    pnlmidcheck.Visible = false;
+                    var d = PortfolioMgt.BAL.PortfolioPaymentSettingsBAL.PortfolioPaymentSettingsBAL_SelectAll().Where(o => o.PortfolioID == sessionKeys.PortfolioID).FirstOrDefault();
+                    if (d != null)
+                    {
+                        if ((d.Vendor ?? "").Length == 0)
+                        {
+                            pnlmidcheck.Visible = true;
+                        }
+                    }
+                    else
                     {
                         pnlmidcheck.Visible = true;
                     }
                 }
+                else if (pj.OrgarnizationStatus == "Stripe Application In Progress")
+                {
+                    lblMIDTitle.Text = "Stripe application in progress. We will notify you when you can begin fundraising.";
+                    lblMIDDescription.Text = "";
+                    lblnofdays.Text = "";
+                    btnView.Visible = false;
+                    pnlmidcheck.Visible = true;
+                }
                 else
                 {
-                    pnlmidcheck.Visible = true;
+                    pnlmidcheck.Visible = false;
+                    var d = PortfolioMgt.BAL.PortfolioPaymentSettingsBAL.PortfolioPaymentSettingsBAL_SelectAll().Where(o => o.PortfolioID == sessionKeys.PortfolioID).FirstOrDefault();
+                    if (d != null)
+                    {
+                        if ((d.Vendor ?? "").Length == 0)
+                        {
+                            pnlmidcheck.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        pnlmidcheck.Visible = true;
+                    }
                 }
             }
             catch(Exception ex)
@@ -436,15 +478,11 @@ var pw = "SMG@2022";
         {
             try
             {
+                UpdateStatus(sessionKeys.PortfolioID);
 
-               // var p = PortfolioRepository<PortfolioMgt.Entity.pr>
-
-
-
-
-                Response.Redirect("~/App/FLSDefault.aspx?tab=fls&type=paymentsettings", false);
+                //Stripe Application In Progress
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
             }
@@ -499,6 +537,176 @@ var pw = "SMG@2022";
                 if (cEntity.SID == 7)
                     PortfolioMgt.BAL.PortfolioContactLoginDeatilsBAL.PortfolioContactLoginDeatils_AddUpdate(0, cEntity.ID, cEntity.LoginName, newpwd);
             }
+        }
+
+        private void SendStripeRequestToAdmin()
+        {
+
+
+            try
+            {
+                UpdateStatus(sessionKeys.PortfolioID);
+
+
+
+
+                //Stripe Application In Progress
+            }
+            catch (Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+        private void UpdateStatus(int portfolioid)
+        {
+            try
+            {
+                var uDetails = UserMgt.BAL.ContractorsBAL.Contractor_SelectByID(sessionKeys.UID);
+                PortfolioRepository<PortfolioMgt.Entity.ProjectPortfolio> pRep = new PortfolioRepository<PortfolioMgt.Entity.ProjectPortfolio>();
+                var p = pRep.GetAll().Where(o => o.ID == portfolioid).FirstOrDefault();
+                if(p != null)
+                {
+                    p.OrgarnizationStatus = "Stripe Application In Progress";
+                    p.EndDate = DateTime.Now;
+                    pRep.Edit(p);
+
+
+                    try
+                    {
+                        //var uDetails = UserMgt.BAL.ContractorsBAL.Contractor_SelectByID(sessionKeys.UID);
+                        if (uDetails != null)
+                        {
+                            var helper = new ActiveCampaignHelper();
+                            //PREMID
+                            //MIDAPPLIED
+                            //MIDACTIVE
+                            try
+                            {
+                                helper.RemoveTagByEmailAndTagName(uDetails.EmailAddress.ToLower(), "PREMID");
+                            }
+                            catch (Exception ex)
+                            {
+                                LogExceptions.WriteExceptionLog(ex);
+                            }
+
+                            var contactId = helper.EnsureContact(uDetails.EmailAddress.ToLower(), uDetails.ContractorName, uDetails.LastName);
+                            if (contactId.HasValue)
+                            {
+
+                                // Create a tag and get tagId
+                                //var tagId = helper.CreateTag("PREMID");
+                                var tagId = helper.EnsureTag("MIDAPPLIED");
+                                if (tagId.HasValue)
+                                {
+                                    // Add tag to contact
+                                    if (helper.AddTagToContact(contactId.Value, tagId.Value))
+                                    {
+                                        LogExceptions.LogException("Contact created and tagged successfully!");
+                                    }
+                                    else
+                                    {
+                                        LogExceptions.LogException("Failed to add tag to contact.");
+                                    }
+                                }
+                                else
+                                {
+                                    LogExceptions.LogException("Failed to create tag.");
+                                }
+
+
+                            }
+                            else
+                            {
+                                LogExceptions.LogException("Failed to create contact.");
+                            }
+
+                            //add 
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LogExceptions.WriteExceptionLog(ex);
+                    }
+
+                    sendmailtoDistributionlist(p, uDetails);
+
+                    Response.Redirect(Request.RawUrl, false);
+                }
+
+            }
+            catch(Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+        public string sendmailtoDistributionlist(ProjectPortfolio p, Contractor c)
+        {
+            try
+            {
+                PortfolioRepository<PortfolioMgt.Entity.PortfolioAdminLogin> paRep = new PortfolioRepository<PortfolioMgt.Entity.PortfolioAdminLogin>();
+                var palist = paRep.GetAll().ToList();
+                LogExceptions.LogException("New Stripe Request");
+
+                string turl = HttpContext.Current.Request.Url.AbsolutePath;
+
+                string subject = "Stripe Request";
+                string fromemail = Deffinity.systemdefaults.GetFromEmail();
+
+                string contents = string.Empty;
+                string FILENAME = string.Empty;
+
+                Email em = new Email();
+                //sessionKeys.URL = indetails.AccessUrl;
+
+                string displayName = Deffinity.systemdefaults.GetInstanceTitle();
+                string siteurl = Deffinity.systemdefaults.GetWebUrl();
+                //siteurl = "http://www.wisal.cloud";
+                //displayName = "Wisal";
+                FILENAME = System.Web.HttpContext.Current.Server.MapPath("~/Content/emailtemplate/StripeTemplate.html");
+
+                using (StreamReader objstreamreader = File.OpenText(FILENAME))
+                {
+                    contents = objstreamreader.ReadToEnd();
+                }
+                //mail to owner
+                if (c != null)
+                {
+                    string s = string.Empty;
+                    if (c.EmailAddress != null)
+                    {
+                        var tempContent = contents;
+                        tempContent = tempContent.Replace("[name]", c.ContractorName);
+                        tempContent = tempContent.Replace("[company]", p.PortFolio);
+                        tempContent = tempContent.Replace("[email]", c.EmailAddress);
+                        tempContent = tempContent.Replace("[mobile]", c.ContactNumber);
+
+                        var newBody = tempContent;
+
+                        newBody = newBody.Replace("[username]", "Support Team");
+
+
+                        foreach(var pdetails in palist)
+                        {
+                            if (!c.EmailAddress.ToLower().Contains("indra"))
+                            {
+                                em.SendingMail(pdetails.Username, subject, newBody);
+                                
+                            }
+                            else
+                            {
+                                em.SendingMail("indra@deffinity.com", subject, newBody);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+
+            return "";
+
         }
     }
 }

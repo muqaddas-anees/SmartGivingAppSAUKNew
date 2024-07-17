@@ -952,5 +952,11 @@
         <elementListCompartment Id="1d93ba31-0413-466a-aea9-8a4bf17a8c27" absoluteBounds="0.89, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="58989f7d-9265-473e-9e3e-b02df907d9b2" absoluteBounds="0.5, 3, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/PortfolioDataContext/Video" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c7d8d91a-a5b8-440f-a507-834bc5371ce1" absoluteBounds="0.515, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

@@ -2380,6 +2380,15 @@
       <Column Name="RoleType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Videos" Member="Videos">
+    <Type Name="Video">
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VideoOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThumbnailPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.TimeSheetResource_AddUpdateWcDate" Method="TimeSheetResource_AddUpdateWcDate">
     <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="contractorID" Type="System.Int32" DbType="Int" />

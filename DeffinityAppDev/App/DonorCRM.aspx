@@ -10,6 +10,13 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
    <style>
+       .form-check-input:disabled~.form-check-label, .form-check-input[disabled]~.form-check-label{
+           opacity:1;
+           color:#252F4A
+       }
+       .form-check-input[disabled]{
+           opacity:1;
+       }
 		.contact-item {
     transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
 }
@@ -224,13 +231,7 @@
 																	<div class="image-input-wrapper w-100px h-100px" style="background-image: url('')"></div>
 																	<!--end::Preview existing avatar-->
 																	<!--begin::Edit-->
-																	<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" aria-label="Change avatar" data-bs-original-title="Change avatar" data-kt-initialized="1">
-																		<i class="ki-outline ki-pencil fs-7"></i>
-																		<!--begin::Inputs-->
-																		<input type="file" name="avatar" accept=".png, .jpg, .jpeg">
-																		<input type="hidden" name="avatar_remove">
-																		<!--end::Inputs-->
-																	</label>
+																
 																	<!--end::Edit-->
 																	<!--begin::Cancel-->
 																	<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" aria-label="Cancel avatar" data-bs-original-title="Cancel avatar" data-kt-initialized="1">
@@ -422,7 +423,7 @@
                 document.getElementById('txtCompanyName').value = contact.CompanyName || "";
                 document.getElementById('txtEmail').value = contact.Email || "";
 				document.getElementById('txtPhone').value = contact.Phone || "";
-				document.getElementById('DonationsRaised').value = contact.DonationsRaised || "";
+				document.getElementById('DonationsRaised').value = contact.DonationsRaised || 0;
                 document.getElementById('bgimg').style.backgroundImage = `url('${contact.imgurl}')`;
                 console.log(`url('${contact.imgurl}')`)
                 console.log(document.getElementById('bgimg'));

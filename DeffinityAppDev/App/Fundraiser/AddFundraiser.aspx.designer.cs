@@ -312,15 +312,6 @@ namespace DeffinityAppDev.App.Fundraiser
         protected global::System.Web.UI.WebControls.Button btnSaveAmount;
 
         /// <summary>
-        /// chkQRCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chkQRCode;
-
-        /// <summary>
         /// chkWall control.
         /// </summary>
         /// <remarks>

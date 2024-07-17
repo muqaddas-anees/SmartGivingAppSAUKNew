@@ -70,7 +70,7 @@ namespace DeffinityAppDev.App.Fundraiser
                             imglogoShow.ImageUrl= "~/ImageHandler.ashx?id=" + tithingDetail.ID + "&s=" + ImageManager.file_section_fundriser_logo;// GetLogoImageUrl(tithingDetail.ID.ToString());
                             chkActive.Checked = tithingDetail.EnableP2P??false;
                             chkWall.Checked = tithingDetail.ShowProgress??false;
-                            chkQRCode.Checked = (tithingDetail.ShowQRCode ?? false);
+                            //chkQRCode.Checked = (tithingDetail.ShowQRCode ?? false);
                             UpdateDefaultMoneyGrid(tithingDetail.DefaultValues);
                             //shoe amount
                             UpdateMoneyGrid();
@@ -142,7 +142,7 @@ namespace DeffinityAppDev.App.Fundraiser
                     value.StartDate = DateTime.Now;// Convert.ToDateTime(txtStartDate.Text.Trim());
                     value.EndDate = DateTime.Now.AddDays(30);// Convert.ToDateTime(TextEndDate.Text.Trim());
                     value.DefaultBanner = "";
-                    value.ShowQRCode = chkQRCode.Checked;
+                   // value.ShowQRCode = chkQRCode.Checked;
                     value.ShowProgress = chkWall.Checked;
                     value.EnableP2P = chkActive.Checked;
                     // value.DefaultValues = getMoney();
@@ -201,7 +201,7 @@ namespace DeffinityAppDev.App.Fundraiser
                     // value.StartDate = Convert.ToDateTime(txtStartDate.Text.Trim());
                     //value.EndDate = Convert.ToDateTime(TextEndDate.Text.Trim());
                     //value.DefaultBanner = "";
-                    value.ShowQRCode = chkQRCode.Checked;
+                    //value.ShowQRCode = chkQRCode.Checked;
                     value.ShowChart = true;
                     //value.DefaultValues = "";
 

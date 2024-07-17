@@ -297,32 +297,7 @@
 
 			 </div>
 		</div>
-	<div class="card mb-5 mb-xl-10">
 
-			<div class="card-header border-0 cursor-pointer" >
-									<!--begin::Card title-->
-									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Show Campaign QR code</h3>
-									</div>
-
-				</div>
-		 <div class="card-body">
-
-			  <div class="row mb-6">
-				  <div class="col-lg-4">Show QR code </div>
-				   <div class="col-lg-6">
-					    <div class="form-check form-switch form-check-custom form-check-solid me-10">
-    <input class="form-check-input h-30px w-50px" type="checkbox" value="" id="chkQRCode" runat="server"/>
-    <label class="form-check-label" for="flexSwitch30x50">
-       On
-    </label>
-</div>
-				   </div>
-			  </div>
-
-
-			 </div>
-		</div>
 	<div class="card mb-5 mb-xl-10">
 
 			<div class="card-header border-0 cursor-pointer" >
