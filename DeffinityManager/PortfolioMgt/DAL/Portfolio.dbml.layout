@@ -843,12 +843,6 @@
         <elementListCompartment Id="472712af-e843-4ac8-a9ef-8bd53a3bd422" absoluteBounds="18.515, 8.335, 1.9700000000000002, 6.7876383463541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3561e833-43ef-4b83-98f9-7e74ad94ef05" absoluteBounds="5.75, 137.25, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/PortfolioDataContext/FileData" />
-      <nestedChildShapes>
-        <elementListCompartment Id="3f0ff639-d1b1-4684-bd3c-5f0f6513b629" absoluteBounds="5.765, 137.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="92d09ccf-71a9-4b7f-a4a8-a7650a7ef8c6" absoluteBounds="0.625, 131.75, 2, 3.6939111328124996">
       <DataClassMoniker Name="/PortfolioDataContext/SponsorTable" />
       <nestedChildShapes>
@@ -956,6 +950,12 @@
       <DataClassMoniker Name="/PortfolioDataContext/Video" />
       <nestedChildShapes>
         <elementListCompartment Id="c7d8d91a-a5b8-440f-a507-834bc5371ce1" absoluteBounds="0.515, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="195fd527-dc9e-4e4e-a379-7163663f0001" absoluteBounds="6.25, 139.25, 2, 3.1170068359375">
+      <DataClassMoniker Name="/PortfolioDataContext/FileData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b0ff05dc-82f5-4cda-a4dd-c9dff32e632a" absoluteBounds="6.265, 139.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -28,6 +28,7 @@ using ListItem = System.Web.UI.WebControls.ListItem;
 using Table = System.Web.UI.WebControls.Table;
 using TableCell = System.Web.UI.WebControls.TableCell;
 using TableRow = System.Web.UI.WebControls.TableRow;
+using UserMgt.DAL;
 
 namespace DeffinityAppDev.App
 {
@@ -47,7 +48,13 @@ namespace DeffinityAppDev.App
 
                     }
 
+                    string addParam = Request.QueryString["add"];
 
+                    if (addParam != null && addParam.Equals("donor", StringComparison.OrdinalIgnoreCase))
+                    {
+                        // Hide the RadioButtonList control
+                        ddlPermission.Visible = false;
+                    }
                     ddlPermission.SelectedValue = "2";
                     BindCountry();
                     ddlCountry.SelectedValue = Deffinity.systemdefaults.GetCoutryID();
@@ -91,7 +98,7 @@ namespace DeffinityAppDev.App
                         pnlPassword.Visible = false;
                         pnlskills.Visible = true;
                         pnlDocuments.Visible = true;
-                        pnlDonations.Visible = true;
+                        pnlDonations.Visible = true;    
                         pnlCommunication.Visible = false;
 
                         var uid = Convert.ToInt32(Request.QueryString["mid"].ToString());
@@ -1467,42 +1474,62 @@ namespace DeffinityAppDev.App
         {
             try
             {
-
                 IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
 
-                var fList = fRep.GetAll().Where(o => o.Section == ImageManager.file_section_user_doc).Where(o => o.FileID == SID.ToString()).ToList();
+                // Fetch files where FileID starts with the given SID
+                var fList = fRep.GetAll().Where(o => o.Section == ImageManager.file_section_user_doc && o.FileID.StartsWith(SID)).ToList();
 
-                var rList = (from r in fList
+                // Fetch all contractors
+                UserDataContext contractorsContext = new UserDataContext();
+                var contractorList = contractorsContext.Contractors.ToList();
+
+                // Join FileData with Contractors to get the UserID
+                var rList = (from f in fList
+                             join c in contractorList on f.UserID equals c.ID into fcJoin
+                             from c in fcJoin.DefaultIfEmpty()
                              select new
                              {
-                                 ID = r.ID,
-                                 Value = r.FileID,
-                                 Text = r.FileName
+                                 ID = f.ID,
+                                 Value = f.FileID,
+                                 Time = f.UploadedDate?.ToString("dd-MM-yyyy    HH:mm:ss") ?? "N/A", // Provide a default value if null
+                                 UploadedBy = c != null ? c.ContractorName : "Unknown", // Provide a default value if null
+                                 Text = f.FileName
                              }).ToList();
-                gridfiles.DataSource = rList;
-                gridfiles.DataBind();
 
+                gridfiles.DataSource = rList;
+
+                // Step 1: Count the items in fList
+                int fileCount = fList.Count;
+
+                // Step 2: Create a script tag with this count
+                string script = $"<script type='text/javascript'>var fileCount = {fileCount};</script>";
+
+                // Step 3: Add the script tag to the header
+                Page.Header.Controls.Add(new LiteralControl(script));
+
+                gridfiles.DataBind();
             }
             catch (Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
             }
         }
+
+
         protected void DownloadFile(object sender, EventArgs e)
         {
             try
             {
+
                 string filePath = (sender as LinkButton).CommandArgument;
                 // File.Delete(filePath);
-
                 IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
 
-                var f = fRep.GetAll().Where(o => o.FileID == filePath && o.Section == ImageManager.file_section_donor_doc).FirstOrDefault();
+                var f = fRep.GetAll().Where(o => o.FileID == filePath && o.Section == ImageManager.file_section_user_doc).FirstOrDefault();
                 if (f != null)
                 {
-                    Response.Redirect("~/ImageHandler.ashx?id=" + filePath + "&s=" + ImageManager.file_section_donor_doc);
+                    Response.Redirect("~/ImageHandler.ashx?id=" + filePath + "&s=" + ImageManager.file_section_user_doc);
                 }
-
 
             }
             catch (Exception ex)

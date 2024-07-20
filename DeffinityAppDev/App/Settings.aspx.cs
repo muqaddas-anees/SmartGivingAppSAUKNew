@@ -134,7 +134,7 @@ namespace DeffinityAppDev.App
             }
             else if (e.CommandName == "Members")
             {
-                Response.Redirect("~/App/Members.aspx?type=members" + b + "&pnl=members", false);
+                Response.Redirect("~/App/users.aspx", false);
             }
             else if (e.CommandName == "tithing")
             {

@@ -1,4 +1,23 @@
-﻿
+﻿<%@ Page Language="C#" MasterPageFile="~/MainTab.master" AutoEventWireup="true" CodeBehind="Teams.aspx.cs" Inherits="DeffinityAppDev.Teams" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="page_title" runat="server">
+    <asp:Label ID="lblPageTitle" runat="server" Text="Donors"></asp:Label>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="page_description" runat="server">
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="Tabs" runat="server">
+    <Pref:MembersTab runat="server" id="MembersTab" Visible="false" />
+
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
+
+
+
+
+    
 
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
@@ -1369,3 +1388,22 @@
     <script src="../assets/js/custom/utilities/modals/users-search.js"></script>
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</asp:Content>

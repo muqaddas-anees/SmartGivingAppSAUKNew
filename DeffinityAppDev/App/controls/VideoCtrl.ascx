@@ -128,9 +128,7 @@
 
 
 
-               <div class="row mb-10 mt-20 pt-20 d-flex justify-content-center">
-                   <asp:HyperLink ID="img" runat="server" ImageUrl="https://portal.plegit.ai/assets/bottom_banner.png" Target="_blank" CssClass="img-flex d-flex justify-content-center" NavigateUrl="https://academy.plegit.ai" />
-               </div>
+           
                </div>
           </div>
           <%--  </div>--%>

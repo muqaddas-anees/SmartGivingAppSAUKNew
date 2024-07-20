@@ -17,6 +17,8 @@ namespace DeffinityAppDev.App
         public void ProcessRequest(HttpContext context)
 
         {
+            int UserID =sessionKeys.UID;
+            DateTime Date=DateTime.Now;
             int uid = 0;
             string uid_str = string.Empty;
 
@@ -85,7 +87,7 @@ namespace DeffinityAppDev.App
                             using (BinaryReader br = new BinaryReader(fs))
                             {
                                 byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                                ImageManager.FileDBSave(bytes, null, foldername, ImageManager.file_section_user_doc, System.IO.Path.GetExtension(PostedFile.FileName).ToLower(), PostedFile.FileName, PostedFile.ContentType,"",true);
+                                ImageManager.FileDBSave(UserID,Date,bytes, null, foldername, ImageManager.file_section_user_doc, System.IO.Path.GetExtension(PostedFile.FileName).ToLower(), PostedFile.FileName, PostedFile.ContentType,"",true);
 
                             }
                         }
@@ -137,7 +139,7 @@ namespace DeffinityAppDev.App
                             using (BinaryReader br = new BinaryReader(fs))
                             {
                                 byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                                ImageManager.FileDBSave(bytes, null, donate_unid, ImageManager.file_section_donor_doc, System.IO.Path.GetExtension(PostedFile.FileName).ToLower(), PostedFile.FileName, PostedFile.ContentType,"",true);
+                                ImageManager.FileDBSave(UserID, Date,bytes, null, donate_unid, ImageManager.file_section_donor_doc, System.IO.Path.GetExtension(PostedFile.FileName).ToLower(), PostedFile.FileName, PostedFile.ContentType,"",true);
 
                             }
                         }

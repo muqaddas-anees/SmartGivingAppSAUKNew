@@ -126,7 +126,7 @@
                             <div class="login-footer">
                                 <a style="font-size:14px;" href="ForgotPassword.aspx"> Forgot your password?</a>
                                 <br /><br />
-                                <a style="font-size:14px;" href="https://portal.plegit.ai/registration" >Register for a free account</a>
+                                <a style="font-size:14px;" href="https://portal.plegit.ai/registration" >Register for a FREE account</a>
                                 <br /><br />
                                 <%--  <div class="info-links">
 
@@ -202,6 +202,11 @@
              
             }
         }
+        document.getElementById('<%= txtPwd.ClientID %>').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                document.getElementById('<%= btnsubmit.ClientID %>').click();
+             }
+         });
     </script>
 </body>
 </html>

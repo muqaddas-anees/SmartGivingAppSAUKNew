@@ -542,6 +542,20 @@
     <Compile Include="App\controls\VideoCtrl.ascx.designer.cs">
       <DependentUpon>VideoCtrl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="App\Teams.aspx.cs">
+      <DependentUpon>Teams.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Teams.aspx.designer.cs">
+      <DependentUpon>Teams.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\users.aspx.cs">
+      <DependentUpon>users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\users.aspx.designer.cs">
+      <DependentUpon>users.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChatHub.cs" />
     <Compile Include="App\CommentsService.asmx.cs">
       <DependentUpon>CommentsService.asmx</DependentUpon>
@@ -1045,6 +1059,13 @@
     </Compile>
     <Compile Include="Default_1.aspx.designer.cs">
       <DependentUpon>Default_1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DonationFrequency.aspx.cs">
+      <DependentUpon>DonationFrequency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DonationFrequency.aspx.designer.cs">
+      <DependentUpon>DonationFrequency.aspx</DependentUpon>
     </Compile>
     <Compile Include="fc.aspx.cs">
       <DependentUpon>fc.aspx</DependentUpon>
@@ -4873,10 +4894,12 @@
     <Content Include="App\stripetest.aspx" />
     <Content Include="App\stripe\Charge.aspx" />
     <Content Include="App\stripe\default.aspx" />
+    <Content Include="App\Teams.aspx" />
     <Content Include="App\TestCK.aspx" />
     <Content Include="App\TestPayFast.aspx" />
     <Content Include="App\TestReturn.aspx" />
     <Content Include="App\UploadDefaultImages.aspx" />
+    <Content Include="App\users.aspx" />
     <Content Include="assets\GiftAidLogo.png" />
     <Content Include="assets\images\Academy.png" />
     <Content Include="assets\images\Activities.png" />
@@ -5730,6 +5753,7 @@
     <Content Include="Content\emailtemplate\newinstancewisal.htm" />
     <Content Include="Content\icons\Download-Icon.png" />
     <Content Include="Default_1.aspx" />
+    <Content Include="DonationFrequency.aspx" />
     <Content Include="fc.aspx" />
     <Content Include="FolderTest.aspx" />
     <Content Include="MailActivation.aspx" />

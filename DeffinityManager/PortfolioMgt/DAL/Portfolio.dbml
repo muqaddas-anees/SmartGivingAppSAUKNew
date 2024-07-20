@@ -2035,20 +2035,6 @@
       <Column Name="Country" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.FileData" Member="FileDatas">
-    <Type Name="FileData">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FileID" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Section" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="FileName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="FolderID" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="FileData1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="FileData2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="FileType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="ContentLength" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FileExtenstion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.SponsorTable" Member="SponsorTables">
     <Type Name="SponsorTable">
       <Column Name="SponsorId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -2387,6 +2373,22 @@
       <Column Name="VideoOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ThumbnailPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FileData" Member="FileDatas">
+    <Type Name="FileData">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FileID" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Section" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FolderID" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="FileData1" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FileData2" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FileType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContentLength" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileExtenstion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UploadedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimeSheetResource_AddUpdateWcDate" Method="TimeSheetResource_AddUpdateWcDate">

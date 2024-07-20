@@ -234,6 +234,66 @@ public class ImageManager
         else
             return false;
     }
+    public static string FileDBSave(int Userid, DateTime date, byte[] filebytearray, byte[] Smallfilebytearray, string fileid, string section, string fileExtension, string filename = "", string contenttype = "", string folder = "", bool allowMutifile = false)
+    {
+        string retval = "";
+        try
+        {
+            IPortfolioRepository<PortfolioMgt.Entity.FileData> frep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
+
+            var f = frep.GetAll().Where(o => o.FileID == fileid && o.Section == section).FirstOrDefault();
+            if (allowMutifile == true)
+            {
+                f = null;
+            }
+            if (f == null)
+            {
+                f = new PortfolioMgt.Entity.FileData();
+                f.FolderID = folder;
+                f.UserID = Userid;
+                f.UploadedDate = date;
+                f.ContentLength = filebytearray.Length;
+                f.FileData1 = filebytearray;
+                f.FileType = contenttype;
+                if (filename.Length == 0)
+                    f.FileName = fileid;
+                else
+                    f.FileName = filename;
+
+                if (Smallfilebytearray != null)
+                    f.FileData2 = Smallfilebytearray;
+                f.Section = section;
+                f.FileID = fileid;
+                frep.Add(f);
+
+            }
+            else
+            {
+                f.FolderID = folder;
+                f.ContentLength = filebytearray.Length;
+                f.FileData1 = filebytearray;
+                f.UserID = Userid;
+                f.UploadedDate = date;
+                f.FileType = contenttype;
+                if (filename.Length == 0)
+                    f.FileName = fileid;
+                else
+                    f.FileName = filename;
+                if (Smallfilebytearray != null)
+                    f.FileData2 = Smallfilebytearray;
+                // f.FileID = fileid;//
+                frep.Edit(f);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            LogExceptions.WriteExceptionLog(ex);
+        }
+
+        return retval;
+    }
+
     public static string FileDBSave(byte[] filebytearray, byte[] Smallfilebytearray, string fileid,string section,string fileExtension,string filename="",string contenttype="",string folder="",bool allowMutifile=false)
     {
         string retval = "";

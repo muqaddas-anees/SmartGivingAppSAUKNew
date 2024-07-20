@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FundraiserView.aspx.cs" Inherits="DeffinityAppDev.FundriserView" %>
 
+
 <%@ Register Src="~/App/controls/FundraiserDetailsCtrl.ascx" TagPrefix="Pref" TagName="FaithGivingListCtrl" %>
 
 

@@ -694,6 +694,9 @@
                                    <asp:LinkButton ID="btnDownload" runat="server" OnClick="DownloadFile" CommandArgument='<%# Eval("Value") %>' Text='<%# Eval("Text") %>'></asp:LinkButton>
                                </ItemTemplate>
                            </asp:TemplateField>
+						           <asp:BoundField DataField="UploadedBy" HeaderText="Uploaded By" />
+        <asp:BoundField DataField="Time" HeaderText="Date Uploaded" />
+
                       <asp:TemplateField ItemStyle-Width="30px">
                            <ItemTemplate>
                             <%-- <asp:LinkButton ID = "lnkDelete" OnClick = "DeleteFile" CausesValidation="false" 
@@ -1192,65 +1195,6 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <%--<script src="../assets/js/custom/documentation/forms/tagify.js"></script>--%>
 	<script>
-  //      var input1 = document.querySelector("#kt_tagify_1");
-		//new Tagify(input1);
-
-        var input = document.querySelector('#MainContent_MainContent_txtSkills'),
-            // init Tagify script on the above inputs
-            tagify = new Tagify(input, {
-                //whitelist: ["Cloud computing", "Artificial intelligence", "Sales leadership", "Analysis", "Translation", "Mobile app development", "People management", "Video production", "Audio production", "UX design", "SEO / SEM marketing","Blockchain","Industrial design","Creativity","Collaboration","Adaptability","Time management","Persuasion","Digital journalism","Animation"],
-                maxTags: 50,
-                dropdown: {
-                    maxItems: 50,           // <- mixumum allowed rendered suggestions
-                    classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
-                    enabled: 0,             // <- show suggestions on focus
-                    closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
-                }
-			})
-
-		//txtTags
-
-        var input = document.querySelector('#MainContent_MainContent_txtTags'),
-            // init Tagify script on the above inputs
-            tagify = new Tagify(input, {
-				//whitelist: ["Cloud computing", "Artificial intelligence", "Sales leadership", "Analysis", "Translation"],
-                editTags: true,
-                maxTags: 50,
-                dropdown: {
-                    maxItems: 50,           // <- mixumum allowed rendered suggestions
-                    classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
-                    enabled: 0,             // <- show suggestions on focus
-                    closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
-                }
-            })
-        //var input = document.querySelector('#kt_tagify_1'),
-        //    tagify = new Tagify(input, {
-        //        whitelist: ['aaa', 'aaab', 'aaabb', 'aaabc', 'aaabd', 'aaabe', 'aaac', 'aaacc'],
-        //        dropdown: {
-        //            classname: "color-blue",
-        //            enabled: 0,              // show the dropdown immediately on focus
-        //            maxItems: 5,
-        //            position: "text",         // place the dropdown near the typed text
-        //            closeOnSelect: false,          // keep the dropdown open after selecting a suggestion
-        //            highlightFirst: true
-        //        }
-        //    });
-        //var tagify = new Tagify(input)
-
-        //// bind events
-        //tagify.on('add', onAddTag)
-        //tagify.DOM.input.addEventListener('focus', onSelectFocus)
-
-        //function onAddTag(e) {
-        //    console.log(e.detail)
-        //}
-
-        //function onSelectFocus(e) {
-        //    console.log(e)
-        //}
-    </script>
-
-	<script>
         function getQuerystring(key, default_) {
 
             if (default_ == null) default_ = "";
@@ -1275,7 +1219,7 @@
         previewNode.remove();
 
         var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
-            url: "UploadHandler.ashx?mid=" + getQuerystring('mid'), // Set the url for your upload script location
+            url: "UploadHandler.ashx?mid=" + getQuerystring('mid')+"_"+fileCount++, // Set the url for your upload script location
             parallelUploads: 20,
             maxFilesize: 1, // Max filesize in MB
             previewTemplate: previewTemplate,
@@ -1307,7 +1251,10 @@
                 $(thisProgressBar + " .progress-bar, " + thisProgressBar + " .progress").css("opacity", "0");
             }, 300)
         });
-    </script>
+</script>
+
+
+	
 
 
 	<%--<div class="row">

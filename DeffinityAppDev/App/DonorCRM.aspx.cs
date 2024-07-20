@@ -11,6 +11,8 @@ using System.Text;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using UserMgt.BAL;
+using UserMgt.DAL;
+using UserMgt.Entity;
 using static QRCoder.PayloadGenerator.SwissQrCode;
 
 namespace DonorCRM
@@ -72,39 +74,102 @@ namespace DonorCRM
             List<object> contactObjects = new List<object>();
             PortfolioDataContext context = new PortfolioDataContext();
 
+            // Fetch all TithingDefaultDetails with non-null unid
+            var tithingDefaultDetails = context.TithingDefaultDetails
+                .Where(td => td.unid != null)  // Filter out records with null unid
+                .GroupBy(td => td.unid)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Select(td => td.Title).ToList()
+                );
+
+            IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
+
+            // Fetch all contractors from the database
+            UserDataContext contractorsContext = new UserDataContext();
+            var contractorList = contractorsContext.Contractors.ToList();
+
             foreach (var contact in contacts)
             {
                 // Query roles for the current contractor
                 var contractorRoles = from role in context.tblRoles
-                                      where role.ContractorID == contact.ID // Assuming ID is the ContractorID in v_contractor
+                                      where role.ContractorID == contact.ID
                                       select role.RoleType;
-                List<TithingPaymentTracker> payments;
-                List<ActivityBooking> Activity;
 
+                List<TithingPaymentTracker> payments;
+                List<UserSkill> tagss;
+
+                // Fetch files where FileID starts with the given SID
+                var fList = fRep.GetAll()
+                                .Where(o => o.Section == ImageManager.file_section_user_doc && o.FileID.StartsWith(contact.ID.ToString()))
+                                .Select(o => new
+                                {
+                                    o.FileID,
+                                    o.FileName,
+                                    o.Section,
+                                    o.UserID,
+                                    o.UploadedDate
+                                })
+                                .ToList();
+
+                // Fetch payments
                 using (PortfolioMgt.DAL.PortfolioDataContext db = new PortfolioDataContext())
                 {
                     payments = db.TithingPaymentTrackers
-                                .Where(p => p.LoggedByID == contact.ID)
+                                 .Where(p => p.DonerEmail == contact.EmailAddress)
+                                 .ToList();
+                }
+
+                // Fetch tags
+                using (UserMgt.DAL.UserDataContext tags = new UserMgt.DAL.UserDataContext())
+                {
+                    tagss = tags.UserSkills
+                                .Where(i => i.UserId == contact.ID)
                                 .ToList();
-                   
                 }
 
                 // Calculate total donations raised
                 double donationsRaised = payments.Sum(p => p.PaidAmount ?? 0);
-                // Construct JSON object including roles
+
+                // Prepare payment details including Titles from TithingDefaultDetails
+                var paymentDetails = payments.Select(p => new
+                {
+                    Amount = p.PaidAmount,
+                    PaidDate = p.PaidDate,
+                    FundraiserNames = p.FundriserUNID != null && tithingDefaultDetails.TryGetValue(p.FundriserUNID, out var titles)
+                        ? string.Join(", ", titles)
+                        : "Unknown",
+                    PaymentType = p.DonationType == "cash" ? "Cash" : (p.DonationType == "inkind" ? "In Kind" : (p.RecurringType == null ? "Normal" : "Recurring")),
+                    Status = p.IsPaid.HasValue && p.IsPaid.Value ? "Successful" : "Failed",
+                    PayRef = p.PayRef ?? $"REF{new Random().Next(0, 1000000):D6}",
+                    PlatformFee = p.PlatformFee ?? 0,
+                    TransactionFee = p.TransactionFee ?? 0,
+                    MoreDetails = p.MoreDetails
+                }).ToList();
+
+                // Construct JSON object including roles and tags
                 var contactObject = new
                 {
-                    ID=contact.ID,
-                    SID=contact.SID,
+                    ID = contact.ID,
+                    SID = contact.SID,
                     FirstName = contact.ContractorName,
-                    LastName=contact.LastName,
+                    LastName = contact.LastName,
                     Email = contact.EmailAddress,
-                CompanyName = contact.Company,
-                imgurl =GetImageUrl(contact.ID.ToString()),
- Phone = contact.ContactNumber,
-                DonationsRaised = donationsRaised,
+                    CompanyName = contact.Company,
+                    imgurl = GetImageUrl(contact.ID.ToString()),
+                    Phone = contact.ContactNumber,
+                    DonationsRaised = donationsRaised,
                     Country = contact.Country,
-                    Roles = contractorRoles.ToArray() // Convert roles to an array
+                    Roles = contractorRoles.ToArray(),
+                    Tags = tagss,
+                    Documents = fList.Select(f => new
+                    {
+                        FileID = f.FileID,
+                        FileName = f.FileName,
+                        UploadedDate = f.UploadedDate?.ToString("dd/MM/yyyy HH:mm:ss") ?? "N/A",
+                        ContractorName = f.UserID.HasValue ? contractorList.FirstOrDefault(c => c.ID == f.UserID.Value)?.ContractorName : "Unknown"
+                    }).ToList(),
+                    Payments = paymentDetails // Include detailed payment information with titles
                 };
 
                 // Add to contacts list
@@ -117,13 +182,13 @@ namespace DonorCRM
             // Inject JSON array into client-side script
             var scriptTag = new LiteralControl();
             string scriptText = $@"
-        <script type='text/javascript'>
-            var contacts = {jsonContacts};
-            console.log(contacts);
-            console.log('Loaded {contactObjects.Count} contacts from server.');
-            // You can now use 'contacts' array in your JavaScript code
-        </script>
-    ";
+<script type='text/javascript'>
+    var contacts = {jsonContacts};
+    console.log(contacts);
+    console.log('Loaded {contactObjects.Count} contacts from server.');
+    // You can now use 'contacts' array in your JavaScript code
+</script>
+";
 
             // Register script to be executed when page renders
             ((HtmlGenericControl)scripts2).InnerHtml = scriptText;
@@ -132,6 +197,8 @@ namespace DonorCRM
             DisplayContactsInHTML(contacts);
             DisplayCategoryCounts(contacts);
         }
+
+
         private void DisplayCategoryCounts(List<UserMgt.Entity.v_contractor> contacts)
         {
             // Initialize counts

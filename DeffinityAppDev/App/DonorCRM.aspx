@@ -10,6 +10,27 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
    <style>
+        .tag {
+            display: inline-block;
+            background-color: #f1f1f1;
+            color: #333;
+            padding: 3px 8px;
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 10px;
+        }
+        .tags-container {
+        width: 100%;
+        max-width: 60%;
+        overflow-x: auto; /* Allow horizontal scrolling if necessary */
+        white-space: nowrap; /* Prevent line breaks within tags */
+        display: inline-block; /* Keep tags in a single line */
+    }
+
+    .tagify__tag {
+        display: inline-block; /* Ensure tags are displayed inline */
+        margin: 2px; /* Add some space between tags */
+    }
        .form-check-input:disabled~.form-check-label, .form-check-input[disabled]~.form-check-label{
            opacity:1;
            color:#252F4A
@@ -144,7 +165,7 @@
     <div class="separator my-7"></div>
     <!--begin::Separator-->
     <!--begin::Add new contact-->
- <a onclick="clearForm()" href="/app/member.aspx?type=2"  class="btn btn-primary w-100">
+ <a onclick="clearForm()" href="/app/member.aspx?type=2&add=donor"  class="btn btn-primary w-100">
 													<i class="ki-outline ki-badge fs-2"></i>Add new contact</a>
 
     <!--end::Add new contact-->
@@ -319,19 +340,32 @@
                     <i class="ki-outline ki-information fs-7"></i>
                 </span>
             </label>
-            <input readonly id="txtPhone" type="text" class="form-control form-control-solid" name="phone" value="">
+            <input readonly id="txtPhone" type="text" class="form-control form-control-solid" name="phone" value="" />
         </div>
     </div>
 </div>
+<div class="">
+    <div class="" style="width:90%" id="tags-container">
+        <label class="fs-6 fw-semibold form-label mt-3">Tags</label>
+        <tags id="Skills" class="tagify form-control tags-container">
+        </tags>
+    </div>
 
+    <div class="" style="width:90%">
+        <label class="fs-6 fw-semibold form-label mt-3">Interests</label>
+        <tags id="Interests" class="tagify form-control tags-container">
+        </tags>
+    </div>
+</div>
 <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
-
+    </div>
     
 
 
 
 <!-- Checkbox Group -->
 <div class="fv-row mb-7">
+    <div>
     <label class="fs-6 fw-semibold form-label mt-3">Categories</label>
     <div class="form-check">
         <input id="chkDonors" type="checkbox" class="form-check-input" name="categories" value="Donors">
@@ -349,7 +383,40 @@
         <input id="chkSponsors" type="checkbox" class="form-check-input" name="categories" value="Sponsors">
         <label for="chkSponsors" class="form-check-label">Sponsors</label>
     </div>
+        </div>
+       
 </div>
+
+
+                                        <label class="fs-6 fw-semibold form-label mt-3">Donation History</label>
+
+                                    <table class="table table-bordered">
+  <thead style="font-weight:700">
+    <tr>
+      <th scope="col">Fundraiser</th>
+      <th scope="col">Date</th>
+      <th scope="col">Amount</th>
+            <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody id="payments">
+      </tbody>
+                                        </table>
+                                                                            <label class="fs-6 fw-semibold form-label mt-3">Documents</label>
+
+                                                                      <table class="table table-bordered">
+<thead style="font-weight:700">
+  <tr>
+    <th scope="col">FileName</th>
+          <th scope="col">Uploaded By</th>
+    <th scope="col">Date</th>
+
+
+  </tr>
+</thead>
+<tbody id="Documents">
+    </tbody>
+                                      </table>
 
 <!-- Action Buttons -->
 <div class="d-flex justify-content-end">
@@ -391,6 +458,9 @@
                 }
             }
         });
+
+
+
         document.getElementById('all_contacts_badge').innerHTML = allCount;
         document.getElementById('volunteers_badge').innerText = volunteersCount;
         document.getElementById('donors_badge').innerText = donorsCount;
@@ -399,41 +469,32 @@
         function displayContactDetails(email) {
             var contact = contacts.find(c => c.Email === email); // Assuming contacts array is accessible
 
-            console.log(contact)
-            
-            document.getElementById("edit").href = "/App/Member.aspx?mid="+contact.ID;
-
-
-			var checkbox1 = document.getElementById('chkDonors');
-			var checkbox2 = document.getElementById('chkVolunteers');
-			var checkbox3 = document.getElementById('chkLeads');
-            var checkbox4 = document.getElementById('chkSponsors');
-            console.log(checkbox1)
-			checkbox1.checked = false;
-			checkbox2.checked = false;
-			checkbox3.checked = false;
-            checkbox4.checked = false;
-			
-
-
-
             if (contact) {
-				document.getElementById('txtFirstName').value = contact.FirstName || "";
+                document.getElementById('edit').href = "/App/Member.aspx?mid=" + contact.ID+"&add=donor";
+
+                var checkbox1 = document.getElementById('chkDonors');
+                var checkbox2 = document.getElementById('chkVolunteers');
+                var checkbox3 = document.getElementById('chkLeads');
+                var checkbox4 = document.getElementById('chkSponsors');
+
+                checkbox1.checked = false;
+                checkbox2.checked = false;
+                checkbox3.checked = false;
+                checkbox4.checked = false;
+
+                document.getElementById('txtFirstName').value = contact.FirstName || "";
                 document.getElementById('txtLastName').value = contact.LastName || "";
                 document.getElementById('txtCompanyName').value = contact.CompanyName || "";
                 document.getElementById('txtEmail').value = contact.Email || "";
-				document.getElementById('txtPhone').value = contact.Phone || "";
-				document.getElementById('DonationsRaised').value = contact.DonationsRaised || 0;
+                document.getElementById('txtPhone').value = contact.Phone || "";
+                document.getElementById('DonationsRaised').value = contact.DonationsRaised || 0;
                 document.getElementById('bgimg').style.backgroundImage = `url('${contact.imgurl}')`;
-                console.log(`url('${contact.imgurl}')`)
-                console.log(document.getElementById('bgimg'));
 
-             
-                if (contact.Categories == 2 || contact.SID==2) {
+                if (contact.Categories == 2 || contact.SID == 2) {
                     var checkbox = document.getElementById('chkDonors');
-                 if (checkbox) {
-                    checkbox.checked = true;
-                 }
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
                 if (contact.Categories == 4) {
                     var checkbox = document.getElementById('chkVolunteers');
@@ -443,14 +504,101 @@
                 }
 
                 contact.Roles.forEach(category => {
-                    console.log(category);
-					var checkbox = document.getElementById('chk' + category + 's');
-                   
-
+                    var checkbox = document.getElementById('chk' + category + 's');
                     if (checkbox) {
                         checkbox.checked = true;
                     }
                 });
+
+                // Display tags
+                var tagsContainer = document.querySelector('#Skills'); // Select the container for the skills tags
+                tagsContainer.innerHTML = ''; // Clear existing tags
+                var interestContainer = document.querySelector('#Interests'); // Select the container for the interest tags
+                interestContainer.innerHTML = ''; // Clear existing interest tags
+
+                if (contact.Tags && Array.isArray(contact.Tags)) {
+                    contact.Tags.forEach(tag => {
+                        try {
+                            // Handle Skills
+                            var SkillArrayChecked = tag.Skills || "[]"; // Provide a default empty JSON array if tag.Skills is null or undefined
+                            var skillArray = JSON.parse(SkillArrayChecked); // Assuming tag.Skills is a JSON string
+
+                            if (Array.isArray(skillArray)) {
+                                skillArray.forEach(skillValue => {
+                                    // Ensure skillValue is not null and has a value property
+                                    var skillValueText = (skillValue && skillValue.value) ? skillValue.value : "Unknown"; // Provide a default value if null or undefined
+
+                                    // Create tag element for skills
+                                    var tagElement = document.createElement('tag');
+                                    tagElement.className = 'tagify__tag';
+                                    tagElement.setAttribute('title', skillValueText);
+                                    tagElement.setAttribute('contenteditable', 'false');
+                                    tagElement.setAttribute('spellcheck', 'false');
+                                    tagElement.setAttribute('tabindex', '-1');
+                                    tagElement.setAttribute('value', skillValueText);
+
+                                    // Create remove button
+                                    var removeBtn = document.createElement('x');
+                                    removeBtn.className = 'tagify__tag__removeBtn';
+                                    removeBtn.setAttribute('role', 'button');
+                                    removeBtn.setAttribute('aria-label', 'remove tag');
+                                    tagElement.appendChild(removeBtn);
+
+                                    // Create tag text span
+                                    var tagText = document.createElement('div');
+                                    var tagTextSpan = document.createElement('span');
+                                    tagTextSpan.className = 'tagify__tag-text';
+                                    tagTextSpan.textContent = skillValueText;
+                                    tagText.appendChild(tagTextSpan);
+                                    tagElement.appendChild(tagText);
+
+                                    // Append tag element to container
+                                    tagsContainer.appendChild(tagElement);
+                                });
+                            } else {
+                                console.error('Parsed skills data is not an array!');
+                            }
+
+                            // Handle Notes
+                            if (tag.Notes) {
+                                var notesArray = tag.Notes.split(',').map(note => note.trim()); // Split notes by comma and trim whitespace
+
+                                notesArray.forEach(noteValue => {
+                                    // Create tag element for notes
+                                    var noteElement = document.createElement('tag');
+                                    noteElement.className = 'tagify__tag';
+                                    noteElement.setAttribute('title', noteValue);
+                                    noteElement.setAttribute('contenteditable', 'false');
+                                    noteElement.setAttribute('spellcheck', 'false');
+                                    noteElement.setAttribute('tabindex', '-1');
+                                    noteElement.setAttribute('value', noteValue);
+
+                                    // Create remove button
+                                    var removeBtn = document.createElement('x');
+                                    removeBtn.className = 'tagify__tag__removeBtn';
+                                    removeBtn.setAttribute('role', 'button');
+                                    removeBtn.setAttribute('aria-label', 'remove tag');
+                                    noteElement.appendChild(removeBtn);
+
+                                    // Create tag text span
+                                    var noteText = document.createElement('div');
+                                    var noteTextSpan = document.createElement('span');
+                                    noteTextSpan.className = 'tagify__tag-text';
+                                    noteTextSpan.textContent = noteValue;
+                                    noteText.appendChild(noteTextSpan);
+                                    noteElement.appendChild(noteText);
+
+                                    // Append tag element to interest container
+                                    interestContainer.appendChild(noteElement);
+                                });
+                            }
+                        } catch (error) {
+                            console.error('Error processing tags:', error);
+                        }
+                    });
+                } else {
+                    console.error('Tags data is not an array or is missing!');
+                }
 
                 // Make input fields readonly
                 var inputs = document.querySelectorAll('.form-control');
@@ -463,10 +611,93 @@
                 checkboxes.forEach(checkbox => {
                     checkbox.setAttribute('disabled', 'disabled');
                 });
+
+                // Display payment details
+                var paymentsTableBody = document.getElementById('payments');
+                paymentsTableBody.innerHTML = ''; // Clear existing rows
+
+                if (contact.Payments && Array.isArray(contact.Payments)) {
+                    contact.Payments.forEach(payment => {
+                        var row = document.createElement('tr');
+
+                        var fundraiserCell = document.createElement('td');
+                        fundraiserCell.textContent = payment.FundraiserNames || "Unknown";
+                        row.appendChild(fundraiserCell);
+
+                        var dateCell = document.createElement('td');
+                        dateCell.textContent = new Date(payment.PaidDate).toLocaleDateString(); // Format date
+                        row.appendChild(dateCell);
+
+                        var amountCell = document.createElement('td');
+                        amountCell.textContent = payment.Amount.toFixed(2); // Format amount
+                        row.appendChild(amountCell);
+                        var StatusCell = document.createElement('td');
+                        var statusSpan = document.createElement('span');
+
+                        if (payment.Status.toLowerCase() === "failed") {
+                            statusSpan.className = "badge badge-light-danger";
+                            statusSpan.textContent = payment.Status;
+                        } else {
+                            statusSpan.className = "badge badge-light-success";
+                            statusSpan.textContent = payment.Status;
+                        }
+
+                        StatusCell.appendChild(statusSpan);
+                        row.appendChild(StatusCell);
+
+                        paymentsTableBody.appendChild(row);
+                    });
+                } else {
+                    console.error('Payments data is not an array or is missing!');
+                }
+
+
+
+
+
+
+                var DocumentsTableBody = document.getElementById('Documents');
+                DocumentsTableBody.innerHTML = ''; // Clear existing rows
+
+                if (Array.isArray(contact.Documents)) {
+                    contact.Documents.forEach(documentt => {
+                        var row = document.createElement('tr');
+
+                        var link = "/ImageHandler.ashx?id=" + documentt.FileID + "&s=" + documentt.Section;
+
+                        var linkCell = document.createElement('td');
+                        var anchor = document.createElement('a');
+                        anchor.href = link;
+                        anchor.textContent = documentt.FileName;
+                        linkCell.appendChild(anchor);
+                        row.appendChild(linkCell);
+
+                        var NameCell = document.createElement('td');
+                        // Check if ContractorName is null or empty, provide a default value if so
+                        NameCell.innerText = documentt.ContractorName ? documentt.ContractorName : "Unknown";
+                        row.appendChild(NameCell);
+
+                        var Datecell = document.createElement('td');
+                        // Check if UploadedBy is null or empty, provide a default value if so
+                        Datecell.innerText = documentt.UploadedDate ? documentt.UploadedDate : "N/A";
+                        row.appendChild(Datecell);
+
+                        DocumentsTableBody.appendChild(row);
+                    });
+                } else {
+                    console.error('Documents data is not an array or is missing!');
+                }
+
+
+
+
+
+
             } else {
                 console.error('Contact not found!');
             }
         }
+
         function clearForm() {
             // Clear all input fields
             var inputs = document.querySelectorAll('.form-control');

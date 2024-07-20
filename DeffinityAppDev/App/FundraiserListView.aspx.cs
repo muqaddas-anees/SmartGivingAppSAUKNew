@@ -362,7 +362,7 @@ namespace DeffinityAppDev.App
             //}
             //return img + "?r=" + DateTime.Now.TimeOfDay.Milliseconds.ToString();
             // +"/" + eImageType.ToString() + "/" + a_gId.ToString() + ".png"; 
-            string imgUrl = "~/ImageHandler.ashx?id=" + contactsId + "_" + 1 + "&s=fundriser" + ImageManager.file_section_fundriser;
+            string imgUrl = "/ImageHandler.ashx?id=" + contactsId + "_" + 1 + "&s=" + ImageManager.file_section_fundriser;
 
             return imgUrl;
 

@@ -1,4 +1,13 @@
-﻿
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="users.aspx.cs" Inherits="Users.users" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="page_title" runat="server">
+     <asp:Label ID="lblPageTitle" runat="server" Text="Team"></asp:Label>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="page_description" runat="server">
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
@@ -27,7 +36,7 @@
                                 <!--begin::Page title-->
                                 <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
                                     <!--begin::Title-->
-                                    <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">Members</h1>
+                                    <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">Team</h1>
                                     <!--end::Title-->
                                     <!--begin::Breadcrumb-->
                                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
@@ -1337,7 +1346,6 @@
                 <!--end::Footer-->
             </div>
         </div>
-    </form>
     <!--end::Modal - Invite Friend-->
     <!--end::Modals-->
     <!--begin::Javascript-->
@@ -1369,3 +1377,4 @@
     <script src="../assets/js/custom/utilities/modals/users-search.js"></script>
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
+    </asp:Content>

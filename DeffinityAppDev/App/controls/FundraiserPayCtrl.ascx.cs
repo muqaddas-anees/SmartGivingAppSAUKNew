@@ -841,6 +841,7 @@ namespace DeffinityAppDev.App.controls
         protected void btnNextCategory_Click(object sender, EventArgs e)
         {
             //enable payment option
+            Response.Redirect("/dir.aspx");
             changePanel(false, true, false, false, false, false);
         }
 

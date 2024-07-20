@@ -7,38 +7,47 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DeffinityAppDev.App.controls
+namespace Users
 {
 
 
-    public partial class VideoCtrl
+    public partial class users
     {
 
         /// <summary>
-        /// videoList control.
+        /// lblPageTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl videoList;
+        protected global::System.Web.UI.WebControls.Label lblPageTitle;
 
         /// <summary>
-        /// btnActivate control.
+        /// userCards control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActivate;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userCards;
 
         /// <summary>
-        /// rptSteps control.
+        /// userTableBody control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptSteps;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userTableBody;
+
+        /// <summary>
+        /// paginationControlsContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl paginationControlsContainer;
     }
 }

@@ -361,9 +361,6 @@ namespace PortfolioMgt.DAL
     partial void InsertTithingDefaultDetail(PortfolioMgt.Entity.TithingDefaultDetail instance);
     partial void UpdateTithingDefaultDetail(PortfolioMgt.Entity.TithingDefaultDetail instance);
     partial void DeleteTithingDefaultDetail(PortfolioMgt.Entity.TithingDefaultDetail instance);
-    partial void InsertFileData(PortfolioMgt.Entity.FileData instance);
-    partial void UpdateFileData(PortfolioMgt.Entity.FileData instance);
-    partial void DeleteFileData(PortfolioMgt.Entity.FileData instance);
     partial void InsertSponsorTable(PortfolioMgt.Entity.SponsorTable instance);
     partial void UpdateSponsorTable(PortfolioMgt.Entity.SponsorTable instance);
     partial void DeleteSponsorTable(PortfolioMgt.Entity.SponsorTable instance);
@@ -415,6 +412,9 @@ namespace PortfolioMgt.DAL
     partial void InsertVideo(PortfolioMgt.Entity.Video instance);
     partial void UpdateVideo(PortfolioMgt.Entity.Video instance);
     partial void DeleteVideo(PortfolioMgt.Entity.Video instance);
+    partial void InsertFileData(PortfolioMgt.Entity.FileData instance);
+    partial void UpdateFileData(PortfolioMgt.Entity.FileData instance);
+    partial void DeleteFileData(PortfolioMgt.Entity.FileData instance);
     #endregion
 		
 		public PortfolioDataContext() : 
@@ -1503,14 +1503,6 @@ namespace PortfolioMgt.DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<PortfolioMgt.Entity.FileData> FileDatas
-		{
-			get
-			{
-				return this.GetTable<PortfolioMgt.Entity.FileData>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PortfolioMgt.Entity.SponsorTable> SponsorTables
 		{
 			get
@@ -1644,6 +1636,14 @@ namespace PortfolioMgt.DAL
 			get
 			{
 				return this.GetTable<PortfolioMgt.Entity.Video>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.FileData> FileDatas
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.FileData>();
 			}
 		}
 		
@@ -39596,284 +39596,6 @@ namespace PortfolioMgt.Entity
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FileData")]
-	public partial class FileData : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _FileID;
-		
-		private string _Section;
-		
-		private string _FileName;
-		
-		private string _FolderID;
-		
-		private System.Data.Linq.Binary _FileData1;
-		
-		private System.Data.Linq.Binary _FileData2;
-		
-		private string _FileType;
-		
-		private System.Nullable<int> _ContentLength;
-		
-		private string _FileExtenstion;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnFileIDChanging(string value);
-    partial void OnFileIDChanged();
-    partial void OnSectionChanging(string value);
-    partial void OnSectionChanged();
-    partial void OnFileNameChanging(string value);
-    partial void OnFileNameChanged();
-    partial void OnFolderIDChanging(string value);
-    partial void OnFolderIDChanged();
-    partial void OnFileData1Changing(System.Data.Linq.Binary value);
-    partial void OnFileData1Changed();
-    partial void OnFileData2Changing(System.Data.Linq.Binary value);
-    partial void OnFileData2Changed();
-    partial void OnFileTypeChanging(string value);
-    partial void OnFileTypeChanged();
-    partial void OnContentLengthChanging(System.Nullable<int> value);
-    partial void OnContentLengthChanged();
-    partial void OnFileExtenstionChanging(string value);
-    partial void OnFileExtenstionChanged();
-    #endregion
-		
-		public FileData()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileID", DbType="NVarChar(250)")]
-		public string FileID
-		{
-			get
-			{
-				return this._FileID;
-			}
-			set
-			{
-				if ((this._FileID != value))
-				{
-					this.OnFileIDChanging(value);
-					this.SendPropertyChanging();
-					this._FileID = value;
-					this.SendPropertyChanged("FileID");
-					this.OnFileIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Section", DbType="NVarChar(250)")]
-		public string Section
-		{
-			get
-			{
-				return this._Section;
-			}
-			set
-			{
-				if ((this._Section != value))
-				{
-					this.OnSectionChanging(value);
-					this.SendPropertyChanging();
-					this._Section = value;
-					this.SendPropertyChanged("Section");
-					this.OnSectionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileName", DbType="NVarChar(MAX)")]
-		public string FileName
-		{
-			get
-			{
-				return this._FileName;
-			}
-			set
-			{
-				if ((this._FileName != value))
-				{
-					this.OnFileNameChanging(value);
-					this.SendPropertyChanging();
-					this._FileName = value;
-					this.SendPropertyChanged("FileName");
-					this.OnFileNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FolderID", DbType="NVarChar(250)")]
-		public string FolderID
-		{
-			get
-			{
-				return this._FolderID;
-			}
-			set
-			{
-				if ((this._FolderID != value))
-				{
-					this.OnFolderIDChanging(value);
-					this.SendPropertyChanging();
-					this._FolderID = value;
-					this.SendPropertyChanged("FolderID");
-					this.OnFolderIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileData1", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary FileData1
-		{
-			get
-			{
-				return this._FileData1;
-			}
-			set
-			{
-				if ((this._FileData1 != value))
-				{
-					this.OnFileData1Changing(value);
-					this.SendPropertyChanging();
-					this._FileData1 = value;
-					this.SendPropertyChanged("FileData1");
-					this.OnFileData1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileData2", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary FileData2
-		{
-			get
-			{
-				return this._FileData2;
-			}
-			set
-			{
-				if ((this._FileData2 != value))
-				{
-					this.OnFileData2Changing(value);
-					this.SendPropertyChanging();
-					this._FileData2 = value;
-					this.SendPropertyChanged("FileData2");
-					this.OnFileData2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileType", DbType="NVarChar(100)")]
-		public string FileType
-		{
-			get
-			{
-				return this._FileType;
-			}
-			set
-			{
-				if ((this._FileType != value))
-				{
-					this.OnFileTypeChanging(value);
-					this.SendPropertyChanging();
-					this._FileType = value;
-					this.SendPropertyChanged("FileType");
-					this.OnFileTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContentLength", DbType="Int")]
-		public System.Nullable<int> ContentLength
-		{
-			get
-			{
-				return this._ContentLength;
-			}
-			set
-			{
-				if ((this._ContentLength != value))
-				{
-					this.OnContentLengthChanging(value);
-					this.SendPropertyChanging();
-					this._ContentLength = value;
-					this.SendPropertyChanged("ContentLength");
-					this.OnContentLengthChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileExtenstion", DbType="NVarChar(100)")]
-		public string FileExtenstion
-		{
-			get
-			{
-				return this._FileExtenstion;
-			}
-			set
-			{
-				if ((this._FileExtenstion != value))
-				{
-					this.OnFileExtenstionChanging(value);
-					this.SendPropertyChanging();
-					this._FileExtenstion = value;
-					this.SendPropertyChanged("FileExtenstion");
-					this.OnFileExtenstionChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SponsorTable")]
 	public partial class SponsorTable : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -47027,6 +46749,332 @@ namespace PortfolioMgt.Entity
 					this._Id = value;
 					this.SendPropertyChanged("Id");
 					this.OnIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FileData")]
+	public partial class FileData : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _FileID;
+		
+		private string _Section;
+		
+		private string _FileName;
+		
+		private string _FolderID;
+		
+		private System.Data.Linq.Binary _FileData1;
+		
+		private System.Data.Linq.Binary _FileData2;
+		
+		private string _FileType;
+		
+		private System.Nullable<int> _ContentLength;
+		
+		private string _FileExtenstion;
+		
+		private System.Nullable<int> _UserID;
+		
+		private System.Nullable<System.DateTime> _UploadedDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnFileIDChanging(string value);
+    partial void OnFileIDChanged();
+    partial void OnSectionChanging(string value);
+    partial void OnSectionChanged();
+    partial void OnFileNameChanging(string value);
+    partial void OnFileNameChanged();
+    partial void OnFolderIDChanging(string value);
+    partial void OnFolderIDChanged();
+    partial void OnFileData1Changing(System.Data.Linq.Binary value);
+    partial void OnFileData1Changed();
+    partial void OnFileData2Changing(System.Data.Linq.Binary value);
+    partial void OnFileData2Changed();
+    partial void OnFileTypeChanging(string value);
+    partial void OnFileTypeChanged();
+    partial void OnContentLengthChanging(System.Nullable<int> value);
+    partial void OnContentLengthChanged();
+    partial void OnFileExtenstionChanging(string value);
+    partial void OnFileExtenstionChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    partial void OnUploadedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnUploadedDateChanged();
+    #endregion
+		
+		public FileData()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileID", DbType="NVarChar(250)")]
+		public string FileID
+		{
+			get
+			{
+				return this._FileID;
+			}
+			set
+			{
+				if ((this._FileID != value))
+				{
+					this.OnFileIDChanging(value);
+					this.SendPropertyChanging();
+					this._FileID = value;
+					this.SendPropertyChanged("FileID");
+					this.OnFileIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Section", DbType="NVarChar(250)")]
+		public string Section
+		{
+			get
+			{
+				return this._Section;
+			}
+			set
+			{
+				if ((this._Section != value))
+				{
+					this.OnSectionChanging(value);
+					this.SendPropertyChanging();
+					this._Section = value;
+					this.SendPropertyChanged("Section");
+					this.OnSectionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileName", DbType="NVarChar(MAX)")]
+		public string FileName
+		{
+			get
+			{
+				return this._FileName;
+			}
+			set
+			{
+				if ((this._FileName != value))
+				{
+					this.OnFileNameChanging(value);
+					this.SendPropertyChanging();
+					this._FileName = value;
+					this.SendPropertyChanged("FileName");
+					this.OnFileNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FolderID", DbType="NVarChar(250)")]
+		public string FolderID
+		{
+			get
+			{
+				return this._FolderID;
+			}
+			set
+			{
+				if ((this._FolderID != value))
+				{
+					this.OnFolderIDChanging(value);
+					this.SendPropertyChanging();
+					this._FolderID = value;
+					this.SendPropertyChanged("FolderID");
+					this.OnFolderIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileData1", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary FileData1
+		{
+			get
+			{
+				return this._FileData1;
+			}
+			set
+			{
+				if ((this._FileData1 != value))
+				{
+					this.OnFileData1Changing(value);
+					this.SendPropertyChanging();
+					this._FileData1 = value;
+					this.SendPropertyChanged("FileData1");
+					this.OnFileData1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileData2", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary FileData2
+		{
+			get
+			{
+				return this._FileData2;
+			}
+			set
+			{
+				if ((this._FileData2 != value))
+				{
+					this.OnFileData2Changing(value);
+					this.SendPropertyChanging();
+					this._FileData2 = value;
+					this.SendPropertyChanged("FileData2");
+					this.OnFileData2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileType", DbType="NVarChar(100)")]
+		public string FileType
+		{
+			get
+			{
+				return this._FileType;
+			}
+			set
+			{
+				if ((this._FileType != value))
+				{
+					this.OnFileTypeChanging(value);
+					this.SendPropertyChanging();
+					this._FileType = value;
+					this.SendPropertyChanged("FileType");
+					this.OnFileTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContentLength", DbType="Int")]
+		public System.Nullable<int> ContentLength
+		{
+			get
+			{
+				return this._ContentLength;
+			}
+			set
+			{
+				if ((this._ContentLength != value))
+				{
+					this.OnContentLengthChanging(value);
+					this.SendPropertyChanging();
+					this._ContentLength = value;
+					this.SendPropertyChanged("ContentLength");
+					this.OnContentLengthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileExtenstion", DbType="NVarChar(100)")]
+		public string FileExtenstion
+		{
+			get
+			{
+				return this._FileExtenstion;
+			}
+			set
+			{
+				if ((this._FileExtenstion != value))
+				{
+					this.OnFileExtenstionChanging(value);
+					this.SendPropertyChanging();
+					this._FileExtenstion = value;
+					this.SendPropertyChanged("FileExtenstion");
+					this.OnFileExtenstionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UploadedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UploadedDate
+		{
+			get
+			{
+				return this._UploadedDate;
+			}
+			set
+			{
+				if ((this._UploadedDate != value))
+				{
+					this.OnUploadedDateChanging(value);
+					this.SendPropertyChanging();
+					this._UploadedDate = value;
+					this.SendPropertyChanged("UploadedDate");
+					this.OnUploadedDateChanged();
 				}
 			}
 		}

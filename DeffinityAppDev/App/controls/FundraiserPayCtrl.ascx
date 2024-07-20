@@ -1,5 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FundraiserPayCtrl.ascx.cs" Inherits="DeffinityAppDev.App.controls.FundraiserPayCtrl" %>
  <script type="text/javascript">
+     var AmountWithoutCharges;
+     var PercentageValue;
+     var Total;
          window.addEventListener('message', function (event) {
              var token = JSON.parse(event.data);
              var mytoken = document.getElementById('mytoken');
@@ -487,8 +490,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                                       </div>
                                                                   <div class="col-lg-3 text-center mt-5">
  
-                    <asp:Button ID="btnNextCategory" runat="server" SkinID="btnNext" Height="60px" Width="70%" Font-Size="22px" OnClick="btnNextCategory_Click"/>
-                                                                   <asp:Button ID="btnNextPaynow" runat="server" Font-Size="22px" SkinID="btnDefault" Text="Pay Now" Height="60px" Width="70%" OnClick="btnProceed_Click" style="display:none;" />
+   <button id="btnNextCategory" type="button" class="btn btn-primary" style="height:60px; width:70%; font-size:22px;">Next</button>                                                                   <asp:Button ID="btnNextPaynow" runat="server" Font-Size="22px" SkinID="btnDefault" Text="Pay Now" Height="60px" Width="70%" OnClick="btnProceed_Click" style="display:none;" />
                                                                   
                                                                   </div> 
 
@@ -1206,8 +1208,29 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
 
          $("[id$='btnNextCategory']").click(function () {
+             var chkAnonymously = document.getElementById('chkAnonymously').checked;
+             var chkgift = document.getElementById('chkgift').checked;
+             var currentURL = window.location.href;
+             var url = new URL(currentURL);
+             var unid = url.searchParams.get('unid');
+             //aslo get the check box with id chkAnonymously and chkgift
+            console.log(AmountWithoutCharges);
+             console.log(PercentageValue);
+             console.log(Total);
+             console.log("Anonymous Check: " + chkAnonymously);
+             console.log("Gift Aid Check: " + chkgift);
+             console.log("UNID:", unid);
+             var queryString = new URLSearchParams({
+                 unid: unid,
+                 chkAnonymously: chkAnonymously,
+                 chkgift: chkgift,
+                 AmountWithoutCharges: AmountWithoutCharges,
+                 PercentageValue: PercentageValue,
+                 Total: Total
+             }).toString();
 
-             //category, payoption, recurring, userinfo, carddetails
+             // Redirect to the new page with query parameters
+             window.location.href = "DonationFrequency.aspx?" + queryString;
              showpanels(false, true, false, false, false);
 
 
@@ -1365,10 +1388,15 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
          $("#hplatformfeepercent").val(pval);
 
+         
          console.log(t + " pla" + pval)
          console.log(t + pval)
          var pr = 0;
-         var t_total = (t + (pval / 100)*t).toFixed(2); 
+         var t_total = (t + (pval / 100) * t).toFixed(2); 
+
+         AmountWithoutCharges = t;
+         PercentageValue = pval;
+         Total = t_total;
          $('#lblfee').html(pval);
          $('#hamount').val(t_total);
          $('#lblptotal').html('£' + t_total);
