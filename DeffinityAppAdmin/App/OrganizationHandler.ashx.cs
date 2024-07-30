@@ -17,6 +17,7 @@ using UserMgt.Entity;
 using Deffinity.PortfolioManager;
 using DocumentFormat.OpenXml.Vml;
 using DataTables;
+using DeffinityManager.BLL;
 
 namespace DeffinityAppDev.App
 {
@@ -317,6 +318,9 @@ namespace DeffinityAppDev.App
                         var cvRep = new UserRepository<v_contractor>();
                         string pw = "Plegit@2024!#";
                         var value = new UserMgt.Entity.Contractor();
+
+                        var pDetails = new PortfolioMgt.Entity.ProjectPortfolio();
+
                         value.ContractorName = CharityName;
                         value.EmailAddress = EmailAddress.Trim();
                         value.LoginName = EmailAddress.Trim(); //value.ContractorName.Replace(" ", "");
@@ -354,18 +358,21 @@ namespace DeffinityAppDev.App
                         if (cvRep.GetAll().Where(o =>  o.LoginName.ToLower() == value.LoginName.ToLower() && o.Status == UserStatus.Active && o.SID != UserType.Donor).Count() == 0)
                         {
                             cRep.Add(value);
+
+
+                           
                         }
 
                         if (value.ID >0)
                         {
                             //insert into portfolio contacts
-                            var pDetails = new PortfolioMgt.Entity.ProjectPortfolio();// PortfolioMgt.BAL.ProjectPortfolioBAL.ProjectPortfolioBAL_SelectAll().Where(o => o.PortFolio.ToLower().Trim() == OrganizationName.ToLower().Trim()).FirstOrDefault();
+                           // PortfolioMgt.BAL.ProjectPortfolioBAL.ProjectPortfolioBAL_SelectAll().Where(o => o.PortFolio.ToLower().Trim() == OrganizationName.ToLower().Trim()).FirstOrDefault();
 
                             //if (pDetails == null)
                             //{
                                
-                                pDetails = new PortfolioMgt.Entity.ProjectPortfolio();
-
+                               // pDetails = new PortfolioMgt.Entity.ProjectPortfolio();
+                              
                                 pDetails.OrgarnizationGUID = Guid.NewGuid().ToString();
                                 pDetails.PortFolio = CharityName.Trim();
                                 pDetails.Address = Address.Trim();
@@ -377,8 +384,8 @@ namespace DeffinityAppDev.App
                                 pDetails.BaseUrl = WebAddress.Trim();
                                 pDetails.RegistrationNumber = RegistrationNumber.Trim();
                                 pDetails.Owner = value.ID;
-                                pDetails.OrgarnizationStatus = "Pending";
-                                pDetails.OrgarnizationApproval = "Pending Approval";
+                                pDetails.OrgarnizationStatus = "Uploaded";
+                                pDetails.OrgarnizationApproval = "Uploaded";
                                 pDetails.Description = Activity;
                                 pDetails.Justification = CharityType;
                            
@@ -450,12 +457,24 @@ namespace DeffinityAppDev.App
 
                         }
 
+                        if (value != null)
+                        {
+                            LogExceptions.LogException("got user details");
+                            if (pDetails != null)
+                            {
+                                LogExceptions.LogException("got org details");
+                                UpdateActiveCamp(value, "UPLOADED", pDetails.PortFolio);
+
+                                LogExceptions.LogException("Completed");
+                            }
+                        }
+
                         //if (logintoPortal && contactID > 0)
                         //{
                         //    ContractorsAndAssociateInsert(contactID);
                         //}
 
-                       
+
 
                     }
 
@@ -465,6 +484,45 @@ namespace DeffinityAppDev.App
             catch (Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+
+
+        private void UpdateActiveCamp(UserMgt.Entity.Contractor uDetails, string tag,string orgname)
+        {
+            var helper = new ActiveCampaignHelper();
+
+            // Create contact and get contactId
+            // var contactId = helper.CreateContact(txtemail.Text, uDetails.ContractorName, uDetails.LastName);
+            var contactId = helper.EnsureContact(uDetails.EmailAddress.ToLower(), uDetails.ContractorName, uDetails.LastName,orgname);
+            if (contactId.HasValue)
+            {
+
+                // Create a tag and get tagId
+                //var tagId = helper.CreateTag("PREMID");
+                var tagId = helper.EnsureTag(tag);
+                if (tagId.HasValue)
+                {
+                    // Add tag to contact
+                    if (helper.AddTagToContact(contactId.Value, tagId.Value))
+                    {
+                        LogExceptions.LogException("Contact created and tagged successfully!");
+                    }
+                    else
+                    {
+                        LogExceptions.LogException("Failed to add tag to contact.");
+                    }
+                }
+                else
+                {
+                    LogExceptions.LogException("Failed to create tag.");
+                }
+
+
+            }
+            else
+            {
+                LogExceptions.LogException("Failed to create contact.");
             }
         }
         public string[] GetExcelSheetNames(string connectionString)

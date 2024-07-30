@@ -116,30 +116,30 @@
         <elementListCompartment Id="ec66d940-39b7-470e-a58a-193146d8981d" absoluteBounds="8.14, 3.46, 1.9700000000000002, 11.2105712890625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="144b0421-9f38-4821-936f-5195f34d0285" absoluteBounds="0.5, 0.5, 2, 7.9245426432291648">
+    <classShape Id="9f347867-5608-4756-b2f3-a37f638bfcea" absoluteBounds="0.5, 0.5, 2, 8.1168440755208326">
       <DataClassMoniker Name="/UserDataContext/Contractor" />
       <nestedChildShapes>
-        <elementListCompartment Id="fdb08692-aee9-42a2-afeb-f3e69e21a2df" absoluteBounds="0.515, 0.96, 1.9700000000000002, 7.3645426432291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="cc664198-8b2c-4ad1-be05-13eb053b3e7a" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 7.556844075520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.75 : 8.42454264322916); (1.75 : 11.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 8.61684407552083); (1.75 : 11.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/UserDataContext/Contractor/Contractor_ResourceSchedule" />
       <nodes>
-        <classShapeMoniker Id="144b0421-9f38-4821-936f-5195f34d0285" />
+        <classShapeMoniker Id="9f347867-5608-4756-b2f3-a37f638bfcea" />
         <classShapeMoniker Id="686b5eec-c9ac-4270-acce-46e545be416f" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.5 : 2.98640055338542); (5.375 : 2.98640055338542); (5.375 : 11.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/UserDataContext/Contractor/Contractor_UserAssociatedPostcode" />
       <nodes>
-        <classShapeMoniker Id="144b0421-9f38-4821-936f-5195f34d0285" />
+        <classShapeMoniker Id="9f347867-5608-4756-b2f3-a37f638bfcea" />
         <classShapeMoniker Id="7afd271a-86ff-4ca5-a0df-4325a138994a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(0.71875 : 8.42454264322916); (0.71875 : 14.5392976888021); (1.5 : 14.5392976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(0.71875 : 8.61684407552083); (0.71875 : 14.5392976888021); (1.5 : 14.5392976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/UserDataContext/Contractor/Contractor_UserAssociateToType" />
       <nodes>
-        <classShapeMoniker Id="144b0421-9f38-4821-936f-5195f34d0285" />
+        <classShapeMoniker Id="9f347867-5608-4756-b2f3-a37f638bfcea" />
         <classShapeMoniker Id="939145eb-7e22-40d7-ae9b-e0d42a51923c" />
       </nodes>
     </associationConnector>

@@ -315,15 +315,7 @@
 								</a>
 								
 							</div>
-									<div class="menu-item py-2" id="Div5" runat="server">
-					<a href="~/App/chat.aspx" id="a3" runat="server" class="menu-link " title="Text To Donate" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-						<span class="menu-icon">
-							<i class="far fa-comment-dots fs-2"></i>
-						</span>
-						<span class="menu-title">Messaging</span>
-					</a>
-					
-				</div>
+								
 							<div data-kt-menu-trigger="click" data-kt-menu-placement="right-start" data-kt-menu-flip="bottom" class="menu-item py-2" id="link_activites" runat="server">
 								<span class="menu-link " title="" data-bs-toggle="tooltip" 
 									data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right" data-bs-original-title="Events Management">

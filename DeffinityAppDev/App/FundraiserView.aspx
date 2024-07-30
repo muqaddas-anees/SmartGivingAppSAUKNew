@@ -25,6 +25,14 @@
         .header_right{
             text-align:right;
         }
+        .d-flex.bg-light-primary.rounded.border-primary.border.border-dashed.mb-9.p-6 {
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.d-flex.bg-light-primary.rounded.border-primary.border.border-dashed.mb-9.p-6:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
     </style>
        <div class="row p-5">
             <div class="col-lg-8">

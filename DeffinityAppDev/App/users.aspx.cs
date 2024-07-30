@@ -54,7 +54,7 @@ namespace Users
                              Name = p.ContractorName ?? "No Name",
                              JobTitle = p.Type ?? "No Job Title",
 
-
+                             Email=p.EmailAddress,
                              Company = p.Company ?? "No Company",
                              Tasks = GetPendingTasksCount(p.ID), // Fetch pending tasks count here
                              SID = p.SID.GetValueOrDefault(0) // Default to 0 if null
@@ -73,7 +73,7 @@ namespace Users
                 using (PortfolioMgt.DAL.PortfolioDataContext db = new PortfolioDataContext())
                 {
                     payments = db.TithingPaymentTrackers
-                                .Where(p => p.LoggedByID == user.ID && p.IsPaid == true)
+                                .Where(p => p.DonerEmail == user.Email && p.IsPaid == true)
                                 .ToList();
                     Activity = db.ActivityBookings
                              .Where(p => p.BookedBy == user.ID)

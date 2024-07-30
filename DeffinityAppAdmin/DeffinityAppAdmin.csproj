@@ -281,6 +281,13 @@
     <Compile Include="App\Activities.aspx.designer.cs">
       <DependentUpon>Activities.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App\Activity.aspx.cs">
+      <DependentUpon>Activity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Activity.aspx.designer.cs">
+      <DependentUpon>Activity.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\AddEducationalVideo.aspx.cs">
       <DependentUpon>AddEducationalVideo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -371,6 +378,13 @@
     </Compile>
     <Compile Include="App\chat.aspx.designer.cs">
       <DependentUpon>chat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\VideosConfig.aspx.cs">
+      <DependentUpon>VideosConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\VideosConfig.aspx.designer.cs">
+      <DependentUpon>VideosConfig.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChatHub.cs" />
     <Compile Include="App\Contacts.aspx.cs">
@@ -703,6 +717,7 @@
     <Compile Include="App\WebService\DataServices.asmx.cs">
       <DependentUpon>DataServices.asmx</DependentUpon>
     </Compile>
+    <Content Include="App\Activity.aspx" />
     <Content Include="App\chat.aspx" />
     <Content Include="App\EmailSettings.aspx" />
     <Content Include="App\EmailTemplates\default.htm" />
@@ -1214,6 +1229,7 @@
     <Content Include="App\TithingProcess.aspx" />
     <Content Include="App\TransactionReport.aspx" />
     <Content Include="App\users.aspx" />
+    <Content Include="App\VideosConfig.aspx" />
     <Content Include="App\WebForm1.aspx" />
     <Content Include="App\WebService\DataServices.asmx" />
     <Content Include="Areas\HelpPage\HelpPage.css" />

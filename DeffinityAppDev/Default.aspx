@@ -54,7 +54,7 @@
             <!--begin::Content-->
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
                 <!--begin::Logo-->
-                <a href="../../demo4/dist/index.html" class="mb-12">
+                <a  class="mb-12">
                     <img alt="Logo" src="../assets/media/logos/logo-1.png?d=112" class="h-110px" style="width:200px" />
                 </a>
                 <!--end::Logo-->
@@ -171,7 +171,6 @@
     </div>
     <!--end::Main-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
     <script src='<%:ResolveClientUrl("~/assets/plugins/global/plugins.bundle.js")%>'></script>
     <script src='<%:ResolveClientUrl("~/assets/js/scripts.bundle.js")%>'></script>
@@ -204,7 +203,15 @@
         }
         document.getElementById('<%= txtPwd.ClientID %>').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
-                document.getElementById('<%= btnsubmit.ClientID %>').click();
+                console.log(document.getElementById('<%= btnsubmit.ClientID %>'))
+                event.preventDefault(); // Prevent form from being submitted normally
+                __doPostBack('<%= btnsubmit.UniqueID %>', '');
+             }
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent the default action of the 'Enter' key
+                __doPostBack('<%= btnsubmit.UniqueID %>', ''); // Trigger the postback
              }
          });
     </script>

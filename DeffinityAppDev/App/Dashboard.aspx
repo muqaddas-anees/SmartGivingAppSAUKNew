@@ -19,7 +19,7 @@
 												<rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black"></rect>
 												<rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"></rect>
 											</svg>
-										</span>
+										</span><a href="chartdata.asmx">chartdata.asmx</a>
 										
 										<div class="d-flex flex-stack flex-grow-1">
 											
@@ -42,7 +42,7 @@
 										<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder flex-nowrap">
 											<!--begin::Nav item-->
 											<li class="nav-item">
-												<a class="nav-link text-active-primary me-6" href="../App/Dashboard.aspx?type=1">Introduction</a>
+												<a class="nav-link text-active-primary me-6" href="../App/Dashboard.aspx?type=1&back=1">Introduction</a>
 											</li>
 										
 											<li class="nav-item">

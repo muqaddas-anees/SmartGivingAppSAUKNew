@@ -123,24 +123,6 @@ namespace DeffinityAppDev.App.controls
         protected global::System.Web.UI.HtmlControls.HtmlAnchor a1;
 
         /// <summary>
-        /// Div5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div5;
-
-        /// <summary>
-        /// a3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor a3;
-
-        /// <summary>
         /// link_activites control.
         /// </summary>
         /// <remarks>

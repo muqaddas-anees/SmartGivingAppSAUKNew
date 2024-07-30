@@ -1,13 +1,11 @@
-﻿using Stripe;
+﻿using PortfolioMgt.DAL;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UserMgt.DAL;
 
 namespace DeffinityAppDev.App.controls
 {
@@ -17,146 +15,160 @@ namespace DeffinityAppDev.App.controls
         {
             if (!IsPostBack)
             {
-                //string videoOrderStr = Page.RouteData.Values["videoorder"] as string;
-                //if (videoOrderStr == null)
-                //    videoOrderStr = "1";
-
-                //if (!string.IsNullOrEmpty(videoOrderStr) && int.TryParse(videoOrderStr, out int videoOrder))
-                //{
-                //    //LoadVideoDetails(videoOrder);
-                //}
-                //else
-                //{
-                //    Response.Write("Invalid video order: " + videoOrderStr);
-                //}
-
-                GenerateVideoThumbnails();
+                LoadVideos();
+           
             }
         }
-
-        private void GenerateVideoThumbnails()
+        private string CreateVideoHtml(dynamic video)
         {
-            StringBuilder html = new StringBuilder();
-            var weburl = Deffinity.systemdefaults.GetWebUrl();
-            using (var context = new PortfolioMgt.DAL.PortfolioDataContext())
+            var thumbnailUrl = !string.IsNullOrEmpty(video.ThumbnailUrl)
+                ? video.ThumbnailUrl
+                : $"https://img.youtube.com/vi/{ExtractVideoId(video.VideoUrl)}/hqdefault.jpg";
+
+            return $@"
+    <div class='column'>
+        <div class='video-item'>
+            <a href='{video.VideoUrl}' class='video-link' data-video-url='{video.VideoUrl}'>
+                <img src='{thumbnailUrl}' alt='Video Thumbnail' class='video-thumbnail' />
+                <div class='play-button'></div>
+            </a>
+            <h1 class='video-description'>{video.VideoDescription}</h1>
+        </div>
+    </div>";
+        }
+
+
+        private bool WantsVideos()
+        {
+
+            using (var context = new UserDataContext())
             {
-                var vlist = context.Videos.ToList().OrderBy(o => o.VideoOrder).ToList();
-
-             
-
-                foreach (var v in vlist)
+                var user = context.Contractors.FirstOrDefault(o => o.ID == sessionKeys.UID);
+                if (user != null)
                 {
-                    var vid = ExtractVideoId(v.URL);
-                    
-                    //string thumbnailUrl = $"https://img.youtube.com/vi/{vid}/0.jpg";
-                    string thumbnailUrl = $"{weburl}/imagehandler.ashx?s=video&id={v.VideoOrder}";
-                    string youtubeLink = $"https://www.youtube.com/watch?v={vid}";
+                    return user.WantsTutorial ?? true; // Return true if WantsTutorial is null
+                }
+            }
+            return true; // Default to true if the user is not found
+        }
+        private string GetThumbnailUrl(int? videoOrder)
+        {
+            using (var context = new PortfolioDataContext())
+            {
+                var fileData = context.FileDatas
+                    .FirstOrDefault(f => f.FileID == videoOrder.ToString() && f.Section == "video");
+                if (fileData != null)
+                {
+                    return "/imagehandler.ashx?id="+videoOrder+"&s=video"; // Adjust based on your actual data model
+                }
+            }
+            return null; // No custom thumbnail found
+        }
 
-                    html.AppendFormat(@"<div class='col-3' data-fslightbox='gallery'>
-                                    <a href='{0}' data-type='youtube' data-title='{2}' class='video-thumbnail'>
-                                        <img src='{1}' class='img-fluid mx-3' alt='{2}'>
-                                        <span class='play-icon bi bi-play-fill'></span>
-                                    </a>
-                                </div>", youtubeLink, thumbnailUrl, v.Title);
+        private void LoadVideos()
+        {
+            if (WantsVideos())
+            {
+                using (var VideosContext = new PortfolioDataContext())
+                {
+                    var videos = VideosContext.Videos
+                        .OrderBy(v => v.VideoOrder)
+                        .Select(v => new
+                        {
+                            VideoUrl = TransformToEmbedUrl(v.URL),
+                            VideoDescription = v.Title,
+                            ThumbnailUrl = GetThumbnailUrl(v.VideoOrder) // Fetch thumbnail URL
+                        })
+                        .ToList();
+
+                    var videoContainerHtml = new System.Text.StringBuilder();
+
+                    for (int i = 0; i < videos.Count; i += 2)
+                    {
+                        videoContainerHtml.Append("<div class='video-div'>");
+
+                        videoContainerHtml.Append(CreateVideoHtml(videos[i]));
+                        if (i + 1 < videos.Count)
+                        {
+                            videoContainerHtml.Append(CreateVideoHtml(videos[i + 1]));
+                        }
+
+                        videoContainerHtml.Append("</div>");
+                    }
+
+                    VideoContainer.Controls.Add(new Literal { Text = videoContainerHtml.ToString() });
                 }
 
-                videoList.InnerHtml = html.ToString();
+                chkHideTab.Checked = false;
+            }
+            else
+            {
+                chkHideTab.Checked = true;
 
-
-        //        var videos = new[]
-        //    {
-        //    new { Id = "dQw4w9WgXcQ", Title = "Rick Astley - Never Gonna Give You Up" },
-        //    new { Id = "kJQP7kiw5Fk", Title = "Luis Fonsi - Despacito ft. Daddy Yankee" },
-        //    // Add more videos here
-        //    new { Id = "VIDEO_ID3", Title = "Video Title 3" },
-        //    new { Id = "VIDEO_ID4", Title = "Video Title 4" },
-        //    new { Id = "VIDEO_ID5", Title = "Video Title 5" },
-        //    new { Id = "VIDEO_ID6", Title = "Video Title 6" },
-        //    new { Id = "VIDEO_ID7", Title = "Video Title 7" },
-        //    new { Id = "VIDEO_ID8", Title = "Video Title 8" },
-        //    new { Id = "VIDEO_ID9", Title = "Video Title 9" },
-        //    new { Id = "VIDEO_ID10", Title = "Video Title 10" }
-        //};
-
-               
-               
+                if (!Request.Url.Query.Contains("type="))
+                {
+                    string currentUrl = Request.Url.AbsoluteUri;
+                    Response.Redirect(string.Format("{0}?type=2", currentUrl));
+                }
             }
         }
 
+
+
+        // Method to transform YouTube URL to embed format
+        private string TransformToEmbedUrl(string url)
+        {
+            var videoId = ExtractVideoId(url);
+            return $"https://www.youtube.com/embed/{videoId}";
+        }
+
+        // Method to extract the video ID from a YouTube URL
         public static string ExtractVideoId(string url)
         {
             var regex = new Regex(@"(?:youtube\.com\/(?:[^\/\n\s]+\/\s*[^\/\n\s]+\/|(?:v|e(?:mbed)?)\/|\S*?watch(?:\.php)?\?v=|watch\?.+&v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})");
             Match match = regex.Match(url);
-
             return match.Success ? match.Groups[1].Value : null;
         }
-        //private void LoadVideoDetails(int videoOrder)
-        //{
-        //    using (var context = new PortfolioMgt.DAL.PortfolioDataContext())
-        //    {
-        //        var video = context.Videos.FirstOrDefault(v => v.VideoOrder == videoOrder);
-        //        if (video != null)
-        //        {
-        //            videoTitle.InnerText = video.Title;
-        //            videoSource.Attributes["src"] = video.URL;
 
-        //            // Pass video URL to load steps
-        //            LoadSteps(video.URL);
-        //        }
-        //        else
-        //        {
-        //            Response.Write("Video not found.");
-        //        }
-
-        //        LoadRelatedVideos(context, videoOrder);
-        //    }
-        //}
-
-        private void LoadRelatedVideos(PortfolioMgt.DAL.PortfolioDataContext context, int currentOrder)
+        private void CheckUserPreference()
         {
-            var mainurl = Deffinity.systemdefaults.GetWebUrl();
-            var section = ImageManager.file_section_video;
+            // Check user preference from database or session
+            bool hideTab = GetUserPreference();
 
-            var prevVideo = context.Videos
-                .Where(v => v.VideoOrder < currentOrder)
-                .OrderByDescending(v => v.VideoOrder)
-                .FirstOrDefault();
-
-            var nextVideo = context.Videos
-                .Where(v => v.VideoOrder > currentOrder)
-                .OrderBy(v => v.VideoOrder)
-                .FirstOrDefault();
-
-            if (prevVideo != null)
+            if (hideTab)
             {
-                string prevVideoHtml = $"<a href='/WatchVideo/order/{prevVideo.VideoOrder}'><img src='{prevVideo.Id}' alt='Previous Video'><div>{prevVideo.Title}</div></a>";
-              //  PrevVideo.InnerHtml = prevVideoHtml;
-            }
-
-            if (nextVideo != null)
-            {
-                string nextVideoHtml = $"<a href='/WatchVideo/order/{nextVideo.VideoOrder}'><img src='{nextVideo.Id}' alt='Next Video'><div>{nextVideo.Title}</div></a>";
-               // NextVideo.InnerHtml = nextVideoHtml;
+                Response.Redirect("Dashboard.aspx");
             }
         }
 
-        protected void btnActivate_Click(object sender, EventArgs e)
+        protected void chkHideTab_CheckedChanged(object sender, EventArgs e)
         {
+            bool hideTab = !chkHideTab.Checked;
 
+            using (var context = new UserDataContext())
+            {
+                var user = context.Contractors.FirstOrDefault(o => o.ID == sessionKeys.UID);
+                if (user != null)
+                {
+                    user.WantsTutorial = hideTab;
+                    context.SubmitChanges();
+                }
+            }
+            LoadVideos();
         }
 
-        //private void LoadSteps(string videoUrl)
-        //{
-        //    using (var context = new PortfolioMgt.DAL.PortfolioDataContext())
-        //    {
-        //        var steps = context.Steps
-        //            .Where(s => s.videourl == videoUrl)
-        //            .OrderBy(s => s.step_number)
-        //            .ToList();
 
-        //        rptSteps.DataSource = steps;
-        //        rptSteps.DataBind();
-        //    }
-        //}
+        private bool GetUserPreference()
+        {
+            // Retrieve user preference from database or session
+            // For demonstration, always return false
+            return false;
+        }
+
+        private void SaveUserPreference(bool hideTab)
+        {
+            // Save user preference to database or session
+            // Implementation depends on your storage method (e.g., database, session state)
+        }
     }
 }

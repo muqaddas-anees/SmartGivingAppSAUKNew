@@ -88,7 +88,7 @@ namespace UserMgt.DAL
     #endregion
 		
 		public UserDataContext() : 
-				base(global::DeffinityManager.Properties.Settings.Default.DBstring, mappingSource)
+				base(global::DeffinityManager.Properties.Settings.Default.PlegitDBConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -4935,6 +4935,8 @@ namespace UserMgt.Entity
 		
 		private string _pkey;
 		
+		private System.Nullable<bool> _WantsTutorial;
+		
 		private EntitySet<ResourceSchedule> _ResourceSchedules;
 		
 		private EntitySet<UserAssociatedPostcode> _UserAssociatedPostcodes;
@@ -5019,6 +5021,8 @@ namespace UserMgt.Entity
     partial void OnLastNameChanged();
     partial void OnpkeyChanging(string value);
     partial void OnpkeyChanged();
+    partial void OnWantsTutorialChanging(System.Nullable<bool> value);
+    partial void OnWantsTutorialChanged();
     #endregion
 		
 		public Contractor()
@@ -5765,6 +5769,26 @@ namespace UserMgt.Entity
 					this._pkey = value;
 					this.SendPropertyChanged("pkey");
 					this.OnpkeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WantsTutorial", DbType="Bit")]
+		public System.Nullable<bool> WantsTutorial
+		{
+			get
+			{
+				return this._WantsTutorial;
+			}
+			set
+			{
+				if ((this._WantsTutorial != value))
+				{
+					this.OnWantsTutorialChanging(value);
+					this.SendPropertyChanging();
+					this._WantsTutorial = value;
+					this.SendPropertyChanged("WantsTutorial");
+					this.OnWantsTutorialChanged();
 				}
 			}
 		}

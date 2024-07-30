@@ -75,7 +75,7 @@ namespace DeffinityAppDev
                 }
 
                 // Call the TithingCardConnectPay method
-                var retval = QuickPayBAL.TithingCardConnectPay(name, sessionKeys.PortfolioID, tithing.ID, CardNumber, month, year, CVV, cardtype, userid, total, "txtNameOnCard.Text.Trim()" + " " + "txtLastname.Text.Trim()", "txtEmail.Text.Trim()", "txtPhone.Text.Trim()", transactionfee, platformfee, recurringtype, startdate, enddate, dayStart, notes, chkAnonymously, RecurringPayID, moredetails, unid, QueryStringValues.UNID, code, IsCoverFee, amountWithoutCharges, giftaid);
+                var retval = QuickPayBAL.TithingCardConnectPay(name, sessionKeys.PortfolioID, tithing.ID, CardNumber, month, year, CVV, cardtype, userid, total, "Name" + " " + "LastName", "Email", "Phone", transactionfee, platformfee, recurringtype, startdate, enddate, dayStart, notes, chkAnonymously, RecurringPayID, moredetails, unid, QueryStringValues.UNID, code, IsCoverFee, amountWithoutCharges, giftaid);
 
                 // Redirect to PayProcess page
                 Response.Redirect("~/PayProcess.aspx?frm=fund&refid=" + retval + "&type=" + d.PayType, false);

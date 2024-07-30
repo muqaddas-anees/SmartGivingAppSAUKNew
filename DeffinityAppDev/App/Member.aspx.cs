@@ -29,11 +29,13 @@ using Table = System.Web.UI.WebControls.Table;
 using TableCell = System.Web.UI.WebControls.TableCell;
 using TableRow = System.Web.UI.WebControls.TableRow;
 using UserMgt.DAL;
+using System.Collections;
 
 namespace DeffinityAppDev.App
 {
     public partial class Member : System.Web.UI.Page
     {
+        int CID;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -102,6 +104,7 @@ namespace DeffinityAppDev.App
                         pnlCommunication.Visible = false;
 
                         var uid = Convert.ToInt32(Request.QueryString["mid"].ToString());
+                        CID = uid;
                         NewMethod(uid);
                         Gridfilesbind(uid.ToString());
                         BindSkills();
@@ -1021,19 +1024,78 @@ namespace DeffinityAppDev.App
                             PortfolioDataContext context = new PortfolioDataContext();
 
                             // Check if the role already exists
-                         
 
-                      
-                                // Add new role
-                                var newRole = new tblRole
+
+
+                            // Add new role
+                            if (chkVolunteers.Checked)
+                            {
+
+                                bool roleExists = context.tblRoles.Any(r => r.ContractorID == uid && r.RoleType == "Volunteer");
+                                if (!roleExists)
                                 {
-                                    ContractorID = uid,
-                                    RoleType = CheckBoxList1.SelectedValue // Assuming "Donor" is the role name for QueryStringValues.Type == "2"
-                                                             // Add other properties as needed
-                                };
-                                context.tblRoles.InsertOnSubmit(newRole);
-                                context.SubmitChanges();
+                                    // Add new role
+                                    var newRole = new tblRole
+                                    {
+                                        ContractorID = uid,
+                                        RoleType = "Volunteer"
+                                        // Add other properties as needed
+                                    };
+                                    context.tblRoles.InsertOnSubmit(newRole);
+
+                                }
                             }
+
+                            if (chkLeads.Checked)
+                            {
+                                bool roleExists = context.tblRoles.Any(r => r.ContractorID == uid && r.RoleType == "Lead");
+                                if (!roleExists)
+                                {
+                                    // Add new role
+                                    var newRole = new tblRole
+                                    {
+                                        ContractorID = uid,
+                                        RoleType = "Lead"
+                                        // Add other properties as needed
+                                    };
+                                    context.tblRoles.InsertOnSubmit(newRole);
+
+                                }
+                            }
+
+                            if (chkMembers.Checked)
+                            {
+                                bool roleExists = context.tblRoles.Any(r => r.ContractorID == uid && r.RoleType == "Member");
+                                if (!roleExists)
+                                {
+                                    // Add new role
+                                    var newRole = new tblRole
+                                    {
+                                        ContractorID = uid,
+                                        RoleType = "Member"
+                                        // Add other properties as needed
+                                    };
+                                    context.tblRoles.InsertOnSubmit(newRole);
+
+                                }
+                            }
+                            if (chkDonors.Checked)
+                            {
+                                bool roleExists = context.tblRoles.Any(r => r.ContractorID == uid && r.RoleType == "Member");
+                                if (!roleExists)
+                                {
+                                    // Add new role
+                                    var newRole = new tblRole
+                                    {
+                                        ContractorID = uid,
+                                        RoleType = "Donor"
+                                        // Add other properties as needed
+                                    };
+                                    context.tblRoles.InsertOnSubmit(newRole);
+
+                                }
+                            }
+                        }
                         
                         catch (Exception ex)
                         {
@@ -1156,8 +1218,7 @@ namespace DeffinityAppDev.App
 
             return userid;
         }
-
-
+       
         protected void btnSaveChanges_Click(object sender, EventArgs e)
         {
             try

@@ -1195,7 +1195,7 @@ namespace DeffinityAppDev.App
 
                 IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
 
-                var fList = fRep.GetAll().Where(o => o.Section == ImageManager.file_section_donor_doc).Where(o => o.FileID == SID.ToString()).ToList();
+                var fList = fRep.GetAll().Where(o => o.Section == ImageManager.file_section_donor_doc).Where(o => o.FileID.StartsWith( SID.ToString())).ToList();
 
                 var rList = (from r in fList
                              select new

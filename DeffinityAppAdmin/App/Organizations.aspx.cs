@@ -93,7 +93,7 @@ namespace DeffinityAppDev.App
             {
 
 
-                var iList = PortfolioMgt.BAL.ProjectPortfolioBAL.v_ProjectPortfolioBAL_SelectAll().Where(o=>o.OrgarnizationStatus != "Pending").ToList();
+                var iList = PortfolioMgt.BAL.ProjectPortfolioBAL.v_ProjectPortfolioBAL_SelectAll().Where(o=>o.OrgarnizationStatus != "Pending").Where(o => o.OrgarnizationStatus != "Uploaded").ToList();
                 var tFee = PortfolioMgt.BAL.PortfolioPaymentSettingsBAL.PortfolioPaymentSettingsBAL_SelectAll();
                // var tList = PortfolioMgt.BAL.PortfolioTypeBAL.PortfolioTypeBAL_Select();
                // var rlist = PortfolioMgt.BAL.DenominationDetailsBAL.DenominationDetailsBAL_Select().ToList();

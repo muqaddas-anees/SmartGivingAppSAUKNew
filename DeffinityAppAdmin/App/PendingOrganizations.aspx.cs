@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using DeffinityManager.BLL;
 using DocumentFormat.OpenXml.Drawing.Spreadsheet;
 using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
@@ -37,7 +38,7 @@ namespace DeffinityAppDev.App
                 LogExceptions.WriteExceptionLog(ex);
             }
         }
-
+      
         private void BindCountry()
         {
             try
@@ -92,8 +93,8 @@ namespace DeffinityAppDev.App
             try
             {
 
-
-                var iList = PortfolioMgt.BAL.ProjectPortfolioBAL.v_ProjectPortfolioBAL_SelectAll().Where(o=>o.OrgarnizationStatus == "Pending").ToList();
+                string[] statusids = { "Pending", "Uploaded" };
+                var iList = PortfolioMgt.BAL.ProjectPortfolioBAL.v_ProjectPortfolioBAL_SelectAll().Where(o=> statusids.Contains( o.OrgarnizationStatus)).ToList();
                 var tFee = PortfolioMgt.BAL.PortfolioPaymentSettingsBAL.PortfolioPaymentSettingsBAL_SelectAll();
                 // var tList = PortfolioMgt.BAL.PortfolioTypeBAL.PortfolioTypeBAL_Select();
                 // var rlist = PortfolioMgt.BAL.DenominationDetailsBAL.DenominationDetailsBAL_Select().ToList();

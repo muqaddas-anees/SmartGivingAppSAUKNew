@@ -12,7 +12,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
- 
+
 
 /// <summary>
 /// Summary description for ImageHandler
@@ -20,13 +20,13 @@ using System.Linq;
 public class ImageManager
 {
     public ImageManager()
-	{
+    {
         //
-		// TODO: Add constructor logic here
-		//
-	}
+        // TODO: Add constructor logic here
+        //
+    }
 
-    
+
     public static void SaveImage_setfullpath(string s_filename, byte[] a_arrRawData, string setFullPath)
     {
 
@@ -56,7 +56,7 @@ public class ImageManager
         string sPath = sFolderPath + "\\" + a_gName + ".png";
         return sPath;
     }
-    public static void Save_FlsCustomerFiles(byte[] a_arrRawData, string filename,string fdpath)
+    public static void Save_FlsCustomerFiles(byte[] a_arrRawData, string filename, string fdpath)
     {
         //create if directiory is not exists
         bool folderExists = Directory.Exists(fdpath); ;
@@ -64,11 +64,11 @@ public class ImageManager
             Directory.CreateDirectory(fdpath);
         byte[] arrMediumSmallerThumb = null;
         //generate the thumbs for the raw image
-        var filepath = fdpath  + filename + ".png";
+        var filepath = fdpath + filename + ".png";
         //orignal size
         string sOriginalDataPath = GetImagePath(ImageType.OriginalData, filepath);
         WriteToFile(sOriginalDataPath, a_arrRawData);
-        var tfilepath = fdpath  + filename + "_thumb.png";
+        var tfilepath = fdpath + filename + "_thumb.png";
         arrMediumSmallerThumb = GenerateThumb(a_arrRawData, ThumbnailSize.Medium);
         string sThumbMediumSmallerPath = GetImagePath(ImageType.Instance, tfilepath);
         WriteToFile(sThumbMediumSmallerPath, arrMediumSmallerThumb);
@@ -110,7 +110,7 @@ public class ImageManager
         WriteToFile(sThumbMediumSmallerPath, arrMediumSmallerThumb);
 
     }
-    public static void SaveProtfolioImage_setpath( byte[] a_arrRawData, string filename)
+    public static void SaveProtfolioImage_setpath(byte[] a_arrRawData, string filename)
     {
         //bool folderExists = Directory.Exists(HttpContext.Current.Server.MapPath("~/WF/UploadData/Customers"));
         //if (!folderExists)
@@ -159,11 +159,11 @@ public class ImageManager
 
     public static void SaveLadndingPageTopImage_setpath(byte[] a_arrRawData, string filename)
     {
-       
+
         byte[] arrMediumSmallerThumb = null;
-       
+
         arrMediumSmallerThumb = GenerateThumb(a_arrRawData, ThumbnailSize.Poratal);
-      
+
         FileDBSave(arrMediumSmallerThumb, null, filename, file_section_landing_top, ".png", filename);
 
     }
@@ -180,7 +180,7 @@ public class ImageManager
         //string sOriginalDataPath = GetImagePath( ImageType.OriginalData, filepath);
         //WriteToFile(sOriginalDataPath, a_arrRawData);
         //var tfilepath = HttpContext.Current.Server.MapPath("~/WF/UploadData/Customers") + "\\" + "portfolio_" + filename + ".png";
-        arrMediumSmallerThumb = GenerateThumb(a_arrRawData, ThumbnailSize.Poratal);
+        arrMediumSmallerThumb = GenerateThumb(a_arrRawData, ThumbnailSize.FitLargeScreen);
         //string sThumbMediumSmallerPath = GetImagePath(ImageType.Instance, tfilepath);
         //WriteToFile(sThumbMediumSmallerPath, arrMediumSmallerThumb);
 
@@ -218,11 +218,10 @@ public class ImageManager
 
     public static string file_section_email_attach = "email_attach";
 
-
     public static string file_section_video = "video";
 
 
-    public static bool FileIsExists(string fileid,string section)
+    public static bool FileIsExists(string fileid, string section)
     {
         //bool retval = false;
         IPortfolioRepository<PortfolioMgt.Entity.FileData> frep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
@@ -234,7 +233,7 @@ public class ImageManager
         else
             return false;
     }
-    public static string FileDBSave(int Userid, DateTime date, byte[] filebytearray, byte[] Smallfilebytearray, string fileid, string section, string fileExtension, string filename = "", string contenttype = "", string folder = "", bool allowMutifile = false)
+    public static string FileDBSave(byte[] filebytearray, byte[] Smallfilebytearray, string fileid, string section, string fileExtension, string filename = "", string contenttype = "", string folder = "", bool allowMutifile = false)
     {
         string retval = "";
         try
@@ -250,8 +249,6 @@ public class ImageManager
             {
                 f = new PortfolioMgt.Entity.FileData();
                 f.FolderID = folder;
-                f.UserID = Userid;
-                f.UploadedDate = date;
                 f.ContentLength = filebytearray.Length;
                 f.FileData1 = filebytearray;
                 f.FileType = contenttype;
@@ -261,64 +258,6 @@ public class ImageManager
                     f.FileName = filename;
 
                 if (Smallfilebytearray != null)
-                    f.FileData2 = Smallfilebytearray;
-                f.Section = section;
-                f.FileID = fileid;
-                frep.Add(f);
-
-            }
-            else
-            {
-                f.FolderID = folder;
-                f.ContentLength = filebytearray.Length;
-                f.FileData1 = filebytearray;
-                f.UserID = Userid;
-                f.UploadedDate = date;
-                f.FileType = contenttype;
-                if (filename.Length == 0)
-                    f.FileName = fileid;
-                else
-                    f.FileName = filename;
-                if (Smallfilebytearray != null)
-                    f.FileData2 = Smallfilebytearray;
-                // f.FileID = fileid;//
-                frep.Edit(f);
-            }
-
-        }
-        catch (Exception ex)
-        {
-            LogExceptions.WriteExceptionLog(ex);
-        }
-
-        return retval;
-    }
-
-    public static string FileDBSave(byte[] filebytearray, byte[] Smallfilebytearray, string fileid,string section,string fileExtension,string filename="",string contenttype="",string folder="",bool allowMutifile=false)
-    {
-        string retval = "";
-        try
-        {
-            IPortfolioRepository<PortfolioMgt.Entity.FileData> frep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
-
-            var f = frep.GetAll().Where(o => o.FileID == fileid && o.Section == section).FirstOrDefault();
-            if(allowMutifile == true)
-            {
-                f = null;
-            }
-            if(f == null)
-            {
-                f = new PortfolioMgt.Entity.FileData();
-                f.FolderID = folder;
-                f.ContentLength = filebytearray.Length;
-                f.FileData1 = filebytearray;
-                f.FileType = contenttype;
-                if (filename.Length == 0)
-                    f.FileName = fileid;
-                else
-                    f.FileName = filename;
-
-                if(Smallfilebytearray != null)
                     f.FileData2 = Smallfilebytearray;
                 f.Section = section;
                 f.FileID = fileid;
@@ -342,7 +281,7 @@ public class ImageManager
             }
 
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             LogExceptions.WriteExceptionLog(ex);
         }
@@ -388,7 +327,7 @@ public class ImageManager
     }
 
 
-    public static void SavePartnerImage_setpath(byte[] a_arrRawData, string filename,string path)
+    public static void SavePartnerImage_setpath(byte[] a_arrRawData, string filename, string path)
     {
         bool folderExists = Directory.Exists(path);
         if (!folderExists)
@@ -421,7 +360,7 @@ public class ImageManager
         arrMediumSmallerThumb = GenerateThumb(a_arrRawData, ThumbnailSize.Poratal);
         string sThumbMediumSmallerPath = GetImagePath(ImageType.Instance, tfilepath);
         //save to database
-        PortfolioMgt.BAL.ProjectPortfolioBAL.Portfolio_SaveImageData(Convert.ToInt32( filename), arrMediumSmallerThumb);
+        PortfolioMgt.BAL.ProjectPortfolioBAL.Portfolio_SaveImageData(Convert.ToInt32(filename), arrMediumSmallerThumb);
         //save the file to 
         WriteToFile(sThumbMediumSmallerPath, arrMediumSmallerThumb);
         //generate the thumbs for the raw image
@@ -429,9 +368,9 @@ public class ImageManager
         //orignal size
         string sOriginalDataPath = GetImagePath(ImageType.OriginalData, filepath);
         WriteToFile(sOriginalDataPath, a_arrRawData);
-       
-       
-        
+
+
+
     }
 
     public static void SaveEventImage_setpath(byte[] a_arrRawData, string filename, string path, string foldername)
@@ -469,7 +408,7 @@ public class ImageManager
 
     public static void SaveProductImage_setpath(byte[] a_arrRawData, string filename, string path)
     {
-       
+
 
 
         byte[] arrMediumSmallerThumb_big = null;
@@ -504,7 +443,7 @@ public class ImageManager
         //    Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/WF/UploadData/Tithing"));
         //if (!folderExists)
         //    Directory.CreateDirectory(path);
-       // path = HttpContext.Current.Server.MapPath("~/WF/UploadData/Tithing");
+        // path = HttpContext.Current.Server.MapPath("~/WF/UploadData/Tithing");
         byte[] arrMediumSmallerThumb_big = null;
         byte[] arrMediumSmallerThumb = null;
         //var tfilepath = path + "\\" + "" + filename + ".png";
@@ -576,7 +515,7 @@ public class ImageManager
         //string sOriginalDataPath = GetImagePath(ImageType.OriginalData, filepath);
         //WriteToFile(sOriginalDataPath, a_arrRawData);
         //var tfilepath = path + "\\" + "tithing_" + filename + "_logo.png";
-       arrMediumSmallerThumb = GenerateThumb(a_arrRawData, ThumbnailSize.Poratal);
+        arrMediumSmallerThumb = GenerateThumb(a_arrRawData, ThumbnailSize.Poratal);
         //string sThumbMediumSmallerPath = GetImagePath(ImageType.Instance, tfilepath);
         //WriteToFile(sThumbMediumSmallerPath, arrMediumSmallerThumb);
         //SaveTithingImage_setpath_copyLocation(a_arrRawData, filename, path);
@@ -648,14 +587,83 @@ public class ImageManager
         //var filepath = path + "\\" + "user_org_" + filename + ".png";
         //orignal size
         //string sOriginalDataPath = GetImagePath(ImageType.OriginalData, filepath);
-      //  WriteToFile(sOriginalDataPath, a_arrRawData);
-       // var tfilepath = path + "\\" + "user_" + filename + ".png";
+        //  WriteToFile(sOriginalDataPath, a_arrRawData);
+        // var tfilepath = path + "\\" + "user_" + filename + ".png";
         arrMediumSmallerThumb = GenerateThumb(a_arrRawData, ThumbnailSize.Poratal);
         //string sThumbMediumSmallerPath = GetImagePath(ImageType.Instance, tfilepath);
         //WriteToFile(sThumbMediumSmallerPath, arrMediumSmallerThumb);
 
-       // SaveUserImage_setpath_copylocation(a_arrRawData,  filename,  path);
-        FileDBSave(arrMediumSmallerThumb,null, filename, file_section_user, ".png", filename);
+        // SaveUserImage_setpath_copylocation(a_arrRawData,  filename,  path);
+        FileDBSave(arrMediumSmallerThumb, null, filename, file_section_user, ".png", filename);
+    }
+    public static string FileDBSave(int Userid, DateTime date, byte[] filebytearray, byte[] Smallfilebytearray, string fileid, string section, string fileExtension, string filename = "", string contenttype = "", string folder = "", bool allowMutifile = false)
+    {
+        string retval = "";
+        try
+        {
+            IPortfolioRepository<PortfolioMgt.Entity.FileData> frep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
+
+            var f = frep.GetAll().Where(o => o.FileID == fileid && o.Section == section).FirstOrDefault();
+            if (allowMutifile == true)
+            {
+                f = null;
+            }
+            if (f == null)
+            {
+                f = new PortfolioMgt.Entity.FileData();
+                f.FolderID = folder;
+                f.UserID = Userid;
+                f.UploadedDate = date;
+                f.ContentLength = filebytearray.Length;
+                f.FileData1 = filebytearray;
+                f.FileType = contenttype;
+                if (filename.Length == 0)
+                    f.FileName = fileid;
+                else
+                    f.FileName = filename;
+
+                if (Smallfilebytearray != null)
+                    f.FileData2 = Smallfilebytearray;
+                f.Section = section;
+                f.FileID = fileid;
+                frep.Add(f);
+
+            }
+            else
+            {
+                f.FolderID = folder;
+                f.ContentLength = filebytearray.Length;
+                f.FileData1 = filebytearray;
+                f.UserID = Userid;
+                f.UploadedDate = date;
+                f.FileType = contenttype;
+                if (filename.Length == 0)
+                    f.FileName = fileid;
+                else
+                    f.FileName = filename;
+                if (Smallfilebytearray != null)
+                    f.FileData2 = Smallfilebytearray;
+                // f.FileID = fileid;//
+                frep.Edit(f);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            LogExceptions.WriteExceptionLog(ex);
+        }
+
+        return retval;
+    }
+
+    public static void SaveVideoImage(byte[] a_arrRawData, string filename, string path)
+    {
+
+        byte[] arrMediumSmallerThumb = null;
+
+        arrMediumSmallerThumb = GenerateThumb(a_arrRawData, ThumbnailSize.YoutubeThumb);
+
+        FileDBSave(arrMediumSmallerThumb, null, filename, file_section_video, ".png", filename);
     }
     public static void SaveSponserImage_setpath(byte[] a_arrRawData, string filename, string path)
     {
@@ -744,12 +752,12 @@ public class ImageManager
         WriteToFile(sThumbMediumSmallerPath, arrMediumSmallerThumb);
 
     }
-    public static void SaveImage_setpath(string s_InstanceName, byte[] a_arrRawData,string setPath)
+    public static void SaveImage_setpath(string s_InstanceName, byte[] a_arrRawData, string setPath)
     {
 
         byte[] arrMediumSmallerThumb = null;
         //generate the thumbs for the raw image
-        
+
         //orignal size
         string sOriginalDataPath = GetImagePath(s_InstanceName, ImageType.OriginalData, setPath);
         WriteToFile(sOriginalDataPath, a_arrRawData);
@@ -826,14 +834,14 @@ public class ImageManager
         WriteToFile(sThumbMediumSmallerPath, arrMediumSmallerThumb);
     }
 
-    public static void SaveImage(Guid a_gMediaItemId, byte[] a_arrRawData,string folderpath)
+    public static void SaveImage(Guid a_gMediaItemId, byte[] a_arrRawData, string folderpath)
     {
 
         byte[] arrMediumSmallerThumb = null;
         //generate the thumbs for the raw image
         arrMediumSmallerThumb = GenerateThumb(a_arrRawData, ThumbnailSize.Large);
 
-        string sOriginalDataPath = GetImagePath(a_gMediaItemId, ImageType.OriginalData,folderpath);
+        string sOriginalDataPath = GetImagePath(a_gMediaItemId, ImageType.OriginalData, folderpath);
         WriteToFile(sOriginalDataPath, a_arrRawData);
 
         string sThumbMediumSmallerPath = GetImagePath(a_gMediaItemId, ImageType.ThumbNails, folderpath);
@@ -846,7 +854,7 @@ public class ImageManager
         string sPath = sFolderPath + "\\" + a_eImageType.ToString() + "\\" + a_gMediaItemId.ToString() + ".png";
         return sPath;
     }
-    private static string GetImagePath(Guid a_gMediaItemId, ImageType a_eImageType,string path)
+    private static string GetImagePath(Guid a_gMediaItemId, ImageType a_eImageType, string path)
     {
         string sFolderPath = path;
         string sPath = sFolderPath + "\\" + a_eImageType.ToString() + "\\" + a_gMediaItemId.ToString() + ".png";
@@ -869,7 +877,7 @@ public class ImageManager
         string sPath = sFolderPath + "\\" + a_eImageType.ToString() + "\\" + a_gName + ".png";
         return sPath;
     }
-    private static string GetImagePath( ImageType a_eImageType, string setPath)
+    private static string GetImagePath(ImageType a_eImageType, string setPath)
     {
         //string sFolderPath = HttpContext.Current.Server.MapPath("~/UploadData/Users");
         string sPath = setPath;
@@ -892,7 +900,7 @@ public class ImageManager
     private static string GetImagePath1(String a_gName, ImageType a_eImageType, string setPath)
     {
         string sFolderPath = HttpContext.Current.Server.MapPath("~/WF/UploadData/Moves");
-        string sPath = sFolderPath + "\\"  + a_gName + ".png";
+        string sPath = sFolderPath + "\\" + a_gName + ".png";
         return sPath;
     }
     public static byte[] GenerateThumb(byte[] a_arrImage, ThumbnailSize a_eSize)
@@ -961,6 +969,32 @@ public class ImageManager
                 nMaxWidth = 600;
                 nMaxHeight = 520;
 
+            }
+            else if (a_eSize == ThumbnailSize.YoutubeThumb)
+            {
+                if (oImage.Height > 180 || oImage.Width > 320)
+                {
+                    nMaxWidth = 320;
+                    nMaxHeight = 180;
+                }
+                else
+                {
+                    nMaxWidth = oImage.Width;
+                    nMaxHeight = oImage.Height;
+                }
+            }
+            else if (a_eSize == ThumbnailSize.BannerImage)
+            {
+                if (oImage.Height > 180 || oImage.Width > 320)
+                {
+                    nMaxWidth = 320;
+                    nMaxHeight = 180;
+                }
+                else
+                {
+                    nMaxWidth = oImage.Width;
+                    nMaxHeight = oImage.Height;
+                }
             }
             else if (a_eSize == ThumbnailSize.FitScreen)
             {
@@ -1081,6 +1115,8 @@ public class ImageManager
         FitScreen,
         FitLargeScreen,
         PoratalLarge,
+        YoutubeThumb,
+        BannerImage
     }
 
     public enum ImageType
@@ -1091,7 +1127,9 @@ public class ImageManager
         Instance,
         Poratal,
         DeskImage,
-        FitScreen
+        FitScreen,
+        YoutubeThumb,
+        BannerImage
     }
 
     #region image sting path
@@ -1102,13 +1140,13 @@ public class ImageManager
 
     #region Document Upload
 
-    private static string GetDocPath(String a_gName,String f_extension, string setPath)
+    private static string GetDocPath(String a_gName, String f_extension, string setPath)
     {
         string sFolderPath = HttpContext.Current.Server.MapPath("~/WF/UploadData/" + setPath);
-        string sPath = sFolderPath + "\\" + "\\" + a_gName + "."+ f_extension;
+        string sPath = sFolderPath + "\\" + "\\" + a_gName + "." + f_extension;
         return sPath;
     }
-    public static void SaveDocument_setpath(string s_InstanceName,string FileExtension, byte[] a_arrRawData, string setPath)
+    public static void SaveDocument_setpath(string s_InstanceName, string FileExtension, byte[] a_arrRawData, string setPath)
     {
 
         //orignal size

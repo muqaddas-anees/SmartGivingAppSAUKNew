@@ -15,30 +15,30 @@ namespace DeffinityAppDev.App.controls
     {
 
         /// <summary>
-        /// videoList control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl videoList;
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// btnActivate control.
+        /// VideoContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActivate;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl VideoContainer;
 
         /// <summary>
-        /// rptSteps control.
+        /// chkHideTab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptSteps;
+        protected global::System.Web.UI.WebControls.CheckBox chkHideTab;
     }
 }

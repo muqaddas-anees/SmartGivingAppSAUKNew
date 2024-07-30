@@ -22,6 +22,49 @@
     <!--end::Global Stylesheets Bundle-->
     <script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
 
+     <script>
+         document.addEventListener("DOMContentLoaded", function () {
+             // Select the trigger and menu divs
+             var triggerDiv = document.querySelector('[data-kt-menu-trigger="click"][data-kt-menu-attach="parent"][data-kt-menu-placement="bottom-end"][data-kt-menu-flip="bottom"]');
+             var menuDiv = document.querySelector('.menu.menu-sub.menu-sub-dropdown.menu-column.menu-rounded.menu-gray-800.menu-state-bg.menu-state-primary.fw-bold.py-4.fs-6.w-275px');
+             console.log(triggerDiv);
+             if (triggerDiv && menuDiv) {
+                 // Remove `data-kt-menu` attributes from the trigger
+
+                 triggerDiv.removeAttribute('data-kt-menu-trigger');
+                 // Initially set the menu to closed state
+                 menuDiv.classList.add('menu-closed');
+                 menuDiv.style.display = 'none'; // Set initial display state to 'none'
+
+                 // Add click event listener to the trigger element
+                 triggerDiv.addEventListener('click', function () {
+                     if (menuDiv.classList.contains('menu-closed')) {
+                         // Open the menu
+                         menuDiv.classList.remove('menu-closed');
+                         menuDiv.classList.add('show');
+                         menuDiv.style.zIndex = '105';
+                         menuDiv.style.position = 'fixed';
+                         menuDiv.style.inset = '0px 0px auto auto';
+                         menuDiv.style.display = 'block';
+                         menuDiv.style.transform = 'translate(-30px, 65px)';
+                     } else {
+                         // Close the menu
+                         console.log("close");
+                         menuDiv.classList.remove('show');
+                         menuDiv.classList.add('menu-closed');
+                         menuDiv.style.zIndex = '';
+                         menuDiv.style.position = '';
+                         menuDiv.style.inset = '';
+                         menuDiv.style.display = 'none';
+                         menuDiv.style.transform = '';
+                     }
+                 });
+             } else {
+                 console.error('Trigger or menu div not found.');
+             }
+         });
+
+     </script> 
 
         <div>
             <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -64,6 +107,7 @@
                                 <!--end::Page title-->
                                 <!--begin::Actions-->
                                 <div class="d-flex align-items-center gap-2 gap-lg-3">
+                                    <a href="Member.aspx?type=members" class="btn btn-primary">Add a Team Member</a>
 </div>
                                 <!--end::Actions-->
                             </div>
