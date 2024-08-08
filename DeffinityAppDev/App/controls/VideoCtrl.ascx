@@ -117,7 +117,7 @@
     <div class="row">
         <!-- Step 1 Column -->
         <div class="col-md-6">
-            <div class="list-group-item mb-10">
+            <div class="list-group-item mb-10" style="background:none;border:none">
                 <h6 style="text-align:center"; class="mb-1 fs-1">Step 1: Create Account</h6>
                 <p class="fs-2">Create a Stripe Account or Connect Your Existing Account to Plegit</p>
             </div>
@@ -125,7 +125,7 @@
 
         <!-- Step 2 Column -->
         <div class="col-md-6">
-            <div class="list-group-item mb-10">
+            <div class="list-group-item mb-10" style="background:none;border:none">
                 <h5 style="text-align:center"; class="mb-1 fs-1">Step 2: Book an Onboarding Call</h5>
                 <p class="fs-2">You'll be notified once your account is active and you can begin fundraising.</p>
             </div>
@@ -134,7 +134,7 @@
          <div class="row">
      <!-- Step 1 Column -->
      <div class="col-md-6">
-         <div class="list-group-item mb-10">
+         <div class="list-group-item mb-10" style="background:none;border:none">
            
              <asp:Button ID="Button1" runat="server" Text="Activate Stripe" CssClass="btn btn-success w-100"></asp:Button>
          </div>
@@ -142,7 +142,7 @@
 
      <!-- Step 2 Column -->
      <div class="col-md-6">
-         <div class="list-group-item mb-10">
+         <div class="list-group-item mb-10" style="background:none;border:none">
           
              <a class="btn btn-success w-100" id="btnstep2" href="https://calendly.com/d/cpgp-hd5-vt5/free-consultation-with-a-charity-champion">Book a Call with a Charity Champion</a>
          </div>

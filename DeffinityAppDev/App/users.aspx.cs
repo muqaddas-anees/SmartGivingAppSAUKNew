@@ -53,8 +53,8 @@ namespace Users
                              ID = p.ID,
                              Name = p.ContractorName ?? "No Name",
                              JobTitle = p.Type ?? "No Job Title",
-
-                             Email=p.EmailAddress,
+                             LastName=p.LastName??"",
+                             Email=p.EmailAddress??"",
                              Company = p.Company ?? "No Company",
                              Tasks = GetPendingTasksCount(p.ID), // Fetch pending tasks count here
                              SID = p.SID.GetValueOrDefault(0) // Default to 0 if null
@@ -101,16 +101,18 @@ namespace Users
                         </div>
                         <!--end::Avatar-->
                         <!--begin::Name-->
-                        <a href='member.aspx?mid={user.ID}' class='fs-4 text-gray-800 text-hover-primary fw-bold mb-0'>{user.Name}</a>
+                        <a href='member.aspx?mid={user.ID}' class='fs-4 text-gray-800 text-hover-primary fw-bold mb-0'>{user.Name} {user.LastName}</a>
                         <!--end::Name-->
                         <!--begin::Position-->
-                        <div class='fw-semibold text-gray-500 mb-6'>{GetSIDLabel(SID)} at {user.Company}</div>
+                        <div class='fw-semibold text-gray-500 mb-6'>{GetSIDLabel(SID)} at {user.Company}</div></ br>
+                        <div class='fw-semibold text-gray-500 mb-6'>{user.Email}</div>
+
                         <!--end::Position-->
                         <!--begin::Info-->
                         <div class='d-flex flex-center flex-wrap'>
                             <!--begin::Stats-->
                             <div class='border border-gray-300 text-center border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3'>
-                                <div class='fs-6 fw-bold text-gray-700'>{donationsRaised}</div>
+                                <div class='fs-6 fw-bold text-gray-700'>{donationsRaised.ToString("N2")}</div>
                                 <div class='fw-semibold text-gray-500'>Donations Raised</div>
                             </div>
                             <!--end::Stats-->

@@ -24,31 +24,13 @@ namespace DeffinityAppDev.App.controls
         protected global::System.Web.UI.WebControls.Label lblTitle;
 
         /// <summary>
-        /// imgcenterimage control.
+        /// Literal1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgcenterimage;
-
-        /// <summary>
-        /// imgcenterimage1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgcenterimage1;
-
-        /// <summary>
-        /// imgcenterimage2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgcenterimage2;
+        protected global::System.Web.UI.WebControls.Literal Literal1;
 
         /// <summary>
         /// hmoney control.

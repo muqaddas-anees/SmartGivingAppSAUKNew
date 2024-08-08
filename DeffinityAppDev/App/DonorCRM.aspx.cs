@@ -15,6 +15,7 @@ using PortfolioMgt.Entity;
 using RestSharp.Extensions;
 using StreamChat;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Web;
+
 using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
@@ -40,13 +42,109 @@ namespace DonorCRM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            addDonors();
             if (!IsPostBack)
             {
                 LoadAllContacts();
                 // Get the 'mode' query string parameter
-
+                LoadReceipts();
                 // Check if 'mode' is "edit"
                 HandleViews();
+            }
+        }
+        private void LoadReceipts()
+        {
+            try
+            {
+                // Get the `tid` query parameter from the URL
+                string tid = Request.QueryString["tid"];
+
+                if (!string.IsNullOrEmpty(tid))
+                {
+                    using (var db = new PortfolioDataContext())
+                    {
+                        // Query to get files whose FileID starts with tid and section is "doc"
+                        var files = db.FileDatas
+                                      .Where(f => f.FileID.StartsWith(tid) && f.Section == ImageManager.file_section_donor_doc)
+                                      .ToList();
+
+                        if (files.Any())
+                        {
+                            // Generate the table HTML
+                            StringBuilder tableHtml = new StringBuilder();
+                            tableHtml.Append("<table class='table table-striped'>");
+                            tableHtml.Append("<thead><tr>");
+                            tableHtml.Append("<th>File Name</th>");
+                            tableHtml.Append("<th>Actions</th>");
+                            tableHtml.Append("</tr></thead>");
+                            tableHtml.Append("<tbody>");
+
+                            foreach (var file in files)
+                            {
+                                string fileName = file.FileName ?? "Unknown";
+                                string fileId = file.FileID ?? "Unknown";
+
+                                tableHtml.Append("<tr>");
+                                // Assuming tableHtml is a StringBuilder instance
+
+                                tableHtml.AppendFormat("<td><a href='/imagehandler.ashx?id={0}&s=donordoc'>{1}</a></td>", fileId, fileName);
+                                tableHtml.AppendFormat("<td><button type='button' class='btn btn-light' onclick=\"deleteFile('{0}')\"><i class='bi bi-trash'></i></button></td>", fileId);
+
+                                tableHtml.Append("</tr>");
+                            }
+
+                            tableHtml.Append("</tbody></table>");
+
+                            // Ensure `receiptsLiteral` is not null
+                            if (receiptsLiteral != null)
+                            {
+                                // Set the generated HTML to the receiptsLiteral
+                                receiptsLiteral.Text = tableHtml.ToString();
+                            }
+                            else
+                            {
+                                // Handle the case where `receiptsLiteral` is null
+                                throw new Exception("ReceiptsLiteral is not initialized.");
+                            }
+                        }
+                        else
+                        {
+                            // Handle the case where no files are found
+                            if (receiptsLiteral != null)
+                            {
+                                receiptsLiteral.Text = "<p>No receipts found for the specified ID.</p>";
+                            }
+                            else
+                            {
+                                throw new Exception("ReceiptsLiteral is not initialized.");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // Handle the case where `tid` is not provided
+                    if (receiptsLiteral != null)
+                    {
+                        receiptsLiteral.Text = "<p>No ID provided.</p>";
+                    }
+                    else
+                    {
+                        throw new Exception("ReceiptsLiteral is not initialized.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions and potential null references
+                if (receiptsLiteral != null)
+                {
+                    receiptsLiteral.Text = $"<p>Error: {ex.Message}</p>";
+                }
+                else
+                {
+                    Response.Write($"<p>Error: {ex.Message}</p>");
+                }
             }
         }
 
@@ -164,7 +262,7 @@ namespace DonorCRM
                             // Check the checkboxes based on the roles fetched
                             chkVolunteers.Checked = roles.Contains("Volunteer");
                             chkLeads.Checked = roles.Contains("Lead");
-                            chkMembers.Checked = roles.Contains("Member");
+                            chkMembers.Checked = roles.Contains("Sponsor");
                             chkDonors.Checked = roles.Contains("Donor");
                         }
 
@@ -233,7 +331,7 @@ namespace DonorCRM
                         }).ToList();
                         paymentDetails.Reverse();
 
-                        string tableHtml = "<table class='table table-striped'>";
+                        string tableHtml = "<table id='payment-table' class='table table-striped'>";
                         tableHtml += "<thead>";
                         tableHtml += "<tr class='text-start text-gray-600 fw-bold fs-7 text-uppercase gs-0'>";
                         tableHtml += "<th class=''>Fundraiser Name</th>";
@@ -256,18 +354,20 @@ namespace DonorCRM
                         {
                             foreach (var payment in paymentDetails)
                             {
+                                var currentUrl = HttpContext.Current.Request.Url;
+                                var queryString = HttpUtility.ParseQueryString(currentUrl.Query);
+                                queryString["tid"] = payment.TID.ToString();
 
-                               
-
-                                    tableHtml += "<tr>";
-                                    tableHtml += "<td>" + (string.IsNullOrEmpty(payment.FundraiserNames) ? "None" : payment.FundraiserNames) + "</td>";
-                                    tableHtml += "<td style='padding-left:40px'>" + (payment.Amount.HasValue ? string.Format("{0:F2}", payment.Amount) : "None") + "</td>";
-                                    tableHtml += "<td>" + (payment.Status == "Successful" ? "<span class='badge badge-light-success'>Successful</span>" : (payment.Status == "Failed" ? "<span class='badge badge-light-danger'>Failed</span>" : "None")) + "</td>";
-                                    tableHtml += "<td>" + (payment.PaidDate.HasValue ? payment.PaidDate.Value.ToString("dd/MM/yyyy") : "None") + "</td>";
-                                    tableHtml += "<td><button type='button' style='border:1px solid #aca5a5' class='btn btn-light' onclick=\"handlePaymentDetails('" + payment.ID + "', '" + payment.Name + "', '" + payment.Email + "', " + payment.Amount + ", '" + payment.FundraiserNames + "', " + payment.PlatformFee + ", '" + payment.PaymentType + "', '" + payment.Status + "')\">Details</button></td>";
-                                
-
+                                var redirectUrl = $"{currentUrl.AbsolutePath}?{queryString}";
+                                tableHtml += "<tr>";
+                                tableHtml += "<td>" + (string.IsNullOrEmpty(payment.FundraiserNames) ? "None" : payment.FundraiserNames) + "</td>";
+                                tableHtml += "<td style='padding-left:40px'>" + (payment.Amount.HasValue ? payment.Amount.Value.ToString("N2") : "None") + "</td>";
+                                tableHtml += "<td>" + (payment.Status == "Successful" ? "<span class='badge badge-light-success'>Successful</span>" : (payment.Status == "Failed" ? "<span class='badge badge-light-danger'>Failed</span>" : "None")) + "</td>";
+                                tableHtml += "<td>" + (payment.PaidDate.HasValue ? payment.PaidDate.Value.ToString("dd/MM/yyyy") : "None") + "</td>";
+                                tableHtml += "<td><a class='btn btn-light' style='border:1px solid #aca5a5' href='" + redirectUrl + "')\">Details</a><button type='button' style='border:1px solid #aca5a5;display:none;' class='btn btn-light' onclick=\"handlePaymentDetails('" + payment.TID + "', '" + payment.Name + "', '" + payment.Email + "', " + payment.Amount + ", '" + payment.FundraiserNames + "', " + payment.PlatformFee + ", '" + payment.PaymentType + "', '" + payment.Status + "')\">Details</button></td>";
+                                tableHtml += "</tr>";
                             }
+
                         }
 
 
@@ -341,7 +441,38 @@ namespace DonorCRM
 
         // Helper method to determine SID based on selected categories
 
+        private void addDonors()
+        {
+            using(var dbcontext=new UserDataContext()) { 
+                var iList=dbcontext.Contractors.ToList();
+            foreach (var contractor in iList)
+            {
+                using (PortfolioMgt.DAL.PortfolioDataContext db = new PortfolioDataContext())
+                {
+                    var payments = db.TithingPaymentTrackers
+                                 .Where(p => p.DonerEmail == contractor.EmailAddress)
+                                 .ToList();
+                    if (payments.Any())
+                    {
+                        bool roleExists = db.tblRoles.Any(r => r.ContractorID == contractor.ID && r.RoleType == "Donor");
+                        if (!roleExists)
+                        {
+                            // Add new role
+                            var newRole = new tblRole
+                            {
+                                ContractorID = contractor.ID,
+                                RoleType = "Donor"
+                                // Add other properties as needed
+                            };
+                            db.tblRoles.InsertOnSubmit(newRole);
+                            db.SubmitChanges();
+                        }
 
+                    }
+                }
+            }
+            }
+        }
         private void LoadAllContacts()
         {
             // Fetch all contacts without a company filter first
@@ -349,6 +480,7 @@ namespace DonorCRM
          .Where(o => o.CompanyID == sessionKeys.PortfolioID && o.SID == UserType.Donor)
          .OrderBy(o => o.ContractorName)
          .ToList();
+       
             DisplayCategoryCounts(iList);
             // Fetch SID from query parameters
             string sidQueryParam = Request.QueryString["SID"];
@@ -377,6 +509,7 @@ namespace DonorCRM
                     // Filter contacts based on fetched contractor IDs
                     iList = iList.Where(o => contractorRoles.Contains(o.ID)).ToList();
                 }
+            
             }
 
             LoadContacts(iList);
@@ -732,7 +865,7 @@ console.log('iddddd'+id)
                                 var newRole = new tblRole
                                 {
                                     ContractorID = ID,
-                                    RoleType = "Member"
+                                    RoleType = "Sponsor"
                                     // Add other properties as needed
                                 };
                                 context.tblRoles.InsertOnSubmit(newRole);
@@ -741,7 +874,7 @@ console.log('iddddd'+id)
                         }
                         if (chkDonors.Checked)
                         {
-                            bool roleExists = context.tblRoles.Any(r => r.ContractorID == ID && r.RoleType == "Member");
+                            bool roleExists = context.tblRoles.Any(r => r.ContractorID == ID && r.RoleType == "Donor");
                             if (!roleExists)
                             {
                                 // Add new role
@@ -986,7 +1119,7 @@ console.log('iddddd'+id)
                             var newRole = new tblRole
                             {
                                 ContractorID = contractorID,
-                                RoleType = "Member"
+                                RoleType = "Sponsor"
                                 // Add other properties as needed
                             };
                             context.tblRoles.InsertOnSubmit(newRole);
@@ -1111,139 +1244,139 @@ console.log('iddddd'+id)
 
 
         }
-      /*  [WebMethod]
-        protected void SendReceipt(string id)
-        {
-           
-               
-                var tList = PortfolioMgt.BAL.TithingPaymentTrackerBAL.TithingPaymentTrackerBAL_SelectAll().Where(o => o.OrganizationID == sessionKeys.PortfolioID).ToList();
-                var tclist = PortfolioMgt.BAL.TithingDefaultDetailsBAL.TithingDefaultDetailsBAL_Select().Where(o => o.OrganizationID == 0).ToList();
-                var ulist = UserMgt.BAL.ContractorsBAL.Contractor_SelectAllNew().ToList();
-                Random generator = new Random();
-                var dItem = (from t in tList
-                                 // join c in ulist on t.LoggedByID equals c.ID
-                                 //join tc in tclist on t.TithingID equals tc.ID
-                             where t.ID == Convert.ToInt32(id)
-                             select new
-                             {
-                                 ID = t.ID,
-                                 Name = t.DonerName,// getUserData(ulist, t.LoggedByID, t.DonerName, "name"),//t.LoggedByID == null ? t.DonerName : (t.LoggedByID == 0 ? t.DonerName : ulist.Where(o => o.ID == t.LoggedByID).FirstOrDefault().ContractorName),
-                                 Email = t.DonerEmail,// getUserData(ulist, t.LoggedByID, t.DonerName, "email"),// t.LoggedByID == null ? t.DonerEmail : (t.LoggedByID == 0 ? t.DonerName : ulist.Where(o => o.ID == t.LoggedByID).FirstOrDefault().EmailAddress),
-                                 TithigName = getTithing(tclist, t.TithingID.HasValue ? t.TithingID.Value : 0),// t.TithingID == null ? string.Empty : tclist.Where(o => o.ID == t.TithingID).FirstOrDefault().Title,
-                                 PaidBy = getUserData(ulist, t.LoggedByID, t.DonerName, "name"),// t.LoggedByID == null ? t.DonerName : (t.LoggedByID == 0 ? t.DonerName : ulist.Where(o => o.ID == t.LoggedByID).FirstOrDefault().ContractorName),
-                                 Amount = t.PaidAmount,
-                                 PaidDate = t.PaidDate,
-                                 PayRef = t.PayRef == null ? "REF" + generator.Next(0, 1000000).ToString("D6") : t.PayRef,
-                                 PaymentType = t.RecurringType == null ? "Normal" : "Recurring",
-                                 REcurring = t.RecurringType,
-                                 Status = (t.IsPaid.HasValue ? t.IsPaid.Value : false) ? "<span class='badge badge-success'>Successful</span>" : "<span class='badge badge-danger'>Failed</span>",
-                                 //Status = (t.IsPaid.HasValue ? t.IsPaid.Value : false) ? "<span class='badge badge-success'>Successful</span>" : "<span class='badge badge-success'>Successful</span>",
-                                 CategoryListWithAmount = GetDonationCategoriesWithAmount(t.MoreDetails == null ? "" : t.MoreDetails),
-                                 CategoryList = GetDonationCategories(t.MoreDetails == null ? "" : t.MoreDetails),
-                                 t.MoreDetails,
-                                 t.unid,
-                                 IsPaid = (t.IsPaid.HasValue ? t.IsPaid.Value : false),
-
-                                 GiftAid = (t.GiftAid.HasValue ? t.GiftAid.Value : false)
-
-                             }).FirstOrDefault();
-
-                // var dItem = rlist.Where(o => o.ID == Convert.ToInt32(id)).FirstOrDefault();
-
-                if (dItem.unid == null)
-                {
-                    var dEntity = PortfolioMgt.BAL.TithingPaymentTrackerBAL.TithingPaymentTrackerBAL_SelectAll().Where(o => o.ID == Convert.ToInt32(hid.Value)).FirstOrDefault();
-                    if (dEntity != null)
-                    {
-                        dEntity.unid = Guid.NewGuid().ToString();
-
-                        PortfolioMgt.BAL.TithingPaymentTrackerBAL.TithingPaymentTrackerBAL_Update(dEntity);
-                        
-                    }
-                }
-                   
+        /*  [WebMethod]
+          protected void SendReceipt(string id)
+          {
 
 
-                IPortfolioRepository<PortfolioMgt.Entity.TithingThankyouSetting> rp = new PortfolioRepository<PortfolioMgt.Entity.TithingThankyouSetting>();
+                  var tList = PortfolioMgt.BAL.TithingPaymentTrackerBAL.TithingPaymentTrackerBAL_SelectAll().Where(o => o.OrganizationID == sessionKeys.PortfolioID).ToList();
+                  var tclist = PortfolioMgt.BAL.TithingDefaultDetailsBAL.TithingDefaultDetailsBAL_Select().Where(o => o.OrganizationID == 0).ToList();
+                  var ulist = UserMgt.BAL.ContractorsBAL.Contractor_SelectAllNew().ToList();
+                  Random generator = new Random();
+                  var dItem = (from t in tList
+                                   // join c in ulist on t.LoggedByID equals c.ID
+                                   //join tc in tclist on t.TithingID equals tc.ID
+                               where t.ID == Convert.ToInt32(id)
+                               select new
+                               {
+                                   ID = t.ID,
+                                   Name = t.DonerName,// getUserData(ulist, t.LoggedByID, t.DonerName, "name"),//t.LoggedByID == null ? t.DonerName : (t.LoggedByID == 0 ? t.DonerName : ulist.Where(o => o.ID == t.LoggedByID).FirstOrDefault().ContractorName),
+                                   Email = t.DonerEmail,// getUserData(ulist, t.LoggedByID, t.DonerName, "email"),// t.LoggedByID == null ? t.DonerEmail : (t.LoggedByID == 0 ? t.DonerName : ulist.Where(o => o.ID == t.LoggedByID).FirstOrDefault().EmailAddress),
+                                   TithigName = getTithing(tclist, t.TithingID.HasValue ? t.TithingID.Value : 0),// t.TithingID == null ? string.Empty : tclist.Where(o => o.ID == t.TithingID).FirstOrDefault().Title,
+                                   PaidBy = getUserData(ulist, t.LoggedByID, t.DonerName, "name"),// t.LoggedByID == null ? t.DonerName : (t.LoggedByID == 0 ? t.DonerName : ulist.Where(o => o.ID == t.LoggedByID).FirstOrDefault().ContractorName),
+                                   Amount = t.PaidAmount,
+                                   PaidDate = t.PaidDate,
+                                   PayRef = t.PayRef == null ? "REF" + generator.Next(0, 1000000).ToString("D6") : t.PayRef,
+                                   PaymentType = t.RecurringType == null ? "Normal" : "Recurring",
+                                   REcurring = t.RecurringType,
+                                   Status = (t.IsPaid.HasValue ? t.IsPaid.Value : false) ? "<span class='badge badge-success'>Successful</span>" : "<span class='badge badge-danger'>Failed</span>",
+                                   //Status = (t.IsPaid.HasValue ? t.IsPaid.Value : false) ? "<span class='badge badge-success'>Successful</span>" : "<span class='badge badge-success'>Successful</span>",
+                                   CategoryListWithAmount = GetDonationCategoriesWithAmount(t.MoreDetails == null ? "" : t.MoreDetails),
+                                   CategoryList = GetDonationCategories(t.MoreDetails == null ? "" : t.MoreDetails),
+                                   t.MoreDetails,
+                                   t.unid,
+                                   IsPaid = (t.IsPaid.HasValue ? t.IsPaid.Value : false),
 
-                var tn = rp.GetAll().Where(o => o.PortfolioID == sessionKeys.PortfolioID && (o.SetAsDefault.HasValue ? o.SetAsDefault.Value : false) == true).FirstOrDefault();
-                if (tn == null)
-                    tn = rp.GetAll().Where(o => o.PortfolioID == sessionKeys.PortfolioID && (o.SetAsDefault.HasValue ? o.SetAsDefault.Value : false) == true).FirstOrDefault();
+                                   GiftAid = (t.GiftAid.HasValue ? t.GiftAid.Value : false)
 
+                               }).FirstOrDefault();
 
-                // ddlTemplate.SelectedValue = tn.ID.ToString();
+                  // var dItem = rlist.Where(o => o.ID == Convert.ToInt32(id)).FirstOrDefault();
 
-                String body = "";
-                if (tn != null)
-                {
-                    body = tn.EmailContent;
-                    //{{currentyear}}
-                    body = body.Replace("{{instancename}}", sessionKeys.PortfolioName);
-                    body = body.Replace("{{fundraiserdate}}", dItem.PaidDate.Value.ToShortDateString());
-                    body = body.Replace("{{currentmonth}}", DateTime.Now.ToString("MMMM"));
-                    body = body.Replace("{{currentyear}}", DateTime.Now.Year.ToString());
-                    body = body.Replace("{{amount}}", string.Format("{1}{0:N2}", dItem.Amount.HasValue ? dItem.Amount.Value : 0, Deffinity.Utility.GetCurrencySymbol()));
-                    body = body.Replace("{{name}}", dItem.Name);
-                    body = body.Replace("{{category}}", dItem.CategoryList);
-                    body = body.Replace("{{signature}}", sessionKeys.PortfolioName);
-                    body = body.Replace("{{date}}", dItem.PaidDate.Value.ToShortDateString());
+                  if (dItem.unid == null)
+                  {
+                      var dEntity = PortfolioMgt.BAL.TithingPaymentTrackerBAL.TithingPaymentTrackerBAL_SelectAll().Where(o => o.ID == Convert.ToInt32(hid.Value)).FirstOrDefault();
+                      if (dEntity != null)
+                      {
+                          dEntity.unid = Guid.NewGuid().ToString();
 
+                          PortfolioMgt.BAL.TithingPaymentTrackerBAL.TithingPaymentTrackerBAL_Update(dEntity);
 
-                    body = body.Replace("{{amount}}", string.Format("{1}{0:N2}", dItem.Amount.HasValue ? dItem.Amount.Value : 0, Deffinity.Utility.GetCurrencySymbol()));
-
-                    body = body.Replace("{{donorfirstname}}", dItem.Name);
-                    body = body.Replace("{{donorsurname}}", dItem.Name);
-                    //donorcompany
-                    body = body.Replace("{{category}}", dItem.CategoryList);
-
-                    body = body.Replace("{{donorcompany}}", sessionKeys.PortfolioName);
-
-
-                    body = body.Replace("{{categorydonationamount}}", string.Format("{0:F2}", dItem.Amount));
-
-                    body = body.Replace("{{categorydonationdate}}", dItem.PaidDate.Value.ToShortDateString());
-                    body = body.Replace("{{todaysdate}}", DateTime.Now.ToShortDateString());
-                    //logo
-
-                    // body = body.Replace("{{logo}}", "<img src='"+ Deffinity.systemdefaults.GetWebUrl() + Deffinity.systemdefaults.GetMailLogo(sessionKeys.PortfolioID,Deffinity.systemdefaults.GetLocalPath())+"' />");
-
-                    // body = body.Replace("{{logo}}", "<img src='" + Deffinity.systemdefaults.GetWebUrl() + "/ImageHandler.ashx?id=" + sessionKeys.PortfolioID + "&s=portfolio" + "' />");
-                    body = body.Replace("{{logo}}", "<img src='" + Deffinity.systemdefaults.GetWebUrl() + "/ImageHandler.ashx?id=" + sessionKeys.PortfolioID + "&s=portfolio" + "' />");
-                }
+                      }
+                  }
 
 
 
-                if (!body.Contains("!DOCTYPE HTML PUBLIC"))
-                {
-                    Emailer em = new Emailer();
-                    string html_body = em.ReadFile("~/WF/DC/EmailTemplates/mastertemplate.html");
+                  IPortfolioRepository<PortfolioMgt.Entity.TithingThankyouSetting> rp = new PortfolioRepository<PortfolioMgt.Entity.TithingThankyouSetting>();
 
-                    html_body = html_body.Replace("[table]", body);
-                    body = html_body;
-
-                    string fromid = Deffinity.systemdefaults.GetFromEmail();
-
-                    string toid = dItem.Email;
-                    string subject = "Donation";
-                   
-
-                    if (dItem.Status.Contains("Successful"))
-               
-                    //Email ToEmail = new Email();
+                  var tn = rp.GetAll().Where(o => o.PortfolioID == sessionKeys.PortfolioID && (o.SetAsDefault.HasValue ? o.SetAsDefault.Value : false) == true).FirstOrDefault();
+                  if (tn == null)
+                      tn = rp.GetAll().Where(o => o.PortfolioID == sessionKeys.PortfolioID && (o.SetAsDefault.HasValue ? o.SetAsDefault.Value : false) == true).FirstOrDefault();
 
 
-                    //ToEmail.SendingMail(fromid, subject,body,toid,"");
+                  // ddlTemplate.SelectedValue = tn.ID.ToString();
 
-                    //sessionKeys.Message = "Your message is on it's way!";
+                  String body = "";
+                  if (tn != null)
+                  {
+                      body = tn.EmailContent;
+                      //{{currentyear}}
+                      body = body.Replace("{{instancename}}", sessionKeys.PortfolioName);
+                      body = body.Replace("{{fundraiserdate}}", dItem.PaidDate.Value.ToShortDateString());
+                      body = body.Replace("{{currentmonth}}", DateTime.Now.ToString("MMMM"));
+                      body = body.Replace("{{currentyear}}", DateTime.Now.Year.ToString());
+                      body = body.Replace("{{amount}}", string.Format("{1}{0:N2}", dItem.Amount.HasValue ? dItem.Amount.Value : 0, Deffinity.Utility.GetCurrencySymbol()));
+                      body = body.Replace("{{name}}", dItem.Name);
+                      body = body.Replace("{{category}}", dItem.CategoryList);
+                      body = body.Replace("{{signature}}", sessionKeys.PortfolioName);
+                      body = body.Replace("{{date}}", dItem.PaidDate.Value.ToShortDateString());
 
-                    //Response.Redirect(Request.RawUrl, false);
-                }
+
+                      body = body.Replace("{{amount}}", string.Format("{1}{0:N2}", dItem.Amount.HasValue ? dItem.Amount.Value : 0, Deffinity.Utility.GetCurrencySymbol()));
+
+                      body = body.Replace("{{donorfirstname}}", dItem.Name);
+                      body = body.Replace("{{donorsurname}}", dItem.Name);
+                      //donorcompany
+                      body = body.Replace("{{category}}", dItem.CategoryList);
+
+                      body = body.Replace("{{donorcompany}}", sessionKeys.PortfolioName);
+
+
+                      body = body.Replace("{{categorydonationamount}}", string.Format("{0:F2}", dItem.Amount));
+
+                      body = body.Replace("{{categorydonationdate}}", dItem.PaidDate.Value.ToShortDateString());
+                      body = body.Replace("{{todaysdate}}", DateTime.Now.ToShortDateString());
+                      //logo
+
+                      // body = body.Replace("{{logo}}", "<img src='"+ Deffinity.systemdefaults.GetWebUrl() + Deffinity.systemdefaults.GetMailLogo(sessionKeys.PortfolioID,Deffinity.systemdefaults.GetLocalPath())+"' />");
+
+                      // body = body.Replace("{{logo}}", "<img src='" + Deffinity.systemdefaults.GetWebUrl() + "/ImageHandler.ashx?id=" + sessionKeys.PortfolioID + "&s=portfolio" + "' />");
+                      body = body.Replace("{{logo}}", "<img src='" + Deffinity.systemdefaults.GetWebUrl() + "/ImageHandler.ashx?id=" + sessionKeys.PortfolioID + "&s=portfolio" + "' />");
+                  }
+
+
+
+                  if (!body.Contains("!DOCTYPE HTML PUBLIC"))
+                  {
+                      Emailer em = new Emailer();
+                      string html_body = em.ReadFile("~/WF/DC/EmailTemplates/mastertemplate.html");
+
+                      html_body = html_body.Replace("[table]", body);
+                      body = html_body;
+
+                      string fromid = Deffinity.systemdefaults.GetFromEmail();
+
+                      string toid = dItem.Email;
+                      string subject = "Donation";
+
+
+                      if (dItem.Status.Contains("Successful"))
+
+                      //Email ToEmail = new Email();
+
+
+                      //ToEmail.SendingMail(fromid, subject,body,toid,"");
+
+                      //sessionKeys.Message = "Your message is on it's way!";
+
+                      //Response.Redirect(Request.RawUrl, false);
+                  }
 
 
 
 
-            
-        }*/
+
+          }*/
         protected void Unnamed_Click(object sender, EventArgs e)
         {
             int UserID = sessionKeys.UID;
@@ -1286,7 +1419,16 @@ console.log('iddddd'+id)
                     }
                 }
             }
+
+            // Redirect to the same page with tid query parameter
+            var currentUrl = HttpContext.Current.Request.Url;
+            var queryString = HttpUtility.ParseQueryString(currentUrl.Query);
+            
+
+            var redirectUrl = $"{currentUrl.AbsolutePath}?{queryString}";
+            Response.Redirect(redirectUrl, false);
         }
+
 
     }
 }

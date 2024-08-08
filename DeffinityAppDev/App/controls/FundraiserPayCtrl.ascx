@@ -1,21 +1,21 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FundraiserPayCtrl.ascx.cs" Inherits="DeffinityAppDev.App.controls.FundraiserPayCtrl" %>
+﻿﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FundraiserPayCtrl.ascx.cs" Inherits="DeffinityAppDev.App.controls.FundraiserPayCtrl" %>
  <script type="text/javascript">
      var AmountWithoutCharges;
      var PercentageValue;
      var Total;
-         window.addEventListener('message', function (event) {
-             var token = JSON.parse(event.data);
-             var mytoken = document.getElementById('mytoken');
-             mytoken.value = token.message;
-             var txtCardConnectNumber = document.getElementById("<%=txtCardConnectNumber.ClientID%>");
+     window.addEventListener('message', function (event) {
+         var token = JSON.parse(event.data);
+         var mytoken = document.getElementById('mytoken');
+         mytoken.value = token.message;
+         var txtCardConnectNumber = document.getElementById("<%=txtCardConnectNumber.ClientID%>");
              txtCardConnectNumber.value = token.message;
-        }, false);
+         }, false);
 
  </script>
 <script type="text/javascript">
     $(document).ready(function () {
 
-       
+
 
 
         $('#<%= txtAmountTotal.ClientID %>').on('input', function () {
@@ -28,21 +28,21 @@
     });
     function updateSliderValue(slider) {
         var valueLabel = document.getElementById("sliderValueLabel");
-    var percentage = parseFloat(slider.value) / 100;
+        var percentage = parseFloat(slider.value) / 100;
         var amount = parseFloat($('#<%= txtAmountTotal.ClientID %>').val());
 
-    // Update the value label with the calculation
-    valueLabel.innerHTML = slider.value + '%' + ' ' + '£' + (amount * percentage).toFixed(2);
+        // Update the value label with the calculation
+        valueLabel.innerHTML = slider.value + '%' + ' ' + '£' + (amount * percentage).toFixed(2);
 
-    // Update the slider background color
+        // Update the slider background color
         var min = parseFloat(slider.min);
         var max = parseFloat(slider.max);
         var valuePercentage = ((slider.value - min) / (max - min)) * 100;
-        slider.style.background = `linear-gradient(to right, green ${valuePercentage}%, #ccc ${valuePercentage}%)`;
+        slider.style.background = `linear-gradient(to right, #7cd474 ${valuePercentage}%, #ccc ${valuePercentage}%)`;
 
         // Remove existing dots
-      
-}
+
+    }
 
 
     function updateSliderValueOnLoad(slider) {
@@ -57,7 +57,7 @@
         var min = parseFloat(slider.min);
         var max = parseFloat(slider.max);
         var valuePercentage = ((slider.value - min) / (max - min)) * 100;
-        slider.style.background = `linear-gradient(to right, green ${valuePercentage}%, #ccc ${valuePercentage}%)`;
+        slider.style.background = `linear-gradient(to right, #7cd474 ${valuePercentage}%, #ccc ${valuePercentage}%)`;
 
         // Remove existing dots
 
@@ -211,7 +211,7 @@ input[type=range].form-control-lg::-webkit-slider-thumb {
     appearance: none;
     width: 25px;
     height: 25px;
-    background: green;
+    background: #7cd474;
     cursor: pointer;
     border-radius: 50%;
     border: 2px solid white; /* Add white border */
@@ -222,7 +222,8 @@ input[type=range].form-control::-moz-range-thumb,
 input[type=range].form-control-lg::-moz-range-thumb {
     width: 25px;
     height: 25px;
-    background: green;
+    background: #7cd474;
+    background: #7cd474;
     cursor: pointer;
     border-radius: 50%;
     border: 2px solid white; /* Add white border */
@@ -261,21 +262,20 @@ input[type=range].form-control-lg::-moz-range-thumb {
     </style>
 <script>
 
-   
 
-  
+
+
     function setmoney(val) {
-       
+
         $('#txtAmountTotal').val(val);
         $('#txtTotal').val(val);
-       
+
         updateDropdown();
         setFee();
         debugger;
         return false;
     }
 </script>
-
  <asp:HiddenField ID="hcode" runat="server" Value="" ClientIDMode="Static" />
  <asp:HiddenField ID="hfixedamount" runat="server" Value="0" ClientIDMode="Static" />
 <asp:HiddenField ID="hrec" runat="server" Value="1" ClientIDMode="Static" />
@@ -363,7 +363,8 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
                                                     <asp:Panel ID="pnlCategory" runat="server">
                                                          <div class="row">
-                                                          <label style="font-size:20px">   Please select the amount:</label>
+                                                          <label style="font-size:20px">   </label>
+                                                             <asp:Label runat="server" Font-Size="20" Visible="false" ID="selectamount" Text="Please select the amount:"></asp:Label>
                                                              </div>
                                                         <div class="row mb-3">
 
@@ -417,7 +418,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
 </asp:ListView>
                                                                  </div>
                                                             </div>
-                                                          <div class="row mb-6 d-flex d-inline">
+                                                       <div class="row mb-6 d-flex d-inline">
             <div class="col-lg-12 mb-6 d-inline justify-content-between">
 <asp:Label ID="lblplatform" runat="server" style="">
   <div>  <span style="font-size:20px;font-weight: 500;"> Plegit does not charge <charity name> a fee, but we rely on your generous contribution to support the platform and help more people ❤️<br /></span></div>
@@ -428,11 +429,10 @@ input[type=range].form-control-lg::-moz-range-thumb {
                 <div class="slider-container">
  <span id="sliderValueLabel" class="slider-label">15%</span>
 <asp:TextBox ID="lblplatfee" runat="server" CssClass="" Style="height:10px;border-radius:5px" TextMode="Range" Min="5" Max="30" Value="15" OnInput="updateSliderValue(this)" AutoPostBack="false"></asp:TextBox>          <div class="dots"></div>       </div>
-          
-                </div>
+            </div>
         </div>
                                                            <div class="row  mb-6 d-flex d-inline">
-                                                                <div class="col-lg-12">
+                                                                <div class="col-lg-12 d-flex flex-nowrap">
                                                        <asp:CheckBox ID="chkAnonymously" runat="server" Text=" " Font-Size="20px" CssClass="mycheckBig" ClientIDMode="Static" />
                                                                <label style="font-size:20px;margin-left:0px;">I want to give anonymously</label>
                                                                     </div>
@@ -490,7 +490,8 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                                       </div>
                                                                   <div class="col-lg-3 text-center mt-5">
  
-   <button id="btnNextCategory" type="button" class="btn btn-primary" style="height:60px; width:70%; font-size:22px;">Next</button>                                                                   <asp:Button ID="btnNextPaynow" runat="server" Font-Size="22px" SkinID="btnDefault" Text="Pay Now" Height="60px" Width="70%" OnClick="btnProceed_Click" style="display:none;" />
+                    <asp:Button ID="btnNextCategory" runat="server" SkinID="btnNext" Height="60px" Width="70%" Font-Size="22px" OnClick="btnNextCategory_Click"/>
+                                                                   <asp:Button ID="btnNextPaynow" runat="server" Font-Size="22px" SkinID="btnDefault" Text="Pay Now" Height="60px" Width="70%" OnClick="btnProceed_Click" style="display:none;" />
                                                                   
                                                                   </div> 
 
@@ -999,114 +1000,108 @@ input[type=range].form-control-lg::-moz-range-thumb {
         </asp:Panel>
     
 
-     <script type="text/javascript">
+      <script type="text/javascript">
 
-         $(document).ready(function () {
-             setmoney(10);
-
-            
-             $("#input[id$='btnAddNewCard']").click(function () {
+          $(document).ready(function () {
+              setmoney(10);
 
 
-                 $("#pnlnewCard").show();
-                 $("#pnlListCards").hide();
-
-                 return false
-             });
-
-             $("input[id$='btnPayDetails']").click(function () {
-
-                 //txtNameOnCard
-                 // $(window).scrollTop($("[id$='txtNameOnCard']").position().top);
-                 $("[id$='txtNameOnCard']").focus();
-                 //   alert($("#MainContent_MainContent_chkonetime2").is(": checked"));
-                 // alert($("#MainContent_MainContent_chkonetime2").is(":checked"));
-
-                 // if ($("#MainContent_MainContent_taithingNewCtrl_chkonetime2").is(":checked")) {
-                 // $("[id$='chkonetime2']").
-                 if ($("[id$='chkonetime2']").is(":checked")) {
-                     $("#pnlRecurringOption").hide();
-                 }
-                 else {
-                     $("#pnlRecurringOption").show();
-                 }
+              $("#input[id$='btnAddNewCard']").click(function () {
 
 
-                 var cnt = $("input[id$='hcount']").val();
-                 
-                 if (cnt == "0") {
-                     $('#pnl_paytype').hide();
+                  $("#pnlnewCard").show();
+                  $("#pnlListCards").hide();
 
-                     $('#pnl_paydetails').show();
-                     $("#pnlnewCard").show();
-                     $("#pnlListCards").hide();
-                 }
-                 else {
-                     $('#pnl_paytype').hide();
+                  return false
+              });
 
-                     $('#pnl_paydetails').show();
-                 }
+              $("input[id$='btnPayDetails']").click(function () {
 
-                 return false
-             });
+                  //txtNameOnCard
+                  // $(window).scrollTop($("[id$='txtNameOnCard']").position().top);
+                  $("[id$='txtNameOnCard']").focus();
+                  //   alert($("#MainContent_MainContent_chkonetime2").is(": checked"));
+                  // alert($("#MainContent_MainContent_chkonetime2").is(":checked"));
 
-
-
-         });
-
-         var inputElement = document.getElementById('FaithGivingListCtrl_FundraiserPayCtrl_lblplatfee');
-
-         // Check if the element exists
-         if (inputElement) {
-             // Set the step attribute to 5
-             inputElement.setAttribute('step', '5');
-         }
+                  // if ($("#MainContent_MainContent_taithingNewCtrl_chkonetime2").is(":checked")) {
+                  // $("[id$='chkonetime2']").
+                  if ($("[id$='chkonetime2']").is(":checked")) {
+                      $("#pnlRecurringOption").hide();
+                  }
+                  else {
+                      $("#pnlRecurringOption").show();
+                  }
 
 
-         $('#txtAmountTotal').on('keyup', function (e) {
-             var mn = $('#txtAmountTotal').val();
-             if (mn.length > 0) {
+                  var cnt = $("input[id$='hcount']").val();
+
+                  if (cnt == "0") {
+                      $('#pnl_paytype').hide();
+
+                      $('#pnl_paydetails').show();
+                      $("#pnlnewCard").show();
+                      $("#pnlListCards").hide();
+                  }
+                  else {
+                      $('#pnl_paytype').hide();
+
+                      $('#pnl_paydetails').show();
+                  }
+
+                  return false
+              });
 
 
-                 $('#txtTotal').val($('#txtAmountTotal').val());
-                 setmoney(parseFloat($('#txtAmountTotal').val()));
-             }
-             else {
-                 $('#txtTotal').val(0);
-                 setmoney(parseFloat(0));
-             }
-         });
-         $('#txtAmount').on('keyup', function (e) {
 
-             sum_amt();
-         });
-         function sum_amt() {
-             var add = 0;
-             $(".txtamt").each(function () {
-                 add += Number($(this).val());
-             });
-             // alert(add);
+          });
 
-             $('#txtAmountTotal').val(add.toFixed(2));
-             $('#txtTotal').val(add.toFixed(2));
-             $("#hamount").val(add.toFixed(2));
-             // console.log(add);
-         }
+       
 
-         function shownewcard() {
-             $("#pnlnewCard").show();
-             $("#pnlListCards").hide();
-             return false;
-         }
 
-         function fnpaydetails() {
-             $('#pnl_paytype').hide();
+          $('#txtAmountTotal').on('keyup', function (e) {
+              var mn = $('#txtAmountTotal').val();
+              if (mn.length > 0) {
 
-             $('#pnl_paydetails').show();
-             return false;
-         }
 
-     </script>
+                  $('#txtTotal').val($('#txtAmountTotal').val());
+                  setmoney(parseFloat($('#txtAmountTotal').val()));
+              }
+              else {
+                  $('#txtTotal').val(0);
+                  setmoney(parseFloat(0));
+              }
+          });
+          $('#txtAmount').on('keyup', function (e) {
+
+              sum_amt();
+          });
+          function sum_amt() {
+              var add = 0;
+              $(".txtamt").each(function () {
+                  add += Number($(this).val());
+              });
+              // alert(add);
+
+              $('#txtAmountTotal').val(add.toFixed(2));
+              $('#txtTotal').val(add.toFixed(2));
+              $("#hamount").val(add.toFixed(2));
+              // console.log(add);
+          }
+
+          function shownewcard() {
+              $("#pnlnewCard").show();
+              $("#pnlListCards").hide();
+              return false;
+          }
+
+          function fnpaydetails() {
+              $('#pnl_paytype').hide();
+
+              $('#pnl_paydetails').show();
+              return false;
+          }
+
+      </script>
     <script type="text/javascript">
 
         var ischeck = 1;
@@ -1132,27 +1127,10 @@ input[type=range].form-control-lg::-moz-range-thumb {
         }
         //btnSaveRegion
     </script>
-<%--<script>
-    function setmoney(val) {
 
-        // debugger;
-        //var add = 0;
-        //$(".txtamt").each(function () {
-        //    add += Number($(this).val());
-        //});
-        // alert(add);
-
-        $('#txtAmountTotal').val(val);
-        $('#txtTotal').val(val);
-        // $('#lblptotal').html(val.toFixed(2));
-
-        setFee();
-        debugger;
-        return false;
-    }
-</script>--%>
 
  <script type="text/javascript">
+     $("[id$='pnlCategory']").hide();
 
      $(document).ready(function () {
 
@@ -1208,29 +1186,6 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
 
          $("[id$='btnNextCategory']").click(function () {
-             var chkAnonymously = document.getElementById('chkAnonymously').checked;
-             var chkgift = document.getElementById('chkgift').checked;
-             var currentURL = window.location.href;
-             var url = new URL(currentURL);
-             var unid = url.searchParams.get('unid');
-             //aslo get the check box with id chkAnonymously and chkgift
-            console.log(AmountWithoutCharges);
-             console.log(PercentageValue);
-             console.log(Total);
-             console.log("Anonymous Check: " + chkAnonymously);
-             console.log("Gift Aid Check: " + chkgift);
-             console.log("UNID:", unid);
-             var queryString = new URLSearchParams({
-                 unid: unid,
-                 chkAnonymously: chkAnonymously,
-                 chkgift: chkgift,
-                 AmountWithoutCharges: AmountWithoutCharges,
-                 PercentageValue: PercentageValue,
-                 Total: Total
-             }).toString();
-
-             // Redirect to the new page with query parameters
-             window.location.href = "DonationFrequency.aspx?" + queryString;
              showpanels(false, true, false, false, false);
 
 
@@ -1388,11 +1343,12 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
          $("#hplatformfeepercent").val(pval);
 
-         
-         console.log(t + " pla" + pval)
-         console.log(t + pval)
+
+        
          var pr = 0;
-         var t_total = (t + (pval / 100) * t).toFixed(2); 
+         $('#hplatformfee').val((pval * t) / 100);
+
+         var t_total = (t + (pval / 100) * t).toFixed(2);
 
          AmountWithoutCharges = t;
          PercentageValue = pval;
@@ -1485,6 +1441,6 @@ input[type=range].form-control-lg::-moz-range-thumb {
     // Initialize the slider with the correct value
     document.addEventListener('DOMContentLoaded', function () {
         var slider = document.getElementById('<%= lblplatfee.ClientID %>');
-    updateSliderValueOnLoad(slider);
-});
+        updateSliderValueOnLoad(slider);
+    });
 </script>

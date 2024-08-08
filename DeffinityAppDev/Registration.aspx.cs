@@ -61,7 +61,7 @@ namespace DeffinityAppDev
                     {
                         // DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Thank you for registering with Plegit. We will review your application and keep you posted once your application has been approved.", "Ok");
                         //We appreciate your registration with Plegit. After reviewing the information you've provided, we will proceed to activate your account and forward you the login credentials. Please keep in mind that submitting proof of your organization's registration is a necessary step to open an account.
-                        DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Great thanks for registering with Plegit. Please check your email for a confirmation email. This will contain a link that you need to select to activate your Plegit account.", "Go Back To Plegit");
+                        DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Great! Thanks for registering with Plegit. Please check your email for a confirmation email. This will contain a link that you need to select to activate your Plegit account.", "Go Back To Plegit");
                         //Did not receive the email ? <a href='#' onclick='resend();'> click here </a> to resend
                         sessionKeys.Message = "";
                     }

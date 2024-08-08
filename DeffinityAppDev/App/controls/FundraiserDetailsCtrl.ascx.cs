@@ -1,4 +1,5 @@
-﻿using PortfolioMgt.Entity;
+﻿using PortfolioMgt.DAL;
+using PortfolioMgt.Entity;
 using QRCoder;
 using System;
 using System.Collections.Generic;
@@ -108,13 +109,72 @@ namespace DeffinityAppDev.App.controls
                     lblTarget.Text = string.Format("{1}{0:N0}", dlist.DefaultTarget, Deffinity.Utility.GetCurrencySymbol());// string.Format("{0:C0}", dlist.DefaultTarget);
                                                                                                                             // imgQR.ImageUrl = "~/WF/UploadData/Events/" + dlist.unid + ".png"; ;
                     List<string> imageUrls = GetImageUrls(dlist.ID.ToString());
-
-                    if (imageUrls != null && imageUrls.Count > 0)
+                    using (var filecontext = new PortfolioDataContext())
                     {
-                        imgcenterimage.ImageUrl = imageUrls[0];
-                        imgcenterimage1.ImageUrl = imageUrls[1];
-                        imgcenterimage2.ImageUrl = imageUrls[2];
+                        string carouselIndicators = string.Empty;
+                        string carouselItems = string.Empty;
+                        int imageCount = 0;
+
+                        // First Image
+                        var file1 = filecontext.FileDatas.Where(o => o.FileID == dlist.ID.ToString() + "_1").FirstOrDefault();
+                        if (file1 != null)
+                        {
+                            imageCount++;
+                            string imageUrl1 = "/imagehandler.ashx?s=" + ImageManager.file_section_fundriser + "&id=" + dlist.ID.ToString() + "_1";
+                            carouselIndicators += $"<li data-target='#carouselExampleIndicators' data-slide-to='0' class='active'></li>";
+                            carouselItems += "<div class='carousel-item active'>" +
+                                             "<img src='" + imageUrl1 + "' class='img-resize d-block' />" +
+                                             "</div>";
+                        }
+
+                        // Second Image
+                        var file2 = filecontext.FileDatas.Where(o => o.FileID == dlist.ID.ToString() + "_2").FirstOrDefault();
+                        if (file2 != null)
+                        {
+                            imageCount++;
+                            string imageUrl2 = "/imagehandler.ashx?s=" + ImageManager.file_section_fundriser + "&id=" + dlist.ID.ToString() + "_2";
+                            carouselIndicators += $"<li data-target='#carouselExampleIndicators' data-slide-to='1'></li>";
+                            carouselItems += "<div class='carousel-item'>" +
+                                             "<img src='" + imageUrl2 + "' class='img-resize d-block' />" +
+                                             "</div>";
+                        }
+
+                        // Third Image
+                        var file3 = filecontext.FileDatas.Where(o => o.FileID == dlist.ID.ToString() + "_3").FirstOrDefault();
+                        if (file3 != null)
+                        {
+                            imageCount++;
+                            string imageUrl3 = "/imagehandler.ashx?s=" + ImageManager.file_section_fundriser + "&id=" + dlist.ID.ToString() + "_3";
+                            carouselIndicators += $"<li data-target='#carouselExampleIndicators' data-slide-to='2'></li>";
+                            carouselItems += "<div class='carousel-item'>" +
+                                             "<img src='" + imageUrl3 + "' class='img-resize d-block' />" +
+                                             "</div>";
+                        }
+
+                        // Build the complete carousel HTML
+                        string carouselHtml = $@"
+    <div id='carouselExampleIndicators' class='carousel slide' data-ride='carousel'>
+      <ol class='carousel-indicators'>
+        {carouselIndicators}
+      </ol>
+      <div class='carousel-inner'>
+        {carouselItems}
+      </div>
+      <a class='carousel-control-prev' role='button' data-slide='prev'>
+        <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+        <span class='sr-only'>Previous</span>
+      </a>
+      <a class='carousel-control-next' role='button' data-slide='next'>
+        <span class='carousel-control-next-icon' aria-hidden='true'></span>
+        <span class='sr-only'>Next</span>
+      </a>
+    </div>";
+
+                        // Assign the generated HTML to the Literal control
+                        Literal1.Text = carouselHtml;
                     }
+
+
                     lblTitle.Text = dlist.Title;
                    // lblTitle1.Text= dlist.Title;
                     lblDescription.Text = dlist.Description;

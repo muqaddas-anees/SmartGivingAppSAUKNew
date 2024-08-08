@@ -220,8 +220,15 @@
                                     <div class="separator my-7"></div>
                                     <!--begin::Separator-->
                                     <!--begin::Add new contact-->
-                                    <a onclick="clearForm()" href="DONORCRM.aspx" class="btn btn-primary w-100">
-                                        <i class="ki-outline ki-badge fs-2"></i>Add new contact</a>
+                                   <div class="d-flex">
+    <a onclick="clearForm()" href="DONORCRM.aspx" class="btn btn-primary w-50 me-4">
+        Add new contact
+    </a>
+    <a onclick="syncWithMailchimp()" href="#" class="btn btn-primary w-50">
+        Sync with Mailchimp
+    </a>
+</div>
+
 
                                     <!--end::Add new contact-->
                                 </div>
@@ -477,7 +484,15 @@
    
         <div class="table-responsive" style="margin-left: 40px;">
          <asp:Literal ID="ltrPayments" runat="server"></asp:Literal>
-        </div></div>
+        </div>
+                  <div class="d-flex justify-content-center" style="margin:auto">                                
+                            <div id="pagination-controlsp" style="margin-left: 40px;">
+    <button style="border:1px solid #dcdcdc;" id="prev-pagep" class="btn btn-light" onclick="changePagep(-1)">Previous</button>
+    <span style="margin:3px 10px" id="page-infop"></span>
+    <button style="border:1px solid #dcdcdc;" id="next-pagep" class="btn btn-light" onclick="changePagep(1)">Next</button>
+</div>
+</div>
+              </div>
                         <div id="documentsdiv" style="background-color:white;padding: 40px;border-radius: 10px;margin-top: 43px;">                    <label class="fs-6 fw-semibold form-label mt-3">Documents</label>
 
                    <!-- View 3 -->
@@ -494,7 +509,7 @@
 </div>
                                                                          <label class="fs-6 fw-semibold form-label mt-3">Upload a Document</label>
 
-                                                <asp:FileUpload Style="margin-left:40px;margin-right:40px;width:90%" CssClass="form-control" ID="DocumentFile" runat="server" />
+                                                <asp:FileUpload AllowMultiple="true" Style="margin-left:40px;margin-right:40px;width:90%" CssClass="form-control" ID="DocumentFile" runat="server" />
                    
                                                 <asp:HiddenField ID="txtImagePath" runat="server" />
                                                 <!-- Submit Button -->
@@ -541,8 +556,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          
-          <asp:TextBox ID="UNID" ClientIDMode="Static" CssClass="d-none" runat="server" />
+        <asp:TextBox ID="UNID" ClientIDMode="Static" CssClass="d-none" runat="server" />
         <p class="display-6"><strong>Amount:</strong> &#163;<span id="modalAmount"></span></p>
         <p><strong>Status:</strong> <span id="modalStatus" class="badge"></span></p>
         <div style="margin-bottom:10px" class="separator"></div>
@@ -557,34 +571,43 @@
         <p><strong>Payment Type:</strong> <span id="modalPaymentType"></span></p>
         <div style="margin-bottom:10px" class="separator"></div>
         <div id="receipts1" runat="server"></div>
-                                           <div class="d-flex mt-5" style="margin-right:40px">               <asp:FileUpload Style="margin-left:40px;margin-right:40px;width:90%" CssClass="form-control" ID="ReceiptsUpload" runat="server" />
-          <asp:Button runat="server" OnClick="Unnamed_Click" Text="Save File" /></div>
-      </div>
-
-
-        <div class="mt-3" style="margin:30px">
-            <table style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                    </tr>
-                </thead>
-                 <tbody id="donordocs">
-
- </tbody>
-            </table>
-           
+        <asp:Literal runat="server" ID="receiptsLiteral" />
+        <div class="d-flex mt-5" style="margin-right:40px">
+          <asp:FileUpload Style="margin-left:40px;margin-right:40px;width:90%" CssClass="form-control" AllowMultiple="true" ID="ReceiptsUpload" runat="server" />
+          <asp:Button runat="server" OnClick="Unnamed_Click" Text="Save File" />
         </div>
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+
 <script>
+
     let currentPage = 1;
     const rowsPerPage = 10;
+    function paymentTable() {
+        const table = document.getElementById('payment-table');
+        const rows = Array.from(table.querySelectorAll('tbody tr'));
+        const totalPages = Math.ceil(rows.length / rowsPerPage);
 
+        // Hide all rows
+        rows.forEach(row => row.style.display = 'none');
+
+        // Show only the rows for the current page
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        rows.slice(start, end).forEach(row => row.style.display = '');
+
+        // Update page info
+        document.getElementById('page-infop').textContent = `Page ${currentPage} of ${totalPages}`;
+
+        // Disable prev/next buttons if on first/last page
+        document.getElementById('prev-pagep').disabled = currentPage === 1;
+        document.getElementById('next-pagep').disabled = currentPage === totalPages;
+    }
     function paginateTable() {
         const table = document.getElementById('documents-table');
         const rows = Array.from(table.querySelectorAll('tbody tr'));
@@ -618,6 +641,18 @@
 
         paginateTable();
     }
+    function changePagep(direction) {
+        const table = document.getElementById('payment-table');
+        const totalRows = table.querySelectorAll('tbody tr').length;
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+        currentPage += direction;
+
+        // Ensure currentPage stays within bounds
+        currentPage = Math.max(1, Math.min(currentPage, totalPages));
+
+        paymentTable();
+    }
    
     // Initialize pagination on page load
     document.addEventListener('DOMContentLoaded', () => {
@@ -648,11 +683,37 @@
 
         }
         paginateTable();
+        paymentTable();
+        const tid = getQueryParam('tid');
 
+        // If id is present, find the corresponding row and call handlePaymentDetails
+        if (tid) {
+            // Find the table row with the matching id
+            const table = document.getElementById('payment-table');
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const button = row.querySelector('button');
+                const onclickContent = button.getAttribute('onclick');
+                const buttonId = onclickContent.match(/handlePaymentDetails\('([^']*)'/)[1];
+
+                if (buttonId === tid) {
+                    // Extract values from the onclick attribute
+                    const match = onclickContent.match(/handlePaymentDetails\('([^']*)', '([^']*)', '([^']*)', ([^,]*), '([^']*)', ([^,]*), '([^']*)', '([^']*)'\)/);
+                    if (match) {
+                        const [, id, name, email, amount, fundraiserNames, platformFee, paymentType, status] = match;
+                        // Call the handlePaymentDetails function with extracted values
+                        handlePaymentDetails(id, name, email, parseFloat(amount), fundraiserNames, parseFloat(platformFee), paymentType, status);
+                    }
+                }
+            });
+        }
     });
 </script>
+  
+        
 
-
+ 
 
     <script>var hostUrl = "../assets/";
 
@@ -792,6 +853,14 @@
             // Show the modal
             var paymentDetailsModal = new bootstrap.Modal(document.getElementById('paymentDetailsModal'));
             paymentDetailsModal.show();
+            document.getElementById('paymentDetailsModal').addEventListener('hidden.bs.modal', function (e) {
+                document.body.classList.remove('modal-open');
+                const modals = document.querySelectorAll('.modal-backdrop');
+                modals.forEach(modal => modal.remove());
+                // Reset the body overflow
+                document.body.style.overflow = '';
+            });
+        
         }
 
 

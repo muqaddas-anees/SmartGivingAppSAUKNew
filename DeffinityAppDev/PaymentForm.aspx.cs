@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static DeffinityAppDev.App.PayProcess;
@@ -26,7 +27,126 @@ namespace DeffinityAppDev
 
 
         }
-        private Session CreateCheckoutSession(int id)
+             [WebMethod]
+             private Session CreateCheckoutSession(int id)
+             {
+                 StripeConfiguration.ApiKey = Deffinity.systemdefaults.GetStripeSecreatKey();
+
+                 var pmRep = new PortfolioRepository<PortfolioMgt.Entity.TithingPaymentTracker>();
+                 var pE = pmRep.GetAll().Where(o => o.ID == id).FirstOrDefault();
+
+                 var options = new SessionCreateOptions
+                 {
+                     PaymentMethodTypes = new List<string>
+             {
+                 "card"
+             },
+                     LineItems = new List<SessionLineItemOptions>
+             {
+                 new SessionLineItemOptions
+                 {
+                     PriceData = new SessionLineItemPriceDataOptions
+                     {
+                         UnitAmount = (long?)((pE.PaidAmount ?? 0) * 100), // Amount in cents
+                         Currency = "gbp",
+                         ProductData = new SessionLineItemPriceDataProductDataOptions
+                         {
+                             Name = "Service Charge",
+                         },
+                     },
+                     Quantity = 1,
+                 },
+             },
+                     Mode = "payment",
+                     SuccessUrl = $"{Deffinity.systemdefaults.GetWebUrl()}/PayResult.aspx?session_id={{CHECKOUT_SESSION_ID}}&tunid={pE.unid}&unid={pE.unid}&type=success",
+                     CancelUrl = $"{Deffinity.systemdefaults.GetWebUrl()}/PayResult.aspx?tunid={pE.unid}&unid={pE.unid}&type=cancel",
+                     Metadata = new Dictionary<string, string>
+             {
+                 { "order_id", "6735" } // Example metadata
+             }
+                 };
+
+                 var service = new SessionService();
+                 try
+                 {
+                     Session session = service.Create(options);
+
+                     if (pE != null)
+                     {
+                         pE.StripeSessionID = session.Id;
+                         pmRep.Edit(pE);
+                     }
+                     LogExceptions.LogException("sessionid:" + session.Id);
+                     return session;
+                 }
+                 catch (StripeException ex)
+                 {
+                     LogExceptions.WriteExceptionLog(ex);
+                     // Handle exception
+                     Console.WriteLine(ex.Message);
+                     Response.Write(ex.Message);
+                     return null;
+                 }
+             }
+
+     
+
+       /* [WebMethod]
+        public dynamic CreateCheckoutSession(int id)
+        {
+            StripeConfiguration.ApiKey = Deffinity.systemdefaults.GetStripeSecreatKey();
+
+            var pmRep = new PortfolioRepository<PortfolioMgt.Entity.TithingPaymentTracker>();
+            var pE = pmRep.GetAll().Where(o => o.ID == id).FirstOrDefault();
+
+            var amountInCents = (long?)((pE.PaidAmount ?? 0) * 100);
+
+            var options = new SessionCreateOptions
+            {
+                PaymentMethodTypes = new List<string> { "card" },
+                LineItems = new List<SessionLineItemOptions>
+        {
+            new SessionLineItemOptions
+            {
+                PriceData = new SessionLineItemPriceDataOptions
+                {
+                    UnitAmount = amountInCents,
+                    Currency = "gbp",
+                    ProductData = new SessionLineItemPriceDataProductDataOptions
+                    {
+                        Name = "Service Charge",
+                    },
+                },
+                Quantity = 1,
+            },
+        },
+                Mode = "payment",
+                SuccessUrl = $"{Deffinity.systemdefaults.GetWebUrl()}/PayResult.aspx?session_id={{CHECKOUT_SESSION_ID}}&tunid={pE.unid}&unid={pE.unid}&type=success",
+                CancelUrl = $"{Deffinity.systemdefaults.GetWebUrl()}/PayResult.aspx?tunid={pE.unid}&unid={pE.unid}&type=cancel",
+                Metadata = new Dictionary<string, string> { { "order_id", "6735" } }
+            };
+
+            var service = new SessionService();
+            try
+            {
+                Session session = service.Create(options);
+
+                if (pE != null)
+                {
+                    pE.StripeSessionID = session.Id;
+                    pmRep.Edit(pE);
+                }
+                return new { sessionId = session.Id, amount = amountInCents };
+            }
+            catch (StripeException ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+                Response.Write(ex.Message);
+                return null;
+            }
+        }
+*/
+        private Session CreateCheckoutSessionn(int id)
         {
             StripeConfiguration.ApiKey = Deffinity.systemdefaults.GetStripeSecreatKey(); //"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";
 
@@ -41,7 +161,7 @@ namespace DeffinityAppDev
             {
                 PaymentMethodTypes = new List<string>
                 {
-                    "card",
+                    "card"
                 },
                 LineItems = new List<SessionLineItemOptions>
                 {
@@ -175,32 +295,48 @@ namespace DeffinityAppDev
 
         protected void Timer1_Tick(object sender, EventArgs e)
         {
-
             try
             {
-                LogExceptions.LogException("Timer1");
-                if (QueryStringValues.UNID.Length > 0)
+                LogExceptions.LogException("Timer1 Tick Start");
+
+                // Ensure QueryStringValues and its properties are not null
+                if (!string.IsNullOrEmpty(QueryStringValues.UNID))
                 {
-                    var sessionUrl = CreateCheckoutSession(Convert.ToInt32(QueryStringValues.UNID));
-
-
-                    if (!string.IsNullOrEmpty(sessionUrl.Url))
+                    int unid;
+                    if (int.TryParse(QueryStringValues.UNID, out unid))
                     {
-                        // Redirect to Stripe Checkout using the session URL
-                        Response.Redirect(sessionUrl.Url);
+                        var sessionUrl = CreateCheckoutSession(unid);
+
+                        // Ensure sessionUrl is not null and has a valid Url
+                        if (sessionUrl != null && !string.IsNullOrEmpty(sessionUrl.Url))
+                        {
+                            // Redirect to Stripe Checkout using the session URL
+                            Response.Redirect(sessionUrl.Url);
+                        }
+                        else
+                        {
+                            // Handle the case where session creation failed or Url is null
+                            Response.Write("Failed to create a Stripe Checkout session or the session URL is invalid.");
+                        }
                     }
                     else
                     {
-                        // Handle the case where session creation failed
-                        Response.Write("Failed to create a Stripe Checkout session.");
+                        Response.Write("Invalid UNID value.");
                     }
                 }
+                else
+                {
+                    Response.Write("QueryStringValues or UNID is null or empty.");
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+                // Log the exception with more details
                 LogExceptions.WriteExceptionLog(ex);
+                Response.Write("An error occurred while processing the request.");
             }
         }
+
     }
 }
 //namespace DeffinityAppDev

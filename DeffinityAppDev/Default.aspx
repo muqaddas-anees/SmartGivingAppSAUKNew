@@ -126,7 +126,7 @@
                             <div class="login-footer">
                                 <a style="font-size:14px;" href="ForgotPassword.aspx"> Forgot your password?</a>
                                 <br /><br />
-                                <a style="font-size:14px;" href="https://portal.plegit.ai/registration" >Register for a FREE account</a>
+                                <a style="font-size:14px;" href="registration.aspx" >Register for a FREE account</a>
                                 <br /><br />
                                 <%--  <div class="info-links">
 

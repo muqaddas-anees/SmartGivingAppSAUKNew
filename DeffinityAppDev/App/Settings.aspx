@@ -73,25 +73,7 @@
                   </div>
 </a>
 </div>
-		<div class="col-md-6 col-xl-3 card border-0 m-5" id="DivCardPaymentSettings" runat="server">
-<a href="#" class="card border-hover-primary">
-	<div class="card-header border-0 pt-9">
-		<div class="card-title m-0">
-			<div class="symbol symbol-50px w-100px bg-light">
-			<i class="fas fa-credit-card fa-4x p-3"></i>
-			</div>
-			</div>
-			</div>
-			<div class="card-body p-9" style="height: 180px;">
-			<div class="fs-1 fw-bolder text-dark">Card Payment Settings</div>
-			<p class="text-gray-400 fw-bold fs-5 mt-1 mb-7"  style="height:110px;overflow-y:auto;">     Set up your preferred Card Payment Provider</p>
-			</div>
-                                            <div class="card-footer">
-                                       <asp:Button ID="btnCardPay" runat="server" CommandName="CardPaymentSettings" OnCommand="BtnOpen_Command" 
-                                                                                                   Text="Open" SkinID="btnDefault" Font-Size="Large" style="width:100%" />
-                  </div>
-</a>
-</div>
+
 		 <div class="col-md-6 col-xl-3 card border-0 m-5" id="Div3" runat="server">
 <a href="#" class="card border-hover-primary">
 	<div class="card-header border-0 pt-9">

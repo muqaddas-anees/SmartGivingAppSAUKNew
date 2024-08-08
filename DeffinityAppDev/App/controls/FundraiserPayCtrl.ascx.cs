@@ -1,4 +1,5 @@
-﻿using DC.BLL;
+﻿
+using DC.BLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace DeffinityAppDev.App.controls
                     cpStartDate.ValueToCompare = DateTime.Now.ToShortDateString();
                     SetCardFeePercentage();
 
-                   // BindListviewPaytype();
+                    // BindListviewPaytype();
 
                     if (Request.RawUrl.ToLower().Contains("orghomenew"))
                     {
@@ -31,17 +32,17 @@ namespace DeffinityAppDev.App.controls
                     var plist = "";
                     if (tithing != null)
                     {
-                        sessionKeys.FundPortfolioID = tithing.OrganizationID.HasValue? tithing.OrganizationID.Value:0;
+                        sessionKeys.FundPortfolioID = tithing.OrganizationID.HasValue ? tithing.OrganizationID.Value : 0;
                         hPortfolioid.Value = sessionKeys.PortfolioID.ToString();
                         lblTitle.Text = tithing.Title;
                         lblDescription.Text = tithing.Title;
-                       
+
 
                     }
                     var pdetails = PortfolioMgt.BAL.ProjectPortfolioBAL.ProjectPortfolioBAL_SelectAll().Where(o => o.ID == sessionKeys.FundPortfolioID).FirstOrDefault();
                     if (pdetails != null)
                     {
-                       // lblOrg.Text = pdetails.PortFolio;
+                        // lblOrg.Text = pdetails.PortFolio;
                         huid.Value = pdetails.OrgarnizationGUID.ToString();
                         var tmp = lblplatform.Text;
                         lblplatform.Text = tmp.Replace("<charity name>", pdetails.PortFolio);
@@ -279,8 +280,8 @@ namespace DeffinityAppDev.App.controls
                 }
 
                 plist = PortfolioMgt.BAL.TithingCategorySettingBAL.TithingCategorySettingBAL_SelectAll().Where(o => o.OrganizationID == Convert.ToInt32(hPortfolioid.Value) && o.IsActive == true && o.IsHidden == false).ToList();
-              //  listCategory.DataSource = plist;
-               // listCategory.DataBind();
+                //  listCategory.DataSource = plist;
+                // listCategory.DataBind();
             }
             catch (Exception ex)
             {
@@ -389,7 +390,7 @@ namespace DeffinityAppDev.App.controls
 
                             var retval = QuickPayBAL.TithingCardConnectPay(txtCardNumber.Text.Trim(), Convert.ToInt32(hPortfolioid.Value), tithing.ID, txtCardConnectNumber.Text, ddlMonth.SelectedItem.Text.Trim(),
                        ddlYear.SelectedItem.Text.Substring(ddlYear.SelectedItem.Text.Length - 2), txtCvv.Text.Trim(), ddlCardType.SelectedValue,
-                       sessionKeys.UID, Convert.ToDouble(total), txtNameOnCard.Text.Trim() + " " + txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(),tfee,pfee, hrec.Value == "2" ? chkMontly.Checked ? "Monthly" : "Weekly" : "", startdate, enddate
+                       sessionKeys.UID, Convert.ToDouble(total), txtNameOnCard.Text.Trim() + " " + txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(), tfee, pfee, hrec.Value == "2" ? chkMontly.Checked ? "Monthly" : "Weekly" : "", startdate, enddate
                        , daystart, txtNotes.Text.Trim(), chkAnonymously.Checked, 0, moredetails, hunid.Value);
                             //Response.Redirect("~/PayProcess.aspx?frm=fund&refid=" + retval, false);
                             Response.Redirect("~/PayProcess.aspx?frm=fund&refid=" + retval + "&type=" + d.PayType, false);
@@ -510,8 +511,8 @@ namespace DeffinityAppDev.App.controls
 
                     var retval = QuickPayBAL.TithingCardConnectPay(txtCardNumber.Text.Trim(), Convert.ToInt32(hPortfolioid.Value), tithing.ID, txtCardConnectNumber.Text, ddlMonth.SelectedItem.Text.Trim(),
                       ddlYear.SelectedItem.Text.Substring(ddlYear.SelectedItem.Text.Length - 2), txtCvv.Text.Trim(), ddlCardType.SelectedValue,
-                      sessionKeys.UID, Convert.ToDouble(total), txtNameOnCard.Text.Trim() + " " + txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(),tfee,pfee, hrec.Value == "2" ? chkMontly.Checked ? "Monthly" : "Weekly" : "", startdate, enddate
-                      , daystart, txtNotes.Text.Trim(), chkAnonymously.Checked, 0, moredetails, hunid.Value, QueryStringValues.UNID, code, chkfee.Checked, amout_withoutfee,chkgift.Checked);
+                      sessionKeys.UID, Convert.ToDouble(total), txtNameOnCard.Text.Trim() + " " + txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(), tfee, pfee, hrec.Value == "2" ? chkMontly.Checked ? "Monthly" : "Weekly" : "", startdate, enddate
+                      , daystart, txtNotes.Text.Trim(), chkAnonymously.Checked, 0, moredetails, hunid.Value, QueryStringValues.UNID, code, chkfee.Checked, amout_withoutfee, chkgift.Checked);
                     Response.Redirect("~/PayProcess.aspx?frm=fund&refid=" + retval + "&type=" + d.PayType, false);
                 }
                 else
@@ -519,7 +520,7 @@ namespace DeffinityAppDev.App.controls
 
                     var retval = QuickPayBAL.TithingCardConnectPay(txtCardNumber.Text.Trim(), Convert.ToInt32(hPortfolioid.Value), tithing.ID, txtCardConnectNumber.Text, ddlMonth.SelectedItem.Text.Trim(),
                      ddlYear.SelectedItem.Text.Substring(ddlYear.SelectedItem.Text.Length - 2), txtCvv.Text.Trim(), ddlCardType.SelectedValue,
-                     sessionKeys.UID, Convert.ToDouble(total), txtNameOnCard.Text.Trim() + " " + txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(),tfee,pfee, chkRecurring.Checked ? chkMontly.Checked ? "Monthly" : "Weekly" : "", startdate, enddate
+                     sessionKeys.UID, Convert.ToDouble(total), txtNameOnCard.Text.Trim() + " " + txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(), tfee, pfee, chkRecurring.Checked ? chkMontly.Checked ? "Monthly" : "Weekly" : "", startdate, enddate
                      , daystart, txtNotes.Text.Trim(), chkAnonymously.Checked, 0, moredetails, hunid.Value, QueryStringValues.UNID, code, chkfee.Checked, amout_withoutfee, chkgift.Checked);
                     Response.Redirect("~/PayProcess.aspx?frm=fund&refid=" + retval + "&type=" + d.PayType, false);
                     //var retval = QuickPayBAL.TithingCardConnectPay(txtCardNumber.Text.Trim(), Convert.ToInt32(hPortfolioid.Value), tithing.ID, txtCardConnectNumber.Text, ddlMonth.SelectedItem.Text.Trim(),
@@ -640,7 +641,7 @@ namespace DeffinityAppDev.App.controls
                         enddate = DateTime.Now;
                         daystart = 1;
 
-                       
+
 
                         //if (txtStartDate.Text.Length > 0)
                         //    startdate = Convert.ToDateTime(txtStartDate.Text.Trim());
@@ -653,7 +654,7 @@ namespace DeffinityAppDev.App.controls
 
                         var retval = QuickPayBAL.TithingCardConnectPay(plist.CardNumber, Convert.ToInt32(hPortfolioid.Value), tithing.ID, plist.Name, plist.ExpiryMonth.ToString(),
                        plist.ExpiryYear.ToString(), txtCvv.Text.Trim(), ddlCardType.SelectedValue, sessionKeys.UID, Convert.ToDouble(txtTotal.Text.Trim()), txtNameOnCard.Text.Trim() + " " + txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(),
-                       tfee,pfee,
+                       tfee, pfee,
                       hrec.Value == "2" ? chkMontly.Checked ? "Monthly" : "Weekly" : "", startdate, enddate
                             , daystart, txtNotes.Text.Trim(), chkAnonymously.Checked, 0, moredetails, hunid.Value);
                         sendThankyouMail(hunid.Value);
@@ -682,7 +683,7 @@ namespace DeffinityAppDev.App.controls
         protected void ddlOrg_SelectedIndexChanged(object sender, EventArgs e)
         {
             // hPortfolioid.Value = ddlOrg.SelectedValue.ToString();
-           // BindListviewData();
+            // BindListviewData();
             pamentFieldsDefaults();
             BindExistingCardDetails();
         }
@@ -841,7 +842,6 @@ namespace DeffinityAppDev.App.controls
         protected void btnNextCategory_Click(object sender, EventArgs e)
         {
             //enable payment option
-            Response.Redirect("/dir.aspx");
             changePanel(false, true, false, false, false, false);
         }
 
@@ -885,9 +885,9 @@ namespace DeffinityAppDev.App.controls
             string retval = string.Empty;
             var tithing = PortfolioMgt.BAL.TithingDefaultDetailsBAL.TithingDefaultDetailsBAL_Select().Where(o => o.unid == QueryStringValues.UNID).FirstOrDefault();
 
-            if(tithing.MasterUNID != null)
+            if (tithing.MasterUNID != null)
             {
-                if(tithing.MasterUNID.Length >0)
+                if (tithing.MasterUNID.Length > 0)
                 {
                     tithing = PortfolioMgt.BAL.TithingDefaultDetailsBAL.TithingDefaultDetailsBAL_Select().Where(o => o.unid == tithing.MasterUNID).FirstOrDefault();
                 }
@@ -895,8 +895,9 @@ namespace DeffinityAppDev.App.controls
 
             var amountlist = PortfolioMgt.BAL.TithingAmountBAL.TithingAmountBAL_SelectAll().Where(o => o.TithingDefaultUnid == tithing.unid).ToList();
 
-            foreach(var p in amountlist)
+            foreach (var p in amountlist)
             {
+                selectamount.Visible = true;
                 var val = string.Format("{1}{0:N0}", p.Amount, Deffinity.Utility.GetCurrencySymbol());
                 //string.Format("{1}{0:N}", tList.Sum(o => o.PaidAmount.HasValue ? o.PaidAmount.Value : 0.00), Deffinity.Utility.GetCurrencySymbol());
                 //  retval = retval + string.Format("<div class='col-lg-3 mb-3'><a href='#' onclick='return setmoney({0});'> <span class='badge badge-light-primary money_cls'>{1}</span> </a> <br/> <b>{2}</b><br/> <b>{3}</b>  </div>", p.Amount, val,p.Shortdescription,p.Description);
@@ -935,9 +936,9 @@ namespace DeffinityAppDev.App.controls
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            if(sessionKeys.UID >0)
+            if (sessionKeys.UID > 0)
             {
-                Response.Redirect("~/App/FundraiserListView.aspx",false);
+                Response.Redirect("~/App/FundraiserListView.aspx", false);
             }
             else
             {

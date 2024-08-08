@@ -1263,8 +1263,12 @@ return retval;
                 {
                     try
                     {
+                        // Assuming contactname is in the format "Firstname Lastname"
+                        string[] names = contactname.Split(' ');
+                        string firstname = names[0];
+                        string lastname = names.Length > 1 ? names[1] : ""; // Handle cases where there's no last name
 
-                        UserMgt.BAL.UserMgtBAL.AddOrUpdateMembers(contactemail, contactname, "", contactnumber);
+                        UserMgt.BAL.UserMgtBAL.AddOrUpdateMembers(contactemail, firstname, lastname, contactnumber);
                     }
                     catch (Exception ex)
                     {

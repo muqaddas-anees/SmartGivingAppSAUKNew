@@ -113,11 +113,25 @@ namespace DeffinityAppDev.App
                 }
                 else if (pj.OrgarnizationStatus == "Stripe Application In Progress")
                 {
-                    lblMIDTitle.Text = "Stripe application in progress. We will notify you when you can begin fundraising.";
-                    lblMIDDescription.Text = "";
-                    lblnofdays.Text = "";
-                    btnView.Visible = false;
-                    pnlmidcheck.Visible = true;
+                    pnlmidcheck.Visible = false;
+
+                    var d = PortfolioMgt.BAL.PortfolioPaymentSettingsBAL.PortfolioPaymentSettingsBAL_SelectAll().Where(o => o.PortfolioID == sessionKeys.PortfolioID).FirstOrDefault();
+                    if (d != null)
+                    {
+                        if ((d.Vendor ?? "").Length == 0)
+                        {
+                            lblMIDTitle.Text = "Stripe application in progress. We will notify you when you can begin fundraising.";
+                            lblMIDDescription.Text = "";
+                            lblnofdays.Text = "";
+                            btnView.Visible = false;
+                            pnlmidcheck.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        pnlmidcheck.Visible = true;
+                    }
+                  
                 }
                 else
                 {

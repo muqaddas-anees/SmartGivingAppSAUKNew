@@ -28,14 +28,11 @@ using ListItem = System.Web.UI.WebControls.ListItem;
 using Table = System.Web.UI.WebControls.Table;
 using TableCell = System.Web.UI.WebControls.TableCell;
 using TableRow = System.Web.UI.WebControls.TableRow;
-using UserMgt.DAL;
-using System.Collections;
 
 namespace DeffinityAppDev.App
 {
     public partial class Member : System.Web.UI.Page
     {
-        int CID;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -50,13 +47,7 @@ namespace DeffinityAppDev.App
 
                     }
 
-                    string addParam = Request.QueryString["add"];
 
-                    if (addParam != null && addParam.Equals("donor", StringComparison.OrdinalIgnoreCase))
-                    {
-                        // Hide the RadioButtonList control
-                        ddlPermission.Visible = false;
-                    }
                     ddlPermission.SelectedValue = "2";
                     BindCountry();
                     ddlCountry.SelectedValue = Deffinity.systemdefaults.GetCoutryID();
@@ -74,7 +65,7 @@ namespace DeffinityAppDev.App
                         lblSection.Text = "Donor";
                         lblsubtitle.Text = "Donor Details";
                         ddlPermission.SelectedValue = "2";
-                        btnBack.NavigateUrl = "~/App/Members.aspx?type=2";
+                        btnBack.NavigateUrl = "~/App/donorcrm.aspx?type=2";
                         pnlPasswordTextbox.Visible = false;
                         pnlUserType.Visible = false;
                         pnlStatus.Visible = true;
@@ -86,7 +77,7 @@ namespace DeffinityAppDev.App
                         lblSection.Text = "Member";
                         lblsubtitle.Text = "Member Details";
                         ddlPermission.SelectedValue = "1";
-                        btnBack.NavigateUrl = "~/App/Members.aspx?type=1";
+                        btnBack.NavigateUrl = "~/App/users.aspx?type=1";
                         pnlPasswordTextbox.Visible = true;
                         pnlUserType.Visible = true;
                         pnlStatus.Visible = true;
@@ -100,11 +91,10 @@ namespace DeffinityAppDev.App
                         pnlPassword.Visible = false;
                         pnlskills.Visible = true;
                         pnlDocuments.Visible = true;
-                        pnlDonations.Visible = true;    
+                        pnlDonations.Visible = true;
                         pnlCommunication.Visible = false;
 
                         var uid = Convert.ToInt32(Request.QueryString["mid"].ToString());
-                        CID = uid;
                         NewMethod(uid);
                         Gridfilesbind(uid.ToString());
                         BindSkills();
@@ -914,6 +904,20 @@ namespace DeffinityAppDev.App
                     img.ImageUrl = "~/ImageHandler.ashx?id=" + cDetails.ID.ToString() + "&s=" + ImageManager.file_section_user; //GetImageUrl(cDetails.ID.ToString());
                     ddlPermission.SelectedValue = cDetails.SID.Value.ToString();
                     ddlStatus.SelectedValue = cDetails.Status;
+                    using (PortfolioDataContext context = new PortfolioDataContext())
+                    {
+                        // Check if the user has the "Volunteer" role
+                        chkVolunteers.Checked = context.tblRoles.Any(r => r.ContractorID == uid && r.RoleType == "Volunteer");
+
+                        // Check if the user has the "Lead" role
+                        chkLeads.Checked = context.tblRoles.Any(r => r.ContractorID == uid && r.RoleType == "Lead");
+
+                        // Check if the user has the "Member" role
+                        chkMembers.Checked = context.tblRoles.Any(r => r.ContractorID == uid && r.RoleType == "Member");
+
+                        // Check if the user has the "Donor" role
+                        chkDonors.Checked = context.tblRoles.Any(r => r.ContractorID == uid && r.RoleType == "Donor");
+                    }
                 }
             }
             catch(Exception ex)
@@ -1072,7 +1076,7 @@ namespace DeffinityAppDev.App
                                     var newRole = new tblRole
                                     {
                                         ContractorID = uid,
-                                        RoleType = "Member"
+                                        RoleType = "Sponsor"
                                         // Add other properties as needed
                                     };
                                     context.tblRoles.InsertOnSubmit(newRole);
@@ -1095,7 +1099,8 @@ namespace DeffinityAppDev.App
 
                                 }
                             }
-                        }
+                                context.SubmitChanges();
+                            }
                         
                         catch (Exception ex)
                         {
@@ -1139,6 +1144,8 @@ namespace DeffinityAppDev.App
                     value.Company = ddlCompany.SelectedValue;
                     value.ContactNumber = txtContactNumber.Text.Trim();
 
+
+                   
                     if (QueryStringValues.Type == "2")
                     {
                         if (cvRep.GetAll().Where(o => o.LoginName.ToLower().Trim() == value.LoginName.ToLower().Trim() && o.SID == UserType.Donor && o.CompanyID == sessionKeys.PortfolioID).Count() == 0)
@@ -1163,6 +1170,81 @@ namespace DeffinityAppDev.App
                             DeffinityManager.ShowMessages.ShowErrorAlert(this.Page, "Email already exists. Please try again ", "Ok");
                         }
                     }
+                    PortfolioDataContext context = new PortfolioDataContext();
+
+                    // Check if the role already exists
+
+
+
+                    // Add new role
+                    if (chkVolunteers.Checked)
+                    {
+
+                        bool roleExists = context.tblRoles.Any(r => r.ContractorID == userid && r.RoleType == "Volunteer");
+                        if (!roleExists)
+                        {
+                            // Add new role
+                            var newRole = new tblRole
+                            {
+                                ContractorID = userid,
+                                RoleType = "Volunteer"
+                                // Add other properties as needed
+                            };
+                            context.tblRoles.InsertOnSubmit(newRole);
+
+                        }
+                    }
+
+                    if (chkLeads.Checked)
+                    {
+                        bool roleExists = context.tblRoles.Any(r => r.ContractorID == userid && r.RoleType == "Lead");
+                        if (!roleExists)
+                        {
+                            // Add new role
+                            var newRole = new tblRole
+                            {
+                                ContractorID = userid,
+                                RoleType = "Lead"
+                                // Add other properties as needed
+                            };
+                            context.tblRoles.InsertOnSubmit(newRole);
+
+                        }
+                    }
+
+                    if (chkMembers.Checked)
+                    {
+                        bool roleExists = context.tblRoles.Any(r => r.ContractorID == userid && r.RoleType == "Member");
+                        if (!roleExists)
+                        {
+                            // Add new role
+                            var newRole = new tblRole
+                            {
+                                ContractorID = userid,
+                                RoleType = "Sponsor"
+                                // Add other properties as needed
+                            };
+                            context.tblRoles.InsertOnSubmit(newRole);
+
+                        }
+                    }
+                    if (chkDonors.Checked)
+                    {
+                        bool roleExists = context.tblRoles.Any(r => r.ContractorID == userid && r.RoleType == "Member");
+                        if (!roleExists)
+                        {
+                            // Add new role
+                            var newRole = new tblRole
+                            {
+                                ContractorID = userid,
+                                RoleType = "Donor"
+                                // Add other properties as needed
+                            };
+                            context.tblRoles.InsertOnSubmit(newRole);
+
+                        }
+                    }
+                    context.SubmitChanges();
                 }
                 catch (Exception ex)
                 {
@@ -1218,7 +1300,8 @@ namespace DeffinityAppDev.App
 
             return userid;
         }
-       
+
+
         protected void btnSaveChanges_Click(object sender, EventArgs e)
         {
             try
@@ -1535,62 +1618,42 @@ namespace DeffinityAppDev.App
         {
             try
             {
+
                 IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
 
-                // Fetch files where FileID starts with the given SID
-                var fList = fRep.GetAll().Where(o => o.Section == ImageManager.file_section_user_doc && o.FileID.StartsWith(SID)).ToList();
+                var fList = fRep.GetAll().Where(o => o.Section == ImageManager.file_section_user_doc).Where(o => o.FileID == SID.ToString()).ToList();
 
-                // Fetch all contractors
-                UserDataContext contractorsContext = new UserDataContext();
-                var contractorList = contractorsContext.Contractors.ToList();
-
-                // Join FileData with Contractors to get the UserID
-                var rList = (from f in fList
-                             join c in contractorList on f.UserID equals c.ID into fcJoin
-                             from c in fcJoin.DefaultIfEmpty()
+                var rList = (from r in fList
                              select new
                              {
-                                 ID = f.ID,
-                                 Value = f.FileID,
-                                 Time = f.UploadedDate?.ToString("dd-MM-yyyy    HH:mm:ss") ?? "N/A", // Provide a default value if null
-                                 UploadedBy = c != null ? c.ContractorName : "Unknown", // Provide a default value if null
-                                 Text = f.FileName
+                                 ID = r.ID,
+                                 Value = r.FileID,
+                                 Text = r.FileName
                              }).ToList();
-
                 gridfiles.DataSource = rList;
-
-                // Step 1: Count the items in fList
-                int fileCount = fList.Count;
-
-                // Step 2: Create a script tag with this count
-                string script = $"<script type='text/javascript'>var fileCount = {fileCount};</script>";
-
-                // Step 3: Add the script tag to the header
-                Page.Header.Controls.Add(new LiteralControl(script));
-
                 gridfiles.DataBind();
+
             }
             catch (Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
             }
         }
-
-
         protected void DownloadFile(object sender, EventArgs e)
         {
             try
             {
-
                 string filePath = (sender as LinkButton).CommandArgument;
                 // File.Delete(filePath);
+
                 IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
 
-                var f = fRep.GetAll().Where(o => o.FileID == filePath && o.Section == ImageManager.file_section_user_doc).FirstOrDefault();
+                var f = fRep.GetAll().Where(o => o.FileID == filePath && o.Section == ImageManager.file_section_donor_doc).FirstOrDefault();
                 if (f != null)
                 {
-                    Response.Redirect("~/ImageHandler.ashx?id=" + filePath + "&s=" + ImageManager.file_section_user_doc);
+                    Response.Redirect("~/ImageHandler.ashx?id=" + filePath + "&s=" + ImageManager.file_section_donor_doc);
                 }
+
 
             }
             catch (Exception ex)

@@ -10,21 +10,212 @@
         }, false);
 
      </script>
+<style>
+    /* Default styling for large screens */
+#FaithGivingListCtrl_FundraiserPayCtrl_lblplatfee {
+    width: 500px;
+    height: 10px;
+    border-radius: 5px;
+}
 
+/* Medium screens */
+@media (max-width: 1024px) {
+    #FaithGivingListCtrl_FundraiserPayCtrl_lblplatfee {
+        width: 80%;
+    }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+    #FaithGivingListCtrl_FundraiserPayCtrl_lblplatfee {
+        width: 70%;
+        height: 8px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    #FaithGivingListCtrl_FundraiserPayCtrl_lblplatfee {
+        width: 60%;
+        height: 6px;
+        border-radius: 4px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+.dots {
+    width: 500px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+/* Medium screens */
+@media (max-width: 1024px) {
+   .dots {
+        width: 80%;
+    }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+   .dots {
+        width: 70%;
+        height: 8px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+   .dots {
+        width: 60%;
+        height: 6px;
+        border-radius: 4px;
+    }
+}
+
+
+
+
+
+
+
+
+
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    align-content: center;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.slider-label {
+    position: relative;
+    margin: 10px;
+    background-color: #fff;
+    color: #333;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.2s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow */
+}
+
+input[type=range].form-control,
+input[type=range].form-control-lg {
+    all: unset;
+    height: 5px; /* Reduced height */
+    background: linear-gradient(to right, green 0%, green 0%, #ccc 0%, #ccc 100%); /* Dynamic background */
+    outline: none;
+    transition: background 0.3s;
+    position: relative; /* Added for dot positioning */
+}
+
+input[type=range].form-control::-webkit-slider-thumb,
+input[type=range].form-control-lg::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #7cd474;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid white; /* Add white border */
+ /* Adjusts for vertical alignment */
+}
+
+input[type=range].form-control::-moz-range-thumb,
+input[type=range].form-control-lg::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #7cd474;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid white; /* Add white border */
+}
+
+.dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #000;
+    border-radius: 50%;
+    /*top: -2px;*/ /* Adjust to align within the range track */
+    /*transform: translateY(-50%);*/ /* Center the dot vertically */
+    pointer-events: none;
+}
+        .smaller-text {
+    font-size: 14px;
+    color: #888; /* Greyish color */
+    margin-top:15px;
+}
+           .mycheckBig input {width:18px; height:18px;}
+           .mycheckBig label {padding-left:8px}
+       </style>
 <script type="text/javascript">
     $(document).ready(function () {
 
-        updateDropdown();
+
 
 
         $('#<%= txtAmountTotal.ClientID %>').on('input', function () {
-            updateDropdown();
+            updateSliderValue();
         });
 
         $('#<%= lblplatfee.ClientID %>').on('change', function () {
             setFee();
         });
     });
+    function updateSliderValue(slider) {
+        var valueLabel = document.getElementById("sliderValueLabel");
+        var percentage = parseFloat(slider.value) / 100;
+        var amount = parseFloat($('#<%= txtAmountTotal.ClientID %>').val());
+
+        // Update the value label with the calculation
+        valueLabel.innerHTML = slider.value + '%' + ' ' + '£' + (amount * percentage).toFixed(2);
+
+        // Update the slider background color
+        var min = parseFloat(slider.min);
+        var max = parseFloat(slider.max);
+        var valuePercentage = ((slider.value - min) / (max - min)) * 100;
+        slider.style.background = `linear-gradient(to right, #7cd474 ${valuePercentage}%, #ccc ${valuePercentage}%)`;
+
+        // Remove existing dots
+
+    }
+
+
+    function updateSliderValueOnLoad(slider) {
+        var valueLabel = document.getElementById("sliderValueLabel");
+        var percentage = parseFloat(slider.value) / 100;
+        var amount = parseFloat($('#<%= txtAmountTotal.ClientID %>').val());
+
+        // Update the value label with the calculation
+        valueLabel.innerHTML = slider.value + '%' + ' ';
+
+        // Update the slider background color
+        var min = parseFloat(slider.min);
+        var max = parseFloat(slider.max);
+        var valuePercentage = ((slider.value - min) / (max - min)) * 100;
+        slider.style.background = `linear-gradient(to right, #7cd474 ${valuePercentage}%, #ccc ${valuePercentage}%)`;
+
+        // Remove existing dots
+
+    }
 
     function updateDropdown() {
         var amount = parseFloat($('#<%= txtAmountTotal.ClientID %>').val());
@@ -232,9 +423,12 @@
                                                           <div class="row  mb-6 d-flex d-inline">
                                                                 <div class="col-lg-12 mb-6 d-flex d-inline justify-content-between">
                                                                     <asp:Label ID="lblplatform" runat="server" style="font-size:20px;margin-left:5px;margin-right:5px" Text="Please help the <charity name> by contributing towards the platform fee:"></asp:Label>
-                                                                    <asp:DropDownList id="lblplatfee" runat="server" ClientIDMode="Static" CssClass="form-select form-select-lg fw-bold" style="width:200px;width:200px;font-size: 20px;"></asp:DropDownList>
+                                                                                    
                                                                     </div>
                                                               </div>
+                                                                                                                                            <div class="slider-container">
+ <span id="sliderValueLabel" class="slider-label">15%</span>
+<asp:TextBox ID="lblplatfee" runat="server" CssClass="" Style="height:10px;border-radius:5px" TextMode="Range" Min="5" Max="30" Value="15" OnInput="updateSliderValue(this)" AutoPostBack="false"></asp:TextBox>          <div class="dots"></div>       </div>
                                                            <div class="row d-flex d-inline" style="display:none;visibility:hidden;">
                                                                 <div class="col-lg-12 ">
                                                        <asp:CheckBox ID="chkAnonymously" runat="server" Text=" " Font-Size="20px" CssClass="mycheckBig" ClientIDMode="Static" />
@@ -923,12 +1117,24 @@
         }
         //btnSaveRegion
     </script>
-
+<script>
+    // Initialize the slider with the correct value
+    document.addEventListener('DOMContentLoaded', function () {
+        var slider = document.getElementById('<%= lblplatfee.ClientID %>');
+        updateSliderValueOnLoad(slider);
+    });
+</script>
 
  <script type="text/javascript">
 
      $(document).ready(function () {
+         var inputElement = document.getElementById('<%= lblplatfee.ClientID %>');
 
+         // Check if the element exists
+         if (inputElement) {
+             // Set the step attribute to 5
+             inputElement.setAttribute('step', '5');
+         }
          function showpanels(category, payoption, recurring, userinfo, carddetails) {
 
              if (category == true) {
@@ -1145,11 +1351,12 @@
         
 
          var pr = 0;
-         var t_total = (t + pval).toFixed(2);
+         var t_total = (t + (pval*t)/100).toFixed(2);
          $('#lblfee').html(pval);
          $('#hamount').val(t_total);
          $('#lblptotal').html('£' + t_total);
 
+         $('#hplatformfee').val((pval * t) / 100);
 
          $('#lblgtotal').html('£' + t);
          $('#lblgptotal').html('£' + add25Percent(parseInt(t) ));

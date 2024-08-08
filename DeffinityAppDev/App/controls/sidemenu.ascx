@@ -307,11 +307,11 @@
 								
 							</div>
 							<div class="menu-item py-2" id="link_TextToDonate" runat="server">
-								<a href="~/App/TextToDonate.aspx" id="a1" runat="server" class="menu-link " title="Text To Donate" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+								<a href="~/App/TextToDonate.aspx" id="a1" runat="server" class="menu-link " title="SMS Marketing" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
 									<span class="menu-icon">
 										<i class="far fa-comment-dots fs-2"></i>
 									</span>
-									<span class="menu-title">Text To Donate</span>
+									<span class="menu-title">SMS Marketing</span>
 								</a>
 								
 							</div>

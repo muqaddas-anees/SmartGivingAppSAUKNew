@@ -42,24 +42,6 @@ namespace DeffinityAppDev.App
         protected global::System.Web.UI.WebControls.Button Button6;
 
         /// <summary>
-        /// DivCardPaymentSettings control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivCardPaymentSettings;
-
-        /// <summary>
-        /// btnCardPay control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCardPay;
-
-        /// <summary>
         /// Div3 control.
         /// </summary>
         /// <remarks>

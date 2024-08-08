@@ -378,33 +378,8 @@ header .close:hover{
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-                            <asp:Image ID="imgcenterimage" runat="server" CssClass="img-resize d-block" />
-    </div>
-    <div class="carousel-item">
-                                                        <asp:Image ID="imgcenterimage1" runat="server" CssClass="img-resize d-block" />
-    </div>
-    <div class="carousel-item">
-                                                                  <asp:Image ID="imgcenterimage2" runat="server" CssClass="img-resize d-block " />
-
-    </div>
-  </div>
-  <a class="carousel-control-prev" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next d-none"  role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+                            <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+                         
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -425,7 +400,7 @@ header .close:hover{
             <div></div>
         </div>
 
-        <div class="card mb-5 mb-xl-10" id="pnl_mystory" runat="server" style="margin-left: 15px">
+        <div class="card mb-5 mb-xl-10" id="pnl_mystory" runat="server" >
             <div class="card-body border-top p-9">
                 <div id="pnl_img" runat="server" class="text-center"></div>
                 <div class="row fs-2 mt-10">

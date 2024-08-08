@@ -332,50 +332,7 @@ namespace DeffinityAppDev.App
 
                         var payDetials = PortfolioMgt.BAL.PortfolioPaymentSettingsBAL.PortfolioPaymentSettingsBAL_SelectByCompany(sessionKeys.PortfolioID);
                         pnlDefault.Visible = true;
-                        //if (payDetials == null)
-                        //{
-                        //    if (payDetials.Vendor == null)
-                        //    {
-                        //        pnlDefault.Visible = false;
-                        //        pnlNoCard.Visible = true;
-                        //    }
-                        //    else if (payDetials.Vendor.Length == 0)
-                        //    {
-                        //        pnlDefault.Visible = false;
-                        //        pnlNoCard.Visible = true;
-                        //    }
-                        //    else if (payDetials.Vendor.Length > 0)
-                        //    {
-                        //        pnlDefault.Visible = true;
-                        //        pnlNoCard.Visible = false;
-                        //    }
-
-
-                        //}
-                        //else
-                        //{
-                        //    if (payDetials.Vendor == null)
-                        //    {
-                        //        pnlDefault.Visible = false;
-                        //        pnlNoCard.Visible = true;
-                        //    }
-                        //    else if (payDetials.Vendor.Length == 0)
-                        //    {
-                        //        pnlDefault.Visible = false;
-                        //        pnlNoCard.Visible = true;
-                        //    }
-                        //    else if (payDetials.Vendor.Length > 0)
-                        //    {
-                        //        pnlDefault.Visible = true;
-                        //        pnlNoCard.Visible = false;
-                        //    }
-                        //    else
-                        //    {
-                        //        pnlDefault.Visible = true;
-                        //        pnlNoCard.Visible = false;
-                        //    }
-                        //}
-
+                      
                         if (pnlDefault.Visible == true)
                         {
                             if (QueryStringValues.Type == "stripe")
@@ -417,48 +374,44 @@ namespace DeffinityAppDev.App
                             }
                             else
                             {
-
-
-                                var id = Session["invoiceref"].ToString();
+                                var id = Session["invoiceref"]?.ToString();
 
                                 if (Request.QueryString["frm"] == "tickets")
                                 {
-                                    id = Session["invoiceref"].ToString();
-
-
+                                    id = Session["invoiceref"]?.ToString();
 
                                     var pmRep = new PortfolioRepository<PortfolioMgt.Entity.ActivityBooking>();
-                                    var pE = pmRep.GetAll().Where(o => o.unid == id).FirstOrDefault();
+                                    var pE = pmRep.GetAll().FirstOrDefault(o => o.unid == id);
 
                                     var pRep = new ProjectRepository<ProjectMgt.Entity.ProjectDefault>();
                                     var AdminPayDetails = pRep.GetAll().FirstOrDefault();
+
                                     // var payDetials = PortfolioMgt.BAL.PortfolioPaymentSettingsBAL.PortfolioPaymentSettingsBAL_SelectByCompany(sessionKeys.PortfolioID);
 
                                     PaySettings ps = new PaySettings();
-                                    ps.MerchantID = payDetials.Vendor;
-                                    ps.MerchantKey = payDetials.consumerSecret;
-                                    ps.passphrase = payDetials.consumerKey ?? "";
+                                    ps.MerchantID = payDetials?.Vendor;
+                                    ps.MerchantKey = payDetials?.consumerSecret;
+                                    ps.passphrase = payDetials?.consumerKey ?? "";
 
-                                    ps.Amount = Convert.ToDouble(Session["amount"].ToString()).ToString();
+                                    ps.Amount = Convert.ToDouble(Session["amount"]?.ToString()).ToString();
                                     ps.CellNumber = "";
                                     ps.Description = "Donation";
-                                    ps.Email = Session["customeremail"].ToString();
+                                    ps.Email = Session["customeremail"]?.ToString();
                                     //ps.FirstName = "Demo";
 
-                                    ps.IsLive = payDetials.Host.ToLower().Contains("sandbox") ? false : true;
+                                    ps.IsLive = payDetials?.Host?.ToLower().Contains("sandbox") == true ? false : true;
                                     ps.ItemName = "Donation";
                                     // ps.LastName = "";
                                     ps.OrderId = Request.QueryString["refid"];
-                                    ps.URLReturn = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.unid + "&unid=" + pE.unid + "&type=" + "booking_success";
-                                    ps.URLCancel = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.unid + "&unid=" + pE.unid + "&type=" + "booking_cancel";
-                                    ps.URLNotify = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.unid + "&unid=" + pE.unid + "&type=" + "booking_notify";
+                                    ps.URLReturn = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.unid + "&unid=" + pE?.unid + "&type=" + "booking_success";
+                                    ps.URLCancel = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.unid + "&unid=" + pE?.unid + "&type=" + "booking_cancel";
+                                    ps.URLNotify = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.unid + "&unid=" + pE?.unid + "&type=" + "booking_notify";
 
                                     if (Session["code"] != null)
-                                        ps.payment_method = Session["code"].ToString();
-
+                                        ps.payment_method = Session["code"]?.ToString();
 
                                     if (Session["payref"] != null)
-                                        ps.payref = Session["payref"].ToString();
+                                        ps.payref = Session["payref"]?.ToString();
                                     else
                                         ps.payref = "";
 
@@ -467,12 +420,10 @@ namespace DeffinityAppDev.App
                                         if (AdminPayDetails.Payment_Merchant_ID != null)
                                         {
                                             var stemp = "{%22merchant_id%22:mid,%22percentage%22:%22pcent%22,%22min%22:%221%22,%22max%22:%22100000%22}";
-
                                             stemp = stemp.Replace("mid", AdminPayDetails.Payment_Merchant_ID);
                                             stemp = stemp.Replace("pcent", (AdminPayDetails.Paymet_Percentage ?? 0).ToString());
 
                                             var temp1 = "{%22split_payment%22:" + stemp + "}";
-
                                             ps.setup = temp1;
                                         }
                                         else
@@ -486,64 +437,49 @@ namespace DeffinityAppDev.App
                                     }
 
                                     if (Session["payref"] != null)
-                                        ps.payref = Session["payref"].ToString();
+                                        ps.payref = Session["payref"]?.ToString();
                                     else
                                         ps.payref = "";
                                     // ps.setup = JsonConvert.SerializeObject(sp);
                                     IProjectRepository<ProjectMgt.Entity.ProjectDefault> prep = new ProjectRepository<ProjectMgt.Entity.ProjectDefault>();
-                                    var pDetails = prep.GetAll().First();
-
+                                    var pDetails = prep.GetAll().FirstOrDefault();
 
                                     var str_split = "";
-
-                                    //if (recurring.Length > 0)
-                                    //    PaymentProcess_recurring(ps);
-
-                                    //else
-
-                                    //PaymentProcess(ps,pE, pE.unid);
-
                                 }
                                 else if (Request.QueryString["frm"] == "online")
                                 {
-                                    id = Session["invoiceref"].ToString();
-
-
-
-
+                                    id = Session["invoiceref"]?.ToString();
 
                                     var pmRep = new PortfolioRepository<PortfolioMgt.Entity.ProductSalesTracker>();
-                                    var pE = pmRep.GetAll().Where(o => o.ProductSaleGuid == id).FirstOrDefault();
+                                    var pE = pmRep.GetAll().FirstOrDefault(o => o.ProductSaleGuid == id);
 
                                     var pRep = new ProjectRepository<ProjectMgt.Entity.ProjectDefault>();
                                     var AdminPayDetails = pRep.GetAll().FirstOrDefault();
 
-
                                     PaySettings ps = new PaySettings();
-                                    ps.MerchantID = payDetials.Vendor;
-                                    ps.MerchantKey = payDetials.consumerSecret;
-                                    ps.passphrase = payDetials.consumerKey ?? "";
+                                    ps.MerchantID = payDetials?.Vendor;
+                                    ps.MerchantKey = payDetials?.consumerSecret;
+                                    ps.passphrase = payDetials?.consumerKey ?? "";
 
-                                    ps.Amount = Convert.ToDouble(Session["amount"].ToString()).ToString();
+                                    ps.Amount = Convert.ToDouble(Session["amount"]?.ToString()).ToString();
                                     ps.CellNumber = "";
                                     ps.Description = "Donation";
-                                    ps.Email = Session["customeremail"].ToString();
+                                    ps.Email = Session["customeremail"]?.ToString();
                                     //ps.FirstName = "Demo";
 
-                                    ps.IsLive = payDetials.Host.ToLower().Contains("sandbox") ? false : true;
+                                    ps.IsLive = payDetials?.Host?.ToLower().Contains("sandbox") == true ? false : true;
                                     ps.ItemName = "Donation";
                                     // ps.LastName = "";
                                     ps.OrderId = Request.QueryString["refid"];
-                                    ps.URLReturn = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.ProductSaleGuid + "&unid=" + pE.ProductSaleGuid + "&type=" + "online_success";
-                                    ps.URLCancel = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.ProductSaleGuid + "&unid=" + pE.ProductSaleGuid + "&type=" + "online_cancel";
-                                    ps.URLNotify = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.ProductSaleGuid + "&unid=" + pE.ProductSaleGuid + "&type=" + "online_notify";
-
+                                    ps.URLReturn = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.ProductSaleGuid + "&unid=" + pE?.ProductSaleGuid + "&type=" + "online_success";
+                                    ps.URLCancel = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.ProductSaleGuid + "&unid=" + pE?.ProductSaleGuid + "&type=" + "online_cancel";
+                                    ps.URLNotify = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.ProductSaleGuid + "&unid=" + pE?.ProductSaleGuid + "&type=" + "online_notify";
 
                                     if (Session["code"] != null)
-                                        ps.payment_method = Session["code"].ToString();
+                                        ps.payment_method = Session["code"]?.ToString();
 
                                     if (Session["payref"] != null)
-                                        ps.payref = Session["payref"].ToString();
+                                        ps.payref = Session["payref"]?.ToString();
                                     else
                                         ps.payref = "";
 
@@ -552,12 +488,10 @@ namespace DeffinityAppDev.App
                                         if (AdminPayDetails.Payment_Merchant_ID != null)
                                         {
                                             var stemp = "{%22merchant_id%22:mid,%22percentage%22:%22pcent%22,%22min%22:%221%22,%22max%22:%22100000%22}";
-
                                             stemp = stemp.Replace("mid", AdminPayDetails.Payment_Merchant_ID);
                                             stemp = stemp.Replace("pcent", (AdminPayDetails.Paymet_Percentage ?? 0).ToString());
 
                                             var temp1 = "{%22split_payment%22:" + stemp + "}";
-
                                             ps.setup = temp1;
                                         }
                                         else
@@ -571,27 +505,18 @@ namespace DeffinityAppDev.App
                                     }
                                     // ps.setup = JsonConvert.SerializeObject(sp);
                                     IProjectRepository<ProjectMgt.Entity.ProjectDefault> prep = new ProjectRepository<ProjectMgt.Entity.ProjectDefault>();
-                                    var pDetails = prep.GetAll().First();
-
+                                    var pDetails = prep.GetAll().FirstOrDefault();
 
                                     var str_split = "";
 
-
-                                //    PaymentProcess(ps, pE, pE.ProductSaleGuid);
-
-
-
-
-
+                                    //    PaymentProcess(ps, pE, pE.ProductSaleGuid);
                                 }
                                 else if (Request.QueryString["frm"] == "sms")
                                 {
-                                    id = Session["invoiceref"].ToString();
-
-
+                                    id = Session["invoiceref"]?.ToString();
 
                                     var pmRep = new PortfolioRepository<PortfolioMgt.Entity.SMSPackageDetail>();
-                                    var pE = pmRep.GetAll().Where(o => o.ID == Convert.ToInt32(id)).FirstOrDefault();
+                                    var pE = pmRep.GetAll().FirstOrDefault(o => o.ID == Convert.ToInt32(id));
 
                                     var pRep = new ProjectRepository<ProjectMgt.Entity.ProjectDefault>();
                                     var AdminPayDetails = pRep.GetAll().FirstOrDefault();
@@ -601,56 +526,43 @@ namespace DeffinityAppDev.App
                                     //ps.MerchantID = payDetials.Vendor;
                                     //ps.MerchantKey = payDetials.consumerSecret;
                                     //ps.passphrase = payDetials.consumerKey ?? "";
-                                    ps.MerchantID = AdminPayDetails.Payment_Merchant_ID;
-                                    ps.MerchantKey = AdminPayDetails.Payment_Merchant_key;
-                                    ps.passphrase = AdminPayDetails.Payment_Salt_Pass ?? "";
+                                    ps.MerchantID = AdminPayDetails?.Payment_Merchant_ID;
+                                    ps.MerchantKey = AdminPayDetails?.Payment_Merchant_key;
+                                    ps.passphrase = AdminPayDetails?.Payment_Salt_Pass ?? "";
 
-                                    ps.Amount = Convert.ToDouble(Session["amount"].ToString()).ToString();
+                                    ps.Amount = Convert.ToDouble(Session["amount"]?.ToString()).ToString();
                                     ps.CellNumber = "";
                                     ps.Description = "SMS Package";
-                                    ps.Email = Session["customeremail"].ToString();
+                                    ps.Email = Session["customeremail"]?.ToString();
                                     //ps.FirstName = "Demo";
 
-                                    ps.IsLive = payDetials.Host.ToLower().Contains("sandbox") ? false : true;
+                                    ps.IsLive = payDetials?.Host?.ToLower().Contains("sandbox") == true ? false : true;
                                     ps.ItemName = "SMS Package";
                                     // ps.LastName = "";
                                     ps.OrderId = Request.QueryString["refid"];
-                                    ps.URLReturn = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.ID + "&unid=" + pE.ID + "&type=" + "sms_success";
-                                    ps.URLCancel = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.ID + "&unid=" + pE.ID + "&type=" + "sms_cancel";
-                                    ps.URLNotify = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.ID + "&unid=" + pE.ID + "&type=" + "sms_notify";
-
+                                    ps.URLReturn = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.ID + "&unid=" + pE?.ID + "&type=" + "sms_success";
+                                    ps.URLCancel = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.ID + "&unid=" + pE?.ID + "&type=" + "sms_cancel";
+                                    ps.URLNotify = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.ID + "&unid=" + pE?.ID + "&type=" + "sms_notify";
 
                                     if (Session["code"] != null)
-                                        ps.payment_method = Session["code"].ToString();
+                                        ps.payment_method = Session["code"]?.ToString();
 
                                     if (Session["payref"] != null)
-                                        ps.payref = Session["payref"].ToString();
+                                        ps.payref = Session["payref"]?.ToString();
                                     else
                                         ps.payref = "";
 
-
                                     IProjectRepository<ProjectMgt.Entity.ProjectDefault> prep = new ProjectRepository<ProjectMgt.Entity.ProjectDefault>();
-                                    var pDetails = prep.GetAll().First();
-
+                                    var pDetails = prep.GetAll().FirstOrDefault();
 
                                     var str_split = "";
 
-
-                                   // PaymentProcess(ps, pE, pE.ID.ToString());
-
-
-
-
-
-
-
-
+                                    // PaymentProcess(ps, pE, pE.ID.ToString());
                                 }
                                 else
                                 {
-
                                     var pmRep = new PortfolioRepository<PortfolioMgt.Entity.TithingPaymentTracker>();
-                                    var pE = pmRep.GetAll().Where(o => o.ID == Convert.ToInt32(id)).FirstOrDefault();
+                                    var pE = pmRep.GetAll().FirstOrDefault(o => o.ID == Convert.ToInt32(id));
 
                                     var pRep = new ProjectRepository<ProjectMgt.Entity.ProjectDefault>();
                                     var AdminPayDetails = pRep.GetAll().FirstOrDefault();
@@ -659,9 +571,7 @@ namespace DeffinityAppDev.App
                                     var amt_withoutfee = 0.00;
                                     if (Session["amount_withoutfee"] != null)
                                     {
-                                        amt_withoutfee = Convert.ToDouble(Session["amount_withoutfee"].ToString());
-
-
+                                        amt_withoutfee = Convert.ToDouble(Session["amount_withoutfee"]?.ToString());
                                     }
 
                                     //string recurring = "";
@@ -673,78 +583,37 @@ namespace DeffinityAppDev.App
                                     //    startdate = Session["startdate"].ToString();
 
                                     PaySettings ps = new PaySettings();
-                                    ps.MerchantID = payDetials.Vendor;
-                                    ps.MerchantKey = payDetials.consumerSecret;
-                                    ps.passphrase = payDetials.consumerKey ?? "";
+                                    ps.MerchantID = payDetials?.Vendor;
+                                    ps.MerchantKey = payDetials?.consumerSecret;
+                                    ps.passphrase = payDetials?.consumerKey ?? "";
 
-                                    ps.Amount = Convert.ToDouble(Session["amount"].ToString()).ToString();
+                                    ps.Amount = Convert.ToDouble(Session["amount"]?.ToString()).ToString();
                                     ps.CellNumber = "";
                                     ps.Description = "Donation";
-                                    ps.Email = Session["customeremail"].ToString();
+                                    ps.Email = Session["customeremail"]?.ToString();
                                     //ps.FirstName = "Demo";
 
-                                    ps.IsLive = payDetials.Host.ToLower().Contains("sandbox") ? false : true;
+                                    ps.IsLive = payDetials?.Host?.ToLower().Contains("sandbox") == true ? false : true;
                                     ps.ItemName = "Donation";
                                     // ps.LastName = "";
                                     ps.OrderId = Request.QueryString["refid"];
-                                    ps.URLReturn = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.unid + "&unid=" + pE.unid + "&type=" + "success";
-                                    ps.URLCancel = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.unid + "&unid=" + pE.unid + "&type=" + "cancel";
-                                    ps.URLNotify = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE.unid + "&unid=" + pE.unid + "&type=" + "notify";
+                                    ps.URLReturn = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.unid + "&unid=" + pE?.unid + "&type=" + "success";
+                                    ps.URLCancel = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.unid + "&unid=" + pE?.unid + "&type=" + "cancel";
+                                    ps.URLNotify = Deffinity.systemdefaults.GetWebUrl() + "/PayResult.aspx?tunid=" + pE?.unid + "&unid=" + pE?.unid + "&type=" + "notify";
 
                                     if (Session["code"] != null)
-                                        ps.payment_method = Session["code"].ToString();
+                                        ps.payment_method = Session["code"]?.ToString();
 
                                     if (Session["payref"] != null)
-                                        ps.payref = Session["payref"].ToString();
+                                        ps.payref = Session["payref"]?.ToString();
                                     else
                                         ps.payref = "";
-
 
                                     if (AdminPayDetails != null)
                                     {
                                         if (AdminPayDetails.Payment_Merchant_ID != null)
                                         {
-                                            // var stemp = "{%22merchant_id%22:mid,%22percentage%22:%22pcent%22,%22min%22:%221%22,%22max%22:%22100000%22}";
-                                            //var stemp = "{%22merchant_id%22:mid,%22percentage%22:%22pcent%22,%22min%22:%221%22,%22max%22:%22100000%22}";
-                                            //stemp = stemp.Replace("mid", AdminPayDetails.Payment_Merchant_ID);
-                                            //stemp = stemp.Replace("pcent", (AdminPayDetails.Paymet_Percentage??0).ToString());
-
-                                            //var temp1 = "{%22split_payment%22:" + stemp + "}";
-
-
-
-                                            //if (amt_withoutfee > 0)
-
-                                            //{
-                                            //    if ((payDetials.TransactionFee ?? 0) > 0)
-                                            //    {
-                                            //        //convet to centes
-                                            //        var pamount = Convert.ToInt32(CalculatePercentage(amt_withoutfee, (payDetials.TransactionFee ?? 0)) * 100);
-
-
-                                            //        var stemp = "{%22merchant_id%22:mid,%22amount%22:%22pcent%22,%22min%22:%221%22,%22max%22:%22100000%22}";
-                                            //        stemp = stemp.Replace("mid", AdminPayDetails.Payment_Merchant_ID);
-
-
-                                            //        stemp = stemp.Replace("pcent", (pamount).ToString());
-
-                                            //        var temp1 = "{%22split_payment%22:" + stemp + "}";
-
-                                            //        ps.setup = temp1;
-                                            //    }
-                                            //}
-                                            //else
-                                            //{
-                                            //    // var stemp = "{%22merchant_id%22:mid,%22percentage%22:%22pcent%22,%22min%22:%221%22,%22max%22:%22100000%22}";
-                                            //    var stemp = "{%22merchant_id%22:mid,%22percentage%22:%22pcent%22,%22min%22:%221%22,%22max%22:%22100000%22}";
-                                            //    stemp = stemp.Replace("mid", AdminPayDetails.Payment_Merchant_ID);
-                                            //    stemp = stemp.Replace("pcent", (AdminPayDetails.Paymet_Percentage ?? 0).ToString());
-
-                                            //    var temp1 = "{%22split_payment%22:" + stemp + "}";
-
-                                            //    ps.setup = temp1;
-
-                                            //}
+                                            // Logic if needed
                                         }
                                         else
                                         {
@@ -755,45 +624,31 @@ namespace DeffinityAppDev.App
                                     {
                                         ps.setup = "";
                                     }
-                                    // ps.setup = JsonConvert.SerializeObject(sp);
-                                    //IProjectRepository<ProjectMgt.Entity.ProjectDefault> prep = new ProjectRepository<ProjectMgt.Entity.ProjectDefault>();
-                                    //var pDetails = prep.GetAll().First();
-
 
                                     var str_split = "";
 
                                     string recurring = "";
                                     if (Session["recurring"] != null)
-                                        recurring = Session["recurring"].ToString();
+                                        recurring = Session["recurring"]?.ToString();
 
                                     string startdate = "";
                                     if (Session["startdate"] != null)
-                                        startdate = Session["startdate"].ToString();
+                                        startdate = Session["startdate"]?.ToString();
 
                                     if (recurring.Length > 0)
                                     {
-
                                         ps.recurring = recurring;
                                         ps.startdate = startdate;
 
-                                        PaymentProcess_recurring(ps, pE.unid);
+                                        PaymentProcess_recurring(ps, pE?.unid);
                                     }
-
                                     else
-
-                                        PaymentProcess(ps, pE, pE.unid);
-
-
+                                    {
+                                        PaymentProcess(ps, pE, pE?.unid);
+                                    }
                                 }
-
-                                //string url = "";
-                                //string remoteaddress = "";
-                                //string marchantid = "";
-
-                                //ProcessUpdate(sessionKeys.PortfolioID, url, remoteaddress, marchantid,
-                                //    Convert.ToDouble(Session["amount"]).ToString(), Session["cardnumber"].ToString(), Session["month"].ToString(), Session["year"].ToString().Substring(Session["year"].ToString().Length - 2),
-                                //   Session["cvv"].ToString(), Session["customername"].ToString(), Session["customeremail"].ToString(), Session["address"].ToString(), Session["postcode"].ToString());
                             }
+
                         }
 
                     }
