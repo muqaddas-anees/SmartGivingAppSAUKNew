@@ -20,12 +20,12 @@
 										<!--begin::Card-->
 										<a href="#" class="card border-hover-primary">
 											<!--begin::Card header-->
-											<div class="card-header border-0 pt-9">
+											<div class="card-header border-0 pt-9 d-flex">
 												<!--begin::Card Title-->
-												<div class="card-title m-0">
+												<div class="card-title m-auto">
 													<!--begin::Avatar-->
-													<div class="symbol symbol-50px w-100px bg-light">
-														<i class="fas fa-desktop fa-4x p-3"></i>
+													<div class="symbol symbol-50px w-100px bg-light d-flex">
+														<i class="fas fa-desktop fa-4x p-3 m-auto"></i>
 													</div>
 													<!--end::Avatar-->
 												</div>
@@ -56,10 +56,10 @@
 									</div>
 		<div class="col-md-6 col-xl-3 card border-0 m-5" id="Div4" runat="server">
 <a href="#" class="card border-hover-primary">
-	<div class="card-header border-0 pt-9">
-		<div class="card-title m-0">
-			<div class="symbol symbol-50px w-100px bg-light">
-			<i class="fas fa-users fa-4x p-3"></i>
+	<div class="card-header border-0 pt-9 d-flex">
+		<div class="card-title m-auto">
+			<div class="symbol symbol-50px w-100px bg-light d-flex">
+			<i class="fas fa-users fa-4x p-3 m-auto"></i>
 			</div>
 			</div>
 			</div>
@@ -76,10 +76,10 @@
 
 		 <div class="col-md-6 col-xl-3 card border-0 m-5" id="Div3" runat="server">
 <a href="#" class="card border-hover-primary">
-	<div class="card-header border-0 pt-9">
-		<div class="card-title m-0">
-			<div class="symbol symbol-50px w-100px bg-light">
-			<i class="far fa-file-alt fa-4x p-3"></i>
+	<div class="card-header border-0 pt-9 d-flex">
+		<div class="card-title m-auto">
+			<div class="symbol symbol-50px w-100px bg-light d-flex">
+			<i class="bi bi-person-wheelchair m-auto"></i>
 			</div>
 			</div>
 			</div>
@@ -138,10 +138,10 @@
 
 		 <div class="col-md-6 col-xl-3 card border-0 m-5" id="Div2" runat="server">
 <a href="#" class="card border-hover-primary">
-	<div class="card-header border-0 pt-9">
-		<div class="card-title m-0">
-			<div class="symbol symbol-50px w-100px bg-light">
-			<i class="far fa-file-alt fa-4x p-3"></i>
+	<div class="card-header border-0 pt-9 d-flex">
+		<div class="card-title m-auto">
+			<div class="symbol symbol-50px w-100px bg-light d-flex">
+			<i class="bi bi-boxes m-auto"></i>
 			</div>
 			</div>
 			</div>
@@ -259,10 +259,10 @@ this to 25%.</p>
 </div>
          <div class="col-md-6 col-xl-3 card border-0 m-5">
 <a href="#" class="card border-hover-primary">
-	<div class="card-header border-0 pt-9">
-		<div class="card-title m-0">
-			<div class="symbol symbol-50px w-100px bg-light">
-			<i class="fas fa-envelope fa-4x p-3"></i>
+	<div class="card-header border-0 pt-9 d-flex">
+		<div class="card-title m-auto">
+			<div class="symbol symbol-50px w-100px bg-light d-flex">
+			<i class="bi bi-file-earmark-text m-auto"></i>
 			</div>
 			</div>
 			</div>
@@ -278,10 +278,10 @@ this to 25%.</p>
 </div>
 		   <div class="col-md-6 col-xl-3 card border-0 m-5">
 <a href="#" class="card border-hover-primary">
-	<div class="card-header border-0 pt-9">
-		<div class="card-title m-0">
-			<div class="symbol symbol-50px w-100px bg-light">
-			<i class="fas fa-envelope fa-4x p-3"></i>
+	<div class="card-header border-0 pt-9 d-flex">
+		<div class="card-title m-auto">
+			<div class="symbol symbol-50px w-100px bg-light d-flex">
+			<i class="bi bi-envelope-open-heart m-auto"></i>
 			</div>
 			</div>
 			</div>
@@ -297,10 +297,10 @@ this to 25%.</p>
 </div>
         <div class="col-md-6 col-xl-3 card border-0 m-5">
 <a href="#" class="card border-hover-primary">
-	<div class="card-header border-0 pt-9">
-		<div class="card-title m-0">
-			<div class="symbol symbol-50px w-100px bg-light">
-			<i class="fas fa-envelope fa-4x p-3"></i>
+	<div class="card-header border-0 pt-9 d-flex">
+		<div class="card-title m-auto">
+			<div class="symbol symbol-50px w-100px bg-light d-flex">
+			<i class="bi bi-menu-button m-auto"></i>
 			</div>
 			</div>
 			</div>
@@ -334,7 +334,7 @@ this to 25%.</p>
                   </div>
 </a>
 </div>
-		 <div class="col-md-6 col-xl-3 card border-0 m-5">
+		 <div class="col-md-6 col-xl-3 card border-0 m-5" style="display:none;visibility:hidden;">
 <a href="#" class="card border-hover-primary">
 	<div class="card-header border-0 pt-9">
 		<div class="card-title m-0">
@@ -476,10 +476,10 @@ this to 25%.</p>
 
 				   <div class="col-md-6 col-xl-3 card border-0 m-5">
 <a href="#" class="card border-hover-primary">
-	<div class="card-header border-0 pt-9">
-		<div class="card-title m-0">
-			<div class="symbol symbol-50px w-100px bg-light">
-			<i class="fas fa-envelope fa-4x p-3"></i>
+	<div class="card-header border-0 pt-9" style="display:flex">
+		<div class="card-title " style="margin:auto">
+			<div class="symbol symbol-50px w-100px bg-light d-flex">
+			<i class="bi bi-arrow-left-right m-auto" ></i>
 			</div>
 			</div>
 			</div>

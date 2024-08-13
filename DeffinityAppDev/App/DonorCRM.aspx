@@ -55,6 +55,12 @@
              console.error('Trigger or menu div not found.');
          }
      });
+     $(document).ready(function () {
+         $("#ddlPhone").select2();
+         $("#ddlCountry").select2();
+     });
+
+
 
  </script> 
 
@@ -75,6 +81,10 @@
        #RadioButtonListRoles tbody tr td label {
     margin-left: 10px;
 }
+
+       select.fw-bold{
+           font-weight:normal !important;
+       }
         .tags-container {
             width: 100%;
             max-width: 60%;
@@ -382,7 +392,7 @@
                                                 </div>
 
                                                 <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
-                                                    <div class="col">
+                                                    <div class="col" style="width:100%">
                                                         <div class="fv-row mb-7 fv-plugins-icon-container">
                                                             <label class="fs-6 fw-semibold form-label mt-3">
                                                                 <span>Email</span>
@@ -395,7 +405,7 @@
                                                         </div>
                                                     </div>
                                                             <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
-    <div class="col" style="width:100%;">
+    <div class="col" style="width:100%; display:none">
     <div class="fv-row mb-7 fv-plugins-icon-container">
         <label class="fs-6 fw-semibold form-label mt-3">
             <span>Password</span>
@@ -407,11 +417,92 @@
         <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
     </div>
 </div>
-
+</div>
 
 
                                                                 </div>
-                                                    <div class="col">
+                          <div class="fv-row">
+                                                    <div class="col-lg-6">
+    <div class="fv-row m fv-plugins-icon-container">
+        <label class="fs-6 fw-semibold form-label mt-3">
+            <span>Property Number and Street</span>
+            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                <i class="ki-outline ki-information fs-7"></i>
+            </span>
+        </label>
+        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
+        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+    </div>
+</div>
+                              </div>   <div class="fv-row mb-7">
+                                                  <br />
+
+                                                                                      <div class="col-lg-6">
+    <div class="fv-row m fv-plugins-icon-container">
+        <label class="fs-6 fw-semibold form-label mt-3">
+            <span>Address Line 2</span>
+            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                <i class="ki-outline ki-information fs-7"></i>
+            </span>
+        </label>
+        <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
+        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+    </div>
+</div>
+
+                                                                                                                       <div class="col-lg-6">
+    <div class="fv-row m fv-plugins-icon-container">
+        <label class="fs-6 fw-semibold form-label mt-3">
+            <span>Town</span>
+            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                <i class="ki-outline ki-information fs-7"></i>
+            </span>
+        </label>
+        <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
+        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+    </div>
+</div>
+                           <div class="col-lg-6">
+                                      <div class="fv-row m fv-plugins-icon-container">
+        <label class="fs-6 col-lg-6 fw-semibold form-label mt-3">
+            <span>City</span>
+            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                <i class="ki-outline ki-information fs-7"></i>
+            </span>
+        </label>
+        <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
+        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+    </div>
+</div></div>
+
+                                                   <div class="col-lg-6">
+                                      <div class="fv-row m fv-plugins-icon-container">
+        <label class="fs-6 col-lg-6 fw-semibold form-label mt-3">
+            <span>Postalcode/Zipcode</span>
+            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                <i class="ki-outline ki-information fs-7"></i>
+            </span>
+        </label>
+        <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
+        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+    </div>
+</div>
+                                                                             <div class="col-lg-6">
+                                      <div class="fv-row m fv-plugins-icon-container">
+        <label class="fs-6 col-lg-6 fw-semibold form-label mt-3">
+            <span>Country</span>
+            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                <i class="ki-outline ki-information fs-7"></i>
+            </span>
+        </label>
+        	<asp:DropDownList ID="ddlCountry"  CssClass="form-contro" runat="server"></asp:DropDownList>
+        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+    </div>
+</div>
+
+
+                                                    
+                                                    <div class="col-lg-6">
                                                         <div class="fv-row mb-7 fv-plugins-icon-container">
                                                             <label class="fs-6 fw-semibold form-label mt-3">
                                                                 <span>Donations Raised</span>
@@ -431,9 +522,15 @@
                                                                     <i class="ki-outline ki-information fs-7"></i>
                                                                 </span>
                                                             </label>
-                                                            <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
-                                                        </div>
-                                                    </div>
+                                                            <div class="row">
+                                                            <div class="col-lg-4" style="font-weight:normal!important ">
+                                                                    	<asp:DropDownList ID="ddlPhone"  runat="server"></asp:DropDownList>
+                                                                </div>
+                                                                                                                        <div class="col-lg-8">
+
+                                                            <asp:TextBox ID="txtPhone" runat="server" ></asp:TextBox></div>
+                                                        </div></div>
+                                                 
                                                 </div>
                                                 <div class="">
                                                     <div class="" style="width: 100%" id="tags-container">
@@ -454,7 +551,7 @@
                                                 
                                                 
                                              
-   
+       
  
                                                 
                                                 
