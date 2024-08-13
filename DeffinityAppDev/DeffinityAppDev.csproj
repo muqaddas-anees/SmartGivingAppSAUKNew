@@ -542,6 +542,13 @@
     <Compile Include="App\controls\VideoCtrl.ascx.designer.cs">
       <DependentUpon>VideoCtrl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="App\mailchimp.aspx.cs">
+      <DependentUpon>mailchimp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\mailchimp.aspx.designer.cs">
+      <DependentUpon>mailchimp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\Teams.aspx.cs">
       <DependentUpon>Teams.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4878,6 +4885,7 @@
     <Content Include="App\Fundraiser\MyFunraiser.aspx" />
     <Content Include="App\Fundraiser\peertopeer\Dashboard.aspx" />
     <Content Include="App\Fundraiser\peertopeer\EmailTemplates\invitation.html" />
+    <Content Include="App\mailchimp.aspx" />
     <Content Include="App\ManageCompany.aspx" />
     <Content Include="App\OnboardingGuide.aspx" />
     <Content Include="App\Payfast\cancel.aspx" />

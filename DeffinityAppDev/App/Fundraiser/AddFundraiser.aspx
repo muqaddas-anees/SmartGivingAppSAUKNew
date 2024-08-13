@@ -38,6 +38,8 @@
                     </div>
                     <asp:Button ID="btnPeertoPeer" runat="server" Text="Peer-to-Peer Fundraising" OnClick="btnPeertoPeer_Click" />
                     <asp:Button ID="btnPreview" runat="server" Text="Preview" OnClick="btnPreview_Click" />
+                    <asp:Button ID="Button1" runat="server" Text="Embed into WordPress" OnClick="btnSaveFundraiser_Click" ValidationGroup="group1" />
+
                     <asp:Button ID="btnSaveFundraiser" runat="server" Text="Save Fundraiser" OnClick="btnSaveFundraiser_Click" ValidationGroup="group1" />
                 </div>
 
@@ -123,47 +125,62 @@
             </div>
 
         </div>
-        <div class="card-body">
-            <div class="row mb-6">
-                <label>The banner should be 1920 X 1080 pixels for the best quality. </label>
+<div class="card-body">
+    <div class="row mb-6">
+        <label>The banner should be 1920 X 1080 pixels for the best quality. </label>
+    </div>
+
+    <div class="row">
+        <div class="d-flex align-center justify-content-around align-items-center">
+            <div class="col-lg-6 d-flex">
+                <div class="input-group">
+                    <asp:FileUpload runat="server" ID="imgBanner" CssClass="form-control" style="flex: 1;" />
+                    
+                        <button class="btn btn-light hover-primary" style="margin-top:0" type="button" onclick="deleteFile(1)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                  
+                </div>
             </div>
+            <asp:Image ID="img" runat="server" CssClass="img-responsive img-banner" Style="max-height: 250px" />
+        </div>
 
-            <div class="row">
-                <div class="d-flex align-center justify-content-around align-items-center">
-                    <div class="col-lg-6">
-
-                        <asp:FileUpload runat="server" ID="imgBanner" CssClass="form-control" Text="Upload" />
-
-                    </div>
-                    <asp:Image ID="img" runat="server" CssClass="img-responsive img-banner" Style="max-height: 250px" />
-                </div>
-                <div class="d-flex mt-3 align-center justify-content-around align-items-center">
-                    <div class="col-lg-6">
-                        <asp:FileUpload runat="server" ID="imgBanner1" CssClass="form-control mt-3" Text="Upload" />
-                    </div>
-                    <asp:Image ID="img1" runat="server" CssClass="img-responsive img-banner" Style="max-height: 250px" />
+        <div class="d-flex mt-3 align-center justify-content-around align-items-center">
+            <div class="col-lg-6 d-flex">
+                <div class="input-group">
+                    <asp:FileUpload runat="server" ID="imgBanner1" CssClass="form-control mt-2" style="flex: 1;" />
+                    
+                        <button class="btn btn-light hover-primary" style="margin-top:7px" type="button" onclick="deleteFile(2)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+            
 
                 </div>
-                <div class="d-flex align-center mt-3 justify-content-around align-items-center">
-                    <div class="col-lg-6">
-                        <asp:FileUpload runat="server" ID="imgBanner2" CssClass="form-control mt-3" Text="Upload" />
-                    </div>
-                    <asp:Image ID="img2" runat="server" CssClass="img-responsive img-banner" Style="max-height: 250px" />
-                </div>
-                <br />
-
-                <div class="col-lg-6">
-                    <asp:Button ID="btnSaveBanner" runat="server" OnClick="btnSaveBanner_Click" Text="Upload" />
-
-
-
-                </div>
-
-
-
-
             </div>
+            <asp:Image ID="img1" runat="server" CssClass="img-responsive img-banner" Style="max-height: 250px" />
+        </div>
+
+        <div class="d-flex align-center mt-3 justify-content-around align-items-center">
+            <div class="col-lg-6 d-flex">
+                <div class="input-group">
+                    <asp:FileUpload runat="server" ID="imgBanner2" CssClass="form-control mt-3" style="flex: 1;" />
+                   
+                        <button class="btn btn-light hover-primary" style="margin-top:9px" type="button" onclick="deleteFile(3)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                   
+                   
+                </div>
             </div>
+            <asp:Image ID="img2" runat="server" CssClass="img-responsive img-banner" Style="max-height: 250px" />
+        </div>
+        <br />
+
+        <div class="col-lg-6">
+            <asp:Button ID="btnSaveBanner" runat="server" OnClick="btnSaveBanner_Click" Text="Upload" />
+        </div>
+    </div>
+</div>
         </div>
         <div class="card mb-5 mb-xl-10">
 
@@ -343,7 +360,36 @@
 
             </div>
         </div>
+
         <script type="text/javascript">
+            function deleteFile(number) {
+                if (confirm("Are you sure you want to delete this item?")) {
+                    // Get the query string parameter for 'eid'
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const eid = urlParams.get('eid');
+
+                    // Create the key dynamically based on the number
+                    const eidKey = `${eid}_${number}`;
+                    console.log(eidKey);
+                    $.ajax({
+                        type: "POST",
+                        url: "AddFundraiser.aspx/DeleteItem",
+                        data: JSON.stringify({ id: eidKey }), // Serialize the data to JSON
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            alert(response.d); // Display the response from the server
+                            // Optionally, refresh the page or remove the deleted item from the DOM
+                            location.reload();
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("Error deleting item: " + error);
+                            alert("Error deleting item" + error);
+                        }
+                    });
+                }
+            }
+
             document.addEventListener("DOMContentLoaded", function () {
                 var currencyValueElement = document.getElementById('MainContent_MainContent_txtcurrenyValue');
                 formatNumberWithCommas(currencyValueElement);
@@ -363,7 +409,17 @@
                 // Set the formatted value back to the input
                 input.value = wholePart + decimalPart;
             }
+
 </script>
+    <script type="text/javascript">
+        window.addEventListener("pageshow", function (event) {
+            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                // The page is loaded from the cache
+                window.location.reload();
+            }
+        });
+    </script>
+
         <asp:HiddenField ID="hid" runat="server" Value="0" />
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="Scripts_Section" runat="server">

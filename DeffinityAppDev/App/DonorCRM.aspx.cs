@@ -12,11 +12,13 @@ using Newtonsoft.Json;
 using PayFast.ApiTypes;
 using PortfolioMgt.DAL;
 using PortfolioMgt.Entity;
+using RestSharp;
 using RestSharp.Extensions;
 using StreamChat;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -291,7 +293,7 @@ namespace DonorCRM
                             .Sum(p => p.PaidAmount ?? 0);
                         // Populate the TextBoxes with contact data
                         txtFirstName.Text = contact.ContractorName;
-                        RadioButtonListRoles.SelectedValue = contact.SID.ToString();
+                        
                         txtLastName.Text = contact.LastName;
                         txtCompanyName.Text = contact.CompanyName;
                         txtEmail.Text = contact.EmailAddress;
@@ -799,7 +801,7 @@ console.log('iddddd'+id)
                     {
                         var contact1 = userContext.Contractors.FirstOrDefault(o => o.ID == ID);
                         // Update the contractor's properties with the new values from the form
-                        contact1.SID = int.Parse(RadioButtonListRoles.SelectedValue);
+                        contact1.SID =2;
                         contact1.ContractorName = txtFirstName.Text.Trim();
                         contact1.LastName = txtLastName.Text.Trim();
                         contact1.EmailAddress = txtEmail.Text;
@@ -1035,7 +1037,7 @@ console.log('iddddd'+id)
                     // Create a new Contractor instance
                     var newContractor = new UserMgt.Entity.Contractor
                     {
-                        SID = int.Parse(RadioButtonListRoles.SelectedValue),
+                        SID = 2,
                         ContractorName = txtFirstName.Text.Trim(),
                         LastName = txtLastName.Text.Trim(),
                         EmailAddress = txtEmail.Text,
@@ -1057,10 +1059,12 @@ console.log('iddddd'+id)
 
 
                     // Check if the email already exists
-                    bool emailExists = userContext.Contractors
-                        .Any(c => c.LoginName.ToLower().Trim() == newContractor.LoginName.ToLower().Trim() ); // Check only Donor type
+                    var iList = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany()
+       .Where(o => o.CompanyID == sessionKeys.PortfolioID && o.SID == UserType.Donor && o.EmailAddress == newContractor.EmailAddress)
 
-                    if (!emailExists)
+       .FirstOrDefault();
+                 
+                    if (iList == null)
                     {
                         // Add new contractor to the context
                         userContext.Contractors.InsertOnSubmit(newContractor); // Save changes to the database
@@ -1427,6 +1431,315 @@ console.log('iddddd'+id)
 
             var redirectUrl = $"{currentUrl.AbsolutePath}?{queryString}";
             Response.Redirect(redirectUrl, false);
+        }
+        public static void ShowErrorAlertWithHref(System.Web.UI.Page page, string title_msg, string buttonname, string redirectUrl)
+        {
+            string script = $@"
+    window.onload = function() {{
+        Swal.fire({{
+            title: '{title_msg}',
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonText: '{buttonname}',
+            customClass: {{
+                confirmButton: 'swal2-confirm btn btn-primary'
+            }}
+        }}).then((result) => {{
+            if (result.isConfirmed) {{
+                window.open('{redirectUrl}', '_blank');
+            }}
+        }});
+    }};
+";
+
+
+            page.ClientScript.RegisterStartupScript(page.GetType(), "sweetalerterrorWithHref", script, true);
+        }
+
+        protected void syncwithmailchimp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var db = new PortfolioDataContext())
+                {
+                    // Retrieve Mailchimp API Key from the database
+                    var settings = db.MailchimpSettings.FirstOrDefault(o => o.UserId == sessionKeys.UID);
+                    if (settings == null || string.IsNullOrEmpty(settings.ApiKey))
+                    {
+                        ShowErrorAlertWithHref(this.Page, "Please Add Mailchimp Settings", "Take me to Settings", "mailchimp.aspx");
+                        // Handle case where API Key is not found
+                        return;
+                    }
+
+                    string apiKey = settings.ApiKey;
+                    string serverPrefix = apiKey.Split('-')[1];
+                    // Your Mailchimp server prefix
+                    string audienceId =settings.TeamId; // Your Audience ID
+
+                    // Fetch users from the system
+                    var iList = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany()
+                        .Where(o => o.CompanyID == sessionKeys.PortfolioID && o.SID == UserType.Donor)
+                        .OrderBy(o => o.ContractorName)
+                        .ToList();
+
+                    // Sync each user with Mailchimp
+                    foreach (var user in iList)
+                    {
+                        bool userExists = CheckIfUserExistsInMailchimp(apiKey, serverPrefix, audienceId, user.EmailAddress);
+
+                        if (!userExists)
+                        {
+                            AddUserToMailchimp(apiKey, serverPrefix, audienceId, user);
+                        }
+                    }
+                    SyncMailchimpToApp(apiKey, serverPrefix, audienceId);
+                    LoadAllContacts();
+                    DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Plegit Has Successfully Synchronised Your Contacts With MailChimp", "OK");
+                }
+            }
+            catch (Exception ex) {
+                LogExceptions.WriteExceptionLog(ex);
+
+            }
+        }
+        private void SyncMailchimpToApp(string apiKey, string serverPrefix, string audienceId)
+        {
+            try
+            {
+                using(var pdb=new PortfolioDataContext())
+                using (var db = new UserDataContext())
+                {
+                    System.Net.ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
+
+                    // Ensure TLS 1.2 is used
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+                    var client = new RestClient($"https://{serverPrefix}.api.mailchimp.com/3.0/lists/{audienceId}/members");
+                    var request = new RestRequest(Method.GET);
+
+                    // Basic Auth: Mailchimp uses the API key as the password, and the username can be any string
+                    var authValue = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"anystring:{apiKey}"));
+                    request.AddHeader("Authorization", $"Basic {authValue}");
+                    request.AddHeader("Content-Type", "application/json");
+
+                    IRestResponse response = client.Execute(request);
+
+                    if (response.IsSuccessful)
+                    {
+
+                        Response.Write("<br />Successful<br />");
+                        // Parse the Mailchimp members list
+                        var mailchimpMembers = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(response.Content);
+                        foreach (var member in mailchimpMembers.members)
+                        {
+                            string email = member.email_address.ToString();
+                            string firstName = member.merge_fields.FNAME.ToString();
+                            string lastName = member.merge_fields.LNAME.ToString();
+                            string address = "";
+                            /* var addressField = member.merge_fields.ADDRESS as Newtonsoft.Json.Linq.JObject;
+
+                             if (addressField != null && addressField["addr1"] != null)
+                             {
+                                 address = addressField["addr1"].ToString();
+                             }
+     */
+                            // Check if the user exists in the application database
+                            var iList = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany()
+       .Where(o => o.CompanyID == sessionKeys.PortfolioID && o.SID == UserType.Donor && o.EmailAddress==email)
+       
+       .FirstOrDefault();
+                            if (iList == null)
+                            {
+                                // Add the Mailchimp user to the application database
+                                var newUser = new UserMgt.Entity.Contractor
+                                {
+                                    EmailAddress = email,
+                                    Status = "Active",
+                                    ContractorName = firstName,
+                                    LastName = lastName,
+                                    SID = 2,
+                                    ResetPassword=false,
+                                    
+                                    CreatedDate=DateTime.Now,
+                                    ModifiedDate=DateTime.Now,
+                                    Password = Deffinity.Users.Login.GeneratePasswordString("Ems@1234"),
+                                    // Set other necessary fields
+                                    
+                                    LoginName = email,
+                                  
+                                    // Assuming 2 is for Donor
+                                   
+                                    isFirstlogin = 0,
+                                
+                                    Company = "",
+                                    ContactNumber = "",
+                                };
+                                db.Contractors.InsertOnSubmit(newUser);
+                                db.SubmitChanges();
+                            
+                                // After submitting changes, the newUser will have its UserId populated
+                                int newUserId = newUser.ID; // Assuming ID is the primary key column in the Contractors table
+
+                                // Now, insert the address into the UserDetails table
+                                var userDetails = new UserMgt.Entity.UserDetail
+                                {
+                                    UserId = newUserId,
+                                    Address1 = address,
+                                    // Set other necessary fields for UserDetails
+                                };
+                                var urRep = new UserRepository<UserMgt.Entity.UserToCompany>();
+                                var urEntity = new UserMgt.Entity.UserToCompany();
+                                urEntity.CompanyID = sessionKeys.PortfolioID;
+                                urEntity.UserID = newUserId;
+                                urRep.Add(urEntity);
+                                db.UserDetails.InsertOnSubmit(userDetails);
+                                db.SubmitChanges(); // Save changes to the UserDetails table
+
+                                var newRole = new tblRole
+                                {
+                                    ContractorID = newUserId,
+                                    RoleType = "Donor"
+                                    // Add other properties as needed
+                                };
+                                pdb.tblRoles.InsertOnSubmit(newRole);
+                                pdb.SubmitChanges();
+                            }
+                        }
+                    }
+
+                    else
+                    {
+                        // Handle error
+                        Response.Write($"<br />Failed to retrieve users from Mailchimp. Status Code: {response.StatusCode}");
+                        Response.Write($"<br />Response Content: {response.Content}");
+                        if (response.ErrorException != null)
+                        {
+                            Response.Write($"<br />Error Exception: {response.ErrorException.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception e) {
+                LogExceptions.WriteExceptionLog(e);
+
+            }
+        }
+
+        private void AddUserToMailchimp(string apiKey, string serverPrefix, string audienceId, UserMgt.Entity.v_contractor user)
+        {
+            try
+            {
+                System.Net.ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
+
+                // Ensure TLS 1.2 is used
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+                var client = new RestClient($"https://{serverPrefix}.api.mailchimp.com/3.0/lists/{audienceId}/members/");
+                var request = new RestRequest(Method.POST);
+
+                // Basic Auth: Mailchimp uses the API key as the password, and the username can be any string
+                var authValue = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"anystring:{apiKey}"));
+                request.AddHeader("Authorization", $"Basic {authValue}");
+                request.AddHeader("Content-Type", "application/json"); // Ensure content type is set to JSON
+
+                var requestBody = new
+                {
+                    email_address = user.EmailAddress,
+                    status = "subscribed", // or "pending" if you want them to confirm
+                    merge_fields = new
+                    {
+                        FNAME = string.IsNullOrWhiteSpace(user.ContractorName) ? "" : user.ContractorName,
+                        LNAME = string.IsNullOrWhiteSpace(user.LastName) ? "" : user.LastName,
+                        ADDRESS = string.IsNullOrWhiteSpace(user.Address1) ? "" : user.Address1
+
+                    }
+                };
+
+                request.AddJsonBody(requestBody);
+                IRestResponse response = client.Execute(request);
+
+                // Check the response and log or handle success and errors
+                if (response.IsSuccessful)
+                {
+                    Response.Write($"<br />Successfully added {user.EmailAddress} to Mailchimp.");
+                }
+                else
+                {
+                    // Log the response content for debugging
+                    Response.Write($"<br />Failed to add {user.EmailAddress} to Mailchimp.");
+                    Response.Write($"<br />Status Code: {response.StatusCode}");
+                    Response.Write($"<br />Response Content: {response.Content}");
+                    if (response.ErrorException != null)
+                    {
+                        Response.Write($"<br />Error Exception: {response.ErrorException.Message}");
+                    }
+                }
+            }
+            catch (Exception ex) {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+
+        private bool CheckIfUserExistsInMailchimp(string apiKey, string serverPrefix, string audienceId, string email)
+        {
+            try { 
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
+
+            // Ensure TLS 1.2 is used
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+            // Create a REST client with the Mailchimp API endpoint
+            var client = new RestClient($"https://{serverPrefix}.api.mailchimp.com/3.0/lists/{audienceId}/members/{GetSubscriberHash(email)}");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", $"Bearer {apiKey}");
+
+            // Execute the request and get the response
+            IRestResponse response = client.Execute(request);
+
+            // Check if the response indicates the user exists
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return true; // User exists in Mailchimp
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return false; // User does not exist in Mailchimp
+            }
+            else
+            {
+                // Handle other possible response statuses (like errors)
+                // Log the error or handle it according to your needs
+                return false;
+            }
+            }
+            catch(Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+                return false;
+
+            }
+        }
+
+        private string GetSubscriberHash(string email)
+        {
+            try
+            {
+                // Mailchimp API requires a hashed version of the email address
+                using (var md5 = System.Security.Cryptography.MD5.Create())
+                {
+                    byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(email.ToLower());
+                    byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                    // Convert byte array to a string (hexadecimal format)
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < hashBytes.Length; i++)
+                    {
+                        sb.Append(hashBytes[i].ToString("x2"));
+                    }
+                    return sb.ToString();
+                }
+            }
+            catch (Exception ex) {
+                LogExceptions.WriteExceptionLog(ex);
+                return null;
+            }
         }
 
 

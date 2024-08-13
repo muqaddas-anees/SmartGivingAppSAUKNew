@@ -428,7 +428,7 @@ header .close:hover{
     </div>
 
     <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card mb-5" style="min-width: 340px; margin-left: 15px;">
+        <div class="card mb-5" style="min-width: 340px; ">
             <!--begin::Card header-->
             <div class="card-header border-0 cursor-pointer" data-bs-target="#kt_account_profile_details" aria-controls="kt_account_profile_details">
                 <!--begin::Card title-->

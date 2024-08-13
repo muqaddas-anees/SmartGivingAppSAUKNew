@@ -260,7 +260,7 @@
 					
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-inverse-success fw-bolder fs-2 mb-2 mt-5">Mailchimp Integration</div>
+											<div class="text-inverse-success fw-bolder fs-2 mb-2 mt-5">WordPress</div>
 											<div class="fw-bold text-inverse-success fs-7"></div>
 										</div>
 										<!--end::Body-->

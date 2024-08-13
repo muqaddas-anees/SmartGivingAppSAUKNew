@@ -1,6 +1,7 @@
 ﻿using DC.BLL;
 using DC.Entity;
 using PortfolioMgt.BAL;
+using PortfolioMgt.DAL;
 using PortfolioMgt.Entity;
 using QRCoder;
 using System;
@@ -9,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -256,6 +258,44 @@ namespace DeffinityAppDev.App.Fundraiser
         }
         public const string Section_Fundriser = "Fundriser";
         public const string Section_Event = "Event";
+
+
+
+        [WebMethod]
+        public static string DeleteItem(string id)
+        {
+            try
+            {
+                using (var filecontext = new PortfolioDataContext())
+                {
+                    // Construct the file ID using the QueryString value and the provided id
+
+                    // Query to find the file with the specified ID and section
+                    var file = filecontext.FileDatas
+                                          .Where(o => o.FileID == id && o.Section == "fundriser")
+                                          .FirstOrDefault();
+
+                    if (file != null)
+                    {
+                        // Delete the file from the database
+                        filecontext.FileDatas.DeleteOnSubmit(file);
+                        filecontext.SubmitChanges();
+
+                        return "File deleted successfully";
+                    }
+                    else
+                    {
+                        return "File does not exist"+ id;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+                // Log the exception (not shown here) and return an error message
+                return "Error deleting file: "+id ;
+            }
+        }
 
         private void CreateAProject(string unid, string section, string title, DateTime startdate, DateTime enddate)
         {

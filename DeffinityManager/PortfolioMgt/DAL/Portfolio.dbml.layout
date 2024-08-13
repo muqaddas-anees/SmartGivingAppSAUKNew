@@ -329,7 +329,7 @@
         <elementListCompartment Id="e80963fb-9a9c-4063-9aa2-394688c287a6" absoluteBounds="4.89, 2.585, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.875 : 2.41814747265625); (7.0625 : 2.41814747265625); (7.0625 : 4.78530110677083); (10.0625 : 4.78530110677083); (10.0625 : 4.4375); (11.125 : 4.4375); (11.125 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(6.875 : 2.41814747265625); (7.0625 : 2.41814747265625); (7.0625 : 4.78530110677083); (10.0625 : 4.78530110677083); (10.0625 : 4.4375); (11.125 : 4.4375); (11.125 : 4.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PortfolioDataContext/PortfolioContact/PortfolioContact_PortfolioContactAddress" />
       <nodes>
         <classShapeMoniker Id="c8001649-c3c2-4c79-b6e3-6235dcd3ea80" />
@@ -956,6 +956,12 @@
       <DataClassMoniker Name="/PortfolioDataContext/FileData" />
       <nestedChildShapes>
         <elementListCompartment Id="b0ff05dc-82f5-4cda-a4dd-c9dff32e632a" absoluteBounds="6.265, 139.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d4547771-ba56-46c7-b17e-bbe771bb2964" absoluteBounds="4.875, 4.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/PortfolioDataContext/MailchimpSetting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0b97aa17-46b1-49df-8d30-12b193ac2208" absoluteBounds="4.89, 5.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -2391,6 +2391,17 @@
       <Column Name="UploadedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.MailchimpSettings" Member="MailchimpSettings">
+    <Type Name="MailchimpSetting">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApiKey" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TeamId" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.TimeSheetResource_AddUpdateWcDate" Method="TimeSheetResource_AddUpdateWcDate">
     <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="contractorID" Type="System.Int32" DbType="Int" />

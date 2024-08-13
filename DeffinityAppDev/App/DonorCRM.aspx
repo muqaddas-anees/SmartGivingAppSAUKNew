@@ -10,6 +10,11 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
  <script>
+     if (performance.navigation.type === 2) {
+         // Page was accessed using the back/forward buttons
+         window.location.reload();
+     }
+
      document.addEventListener("DOMContentLoaded", function () {
          // Select the trigger and menu divs
          var triggerDiv = document.querySelector('[data-kt-menu-trigger="click"][data-kt-menu-attach="parent"][data-kt-menu-placement="bottom-end"][data-kt-menu-flip="bottom"]');
@@ -224,9 +229,8 @@
     <a onclick="clearForm()" href="DONORCRM.aspx" class="btn btn-primary w-50 me-4">
         Add new contact
     </a>
-    <a onclick="syncWithMailchimp()" href="#" class="btn btn-primary w-50">
-        Sync with Mailchimp
-    </a>
+    
+                                       <asp:Button runat="server" ID="syncwithmailchimp" CssClass="btn btn-primary w-50" Text="Sync with Mailchimp" OnClick="syncwithmailchimp_Click" />
 </div>
 
 
@@ -450,12 +454,7 @@
                                                 
                                                 
                                              
-        <label class="fs-6 fw-semibold form-label mt-6">Permission</label>
-    <asp:RadioButtonList ID="RadioButtonListRoles" ClientIDMode="Static" runat="server" CssClass="form-check mt-2">
-        <asp:ListItem Text="Admin" Value="1"></asp:ListItem>
-        <asp:ListItem Text="Donor" Value="2"></asp:ListItem>
-        <asp:ListItem Text="Participant" Value="3"></asp:ListItem>
-    </asp:RadioButtonList>
+   
  
                                                 
                                                 
@@ -710,12 +709,13 @@
         }
     });
 </script>
-  
+ 
+
         
 
  
-
     <script>var hostUrl = "../assets/";
+    
 
         document.getElementById('UNID').style.display = 'none';
         function populateDonorDocs(fileDataJson) {
@@ -917,6 +917,9 @@
             });
         }
         console.log(contacts);
+ 
+       
+
     </script>
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
     <script src="../assets/plugins/global/plugins.bundle.js"></script>

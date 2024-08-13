@@ -33,6 +33,15 @@ namespace DonorCRM
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl scripts2;
 
         /// <summary>
+        /// syncwithmailchimp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button syncwithmailchimp;
+
+        /// <summary>
         /// ContactsListLiteral control.
         /// </summary>
         /// <remarks>
@@ -175,15 +184,6 @@ namespace DonorCRM
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtinterest;
-
-        /// <summary>
-        /// RadioButtonListRoles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListRoles;
 
         /// <summary>
         /// chkDonors control.
