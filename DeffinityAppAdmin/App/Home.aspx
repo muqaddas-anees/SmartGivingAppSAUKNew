@@ -251,7 +251,7 @@
 								</div>
 			  <div class="col-xl-3">
 									<!--begin::Statistics Widget 5-->
-									<a href="SMSsettings.aspx" class="card bg-dark hoverable card-xl-stretch mb-5 mb-xl-8">
+									<a href="Wordpress.aspx" class="card bg-dark hoverable card-xl-stretch mb-5 mb-xl-8">
 										<!--begin::Body-->
 										<div class="card-body">
 											<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->

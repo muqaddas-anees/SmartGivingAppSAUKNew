@@ -459,7 +459,7 @@ header .close:hover{
                         <div id="progress-bar" class="progress-bar"></div>
                     </div>
                 </div>
-                                   <p class="text-center"> Days left: <span id="days"></span> , Total Supporters: <span id="supporters"></span></p>
+                                   <p style="display:none" class="text-center"> Days left: <span id="days"></span></p> <p class="text-center"> Total Supporters: <span id="supporters"></span></p>
 
            <button type="button" class="btn view-modal1" id="openModalBtn" style="
     border-radius: 65px;
@@ -595,7 +595,7 @@ header .close:hover{
         days.innerHTML = " "+DaysLeft;
         supporters.innerHTML = " " +totalsupporters;
 
-        amountraised.innerHTML = raised;
+        amountraised.innerHTML = "£"+formatNumber(raised);
 
         var bar = new ProgressBar.Line('#progress-bar', {
             strokeWidth: 4,
@@ -617,5 +617,8 @@ header .close:hover{
     function scrollToDonation() {
         const section = document.getElementById("donationsraised");
         section.scrollIntoView({ behavior: 'smooth' });
+    }
+    function formatNumber(num) {
+        return num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 </script>

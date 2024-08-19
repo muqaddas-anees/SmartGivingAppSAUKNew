@@ -4,6 +4,7 @@ using DeffinityAppDev;
 using DeffinityAppDev.App;
 using DeffinityManager;
 using DeffinityManager.DAL;
+using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Office2013.PowerPoint.Roaming;
 using DocumentFormat.OpenXml.Spreadsheet;
@@ -44,8 +45,9 @@ namespace DonorCRM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            addDonors();
             BindCountry();
+
+            addDonors();
             BindCountryCodes();
             if (!IsPostBack)
             {
@@ -204,10 +206,11 @@ namespace DonorCRM
                     if (contact != null)
                     {
 
+
                         imgAvatar.ImageUrl = "../ImageHandler.ashx?id=" + id + "&s=user";
                         List<object> contactObjects = new List<object>();
                         PortfolioDataContext context = new PortfolioDataContext();
-
+                         
                         // Fetch all TithingDefaultDetails with non-null unid
                         var tithingDefaultDetails = context.TithingDefaultDetails
                             .Where(td => td.unid != null)  // Filter out records with null unid
@@ -225,6 +228,34 @@ namespace DonorCRM
                         string Interest = String.Empty;
                         using (UserMgt.DAL.UserDataContext tags = new UserMgt.DAL.UserDataContext())
                         {
+
+
+                            var userdetail = tags.UserDetails.Where(o => o.UserId == contact.ID).FirstOrDefault();
+                            if (userdetail != null)
+                            { //are you d
+                                propertynumandstreet.Text = userdetail.Address1 ?? string.Empty;
+                                addressine2.Text = userdetail.Address2 ?? string.Empty;
+                                town.Text = userdetail.Town ?? string.Empty;
+                                city.Text = userdetail.City ?? string.Empty;
+                                postalcode.Text=userdetail.PostCode?? string.Empty;
+                                Console.WriteLine(userdetail);
+
+                                // Handle ddlCountry.SelectedValue separately
+                                string countryValue = userdetail.Country?.ToString() ?? string.Empty;
+                               //
+
+                                // Check if the value exists in the dropdown list
+                                if (ddlCountry.Items.FindByValue(countryValue) != null)
+                                {
+                                    ddlCountry.SelectedValue = countryValue;
+                                 
+                                }
+                                else
+                                {
+                                    // Handle cases where the countryValue does not match any item
+                                }
+                            }
+
                             tagss = tags.UserSkills
                                         .Where(i => i.UserId == contact.ID)
                                         .ToList();
@@ -628,6 +659,7 @@ namespace DonorCRM
                     Phone = contact.ContactNumber,
                     DonationsRaised = donationsRaised,
                     Country = contact.Country,
+                    postalcode=contact.PostCode,
                     Roles = contractorRoles.ToArray(),
                     Tags = tagss,
                     Documents = fList.Select(f => new
@@ -788,467 +820,550 @@ console.log('iddddd'+id)
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string idParam = Request.QueryString["id"];
-            if (idParam != null)
+            try
             {
-                int ID = int.Parse(idParam);
-                var contact = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany()
-                   .Where(o =>  o.ID == ID)
-                  // Adjust based on your needs
-                   .FirstOrDefault();
-
-                if (contact != null)
+                string idParam = Request.QueryString["id"];
+                if (idParam != null)
                 {
-                    using (var userContext = new UserDataContext())
+                    int ID = int.Parse(idParam);
+                    var contact = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany()
+                       .Where(o => o.ID == ID)
+                       // Adjust based on your needs
+                       .FirstOrDefault();
+
+                    if (contact != null)
                     {
-                        var contact1 = userContext.Contractors.FirstOrDefault(o => o.ID == ID);
-                        // Update the contractor's properties with the new values from the form
-                        contact1.SID =2;
-                        contact1.ContractorName = txtFirstName.Text.Trim();
-                        contact1.LastName = txtLastName.Text.Trim();
-                        contact1.EmailAddress = txtEmail.Text;
-                        contact1.LoginName = txtEmail.Text;
-                        // Check if txtPassword.Text is not empty or whitespace
-                        if (!string.IsNullOrWhiteSpace(txtPassword.Text))
+                        using (var userContext = new UserDataContext())
                         {
-                            // Generate a new password and update contact1.Password
-                            contact1.Password = Deffinity.Users.Login.GeneratePasswordString(txtPassword.Text.Trim());
-                        }
-
-                        contact1.ModifiedDate = DateTime.Now;
-                        contact1.Company = txtCompanyName.Text;
-                        contact1.ContactNumber = txtPhone.Text.Trim();
-
-                        // Save the changes to the database
-                        userContext.SubmitChanges();
-                    }
-                using (var context = new PortfolioDataContext())
-                    {
-                        // Check if the role already exists
-                        if (chkVolunteers.Checked)
-                        {
-
-                            bool roleExists = context.tblRoles.Any(r => r.ContractorID == ID && r.RoleType == "Volunteer");
-                            if (!roleExists)
+                            var contact1 = userContext.Contractors.FirstOrDefault(o => o.ID == ID);
+                            // Update the contractor's properties with the new values from the form
+                            contact1.SID = 2;
+                            contact1.ContractorName = txtFirstName.Text.Trim();
+                            contact1.LastName = txtLastName.Text.Trim();
+                            contact1.EmailAddress = txtEmail.Text;
+                            contact1.LoginName = txtEmail.Text;
+                            // Check if txtPassword.Text is not empty or whitespace
+                            if (!string.IsNullOrWhiteSpace(txtPassword.Text))
                             {
-                                // Add new role
-                                var newRole = new tblRole
+                                // Generate a new password and update contact1.Password
+                                contact1.Password = Deffinity.Users.Login.GeneratePasswordString(txtPassword.Text.Trim());
+                            }
+
+                            contact1.ModifiedDate = DateTime.Now;
+                            contact1.Company = txtCompanyName.Text;
+                            contact1.ContactNumber = txtPhone.Text.Trim();
+
+
+                            var userdetail = userContext.UserDetails.Where(o => o.UserId == ID).FirstOrDefault();
+                            if (userdetail != null)
+                            {
+                                userdetail.Country = Convert.ToInt32(hiddenFieldCountry.Value); 
+                                userdetail.Address1 = propertynumandstreet.Text;
+                                userdetail.Address2 = addressine2.Text;
+                                userdetail.Town = town.Text;
+                                userdetail.City = city.Text;
+                                userdetail.PostCode = postalcode.Text;
+
+                            }
+
+
+
+
+
+
+
+
+
+                            userContext.SubmitChanges();
+
+
+                            // Save the changes to the database
+                            userContext.SubmitChanges();
+                        }
+                        using (var context = new PortfolioDataContext())
+                        {
+                            // Check if the role already exists
+                            if (chkVolunteers.Checked)
+                            {
+
+                                bool roleExists = context.tblRoles.Any(r => r.ContractorID == ID && r.RoleType == "Volunteer");
+                                if (!roleExists)
                                 {
-                                    ContractorID = ID,
-                                    RoleType = "Volunteer"
-                                    // Add other properties as needed
-                                };
-                                context.tblRoles.InsertOnSubmit(newRole);
+                                    // Add new role
+                                    var newRole = new tblRole
+                                    {
+                                        ContractorID = ID,
+                                        RoleType = "Volunteer"
+                                        // Add other properties as needed
+                                    };
+                                    context.tblRoles.InsertOnSubmit(newRole);
 
+                                }
                             }
-                        }
 
-                        if (chkLeads.Checked)
-                        {
-                            bool roleExists = context.tblRoles.Any(r => r.ContractorID == ID && r.RoleType == "Lead");
-                            if (!roleExists)
+                            if (chkLeads.Checked)
                             {
-                                // Add new role
-                                var newRole = new tblRole
+                                bool roleExists = context.tblRoles.Any(r => r.ContractorID == ID && r.RoleType == "Lead");
+                                if (!roleExists)
                                 {
-                                    ContractorID = ID,
-                                    RoleType = "Lead"
-                                    // Add other properties as needed
-                                };
-                                context.tblRoles.InsertOnSubmit(newRole);
+                                    // Add new role
+                                    var newRole = new tblRole
+                                    {
+                                        ContractorID = ID,
+                                        RoleType = "Lead"
+                                        // Add other properties as needed
+                                    };
+                                    context.tblRoles.InsertOnSubmit(newRole);
 
+                                }
                             }
-                        }
 
-                        if (chkMembers.Checked)
-                        {
-                            bool roleExists = context.tblRoles.Any(r => r.ContractorID == ID && r.RoleType == "Member");
-                            if (!roleExists)
+                            if (chkMembers.Checked)
                             {
-                                // Add new role
-                                var newRole = new tblRole
+                                bool roleExists = context.tblRoles.Any(r => r.ContractorID == ID && r.RoleType == "Member");
+                                if (!roleExists)
                                 {
-                                    ContractorID = ID,
-                                    RoleType = "Sponsor"
-                                    // Add other properties as needed
-                                };
-                                context.tblRoles.InsertOnSubmit(newRole);
+                                    // Add new role
+                                    var newRole = new tblRole
+                                    {
+                                        ContractorID = ID,
+                                        RoleType = "Sponsor"
+                                        // Add other properties as needed
+                                    };
+                                    context.tblRoles.InsertOnSubmit(newRole);
 
+                                }
                             }
-                        }
-                        if (chkDonors.Checked)
-                        {
-                            bool roleExists = context.tblRoles.Any(r => r.ContractorID == ID && r.RoleType == "Donor");
-                            if (!roleExists)
+                            if (chkDonors.Checked)
                             {
-                                // Add new role
-                                var newRole = new tblRole
+                                bool roleExists = context.tblRoles.Any(r => r.ContractorID == ID && r.RoleType == "Donor");
+                                if (!roleExists)
                                 {
-                                    ContractorID = ID,
-                                    RoleType = "Donor"
-                                    // Add other properties as needed
-                                };
-                                context.tblRoles.InsertOnSubmit(newRole);
+                                    // Add new role
+                                    var newRole = new tblRole
+                                    {
+                                        ContractorID = ID,
+                                        RoleType = "Donor"
+                                        // Add other properties as needed
+                                    };
+                                    context.tblRoles.InsertOnSubmit(newRole);
 
+                                }
                             }
-                        }
-                        UserSkill Usertag = new UserSkill();
-                        using (UserMgt.DAL.UserDataContext tags = new UserMgt.DAL.UserDataContext())
-                        {
-                            Usertag = tags.UserSkills
-                                        .Where(i => i.UserId == contact.ID)
-                                        .FirstOrDefault();
-                            if (Usertag != null)
+                            using (UserMgt.DAL.UserDataContext tags = new UserMgt.DAL.UserDataContext())
                             {
-                                Usertag.Skills = txttags.Text;
-                                Usertag.Notes = txtinterest.Text;
-                            }
-                            else
-                            {
+                                // Check if the UserSkill record exists
+                                var Usertag = tags.UserSkills.FirstOrDefault(i => i.UserId == contact.ID);
 
+                                if (Usertag != null)
+                                {
+                                    // Update existing UserSkill record
+                                    Usertag.Skills = txttags.Text;
+                                    Usertag.Notes = txtinterest.Text;
+                                }
+                                else
+                                {
+                                    // Create a new UserSkill record
+                                    Usertag = new UserSkill
+                                    {
+                                        UserId = contact.ID,
+                                        Skills = txttags.Text,
+                                        Notes = txtinterest.Text
+                                    };
+
+                                    // Insert the new record into the UserSkills table
+                                    tags.UserSkills.InsertOnSubmit(Usertag);
+                                }
+
+                                // Save the changes to the database
+                                tags.SubmitChanges();
                             }
+
+
+                            // Save changes to the database
+                            context.SubmitChanges();
                         }
 
-                        // Save changes to the database
-                        context.SubmitChanges();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                }
-
-                int UserID = sessionKeys.UID;
-                DateTime Date = DateTime.Now;
-                if (DocumentFile.HasFiles) // Check if there are multiple files
-                {
-                    // Initialize the repository
-                    IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
-
-                    // Define the ID prefix to search for
-                    string idPrefix = ID.ToString(); // Convert the ID to a string
-
-                    // Get the count of files where FileID starts with the given ID prefix
-                    int fileCount = fRep.GetAll()
-                        .Where(o => o.FileID.StartsWith(idPrefix))
-                        .Count();
-
-                    foreach (HttpPostedFile uploadedFile in DocumentFile.PostedFiles)
+                    int UserID = sessionKeys.UID;
+                    DateTime Date = DateTime.Now;
+                    if (DocumentFile.HasFiles) // Check if there are multiple files
                     {
-                        // Define fileid using ID and a unique value
-                        string fileid = $"{ID}_{GetUniqueValue(ID.ToString())}";
+                        // Initialize the repository
+                        IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
 
-                        // Read the file into a byte array
-                        byte[] fileBytes;
-                        using (var binaryReader = new BinaryReader(uploadedFile.InputStream))
+                        // Define the ID prefix to search for
+                        string idPrefix = ID.ToString(); // Convert the ID to a string
+
+                        // Get the count of files where FileID starts with the given ID prefix
+                        int fileCount = fRep.GetAll()
+                            .Where(o => o.FileID.StartsWith(idPrefix))
+                            .Count();
+
+                        foreach (HttpPostedFile uploadedFile in DocumentFile.PostedFiles)
                         {
-                            fileBytes = binaryReader.ReadBytes(uploadedFile.ContentLength);
+                            // Define fileid using ID and a unique value
+                            string fileid = $"{ID}_{GetUniqueValue(ID.ToString())}";
+
+                            // Read the file into a byte array
+                            byte[] fileBytes;
+                            using (var binaryReader = new BinaryReader(uploadedFile.InputStream))
+                            {
+                                fileBytes = binaryReader.ReadBytes(uploadedFile.ContentLength);
+                            }
+
+                            // Save the file using ImageManager.FileDBSave
+                            ImageManager.FileDBSave(
+                                UserID,
+                                Date,
+                                fileBytes, // filebytearray
+                                null, // Smallfilebytearray is null
+                                fileid, // fileid
+                                ImageManager.file_section_user_doc,
+                                System.IO.Path.GetExtension(uploadedFile.FileName).ToLower(),
+                                uploadedFile.FileName,
+                                uploadedFile.ContentType,
+                                null, // Assuming foldername is defined elsewhere
+                                true // allowMutifile
+                            );
                         }
-
-                        // Save the file using ImageManager.FileDBSave
-                        ImageManager.FileDBSave(
-                            UserID,
-                            Date,
-                            fileBytes, // filebytearray
-                            null, // Smallfilebytearray is null
-                            fileid, // fileid
-                            ImageManager.file_section_user_doc,
-                            System.IO.Path.GetExtension(uploadedFile.FileName).ToLower(),
-                            uploadedFile.FileName,
-                            uploadedFile.ContentType,
-                            null, // Assuming foldername is defined elsewhere
-                            true // allowMutifile
-                        );
                     }
-                }
 
 
 
-                if (AvatarUpload.HasFile)
-                {
-                    Response.Write("File reached");
-
-                    // Get the file extension
-                    string fileExtension = Path.GetExtension(AvatarUpload.FileName).ToLower();
-                    byte[] bytes = AvatarUpload.FileBytes;
-
-                    // Initialize the repository
-                    IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
-
-                    // Get the existing file record based on section and FileID
-                    var existingFileRecord = fRep.GetAll().Where(o => o.Section == ImageManager.file_section_user && o.FileID == idParam).FirstOrDefault();
-
-                    if (existingFileRecord != null)
+                    if (AvatarUpload.HasFile)
                     {
-                        // Update the existing record with the new file data
-                        existingFileRecord.FileData1 = bytes;
-                        existingFileRecord.FileName = AvatarUpload.FileName;
-                        existingFileRecord.UploadedDate = DateTime.Now;
+                        Response.Write("File reached");
 
-                        // Save the changes to the database
-                        fRep.Edit(existingFileRecord);
-                        fRep.Save(); // Assuming Save() commits the changes
+                        // Get the file extension
+                        string fileExtension = System.IO.Path.GetExtension(AvatarUpload.FileName).ToLower();
+                        byte[] bytes = AvatarUpload.FileBytes;
+
+                        // Initialize the repository
+                        IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
+
+                        // Get the existing file record based on section and FileID
+                        var existingFileRecord = fRep.GetAll().Where(o => o.Section == ImageManager.file_section_user && o.FileID == idParam).FirstOrDefault();
+
+                        if (existingFileRecord != null)
+                        {
+                            // Update the existing record with the new file data
+                            existingFileRecord.FileData1 = bytes;
+                            existingFileRecord.FileName = AvatarUpload.FileName;
+                            existingFileRecord.UploadedDate = DateTime.Now;
+
+                            // Save the changes to the database
+                            fRep.Edit(existingFileRecord);
+                            fRep.Save(); // Assuming Save() commits the changes
+                        }
+                        else
+                        {
+                            // Save the file to the database using ImageManager if no existing record is found
+                            ImageManager.FileDBSave(
+                                bytes,
+                                null,
+                                idParam,
+                                ImageManager.file_section_user,
+                                fileExtension,
+                                AvatarUpload.FileName,
+                                AvatarUpload.PostedFile.ContentType,
+                                "",
+                                true
+                            );
+                        }
                     }
-                    else
-                    {
-                        // Save the file to the database using ImageManager if no existing record is found
-                        ImageManager.FileDBSave(
-                            bytes,
-                            null,
-                            idParam,
-                            ImageManager.file_section_user,
-                            fileExtension,
-                            AvatarUpload.FileName,
-                            AvatarUpload.PostedFile.ContentType,
-                            "",
-                            true
-                        );
-                    }
-                }
 
-                LoadAllContacts();
-                // Get the 'mode' query string parameter
-
-                // Check if 'mode' is "edit"
-                HandleViews();
-            }
-            else
-            {
-                Button1.Text = "Add New Contact";
-                int contractorID = -1;
-                using (var userContext = new UserDataContext())
-                {
-                    string pw = "Smart@2022";
-
-
-                    // Create a new Contractor instance
-                    var newContractor = new UserMgt.Entity.Contractor
-                    {
-                        SID = 2,
-                        ContractorName = txtFirstName.Text.Trim(),
-                        LastName = txtLastName.Text.Trim(),
-                        EmailAddress = txtEmail.Text,
-                        LoginName = txtEmail.Text,
-                        Password = !string.IsNullOrWhiteSpace(txtPassword.Text) ?
-                            Deffinity.Users.Login.GeneratePasswordString(txtPassword.Text.Trim()) :
-                            Deffinity.Users.Login.GeneratePasswordString(pw),
-                        // Assuming 2 is for Donor
-                        CreatedDate = DateTime.Now,
-                        ModifiedDate = DateTime.Now,
-                        Status = "Active", // Default or provided status
-                        isFirstlogin = 0,
-                        ResetPassword = false,
-                        Company = txtCompanyName.Text,
-                        ContactNumber = txtPhone.Text.Trim(),
-
-
-                    };
-
-
-                    // Check if the email already exists
-                    var iList = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany()
-       .Where(o => o.CompanyID == sessionKeys.PortfolioID && o.SID == UserType.Donor && o.EmailAddress == newContractor.EmailAddress)
-
-       .FirstOrDefault();
-                 
-                    if (iList == null)
-                    {
-                        // Add new contractor to the context
-                        userContext.Contractors.InsertOnSubmit(newContractor); // Save changes to the database
-                        userContext.SubmitChanges();
-                        contractorID = newContractor.ID;
-                   
-                        var urRep = new UserRepository<UserMgt.Entity.UserToCompany>();
-                        var urEntity = new UserMgt.Entity.UserToCompany();
-                        urEntity.CompanyID = sessionKeys.PortfolioID;
-                        urEntity.UserID = contractorID;
-                        urRep.Add(urEntity);
-                    }
-                    else
-                    {
-                        Response.Write("<div class=\"alert alert-danger\" role=\"alert\">\r\n  Email Already Exists! \r\n</div>");
-                    }
                     LoadAllContacts();
                     // Get the 'mode' query string parameter
 
                     // Check if 'mode' is "edit"
                     HandleViews();
-                    // Optionally, add related records (roles, tags, etc.)
-
                 }
-
-
-
-                using (var context = new PortfolioDataContext())
+                else
                 {
-                    if (contractorID != -1)
+                    Button1.Text = "Add New Contact";
+                    int contractorID = -1;
+
+                    using (var userContext = new UserDataContext())
                     {
-                        if (chkVolunteers.Checked)
-                        {
-                            var newRole = new tblRole
-                            {
-                                ContractorID = contractorID,
-                                RoleType = "Volunteer"
-                                // Add other properties as needed
-                            };
-                            context.tblRoles.InsertOnSubmit(newRole);
-                        }
+                        string pw = "Smart@2022";
 
-                        if (chkLeads.Checked)
-                        {
-                            var newRole = new tblRole
-                            {
-                                ContractorID = contractorID,
-                                RoleType = "Lead"
-                                // Add other properties as needed
-                            };
-                            context.tblRoles.InsertOnSubmit(newRole);
-                        }
 
-                        if (chkMembers.Checked)
+                        // Create a new Contractor instance
+                        var newContractor = new UserMgt.Entity.Contractor
                         {
-                            var newRole = new tblRole
-                            {
-                                ContractorID = contractorID,
-                                RoleType = "Sponsor"
-                                // Add other properties as needed
-                            };
-                            context.tblRoles.InsertOnSubmit(newRole);
-                        }
-                        if (chkDonors.Checked)
+                            SID = 2,
+                            ContractorName = txtFirstName.Text.Trim(),
+                            LastName = txtLastName.Text.Trim(),
+                            EmailAddress = txtEmail.Text,
+                            LoginName = txtEmail.Text,
+                            Password = !string.IsNullOrWhiteSpace(txtPassword.Text) ?
+                                Deffinity.Users.Login.GeneratePasswordString(txtPassword.Text.Trim()) :
+                                Deffinity.Users.Login.GeneratePasswordString(pw),
+                            // Assuming 2 is for Donor
+                            CreatedDate = DateTime.Now,
+                            ModifiedDate = DateTime.Now,
+                            Status = "Active", // Default or provided status
+                            isFirstlogin = 0,
+
+                            ResetPassword = false,
+                            Company = txtCompanyName.Text,
+                            ContactNumber = ddlPhone.SelectedValue + txtPhone.Text.Trim(),
+
+
+                        };
+
+
+                        // Check if the email already exists
+                        var iList = UserMgt.BAL.ContractorsBAL.Contractor_SelectAll_WithOutCompany()
+           .Where(o => o.CompanyID == sessionKeys.PortfolioID && o.SID == UserType.Donor && o.EmailAddress == newContractor.EmailAddress)
+
+           .FirstOrDefault();
+
+                        if (iList == null)
                         {
-                            var newRole = new tblRole
+                            // Add new contractor to the context
+                            userContext.Contractors.InsertOnSubmit(newContractor); // Save changes to the database
+                            userContext.SubmitChanges();
+                            contractorID = newContractor.ID;
+
+
+                            int countryValue;
+                            bool isCountryValid = int.TryParse(hiddenFieldCountry.Value, out countryValue);
+
+                            var userDetail = new UserDetail
                             {
-                                ContractorID = contractorID,
-                                RoleType = "Donor"
-                                // Add other properties as needed
+                                UserId = contractorID,
+                                Country = isCountryValid ? countryValue : 0, // Use 0 or another default value if parsing fails
+                                Address1 = propertynumandstreet.Text,
+                                Address2 = addressine2.Text,
+                                Town = town.Text,
+                                City = city.Text,
+                                County = hiddenFieldCountry.Value,
+                                PostCode = postalcode.Text
                             };
-                            context.tblRoles.InsertOnSubmit(newRole);
+
+                            userContext.UserDetails.InsertOnSubmit(userDetail);
+                            userContext.SubmitChanges();
+
+                            var urRep = new UserRepository<UserMgt.Entity.UserToCompany>();
+                            var urEntity = new UserMgt.Entity.UserToCompany();
+                            urEntity.CompanyID = sessionKeys.PortfolioID;
+                            urEntity.UserID = contractorID;
+                            urRep.Add(urEntity);
+                            ddlCountry.SelectedValue = userDetail.County;
+
                         }
-                        context.SubmitChanges();
+                        else
+                        {
+                            Response.Write("<div class=\"alert alert-danger\" role=\"alert\">\r\n  Email Already Exists! \r\n</div>");
+                        }
+                        LoadAllContacts();
+                        // Get the 'mode' query string parameter
+                        
+                        // Check if 'mode' is "edit"
+                        HandleViews();
+                        // Optionally, add related records (roles, tags, etc.)
+
                     }
-                }
 
-                UserSkill Usertag = new UserSkill();
-                using (UserMgt.DAL.UserDataContext tags = new UserMgt.DAL.UserDataContext())
-                {
-                    Usertag = tags.UserSkills
-                                .Where(i => i.UserId == contractorID)
-                                .FirstOrDefault();
-                    if (Usertag != null)
+
+
+                    using (var context = new PortfolioDataContext())
                     {
-                        Usertag.Skills = txttags.Text;
-                        Usertag.Notes = txtinterest.Text;
-                    }
-                }
-
-                // Save changes to the database
-
-
-
-                int UserID = sessionKeys.UID;
-                DateTime Date = DateTime.Now;
-                if (DocumentFile.HasFiles) // Check if there are multiple files
-                {
-                    // Initialize the repository
-                    IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
-
-                    // Define the ID prefix to search for
-                    string idPrefix = ID.ToString(); // Convert the ID to a string
-
-                    // Get the count of files where FileID starts with the given ID prefix
-                    int fileCount = fRep.GetAll()
-                        .Where(o => o.FileID.StartsWith(idPrefix))
-                        .Count();
-
-                    foreach (HttpPostedFile uploadedFile in DocumentFile.PostedFiles)
-                    {
-                        // Define fileid using ID and a unique value
-                        string fileid = $"{ID}_{GetUniqueValue(ID.ToString())}";
-
-                        // Read the file into a byte array
-                        byte[] fileBytes;
-                        using (var binaryReader = new BinaryReader(uploadedFile.InputStream))
+                        if (contractorID != -1)
                         {
-                            fileBytes = binaryReader.ReadBytes(uploadedFile.ContentLength);
+                            if (chkVolunteers.Checked)
+                            {
+                                var newRole = new tblRole
+                                {
+                                    ContractorID = contractorID,
+                                    RoleType = "Volunteer"
+                                    // Add other properties as needed
+                                };
+                                context.tblRoles.InsertOnSubmit(newRole);
+                            }
+
+                            if (chkLeads.Checked)
+                            {
+                                var newRole = new tblRole
+                                {
+                                    ContractorID = contractorID,
+                                    RoleType = "Lead"
+                                    // Add other properties as needed
+                                };
+                                context.tblRoles.InsertOnSubmit(newRole);
+                            }
+
+                            if (chkMembers.Checked)
+                            {
+                                var newRole = new tblRole
+                                {
+                                    ContractorID = contractorID,
+                                    RoleType = "Sponsor"
+                                    // Add other properties as needed
+                                };
+                                context.tblRoles.InsertOnSubmit(newRole);
+                            }
+                            if (chkDonors.Checked)
+                            {
+                                var newRole = new tblRole
+                                {
+                                    ContractorID = contractorID,
+                                    RoleType = "Donor"
+                                    // Add other properties as needed
+                                };
+                                context.tblRoles.InsertOnSubmit(newRole);
+                            }
+                            context.SubmitChanges();
                         }
-
-                        // Save the file using ImageManager.FileDBSave
-                        ImageManager.FileDBSave(
-                            UserID,
-                            Date,
-                            fileBytes, // filebytearray
-                            null, // Smallfilebytearray is null
-                            fileid, // fileid
-                            ImageManager.file_section_user_doc,
-                            System.IO.Path.GetExtension(uploadedFile.FileName).ToLower(),
-                            uploadedFile.FileName,
-                            uploadedFile.ContentType,
-                            null, // Assuming foldername is defined elsewhere
-                            true // allowMutifile
-                        );
                     }
-                }
 
-
-                if (AvatarUpload.HasFile)
-                {
-
-                    // Get the file extension
-                    string fileExtension = Path.GetExtension(AvatarUpload.FileName).ToLower();
-                    byte[] bytes = AvatarUpload.FileBytes;
-
-                    // Initialize the repository
-                    IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
-
-                    // Get the existing file record based on section and FileID
-                    var existingFileRecord = fRep.GetAll().Where(o => o.Section == ImageManager.file_section_user && o.FileID == idParam).FirstOrDefault();
-
-                    if (existingFileRecord != null)
+                    using (UserMgt.DAL.UserDataContext tags = new UserMgt.DAL.UserDataContext())
                     {
-                        // Update the existing record with the new file data
-                        existingFileRecord.FileData1 = bytes;
-                        existingFileRecord.FileName = AvatarUpload.FileName;
-                        existingFileRecord.UploadedDate = DateTime.Now;
+                        // Check if the UserSkill record exists
+                        var Usertag = tags.UserSkills.FirstOrDefault(i => i.UserId == contractorID);
+
+                        if (Usertag != null)
+                        {
+                            // Update existing UserSkill record
+                            Usertag.Skills = txttags.Text;
+                            Usertag.Notes = txtinterest.Text;
+                        }
+                        else
+                        {
+                            // Create a new UserSkill record
+                            Usertag = new UserSkill
+                            {
+                                UserId = contractorID,
+                                Skills = txttags.Text,
+                                Notes = txtinterest.Text
+                            };
+
+                            // Insert the new record into the UserSkills table
+                            tags.UserSkills.InsertOnSubmit(Usertag);
+                        }
 
                         // Save the changes to the database
-                        fRep.Edit(existingFileRecord);
-                        fRep.Save(); // Assuming Save() commits the changes
+                        tags.SubmitChanges();
                     }
-                    else
+
+
+                    // Save changes to the database
+
+
+
+                    int UserID = sessionKeys.UID;
+                    DateTime Date = DateTime.Now;
+                    if (DocumentFile.HasFiles) // Check if there are multiple files
                     {
-                        // Save the file to the database using ImageManager if no existing record is found
-                        ImageManager.FileDBSave(
-                            bytes,
-                            null,
-                            contractorID.ToString(),
-                            ImageManager.file_section_user,
-                            fileExtension,
-                            AvatarUpload.FileName,
-                            AvatarUpload.PostedFile.ContentType,
-                            "",
-                            true
-                        );
+                        // Initialize the repository
+                        IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
+
+                        // Define the ID prefix to search for
+                        string idPrefix = ID.ToString(); // Convert the ID to a string
+
+                        // Get the count of files where FileID starts with the given ID prefix
+                        int fileCount = fRep.GetAll()
+                            .Where(o => o.FileID.StartsWith(idPrefix))
+                            .Count();
+
+                        foreach (HttpPostedFile uploadedFile in DocumentFile.PostedFiles)
+                        {
+                            // Define fileid using ID and a unique value
+                            string fileid = $"{ID}_{GetUniqueValue(ID.ToString())}";
+
+                            // Read the file into a byte array
+                            byte[] fileBytes;
+                            using (var binaryReader = new BinaryReader(uploadedFile.InputStream))
+                            {
+                                fileBytes = binaryReader.ReadBytes(uploadedFile.ContentLength);
+                            }
+
+                            // Save the file using ImageManager.FileDBSave
+                            ImageManager.FileDBSave(
+                                UserID,
+                                Date,
+                                fileBytes, // filebytearray
+                                null, // Smallfilebytearray is null
+                                fileid, // fileid
+                                ImageManager.file_section_user_doc,
+                                System.IO.Path.GetExtension(uploadedFile.FileName).ToLower(),
+                                uploadedFile.FileName,
+                                uploadedFile.ContentType,
+                                null, // Assuming foldername is defined elsewhere
+                                true // allowMutifile
+                            );
+                        }
+                    }
+
+
+                    if (AvatarUpload.HasFile)
+                    {
+
+                        // Get the file extension
+                        string fileExtension = System.IO.Path.GetExtension(AvatarUpload.FileName).ToLower();
+                        byte[] bytes = AvatarUpload.FileBytes;
+
+                        // Initialize the repository
+                        IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
+
+                        // Get the existing file record based on section and FileID
+                        var existingFileRecord = fRep.GetAll().Where(o => o.Section == ImageManager.file_section_user && o.FileID == idParam).FirstOrDefault();
+
+                        if (existingFileRecord != null)
+                        {
+                            // Update the existing record with the new file data
+                            existingFileRecord.FileData1 = bytes;
+                            existingFileRecord.FileName = AvatarUpload.FileName;
+                            existingFileRecord.UploadedDate = DateTime.Now;
+
+                            // Save the changes to the database
+                            fRep.Edit(existingFileRecord);
+                            fRep.Save(); // Assuming Save() commits the changes
+                        }
+                        else
+                        {
+                            // Save the file to the database using ImageManager if no existing record is found
+                            ImageManager.FileDBSave(
+                                bytes,
+                                null,
+                                contractorID.ToString(),
+                                ImageManager.file_section_user,
+                                fileExtension,
+                                AvatarUpload.FileName,
+                                AvatarUpload.PostedFile.ContentType,
+                                "",
+                                true
+                            );
+                        }
                     }
                 }
+
             }
+            catch (Exception ex) {
+                LogExceptions.WriteExceptionLog(ex);
 
-
+            }
         }
         /*  [WebMethod]
           protected void SendReceipt(string id)
@@ -1484,6 +1599,7 @@ console.log('iddddd'+id)
                         .OrderBy(o => o.ContractorName)
                         .ToList();
 
+                    bool Iserror=false;
                     // Sync each user with Mailchimp
                     foreach (var user in iList)
                     {
@@ -1491,12 +1607,19 @@ console.log('iddddd'+id)
 
                         if (!userExists)
                         {
-                            AddUserToMailchimp(apiKey, serverPrefix, audienceId, user);
+                            string message=AddUserToMailchimp(apiKey, serverPrefix, audienceId, user);
+                            if (!String.IsNullOrEmpty(message)) {
+                                DeffinityManager.ShowMessages.ShowErrorAlert(this.Page,message,"OK");
+                                Iserror = true;
+                                break;
+                            }
                         }
                     }
                     SyncMailchimpToApp(apiKey, serverPrefix, audienceId);
                     LoadAllContacts();
+                    if (!Iserror) { 
                     DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Plegit Has Successfully Synchronised Your Contacts With MailChimp", "OK");
+                    }
                 }
             }
             catch (Exception ex) {
@@ -1793,7 +1916,6 @@ console.log('iddddd'+id)
                     if (response.IsSuccessful)
                     {
 
-                        Response.Write("<br />Successful<br />");
                         // Parse the Mailchimp members list
                         var mailchimpMembers = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(response.Content);
                         foreach (var member in mailchimpMembers.members)
@@ -1891,7 +2013,7 @@ console.log('iddddd'+id)
             }
         }
 
-        private void AddUserToMailchimp(string apiKey, string serverPrefix, string audienceId, UserMgt.Entity.v_contractor user)
+        private string AddUserToMailchimp(string apiKey, string serverPrefix, string audienceId, UserMgt.Entity.v_contractor user)
         {
             try
             {
@@ -1927,13 +2049,14 @@ console.log('iddddd'+id)
                 if (response.IsSuccessful)
                 {
                     Response.Write($"<br />Successfully added {user.EmailAddress} to Mailchimp.");
+                    return "";
                 }
                 else
                 {
                     // Log the response content for debugging
                     Response.Write($"<br />Failed to add {user.EmailAddress} to Mailchimp.");
-                    Response.Write($"<br />Status Code: {response.StatusCode}");
-                    Response.Write($"<br />Response Content: {response.Content}");
+                    return "Please check the email addresses in your CRM as some may be incorrectly formatted.";
+                
                     if (response.ErrorException != null)
                     {
                         Response.Write($"<br />Error Exception: {response.ErrorException.Message}");
@@ -1942,6 +2065,8 @@ console.log('iddddd'+id)
             }
             catch (Exception ex) {
                 LogExceptions.WriteExceptionLog(ex);
+                return "";
+
             }
         }
 

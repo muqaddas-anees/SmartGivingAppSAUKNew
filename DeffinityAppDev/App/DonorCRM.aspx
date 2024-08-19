@@ -9,65 +9,61 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="page_description" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
- <script>
-     if (performance.navigation.type === 2) {
-         // Page was accessed using the back/forward buttons
-         window.location.reload();
-     }
+    <script>
+        if (performance.navigation.type === 2) {
+            // Page was accessed using the back/forward buttons
+            window.location.reload();
+        }
 
-     document.addEventListener("DOMContentLoaded", function () {
-         // Select the trigger and menu divs
-         var triggerDiv = document.querySelector('[data-kt-menu-trigger="click"][data-kt-menu-attach="parent"][data-kt-menu-placement="bottom-end"][data-kt-menu-flip="bottom"]');
-         var menuDiv = document.querySelector('.menu.menu-sub.menu-sub-dropdown.menu-column.menu-rounded.menu-gray-800.menu-state-bg.menu-state-primary.fw-bold.py-4.fs-6.w-275px');
-         console.log(triggerDiv);
-         if (triggerDiv && menuDiv) {
-             // Remove `data-kt-menu` attributes from the trigger
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select the trigger and menu divs
+            var triggerDiv = document.querySelector('[data-kt-menu-trigger="click"][data-kt-menu-attach="parent"][data-kt-menu-placement="bottom-end"][data-kt-menu-flip="bottom"]');
+            var menuDiv = document.querySelector('.menu.menu-sub.menu-sub-dropdown.menu-column.menu-rounded.menu-gray-800.menu-state-bg.menu-state-primary.fw-bold.py-4.fs-6.w-275px');
+            console.log(triggerDiv);
+            if (triggerDiv && menuDiv) {
+                // Remove `data-kt-menu` attributes from the trigger
 
-             triggerDiv.removeAttribute('data-kt-menu-trigger');
-             // Initially set the menu to closed state
-             menuDiv.classList.add('menu-closed');
-             menuDiv.style.display = 'none'; // Set initial display state to 'none'
+                triggerDiv.removeAttribute('data-kt-menu-trigger');
+                // Initially set the menu to closed state
+                menuDiv.classList.add('menu-closed');
+                menuDiv.style.display = 'none'; // Set initial display state to 'none'
 
-             // Add click event listener to the trigger element
-             triggerDiv.addEventListener('click', function () {
-                 if (menuDiv.classList.contains('menu-closed')) {
-                     // Open the menu
-                     menuDiv.classList.remove('menu-closed');
-                     menuDiv.classList.add('show');
-                     menuDiv.style.zIndex = '105';
-                     menuDiv.style.position = 'fixed';
-                     menuDiv.style.inset = '0px 0px auto auto';
-                     menuDiv.style.display = 'block';
-                     menuDiv.style.transform = 'translate(-30px, 65px)';
-                 } else {
-                     // Close the menu
-                     console.log("close");
-                     menuDiv.classList.remove('show');
-                     menuDiv.classList.add('menu-closed');
-                     menuDiv.style.zIndex = '';
-                     menuDiv.style.position = '';
-                     menuDiv.style.inset = '';
-                     menuDiv.style.display = 'none';
-                     menuDiv.style.transform = '';
-                 }
-             });
-         } else {
-             console.error('Trigger or menu div not found.');
-         }
-     });
-     $(document).ready(function () {
-         $("#ddlPhone").select2();
-         $("#ddlCountry").select2();
-     });
+                // Add click event listener to the trigger element
+                triggerDiv.addEventListener('click', function () {
+                    if (menuDiv.classList.contains('menu-closed')) {
+                        // Open the menu
+                        menuDiv.classList.remove('menu-closed');
+                        menuDiv.classList.add('show');
+                        menuDiv.style.zIndex = '105';
+                        menuDiv.style.position = 'fixed';
+                        menuDiv.style.inset = '0px 0px auto auto';
+                        menuDiv.style.display = 'block';
+                        menuDiv.style.transform = 'translate(-30px, 65px)';
+                    } else {
+                        // Close the menu
+                        console.log("close");
+                        menuDiv.classList.remove('show');
+                        menuDiv.classList.add('menu-closed');
+                        menuDiv.style.zIndex = '';
+                        menuDiv.style.position = '';
+                        menuDiv.style.inset = '';
+                        menuDiv.style.display = 'none';
+                        menuDiv.style.transform = '';
+                    }
+                });
+            } else {
+                console.error('Trigger or menu div not found.');
+            }
+        });
+      
 
 
-
- </script> 
+    </script>
 
     <style>
-      a:hover {
-    color: deepskyblue !important;
-}
+        a:hover {
+            color: deepskyblue !important;
+        }
 
         .tag {
             display: inline-block;
@@ -78,13 +74,18 @@
             margin: 5px;
             font-size: 10px;
         }
-       #RadioButtonListRoles tbody tr td label {
-    margin-left: 10px;
-}
 
-       select.fw-bold{
-           font-weight:normal !important;
-       }
+        #RadioButtonListRoles tbody tr td label {
+            margin-left: 10px;
+        }
+
+        select.fw-bold {
+            font-weight: normal !important;
+        }
+        span.fw-bold{
+            font-weight:normal !important;
+        }
+
         .tags-container {
             width: 100%;
             max-width: 60%;
@@ -119,7 +120,7 @@
     <div id="scripts2" runat="server"></div>
 
     <div class="d-flex">
-            <div id="alert" style="position: fixed; top: 20px; width: 100%; z-index: 1000;"></div>
+        <div id="alert" style="position: fixed; top: 20px; width: 100%; z-index: 1000;"></div>
 
         <div class="d-flex flex-column flex-column-fluid">
             <!--begin::Toolbar-->
@@ -175,8 +176,9 @@
                 <div id="kt_app_content_container" class="app-container container-fluid">
                     <!--begin::Contacts App- Add New Contact-->
                     <div class="row g-7">
+                        <div class="col-lg-7 col-xl-4">
                         <!--begin::Contact groups-->
-                        <div class="col-lg-6 col-xl-3">
+                        <div class="">
                             <!--begin::Contact group wrapper-->
                             <div class="card card-flush">
                                 <!--begin::Card header-->
@@ -235,13 +237,12 @@
                                     <div class="separator my-7"></div>
                                     <!--begin::Separator-->
                                     <!--begin::Add new contact-->
-                                   <div class="d-flex">
-    <a onclick="clearForm()" href="DONORCRM.aspx" class="btn btn-primary w-50 me-4">
-        Add new contact
-    </a>
-    
-                                       <asp:Button runat="server" ID="syncwithmailchimp" CssClass="btn btn-primary w-50" Text="Sync with Mailchimp" OnClick="syncwithmailchimp_Click" />
-</div>
+                                    <div class="d-flex">
+                                        <a onclick="clearForm()" href="DONORCRM.aspx" class="btn btn-primary w-50 me-4">Add new contact
+                                        </a>
+
+                                        <asp:Button runat="server" ID="syncwithmailchimp" CssClass="btn btn-primary w-50" Text="Sync with Mailchimp" OnClick="syncwithmailchimp_Click" />
+                                    </div>
 
 
                                     <!--end::Add new contact-->
@@ -252,7 +253,7 @@
                         </div>
                         <!--end::Contact groups-->
                         <!--begin::Search-->
-                        <div class="col-lg-6 col-xl-3">
+                        <div class="mt-3">
                             <!--begin::Contacts-->
                             <div class="card card-flush" id="kt_contacts_list">
                                 <!--begin::Card header-->
@@ -288,6 +289,7 @@
                             <!--end::Contacts-->
                         </div>
                         <!--end::Search-->
+                            </div>
                         <!--begin::Content-->
                         <div class="col-xl-6">
                             <div class="card card-flush h-lg-100" id="kt_contacts_main">
@@ -308,200 +310,234 @@
                                         </div>
                                         <!--end::Card header-->
                                         <!--begin::Card body-->
-                                        <div id="form" style="
-    background-color: #f9f9f9;
-" runat="server" class="card-body pt-5">
+                                        <div id="form" style="background-color: #f9f9f9;"
+                                            runat="server" class="card-body pt-5">
                                             <!--begin::Form-->
                                             <div id="kt_ecommerce_settings_general_form" class="form fv-plugins-bootstrap5 fv-plugins-framework">
                                                 <!--begin::Input group-->
-                      <div style="background-color:white;padding: 40px;border-radius: 10px;margin-top: 43px;">                          <div class="mb-7">
-                                                    <!--begin::Image input wrapper-->
-                                                    <div class="mt-1">
-                                                        <style>
-                                                            .image-input-placeholder {
-                                                                background-image: url('../assets/media/svg/files/blank-image.svg');
-                                                            }
+                                                <div style="background-color: white; padding: 40px; border-radius: 10px; margin-top: 43px;">
+                                                    <div class="mb-7">
+                                                        <!--begin::Image input wrapper-->
+                                                        <div class="mt-1">
+                                                            <style>
+                                                                .image-input-placeholder {
+                                                                    background-image: url('../assets/media/svg/files/blank-image.svg');
+                                                                }
 
-                                                            [data-bs-theme="dark"] .image-input-placeholder {
-                                                                background-image: url('../assets/media/svg/files/blank-image-dark.svg');
-                                                            }
-                                                            .avatarImg{
-                                                                width:100%;
-                                                                height:100%;
-                                                            }
-                                                        </style>
+                                                                [data-bs-theme="dark"] .image-input-placeholder {
+                                                                    background-image: url('../assets/media/svg/files/blank-image-dark.svg');
+                                                                }
 
-                                                        <div class="image-input image-input-outline image-input-placeholder image-input-empty image-input-empty" id="bgimg" data-kt-image-input="true">
-                                                            <!--begin::Preview existing avatar-->
-                                                            <div class="image-input-wrapper w-100px h-100px" style="background-image: url('')">
-                                                                <asp:Image ID="imgAvatar" CssClass="avatarImg" runat="server" />
+                                                                .avatarImg {
+                                                                    width: 100%;
+                                                                    height: 100%;
+                                                                }
+                                                            </style>
+
+                                                            <div class="image-input image-input-outline image-input-placeholder image-input-empty image-input-empty" id="bgimg" data-kt-image-input="true">
+                                                                <!--begin::Preview existing avatar-->
+                                                                <div class="image-input-wrapper w-100px h-100px" style="background-image: url('')">
+                                                                    <asp:Image ID="imgAvatar" CssClass="avatarImg" runat="server" />
+                                                                </div>
+                                                                <!--end::Preview existing avatar-->
+                                                                <label id="avatarLabel" class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" aria-label="Change avatar" data-bs-original-title="Change avatar" data-kt-initialized="1">
+                                                                    <!--begin::Inputs-->
+                                                                    <i class="fas fa-pencil-alt"></i>
+                                                                    <asp:FileUpload ID="AvatarUpload" runat="server" Style="display: none" />
+                                                                    <!--end::Inputs-->
+                                                                </label>
+                                                                <!--begin::Cancel-->
+                                                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" aria-label="Cancel avatar" data-bs-original-title="Cancel avatar" data-kt-initialized="1">
+                                                                    <i class="ki-outline ki-cross fs-2"></i>
+                                                                </span>
+                                                                <!--end::Cancel-->
+                                                                <!--begin::Remove-->
+                                                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" aria-label="Remove avatar" data-bs-original-title="Remove avatar" data-kt-initialized="1">
+                                                                    <i class="ki-outline ki-cross fs-2"></i>
+                                                                </span>
+                                                                <!--end::Remove-->
                                                             </div>
-                                                            <!--end::Preview existing avatar-->
-                                                            <label id="avatarLabel" class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" aria-label="Change avatar" data-bs-original-title="Change avatar" data-kt-initialized="1">
-																		<!--begin::Inputs-->
-																	   <i class="fas fa-pencil-alt"></i>
-<asp:FileUpload ID="AvatarUpload" runat="server" Style="display:none"/>
-																		<!--end::Inputs-->
-																	</label>
-                                                            <!--begin::Cancel-->
-                                                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" aria-label="Cancel avatar" data-bs-original-title="Cancel avatar" data-kt-initialized="1">
-                                                                <i class="ki-outline ki-cross fs-2"></i>
+                                                        </div>
+                                                        <!--end::Image input wrapper-->
+                                                    </div>
+                                                    <!--end::Input group-->
+                                                    <!--begin::Input group-->
+                                                    <div class="fv-row mb-7 fv-plugins-icon-container">
+                                                        <label class="fs-6 fw-semibold form-label mt-3">
+                                                            <span>First Name</span>
+                                                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's first name." data-bs-original-title="Enter the contact's first name." data-kt-initialized="1">
+                                                                <i class="ki-outline ki-information fs-7"></i>
                                                             </span>
-                                                            <!--end::Cancel-->
-                                                            <!--begin::Remove-->
-                                                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" aria-label="Remove avatar" data-bs-original-title="Remove avatar" data-kt-initialized="1">
-                                                                <i class="ki-outline ki-cross fs-2"></i>
+                                                        </label>
+                                                        <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
+                                                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    </div>
+
+                                                    <div class="fv-row mb-7 fv-plugins-icon-container">
+                                                        <label class="fs-6 fw-semibold form-label mt-3">
+                                                            <span>Last Name</span>
+                                                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's last name." data-bs-original-title="Enter the contact's last name." data-kt-initialized="1">
+                                                                <i class="ki-outline ki-information fs-7"></i>
                                                             </span>
-                                                            <!--end::Remove-->
+                                                        </label>
+                                                        <asp:TextBox ID="txtLastName" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
+                                                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    </div>
+
+                                                    <div class="fv-row mb-7">
+                                                        <label class="fs-6 fw-semibold form-label mt-3">
+                                                            <span>Company Name</span>
+                                                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's company name (optional)." data-bs-original-title="Enter the contact's company name (optional)." data-kt-initialized="1">
+                                                                <i class="ki-outline ki-information fs-7"></i>
+                                                            </span>
+                                                        </label>
+                                                        <asp:TextBox ID="txtCompanyName" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
+                                                    </div>
+
+                                                    <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
+
+
+
+                                                        <div class="d-flex" style="width:100%">
+                                                        <div class="col" style="width: 100%">
+                                                            <div class="fv-row mb-7 fv-plugins-icon-container">
+                                                                <label class="fs-6 fw-semibold form-label mt-3">
+                                                                    <span>Email</span>
+                                                                    <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                                                                        <i class="ki-outline ki-information fs-7"></i>
+                                                                    </span>
+                                                                </label>
+                                                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
+                                                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                            </div>
+                                                        </div>
+                                                               <div class="col">
+       <div class="fv-row mb-7" style="margin-left:10px">
+           <label class="fs-6 fw-semibold form-label mt-3">
+               <span>Phone</span>
+               <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's phone number (optional)." data-bs-original-title="Enter the contact's phone number (optional)." data-kt-initialized="1">
+                   <i class="ki-outline ki-information fs-7"></i>
+               </span>
+           </label>
+           <div class="row">
+               <div class="col-lg-4" style="font-weight: normal!important">
+                   <asp:DropDownList ID="ddlPhone" ClientIDMode="Static" runat="server"></asp:DropDownList>
+               </div>
+               <div class="col-lg-8">
+
+                   <asp:TextBox ID="txtPhone" runat="server"></asp:TextBox>
+               </div>
+           </div>
+       </div>
+
+   </div>
+
+
+                                                            </div>
+
+
+
+                                                        <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
+                                                            <div class="col" style="width: 100%; display: none">
+                                                                <div class="fv-row mb-7 fv-plugins-icon-container">
+                                                                    <label class="fs-6 fw-semibold form-label mt-3">
+                                                                        <span>Password</span>
+                                                                        <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                                                                            <i class="ki-outline ki-information fs-7"></i>
+                                                                        </span>
+                                                                    </label>
+                                                                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control form-control-solid" Style="width: 100% !important; max-width: 900px !important;"></asp:TextBox>
+                                                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="fv-row">
+                                                        <div class="col-lg-6">
+                                                            <div class="fv-row m fv-plugins-icon-container">
+                                                                <label class="fs-6 fw-semibold form-label mt-3">
+                                                                    <span>Property Number and Street</span>
+                                                                    <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                                                                        <i class="ki-outline ki-information fs-7"></i>
+                                                                    </span>
+                                                                </label>
+                                                                <asp:TextBox ID="propertynumandstreet" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
+                                                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <!--end::Image input wrapper-->
-                                                </div>
-                                                <!--end::Input group-->
-                                                <!--begin::Input group-->
-                                                <div class="fv-row mb-7 fv-plugins-icon-container">
-                                                    <label class="fs-6 fw-semibold form-label mt-3">
-                                                        <span>First Name</span>
-                                                        <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's first name." data-bs-original-title="Enter the contact's first name." data-kt-initialized="1">
-                                                            <i class="ki-outline ki-information fs-7"></i>
-                                                        </span>
-                                                    </label>
-                                                    <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
-                                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                                                </div>
+                                                    <div class="fv-row mb-7">
+                                                        <br />
 
-                                                <div class="fv-row mb-7 fv-plugins-icon-container">
-                                                    <label class="fs-6 fw-semibold form-label mt-3">
-                                                        <span>Last Name</span>
-                                                        <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's last name." data-bs-original-title="Enter the contact's last name." data-kt-initialized="1">
-                                                            <i class="ki-outline ki-information fs-7"></i>
-                                                        </span>
-                                                    </label>
-                                                    <asp:TextBox ID="txtLastName" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
-                                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                                                </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="fv-row m fv-plugins-icon-container">
+                                                                <label class="fs-6 fw-semibold form-label mt-3">
+                                                                    <span>Address Line 2</span>
+                                                                    <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                                                                        <i class="ki-outline ki-information fs-7"></i>
+                                                                    </span>
+                                                                </label>
+                                                                <asp:TextBox ID="addressine2" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
+                                                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                            </div>
+                                                        </div>
 
-                                                <div class="fv-row mb-7">
-                                                    <label class="fs-6 fw-semibold form-label mt-3">
-                                                        <span>Company Name</span>
-                                                        <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's company name (optional)." data-bs-original-title="Enter the contact's company name (optional)." data-kt-initialized="1">
-                                                            <i class="ki-outline ki-information fs-7"></i>
-                                                        </span>
-                                                    </label>
-                                                    <asp:TextBox ID="txtCompanyName" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
-                                                </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="fv-row m fv-plugins-icon-container">
+                                                                <label class="fs-6 fw-semibold form-label mt-3">
+                                                                    <span>Town</span>
+                                                                    <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                                                                        <i class="ki-outline ki-information fs-7"></i>
+                                                                    </span>
+                                                                </label>
+                                                                <asp:TextBox ID="town" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
+                                                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="fv-row m fv-plugins-icon-container">
+                                                                <label class="fs-6 col-lg-6 fw-semibold form-label mt-3">
+                                                                    <span>City</span>
+                                                                    <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                                                                        <i class="ki-outline ki-information fs-7"></i>
+                                                                    </span>
+                                                                </label>
+                                                                <asp:TextBox ID="city" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
+                                                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                                <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
-                                                    <div class="col" style="width:100%">
-                                                        <div class="fv-row mb-7 fv-plugins-icon-container">
-                                                            <label class="fs-6 fw-semibold form-label mt-3">
-                                                                <span>Email</span>
+                                                    <div class="col-lg-6">
+                                                        <div class="fv-row m fv-plugins-icon-container">
+                                                            <label class="fs-6 col-lg-6 fw-semibold form-label mt-3">
+                                                                <span>Postalcode/Zipcode</span>
                                                                 <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
                                                                     <i class="ki-outline ki-information fs-7"></i>
                                                                 </span>
                                                             </label>
-                                                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
+                                                            <asp:TextBox ID="postalcode" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
                                                             <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                                         </div>
                                                     </div>
-                                                            <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2">
-    <div class="col" style="width:100%; display:none">
-    <div class="fv-row mb-7 fv-plugins-icon-container">
-        <label class="fs-6 fw-semibold form-label mt-3">
-            <span>Password</span>
-            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
-                <i class="ki-outline ki-information fs-7"></i>
-            </span>
-        </label>
-        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control form-control-solid" style="width: 100% !important; max-width: 900px !important;"></asp:TextBox>
-        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-    </div>
-</div>
-</div>
-
-
-                                                                </div>
-                          <div class="fv-row">
                                                     <div class="col-lg-6">
-    <div class="fv-row m fv-plugins-icon-container">
-        <label class="fs-6 fw-semibold form-label mt-3">
-            <span>Property Number and Street</span>
-            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
-                <i class="ki-outline ki-information fs-7"></i>
-            </span>
-        </label>
-        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
-        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-    </div>
-</div>
-                              </div>   <div class="fv-row mb-7">
-                                                  <br />
-
-                                                                                      <div class="col-lg-6">
-    <div class="fv-row m fv-plugins-icon-container">
-        <label class="fs-6 fw-semibold form-label mt-3">
-            <span>Address Line 2</span>
-            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
-                <i class="ki-outline ki-information fs-7"></i>
-            </span>
-        </label>
-        <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
-        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-    </div>
-</div>
-
-                                                                                                                       <div class="col-lg-6">
-    <div class="fv-row m fv-plugins-icon-container">
-        <label class="fs-6 fw-semibold form-label mt-3">
-            <span>Town</span>
-            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
-                <i class="ki-outline ki-information fs-7"></i>
-            </span>
-        </label>
-        <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
-        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-    </div>
-</div>
-                           <div class="col-lg-6">
-                                      <div class="fv-row m fv-plugins-icon-container">
-        <label class="fs-6 col-lg-6 fw-semibold form-label mt-3">
-            <span>City</span>
-            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
-                <i class="ki-outline ki-information fs-7"></i>
-            </span>
-        </label>
-        <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
-        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-    </div>
-</div></div>
-
-                                                   <div class="col-lg-6">
-                                      <div class="fv-row m fv-plugins-icon-container">
-        <label class="fs-6 col-lg-6 fw-semibold form-label mt-3">
-            <span>Postalcode/Zipcode</span>
-            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
-                <i class="ki-outline ki-information fs-7"></i>
-            </span>
-        </label>
-        <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
-        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-    </div>
-</div>
-                                                                             <div class="col-lg-6">
-                                      <div class="fv-row m fv-plugins-icon-container">
-        <label class="fs-6 col-lg-6 fw-semibold form-label mt-3">
-            <span>Country</span>
-            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
-                <i class="ki-outline ki-information fs-7"></i>
-            </span>
-        </label>
-        	<asp:DropDownList ID="ddlCountry"  CssClass="form-contro" runat="server"></asp:DropDownList>
-        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-    </div>
-</div>
+                                                        <div class="fv-row m fv-plugins-icon-container">
+                                                            <label class="fs-6 col-lg-6 fw-semibold form-label mt-3">
+                                                                <span>Country</span>
+                                                                <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
+                                                                    <i class="ki-outline ki-information fs-7"></i>
+                                                                </span>
+                                                            </label>
+<asp:DropDownList ID="ddlCountry" ClientIDMode="Static" CssClass="" runat="server" onchange="setHiddenFieldValue()"></asp:DropDownList>
+<asp:HiddenField ID="hiddenFieldCountry" Value="0" runat="server" ClientIDMode="Static" />
+                                                            <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                        </div>
+                                                    </div>
 
 
-                                                    
+
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-7 fv-plugins-icon-container">
                                                             <label class="fs-6 fw-semibold form-label mt-3">
@@ -510,121 +546,108 @@
                                                                     <i class="ki-outline ki-information fs-7"></i>
                                                                 </span>
                                                             </label>
-                                                            <asp:TextBox ID="txtDonationsRaised" ReadOnly="true" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
+                                                            <asp:TextBox ID="txtDonationsRaised" ReadOnly="true" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
                                                             <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="col">
-                                                        <div class="fv-row mb-7">
-                                                            <label class="fs-6 fw-semibold form-label mt-3">
-                                                                <span>Phone</span>
-                                                                <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's phone number (optional)." data-bs-original-title="Enter the contact's phone number (optional)." data-kt-initialized="1">
-                                                                    <i class="ki-outline ki-information fs-7"></i>
-                                                                </span>
-                                                            </label>
-                                                            <div class="row">
-                                                            <div class="col-lg-4" style="font-weight:normal!important ">
-                                                                    	<asp:DropDownList ID="ddlPhone"  runat="server"></asp:DropDownList>
-                                                                </div>
-                                                                                                                        <div class="col-lg-8">
+                                               
+                                                    <div class="">
+                                                        <div class="" style="width: 100%" id="tags-container">
+                                                            <label class="fs-6 fw-semibold form-label mt-3">Tags</label>
+                                                            <asp:TextBox ID="txttags" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
+                                                        </div>
 
-                                                            <asp:TextBox ID="txtPhone" runat="server" ></asp:TextBox></div>
-                                                        </div></div>
-                                                 
-                                                </div>
-                                                <div class="">
-                                                    <div class="" style="width: 100%" id="tags-container">
-                                                        <label class="fs-6 fw-semibold form-label mt-3">Tags</label>
-                                                            <asp:TextBox ID="txttags" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
+                                                        <div class="" style="width: 100%">
+                                                            <label class="fs-6 fw-semibold form-label mt-3">Interests</label>
+                                                            <asp:TextBox ID="txtinterest" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
+                                                        </div>
                                                     </div>
+                                                    <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2"></div>
 
-                                                    <div class="" style="width: 100%">
-                                                        <label class="fs-6 fw-semibold form-label mt-3">Interests</label>
-                                                            <asp:TextBox ID="txtinterest" runat="server" CssClass="form-control form-control-solid" ></asp:TextBox>
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    <!-- Checkbox Group -->
+                                                    <label class="fs-6 fw-semibold form-label mt-3">Categories</label>
+                                                    <div class="form-check mt-2">
+                                                        <asp:CheckBox ID="chkDonors" runat="server" CssClass="widget-13-check" />
+                                                        <label style="margin-left: 8px" class="" for="chkDonors">Donors</label>
+                                                    </div>
+                                                    <div class="form-check mt-2">
+                                                        <asp:CheckBox ID="chkVolunteers" runat="server" CssClass="\widget-13-check" />
+                                                        <label style="margin-left: 8px" class="" for="chkVolunteers">Volunteers</label>
+                                                    </div>
+                                                    <div class="form-check mt-2">
+                                                        <asp:CheckBox ID="chkLeads" runat="server" CssClass="widget-13-check" />
+                                                        <label style="margin-left: 8px" class="" for="chkLeads">Leads</label>
+                                                    </div>
+                                                    <div class="form-check mt-2">
+                                                        <asp:CheckBox ID="chkMembers" runat="server" CssClass="widget-13-check" />
+                                                        <label style="margin-left: 8px" class="" for="chkMembers">Sponsors</label>
                                                     </div>
                                                 </div>
-                                                <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2"></div>
 
-               
-                                                
-                                                
-                                                
-                                                
-                                             
-       
- 
-                                                
-                                                
-                                                
-                                                
-                                                <!-- Checkbox Group -->
-<label class="fs-6 fw-semibold form-label mt-3">Categories</label>
-<div class="form-check mt-2">
-    <asp:CheckBox ID="chkDonors" runat="server" CssClass="widget-13-check" />
-    <label style="margin-left:8px" class="" for="chkDonors">Donors</label>
-</div>
-<div class="form-check mt-2">
-    <asp:CheckBox ID="chkVolunteers" runat="server" CssClass="\widget-13-check" />
-    <label style="margin-left:8px" class="" for="chkVolunteers">Volunteers</label>
-</div>
-<div class="form-check mt-2">
-    <asp:CheckBox ID="chkLeads" runat="server" CssClass="widget-13-check" />
-    <label style="margin-left:8px" class="" for="chkLeads">Leads</label>
-</div>
-<div class="form-check mt-2">
-    <asp:CheckBox ID="chkMembers" runat="server" CssClass="widget-13-check" />
-    <label style="margin-left:8px" class="" for="chkMembers">Sponsors</label>
-</div></div>
-                   
-              <div id="paymentsdiv" style="background-color:white;padding: 40px;border-radius: 10px;margin-top: 43px;">                                  <label class="fs-6 fw-semibold form-label mt-3">Payments</label>
-   
-        <div class="table-responsive" style="margin-left: 40px;">
-         <asp:Literal ID="ltrPayments" runat="server"></asp:Literal>
-        </div>
-                  <div class="d-flex justify-content-center" style="margin:auto">                                
-                            <div id="pagination-controlsp" style="margin-left: 40px;">
-    <button style="border:1px solid #dcdcdc;" id="prev-pagep" class="btn btn-light" onclick="changePagep(-1)">Previous</button>
-    <span style="margin:3px 10px" id="page-infop"></span>
-    <button style="border:1px solid #dcdcdc;" id="next-pagep" class="btn btn-light" onclick="changePagep(1)">Next</button>
-</div>
-</div>
-              </div>
-                        <div id="documentsdiv" style="background-color:white;padding: 40px;border-radius: 10px;margin-top: 43px;">                    <label class="fs-6 fw-semibold form-label mt-3">Documents</label>
+                                                <div id="paymentsdiv" style="background-color: white; padding: 40px; border-radius: 10px; margin-top: 43px;">
+                                                    <label class="fs-6 fw-semibold form-label mt-3">Payments</label>
 
-                   <!-- View 3 -->
-                   <div class="table-responsive" style="margin-left: 40px;">
-                                                               <asp:Literal ID="ltrDocuments" runat="server"></asp:Literal>
+                                                    <div class="table-responsive" style="margin-left: 40px;">
+                                                        <asp:Literal ID="ltrPayments" runat="server"></asp:Literal>
+                                                    </div>
+                                                    <div class="d-flex justify-content-center" style="margin: auto">
+                                                        <div id="pagination-controlsp" style="margin-left: 40px;">
+                                                            <button style="border: 1px solid #dcdcdc;" id="prev-pagep" class="btn btn-light" onclick="changePagep(-1)">Previous</button>
+                                                            <span style="margin: 3px 10px" id="page-infop"></span>
+                                                            <button style="border: 1px solid #dcdcdc;" id="next-pagep" class="btn btn-light" onclick="changePagep(1)">Next</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="documentsdiv" style="background-color: white; padding: 40px; border-radius: 10px; margin-top: 43px;">
+                                                    <label class="fs-6 fw-semibold form-label mt-3">Documents</label>
 
-                   
-                   </div>              <div class="d-flex justify-content-center" style="margin:auto">                                
-                            <div id="pagination-controls" style="margin-left: 40px;">
-    <button style="border:1px solid #dcdcdc;" id="prev-page" class="btn btn-light" onclick="changePage(-1)">Previous</button>
-    <span style="margin:3px 10px" id="page-info"></span>
-    <button style="border:1px solid #dcdcdc;" id="next-page" class="btn btn-light" onclick="changePage(1)">Next</button>
-</div>
-</div>
-                                                                         <label class="fs-6 fw-semibold form-label mt-3">Upload a Document</label>
+                                                    <!-- View 3 -->
+                                                    <div class="table-responsive" style="margin-left: 40px;">
+                                                        <asp:Literal ID="ltrDocuments" runat="server"></asp:Literal>
 
-                                                <asp:FileUpload AllowMultiple="true" Style="margin-left:40px;margin-right:40px;width:90%" CssClass="form-control" ID="DocumentFile" runat="server" />
-                   
-                                                <asp:HiddenField ID="txtImagePath" runat="server" />
-                                                <!-- Submit Button -->
 
-                                                <input type="hidden" />
+                                                    </div>
+                                                    <div class="d-flex justify-content-center" style="margin: auto">
+                                                        <div id="pagination-controls" style="margin-left: 40px;">
+                                                            <button style="border: 1px solid #dcdcdc;" id="prev-page" class="btn btn-light" onclick="changePage(-1)">Previous</button>
+                                                            <span style="margin: 3px 10px" id="page-info"></span>
+                                                            <button style="border: 1px solid #dcdcdc;" id="next-page" class="btn btn-light" onclick="changePage(1)">Next</button>
+                                                        </div>
+                                                    </div>
+                                                    <label class="fs-6 fw-semibold form-label mt-3">Upload a Document</label>
+
+                                                    <asp:FileUpload AllowMultiple="true" Style="margin-left: 40px; margin-right: 40px; width: 90%" CssClass="form-control" ID="DocumentFile" runat="server" />
+
+                                                    <asp:HiddenField ID="txtImagePath" runat="server" />
+                                                    <!-- Submit Button -->
+
+                                                    <input type="hidden" />
+                                                </div>
+                                                <!--end::Form-->
                                             </div>
-                                            <!--end::Form-->
+                                            <!--end::Card body-->
+                                            <!-- View 2 -->
                                         </div>
-                                        <!--end::Card body-->
-                                        <!-- View 2 -->
-                    </div>
-                     
+
 
                                         <div class="card-footer d-flex justify-content-end py-6 px-9">
 
-										    <br />
+                                            <br />
                                             <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" OnClick="Button1_Click" Text="Save Changes" />
 
-										</div>
+                                        </div>
                                     </asp:View>
                                     <asp:View ID="view2" runat="server">
                                         <h1>Hello</h1>
@@ -643,176 +666,185 @@
         </div>
     </div>
     <!-- Modal -->
-<!-- Modal -->
-<div class="modal fade" id="paymentDetailsModal" tabindex="-1" aria-labelledby="paymentDetailsModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="paymentDetailsModalLabel">Payment Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <asp:TextBox ID="UNID" ClientIDMode="Static" CssClass="d-none" runat="server" />
-        <p class="display-6"><strong>Amount:</strong> &#163;<span id="modalAmount"></span></p>
-        <p><strong>Status:</strong> <span id="modalStatus" class="badge"></span></p>
-        <div style="margin-bottom:10px" class="separator"></div>
-        <p><strong>Name:</strong> <span id="modalName"></span></p>
-        <div style="margin-bottom:10px" class="separator"></div>
-        <p><strong>Email:</strong> <span id="modalEmail"></span></p>
-        <div style="margin-bottom:10px" class="separator"></div>
-        <p><strong>Fundraiser Names:</strong> <span id="modalFundraiserNames"></span></p>
-        <div style="margin-bottom:10px" class="separator"></div>
-        <p><strong>Platform Fee:</strong> &#163;<span id="modalPlatformFee"></span></p>
-        <div style="margin-bottom:10px" class="separator"></div>
-        <p><strong>Payment Type:</strong> <span id="modalPaymentType"></span></p>
-        <div style="margin-bottom:10px" class="separator"></div>
-        <div id="receipts1" runat="server"></div>
-        <asp:Literal runat="server" ID="receiptsLiteral" />
-        <div class="d-flex mt-5" style="margin-right:40px">
-          <asp:FileUpload Style="margin-left:40px;margin-right:40px;width:90%" CssClass="form-control" AllowMultiple="true" ID="ReceiptsUpload" runat="server" />
-          <asp:Button runat="server" OnClick="Unnamed_Click" Text="Save File" />
+    <!-- Modal -->
+    <div class="modal fade" id="paymentDetailsModal" tabindex="-1" aria-labelledby="paymentDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentDetailsModalLabel">Payment Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <asp:TextBox ID="UNID" ClientIDMode="Static" CssClass="d-none" runat="server" />
+                    <p class="display-6"><strong>Amount:</strong> &#163;<span id="modalAmount"></span></p>
+                    <p><strong>Status:</strong> <span id="modalStatus" class="badge"></span></p>
+                    <div style="margin-bottom: 10px" class="separator"></div>
+                    <p><strong>Name:</strong> <span id="modalName"></span></p>
+                    <div style="margin-bottom: 10px" class="separator"></div>
+                    <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                    <div style="margin-bottom: 10px" class="separator"></div>
+                    <p><strong>Fundraiser Names:</strong> <span id="modalFundraiserNames"></span></p>
+                    <div style="margin-bottom: 10px" class="separator"></div>
+                    <p><strong>Platform Fee:</strong> &#163;<span id="modalPlatformFee"></span></p>
+                    <div style="margin-bottom: 10px" class="separator"></div>
+                    <p><strong>Payment Type:</strong> <span id="modalPaymentType"></span></p>
+                    <div style="margin-bottom: 10px" class="separator"></div>
+                    <div id="receipts1" runat="server"></div>
+                    <asp:Literal runat="server" ID="receiptsLiteral" />
+                    <div class="d-flex mt-5" style="margin-right: 40px">
+                        <asp:FileUpload Style="margin-left: 40px; margin-right: 40px; width: 90%" CssClass="form-control" AllowMultiple="true" ID="ReceiptsUpload" runat="server" />
+                        <asp:Button runat="server" OnClick="Unnamed_Click" Text="Save File" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
     </div>
-  </div>
-</div>
 
-<script>
-
-    let currentPage = 1;
-    const rowsPerPage = 10;
-    function paymentTable() {
-        const table = document.getElementById('payment-table');
-        const rows = Array.from(table.querySelectorAll('tbody tr'));
-        const totalPages = Math.ceil(rows.length / rowsPerPage);
-
-        // Hide all rows
-        rows.forEach(row => row.style.display = 'none');
-
-        // Show only the rows for the current page
-        const start = (currentPage - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
-        rows.slice(start, end).forEach(row => row.style.display = '');
-
-        // Update page info
-        document.getElementById('page-infop').textContent = `Page ${currentPage} of ${totalPages}`;
-
-        // Disable prev/next buttons if on first/last page
-        document.getElementById('prev-pagep').disabled = currentPage === 1;
-        document.getElementById('next-pagep').disabled = currentPage === totalPages;
+        <script type="text/javascript">
+            function setHiddenFieldValue() {
+        var ddl = document.getElementById('<%= ddlCountry.ClientID %>');
+        var hiddenField = document.getElementById('<%= hiddenFieldCountry.ClientID %>');
+            hiddenField.value = ddl.value;
     }
-    function paginateTable() {
-        const table = document.getElementById('documents-table');
-        const rows = Array.from(table.querySelectorAll('tbody tr'));
-        const totalPages = Math.ceil(rows.length / rowsPerPage);
+    </script>
 
-        // Hide all rows
-        rows.forEach(row => row.style.display = 'none');
 
-        // Show only the rows for the current page
-        const start = (currentPage - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
-        rows.slice(start, end).forEach(row => row.style.display = '');
+    <script>
 
-        // Update page info
-        document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
-
-        // Disable prev/next buttons if on first/last page
-        document.getElementById('prev-page').disabled = currentPage === 1;
-        document.getElementById('next-page').disabled = currentPage === totalPages;
-    }
-
-    function changePage(direction) {
-        const table = document.getElementById('documents-table');
-        const totalRows = table.querySelectorAll('tbody tr').length;
-        const totalPages = Math.ceil(totalRows / rowsPerPage);
-
-        currentPage += direction;
-
-        // Ensure currentPage stays within bounds
-        currentPage = Math.max(1, Math.min(currentPage, totalPages));
-
-        paginateTable();
-    }
-    function changePagep(direction) {
-        const table = document.getElementById('payment-table');
-        const totalRows = table.querySelectorAll('tbody tr').length;
-        const totalPages = Math.ceil(totalRows / rowsPerPage);
-
-        currentPage += direction;
-
-        // Ensure currentPage stays within bounds
-        currentPage = Math.max(1, Math.min(currentPage, totalPages));
-
-        paymentTable();
-    }
-   
-    // Initialize pagination on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        // Function to get query parameter value by name
-        function getQueryParam(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
-
-        // Get the `id` query parameter
-        const id = getQueryParam('id');
-
-        // Select the div elements
-        const documentsDiv = document.getElementById('documentsdiv');
-        const paymentsDiv = document.getElementById('paymentsdiv');
-
-        // Show or hide the divs based on the presence of `id` in the query string
-        if (id) {
-            // If `id` is present, show the divs
-            if (documentsDiv) documentsDiv.style.display = 'block';
-            console.log("block")
-            if (paymentsDiv) paymentsDiv.style.display = 'block';
-        } else {
-            // If `id` is not present, hide the divs
-            if (documentsDiv) documentsDiv.style.display = 'none';
-            if (paymentsDiv) paymentsDiv.style.display = 'none';
-            console.log("none")
-
-        }
-        paginateTable();
-        paymentTable();
-        const tid = getQueryParam('tid');
-
-        // If id is present, find the corresponding row and call handlePaymentDetails
-        if (tid) {
-            // Find the table row with the matching id
+        let currentPage = 1;
+        const rowsPerPage = 10;
+        function paymentTable() {
             const table = document.getElementById('payment-table');
-            const rows = table.querySelectorAll('tbody tr');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const totalPages = Math.ceil(rows.length / rowsPerPage);
 
-            rows.forEach(row => {
-                const button = row.querySelector('button');
-                const onclickContent = button.getAttribute('onclick');
-                const buttonId = onclickContent.match(/handlePaymentDetails\('([^']*)'/)[1];
+            // Hide all rows
+            rows.forEach(row => row.style.display = 'none');
 
-                if (buttonId === tid) {
-                    // Extract values from the onclick attribute
-                    const match = onclickContent.match(/handlePaymentDetails\('([^']*)', '([^']*)', '([^']*)', ([^,]*), '([^']*)', ([^,]*), '([^']*)', '([^']*)'\)/);
-                    if (match) {
-                        const [, id, name, email, amount, fundraiserNames, platformFee, paymentType, status] = match;
-                        // Call the handlePaymentDetails function with extracted values
-                        handlePaymentDetails(id, name, email, parseFloat(amount), fundraiserNames, parseFloat(platformFee), paymentType, status);
-                    }
-                }
-            });
+            // Show only the rows for the current page
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            rows.slice(start, end).forEach(row => row.style.display = '');
+
+            // Update page info
+            document.getElementById('page-infop').textContent = `Page ${currentPage} of ${totalPages}`;
+
+            // Disable prev/next buttons if on first/last page
+            document.getElementById('prev-pagep').disabled = currentPage === 1;
+            document.getElementById('next-pagep').disabled = currentPage === totalPages;
         }
-    });
-</script>
- 
+        function paginateTable() {
+            const table = document.getElementById('documents-table');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const totalPages = Math.ceil(rows.length / rowsPerPage);
 
-        
+            // Hide all rows
+            rows.forEach(row => row.style.display = 'none');
 
- 
+            // Show only the rows for the current page
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            rows.slice(start, end).forEach(row => row.style.display = '');
+
+            // Update page info
+            document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
+
+            // Disable prev/next buttons if on first/last page
+            document.getElementById('prev-page').disabled = currentPage === 1;
+            document.getElementById('next-page').disabled = currentPage === totalPages;
+        }
+
+        function changePage(direction) {
+            const table = document.getElementById('documents-table');
+            const totalRows = table.querySelectorAll('tbody tr').length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+            currentPage += direction;
+
+            // Ensure currentPage stays within bounds
+            currentPage = Math.max(1, Math.min(currentPage, totalPages));
+
+            paginateTable();
+        }
+        function changePagep(direction) {
+            const table = document.getElementById('payment-table');
+            const totalRows = table.querySelectorAll('tbody tr').length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+            currentPage += direction;
+
+            // Ensure currentPage stays within bounds
+            currentPage = Math.max(1, Math.min(currentPage, totalPages));
+
+            paymentTable();
+        }
+
+        // Initialize pagination on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to get query parameter value by name
+            function getQueryParam(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            }
+
+            // Get the `id` query parameter
+            const id = getQueryParam('id');
+
+            // Select the div elements
+            const documentsDiv = document.getElementById('documentsdiv');
+            const paymentsDiv = document.getElementById('paymentsdiv');
+
+            // Show or hide the divs based on the presence of `id` in the query string
+            if (id) {
+                // If `id` is present, show the divs
+                if (documentsDiv) documentsDiv.style.display = 'block';
+                console.log("block")
+                if (paymentsDiv) paymentsDiv.style.display = 'block';
+            } else {
+                // If `id` is not present, hide the divs
+                if (documentsDiv) documentsDiv.style.display = 'none';
+                if (paymentsDiv) paymentsDiv.style.display = 'none';
+                console.log("none")
+
+            }
+            paginateTable();
+            paymentTable();
+            const tid = getQueryParam('tid');
+
+            // If id is present, find the corresponding row and call handlePaymentDetails
+            if (tid) {
+                // Find the table row with the matching id
+                const table = document.getElementById('payment-table');
+                const rows = table.querySelectorAll('tbody tr');
+
+                rows.forEach(row => {
+                    const button = row.querySelector('button');
+                    const onclickContent = button.getAttribute('onclick');
+                    const buttonId = onclickContent.match(/handlePaymentDetails\('([^']*)'/)[1];
+
+                    if (buttonId === tid) {
+                        // Extract values from the onclick attribute
+                        const match = onclickContent.match(/handlePaymentDetails\('([^']*)', '([^']*)', '([^']*)', ([^,]*), '([^']*)', ([^,]*), '([^']*)', '([^']*)'\)/);
+                        if (match) {
+                            const [, id, name, email, amount, fundraiserNames, platformFee, paymentType, status] = match;
+                            // Call the handlePaymentDetails function with extracted values
+                            handlePaymentDetails(id, name, email, parseFloat(amount), fundraiserNames, parseFloat(platformFee), paymentType, status);
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+
+
+
+
     <script>var hostUrl = "../assets/";
-    
+
 
         document.getElementById('UNID').style.display = 'none';
         function populateDonorDocs(fileDataJson) {
@@ -919,7 +951,7 @@
             document.getElementById('UNID').value = tid;
             var formattedAmount = formatNumber(amount);
             var formattedPlatformFee = formatNumber(platformFee);
-           // populateDonorDocs(fileDataJson)
+            // populateDonorDocs(fileDataJson)
             // Populate modal fields
             document.getElementById('modalAmount').textContent = formattedAmount;
             document.getElementById('modalName').textContent = name;
@@ -957,7 +989,7 @@
                 // Reset the body overflow
                 document.body.style.overflow = '';
             });
-        
+
         }
 
 
@@ -997,7 +1029,7 @@
         document.getElementById('donors_badge').innerText = donorsCount;
         document.getElementById('leads_badge').innerText = leadsCount;
         document.getElementById('sponsors_badge').innerText = sponsorsCount;
-     
+
         function clearForm() {
             // Clear all input fields
             var inputs = document.querySelectorAll('.form-control');
@@ -1014,25 +1046,19 @@
             });
         }
         console.log(contacts);
- 
-       
+
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#ddlPhone").select2();
+            $("#ddlCountry").select2();
+        });
 
     </script>
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="../assets/plugins/global/plugins.bundle.js"></script>
-    <script src="../assets/js/scripts.bundle.js"></script>
-    <!--end::Global Javascript Bundle-->
-    <!--begin::Vendors Javascript(used for this page only)-->
-    <script src="../assets/plugins/custom/datatables/datatables.bundle.js"></script>
-    <!--end::Vendors Javascript-->
-    <!--begin::Custom Javascript(used for this page only)-->
-    <script src="../assets/js/custom/apps/contacts/edit-contact.js"></script>
-    <script src="../assets/js/widgets.bundle.js"></script>
-    <script src="../assets/js/custom/widgets.js"></script>
-    <script src="../assets/js/custom/apps/chat/chat.js"></script>
-    <script src="../assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-    <script src="../assets/js/custom/utilities/modals/create-campaign.js"></script>
-    <script src="../assets/js/custom/utilities/modals/users-search.js"></script>
+
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
 

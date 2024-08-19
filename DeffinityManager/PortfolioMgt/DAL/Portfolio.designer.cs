@@ -418,6 +418,9 @@ namespace PortfolioMgt.DAL
     partial void InsertMailchimpSetting(PortfolioMgt.Entity.MailchimpSetting instance);
     partial void UpdateMailchimpSetting(PortfolioMgt.Entity.MailchimpSetting instance);
     partial void DeleteMailchimpSetting(PortfolioMgt.Entity.MailchimpSetting instance);
+    partial void InsertWordpressSetting(PortfolioMgt.Entity.WordpressSetting instance);
+    partial void UpdateWordpressSetting(PortfolioMgt.Entity.WordpressSetting instance);
+    partial void DeleteWordpressSetting(PortfolioMgt.Entity.WordpressSetting instance);
     #endregion
 		
 		public PortfolioDataContext() : 
@@ -1655,6 +1658,14 @@ namespace PortfolioMgt.DAL
 			get
 			{
 				return this.GetTable<PortfolioMgt.Entity.MailchimpSetting>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.WordpressSetting> WordpressSettings
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.WordpressSetting>();
 			}
 		}
 		
@@ -47292,6 +47303,116 @@ namespace PortfolioMgt.Entity
 					this._UpdatedAt = value;
 					this.SendPropertyChanged("UpdatedAt");
 					this.OnUpdatedAtChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.WordpressSettings")]
+	public partial class WordpressSetting : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _UserID;
+		
+		private string _DonateButtonColor;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    partial void OnDonateButtonColorChanging(string value);
+    partial void OnDonateButtonColorChanged();
+    #endregion
+		
+		public WordpressSetting()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonateButtonColor", DbType="NVarChar(50)")]
+		public string DonateButtonColor
+		{
+			get
+			{
+				return this._DonateButtonColor;
+			}
+			set
+			{
+				if ((this._DonateButtonColor != value))
+				{
+					this.OnDonateButtonColorChanging(value);
+					this.SendPropertyChanging();
+					this._DonateButtonColor = value;
+					this.SendPropertyChanged("DonateButtonColor");
+					this.OnDonateButtonColorChanged();
 				}
 			}
 		}

@@ -27,6 +27,9 @@
 												<li class="nav-item">
 												<a class="nav-link text-active-primary me-6" href="../App/SMSsettings.aspx">SMS Settings</a>
 											</li>
+								<li class="nav-item">
+								<a class="nav-link text-active-primary me-6" href="../App/Wordpress.aspx">Wordpress</a>
+				</li>
 
 										<%--	<li class="nav-item">
 												<a class="nav-link text-active-primary me-6" href="../App/CardAdmin.aspx"> Card Connect Team</a>

@@ -160,32 +160,6 @@
       <Column Name="TrainingDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.UserDetails" Member="UserDetails">
-    <Type Name="UserDetail">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Address1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Address2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="County" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PostCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Country" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Disable_CustomerPortalAccess" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="AccesstoProjectFinancials" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="UsercandeleteitemsfromtheInventory" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="ExpertiseTypeID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="RangeCovered" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DenominationDetailsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SubDenominationDetailsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="State" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="EmailAddress2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Password2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="GroupDetailsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Chat_ID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Chat_Key" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ImageUrl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.v_contractors" Member="v_contractors">
     <Type Name="v_contractor">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -290,6 +264,33 @@
       <Association Name="Contractor_ResourceSchedule" Member="ResourceSchedules" ThisKey="ID" OtherKey="ResourceID" Type="ResourceSchedule" />
       <Association Name="Contractor_UserAssociatedPostcode" Member="UserAssociatedPostcodes" ThisKey="ID" OtherKey="UserID" Type="UserAssociatedPostcode" />
       <Association Name="Contractor_UserAssociateToType" Member="UserAssociateToTypes" ThisKey="ID" OtherKey="UserID" Type="UserAssociateToType" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserDetails" Member="UserDetails">
+    <Type Name="UserDetail">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="County" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PostCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Country" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Disable_CustomerPortalAccess" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AccesstoProjectFinancials" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UsercandeleteitemsfromtheInventory" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ExpertiseTypeID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RangeCovered" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DenominationDetailsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubDenominationDetailsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="EmailAddress2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Password2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GroupDetailsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Chat_ID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Chat_Key" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImageUrl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.UserDeatils_Select" Method="UserDeatils_Select">

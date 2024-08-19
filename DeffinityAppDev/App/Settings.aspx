@@ -79,7 +79,9 @@
 	<div class="card-header border-0 pt-9 d-flex">
 		<div class="card-title m-auto">
 			<div class="symbol symbol-50px w-100px bg-light d-flex">
-			<i class="bi bi-person-wheelchair m-auto"></i>
+				<svg xmlns="http://www.w3.org/2000/svg"  fill="#99a1b7" class="bi bi-person-wheelchair fa-4x m-auto" viewBox="0 0 16 16">
+  <path d="M12 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-.663 2.146a1.5 1.5 0 0 0-.47-2.115l-2.5-1.508a1.5 1.5 0 0 0-1.676.086l-2.329 1.75a.866.866 0 0 0 1.051 1.375L7.361 3.37l.922.71-2.038 2.445A4.73 4.73 0 0 0 2.628 7.67l1.064 1.065a3.25 3.25 0 0 1 4.574 4.574l1.064 1.063a4.73 4.73 0 0 0 1.09-3.998l1.043-.292-.187 2.991a.872.872 0 1 0 1.741.098l.206-4.121A1 1 0 0 0 12.224 8h-2.79zM3.023 9.48a3.25 3.25 0 0 0 4.496 4.496l1.077 1.077a4.75 4.75 0 0 1-6.65-6.65z"/>
+</svg>
 			</div>
 			</div>
 			</div>
@@ -141,7 +143,7 @@
 	<div class="card-header border-0 pt-9 d-flex">
 		<div class="card-title m-auto">
 			<div class="symbol symbol-50px w-100px bg-light d-flex">
-			<i class="bi bi-boxes m-auto"></i>
+			<i class="bi bi-boxes fa-4x m-auto"></i>
 			</div>
 			</div>
 			</div>
@@ -262,7 +264,7 @@ this to 25%.</p>
 	<div class="card-header border-0 pt-9 d-flex">
 		<div class="card-title m-auto">
 			<div class="symbol symbol-50px w-100px bg-light d-flex">
-			<i class="bi bi-file-earmark-text m-auto"></i>
+			<i class="bi bi-file-earmark-text fa-4x m-auto"></i>
 			</div>
 			</div>
 			</div>
@@ -278,10 +280,10 @@ this to 25%.</p>
 </div>
 		   <div class="col-md-6 col-xl-3 card border-0 m-5">
 <a href="#" class="card border-hover-primary">
-	<div class="card-header border-0 pt-9 d-flex">
+	<div class="card-header border-0 pt-9 fa-4x d-flex">
 		<div class="card-title m-auto">
 			<div class="symbol symbol-50px w-100px bg-light d-flex">
-			<i class="bi bi-envelope-open-heart m-auto"></i>
+			<i class="bi bi-envelope-open-heart fa-4x m-auto"></i>
 			</div>
 			</div>
 			</div>
@@ -297,10 +299,10 @@ this to 25%.</p>
 </div>
         <div class="col-md-6 col-xl-3 card border-0 m-5">
 <a href="#" class="card border-hover-primary">
-	<div class="card-header border-0 pt-9 d-flex">
+	<div class="card-header border-0 pt-9 fa-4x d-flex">
 		<div class="card-title m-auto">
 			<div class="symbol symbol-50px w-100px bg-light d-flex">
-			<i class="bi bi-menu-button m-auto"></i>
+			<i class="bi bi-menu-button fa-4x m-auto"></i>
 			</div>
 			</div>
 			</div>
@@ -479,7 +481,7 @@ this to 25%.</p>
 	<div class="card-header border-0 pt-9" style="display:flex">
 		<div class="card-title " style="margin:auto">
 			<div class="symbol symbol-50px w-100px bg-light d-flex">
-			<i class="bi bi-arrow-left-right m-auto" ></i>
+			<i class="bi bi-arrow-left-right fa-4x m-auto" ></i>
 			</div>
 			</div>
 			</div>
@@ -495,8 +497,29 @@ this to 25%.</p>
 </div>
 
 
-         
+						   <div class="col-md-6 col-xl-3 card border-0 m-5">
+<a href="#" class="card border-hover-primary">
+	<div class="card-header border-0 pt-9" style="display:flex">
+		<div class="card-title " style="margin:auto">
+			<div class="symbol symbol-50px w-100px bg-light d-flex">
+			<i class="bi bi-wordpress fa-4x m-auto" ></i>
+			</div>
+			</div>
+			</div>
+			<div class="card-body p-9" style="height: 180px;">
+			<div class="fs-1 fw-bolder text-dark">WordPress </div>
+			<p class="text-gray-400 fw-bold fs-5 mt-1 mb-7"  style="height:110px;overflow-y:auto;">     Use this section to customise how the Fundraiser appears on your WordPress site.</p>
+			</div>
+                                            <div class="card-footer">
+                                                    <asp:Button ID="Button14" runat="server" CommandName="wordpress" OnCommand="BtnOpen_Command" 
+                                                                                                   Text="Open" SkinID="btnDefault" Font-Size="Large" style="width:100%" />
+                  </div>
+</a>
+</div>
 
+
+         
+    
         </div>
    
 </asp:Content>

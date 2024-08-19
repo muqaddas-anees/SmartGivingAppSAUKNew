@@ -52,6 +52,10 @@ namespace DeffinityAppDev.App
             {
                 Response.Redirect("~/App/FLSDefault.aspx?tab=fls&type=notification" + b + "&pnl=EmailConfiguration", false);
             }
+            else if (e.CommandName == "wordpress")
+            {
+                Response.Redirect("~/App/wordpress.aspx", false);
+            }
             else if (e.CommandName == "mailchimp")
             {
                 Response.Redirect("~/App/mailchimp.aspx?tab=fls&type=notification" + b + "&pnl=EmailConfiguration", false);

@@ -563,6 +563,13 @@
     <Compile Include="App\users.aspx.designer.cs">
       <DependentUpon>users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App\Wordpress.aspx.cs">
+      <DependentUpon>Wordpress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Wordpress.aspx.designer.cs">
+      <DependentUpon>Wordpress.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChatHub.cs" />
     <Compile Include="App\CommentsService.asmx.cs">
       <DependentUpon>CommentsService.asmx</DependentUpon>
@@ -4908,6 +4915,7 @@
     <Content Include="App\TestReturn.aspx" />
     <Content Include="App\UploadDefaultImages.aspx" />
     <Content Include="App\users.aspx" />
+    <Content Include="App\Wordpress.aspx" />
     <Content Include="assets\GiftAidLogo.png" />
     <Content Include="assets\images\Academy.png" />
     <Content Include="assets\images\Activities.png" />

@@ -386,6 +386,13 @@
     <Compile Include="App\VideosConfig.aspx.designer.cs">
       <DependentUpon>VideosConfig.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App\Wordpress.aspx.cs">
+      <DependentUpon>Wordpress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Wordpress.aspx.designer.cs">
+      <DependentUpon>Wordpress.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChatHub.cs" />
     <Compile Include="App\Contacts.aspx.cs">
       <DependentUpon>Contacts.aspx</DependentUpon>
@@ -1232,6 +1239,7 @@
     <Content Include="App\VideosConfig.aspx" />
     <Content Include="App\WebForm1.aspx" />
     <Content Include="App\WebService\DataServices.asmx" />
+    <Content Include="App\Wordpress.aspx" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="assets\banners\banner1.jpg" />
     <Content Include="assets\banners\cardconnect.png" />

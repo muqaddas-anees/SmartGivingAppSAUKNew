@@ -76,6 +76,7 @@ namespace DeffinityAppDev.App.Fundraiser
                             UpdateDefaultMoneyGrid(tithingDetail.DefaultValues);
                             //shoe amount
                             UpdateMoneyGrid();
+                            AddWordpressEmbedCode();
 
 
                         }
@@ -92,6 +93,102 @@ namespace DeffinityAppDev.App.Fundraiser
             }
         }
 
+
+        private void AddWordpressEmbedCode()
+        {
+            PortfolioMgt.Entity.TithingDefaultDetail value = new TithingDefaultDetail();
+
+            if (QueryStringValues.EID > 0)
+                value = PortfolioMgt.BAL.TithingDefaultDetailsBAL.TithingDefaultDetailsBAL_Select()
+                        .Where(o => o.ID == QueryStringValues.EID)
+                        .FirstOrDefault();
+
+            if (QueryStringValues.UNID.Length > 0)
+                value = PortfolioMgt.BAL.TithingDefaultDetailsBAL.TithingDefaultDetailsBAL_Select()
+                        .Where(o => o.unid == QueryStringValues.UNID)
+                        .FirstOrDefault();
+
+            if (value != null)
+            {
+                hid.Value = QueryStringValues.EID.ToString();
+
+                IPortfolioRepository<PortfolioMgt.Entity.TithingDefaultDetail> pRep = new PortfolioRepository<PortfolioMgt.Entity.TithingDefaultDetail>();
+                var tithingDetail = pRep.GetAll().Where(o => o.ID == Convert.ToInt32(hid.Value)).FirstOrDefault();
+
+                if (tithingDetail != null)
+                {
+                    huid.Value = tithingDetail.unid;
+                    string title = tithingDetail.Title;
+                    string description = tithingDetail.Description;
+                    string currencyValue = string.Format("{0:F2}", tithingDetail.DefaultTarget);
+                    string imageUrl = ResolveUrl("~/ImageHandler.ashx?id=" + value.ID + "_1" + "&s=" + ImageManager.file_section_fundriser);
+
+                    string buttonColor = "#007bff"; // Default color
+
+                    // Fetch button color from the database
+                    using (var context = new PortfolioDataContext())
+                    {
+                        var colorSettings = context.WordpressSettings.FirstOrDefault();
+                        if (colorSettings != null)
+                        {
+                            buttonColor = colorSettings.DonateButtonColor;
+                        }
+                    }
+
+                    // Construct the embed code for the card
+                    string embedCode = $@"
+                <div style='border: 1px solid #ddd; padding: 15px; border-radius: 5px; max-width: 500px; margin: 0 auto;'>
+                    <img src='{Request.Url.Scheme}://{Request.Url.Authority}{imageUrl}' alt='{title}' style='width: 100%; height: auto; border-radius: 5px;' />
+                    <h4 style='color: #333; text-align: center;'>{title}</h4>
+                    <p style='color: #555; text-align: center;'>{description}</p>
+                    <a href='{GetDonationUrl()}' style='display: block; text-align: center; padding: 10px 20px; background-color: {buttonColor}; color: #fff; text-decoration: none; border-radius: 5px;'>Donate Now</a>
+                </div>";
+
+                    // Create the Bootstrap modal
+                    string modalHtml = $@"
+                <div class='modal fade' id='embedModal' tabindex='-1' role='dialog' aria-labelledby='embedModalLabel' aria-hidden='true'>
+                    <div class='modal-dialog' role='document'>
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <h5 class='modal-title' id='embedModalLabel'>Embed this Card</h5>
+                                
+                            </div>
+                            <div class='modal-body'>
+                                <p>Copy the code below to embed this card on your WordPress website:</p>
+                                <textarea class='form-control' id='embedCode' rows='6' readonly>{embedCode}</textarea>
+                                <br />
+                                <button class='btn btn-secondary' id='copyButton' type='button' onclick='copyToClipboard()'>Copy to Clipboard</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+
+                    // Add the modal to a Literal control
+                    modal.Text = modalHtml;
+                }
+            }
+        }
+
+        private string GetDonationUrl()
+        {
+            string unid = huid.Value;
+            if (!string.IsNullOrEmpty(unid))
+            {
+                return $"{Request.Url.Scheme}://{Request.Url.Authority}/FundraiserView.aspx?unid={unid}";
+            }
+            else if (QueryStringValues.EID > 0)
+            {
+                var value = PortfolioMgt.BAL.TithingDefaultDetailsBAL.TithingDefaultDetailsBAL_Select()
+                        .Where(o => o.ID == QueryStringValues.EID)
+                        .FirstOrDefault();
+                return $"{Request.Url.Scheme}://{Request.Url.Authority}/FundraiserView.aspx?unid={value.unid}";
+            }
+            else if (!string.IsNullOrEmpty(QueryStringValues.UNID))
+            {
+                return $"{Request.Url.Scheme}://{Request.Url.Authority}/FundraiserView.aspx?unid={QueryStringValues.UNID}";
+            }
+            return "#";
+        }
         private int SaveData(out string retsult)
         {
             retsult = "";

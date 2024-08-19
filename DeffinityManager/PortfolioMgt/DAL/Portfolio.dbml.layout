@@ -329,7 +329,7 @@
         <elementListCompartment Id="e80963fb-9a9c-4063-9aa2-394688c287a6" absoluteBounds="4.89, 2.585, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.875 : 2.41814747265625); (7.0625 : 2.41814747265625); (7.0625 : 4.78530110677083); (10.0625 : 4.78530110677083); (10.0625 : 4.4375); (11.125 : 4.4375); (11.125 : 4.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.875 : 2.41814747265625); (7.0625 : 2.41814747265625); (7.0625 : 4.78530110677083); (10.0625 : 4.78530110677083); (10.0625 : 4.4375); (11.125 : 4.4375); (11.125 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PortfolioDataContext/PortfolioContact/PortfolioContact_PortfolioContactAddress" />
       <nodes>
         <classShapeMoniker Id="c8001649-c3c2-4c79-b6e3-6235dcd3ea80" />
@@ -962,6 +962,12 @@
       <DataClassMoniker Name="/PortfolioDataContext/MailchimpSetting" />
       <nestedChildShapes>
         <elementListCompartment Id="0b97aa17-46b1-49df-8d30-12b193ac2208" absoluteBounds="4.89, 5.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d3ad5f0c-48b0-4614-a67f-a880b663e5a4" absoluteBounds="3.5, 29.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PortfolioDataContext/WordpressSetting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6cfe7367-fa95-4367-be28-72073fe2b2ba" absoluteBounds="3.515, 30.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -22,7 +22,7 @@
     </style>
     <div class="card mb-5 mb-xl-10">
         <div class="card-body">
-            <div class="row gap-3">
+            <div class="row gap-3" style="justify-content:space-between;">
                 <div class="col-lg-6">
                     <h1 class="text-dark fw-bolder my-1 fs-1 lh-1">
                         <asp:Label ID="lblTopTitle" runat="server" Text="Let's Setup Your Fundraising Page"></asp:Label>
@@ -38,8 +38,7 @@
                     </div>
                     <asp:Button ID="btnPeertoPeer" runat="server" Text="Peer-to-Peer Fundraising" OnClick="btnPeertoPeer_Click" />
                     <asp:Button ID="btnPreview" runat="server" Text="Preview" OnClick="btnPreview_Click" />
-                    <asp:Button ID="Button1" runat="server" Text="Embed into WordPress" OnClick="btnSaveFundraiser_Click" ValidationGroup="group1" />
-
+<asp:Button ID="Button1" runat="server" Text="Embed into WordPress" CssClass="btn btn-primary" OnClientClick="openModal(); return false;" ValidationGroup="group1" />
                     <asp:Button ID="btnSaveFundraiser" runat="server" Text="Save Fundraiser" OnClick="btnSaveFundraiser_Click" ValidationGroup="group1" />
                 </div>
 
@@ -47,6 +46,8 @@
         </div>
     </div>
 
+
+    <asp:Literal runat="server" ID="modal"></asp:Literal>
     <div class="card mb-5 mb-xl-10">
 
         <div class="card-header border-0 cursor-pointer">
@@ -360,7 +361,36 @@
 
             </div>
         </div>
+    <script>
+        function openModal() {
+            $('#embedModal').modal('show');
+        }
 
+        // Function to copy the embed code to clipboard
+        function copyToClipboard() {
+            // Get the textarea element
+            var copyText = document.getElementById("embedCode");
+
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(copyText.value).then(function () {
+                // Change the button text to "Copied"
+                var copyButton = document.getElementById("copyButton");
+                copyButton.textContent = "Copied";
+
+                // Optionally, you can use a timeout to revert the button text back after a few seconds
+                setTimeout(function () {
+                    copyButton.textContent = "Copy to Clipboard";
+                }, 2000); // Adjust the timeout duration as needed
+            }).catch(function (err) {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+    </script>
         <script type="text/javascript">
             function deleteFile(number) {
                 if (confirm("Are you sure you want to delete this item?")) {
