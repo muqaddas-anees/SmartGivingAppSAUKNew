@@ -421,6 +421,9 @@ namespace PortfolioMgt.DAL
     partial void InsertWordpressSetting(PortfolioMgt.Entity.WordpressSetting instance);
     partial void UpdateWordpressSetting(PortfolioMgt.Entity.WordpressSetting instance);
     partial void DeleteWordpressSetting(PortfolioMgt.Entity.WordpressSetting instance);
+    partial void InsertMarketplaceService(PortfolioMgt.Entity.MarketplaceService instance);
+    partial void UpdateMarketplaceService(PortfolioMgt.Entity.MarketplaceService instance);
+    partial void DeleteMarketplaceService(PortfolioMgt.Entity.MarketplaceService instance);
     #endregion
 		
 		public PortfolioDataContext() : 
@@ -1666,6 +1669,14 @@ namespace PortfolioMgt.DAL
 			get
 			{
 				return this.GetTable<PortfolioMgt.Entity.WordpressSetting>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.MarketplaceService> MarketplaceServices
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.MarketplaceService>();
 			}
 		}
 		
@@ -47413,6 +47424,212 @@ namespace PortfolioMgt.Entity
 					this._DonateButtonColor = value;
 					this.SendPropertyChanged("DonateButtonColor");
 					this.OnDonateButtonColorChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MarketplaceServices")]
+	public partial class MarketplaceService : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Title;
+		
+		private string _Description;
+		
+		private decimal _Price;
+		
+		private string _BuyNowLink;
+		
+		private string _VideoLink;
+		
+		private System.Nullable<bool> _IsActive;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnPriceChanging(decimal value);
+    partial void OnPriceChanged();
+    partial void OnBuyNowLinkChanging(string value);
+    partial void OnBuyNowLinkChanged();
+    partial void OnVideoLinkChanging(string value);
+    partial void OnVideoLinkChanged();
+    partial void OnIsActiveChanging(System.Nullable<bool> value);
+    partial void OnIsActiveChanged();
+    #endregion
+		
+		public MarketplaceService()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Decimal(10,2) NOT NULL")]
+		public decimal Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyNowLink", DbType="NVarChar(255)")]
+		public string BuyNowLink
+		{
+			get
+			{
+				return this._BuyNowLink;
+			}
+			set
+			{
+				if ((this._BuyNowLink != value))
+				{
+					this.OnBuyNowLinkChanging(value);
+					this.SendPropertyChanging();
+					this._BuyNowLink = value;
+					this.SendPropertyChanged("BuyNowLink");
+					this.OnBuyNowLinkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VideoLink", DbType="NVarChar(255)")]
+		public string VideoLink
+		{
+			get
+			{
+				return this._VideoLink;
+			}
+			set
+			{
+				if ((this._VideoLink != value))
+				{
+					this.OnVideoLinkChanging(value);
+					this.SendPropertyChanging();
+					this._VideoLink = value;
+					this.SendPropertyChanged("VideoLink");
+					this.OnVideoLinkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit")]
+		public System.Nullable<bool> IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
 				}
 			}
 		}

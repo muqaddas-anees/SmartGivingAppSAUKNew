@@ -2409,6 +2409,17 @@
       <Column Name="DonateButtonColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.MarketplaceServices" Member="MarketplaceServices">
+    <Type Name="MarketplaceService">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="BuyNowLink" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VideoLink" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.TimeSheetResource_AddUpdateWcDate" Method="TimeSheetResource_AddUpdateWcDate">
     <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="contractorID" Type="System.Int32" DbType="Int" />

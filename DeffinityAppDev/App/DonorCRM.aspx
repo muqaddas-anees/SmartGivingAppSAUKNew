@@ -9,6 +9,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="page_description" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
+
     <script>
         if (performance.navigation.type === 2) {
             // Page was accessed using the back/forward buttons
@@ -59,12 +60,18 @@
 
 
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.31.2/tagify.min.js" integrity="sha512-A2qHx32K51q0EvjW10OTcPvF0UzSq3DleVukdbqL8VX8/Nl58vtR3WO2xn7j/Ft6T49i7tyevkoffSOARKyV8w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.31.2/tagify.css" integrity="sha512-fg4mbaXioGkhZsVQlBUD7MmEA5zQY4I3aiawILa2nHXUk0e5gBZjlwGoJCeRIAVHqYOdaddDQA7HUXwqx3vVAA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <style>
         a:hover {
             color: deepskyblue !important;
         }
-
+        tags{
+            padding:10px !important;
+        }
         .tag {
             display: inline-block;
             background-color: #f1f1f1;
@@ -86,18 +93,18 @@
             font-weight:normal !important;
         }
 
-        .tags-container {
+        /*.tags-container {
             width: 100%;
             max-width: 60%;
-            overflow-x: auto; /* Allow horizontal scrolling if necessary */
-            white-space: nowrap; /* Prevent line breaks within tags */
-            display: inline-block; /* Keep tags in a single line */
-        }
+            overflow-x: auto;*/ /* Allow horizontal scrolling if necessary */
+            /*white-space: nowrap;*/ /* Prevent line breaks within tags */
+            /*display: inline-block;*/ /* Keep tags in a single line */
+        /*}*/
 
-        .tagify__tag {
-            display: inline-block; /* Ensure tags are displayed inline */
-            margin: 2px; /* Add some space between tags */
-        }
+        /*.tagify__tag {
+            display: inline-block;*/ /* Ensure tags are displayed inline */
+            /*margin: 2px;*/ /* Add some space between tags */
+        /*}*/
 
         .form-check-input:disabled ~ .form-check-label, .form-check-input[disabled] ~ .form-check-label {
             opacity: 1;
@@ -176,122 +183,9 @@
                 <div id="kt_app_content_container" class="app-container container-fluid">
                     <!--begin::Contacts App- Add New Contact-->
                     <div class="row g-7">
-                        <div class="col-lg-7 col-xl-4">
-                        <!--begin::Contact groups-->
-                        <div class="">
-                            <!--begin::Contact group wrapper-->
-                            <div class="card card-flush">
-                                <!--begin::Card header-->
-                                <div class="card-header pt-7">
-                                    <!--begin::Card title-->
-                                    <div class="card-title">
-                                        <h2>Groups</h2>
-                                    </div>
-                                    <!--end::Card title-->
-                                </div>
-                                <!--end::Card header-->
-                                <!--begin::Card body-->
-                                <div class="card-body pt-5">
-                                    <!--begin::Contact groups-->
-                                    <div class="d-flex flex-column gap-5">
-                                        <!--begin::Contact group-->
-                                        <div class="d-flex flex-stack">
-                                            <a href="DonorCrm.aspx" class="fs-6 hover-primary fw-bold text-gray-800 ">All Contacts</a>
-                                            <div id="all_contacts_badge" class="badge badge-light-primary"></div>
-                                        </div>
-                                        <div class="d-flex flex-stack">
-                                            <a href="?SID=1" class="fs-6 fw-bold hover-primary text-gray-800">Donors</a>
-                                            <div id="donors_badge" class="badge badge-light-primary"></div>
-                                        </div>
-                                        <!--begin::Contact group-->
-                                        <!--begin::Contact group-->
-                                        <div class="d-flex flex-stack">
-                                            <a href="?SID=2" class="fs-6 fw-bold text-gray-800 hover-primary ">Volunteers</a>
-                                            <div id="volunteers_badge" class="badge badge-light-primary"></div>
-                                        </div>
-                                        <!--begin::Contact group-->
-                                        <!--begin::Contact group-->
-                                        <div class="d-flex flex-stack">
-                                            <a href="?SID=3" class="fs-6 fw-bold text-gray-800 hover-primary">Leads</a>
-                                            <div id="leads_badge" class="badge badge-light-primary"></div>
-                                        </div>
-                                        <!--begin::Contact group-->
-                                        <!--begin::Contact group-->
-                                        <div class="d-flex flex-stack">
-                                            <a href="?SID=4" class="fs-6 fw-bold text-gray-800 hover-primary">Sponsors</a>
-                                            <div id="sponsors_badge" class="badge badge-light-primary"></div>
-                                        </div>
-                                        <!--begin::Contact group-->
-                                        <!--begin::Contact group-->
-
-                                        <!--begin::Contact group-->
-                                    </div>
-                                    <!--end::Contact groups-->
-                                    <!--begin::Separator-->
-                                    <div class="separator my-7"></div>
-                                    <!--begin::Separator-->
-                                    <!--begin::Add contact group-->
-
-                                    <!--end::Add contact group-->
-                                    <!--begin::Separator-->
-                                    <div class="separator my-7"></div>
-                                    <!--begin::Separator-->
-                                    <!--begin::Add new contact-->
-                                    <div class="d-flex">
-                                        <a onclick="clearForm()" href="DONORCRM.aspx" class="btn btn-primary w-50 me-4">Add new contact
-                                        </a>
-
-                                        <asp:Button runat="server" ID="syncwithmailchimp" CssClass="btn btn-primary w-50" Text="Sync with Mailchimp" OnClick="syncwithmailchimp_Click" />
-                                    </div>
-
-
-                                    <!--end::Add new contact-->
-                                </div>
-                                <!--end::Card body-->
-                            </div>
-                            <!--end::Contact group wrapper-->
-                        </div>
-                        <!--end::Contact groups-->
-                        <!--begin::Search-->
-                        <div class="mt-3">
-                            <!--begin::Contacts-->
-                            <div class="card card-flush" id="kt_contacts_list">
-                                <!--begin::Card header-->
-                                <div class="card-header pt-7" id="kt_contacts_list_header">
-                                    <!--begin::Form-->
-                                    <div class="d-flex align-items-center position-relative w-100 m-0" autocomplete="off">
-                                        <!--begin::Icon-->
-                                        <!--end::Icon-->
-                                        <!--begin::Input-->
-                                        <input type="text" id="searchContacts" class="form-control form-control-solid ps-13" name="search" value="" placeholder="Search contacts" />
-                                        <!--end::Input-->
-                                    </div>
-                                    <!--end::Form-->
-                                </div>
-                                <!--end::Card header-->
-                                <!--begin::Card body-->
-                                <div class="card-body pt-5" id="kt_contacts_list_body">
-                                    <!--begin::List-->
-                                    <div class="scroll-y me-n5 pe-5 h-300px h-xl-auto" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_header, #kt_toolbar, #kt_footer, #kt_contacts_list_header" data-kt-scroll-wrappers="#kt_content, #kt_contacts_list_body" data-kt-scroll-stretch="#kt_contacts_list, #kt_contacts_main" data-kt-scroll-offset="5px" style="max-height: 1041px;">
-                                        <!--begin::User-->
-                                        <asp:Literal ID="ContactsListLiteral" runat="server"></asp:Literal>
-                                        <!--end::User-->
-                                        <!--begin::Separator-->
-                                        <div class="separator separator-dashed d-none"></div>
-                                        <!--end::Separator-->
-                                        <!--begin::User-->
-
-                                    </div>
-                                    <!--end::List-->
-                                </div>
-                                <!--end::Card body-->
-                            </div>
-                            <!--end::Contacts-->
-                        </div>
-                        <!--end::Search-->
-                            </div>
+                      
                         <!--begin::Content-->
-                        <div class="col-xl-6">
+                        <div class="col-xl-7">
                             <div class="card card-flush h-lg-100" id="kt_contacts_main">
 
                                 <!--begin::Contacts-->
@@ -342,19 +236,25 @@
                                                                 <!--end::Preview existing avatar-->
                                                                 <label id="avatarLabel" class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" aria-label="Change avatar" data-bs-original-title="Change avatar" data-kt-initialized="1">
                                                                     <!--begin::Inputs-->
-                                                                    <i class="fas fa-pencil-alt"></i>
-                                                                    <asp:FileUpload ID="AvatarUpload" runat="server" Style="display: none" />
+                                                                    <i class="fas fa-pencil-alt" style="padding-left: 25px"></i>
+                                                                    <asp:FileUpload ID="AvatarUpload" onchange="previewImage(event)" runat="server" Style="display: none" />
+<asp:RegularExpressionValidator 
+    ID="ImageFileValidator" 
+    runat="server" 
+    ControlToValidate="AvatarUpload" 
+    ErrorMessage="Only image files are allowed." 
+    ValidationExpression="^.*\.(jpg|jpeg|png|gif)$" 
+    ForeColor="Red" />
+
                                                                     <!--end::Inputs-->
                                                                 </label>
                                                                 <!--begin::Cancel-->
-                                                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" aria-label="Cancel avatar" data-bs-original-title="Cancel avatar" data-kt-initialized="1">
+                                                                <span  onclick="removeImage()" class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" aria-label="Cancel avatar" data-bs-original-title="Cancel avatar" data-kt-initialized="1">
                                                                     <i class="ki-outline ki-cross fs-2"></i>
                                                                 </span>
                                                                 <!--end::Cancel-->
                                                                 <!--begin::Remove-->
-                                                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" aria-label="Remove avatar" data-bs-original-title="Remove avatar" data-kt-initialized="1">
-                                                                    <i class="ki-outline ki-cross fs-2"></i>
-                                                                </span>
+                                                             
                                                                 <!--end::Remove-->
                                                             </div>
                                                         </div>
@@ -398,7 +298,7 @@
 
 
 
-                                                        <div class="d-flex" style="width:100%">
+                                                        <div class="" style="width:100%">
                                                         <div class="col" style="width: 100%">
                                                             <div class="fv-row mb-7 fv-plugins-icon-container">
                                                                 <label class="fs-6 fw-semibold form-label mt-3">
@@ -412,7 +312,10 @@
                                                             </div>
                                                         </div>
                                                                <div class="col">
-       <div class="fv-row mb-7" style="margin-left:10px">
+                                                                          </div>
+
+                                                        <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 mb-7 row-cols-lg-1">                                                               <div class="col">
+
            <label class="fs-6 fw-semibold form-label mt-3">
                <span>Phone</span>
                <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's phone number (optional)." data-bs-original-title="Enter the contact's phone number (optional)." data-kt-initialized="1">
@@ -420,16 +323,15 @@
                </span>
            </label>
            <div class="row">
-               <div class="col-lg-4" style="font-weight: normal!important">
+               <div class="col-lg-5" style="font-weight: normal!important">
                    <asp:DropDownList ID="ddlPhone" ClientIDMode="Static" runat="server"></asp:DropDownList>
                </div>
-               <div class="col-lg-8">
+               <div class="col-lg-7">
 
                    <asp:TextBox ID="txtPhone" runat="server"></asp:TextBox>
                </div>
            </div>
-       </div>
-
+</div>
    </div>
 
 
@@ -513,7 +415,7 @@
                                                     <div class="col-lg-6">
                                                         <div class="fv-row m fv-plugins-icon-container">
                                                             <label class="fs-6 col-lg-6 fw-semibold form-label mt-3">
-                                                                <span>Postalcode/Zipcode</span>
+<span style="white-space: nowrap;">Postalcode/Zipcode</span>
                                                                 <span class="ms-1" data-bs-toggle="tooltip" aria-label="Enter the contact's email." data-bs-original-title="Enter the contact's email." data-kt-initialized="1">
                                                                     <i class="ki-outline ki-information fs-7"></i>
                                                                 </span>
@@ -552,15 +454,76 @@
                                                     </div>
                                                
                                                     <div class="">
-                                                        <div class="" style="width: 100%" id="tags-container">
-                                                            <label class="fs-6 fw-semibold form-label mt-3">Tags</label>
-                                                            <asp:TextBox ID="txttags" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
-                                                        </div>
+                                              <!-- Tags Container -->
+<!-- Tags Container -->
+<!-- Tags Container -->
+<div class="tag-container" style="width: 100%" id="tags-container">
+    <label class="fs-6 fw-semibold form-label mt-3">Tags</label>
+    <input name="tags" class="form-control form-control-solid" id="tags" value="">
+    <asp:TextBox ID="txttags" runat="server" Style="display: none;"></asp:TextBox>
+</div>
 
-                                                        <div class="" style="width: 100%">
-                                                            <label class="fs-6 fw-semibold form-label mt-3">Interests</label>
-                                                            <asp:TextBox ID="txtinterest" runat="server" CssClass="form-control form-control-solid"></asp:TextBox>
-                                                        </div>
+<!-- Interests Container -->
+<div class="interest-container" style="width: 100%">
+    <label class="fs-6 fw-semibold form-label mt-3">Interests</label>
+    <input name="interests" class="form-control form-control-solid" id="interests" value="">
+    <asp:TextBox ID="txtinterest" runat="server" Style="display: none;"></asp:TextBox>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Tagify for Tags
+        var inputTags = document.querySelector('#tags');
+        var tagifyTags = new Tagify(inputTags, {
+            whitelist: [], // Add any predefined tags if needed
+            enforceWhitelist: false,
+            dropdown: {
+                maxItems: 20, // Maximum items to show in the dropdown
+                enabled: 0 // Always show the dropdown (0 disables it)
+            }
+        });
+
+        // Sync Tags with ASP.NET Hidden Field
+        tagifyTags.on('add', function () { updateHiddenField(tagifyTags, '<%= txttags.ClientID %>'); });
+        tagifyTags.on('remove', function () { updateHiddenField(tagifyTags, '<%= txttags.ClientID %>'); });
+        tagifyTags.on('edit', function () { updateHiddenField(tagifyTags, '<%= txttags.ClientID %>'); });
+
+        // Prepopulate Tags
+        var tagsString = '<%= txttags.Text %>';
+    if (tagsString) {
+        tagifyTags.addTags(tagsString.split(','));
+    }
+
+    // Initialize Tagify for Interests
+    var inputInterests = document.querySelector('#interests');
+    var tagifyInterests = new Tagify(inputInterests, {
+        whitelist: [],
+        enforceWhitelist: false,
+        dropdown: {
+            maxItems: 20,
+            enabled: 0
+        }
+    });
+
+    // Sync Interests with ASP.NET Hidden Field
+    tagifyInterests.on('add', function() { updateHiddenField(tagifyInterests, '<%= txtinterest.ClientID %>'); });
+    tagifyInterests.on('remove', function() { updateHiddenField(tagifyInterests, '<%= txtinterest.ClientID %>'); });
+    tagifyInterests.on('edit', function() { updateHiddenField(tagifyInterests, '<%= txtinterest.ClientID %>'); });
+
+    // Prepopulate Interests
+        var interestsString = '<%= txtinterest.Text %>';
+        if (interestsString) {
+            tagifyInterests.addTags(interestsString.split(','));
+        }
+    });
+
+    function updateHiddenField(tagifyInstance, hiddenFieldId) {
+        var tagsArray = tagifyInstance.value.map(tag => tag.value);
+        document.getElementById(hiddenFieldId).value = tagsArray.join(',');
+    }
+
+</script>
+                                       
+
                                                     </div>
                                                     <div class="row row-cols-1 row-cols-sm-2 rol-cols-md-1 row-cols-lg-2"></div>
 
@@ -596,17 +559,77 @@
                                                     </div>
                                                 </div>
 
+                                                <div id="educationSkillsDiv" style="background-color: white; padding: 40px; border-radius: 10px; margin-top: 43px; display: block;">
+    <label class="fs-6 fw-semibold form-label mt-3">Education and Skills</label>
+
+    <div class="form-group" style="margin-top: 20px;">
+        <asp:Label ID="lblDate" runat="server" Text="Enrolment Date" CssClass="form-label"></asp:Label>
+        <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"></asp:TextBox>
+    </div>
+
+    <div class="form-group" style="margin-top: 20px;">
+        <asp:Label ID="lblLevel" runat="server" Text="Level" CssClass="form-label"></asp:Label>
+       <asp:DropDownList ID="ddlLevel" runat="server" CssClass="form-control">
+    <asp:ListItem>Apprenticeship</asp:ListItem>
+    <asp:ListItem>Associate Degree</asp:ListItem>
+    <asp:ListItem>Bachelor’s Degree</asp:ListItem>
+    <asp:ListItem>Certificate</asp:ListItem>
+    <asp:ListItem>Chartered Status</asp:ListItem>
+    <asp:ListItem>Continuing Education Credits (CEUs)</asp:ListItem>
+    <asp:ListItem>Diploma</asp:ListItem>
+    <asp:ListItem>Diploma of Higher Education (DipHE)</asp:ListItem>
+    <asp:ListItem>Doctorate (PhD/DPhil)</asp:ListItem>
+    <asp:ListItem>Foundation Degree</asp:ListItem>
+    <asp:ListItem>General Certificate of Secondary Education (GCSE)</asp:ListItem>
+    <asp:ListItem>Graduate Certificate/Diploma</asp:ListItem>
+    <asp:ListItem>Honours Degree</asp:ListItem>
+    <asp:ListItem>International General Certificate of Secondary Education (IGCSE)</asp:ListItem>
+    <asp:ListItem>Language Proficiency Certificates</asp:ListItem>
+    <asp:ListItem>Lower Secondary Education Certificate</asp:ListItem>
+    <asp:ListItem>Master’s Degree</asp:ListItem>
+    <asp:ListItem>Professional Certification</asp:ListItem>
+    <asp:ListItem>Professional Doctorate</asp:ListItem>
+    <asp:ListItem>Secondary School Certificate/Diploma</asp:ListItem>
+    <asp:ListItem>Technical Certificates/Diplomas</asp:ListItem>
+    <asp:ListItem>Vocational Certificates/Diplomas</asp:ListItem>
+</asp:DropDownList>
+
+    </div>
+
+    <div class="form-group" style="margin-top: 20px;">
+        <asp:Label ID="lblQualification" runat="server" Text="Qualification" CssClass="form-label"></asp:Label>
+        <asp:TextBox ID="txtQualification" runat="server" CssClass="form-control"></asp:TextBox>
+    </div>
+
+    <div class="form-group" style="margin-top: 20px;">
+        <asp:Label ID="lblGrade" runat="server" Text="Grade" CssClass="form-label"></asp:Label>
+        <asp:TextBox ID="txtGrade" runat="server" CssClass="form-control"></asp:TextBox>
+    </div>
+
+    <div class="form-group" style="margin-top: 20px;">
+        <asp:Label ID="lblInstitution" runat="server" Text="Institution" CssClass="form-label"></asp:Label>
+        <asp:TextBox ID="txtInstitution" runat="server" CssClass="form-control"></asp:TextBox>
+    </div>
+
+    <div class="form-group" style="margin-top: 20px;">
+        <asp:Label ID="lblDateQualified" runat="server" Text="Date Qualified" CssClass="form-label"></asp:Label>
+<asp:TextBox ID="txtDateQualified" runat="server" CssClass="form-control" ></asp:TextBox>
+    </div>
+</div>
+
+
+
                                                 <div id="paymentsdiv" style="background-color: white; padding: 40px; border-radius: 10px; margin-top: 43px;">
-                                                    <label class="fs-6 fw-semibold form-label mt-3">Payments</label>
+                                                    <label class="fs-6 fw-semibold form-label mt-3">Donations</label>
 
                                                     <div class="table-responsive" style="margin-left: 40px;">
                                                         <asp:Literal ID="ltrPayments" runat="server"></asp:Literal>
                                                     </div>
                                                     <div class="d-flex justify-content-center" style="margin: auto">
                                                         <div id="pagination-controlsp" style="margin-left: 40px;">
-                                                            <button style="border: 1px solid #dcdcdc;" id="prev-pagep" class="btn btn-light" onclick="changePagep(-1)">Previous</button>
+                                                            <button style="border: 1px solid #dcdcdc;" id="prev-pagep" class="btn btn-light" type="button" onclick="changePagep(-1)">Previous</button>
                                                             <span style="margin: 3px 10px" id="page-infop"></span>
-                                                            <button style="border: 1px solid #dcdcdc;" id="next-pagep" class="btn btn-light" onclick="changePagep(1)">Next</button>
+                                                            <button style="border: 1px solid #dcdcdc;" id="next-pagep" class="btn btn-light" type="button" onclick="changePagep(1)">Next</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -621,9 +644,9 @@
                                                     </div>
                                                     <div class="d-flex justify-content-center" style="margin: auto">
                                                         <div id="pagination-controls" style="margin-left: 40px;">
-                                                            <button style="border: 1px solid #dcdcdc;" id="prev-page" class="btn btn-light" onclick="changePage(-1)">Previous</button>
+                                                            <button style="border: 1px solid #dcdcdc;" id="prev-page" class="btn btn-light" type="button" onclick="changePage(-1)">Previous</button>
                                                             <span style="margin: 3px 10px" id="page-info"></span>
-                                                            <button style="border: 1px solid #dcdcdc;" id="next-page" class="btn btn-light" onclick="changePage(1)">Next</button>
+                                                            <button style="border: 1px solid #dcdcdc;" id="next-page" class="btn btn-light" type="button" onclick="changePage(1)">Next</button>
                                                         </div>
                                                     </div>
                                                     <label class="fs-6 fw-semibold form-label mt-3">Upload a Document</label>
@@ -656,6 +679,119 @@
                             </div>
 
                         </div>
+                          <div class="col-lg-7 col-xl-5">
+  <!--begin::Contact groups-->
+  <div class="">
+      <!--begin::Contact group wrapper-->
+      <div class="card card-flush">
+          <!--begin::Card header-->
+          <div class="card-header pt-7">
+              <!--begin::Card title-->
+              <div class="card-title">
+                  <h2>Groups</h2>
+              </div>
+              <!--end::Card title-->
+          </div>
+          <!--end::Card header-->
+          <!--begin::Card body-->
+          <div class="card-body pt-5">
+              <!--begin::Contact groups-->
+              <div class="d-flex flex-column gap-5">
+                  <!--begin::Contact group-->
+                  <div class="d-flex flex-stack">
+                      <a href="DonorCrm.aspx" class="fs-6 hover-primary fw-bold text-gray-800 ">All Contacts</a>
+                      <div id="all_contacts_badge" class="badge badge-light-primary"></div>
+                  </div>
+                  <div class="d-flex flex-stack">
+                      <a href="?SID=1" class="fs-6 fw-bold hover-primary text-gray-800">Donors</a>
+                      <div id="donors_badge" class="badge badge-light-primary"></div>
+                  </div>
+                  <!--begin::Contact group-->
+                  <!--begin::Contact group-->
+                  <div class="d-flex flex-stack">
+                      <a href="?SID=2" class="fs-6 fw-bold text-gray-800 hover-primary ">Volunteers</a>
+                      <div id="volunteers_badge" class="badge badge-light-primary"></div>
+                  </div>
+                  <!--begin::Contact group-->
+                  <!--begin::Contact group-->
+                  <div class="d-flex flex-stack">
+                      <a href="?SID=3" class="fs-6 fw-bold text-gray-800 hover-primary">Leads</a>
+                      <div id="leads_badge" class="badge badge-light-primary"></div>
+                  </div>
+                  <!--begin::Contact group-->
+                  <!--begin::Contact group-->
+                  <div class="d-flex flex-stack">
+                      <a href="?SID=4" class="fs-6 fw-bold text-gray-800 hover-primary">Sponsors</a>
+                      <div id="sponsors_badge" class="badge badge-light-primary"></div>
+                  </div>
+                  <!--begin::Contact group-->
+                  <!--begin::Contact group-->
+
+                  <!--begin::Contact group-->
+              </div>
+              <!--end::Contact groups-->
+              <!--begin::Separator-->
+              <!--begin::Separator-->
+              <!--begin::Add contact group-->
+
+              <!--end::Add contact group-->
+              <!--begin::Separator-->
+              <div class="separator my-7"></div>
+              <!--begin::Separator-->
+              <!--begin::Add new contact-->
+              <div class="d-flex">
+                  <a onclick="clearForm()" href="DONORCRM.aspx" class="btn btn-primary w-50 me-4">Add new contact
+                  </a>
+
+                  <asp:Button runat="server" ID="syncwithmailchimp" CssClass="btn btn-primary w-50" Text="Sync with Mailchimp" OnClick="syncwithmailchimp_Click" />
+              </div>
+
+
+              <!--end::Add new contact-->
+          </div>
+          <!--end::Card body-->
+      </div>
+      <!--end::Contact group wrapper-->
+  </div>
+  <!--end::Contact groups-->
+  <!--begin::Search-->
+  <div class="mt-3">
+      <!--begin::Contacts-->
+      <div class="card card-flush" id="kt_contacts_list">
+          <!--begin::Card header-->
+          <div class="card-header pt-7" id="kt_contacts_list_header">
+              <!--begin::Form-->
+              <div class="d-flex align-items-center position-relative w-100 m-0" autocomplete="off">
+                  <!--begin::Icon-->
+                  <!--end::Icon-->
+                  <!--begin::Input-->
+                  <input type="text" id="searchContacts" class="form-control form-control-solid ps-13" name="search" value="" placeholder="Search contacts" />
+                  <!--end::Input-->
+              </div>
+              <!--end::Form-->
+          </div>
+          <!--end::Card header-->
+          <!--begin::Card body-->
+          <div class="card-body pt-5" id="kt_contacts_list_body">
+              <!--begin::List-->
+              <div class="scroll-y me-n5 pe-5 h-300px h-xl-auto" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_header, #kt_toolbar, #kt_footer, #kt_contacts_list_header" data-kt-scroll-wrappers="#kt_content, #kt_contacts_list_body" data-kt-scroll-stretch="#kt_contacts_list, #kt_contacts_main" data-kt-scroll-offset="5px" style="max-height: 1041px;">
+                  <!--begin::User-->
+                  <asp:Literal ID="ContactsListLiteral" runat="server"></asp:Literal>
+                  <!--end::User-->
+                  <!--begin::Separator-->
+                  <div class="separator separator-dashed d-none"></div>
+                  <!--end::Separator-->
+                  <!--begin::User-->
+
+              </div>
+              <!--end::List-->
+          </div>
+          <!--end::Card body-->
+      </div>
+      <!--end::Contacts-->
+  </div>
+  <!--end::Search-->
+      </div>
                         <!--end::Content-->
                     </div>
                     <!--end::Contacts App- Add New Contact-->
@@ -703,6 +839,8 @@
         </div>
     </div>
 
+
+
         <script type="text/javascript">
             function setHiddenFieldValue() {
         var ddl = document.getElementById('<%= ddlCountry.ClientID %>');
@@ -711,7 +849,33 @@
     }
     </script>
 
+    <script>
+        function previewImage(event) {
+            var input = event.target;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
+                reader.onload = function (e) {
+                    // Set the src attribute of the asp:Image control
+                    var imgControl = document.getElementById('<%= imgAvatar.ClientID %>');
+                    imgControl.src = e.target.result;
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function removeImage() {
+            // Clear the src of the Image control
+            var imgControl = document.getElementById('<%= imgAvatar.ClientID %>');
+    imgControl.src = '';
+
+    // Reset the FileUpload control
+            var fileUploadControl = document.getElementById('<%= AvatarUpload.ClientID %>');
+            fileUploadControl.value = ''; // Clear the selected file
+        }
+
+
+    </script>
     <script>
 
         let currentPage = 1;
@@ -838,7 +1002,6 @@
             }
         });
     </script>
-
 
 
 
@@ -1006,9 +1169,9 @@
                 // Extract the name and email from each contact item and convert them to lowercase
                 var contactName = contacts[i].querySelector('p.fs-6').textContent.toLowerCase();
                 var contactEmail = contacts[i].querySelector('div.fw-semibold').textContent.toLowerCase();
-
+                var tags = contacts[i].querySelector('span#tagsforsearch').textContent.toLowerCase();
                 // Check if the input filter matches either the name or the email
-                if (contactName.includes(filter) || contactEmail.includes(filter)) {
+                if (contactName.includes(filter) || contactEmail.includes(filter) || tags.includes(filter)) {
                     contacts[i].style.display = ''; // Show the contact item
                 } else {
                     contacts[i].style.display = 'none'; // Hide the contact item
@@ -1057,9 +1220,27 @@
         });
 
     </script>
+     <script>
+         document.addEventListener('DOMContentLoaded', function () {
+             flatpickr("#<%= txtDate.ClientID %>", {
+            dateFormat: "d/m/Y", // UK date format
+            locale: {
+                firstDayOfWeek: 1 // Start week on Monday
+            }
+        });
+
+        flatpickr("#<%= txtDateQualified.ClientID %>", {
+            dateFormat: "d/m/Y", // UK date format
+            locale: {
+                firstDayOfWeek: 1 // Start week on Monday
+            }
+        });
+    });
+     </script>
+
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
 
     <!--end::Custom Javascript-->
-    <!--end::Javascript-->
+              
 
 </asp:Content>

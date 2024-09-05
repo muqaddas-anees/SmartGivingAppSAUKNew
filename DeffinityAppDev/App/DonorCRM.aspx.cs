@@ -248,6 +248,7 @@ namespace DonorCRM
                                 if (ddlCountry.Items.FindByValue(countryValue) != null)
                                 {
                                     ddlCountry.SelectedValue = countryValue;
+                                    hiddenFieldCountry.Value = countryValue;
                                  
                                 }
                                 else
@@ -330,8 +331,30 @@ namespace DonorCRM
                         txtLastName.Text = contact.LastName;
                         txtCompanyName.Text = contact.CompanyName;
                         txtEmail.Text = contact.EmailAddress;
-                        txtPhone.Text = contact.ContactNumber;
-                        txtDonationsRaised.Text = donationsRaised.ToString("N2");
+                        string contactNumber = contact.ContactNumber;
+
+                        if (contactNumber.Contains('-'))
+                        {
+                            var parts = contactNumber.Split('-');
+                            var countryCode = parts[0];
+
+                            // Check if the value exists in the dropdown list
+                            var item = ddlPhone.Items.FindByValue(countryCode);
+
+                            if (item != null)
+                            {
+                                ddlPhone.SelectedValue = countryCode;
+                            }
+                            // Join the remaining parts (e.g., 301-11123-12) and set them to the textbox
+                            txtPhone.Text = string.Join("-", parts.Skip(1));
+                        }
+                        else
+                        {
+                            txtPhone.Text = contactNumber;
+                            ddlPhone.SelectedValue = "0"; // Assuming "0" is the value for no selection
+                        }
+
+                        txtDonationsRaised.Text = "£" + donationsRaised.ToString("N2");
                         txttags.Text = Tags;
                         txtinterest.Text = Interest;
                         // Populate CheckBoxes (categories) based on contact's categories
@@ -396,7 +419,7 @@ namespace DonorCRM
                                 var redirectUrl = $"{currentUrl.AbsolutePath}?{queryString}";
                                 tableHtml += "<tr>";
                                 tableHtml += "<td>" + (string.IsNullOrEmpty(payment.FundraiserNames) ? "None" : payment.FundraiserNames) + "</td>";
-                                tableHtml += "<td style='padding-left:40px'>" + (payment.Amount.HasValue ? payment.Amount.Value.ToString("N2") : "None") + "</td>";
+                                tableHtml += "<td style='padding-left:40px'>" + (payment.Amount.HasValue ? "£" + payment.Amount.Value.ToString("N2") : "None") + "</td>";
                                 tableHtml += "<td>" + (payment.Status == "Successful" ? "<span class='badge badge-light-success'>Successful</span>" : (payment.Status == "Failed" ? "<span class='badge badge-light-danger'>Failed</span>" : "None")) + "</td>";
                                 tableHtml += "<td>" + (payment.PaidDate.HasValue ? payment.PaidDate.Value.ToString("dd/MM/yyyy") : "None") + "</td>";
                                 tableHtml += "<td><a class='btn btn-light' style='border:1px solid #aca5a5' href='" + redirectUrl + "')\">Details</a><button type='button' style='border:1px solid #aca5a5;display:none;' class='btn btn-light' onclick=\"handlePaymentDetails('" + payment.TID + "', '" + payment.Name + "', '" + payment.Email + "', " + payment.Amount + ", '" + payment.FundraiserNames + "', " + payment.PlatformFee + ", '" + payment.PaymentType + "', '" + payment.Status + "')\">Details</button></td>";
@@ -784,12 +807,24 @@ console.log('iddddd'+id)
             StringBuilder html = new StringBuilder();
             string sidQueryParam = Request.QueryString["SID"];
 
-
+            using(var context=new UserDataContext())
+            {
 
 
             foreach (var contact in contacts)
             {
-                string name = contact.ContractorName;
+                    var tagsarray = context.UserSkills.Where(o => o.UserId == contact.ID).ToList();
+
+                    // Combine all interests and skills into a comma-separated string
+                    string interests = string.Join(",", tagsarray.Select(t => t.Notes).Where(note => !string.IsNullOrEmpty(note)));
+                    string skills = string.Join(",", tagsarray.Select(t => t.Skills).Where(skill => !string.IsNullOrEmpty(skill)));
+
+                    // Combine both interests and skills into a single string, separated by commas
+                    string combinedTags = string.Join(",", new[] { interests, skills }.Where(s => !string.IsNullOrEmpty(s)));
+
+                    // make a string that consists all the skills and interests separated by commas
+
+                    string name = contact.ContractorName;
                 string email = contact.EmailAddress;
                 string companyName = contact.Company;
                 string phone = contact.ContactNumber;
@@ -806,15 +841,17 @@ console.log('iddddd'+id)
         <div style='margin-left: 30px;' class='ms-4'>
             <p class='fs-6 fw-bold text-gray-900 text-hover-primary mb-2'>{3}</p>
             <div class='fw-semibold fs-7 text-muted'>{2}</div>
+            <span id='tagsforsearch' style='display:none'>{5}</span>
         </div>
     </div></a>
     <div class='separator separator-dashed'></div>
-", contactid, ResolveUrl(imgurl), email, name, sidQueryParam));
+", contactid, ResolveUrl(imgurl), email, name, sidQueryParam,combinedTags));
 
 
 
                 // Display the HTML in a literal or another control
                 ContactsListLiteral.Text = html.ToString();
+            }
             }
         }
 
@@ -851,7 +888,7 @@ console.log('iddddd'+id)
 
                             contact1.ModifiedDate = DateTime.Now;
                             contact1.Company = txtCompanyName.Text;
-                            contact1.ContactNumber = txtPhone.Text.Trim();
+                            contact1.ContactNumber = ddlPhone.SelectedValue+"-"+txtPhone.Text.Trim();
 
 
                             var userdetail = userContext.UserDetails.Where(o => o.UserId == ID).FirstOrDefault();
@@ -1052,7 +1089,6 @@ console.log('iddddd'+id)
 
                     if (AvatarUpload.HasFile)
                     {
-                        Response.Write("File reached");
 
                         // Get the file extension
                         string fileExtension = System.IO.Path.GetExtension(AvatarUpload.FileName).ToLower();
@@ -1127,7 +1163,7 @@ console.log('iddddd'+id)
 
                             ResetPassword = false,
                             Company = txtCompanyName.Text,
-                            ContactNumber = ddlPhone.SelectedValue + txtPhone.Text.Trim(),
+                            ContactNumber = ddlPhone.SelectedValue +"-"+ txtPhone.Text.Trim(),
 
 
                         };
@@ -1148,9 +1184,13 @@ console.log('iddddd'+id)
 
 
                             int countryValue;
+                            
                             bool isCountryValid = int.TryParse(hiddenFieldCountry.Value, out countryValue);
+                            UserDetail userDetail;
 
-                            var userDetail = new UserDetail
+                            if (countryValue!=0)
+                            { 
+                             userDetail = new UserDetail
                             {
                                 UserId = contractorID,
                                 Country = isCountryValid ? countryValue : 0, // Use 0 or another default value if parsing fails
@@ -1158,9 +1198,22 @@ console.log('iddddd'+id)
                                 Address2 = addressine2.Text,
                                 Town = town.Text,
                                 City = city.Text,
-                                County = hiddenFieldCountry.Value,
                                 PostCode = postalcode.Text
                             };
+                            }
+                            else
+                            {
+                                 userDetail = new UserDetail
+                                {
+                                    UserId = contractorID,
+                                     // Use 0 or another default value if parsing fails
+                                    Address1 = propertynumandstreet.Text,
+                                    Address2 = addressine2.Text,
+                                    Town = town.Text,
+                                    City = city.Text,
+                                    PostCode = postalcode.Text
+                                };
+                            }
 
                             userContext.UserDetails.InsertOnSubmit(userDetail);
                             userContext.SubmitChanges();
@@ -1170,7 +1223,8 @@ console.log('iddddd'+id)
                             urEntity.CompanyID = sessionKeys.PortfolioID;
                             urEntity.UserID = contractorID;
                             urRep.Add(urEntity);
-                            ddlCountry.SelectedValue = userDetail.County;
+                            ddlCountry.SelectedValue = userDetail.Country.ToString();
+                            hiddenFieldCountry.Value= userDetail.Country.ToString();
 
                         }
                         else
@@ -1359,9 +1413,13 @@ console.log('iddddd'+id)
                     }
                 }
 
+
+                HandleViews();
             }
             catch (Exception ex) {
                 LogExceptions.WriteExceptionLog(ex);
+                HandleViews();
+
 
             }
         }
@@ -1872,7 +1930,7 @@ console.log('iddddd'+id)
 
 
                 // Optionally add a default item
-                ddlPhone.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select Country Code--", ""));
+                ddlPhone.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select Country Code--", "0"));
         }
 
         private void BindCountry()

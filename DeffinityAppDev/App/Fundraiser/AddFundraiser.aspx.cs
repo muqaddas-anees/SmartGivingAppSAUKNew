@@ -140,8 +140,9 @@ namespace DeffinityAppDev.App.Fundraiser
                 <div style='border: 1px solid #ddd; padding: 15px; border-radius: 5px; max-width: 500px; margin: 0 auto;'>
                     <img src='{Request.Url.Scheme}://{Request.Url.Authority}{imageUrl}' alt='{title}' style='width: 100%; height: auto; border-radius: 5px;' />
                     <h4 style='color: #333; text-align: center;'>{title}</h4>
-                    <p style='color: #555; text-align: center;'>{description}</p>
-                    <a href='{GetDonationUrl()}' style='display: block; text-align: center; padding: 10px 20px; background-color: {buttonColor}; color: #fff; text-decoration: none; border-radius: 5px;'>Donate Now</a>
+<p style='color: #555; text-align: center;'>
+    @{(description.Length > 480 ? description.Substring(0, 480) + "..." : description)}
+</p>                    <a href='{GetDonationUrl()}' style='display: block; text-align: center; padding: 10px 20px; background-color: {buttonColor}; color: #fff; text-decoration: none; border-radius: 5px;'>Donate Now</a>
                 </div>";
 
                     // Create the Bootstrap modal
@@ -151,7 +152,9 @@ namespace DeffinityAppDev.App.Fundraiser
                         <div class='modal-content'>
                             <div class='modal-header'>
                                 <h5 class='modal-title' id='embedModalLabel'>Embed this Card</h5>
-                                
+                                <button type=""button"" class=""close"" data-dismiss=""modal"" aria-label=""Close"">
+          <span aria-hidden=""true"">&times;</span>
+        </button>
                             </div>
                             <div class='modal-body'>
                                 <p>Copy the code below to embed this card on your WordPress website:</p>

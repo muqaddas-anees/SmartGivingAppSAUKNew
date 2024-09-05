@@ -267,6 +267,69 @@
 									</a>
 									<!--end::Statistics Widget 5-->
 								</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			  <div class="col-xl-3">
+							<!--begin::Statistics Widget 5-->
+							<a href="Marketplace.aspx" class="card bg-dark hoverable card-xl-stretch mb-5 mb-xl-8">
+								<!--begin::Body-->
+								<div class="card-body">
+									<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
+									<span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
+										<i style="color:white;height:39px;width:39px" class="bi bi-envelope"></i>
+			
+									</span>
+									<!--end::Svg Icon-->
+									<div class="text-inverse-success fw-bolder fs-2 mb-2 mt-5">Marketplace</div>
+									<div class="fw-bold text-inverse-success fs-7"></div>
+								</div>
+								<!--end::Body-->
+							</a>
+							<!--end::Statistics Widget 5-->
+						</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<div class="col-xl-3" style="display:none;visibility:hidden;">
 									<!--begin::Statistics Widget 5-->
 									<a href="InternationalSettings.aspx" class="card bg-info hoverable card-xl-stretch mb-xl-8">

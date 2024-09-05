@@ -339,7 +339,8 @@ namespace DeffinityAppDev.App
                     if (cDetails != null)
                     {
                         var value = cRep.GetAll().Where(o => o.ID == cDetails.ID).FirstOrDefault();
-                        value.ContractorName = txtFirstName.Text + " " + txtSurname.Text.Trim();
+                        value.ContractorName = txtFirstName.Text;
+                        value.LastName= txtSurname.Text.Trim();
                         //value.EmailAddress = txtEmailAddress.Text;
                         //value.LoginName = txtEmailAddress.Text;
                         if (txtPassword.Text.Trim().Length > 0)
@@ -407,7 +408,8 @@ namespace DeffinityAppDev.App
                          cvRep = new UserRepository<v_contractor>();
                         string pw = "SmartGiving@2022";
                         var value = new UserMgt.Entity.Contractor();
-                        value.ContractorName = txtFirstName.Text + " " + txtSurname.Text.Trim();
+                        value.ContractorName = txtFirstName.Text;
+                        value.LastName= txtSurname.Text.Trim();
                         value.EmailAddress = txtEmailAddress.Text;
                         value.LoginName = txtEmailAddress.Text.Trim();
                         if (txtPassword.Text.Trim().Length > 0)
