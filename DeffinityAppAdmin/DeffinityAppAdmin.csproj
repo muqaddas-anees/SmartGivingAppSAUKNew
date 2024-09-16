@@ -295,6 +295,13 @@
     <Compile Include="App\AddEducationalVideo.aspx.designer.cs">
       <DependentUpon>AddEducationalVideo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App\AddService.aspx.cs">
+      <DependentUpon>AddService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\AddService.aspx.designer.cs">
+      <DependentUpon>AddService.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\ajtest.aspx.cs">
       <DependentUpon>ajtest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -732,6 +739,7 @@
       <DependentUpon>DataServices.asmx</DependentUpon>
     </Compile>
     <Content Include="App\Activity.aspx" />
+    <Content Include="App\AddService.aspx" />
     <Content Include="App\chat.aspx" />
     <Content Include="App\EmailSettings.aspx" />
     <Content Include="App\EmailTemplates\default.htm" />

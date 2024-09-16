@@ -19,6 +19,7 @@ namespace DeffinityAppDev.App.Events
             {
                 if (!IsPostBack)
                 {
+                    pnlURLs.Visible = false;
                     setMapKey();
                     IProjectRepository<ProjectMgt.Entity.ProjectDefault> pd = new ProjectRepository<ProjectMgt.Entity.ProjectDefault>();
                     if(pd.GetAll().FirstOrDefault() != null)
@@ -110,7 +111,22 @@ namespace DeffinityAppDev.App.Events
                     ddlCountry.SelectedValue= "1";
                     txtZipcode.Value = ActivityDetail.Postalcode;
                     txtState.Value = ActivityDetail.state_Province;
+                    rdlTypeofEvent.SelectedValue = ActivityDetail.isInPerson??false ? "0" : "1";
+                    txtInstagramLiveLink.Text = ActivityDetail.InstagramLink ?? "";
+                    txtYouTubeLiveLink.Text = ActivityDetail.YouTubeLink ?? "";
+                    txtTikTokLiveLink.Text = ActivityDetail.TikTokLink ?? "";
                     ddlCountry.SelectedValue = ActivityDetail.Country;
+
+                    if(ActivityDetail.isInPerson ?? false)
+                    {
+                        pnlURLs.Visible = false;
+                        pnlLocation.Visible = true;
+                    }
+                    else
+                    {
+                        pnlURLs.Visible = true;
+                        pnlLocation.Visible = false;
+                    }
                 }
             }
             catch (Exception ex)
@@ -147,6 +163,10 @@ namespace DeffinityAppDev.App.Events
                     eEntity.state_Province = txtState.Value.Trim();
                     eEntity.Venue_Name = txtvenuename.Value.Trim();
                     eEntity.Postalcode = txtZipcode.Value.Trim();
+                    eEntity.isInPerson = rdlTypeofEvent.SelectedValue == "0";
+                    eEntity.YouTubeLink = txtYouTubeLiveLink.Text;
+                    eEntity.TikTokLink = txtTikTokLiveLink.Text;
+                    eEntity.InstagramLink = txtInstagramLiveLink.Text;
 
                     //eEntity.Description = txtDescription.Text;
                     // value.Notes = txtNotes.Text;
@@ -186,8 +206,11 @@ namespace DeffinityAppDev.App.Events
                     eEntity.state_Province = txtState.Value.Trim();
                     eEntity.Venue_Name = txtvenuename.Value.Trim();
                     eEntity.Postalcode = txtZipcode.Value.Trim();
-
-                   // eEntity.Description = txtDescription.Text;
+                    eEntity.isInPerson = rdlTypeofEvent.SelectedValue == "0";
+                    eEntity.YouTubeLink = txtYouTubeLiveLink.Text;
+                    eEntity.TikTokLink = txtTikTokLiveLink.Text;
+                    eEntity.InstagramLink = txtInstagramLiveLink.Text;
+                    // eEntity.Description = txtDescription.Text;
                     // value.Notes = txtNotes.Text;
                     eEntity.ModifiedDate = DateTime.Now;
                     eEntity.IsActive = true;
@@ -359,6 +382,20 @@ namespace DeffinityAppDev.App.Events
             }
             //put a breakpoint here and check datatable
             return dataTable;
+        }
+
+        protected void rdlTypeofEvent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(rdlTypeofEvent.SelectedValue=="0")
+            {
+                pnlURLs.Visible = false;
+                pnlLocation.Visible = true;
+            }
+            else
+            {
+                pnlLocation.Visible = false;
+                pnlURLs.Visible = true;
+            }
         }
     }
 }

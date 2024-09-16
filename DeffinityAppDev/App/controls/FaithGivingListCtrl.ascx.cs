@@ -219,7 +219,7 @@ namespace DeffinityAppDev.App.controls
             //}
             //return img + "?r=" + DateTime.Now.TimeOfDay.Milliseconds.ToString();
             // +"/" + eImageType.ToString() + "/" + a_gId.ToString() + ".png"; 
-           return "../../ImageHandler.ashx?id=" + contactsId + "&s=" + ImageManager.file_section_fundriser; //
+           return "../../ImageHandler.ashx?id=" + contactsId + "_1&s=" + ImageManager.file_section_fundriser; //
 
         }
 

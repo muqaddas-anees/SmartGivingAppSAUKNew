@@ -9,11 +9,57 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="page_description" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Tabs" runat="server">
-    <Pref:EventTabs runat="server" id="EventTabs" />
+    <pref:eventtabs runat="server" id="EventTabs" />
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        /* General Styling for the Radio List */
+.radio-list {
+        border-collapse: separate;
+    border-spacing: 0 10px; /* Adds space between rows */
+}
 
-    
+.radio-list td {
+    padding: 20px;
+    vertical-align: middle;
+}
+
+/* Styling the input radio buttons */
+.radio-list input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #5e6278; /* Change the color of the radio button, Metronic style */
+    transform: scale(1.2); /* Make radio buttons slightly larger */
+}
+
+/* Label styling for better text appearance */
+.radio-list label {
+    font-size: 16px;
+    color: #5e6278; /* Metronic's default text color */
+    cursor: pointer;
+}
+
+/* Adding hover effect to make it interactive */
+.radio-list td:hover label {
+    color: #6993ff; /* Light blue hover effect */
+    transition: color 0.3s ease;
+}
+
+/* Adding padding and background color for better visual appeal */
+.radio-list tr {
+    background-color: #f3f6f9; /* Light background color for rows */
+    border-radius: 5px;
+}
+
+/* Apply box shadow to the entire table for a raised effect */
+.radio-list {
+    ; /* Soft shadow */
+    padding: 15px;
+    background: #ffffff; /* White background to contrast the radio buttons */
+    border-radius: 8px; /* Rounded corners for the entire structure */
+}
+
+    </style>
+
 
     <div class="container-xxl" id="kt_content_container">
         <!--begin::Row-->
@@ -46,27 +92,26 @@
                                 <div class="card-header border-0 " aria-expanded="true">
                                     <!--begin::Card title-->
                                     <div class="card-title m-0">
-                                      <%--  <h3 class="fw-bolder    m-0">Create An Event</h3>--%>
+                                        <%--  <h3 class="fw-bolder    m-0">Create An Event</h3>--%>
                                         <i class="bi bi-calendar3 text-primary fs-3x me-6"></i>
-									<h3 class="fw-bolder m-0">Name of your event</h3>
+                                        <h3 class="fw-bolder m-0">Name of your event</h3>
 
                                     </div>
                                     <!--end::Card title-->
                                 </div>
                                 <div class="card-body border-top p-9">
-                                    
+
 
 
 
                                     <!--begin::Card title-->
-								<div class="card-title m-0">
-									
-								</div>
-								<!--end::Card title-->
+                                    <div class="card-title m-0">
+                                    </div>
+                                    <!--end::Card title-->
 
-                                               <asp:TextBox ID="txtEventName" runat="server" placeholder="Enter name" />
+                                    <asp:TextBox ID="txtEventName" runat="server" placeholder="Enter name" />
 
-                                     <asp:RequiredFieldValidator  style="font-size:small" ID="Rfv1" Display="Dynamic" runat="server" ForeColor="Red" ErrorMessage="Please enter Event name" ControlToValidate="txtEventName" ValidationGroup="group1" ></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator style="font-size: small" ID="Rfv1" Display="Dynamic" runat="server" ForeColor="Red" ErrorMessage="Please enter Event name" ControlToValidate="txtEventName" ValidationGroup="group1"></asp:RequiredFieldValidator>
 
                                 </div>
 
@@ -89,21 +134,21 @@
                                             <div class="row mb-6 ms-0">
                                                 <div class="col-lg-4 fv-row fv-plugins-icon-container">
                                                     <h5 class="fw-bolder m-0">Start Date </h5>
-                                                   <%-- <input type="date" id="Date14" runat="server" name="company" class="form-control form-control-lg" placeholder="Start Date" />--%>
-                                                    <asp:TextBox ID="txtStartDate" runat="server" SkinID="DateNew" Style="width:175px"  placeholder="dd/mm/yyyy"></asp:TextBox>
-                                                    <asp:CompareValidator 
-    ID="cpStartDate" 
-    runat="server" 
-    ControlToValidate="txtStartDate" 
-    Operator="GreaterThanEqual" 
-    Type="Date" 
-    ErrorMessage="Please enter the current date or a future date" Display="Dynamic" style="font-size:small" ValidationGroup="group1" />
+                                                    <%-- <input type="date" id="Date14" runat="server" name="company" class="form-control form-control-lg" placeholder="Start Date" />--%>
+                                                    <asp:TextBox ID="txtStartDate" runat="server" SkinID="DateNew" Style="width: 175px" placeholder="dd/mm/yyyy"></asp:TextBox>
+                                                    <asp:CompareValidator
+                                                        ID="cpStartDate"
+                                                        runat="server"
+                                                        ControlToValidate="txtStartDate"
+                                                        Operator="GreaterThanEqual"
+                                                        Type="Date"
+                                                        ErrorMessage="Please enter the current date or a future date" Display="Dynamic" style="font-size: small" ValidationGroup="group1" />
                                                 </div>
 
                                                 <div class="col-lg-4 fv-row fv-plugins-icon-container">
                                                     <h5 class="fw-bolder m-0">Start  time</h5>
                                                     <%--<input type="time" id="Time13" runat="server" name="company" class="form-control form-control-lg" placeholder="Start time" />--%>
-                                                    <asp:TextBox ID="txtStartTime" runat="server" SkinID="TimeNew"  Style="width:150px" placeholder="hh:mm"></asp:TextBox>
+                                                    <asp:TextBox ID="txtStartTime" runat="server" SkinID="TimeNew" Style="width: 150px" placeholder="hh:mm"></asp:TextBox>
                                                 </div>
                                             </div>
 
@@ -111,34 +156,36 @@
                                                 <div class="col-lg-4 fv-row fv-plugins-icon-container">
                                                     <h5 class="fw-bolder m-0">End Date </h5>
                                                     <%--<input type="date" id="Date15" runat="server" name="company" class="form-control form-control-lg" placeholder="End Date" />--%>
-                                                     <asp:TextBox ID="txtEndDate" runat="server" SkinID="DateNew" Style="width:175px"  placeholder="dd/mm/yyyy"></asp:TextBox>
-                                                      <asp:CompareValidator 
-    ID="cpEndDate" 
-    runat="server" 
-    ControlToValidate="txtEndDate" 
-    Operator="GreaterThanEqual" 
-    Type="Date" 
-    ValueToCompare="<%= DateTime.Today.ToShortDateString() %>" 
-    ErrorMessage="Please enter the current date or a future date" Display="Dynamic" style="font-size:small" ValidationGroup="group1" />
+                                                    <asp:TextBox ID="txtEndDate" runat="server" SkinID="DateNew" Style="width: 175px" placeholder="dd/mm/yyyy"></asp:TextBox>
+                                                    <asp:CompareValidator
+                                                        ID="cpEndDate"
+                                                        runat="server"
+                                                        ControlToValidate="txtEndDate"
+                                                        Operator="GreaterThanEqual"
+                                                        Type="Date"
+                                                        ValueToCompare="<%= DateTime.Today.ToShortDateString() %>"
+                                                        ErrorMessage="Please enter the current date or a future date" Display="Dynamic" style="font-size: small" ValidationGroup="group1" />
 
-                                                    <asp:CompareValidator 
-    ID="CompareDatesValidator" 
-    runat="server" 
-    ControlToValidate="txtEndDate" 
-    ControlToCompare="txtStartDate" 
-    Operator="GreaterThanEqual" 
-    Type="Date" 
-    ErrorMessage="Please check end date should be greater than or equal to the start date" style="font-size:small" ValidationGroup="group1" />
+                                                    <asp:CompareValidator
+                                                        ID="CompareDatesValidator"
+                                                        runat="server"
+                                                        ControlToValidate="txtEndDate"
+                                                        ControlToCompare="txtStartDate"
+                                                        Operator="GreaterThanEqual"
+                                                        Type="Date"
+                                                        ErrorMessage="Please check end date should be greater than or equal to the start date" style="font-size: small" ValidationGroup="group1" />
 
                                                 </div>
 
 
                                                 <div class="col-lg-4 fv-row fv-plugins-icon-container">
                                                     <h5 class="fw-bolder m-0">End time </h5>
-                                                   <%-- <input type="time" id="Time14" runat="server" name="company" class="form-control form-control-lg" placeholder="End time" />--%>
-                                                     <asp:TextBox ID="txtEndTime" runat="server" SkinID="TimeNew" Style="width:150px" placeholder="hh:mm"></asp:TextBox>
+                                                    <%-- <input type="time" id="Time14" runat="server" name="company" class="form-control form-control-lg" placeholder="End time" />--%>
+                                                    <asp:TextBox ID="txtEndTime" runat="server" SkinID="TimeNew" Style="width: 150px" placeholder="hh:mm"></asp:TextBox>
                                                 </div>
                                             </div>
+
+                                          
                                             <!--end::Col-->
                                         </div>
 
@@ -146,7 +193,7 @@
                                 </div>
 
 
-                             
+
 
 
 
@@ -156,35 +203,58 @@
                             </div>
 
 
-                            
+
 
 
                         </div>
 
 
+            
+                        <div class="card mb-5 mb-xl-10">
+    <div class="card-header border-0 " aria-expanded="true">
+        <!--begin::Card title-->
+        <div class="card-title m-0">
+            <i class="bi bi-building text-primary fs-3x me-6"></i>
+            <h3 class="fw-bolder m-0">Type of Event:</h3>
+        </div>
+        <!--end::Card title-->
+    </div>
 
-                      
 
+    <div class="card-body border-top p-9">
 
-                            <div class="card mb-5 mb-xl-10">
-                                <div class="card-header border-0 " aria-expanded="true">
-                                    <!--begin::Card title-->
-                                    <div class="card-title m-0">
-                                        <i class="bi bi-building text-primary fs-3x me-6"></i>
-                                        <h3 class="fw-bolder m-0">Location of your event</h3>
-                                    </div>
-                                    <!--end::Card title-->
+        <div class="form-group row mb-6">
+                       <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                      <asp:RadioButtonList runat="server" ID="rdlTypeofEvent" OnSelectedIndexChanged="rdlTypeofEvent_SelectedIndexChanged" AutoPostBack="true" CssClass="radio-list">
+    <asp:ListItem Text="In-Person Event" Selected="True" Value="0" ></asp:ListItem>
+    <asp:ListItem Text="Virtual Event" Value="1"></asp:ListItem>
+</asp:RadioButtonList>
+</div>
+
+                                            </div>
+        </div>
+    </div>
+
+<asp:Panel runat="server" ID="pnlLocation">
+                        <div class="card mb-5 mb-xl-10">
+                            <div class="card-header border-0 " aria-expanded="true">
+                                <!--begin::Card title-->
+                                <div class="card-title m-0">
+                                    <i class="bi bi-building text-primary fs-3x me-6"></i>
+                                    <h3 class="fw-bolder m-0">Location of your event</h3>
                                 </div>
+                                <!--end::Card title-->
+                            </div>
 
 
-                                <div class="card-body border-top p-9">
+                            <div class="card-body border-top p-9">
 
-                                      <div class="form-group row mb-6">
-                       <%-- <div id="map_canvas" style="width: 99%; height: 350px"></div>--%>
-                       <%-- <script type="text/javascript"
+                                <div class="form-group row mb-6">
+                                    <%-- <div id="map_canvas" style="width: 99%; height: 350px"></div>--%>
+                                    <%-- <script type="text/javascript"
                             src="https://maps.googleapis.com/maps/api/js?key=<%=hkey.Value %>"></script>--%>
-                        <asp:HiddenField ID="hkey" runat="server" />
-                       <%-- <script type="text/javascript">
+                                    <asp:HiddenField ID="hkey" runat="server" />
+                                    <%-- <script type="text/javascript">
                             $(document).ready(function () {
                                 initialize();
                                 //WeatherInitialize();
@@ -280,85 +350,134 @@
 
                             }
                         </script>--%>
-                    </div>
+                                </div>
 
-                                    <div class="col-lg-8 fv-row fv-plugins-icon-container">
-                                        <h5 class="fw-bolder m-0">Venue Name  </h5>
-                                        <input type="text" name="company" class="form-control form-control-lg" placeholder="Venue Name " id="txtvenuename" runat="server" />
+                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                    <h5 class="fw-bolder m-0">Venue Name  </h5>
+                                    <input type="text" name="company" class="form-control form-control-lg" placeholder="Venue Name " id="txtvenuename" runat="server" />
+                                    <div class="fv-plugins-message-container invalid-feedback"></div>
+                                </div>
+
+                                <div class="row mb-6 ms-0">
+                                    <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                        <h5 class="fw-bolder m-0">Address 1</h5>
+                                        <input type="text" name="company" class="form-control form-control-lg" placeholder="Address 1" id="txtAddress1" runat="server" />
                                         <div class="fv-plugins-message-container invalid-feedback"></div>
                                     </div>
 
-                                    <div class="row mb-6 ms-0">
-                                        <div class="col-lg-4 fv-row fv-plugins-icon-container">
-                                            <h5 class="fw-bolder m-0">Address 1</h5>
-                                            <input type="text"  name="company" class="form-control form-control-lg" placeholder="Address 1"  id="txtAddress1" runat="server" />
-                                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
 
-
-                                        <div class="col-lg-4 fv-row fv-plugins-icon-container">
-                                            <h5 class="fw-bolder m-0">Address 2 </h5>
-                                            <input type="text" id="txtAddress2" runat="server" name="company" class="form-control form-control-lg" placeholder="Address 2" />
-                                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row mb-6 ms-0">
-                                        <div class="col-lg-4 fv-row fv-plugins-icon-container">
-                                            <h5 class="fw-bolder m-0">City </h5>
-                                            <input type="text" id="txtCity" runat="server" name="company" class="form-control form-control-lg" placeholder="City" />
-                                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
-
-
-                                        <div class="col-lg-4 fv-row fv-plugins-icon-container">
-                                            <h5 class="fw-bolder m-0">Town </h5>
-                                            <input type="text" id="txtState" runat="server" name="company" class="form-control form-control-lg" placeholder="Town" />
-                                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
-
-                                       
-                                    </div>
-
-
-
-                                    <div class="row mb-6 ms-0">
-                                           <div class="col-lg-4 fv-row fv-plugins-icon-container">
-                                            <h5 class="fw-bolder m-0">Postcode  </h5>
-                                            <input type="text" id="txtZipcode" runat="server" name="company" class="form-control form-control-lg" placeholder="Postcode" />
-                                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
-                                        <div class="col-lg-4 fv-row fv-plugins-icon-container">
-                                            <h5 class="fw-bolder m-0">Country </h5>
-                                           <asp:DropDownList ID="ddlCountry" runat="server" SkinID="ddl_90"></asp:DropDownList>
-                                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
-
-
-                                      
-
+                                    <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                        <h5 class="fw-bolder m-0">Address 2 </h5>
+                                        <input type="text" id="txtAddress2" runat="server" name="company" class="form-control form-control-lg" placeholder="Address 2" />
+                                        <div class="fv-plugins-message-container invalid-feedback"></div>
                                     </div>
                                 </div>
 
-                                <div class="card-footer d-flex justify-content-end py-6 px-9">              
-                                   
 
-                                 <%--  <input type="button" class="btn btn-primary" style="color: black; background-color: aliceblue" onclick="BackEventDetailsIdTab()" value="Back" vis />
+                                <div class="row mb-6 ms-0">
+                                    <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                        <h5 class="fw-bolder m-0">City </h5>
+                                        <input type="text" id="txtCity" runat="server" name="company" class="form-control form-control-lg" placeholder="City" />
+                                        <div class="fv-plugins-message-container invalid-feedback"></div>
+                                    </div>
+
+
+                                    <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                        <h5 class="fw-bolder m-0">Town </h5>
+                                        <input type="text" id="txtState" runat="server" name="company" class="form-control form-control-lg" placeholder="Town" />
+                                        <div class="fv-plugins-message-container invalid-feedback"></div>
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="row mb-6 ms-0">
+                                    <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                        <h5 class="fw-bolder m-0">Postcode  </h5>
+                                        <input type="text" id="txtZipcode" runat="server" name="company" class="form-control form-control-lg" placeholder="Postcode" />
+                                        <div class="fv-plugins-message-container invalid-feedback"></div>
+                                    </div>
+                                    <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                        <h5 class="fw-bolder m-0">Country </h5>
+                                        <asp:DropDownList ID="ddlCountry" runat="server" SkinID="ddl_90"></asp:DropDownList>
+                                        <div class="fv-plugins-message-container invalid-feedback"></div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="card-footer d-flex justify-content-end py-6 px-9">
+
+
+                                <%--  <input type="button" class="btn btn-primary" style="color: black; background-color: aliceblue" onclick="BackEventDetailsIdTab()" value="Back" vis />
                                      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;--%>
-                                    <asp:Button ID="btnSaveBasic" runat="server" SkinID="btnSave" OnClick="btnSaveBasic_Click" ValidationGroup="group1"></asp:Button>
-                                  
-
-                                </div>
+                                <asp:Button ID="btnSaveBasic" runat="server" SkinID="btnSave" OnClick="btnSaveBasic_Click" ValidationGroup="group1"></asp:Button>
 
 
                             </div>
 
+
+                        </div>
+    </asp:Panel>
+
+
+                        <asp:Panel runat="server" ID="pnlURLs">
+                                                    <div class="card mb-5 mb-xl-10">
+    <div class="card-header border-0 " aria-expanded="true">
+        <!--begin::Card title-->
+        <div class="card-title m-0">
+            <i class="bi bi-link text-primary fs-3x me-6"></i>
+            <h3 class="fw-bolder m-0">Links</h3>
+        </div>
+        <!--end::Card title-->
+    </div>
+
+
+  <div class="card-body border-top p-9">
+    <div class="form-group row mb-6">
+        <!-- YouTube Live Link -->
+        <div class="col-lg-4 fv-row fv-plugins-icon-container">
+            <label for="youtubeLiveLink" class="form-label">YouTube Live Link</label>
+            <asp:TextBox ID="txtYouTubeLiveLink" runat="server" CssClass="form-control form-control-solid" placeholder="Enter YouTube Live link" />
+        </div>
+
+        <!-- Instagram Live Link -->
+        <div class="col-lg-4 fv-row fv-plugins-icon-container" style="display:none">
+            <label for="instagramLiveLink" class="form-label">Instagram Live Link</label>
+            <asp:TextBox ID="txtInstagramLiveLink" runat="server" CssClass="form-control form-control-solid" placeholder="Enter Instagram Live link" />
+        </div>
+
+        <!-- TikTok Live Link -->
+        <div class="col-lg-4 fv-row fv-plugins-icon-container" style="display:none">
+            <label for="tiktokLiveLink" class="form-label">TikTok Live Link</label>
+            <asp:TextBox ID="txtTikTokLiveLink" runat="server" CssClass="form-control form-control-solid" placeholder="Enter TikTok Live link" />
+        </div>
+    </div>
 </div>
+                                                           <div class="card-footer d-flex justify-content-end py-6 px-9">
+
+
+       <%--  <input type="button" class="btn btn-primary" style="color: black; background-color: aliceblue" onclick="BackEventDetailsIdTab()" value="Back" vis />
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;--%>
+       <asp:Button ID="Button1" runat="server" SkinID="btnSave" OnClick="btnSaveBasic_Click" ValidationGroup="group1"></asp:Button>
+
+
+   </div>
+                                                        </div>
+
+
+                        </asp:Panel>
+
                     </div>
                 </div>
             </div>
-     
+        </div>
+
     </div>
 
 </asp:Content>

@@ -1884,49 +1884,6 @@
       <Column Name="LoggedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ActivityDetails" Member="ActivityDetails">
-    <Type Name="ActivityDetail">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="OrganizationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ActivityCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ActivitySubCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ImageID" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="StartDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="EndDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="SupplierID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="LoggedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Slots" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="unid" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="QRcode" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Address1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Address2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="City" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="state_Province" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Postalcode" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Country" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Event_Capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Event_Cost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="Venue_Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Venue_Type" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="VenueLocation_Link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Event_Type" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Publisher" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="BookingStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="BookingEndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="IsPublicEvent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="SocialDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="KeyWords" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="RefundPolicy" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.PortfolioPaymentSettings" Member="PortfolioPaymentSettings">
     <Type Name="PortfolioPaymentSetting">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -2418,6 +2375,74 @@
       <Column Name="BuyNowLink" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="VideoLink" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActivityDetails" Member="ActivityDetails">
+    <Type Name="ActivityDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrganizationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivitySubCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageID" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="StartDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LoggedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Slots" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="unid" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="QRcode" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="state_Province" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Postalcode" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Event_Capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Event_Cost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Venue_Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Venue_Type" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="VenueLocation_Link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Event_Type" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Publisher" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BookingStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BookingEndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsPublicEvent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SocialDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KeyWords" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RefundPolicy" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="isInPerson" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="YouTubeLink" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="InstagramLink" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TikTokLink" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InternationalSettings" Member="InternationalSettings">
+    <Type Name="InternationalSetting">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Currency" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="IsGiftAidEnabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserSkillsEducation" Member="UserSkillsEducations">
+    <Type Name="UserSkillsEducation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EnrolmentDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="[Level]" Member="Level" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Qualification" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Grade" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Institution" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DateQualified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.TimeSheetResource_AddUpdateWcDate" Method="TimeSheetResource_AddUpdateWcDate">

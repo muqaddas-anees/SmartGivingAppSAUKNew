@@ -274,13 +274,14 @@
 													<!--end::Item-->
 												</div>
 												<!--end::Catigories-->
-												<asp:Button ID="btnBookTickets" runat="server" CssClass="btn btn-primary btn-lg btn-block w-100" Text="Tickets" OnClick="btnBookTickets_Click" />
+												<asp:Button ID="btnBookTickets" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-lg btn-block w-100" Text="Tickets" OnClick="btnBookTickets_Click" />
 												<%--<button class="" data-bs-toggle="modal" data-bs-target="#kt_modal_create_campaign">Tickets</button>--%>
+												<a class="btn btn-primary btn-lg btn-block mt-3 w-100" id="livestream">Livestream</a>
 												<!--begin::Recent posts-->
-												<div class="mt-10">
+												<div class="mt-10" id="location">
 													
+<div class="col-md-12 col-xxl-12">
 
-													<div class="col-md-12 col-xxl-12">
 														<a href="#" class="fs-4 text-gray-800 text-hover-primary fw-bolder mb-0">Location</a>
 														
 														<div class=" ">
@@ -432,8 +433,32 @@
 
 
 
+		<asp:HiddenField ID="hIsinperson" ClientIDMode="Static" runat="server" />
+		<asp:HiddenField ID="hunid" ClientIDMode="Static" runat="server" />
+	<script>
+        window.onload = function () {
+            // Get the values from the hidden fields
+            var isInPerson = document.getElementById('<%= hIsinperson.ClientID %>').value;
+        var unid = document.getElementById('<%= hunid.ClientID %>').value;
+
+            // Get the livestream link
+			var livestreamLink = document.getElementById("livestream");
+			var location = document.getElementById("location");
 
 
+            // Check if isInperson is "false"
+            if (isInPerson === "false") {
+				// Display the livestream button and set the href
+				location.style.display = "none";
+                livestreamLink.style.display = "block";
+                livestreamLink.href = "../liveevent.aspx?unid=" + unid;
+            } else {
+                // Hide the livestream button if in-person
+				livestreamLink.style.display = "none";
+				location.style.display="block"
+            }
+        };
+</script>
 		<!--end::Main-->
 		<!--begin::Javascript-->
 		<!--begin::Global Javascript Bundle(used by all pages)-->

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="taithingNewCtrl.ascx.cs" Inherits="DeffinityAppDev.App.controls.taithingNewCtrl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="taithingEventCtrl.ascx.cs" Inherits="DeffinityAppDev.App.controls.taithingEventCtrl" %>
   <script type="text/javascript">
          window.addEventListener('message', function (event) {
              var token = JSON.parse(event.data);
@@ -95,7 +95,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 20px;
+   
     align-content: center;
     justify-content: space-evenly;
     padding: 10px;
@@ -104,6 +104,7 @@
 .slider-label {
     position: relative;
     margin: 10px;
+    margin-top:0px;
     background-color: #fff;
     color: #333;
     padding: 5px;
@@ -255,7 +256,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
         }
        .money_cls{
            width:95%;
-           font-size:xx-large;
+           font-size:x-large;
 
        }
     </style>
@@ -289,13 +290,13 @@ input[type=range].form-control-lg::-moz-range-thumb {
 <asp:HiddenField ID="ppalnat" runat="server" ClientIDMode="Static" Value="0" /> 
                                                                     <asp:HiddenField ID="hfeepercent" runat="server" ClientIDMode="Static" Value="0" />   
                                                                      <asp:HiddenField ID="hfee" runat="server" ClientIDMode="Static" Value="0" />   
-    <div class="row gy-5 g-xl-8 mb-6" id="pnlResult" runat="server" visible="false">
+    <div class="row gy-5 g-xl-8 mb-2" id="pnlResult" runat="server" visible="false">
         <div class="col-xxl-12">
 
              <div class="card card-xxl-stretch" >
 											<!--begin::Header-->
 											<div class="card-header border-0 py-5">
-												<h3 class="card-title fw-bolder text-white">Donation 
+												<h3 style="font-size:15px;" class="card-title fw-bolder text-white">Donation 
                                                     <asp:HiddenField ID="hPortfolioid" runat="server" Value="0" />
                                                     <asp:HiddenField ID="hunid" runat="server" Value="0" />  <asp:HiddenField ID="huid" runat="server" Value="0" /> 
                                                   
@@ -307,12 +308,12 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                     </div>
 
                                                 <div class="card-body p-0" >
-                                                    <div class="row mb-6">
+                                                    <div class="row mb-2">
          <div class="col-lg-8 col-sm-12  justify-content-center">
              <br />
              </div>
                                                         </div>
-                                                     <div class="row mb-6">
+                                                     <div class="row mb-2">
          <div class="col-lg-12 col-sm-12 d-flex justify-content-center"  style="text-align:center;">
              <br /> <br /> <br /> <br />
                     <asp:Label ID="lblMsgResult" runat="server" Text="Donation" Font-Bold="true" Font-Size="28px" ForeColor="#7239EA"></asp:Label> <br />
@@ -320,7 +321,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
                   </div>
         
         </div>
-                                                     <div class="row mb-6">
+                                                     <div class="row mb-2">
                                                          
          <div class="col-lg-12 d-flex justify-content-center" style="text-align:center;">
              <br /><br /><br /><br />
@@ -335,7 +336,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
             </div>
         </div>
 
-     <div class="row gy-5 g-xl-8 mb-6" id="pnlPrice" runat="server">
+     <div class="row gy-5 g-xl-8 mb-2" id="pnlPrice" runat="server">
 
       
 
@@ -353,9 +354,9 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                 <div class="card-body p-0" >
 
                                                        
-    <div class="row mb-6">
+    <div class="row mb-2">
          <div class="col-lg-8">
-                    <asp:Label ID="lblDescription" runat="server" Text="Donation" Font-Bold="true" Font-Size="28px"></asp:Label> <br />
+                    <asp:Label ID="lblDescription" runat="server" Text="Donation" Font-Bold="true" Font-Size="16px"></asp:Label> <br />
 
                   </div>
          <div class="col-lg-4">
@@ -368,7 +369,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
                                                     <asp:Panel ID="pnlCategory" runat="server">
                                                          <div class="row">
-                                                          <label style="font-size:20px">   Please select the amount:</label>
+                                                          <label style="font-size:12px">   Please select the amount:</label>
                                                              </div>
                                                         <div class="row mb-3">
                                                             <div class="col-lg-3 mb-3"><a href="#" onclick="return setmoney(10);"> <span class="badge badge-light-primary money_cls" ><%=Deffinity.Utility.GetCurrencySymbol() %>10</span> </a></div>
@@ -378,18 +379,18 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
                                                         </div>
                                                          <div class="row">
-                                                          <label style="font-size:20px">Or Enter your own amount:</label>
+                                                          <label style="font-size:12px">Or Enter your own amount:</label>
                                                              </div>
-                                                          <div class="row mb-6">
-                                                               <div class="col-lg-12 mr-3">
-                                                               <asp:TextBox ID="txtAmountTotal" runat="server" SkinID="Price" MaxLength="10" ClientIDMode="Static" Text="0" Font-Size="32px" ></asp:TextBox>
+                                                          <div class="row mb-2">
+                                                               <div class="col-lg-6 mr-3">
+                                                               <asp:TextBox ID="txtAmountTotal" runat="server" SkinID="Price" MaxLength="10" ClientIDMode="Static" Text="0" Font-Size="14px" ></asp:TextBox>
                                                              </div>
-                                                                   </div>
-                                                        <div class="row">
-                                                             <div class="col-lg-12">
+                                                                  
+                                                        <div class="col-lg-6">
+                                                             <div class="">
                                                    <asp:ListView ID="listCategory" runat="server" InsertItemPosition="None">
  <LayoutTemplate>
-              <div class="form-group row mb-6 mx-3">
+              <div class="form-group row mb-2 mx-3">
         
                     <asp:PlaceHolder id="ItemPlaceholder" runat="server"></asp:PlaceHolder>
                 </div>
@@ -397,13 +398,13 @@ input[type=range].form-control-lg::-moz-range-thumb {
               </LayoutTemplate>
 
 <ItemTemplate>
-  <div class="row mb-4 bg-light-primary px-2 py-2 rounded-2 ">
+  <div class="row mb-4 bg-light-primary px-2 py-1 rounded-2 ">
               <div class="col-lg-9 pt-6">
-                    <asp:Label ID="lblCategory" runat="server" Text='<%# Eval("Name") %>' Font-Size="22px"></asp:Label> 
+                    <asp:Label ID="lblCategory" runat="server" Text='<%# Eval("Name") %>' Font-Size="14px"></asp:Label> 
                   </div>
         <div class="col-lg-3">
             
-            <asp:LinkButton style="float:right;" ID="btn" runat="server" ClientIDMode="Static" Text="+" SkinID="BtnLinkButton" OnClientClick="javascript:return  showdetails(this);" Font-Bold="true" Font-Size="32px" value='<%# Eval("ID") %>'></asp:LinkButton>
+            <asp:LinkButton style="float:right;" ID="btn" runat="server" ClientIDMode="Static" Text="+" SkinID="BtnLinkButton" OnClientClick="javascript:return  showdetails(this);" Font-Bold="true" Font-Size="14px" value='<%# Eval("ID") %>'></asp:LinkButton>
             <input type="hidden" id='h_<%# Eval("ID").ToString() %>' value="1" />     </div>
       </div>
     <div class="row mb-4" style="display:none;" id='<%# Eval("ID").ToString() %>'>
@@ -419,61 +420,61 @@ input[type=range].form-control-lg::-moz-range-thumb {
 </ItemTemplate>
 </asp:ListView>
                                                                  </div>
-                                                            </div>
-                                                          <div class="row  mb-6 d-flex d-inline">
-                                                                <div class="col-lg-12 mb-6 d-flex d-inline justify-content-between">
-                                                                    <asp:Label ID="lblplatform" runat="server" style="font-size:20px;margin-left:5px;margin-right:5px" Text="Please help the <charity name> by contributing towards the platform fee:"></asp:Label>
+                                                            </div> </div>
+                                                          <div class="row  mb-2 d-flex d-inline">
+                                                                <div class="col-lg-12 mb-2 d-flex d-inline justify-content-between">
+                                                                    <asp:Label ID="lblplatform" runat="server" style="font-size:12px;margin-left:5px;margin-right:5px" Text="Please help the <charity name> by contributing towards the platform fee:"></asp:Label>
                                                                                     
                                                                     </div>
                                                               </div>
                                                                                                                                             <div class="slider-container">
  <span id="sliderValueLabel" class="slider-label">15%</span>
-<asp:TextBox ID="lblplatfee" runat="server" CssClass="" Style="height:10px;border-radius:5px" TextMode="Range" Min="5" Max="30" Value="15" OnInput="updateSliderValue(this)" AutoPostBack="false"></asp:TextBox>          <div class="dots"></div>       </div>
+<asp:TextBox ID="lblplatfee" runat="server" CssClass="" Style="height:6px;border-radius:5px" TextMode="Range" Min="5" Max="30" Value="15" OnInput="updateSliderValue(this)" AutoPostBack="false"></asp:TextBox>       </div>
                                                            <div class="row d-flex d-inline" style="display:none;visibility:hidden;">
                                                                 <div class="col-lg-12 ">
                                                        <asp:CheckBox ID="chkAnonymously" runat="server" Text=" " Font-Size="20px" CssClass="mycheckBig" ClientIDMode="Static" />
-                                                               <label style="font-size:20px;margin-left:0px;">I want to give anonymously</label>
+                                                               <label style="font-size:12px;margin-left:0px;">I want to give anonymously</label>
                                                                     </div>
                                                        </div>
 
-                                                         <div class="row  mb-6 " >
-                                                                <div class="col-lg-12 mb-6 d-flex d-inline justify-content-between">
-                                                                    <label style="font-size:20px;margin-left:5px;margin-right:5px" class="control-label"> Total Amount</label>
+                                                         <div class="row  mb-2 " >
+                                                                <div class="col-lg-12 mb-2 d-flex d-inline justify-content-between">
+                                                                    <label style="font-size:12px;margin-left:5px;margin-right:5px" class="control-label"> Total Amount</label>
                                                                       <asp:TextBox ID="txtTotalAmt" runat="server" SkinID="Price_175px" Visible="false"></asp:TextBox>
-                                                                           <asp:Label ID="lblptotal" runat="server" ClientIDMode="Static" Font-Bold="true" Font-Size="X-Large" CssClass="form-control form-control-lg" style="text-align:right;width:25%"></asp:Label>
+                                                                           <asp:Label ID="lblptotal" runat="server" ClientIDMode="Static" Font-Bold="true" Font-Size="12px" CssClass="form-control form-control-lg" style="text-align:right;width:25%"></asp:Label>
                                                                     </div>
                                                                       
                                                                        </div>
-                                                         <div class="row  mb-6" id="giftaid" runat="server">
-                                                              <div class="col-lg-4 mb-6">
-                                                                   <div class="row  mb-6">
-                                                                       <label class="form-label" style="font-size:22px;margin-left:5px; font-weight:bold"> Turn <label id="lblgtotal"></label> into <label id="lblgptotal"></label> with Gift Aid  </label>
+                                                         <div class="row  mb-2" id="giftaid" runat="server">
+                                                              <div class="col-lg-4 mb-2">
+                                                                   <div class="row  mb-2">
+                                                                       <label class="form-label" style="font-size:14px;margin-left:5px; font-weight:bold"> Turn <label id="lblgtotal"></label> into <label id="lblgptotal"></label> with Gift Aid  </label>
                                                                        </div>
-                                                                   <div class="row  mb-6">
+                                                                   <div class="row  mb-2">
                                                                         <div class="col-lg-12 d-flex d-inline">
                                                        <asp:CheckBox ID="chkgift" runat="server" Text="" Font-Size="20px" CssClass="mycheckBig pt-2" ClientIDMode="Static"  />
-                                                            <label style="font-size:20px;margin-left:5px;"> Please Gift Aid this donation  </label> 
+                                                            <label style="font-size:12px;margin-left:5px;"> Please Gift Aid this donation  </label> 
                                                                 
                                                                 </div>
                                                                        </div>
                                                                   </div>
 
 
-                                                              <div class="col-lg-4 mb-6" >
-                                                                  <asp:Image ID="imggift" runat="server" ImageUrl="~/assets/GiftAidLogo.png" CssClass="img-fluid" Height="80" />
+                                                              <div class="col-lg-4 mb-2" >
+                                                                  <asp:Image ID="imggift" runat="server" ImageUrl="~/assets/GiftAidLogo.png" CssClass="img-fluid" Height="40" />
                                                                   </div>
                                                              </div>
                                                                        <div class="row  mb-12 " style="display:none;visibility:hidden;">
                                                                 <div class="col-lg-12 d-flex d-inline">
                                                        <asp:CheckBox ID="chkfee" runat="server" Text="" Font-Size="20px" CssClass="mycheckBig pt-2" ClientIDMode="Static" Checked="true" />
-                                                            <label style="font-size:20px;margin-left:5px;"> Yes! I would like to cover the transaction fee and platform support cost of <lable id="lblfee" style="font-weight:bold;">0.00</lable> so that <asp:Label ID="lblOrg" runat="server"></asp:Label> can benefit from the full donation  </label> 
+                                                            <label style="font-size:12px;margin-left:5px;"> Yes! I would like to cover the transaction fee and platform support cost of <lable id="lblfee" style="font-weight:bold;">0.00</lable> so that <asp:Label ID="lblOrg" runat="server"></asp:Label> can benefit from the full donation  </label> 
                                                                 
                                                                 </div>
                                                        </div>
                                                         
                                                           <div class="card-footer py-3 px-5 mb-10">
                                                               <div class="row d-flex justify-content-center"> <div class="col-lg-6 text-center">
-                    <asp:Button ID="btnNextCategory" runat="server" SkinID="btnNext" Height="60px" Width="90%" Font-Size="22px" OnClick="btnNextCategory_Click"/>
+                    <asp:Button ID="btnNextCategory" runat="server" SkinID="btnNext"  Width="90%"  OnClick="btnNextCategory_Click"/>
 
                                                                    <asp:Button ID="btnNextPaynow" runat="server" Font-Size="22px" SkinID="btnDefault" Text="Pay Now" Height="60px" Width="90%" OnClick="btnProceed_Click" style="display:none;" />
                                                                   </div> </div>
@@ -490,11 +491,11 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                               <div class="col-lg-12">
 
   <asp:Panel ID="pnlPaymentOptioin" runat="server">
-        <div class="row mb-6">
+        <div class="row mb-2">
                                                         <asp:Label ID="lblTitleSub" runat="server" Text="How often would you like to give?" Font-Bold="true" Font-Size="22px" ></asp:Label>
                                                     </div>
       <div class="row" style="min-height:300px">
-                                                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9 mb-6" >
+                                                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9 mb-2" >
 																<!--begin::Col-->
 																<div class="col">
 																	<!--begin::Option-->
@@ -545,12 +546,12 @@ input[type=range].form-control-lg::-moz-range-thumb {
       </asp:Panel>
 
       <asp:Panel ID="pnlRecurringOption" runat="server" ClientIDMode="Static">
-          <div class="row mb-6">
+          <div class="row mb-2">
                                                         <asp:Label ID="Label5" runat="server" Text="How frequently would you like to donate?" Font-Bold="true" Font-Size="22px" ></asp:Label>
                                                     </div>
         
 
-                                                              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9 mb-6" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
+                                                              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9 mb-2" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
 																<!--begin::Col-->
 																<div class="col" style="display:none;visibility:hidden;">
 																	<!--begin::Option-->
@@ -587,7 +588,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
 															</div>
 
                                                             
-                                                              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9 mb-6" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']" id="spnl" runat="server">
+                                                              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9 mb-2" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']" id="spnl" runat="server">
 																<!--begin::Col-->
 																<div class="col">
 																	<!--begin::Option-->
@@ -619,7 +620,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
 																<!--end::Col-->
 																
 															</div>
-                                                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9 mb-6" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']" id="dpnl" runat="server" visible="false">
+                                                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9 mb-2" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']" id="dpnl" runat="server" visible="false">
 																<!--begin::Col-->
 																<div class="col">
 																	<!--begin::Option-->
@@ -657,11 +658,11 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                         </asp:Panel>
                                                      <asp:Panel ID="pnlUserInfo" runat="server"  ClientIDMode="Static">
 
-                                                            <div class="row mb-6">
+                                                            <div class="row mb-2">
                                                         <asp:Label ID="Label6" runat="server" Text="Donor Information" Font-Bold="true" Font-Size="22px" ></asp:Label>
                                                     </div>
                                                          
-                                                          <div class="form-group row  mb-6">
+                                                          <div class="form-group row  mb-2">
          
  <label class="col-lg-4 control-label">First Name </label>
            <div class="col-lg-8">
@@ -672,7 +673,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
             </div>
 	
 </div>
-                                                           <div class="form-group row  mb-6">
+                                                           <div class="form-group row  mb-2">
          
  <label class="col-lg-4 control-label">Last Name </label>
            <div class="col-lg-8">
@@ -684,7 +685,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
             </div>
 	
 </div>
-                                                                  <div class="form-group row  mb-6">
+                                                                  <div class="form-group row  mb-2">
          
  <label class="col-lg-4 control-label">Email </label>
            <div class="col-lg-8">
@@ -696,7 +697,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
             </div>
 	
 </div>
-                                                                  <div class="form-group row  mb-6">
+                                                                  <div class="form-group row  mb-2">
          
  <label class="col-lg-4 control-label">Phone Number </label>
            <div class="col-lg-8">
@@ -725,13 +726,13 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
                                                      <asp:Panel ID="pnlnewCard" runat="server" ClientIDMode="Static">
 
-                                                            <div class="row mb-6">
+                                                            <div class="row mb-2">
                                                         <asp:Label ID="Label4" runat="server" Text="Card Details" Font-Bold="true" Font-Size="22px" ></asp:Label>
                                                     </div>
 
    
                                                                 
-                     <div class="form-group row  mb-6" >
+                     <div class="form-group row  mb-2" >
  <label class="col-lg-4 control-label">Card Type</label>
            <div class="col-lg-8">
                <asp:DropDownList ID="ddlCardType" runat="server" SkinID="ddl_90">
@@ -746,7 +747,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
             </div>
 	
 </div>
-<div class="form-group row  mb-6">
+<div class="form-group row  mb-2">
          
  <label class="col-lg-4 control-label">Card Number</label>
            <div class="col-lg-4">
@@ -770,7 +771,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
 </div>
                     
    
-                    <div class="form-group row  mb-6">
+                    <div class="form-group row  mb-2">
          
  <label class="col-lg-4 control-label">Expiration</label>
            <div class="col-lg-8 d-flex d-inline">
@@ -787,7 +788,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
             </div>
 	
 </div>
-                    <div class="form-group row  mb-6">
+                    <div class="form-group row  mb-2">
          
  <label class="col-lg-4 control-label">Card Security Code</label>
            <div class="col-lg-8">
@@ -837,16 +838,16 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
                                                   
 
-                                                     <div class="row mb-6">
+                                                     <div class="row mb-2">
 
                                                          <asp:TextBox ID="txtNotes" runat="server" SkinID="txtMulti_80" TextMode="MultiLine" placeholder="Add a message"></asp:TextBox>
 
                                                          </div>
                                                    
 
-                                                 <div class="row mb-6">
+                                                 <div class="row mb-2">
                                                     
-                                                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9 mb-6" data-kt-buttons="true" >
+                                                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9 mb-2" data-kt-buttons="true" >
                                                          <div class="col">
                                                              <asp:Label ID="lblTotal" runat="server" Text="Total" Font-Size="22px"></asp:Label>
                                                          </div>
@@ -855,17 +856,17 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                            </div>
                                                          </div>
                                                      </div>
-                                                   <div class="row mb-6">
+                                                   <div class="row mb-2">
                                                      
                                                        </div>
-                                                <div class="row mb-6 d-flex justify-content-center">
+                                                <div class="row mb-2 d-flex justify-content-center">
 
                                                     <asp:Button ID="btnPayDetails"  runat="server" Text="Next: Payment Details" Font-Size="20px" Width="100%" Height="80px" OnClientClick="fnpaydetails();" />
                                                     </div>
                                                 </div>
 
                                                     <div class="card-body p-0" id="pnl_paydetails" style="display:none;" >
-                                                         <div class="row mb-6">
+                                                         <div class="row mb-2">
                                                         <asp:Label ID="Label1" runat="server" Text="Payment Details" Font-Bold="true" Font-Size="22px" style="padding-bottom:10px"></asp:Label>
                                                              
                                                                <hr  />
@@ -877,7 +878,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
                                                               <asp:ListView ID="listCards" runat="server" OnItemCommand="listCards_ItemCommand">
                          <LayoutTemplate>
-              <div class="form-group row  mb-6" >
+              <div class="form-group row  mb-2" >
         
                     <asp:PlaceHolder id="ItemPlaceholder" runat="server"></asp:PlaceHolder>
                 </div>
@@ -917,7 +918,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
 													</div>
 													<!--end::Actions-->
 												</div>
-    <%--  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9 mb-6" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
+    <%--  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9 mb-2" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
 																<!--begin::Col-->
 																<div class="col">
                                                                     Card type
@@ -934,7 +935,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
 
                      </asp:ListView>
 
-  <div class="row mb-6">
+  <div class="row mb-2">
     <asp:Button ID="btnAddNewCard" runat="server" Text="Add New Card" OnClientClick="shownewcard();" />
     </div>
     </asp:Panel>

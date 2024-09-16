@@ -191,6 +191,7 @@
 										</div>
 								</div>
 							</div>
+									
 								<div class="menu-item py-2" id="pnlFundCamp" runat="server" >
 								<a href='<%:ResolveClientUrl("~/App/FundraiserListView.aspx?type=camp")%>' class="menu-link " title="Landing Page" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
 									<span class="menu-icon">
@@ -297,7 +298,7 @@
 								
 								</div>
 							</div>
-								<div class="menu-item py-2" id="link_pagebuilder" runat="server" visible="false">
+								<div class="menu-item py-2" id="link_pagebuilder" runat="server" visible="true">
 								<a href='<%:ResolveClientUrl("~/App/PublicViewSetup.aspx")%>' class="menu-link " title="Landing Page" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
 									<span class="menu-icon">
 										<i class="fab fa-sellsy fs-2"></i>
@@ -345,7 +346,7 @@
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
 											</span>
-											<span class="menu-title">Create An Event edit</span>
+											<span class="menu-title">Create An Event</span>
 										</a>
 									</div>
 								<%--	<div class="menu-item">

@@ -422,6 +422,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\controls\b\" />
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\HelpPage\App_Start\" />
@@ -535,6 +536,13 @@
     <Compile Include="App\chat.aspx.designer.cs">
       <DependentUpon>chat.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App\controls\taithingEventCtrl.ascx.cs">
+      <DependentUpon>taithingEventCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\controls\taithingEventCtrl.ascx.designer.cs">
+      <DependentUpon>taithingEventCtrl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="App\controls\VideoCtrl.ascx.cs">
       <DependentUpon>VideoCtrl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -542,12 +550,26 @@
     <Compile Include="App\controls\VideoCtrl.ascx.designer.cs">
       <DependentUpon>VideoCtrl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="App\GiftAid.aspx.cs">
+      <DependentUpon>GiftAid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\GiftAid.aspx.designer.cs">
+      <DependentUpon>GiftAid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\mailchimp.aspx.cs">
       <DependentUpon>mailchimp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App\mailchimp.aspx.designer.cs">
       <DependentUpon>mailchimp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Marketplace.aspx.cs">
+      <DependentUpon>Marketplace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Marketplace.aspx.designer.cs">
+      <DependentUpon>Marketplace.aspx</DependentUpon>
     </Compile>
     <Compile Include="App\Teams.aspx.cs">
       <DependentUpon>Teams.aspx</DependentUpon>
@@ -1100,6 +1122,13 @@
     </Compile>
     <Compile Include="ImageHandler.ashx.cs">
       <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="LiveEvent.aspx.cs">
+      <DependentUpon>LiveEvent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LiveEvent.aspx.designer.cs">
+      <DependentUpon>LiveEvent.aspx</DependentUpon>
     </Compile>
     <Compile Include="MailActivation.aspx.cs">
       <DependentUpon>MailActivation.aspx</DependentUpon>
@@ -4840,6 +4869,7 @@
     <Content Include="App\chat.aspx" />
     <Content Include="App\CommentsService.asmx" />
     <Content Include="App\controls\ActivitiesCtrl.ascx" />
+    <Content Include="App\controls\taithingEventCtrl.ascx" />
     <Content Include="App\controls\DonationReportTabs.ascx" />
     <Content Include="App\controls\EventDdlCtrl.ascx" />
     <Content Include="App\controls\FaithEducationCtrl.ascx" />
@@ -4892,8 +4922,10 @@
     <Content Include="App\Fundraiser\MyFunraiser.aspx" />
     <Content Include="App\Fundraiser\peertopeer\Dashboard.aspx" />
     <Content Include="App\Fundraiser\peertopeer\EmailTemplates\invitation.html" />
+    <Content Include="App\GiftAid.aspx" />
     <Content Include="App\mailchimp.aspx" />
     <Content Include="App\ManageCompany.aspx" />
+    <Content Include="App\Marketplace.aspx" />
     <Content Include="App\OnboardingGuide.aspx" />
     <Content Include="App\Payfast\cancel.aspx" />
     <Content Include="App\Payfast\notify.aspx" />
@@ -5772,6 +5804,7 @@
     <Content Include="DonationFrequency.aspx" />
     <Content Include="fc.aspx" />
     <Content Include="FolderTest.aspx" />
+    <Content Include="LiveEvent.aspx" />
     <Content Include="MailActivation.aspx" />
     <Content Include="PaymentForm.aspx" />
     <Content Include="PaymentPage.aspx" />

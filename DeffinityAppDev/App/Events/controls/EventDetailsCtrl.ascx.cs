@@ -92,6 +92,7 @@ namespace DeffinityAppDev.App.Events.controls
                                  r.Slots,
                                  r.SocialDescription,
                                  r.StartDateTime,
+                                 isInPerson=r.isInPerson??true,
                                  r.state_Province,
                                  r.SupplierID,
                                  r.Title,
@@ -102,7 +103,13 @@ namespace DeffinityAppDev.App.Events.controls
 
 
                              }).ToList();
+                if(rlist.Any())
+                {
+                    
+                    hIsinperson.Value = rlist[0].isInPerson?"true":"false";
+                    hunid.Value = rlist[0].unid;
 
+                }
                 ListEventDetails.DataSource = rlist;
                 ListEventDetails.DataBind();
 
@@ -389,6 +396,22 @@ namespace DeffinityAppDev.App.Events.controls
 
                 Response.Redirect("~/ManageTicketsNew.aspx?unid=" + id, false);
             }
+        }
+
+        protected void btnLiveStream_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (Request.QueryString["unid"] != null)
+            {
+                var id = Request.QueryString["unid"].ToString();
+
+                Response.Redirect("~/LiveEvent.aspx?unid=" + id, false);
+            }
+
         }
     }
 

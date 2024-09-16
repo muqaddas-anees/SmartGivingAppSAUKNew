@@ -564,12 +564,13 @@
 
     <div class="form-group" style="margin-top: 20px;">
         <asp:Label ID="lblDate" runat="server" Text="Enrolment Date" CssClass="form-label"></asp:Label>
-        <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"></asp:TextBox>
+        <asp:TextBox ID="txtDate" runat="server"  SkinID="DateNew" CssClass="form-control"></asp:TextBox>
     </div>
 
     <div class="form-group" style="margin-top: 20px;">
         <asp:Label ID="lblLevel" runat="server" Text="Level" CssClass="form-label"></asp:Label>
        <asp:DropDownList ID="ddlLevel" runat="server" CssClass="form-control">
+           <asp:ListItem>Select a level</asp:ListItem>
     <asp:ListItem>Apprenticeship</asp:ListItem>
     <asp:ListItem>Associate Degree</asp:ListItem>
     <asp:ListItem>Bachelor’s Degree</asp:ListItem>
@@ -613,7 +614,7 @@
 
     <div class="form-group" style="margin-top: 20px;">
         <asp:Label ID="lblDateQualified" runat="server" Text="Date Qualified" CssClass="form-label"></asp:Label>
-<asp:TextBox ID="txtDateQualified" runat="server" CssClass="form-control" ></asp:TextBox>
+<asp:TextBox ID="txtDateQualified" runat="server" SkinID="DateNew" CssClass="form-control" ></asp:TextBox>
     </div>
 </div>
 
@@ -1220,24 +1221,7 @@
         });
 
     </script>
-     <script>
-         document.addEventListener('DOMContentLoaded', function () {
-             flatpickr("#<%= txtDate.ClientID %>", {
-            dateFormat: "d/m/Y", // UK date format
-            locale: {
-                firstDayOfWeek: 1 // Start week on Monday
-            }
-        });
-
-        flatpickr("#<%= txtDateQualified.ClientID %>", {
-            dateFormat: "d/m/Y", // UK date format
-            locale: {
-                firstDayOfWeek: 1 // Start week on Monday
-            }
-        });
-    });
-     </script>
-
+ 
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
 
     <!--end::Custom Javascript-->

@@ -445,7 +445,7 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                                     </div>
                                                                       
                                                                        </div>
-                                                          <div class="row  mb-6">
+                                                          <div class="row  mb-6" id="giftaid" runat="server">
                                                               <div class="col-lg-4 mb-6">
                                                                    <div class="row  mb-6">
                                                                        <label class="form-label" style="font-size:22px;margin-left:5px; font-weight:bold"> Turn <label id="lblgtotal"></label> into <label id="lblgptotal"></label> with Gift Aid  </label>

@@ -1,4 +1,5 @@
 ﻿using AjaxControlToolkit.HtmlEditor.ToolbarButtons;
+using AngleSharp.Dom;
 using DC.Entity;
 using DeffinityAppDev;
 using DeffinityAppDev.App;
@@ -294,7 +295,33 @@ namespace DonorCRM
                                 .Where(r => r.ContractorID == id)
                                 .Select(r => r.RoleType)
                                 .ToList();
+                            var useredu=context1.UserSkillsEducations.FirstOrDefault(o=>o.UserID==id);
+                            if(useredu != null)
+                            {
 
+                                if (useredu.EnrolmentDate.HasValue)
+                                {
+                                    txtDate.Text = useredu.EnrolmentDate.Value.ToString("dd/MM/yyyy");
+                                }
+                                else
+                                {
+                                    txtDate.Text = "";  // Or handle as you prefer (e.g., show a placeholder)
+                                }
+
+                                txtInstitution.Text= useredu.Institution;
+                              txtQualification.Text= useredu.Qualification;
+
+                                if (useredu.DateQualified.HasValue)
+                                {
+                                    txtDateQualified.Text = useredu.DateQualified.Value.ToString("dd/MM/yyyy");
+                                }
+                                else
+                                {
+                                    txtDateQualified.Text = "";  // Or handle it as you prefer (e.g., display "N/A")
+                                }
+                                txtGrade.Text = useredu.Grade;
+                                ddlLevel.SelectedValue = useredu.Level;
+                            }
                             // Check the checkboxes based on the roles fetched
                             chkVolunteers.Checked = roles.Contains("Volunteer");
                             chkLeads.Checked = roles.Contains("Lead");
@@ -872,6 +899,7 @@ console.log('iddddd'+id)
                     {
                         using (var userContext = new UserDataContext())
                         {
+                            
                             var contact1 = userContext.Contractors.FirstOrDefault(o => o.ID == ID);
                             // Update the contractor's properties with the new values from the form
                             contact1.SID = 2;
@@ -902,6 +930,7 @@ console.log('iddddd'+id)
                                 userdetail.PostCode = postalcode.Text;
 
                             }
+                           
 
 
 
@@ -919,6 +948,43 @@ console.log('iddddd'+id)
                         }
                         using (var context = new PortfolioDataContext())
                         {
+                            var useredu = context.UserSkillsEducations.FirstOrDefault(o=>o.UserID==ID);
+                            if (useredu != null)
+                            {
+                                DateTime enrolmentDate;
+                                if (DateTime.TryParse(txtDate.Text, out enrolmentDate))
+                                {
+                                    useredu.EnrolmentDate = enrolmentDate;
+                                }
+                                useredu.Institution = txtInstitution.Text;
+                                useredu.Qualification = txtQualification.Text;
+                                DateTime qdate;
+                                if (DateTime.TryParse(txtDateQualified.Text, out qdate))
+                                {
+                                    useredu.DateQualified = qdate;
+                                }
+                                useredu.Grade = txtGrade.Text;
+                                useredu.Level = ddlLevel.SelectedValue;
+                            }
+                            else {
+                                var newedu = new UserSkillsEducation();
+                                DateTime enrolmentDate;
+                                if (DateTime.TryParse(txtDate.Text, out enrolmentDate))
+                                {
+                                    newedu.EnrolmentDate = enrolmentDate;
+                                }
+                                newedu.Institution = txtInstitution.Text;
+                                newedu.Qualification = txtQualification.Text;
+                                DateTime qdate;
+                                if (DateTime.TryParse(txtDateQualified.Text, out qdate))
+                                {
+                                    newedu.DateQualified = qdate;
+                                }
+                                newedu.Grade = txtGrade.Text;
+                                newedu.Level = ddlLevel.SelectedValue;
+
+
+                            }
                             // Check if the role already exists
                             if (chkVolunteers.Checked)
                             {
@@ -1246,6 +1312,34 @@ console.log('iddddd'+id)
                     {
                         if (contractorID != -1)
                         {
+                            var useredu = context.UserSkillsEducations.FirstOrDefault(o => o.UserID == contractorID);
+                            if (useredu != null)
+                            {
+                                useredu.EnrolmentDate = Convert.ToDateTime(txtDate.Text + " " + (string.IsNullOrEmpty("") ? "00:00:00" : Convert.ToDateTime("").ToShortTimeString()));// Convert.ToDateTime(!string.IsNullOrEmpty( txtStartDate.Text.Trim())? txtStartDate.Text.Trim():DateTime.Now.ToShortDateString());
+
+                                useredu.Institution = txtInstitution.Text;
+                                useredu.Qualification = txtQualification.Text;
+                                useredu.DateQualified = Convert.ToDateTime(txtDateQualified.Text + " " + (string.IsNullOrEmpty("") ? "00:00:00" : Convert.ToDateTime("").ToShortTimeString()));// Convert.ToDateTime(!string.IsNullOrEmpty( txtStartDate.Text.Trim())? txtStartDate.Text.Trim():DateTime.Now.ToShortDateString());
+
+                                useredu.Grade = txtGrade.Text;
+                                useredu.Level = ddlLevel.SelectedValue;
+                            }
+                            else
+                            {
+                                var newedu = new UserSkillsEducation();
+                                DateTime enrolmentDate;
+                                newedu.EnrolmentDate = Convert.ToDateTime(txtDate.Text + " " + (string.IsNullOrEmpty("") ? "00:00:00" : Convert.ToDateTime("").ToShortTimeString()));// Convert.ToDateTime(!string.IsNullOrEmpty( txtStartDate.Text.Trim())? txtStartDate.Text.Trim():DateTime.Now.ToShortDateString());
+
+                                newedu.UserID=contractorID;
+                                newedu.Institution = txtInstitution.Text;
+                                newedu.Qualification = txtQualification.Text;
+                                newedu.DateQualified = Convert.ToDateTime(txtDateQualified.Text + " " + (string.IsNullOrEmpty("") ? "00:00:00" : Convert.ToDateTime("").ToShortTimeString()));// Convert.ToDateTime(!string.IsNullOrEmpty( txtStartDate.Text.Trim())? txtStartDate.Text.Trim():DateTime.Now.ToShortDateString());
+
+                                newedu.Grade = txtGrade.Text;
+                                newedu.Level = ddlLevel.SelectedValue;
+                                context.UserSkillsEducations.InsertOnSubmit(newedu);
+
+                            }
                             if (chkVolunteers.Checked)
                             {
                                 var newRole = new tblRole

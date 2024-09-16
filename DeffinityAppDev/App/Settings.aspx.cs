@@ -32,6 +32,10 @@ namespace DeffinityAppDev.App
             {
                 Response.Redirect("~/App/FLSDefault.aspx?tab=fls&type=source" + b + "&pnl=JobTicketConfiguration", false);
             }
+            else if (e.CommandName == "giftaid")
+            {
+                Response.Redirect("~/App/GiftAid.aspx?" + b + "&pnl=JobTicketConfiguration", false);
+            }
             else if (e.CommandName == "TypeofJob")
             {
                 Response.Redirect("~/App/FLSDefault.aspx?tab=fls&type=typeofrequest" + b + "&pnl=JobTicketConfiguration", false);

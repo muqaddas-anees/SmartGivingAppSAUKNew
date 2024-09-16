@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 using DocumentFormat.OpenXml.Office2010.Excel;
+using PortfolioMgt.DAL;
 
 namespace DeffinityAppDev.App.controls
 {
@@ -59,6 +60,7 @@ namespace DeffinityAppDev.App.controls
                                   a.Event_Capacity,
                                   a.OrganizationID,
                                   a.OrganizationName,
+                                  isInPerson=GetStatus(a.unid),
                                   a.Title,
                                   a.unid,
                                   a.StartDateTime,
@@ -76,6 +78,21 @@ namespace DeffinityAppDev.App.controls
             catch (Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+        public bool GetStatus(string unid)
+        {
+            using(var context=new PortfolioDataContext())
+            {
+                var activity = context.ActivityDetails.FirstOrDefault(o => o.unid == unid);
+                if (activity == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return activity.isInPerson ?? false;
+                }
             }
         }
         protected static string GetAddress(object description)

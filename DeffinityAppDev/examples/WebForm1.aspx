@@ -14,6 +14,9 @@
         <!-- End of KEditor styles -->
         <link rel="stylesheet" type="text/css" href="./plugins/code-prettify/src/prettify.css" />
         <link rel="stylesheet" type="text/css" href="./css/examples.css" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
     </head>
     
     <body>
@@ -116,6 +119,7 @@
             
         </div>
          <div id="content"></div>
+             
         <script type="text/javascript" src="./plugins/jquery-1.11.3/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="./plugins/bootstrap-3.4.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="./plugins/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>

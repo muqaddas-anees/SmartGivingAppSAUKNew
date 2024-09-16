@@ -237,7 +237,11 @@
 										<!--begin::Chat-->
 									
 										<!--end::Chat-->
-									
+									<div class="d-flex align-items-center ms-1 ms-lg-3 mx-15" >
+																				<a class="btn btn-video" style="background-color:#50CD89;color:white;" href="marketplace.aspx" ><i class="bi bi-bag-plus" style="color:white;margin-right:10px;"></i> Marketplace</a>
+
+										<a class="btn btn-video" style="background-color:#50CD89;color:white;margin-left:20px;" href="https://academy.plegit.ai" target="_blank"><i class="bi bi-book" style="color:white;margin-right:10px;"></i> Academy</a>
+										</div>
 										<!--begin::User-->
 										<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 											<!--begin::Menu wrapper-->

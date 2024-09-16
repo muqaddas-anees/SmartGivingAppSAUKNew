@@ -1,5 +1,6 @@
 ﻿
 using DC.BLL;
+using PortfolioMgt.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,13 +106,31 @@ namespace DeffinityAppDev.App.controls
 
 
                 }
+                CheckGiftAid();
             }
             catch (Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
             }
         }
-
+        private void CheckGiftAid()
+        {
+            try
+            {
+                using (var cont = new PortfolioDataContext())
+                {
+                    var settings = cont.InternationalSettings.FirstOrDefault(o => o.PortfolioID == sessionKeys.PortfolioID);
+                    if (settings != null)
+                    {
+                        giftaid.Visible = settings.IsGiftAidEnabled ?? true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+        }
         protected void Listview_paymenttype_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
             try

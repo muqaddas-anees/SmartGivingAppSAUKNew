@@ -16,7 +16,7 @@ using TuesPechkin;
 
 namespace DeffinityAppDev.App.controls
 {
-    public partial class taithingNewCtrl : System.Web.UI.UserControl
+    public partial class taithingEventCtrl : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -126,15 +126,15 @@ namespace DeffinityAppDev.App.controls
                         //BindListviewData();
                     }
 
-                    CheckGiftAid();
+
                 }
+                CheckGiftAid(); 
             }
             catch (Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
             }
         }
-
         private void CheckGiftAid()
         {
             try
@@ -147,13 +147,12 @@ namespace DeffinityAppDev.App.controls
                         giftaid.Visible = settings.IsGiftAidEnabled ?? true;
                     }
                 }
-             }
+            }
             catch (Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
             }
         }
-
         private void SetCardFeePercentage()
         {
             try

@@ -11,8 +11,17 @@ namespace DeffinityAppDev.App.controls
 {
 
 
-    public partial class FundraiserPayCtrl
+    public partial class taithingEventCtrl
     {
+
+        /// <summary>
+        /// currencySymbol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField currencySymbol;
 
         /// <summary>
         /// hcode control.
@@ -78,6 +87,15 @@ namespace DeffinityAppDev.App.controls
         protected global::System.Web.UI.WebControls.HiddenField hplatformfeepercent;
 
         /// <summary>
+        /// ppalnat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField ppalnat;
+
+        /// <summary>
         /// hfeepercent control.
         /// </summary>
         /// <remarks>
@@ -105,24 +123,6 @@ namespace DeffinityAppDev.App.controls
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlResult;
 
         /// <summary>
-        /// lblTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTitle;
-
-        /// <summary>
-        /// lblMsgResult control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMsgResult;
-
-        /// <summary>
         /// hPortfolioid control.
         /// </summary>
         /// <remarks>
@@ -148,6 +148,15 @@ namespace DeffinityAppDev.App.controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField huid;
+
+        /// <summary>
+        /// lblMsgResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsgResult;
 
         /// <summary>
         /// btnSave control.
@@ -184,15 +193,6 @@ namespace DeffinityAppDev.App.controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlCategory;
-
-        /// <summary>
-        /// selectamount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label selectamount;
 
         /// <summary>
         /// txtAmountTotal control.
@@ -303,15 +303,6 @@ namespace DeffinityAppDev.App.controls
         protected global::System.Web.UI.WebControls.Label lblOrg;
 
         /// <summary>
-        /// btnBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
-
-        /// <summary>
         /// btnNextCategory control.
         /// </summary>
         /// <remarks>
@@ -354,7 +345,7 @@ namespace DeffinityAppDev.App.controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton chkonetime2;
+        protected global::System.Web.UI.WebControls.RadioButton chkonetime2;
 
         /// <summary>
         /// chkRecurring control.
@@ -363,7 +354,7 @@ namespace DeffinityAppDev.App.controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton chkRecurring;
+        protected global::System.Web.UI.WebControls.RadioButton chkRecurring;
 
         /// <summary>
         /// btnBackToCategory control.
@@ -679,15 +670,6 @@ namespace DeffinityAppDev.App.controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCardConnectNumber;
-
-        /// <summary>
-        /// tokenframe control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlIframe tokenframe;
 
         /// <summary>
         /// mytoken control.

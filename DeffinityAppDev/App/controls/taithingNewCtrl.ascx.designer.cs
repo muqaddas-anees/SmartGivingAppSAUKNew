@@ -258,6 +258,15 @@ namespace DeffinityAppDev.App.controls
         protected global::System.Web.UI.WebControls.Label lblptotal;
 
         /// <summary>
+        /// giftaid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl giftaid;
+
+        /// <summary>
         /// chkgift control.
         /// </summary>
         /// <remarks>

@@ -42,6 +42,9 @@
 												</div>
 																 <div class="card-footer">
         <asp:Button style="float:right;" ID="Button1" runat="server" CssClass="btn btn-dark" CommandName="amount" Text="Tickets"  CommandArgument='<%# Eval("unid") %>'  />
+													<a id="link" style='<%# (bool)Eval("isInPerson") ? "display:none;float:left;" : "display:block;float:left;" %>' 
+   href="../LiveEvent.aspx?unid=<%# Eval("unid") %>" class="btn btn-primary">Livestream</a>
+
     </div>
 												<!--end::Publications post-->
 											</div>

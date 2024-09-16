@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 21.125, 145.25" name="Portfolio">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 25.5, 145.25" name="Portfolio">
   <DataContextMoniker Name="/PortfolioDataContext" />
   <nestedChildShapes>
     <classShape Id="19a13a74-d318-4e97-9081-a15dad863e09" absoluteBounds="2.625, 0.625, 2, 14.847394205729165">
@@ -98,10 +98,10 @@
         <elementListCompartment Id="392d22d7-309b-4491-9c2d-a4ad14b480d4" absoluteBounds="0.64, 20.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ff3cac95-5208-4dae-8790-13ced92e783a" absoluteBounds="0.75, 17.625, 2, 2.15549967447917">
+    <classShape Id="ff3cac95-5208-4dae-8790-13ced92e783a" absoluteBounds="8.125, 14.25, 2, 2.15549967447917">
       <DataClassMoniker Name="/PortfolioDataContext/ServiceCatalog_category" />
       <nestedChildShapes>
-        <elementListCompartment Id="6b338878-d9ae-4cd7-b829-eb39e47f3306" absoluteBounds="0.765, 18.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6b338878-d9ae-4cd7-b829-eb39e47f3306" absoluteBounds="8.14, 14.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="bca91c26-cc2e-47c4-a84c-0c3226154844" absoluteBounds="0.875, 22.25, 2, 1.1939925130208344">
@@ -801,12 +801,6 @@
         <elementListCompartment Id="b4e581c6-6c9c-4fdd-9e10-7dd8ecc585cc" absoluteBounds="18.89, 5.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="03d44fa4-96a3-4314-a7d2-2f86bddc3ca3" absoluteBounds="5.75, 110.375, 2, 8.3091455078125">
-      <DataClassMoniker Name="/PortfolioDataContext/ActivityDetail" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b4e1b2e7-046a-4e57-a5de-3e378199acc7" absoluteBounds="5.765, 110.835, 1.9700000000000002, 7.7491455078125009" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="579f09b8-9ff6-42de-82ea-b32be0373925" absoluteBounds="9, 127.25, 2, 4.4631168619791666">
       <DataClassMoniker Name="/PortfolioDataContext/PortfolioPaymentSetting" />
       <nestedChildShapes>
@@ -921,7 +915,7 @@
         <elementListCompartment Id="fce88e1a-b381-41cd-8733-8452a2845736" absoluteBounds="0.515, 1.085, 1.9700000000000002, 17.748819986979164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(0.5 : 9.77940999348958); (0.125 : 9.77940999348958); (0.125 : 100.5); (1.875 : 100.5); (1.875 : 100.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.5 : 18.9338199869792); (1.5 : 19.8125); (0.4375 : 19.8125); (0.4375 : 102.914256998698); (0.875 : 102.914256998698)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PortfolioDataContext/ProjectPortfolio/ProjectPortfolio_PortfolioBillingManager" />
       <nodes>
         <classShapeMoniker Id="968a45d6-545e-45b5-bd73-2a9ed496ff48" />
@@ -974,6 +968,24 @@
       <DataClassMoniker Name="/PortfolioDataContext/MarketplaceService" />
       <nestedChildShapes>
         <elementListCompartment Id="c0891d20-b591-4455-ae59-bbf49e4ec8cd" absoluteBounds="16.515, 2.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f5fdff02-3d52-4e0b-8820-1d6e6a72b3e4" absoluteBounds="5.25, 111.875, 2, 9.0783512369791648">
+      <DataClassMoniker Name="/PortfolioDataContext/ActivityDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4549d97a-aa53-4f3f-8e57-aa46e592864e" absoluteBounds="5.265, 112.335, 1.9700000000000002, 8.5183512369791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ce1ed2c1-8532-46b6-9f4f-0107e25e3055" absoluteBounds="16.375, 6, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/PortfolioDataContext/InternationalSetting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da9cb8e1-0f8d-4de5-b29f-ddd09ef93c13" absoluteBounds="16.39, 6.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="52241b5c-0c67-464b-9086-5897290366b3" absoluteBounds="23.25, 4.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/PortfolioDataContext/UserSkillsEducation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="431f7aae-2f26-437b-8167-d8e911ac4d0b" absoluteBounds="23.265, 4.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
