@@ -177,13 +177,31 @@ namespace DeffinityAppDev.App
         protected global::System.Web.UI.WebControls.TextBox txtTrialPeriod;
 
         /// <summary>
-        /// btnSave control.
+        /// txtVideoBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.TextBox txtVideoBtn;
+
+        /// <summary>
+        /// TxtBuyNow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtBuyNow;
+
+        /// <summary>
+        /// btnSaveNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveNew;
 
         /// <summary>
         /// btnDelete control.

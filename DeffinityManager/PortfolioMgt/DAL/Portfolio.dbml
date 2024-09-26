@@ -2445,6 +2445,38 @@
       <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.CharitySizeRange" Member="CharitySizeRanges">
+    <Type Name="CharitySizeRange">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Size" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FromRange" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToRange" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MarketplaceProducts" Member="MarketplaceProducts">
+    <Type Name="MarketplaceProduct">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ImageBanner" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CurrencyForSmallCharities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PriceForSmallCharities" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="CurrencyForMediumCharities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PriceForMediumCharities" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="CurrencyForLargeCharities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PriceForLargeCharities" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="VideoDescriptionUrl" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CurrencyForAnnualDiscount" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AnnualDiscount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="TrialPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsModuleAvailable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UrlForSmall" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UrlForMedium" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UrlForLarge" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="textforvideobutton" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="textforbuynowbutton" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.TimeSheetResource_AddUpdateWcDate" Method="TimeSheetResource_AddUpdateWcDate">
     <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="contractorID" Type="System.Int32" DbType="Int" />

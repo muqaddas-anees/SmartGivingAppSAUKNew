@@ -430,6 +430,12 @@ namespace PortfolioMgt.DAL
     partial void InsertUserSkillsEducation(PortfolioMgt.Entity.UserSkillsEducation instance);
     partial void UpdateUserSkillsEducation(PortfolioMgt.Entity.UserSkillsEducation instance);
     partial void DeleteUserSkillsEducation(PortfolioMgt.Entity.UserSkillsEducation instance);
+    partial void InsertCharitySizeRange(PortfolioMgt.Entity.CharitySizeRange instance);
+    partial void UpdateCharitySizeRange(PortfolioMgt.Entity.CharitySizeRange instance);
+    partial void DeleteCharitySizeRange(PortfolioMgt.Entity.CharitySizeRange instance);
+    partial void InsertMarketplaceProduct(PortfolioMgt.Entity.MarketplaceProduct instance);
+    partial void UpdateMarketplaceProduct(PortfolioMgt.Entity.MarketplaceProduct instance);
+    partial void DeleteMarketplaceProduct(PortfolioMgt.Entity.MarketplaceProduct instance);
     #endregion
 		
 		public PortfolioDataContext() : 
@@ -1699,6 +1705,22 @@ namespace PortfolioMgt.DAL
 			get
 			{
 				return this.GetTable<PortfolioMgt.Entity.UserSkillsEducation>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.CharitySizeRange> CharitySizeRanges
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.CharitySizeRange>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.MarketplaceProduct> MarketplaceProducts
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.MarketplaceProduct>();
 			}
 		}
 		
@@ -48136,6 +48158,658 @@ namespace PortfolioMgt.Entity
 					this._UserID = value;
 					this.SendPropertyChanged("UserID");
 					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CharitySizeRange")]
+	public partial class CharitySizeRange : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Size;
+		
+		private System.Nullable<int> _FromRange;
+		
+		private System.Nullable<int> _ToRange;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnSizeChanging(string value);
+    partial void OnSizeChanged();
+    partial void OnFromRangeChanging(System.Nullable<int> value);
+    partial void OnFromRangeChanged();
+    partial void OnToRangeChanging(System.Nullable<int> value);
+    partial void OnToRangeChanged();
+    #endregion
+		
+		public CharitySizeRange()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Size", DbType="NVarChar(100)")]
+		public string Size
+		{
+			get
+			{
+				return this._Size;
+			}
+			set
+			{
+				if ((this._Size != value))
+				{
+					this.OnSizeChanging(value);
+					this.SendPropertyChanging();
+					this._Size = value;
+					this.SendPropertyChanged("Size");
+					this.OnSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FromRange", DbType="Int")]
+		public System.Nullable<int> FromRange
+		{
+			get
+			{
+				return this._FromRange;
+			}
+			set
+			{
+				if ((this._FromRange != value))
+				{
+					this.OnFromRangeChanging(value);
+					this.SendPropertyChanging();
+					this._FromRange = value;
+					this.SendPropertyChanged("FromRange");
+					this.OnFromRangeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToRange", DbType="Int")]
+		public System.Nullable<int> ToRange
+		{
+			get
+			{
+				return this._ToRange;
+			}
+			set
+			{
+				if ((this._ToRange != value))
+				{
+					this.OnToRangeChanging(value);
+					this.SendPropertyChanging();
+					this._ToRange = value;
+					this.SendPropertyChanged("ToRange");
+					this.OnToRangeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MarketplaceProducts")]
+	public partial class MarketplaceProduct : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Data.Linq.Binary _ImageBanner;
+		
+		private string _Title;
+		
+		private string _Description;
+		
+		private string _CurrencyForSmallCharities;
+		
+		private System.Nullable<decimal> _PriceForSmallCharities;
+		
+		private string _CurrencyForMediumCharities;
+		
+		private System.Nullable<decimal> _PriceForMediumCharities;
+		
+		private string _CurrencyForLargeCharities;
+		
+		private System.Nullable<decimal> _PriceForLargeCharities;
+		
+		private string _VideoDescriptionUrl;
+		
+		private string _CurrencyForAnnualDiscount;
+		
+		private System.Nullable<decimal> _AnnualDiscount;
+		
+		private System.Nullable<int> _TrialPeriod;
+		
+		private System.Nullable<bool> _IsModuleAvailable;
+		
+		private string _UrlForSmall;
+		
+		private string _UrlForMedium;
+		
+		private string _UrlForLarge;
+		
+		private string _textforvideobutton;
+		
+		private string _textforbuynowbutton;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnImageBannerChanging(System.Data.Linq.Binary value);
+    partial void OnImageBannerChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnCurrencyForSmallCharitiesChanging(string value);
+    partial void OnCurrencyForSmallCharitiesChanged();
+    partial void OnPriceForSmallCharitiesChanging(System.Nullable<decimal> value);
+    partial void OnPriceForSmallCharitiesChanged();
+    partial void OnCurrencyForMediumCharitiesChanging(string value);
+    partial void OnCurrencyForMediumCharitiesChanged();
+    partial void OnPriceForMediumCharitiesChanging(System.Nullable<decimal> value);
+    partial void OnPriceForMediumCharitiesChanged();
+    partial void OnCurrencyForLargeCharitiesChanging(string value);
+    partial void OnCurrencyForLargeCharitiesChanged();
+    partial void OnPriceForLargeCharitiesChanging(System.Nullable<decimal> value);
+    partial void OnPriceForLargeCharitiesChanged();
+    partial void OnVideoDescriptionUrlChanging(string value);
+    partial void OnVideoDescriptionUrlChanged();
+    partial void OnCurrencyForAnnualDiscountChanging(string value);
+    partial void OnCurrencyForAnnualDiscountChanged();
+    partial void OnAnnualDiscountChanging(System.Nullable<decimal> value);
+    partial void OnAnnualDiscountChanged();
+    partial void OnTrialPeriodChanging(System.Nullable<int> value);
+    partial void OnTrialPeriodChanged();
+    partial void OnIsModuleAvailableChanging(System.Nullable<bool> value);
+    partial void OnIsModuleAvailableChanged();
+    partial void OnUrlForSmallChanging(string value);
+    partial void OnUrlForSmallChanged();
+    partial void OnUrlForMediumChanging(string value);
+    partial void OnUrlForMediumChanged();
+    partial void OnUrlForLargeChanging(string value);
+    partial void OnUrlForLargeChanged();
+    partial void OntextforvideobuttonChanging(string value);
+    partial void OntextforvideobuttonChanged();
+    partial void OntextforbuynowbuttonChanging(string value);
+    partial void OntextforbuynowbuttonChanged();
+    #endregion
+		
+		public MarketplaceProduct()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageBanner", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary ImageBanner
+		{
+			get
+			{
+				return this._ImageBanner;
+			}
+			set
+			{
+				if ((this._ImageBanner != value))
+				{
+					this.OnImageBannerChanging(value);
+					this.SendPropertyChanging();
+					this._ImageBanner = value;
+					this.SendPropertyChanged("ImageBanner");
+					this.OnImageBannerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(255)")]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrencyForSmallCharities", DbType="VarChar(50)")]
+		public string CurrencyForSmallCharities
+		{
+			get
+			{
+				return this._CurrencyForSmallCharities;
+			}
+			set
+			{
+				if ((this._CurrencyForSmallCharities != value))
+				{
+					this.OnCurrencyForSmallCharitiesChanging(value);
+					this.SendPropertyChanging();
+					this._CurrencyForSmallCharities = value;
+					this.SendPropertyChanged("CurrencyForSmallCharities");
+					this.OnCurrencyForSmallCharitiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceForSmallCharities", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> PriceForSmallCharities
+		{
+			get
+			{
+				return this._PriceForSmallCharities;
+			}
+			set
+			{
+				if ((this._PriceForSmallCharities != value))
+				{
+					this.OnPriceForSmallCharitiesChanging(value);
+					this.SendPropertyChanging();
+					this._PriceForSmallCharities = value;
+					this.SendPropertyChanged("PriceForSmallCharities");
+					this.OnPriceForSmallCharitiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrencyForMediumCharities", DbType="VarChar(50)")]
+		public string CurrencyForMediumCharities
+		{
+			get
+			{
+				return this._CurrencyForMediumCharities;
+			}
+			set
+			{
+				if ((this._CurrencyForMediumCharities != value))
+				{
+					this.OnCurrencyForMediumCharitiesChanging(value);
+					this.SendPropertyChanging();
+					this._CurrencyForMediumCharities = value;
+					this.SendPropertyChanged("CurrencyForMediumCharities");
+					this.OnCurrencyForMediumCharitiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceForMediumCharities", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> PriceForMediumCharities
+		{
+			get
+			{
+				return this._PriceForMediumCharities;
+			}
+			set
+			{
+				if ((this._PriceForMediumCharities != value))
+				{
+					this.OnPriceForMediumCharitiesChanging(value);
+					this.SendPropertyChanging();
+					this._PriceForMediumCharities = value;
+					this.SendPropertyChanged("PriceForMediumCharities");
+					this.OnPriceForMediumCharitiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrencyForLargeCharities", DbType="VarChar(50)")]
+		public string CurrencyForLargeCharities
+		{
+			get
+			{
+				return this._CurrencyForLargeCharities;
+			}
+			set
+			{
+				if ((this._CurrencyForLargeCharities != value))
+				{
+					this.OnCurrencyForLargeCharitiesChanging(value);
+					this.SendPropertyChanging();
+					this._CurrencyForLargeCharities = value;
+					this.SendPropertyChanged("CurrencyForLargeCharities");
+					this.OnCurrencyForLargeCharitiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceForLargeCharities", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> PriceForLargeCharities
+		{
+			get
+			{
+				return this._PriceForLargeCharities;
+			}
+			set
+			{
+				if ((this._PriceForLargeCharities != value))
+				{
+					this.OnPriceForLargeCharitiesChanging(value);
+					this.SendPropertyChanging();
+					this._PriceForLargeCharities = value;
+					this.SendPropertyChanged("PriceForLargeCharities");
+					this.OnPriceForLargeCharitiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VideoDescriptionUrl", DbType="VarChar(255)")]
+		public string VideoDescriptionUrl
+		{
+			get
+			{
+				return this._VideoDescriptionUrl;
+			}
+			set
+			{
+				if ((this._VideoDescriptionUrl != value))
+				{
+					this.OnVideoDescriptionUrlChanging(value);
+					this.SendPropertyChanging();
+					this._VideoDescriptionUrl = value;
+					this.SendPropertyChanged("VideoDescriptionUrl");
+					this.OnVideoDescriptionUrlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrencyForAnnualDiscount", DbType="VarChar(50)")]
+		public string CurrencyForAnnualDiscount
+		{
+			get
+			{
+				return this._CurrencyForAnnualDiscount;
+			}
+			set
+			{
+				if ((this._CurrencyForAnnualDiscount != value))
+				{
+					this.OnCurrencyForAnnualDiscountChanging(value);
+					this.SendPropertyChanging();
+					this._CurrencyForAnnualDiscount = value;
+					this.SendPropertyChanged("CurrencyForAnnualDiscount");
+					this.OnCurrencyForAnnualDiscountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AnnualDiscount", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> AnnualDiscount
+		{
+			get
+			{
+				return this._AnnualDiscount;
+			}
+			set
+			{
+				if ((this._AnnualDiscount != value))
+				{
+					this.OnAnnualDiscountChanging(value);
+					this.SendPropertyChanging();
+					this._AnnualDiscount = value;
+					this.SendPropertyChanged("AnnualDiscount");
+					this.OnAnnualDiscountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrialPeriod", DbType="Int")]
+		public System.Nullable<int> TrialPeriod
+		{
+			get
+			{
+				return this._TrialPeriod;
+			}
+			set
+			{
+				if ((this._TrialPeriod != value))
+				{
+					this.OnTrialPeriodChanging(value);
+					this.SendPropertyChanging();
+					this._TrialPeriod = value;
+					this.SendPropertyChanged("TrialPeriod");
+					this.OnTrialPeriodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsModuleAvailable", DbType="Bit")]
+		public System.Nullable<bool> IsModuleAvailable
+		{
+			get
+			{
+				return this._IsModuleAvailable;
+			}
+			set
+			{
+				if ((this._IsModuleAvailable != value))
+				{
+					this.OnIsModuleAvailableChanging(value);
+					this.SendPropertyChanging();
+					this._IsModuleAvailable = value;
+					this.SendPropertyChanged("IsModuleAvailable");
+					this.OnIsModuleAvailableChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UrlForSmall", DbType="NVarChar(255)")]
+		public string UrlForSmall
+		{
+			get
+			{
+				return this._UrlForSmall;
+			}
+			set
+			{
+				if ((this._UrlForSmall != value))
+				{
+					this.OnUrlForSmallChanging(value);
+					this.SendPropertyChanging();
+					this._UrlForSmall = value;
+					this.SendPropertyChanged("UrlForSmall");
+					this.OnUrlForSmallChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UrlForMedium", DbType="NVarChar(255)")]
+		public string UrlForMedium
+		{
+			get
+			{
+				return this._UrlForMedium;
+			}
+			set
+			{
+				if ((this._UrlForMedium != value))
+				{
+					this.OnUrlForMediumChanging(value);
+					this.SendPropertyChanging();
+					this._UrlForMedium = value;
+					this.SendPropertyChanged("UrlForMedium");
+					this.OnUrlForMediumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UrlForLarge", DbType="NVarChar(255)")]
+		public string UrlForLarge
+		{
+			get
+			{
+				return this._UrlForLarge;
+			}
+			set
+			{
+				if ((this._UrlForLarge != value))
+				{
+					this.OnUrlForLargeChanging(value);
+					this.SendPropertyChanging();
+					this._UrlForLarge = value;
+					this.SendPropertyChanged("UrlForLarge");
+					this.OnUrlForLargeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_textforvideobutton", DbType="VarChar(255)")]
+		public string textforvideobutton
+		{
+			get
+			{
+				return this._textforvideobutton;
+			}
+			set
+			{
+				if ((this._textforvideobutton != value))
+				{
+					this.OntextforvideobuttonChanging(value);
+					this.SendPropertyChanging();
+					this._textforvideobutton = value;
+					this.SendPropertyChanged("textforvideobutton");
+					this.OntextforvideobuttonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_textforbuynowbutton", DbType="VarChar(255)")]
+		public string textforbuynowbutton
+		{
+			get
+			{
+				return this._textforbuynowbutton;
+			}
+			set
+			{
+				if ((this._textforbuynowbutton != value))
+				{
+					this.OntextforbuynowbuttonChanging(value);
+					this.SendPropertyChanging();
+					this._textforbuynowbutton = value;
+					this.SendPropertyChanged("textforbuynowbutton");
+					this.OntextforbuynowbuttonChanged();
 				}
 			}
 		}

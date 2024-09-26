@@ -219,6 +219,8 @@ public class ImageManager
     public static string file_section_email_attach = "email_attach";
 
     public static string file_section_video = "video";
+    public static string file_section_marketplace = "marketplace";
+
 
 
     public static bool FileIsExists(string fileid, string section)
