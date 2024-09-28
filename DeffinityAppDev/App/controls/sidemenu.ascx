@@ -192,7 +192,7 @@
 								</div>
 							</div>
 									
-								<div class="menu-item py-2" id="pnlFundCamp" runat="server" >
+								<div class="menu-item py-2" visible="false" id="pnlFundCamp" runat="server" >
 								<a href='<%:ResolveClientUrl("~/App/FundraiserListView.aspx?type=camp")%>' class="menu-link " title="Landing Page" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
 									<span class="menu-icon">
 										<i class="fas fa-hands fs-2"></i>
@@ -201,7 +201,7 @@
 								</a>
 								
 							</div>
-								<div data-kt-menu-trigger="click" data-kt-menu-placement="right-start" data-kt-menu-flip="bottom" class="menu-item py-2" id="link_eventmanagement" runat="server">
+								<div data-kt-menu-trigger="click" data-kt-menu-placement="right-start" data-kt-menu-flip="bottom" visible="false" class="menu-item py-2" id="link_eventmanagement" runat="server">
 								<span class="menu-link " title="" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right" data-bs-original-title="<%:sessionKeys.JobsDisplayName %> ">
 									<span class="menu-icon">
 										<i class="fas fa-project-diagram fs-2"></i>

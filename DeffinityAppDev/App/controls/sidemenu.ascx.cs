@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PortfolioMgt.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace DeffinityAppDev.App.controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if(sessionKeys.SID == 3)
             {
 
@@ -33,6 +35,15 @@ namespace DeffinityAppDev.App.controls
             {
                 a_tithing.HRef = "~/App/Donations.aspx";
                 a_tithing.Title = "Tithing";
+            }
+        }
+        private void DisplayandHideSerives()
+        {
+            using(var context=new PortfolioDataContext())
+            {
+                var portolfiosettings = context.PortfolioActiveProducts.FirstOrDefault(o => o.PortfolioID == sessionKeys.PortfolioID);
+                link_eventmanagement.Visible = portolfiosettings.IsProjectManagement ?? false;
+                pnlFundCamp.Visible = portolfiosettings.IsPeerToPeerFundraising ?? false;
             }
         }
     }

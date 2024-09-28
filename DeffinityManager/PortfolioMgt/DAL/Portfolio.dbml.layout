@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 30.75, 145.25" name="Portfolio">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 39.5, 145.25" name="Portfolio">
   <DataContextMoniker Name="/PortfolioDataContext" />
   <nestedChildShapes>
     <classShape Id="19a13a74-d318-4e97-9081-a15dad863e09" absoluteBounds="2.625, 0.625, 2, 14.847394205729165">
@@ -994,10 +994,22 @@
         <elementListCompartment Id="4c7b898b-87b9-4b1c-ae94-416467723189" absoluteBounds="26.89, 2.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="8a464a28-8433-49e1-bca6-e16b184d5579" absoluteBounds="28.5, 5.25, 2, 4.6554182942708326">
+    <classShape Id="f8d89f26-9052-401b-a9a3-5c1f6b200123" absoluteBounds="29, 2, 2, 6.1938297526041657">
       <DataClassMoniker Name="/PortfolioDataContext/MarketplaceProduct" />
       <nestedChildShapes>
-        <elementListCompartment Id="322d2674-02e9-40c4-8c7a-9ac02def318d" absoluteBounds="28.515, 5.71, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="03594974-87fb-4041-802a-b7c86ed57411" absoluteBounds="29.015, 2.46, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3b0e83f7-0854-43e3-999c-ae582955533b" absoluteBounds="37.25, 4.875, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/PortfolioDataContext/PortfolioActiveProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f9f8b1e-a9d4-4712-a275-19bb969168b0" absoluteBounds="37.265, 5.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1b01c510-c32a-4dcd-8470-456608540dc2" absoluteBounds="34.625, 5.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/PortfolioDataContext/BoughtMarketplaceProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1d2f9b4c-aa01-4d3f-8cf5-b06c3b3b838e" absoluteBounds="34.64, 5.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

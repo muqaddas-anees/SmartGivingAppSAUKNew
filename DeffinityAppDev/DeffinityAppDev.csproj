@@ -571,6 +571,13 @@
     <Compile Include="App\Marketplace.aspx.designer.cs">
       <DependentUpon>Marketplace.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PaySuccess.aspx.cs">
+      <DependentUpon>PaySuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaySuccess.aspx.designer.cs">
+      <DependentUpon>PaySuccess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\Teams.aspx.cs">
       <DependentUpon>Teams.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4931,6 +4938,7 @@
     <Content Include="App\Payfast\notify.aspx" />
     <Content Include="App\Payfast\process.aspx" />
     <Content Include="App\Payfast\success.aspx" />
+    <Content Include="PaySuccess.aspx" />
     <Content Include="App\PlatformSupportReport.aspx" />
     <Content Include="App\Products\AddProduct.aspx" />
     <Content Include="App\Products\CategorySetting.aspx" />

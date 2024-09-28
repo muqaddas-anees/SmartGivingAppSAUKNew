@@ -1,4 +1,4 @@
-﻿6<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MainTab.master" CodeBehind="Marketplace.aspx.cs" Inherits="DeffinityAppDev.App.Marketplace" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MainTab.master" CodeBehind="Marketplace.aspx.cs" Inherits="DeffinityAppDev.App.Marketplace" %>
 <%@ Register Src="~/App/controls/OrgMainTabs.ascx" TagPrefix="Pref" TagName="OrgMainTabs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

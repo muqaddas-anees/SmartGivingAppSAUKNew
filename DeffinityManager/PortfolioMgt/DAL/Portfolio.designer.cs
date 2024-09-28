@@ -436,6 +436,12 @@ namespace PortfolioMgt.DAL
     partial void InsertMarketplaceProduct(PortfolioMgt.Entity.MarketplaceProduct instance);
     partial void UpdateMarketplaceProduct(PortfolioMgt.Entity.MarketplaceProduct instance);
     partial void DeleteMarketplaceProduct(PortfolioMgt.Entity.MarketplaceProduct instance);
+    partial void InsertPortfolioActiveProduct(PortfolioMgt.Entity.PortfolioActiveProduct instance);
+    partial void UpdatePortfolioActiveProduct(PortfolioMgt.Entity.PortfolioActiveProduct instance);
+    partial void DeletePortfolioActiveProduct(PortfolioMgt.Entity.PortfolioActiveProduct instance);
+    partial void InsertBoughtMarketplaceProduct(PortfolioMgt.Entity.BoughtMarketplaceProduct instance);
+    partial void UpdateBoughtMarketplaceProduct(PortfolioMgt.Entity.BoughtMarketplaceProduct instance);
+    partial void DeleteBoughtMarketplaceProduct(PortfolioMgt.Entity.BoughtMarketplaceProduct instance);
     #endregion
 		
 		public PortfolioDataContext() : 
@@ -1721,6 +1727,22 @@ namespace PortfolioMgt.DAL
 			get
 			{
 				return this.GetTable<PortfolioMgt.Entity.MarketplaceProduct>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.PortfolioActiveProduct> PortfolioActiveProducts
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.PortfolioActiveProduct>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.BoughtMarketplaceProduct> BoughtMarketplaceProducts
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.BoughtMarketplaceProduct>();
 			}
 		}
 		
@@ -48363,6 +48385,22 @@ namespace PortfolioMgt.Entity
 		
 		private string _textforbuynowbutton;
 		
+		private System.Nullable<bool> _IsLivestream;
+		
+		private System.Nullable<bool> _IsOnlineShop;
+		
+		private System.Nullable<bool> _IsPeerToPeerFundraising;
+		
+		private System.Nullable<bool> _IsBeneficiaryManagement;
+		
+		private System.Nullable<bool> _IsProjectManagement;
+		
+		private System.Nullable<bool> _IsAI;
+		
+		private System.Nullable<bool> _IsAcademy;
+		
+		private System.Nullable<bool> _IsOtherServices;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -48407,6 +48445,22 @@ namespace PortfolioMgt.Entity
     partial void OntextforvideobuttonChanged();
     partial void OntextforbuynowbuttonChanging(string value);
     partial void OntextforbuynowbuttonChanged();
+    partial void OnIsLivestreamChanging(System.Nullable<bool> value);
+    partial void OnIsLivestreamChanged();
+    partial void OnIsOnlineShopChanging(System.Nullable<bool> value);
+    partial void OnIsOnlineShopChanged();
+    partial void OnIsPeerToPeerFundraisingChanging(System.Nullable<bool> value);
+    partial void OnIsPeerToPeerFundraisingChanged();
+    partial void OnIsBeneficiaryManagementChanging(System.Nullable<bool> value);
+    partial void OnIsBeneficiaryManagementChanged();
+    partial void OnIsProjectManagementChanging(System.Nullable<bool> value);
+    partial void OnIsProjectManagementChanged();
+    partial void OnIsAIChanging(System.Nullable<bool> value);
+    partial void OnIsAIChanged();
+    partial void OnIsAcademyChanging(System.Nullable<bool> value);
+    partial void OnIsAcademyChanged();
+    partial void OnIsOtherServicesChanging(System.Nullable<bool> value);
+    partial void OnIsOtherServicesChanged();
     #endregion
 		
 		public MarketplaceProduct()
@@ -48810,6 +48864,650 @@ namespace PortfolioMgt.Entity
 					this._textforbuynowbutton = value;
 					this.SendPropertyChanged("textforbuynowbutton");
 					this.OntextforbuynowbuttonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLivestream", DbType="Bit")]
+		public System.Nullable<bool> IsLivestream
+		{
+			get
+			{
+				return this._IsLivestream;
+			}
+			set
+			{
+				if ((this._IsLivestream != value))
+				{
+					this.OnIsLivestreamChanging(value);
+					this.SendPropertyChanging();
+					this._IsLivestream = value;
+					this.SendPropertyChanged("IsLivestream");
+					this.OnIsLivestreamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsOnlineShop", DbType="Bit")]
+		public System.Nullable<bool> IsOnlineShop
+		{
+			get
+			{
+				return this._IsOnlineShop;
+			}
+			set
+			{
+				if ((this._IsOnlineShop != value))
+				{
+					this.OnIsOnlineShopChanging(value);
+					this.SendPropertyChanging();
+					this._IsOnlineShop = value;
+					this.SendPropertyChanged("IsOnlineShop");
+					this.OnIsOnlineShopChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPeerToPeerFundraising", DbType="Bit")]
+		public System.Nullable<bool> IsPeerToPeerFundraising
+		{
+			get
+			{
+				return this._IsPeerToPeerFundraising;
+			}
+			set
+			{
+				if ((this._IsPeerToPeerFundraising != value))
+				{
+					this.OnIsPeerToPeerFundraisingChanging(value);
+					this.SendPropertyChanging();
+					this._IsPeerToPeerFundraising = value;
+					this.SendPropertyChanged("IsPeerToPeerFundraising");
+					this.OnIsPeerToPeerFundraisingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsBeneficiaryManagement", DbType="Bit")]
+		public System.Nullable<bool> IsBeneficiaryManagement
+		{
+			get
+			{
+				return this._IsBeneficiaryManagement;
+			}
+			set
+			{
+				if ((this._IsBeneficiaryManagement != value))
+				{
+					this.OnIsBeneficiaryManagementChanging(value);
+					this.SendPropertyChanging();
+					this._IsBeneficiaryManagement = value;
+					this.SendPropertyChanged("IsBeneficiaryManagement");
+					this.OnIsBeneficiaryManagementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsProjectManagement", DbType="Bit")]
+		public System.Nullable<bool> IsProjectManagement
+		{
+			get
+			{
+				return this._IsProjectManagement;
+			}
+			set
+			{
+				if ((this._IsProjectManagement != value))
+				{
+					this.OnIsProjectManagementChanging(value);
+					this.SendPropertyChanging();
+					this._IsProjectManagement = value;
+					this.SendPropertyChanged("IsProjectManagement");
+					this.OnIsProjectManagementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAI", DbType="Bit")]
+		public System.Nullable<bool> IsAI
+		{
+			get
+			{
+				return this._IsAI;
+			}
+			set
+			{
+				if ((this._IsAI != value))
+				{
+					this.OnIsAIChanging(value);
+					this.SendPropertyChanging();
+					this._IsAI = value;
+					this.SendPropertyChanged("IsAI");
+					this.OnIsAIChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAcademy", DbType="Bit")]
+		public System.Nullable<bool> IsAcademy
+		{
+			get
+			{
+				return this._IsAcademy;
+			}
+			set
+			{
+				if ((this._IsAcademy != value))
+				{
+					this.OnIsAcademyChanging(value);
+					this.SendPropertyChanging();
+					this._IsAcademy = value;
+					this.SendPropertyChanged("IsAcademy");
+					this.OnIsAcademyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsOtherServices", DbType="Bit")]
+		public System.Nullable<bool> IsOtherServices
+		{
+			get
+			{
+				return this._IsOtherServices;
+			}
+			set
+			{
+				if ((this._IsOtherServices != value))
+				{
+					this.OnIsOtherServicesChanging(value);
+					this.SendPropertyChanging();
+					this._IsOtherServices = value;
+					this.SendPropertyChanged("IsOtherServices");
+					this.OnIsOtherServicesChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PortfolioActiveProducts")]
+	public partial class PortfolioActiveProduct : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _UserID;
+		
+		private System.Nullable<int> _PortfolioID;
+		
+		private System.Nullable<bool> _IsLivestream;
+		
+		private System.Nullable<bool> _IsOnlineShop;
+		
+		private System.Nullable<bool> _IsPeerToPeerFundraising;
+		
+		private System.Nullable<bool> _IsBeneficiaryManagement;
+		
+		private System.Nullable<bool> _IsProjectManagement;
+		
+		private System.Nullable<bool> _IsAI;
+		
+		private System.Nullable<bool> _IsAcademy;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    partial void OnPortfolioIDChanging(System.Nullable<int> value);
+    partial void OnPortfolioIDChanged();
+    partial void OnIsLivestreamChanging(System.Nullable<bool> value);
+    partial void OnIsLivestreamChanged();
+    partial void OnIsOnlineShopChanging(System.Nullable<bool> value);
+    partial void OnIsOnlineShopChanged();
+    partial void OnIsPeerToPeerFundraisingChanging(System.Nullable<bool> value);
+    partial void OnIsPeerToPeerFundraisingChanged();
+    partial void OnIsBeneficiaryManagementChanging(System.Nullable<bool> value);
+    partial void OnIsBeneficiaryManagementChanged();
+    partial void OnIsProjectManagementChanging(System.Nullable<bool> value);
+    partial void OnIsProjectManagementChanged();
+    partial void OnIsAIChanging(System.Nullable<bool> value);
+    partial void OnIsAIChanged();
+    partial void OnIsAcademyChanging(System.Nullable<bool> value);
+    partial void OnIsAcademyChanged();
+    #endregion
+		
+		public PortfolioActiveProduct()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PortfolioID", DbType="Int")]
+		public System.Nullable<int> PortfolioID
+		{
+			get
+			{
+				return this._PortfolioID;
+			}
+			set
+			{
+				if ((this._PortfolioID != value))
+				{
+					this.OnPortfolioIDChanging(value);
+					this.SendPropertyChanging();
+					this._PortfolioID = value;
+					this.SendPropertyChanged("PortfolioID");
+					this.OnPortfolioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLivestream", DbType="Bit")]
+		public System.Nullable<bool> IsLivestream
+		{
+			get
+			{
+				return this._IsLivestream;
+			}
+			set
+			{
+				if ((this._IsLivestream != value))
+				{
+					this.OnIsLivestreamChanging(value);
+					this.SendPropertyChanging();
+					this._IsLivestream = value;
+					this.SendPropertyChanged("IsLivestream");
+					this.OnIsLivestreamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsOnlineShop", DbType="Bit")]
+		public System.Nullable<bool> IsOnlineShop
+		{
+			get
+			{
+				return this._IsOnlineShop;
+			}
+			set
+			{
+				if ((this._IsOnlineShop != value))
+				{
+					this.OnIsOnlineShopChanging(value);
+					this.SendPropertyChanging();
+					this._IsOnlineShop = value;
+					this.SendPropertyChanged("IsOnlineShop");
+					this.OnIsOnlineShopChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPeerToPeerFundraising", DbType="Bit")]
+		public System.Nullable<bool> IsPeerToPeerFundraising
+		{
+			get
+			{
+				return this._IsPeerToPeerFundraising;
+			}
+			set
+			{
+				if ((this._IsPeerToPeerFundraising != value))
+				{
+					this.OnIsPeerToPeerFundraisingChanging(value);
+					this.SendPropertyChanging();
+					this._IsPeerToPeerFundraising = value;
+					this.SendPropertyChanged("IsPeerToPeerFundraising");
+					this.OnIsPeerToPeerFundraisingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsBeneficiaryManagement", DbType="Bit")]
+		public System.Nullable<bool> IsBeneficiaryManagement
+		{
+			get
+			{
+				return this._IsBeneficiaryManagement;
+			}
+			set
+			{
+				if ((this._IsBeneficiaryManagement != value))
+				{
+					this.OnIsBeneficiaryManagementChanging(value);
+					this.SendPropertyChanging();
+					this._IsBeneficiaryManagement = value;
+					this.SendPropertyChanged("IsBeneficiaryManagement");
+					this.OnIsBeneficiaryManagementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsProjectManagement", DbType="Bit")]
+		public System.Nullable<bool> IsProjectManagement
+		{
+			get
+			{
+				return this._IsProjectManagement;
+			}
+			set
+			{
+				if ((this._IsProjectManagement != value))
+				{
+					this.OnIsProjectManagementChanging(value);
+					this.SendPropertyChanging();
+					this._IsProjectManagement = value;
+					this.SendPropertyChanged("IsProjectManagement");
+					this.OnIsProjectManagementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAI", DbType="Bit")]
+		public System.Nullable<bool> IsAI
+		{
+			get
+			{
+				return this._IsAI;
+			}
+			set
+			{
+				if ((this._IsAI != value))
+				{
+					this.OnIsAIChanging(value);
+					this.SendPropertyChanging();
+					this._IsAI = value;
+					this.SendPropertyChanged("IsAI");
+					this.OnIsAIChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAcademy", DbType="Bit")]
+		public System.Nullable<bool> IsAcademy
+		{
+			get
+			{
+				return this._IsAcademy;
+			}
+			set
+			{
+				if ((this._IsAcademy != value))
+				{
+					this.OnIsAcademyChanging(value);
+					this.SendPropertyChanging();
+					this._IsAcademy = value;
+					this.SendPropertyChanged("IsAcademy");
+					this.OnIsAcademyChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BoughtMarketplaceProducts")]
+	public partial class BoughtMarketplaceProduct : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _ProductID;
+		
+		private System.Nullable<int> _UserID;
+		
+		private System.Nullable<int> _PortfolioID;
+		
+		private System.Nullable<decimal> _Price;
+		
+		private System.Nullable<System.DateTime> _BuyDate;
+		
+		private System.Nullable<int> _TrialPeriod;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnProductIDChanging(System.Nullable<int> value);
+    partial void OnProductIDChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    partial void OnPortfolioIDChanging(System.Nullable<int> value);
+    partial void OnPortfolioIDChanged();
+    partial void OnPriceChanging(System.Nullable<decimal> value);
+    partial void OnPriceChanged();
+    partial void OnBuyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnBuyDateChanged();
+    partial void OnTrialPeriodChanging(System.Nullable<int> value);
+    partial void OnTrialPeriodChanged();
+    #endregion
+		
+		public BoughtMarketplaceProduct()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int")]
+		public System.Nullable<int> ProductID
+		{
+			get
+			{
+				return this._ProductID;
+			}
+			set
+			{
+				if ((this._ProductID != value))
+				{
+					this.OnProductIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProductID = value;
+					this.SendPropertyChanged("ProductID");
+					this.OnProductIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PortfolioID", DbType="Int")]
+		public System.Nullable<int> PortfolioID
+		{
+			get
+			{
+				return this._PortfolioID;
+			}
+			set
+			{
+				if ((this._PortfolioID != value))
+				{
+					this.OnPortfolioIDChanging(value);
+					this.SendPropertyChanging();
+					this._PortfolioID = value;
+					this.SendPropertyChanged("PortfolioID");
+					this.OnPortfolioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> BuyDate
+		{
+			get
+			{
+				return this._BuyDate;
+			}
+			set
+			{
+				if ((this._BuyDate != value))
+				{
+					this.OnBuyDateChanging(value);
+					this.SendPropertyChanging();
+					this._BuyDate = value;
+					this.SendPropertyChanged("BuyDate");
+					this.OnBuyDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrialPeriod", DbType="Int")]
+		public System.Nullable<int> TrialPeriod
+		{
+			get
+			{
+				return this._TrialPeriod;
+			}
+			set
+			{
+				if ((this._TrialPeriod != value))
+				{
+					this.OnTrialPeriodChanging(value);
+					this.SendPropertyChanging();
+					this._TrialPeriod = value;
+					this.SendPropertyChanged("TrialPeriod");
+					this.OnTrialPeriodChanged();
 				}
 			}
 		}

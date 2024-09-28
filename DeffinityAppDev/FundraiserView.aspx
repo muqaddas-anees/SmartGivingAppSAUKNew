@@ -67,6 +67,9 @@
         filter: alpha(opacity=90);
         opacity: 0.8;
     }
+	 .margin-full{
+		 margin:7%;
+	 }
    /* .modalPopup
     {
         background-color: #FFFFFF;
@@ -101,14 +104,15 @@
        </Scripts>
    </asp:ScriptManager>
 			<!--begin::Content-->
+				<div class="margin-full">
 					<div class="d-flex flex-column flex-column-fluid" id="kt_content">
 
 
 
 					
 
-
-						  <div class="row">
+						
+							<div class="row">
 							   <asp:HiddenField ID="htitle" runat="server" ClientIDMode="Static" />
                                                  <asp:HiddenField ID="hpath" runat="server" ClientIDMode="Static" />
 			  <asp:HiddenField ID="hurl" runat="server" ClientIDMode="Static" />
@@ -119,6 +123,8 @@
                         	
 					 <Pref:FaithGivingListCtrl runat="server" ID="FaithGivingListCtrl" />
 							  </div>
+							</div>
+
 						</div>
 				</body>
 

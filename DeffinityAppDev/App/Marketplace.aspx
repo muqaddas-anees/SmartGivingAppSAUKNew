@@ -24,7 +24,7 @@
 
 </style>
 	
-		<asp:ListView ID="lvCards" runat="server">
+		<asp:ListView ID="lvCards" runat="server" OnItemCommand="lvCards_ItemCommand1">
     <LayoutTemplate>
         <div class="row">
             <asp:PlaceHolder ID="itemPlaceholder" runat="server"></asp:PlaceHolder>
@@ -39,7 +39,7 @@
                     <a class="d-block overlay mb-4" data-fslightbox="lightbox-hot-sales" href='<%# Eval("VideoLink") %>'>
                         <!--begin::Image-->
                         <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" 
-                            style='background-image:url(<%# Eval("ImageUrl") %>)'></div>
+                             style='background-image:url(<%# Eval("ImageUrl") %>)'></div>
                         <!--end::Image-->
                         <!--begin::Action-->
                         <div class="overlay-layer bg-dark card-rounded bg-opacity-25">
@@ -65,13 +65,18 @@
                 </div>
                 <div class="card-footer gap-3" style="display: flex; justify-content: space-between;">
                     <a class="btn btn-primary" style="padding:10px 40px" href='<%# Eval("VideoLink") %>'><%# Eval("videoText") %></a>
-                    <a class="btn btn-primary" style="padding:10px 70px" href='<%# Eval("TrialLink") %>'><%# Eval("buyText") %></a>
+
+                    <!-- Replace buy now link with button -->
+                    <asp:LinkButton ID="btnBuyNow" runat="server" 
+                                CommandName="BuyNow" CommandArgument='<%# Eval("Id") %>' 
+                                CssClass="btn btn-primary"><%# Eval("buyText") %></asp:LinkButton>
                 </div>
                 <!--end::Publications post-->
             </div>
         </div>
     </ItemTemplate>
 </asp:ListView>
+
 
 
 

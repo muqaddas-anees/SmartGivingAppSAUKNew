@@ -62,6 +62,42 @@ namespace DeffinityAppDev.App
                         ddlCurrencyLargeCharity.SelectedValue = service.CurrencyForLargeCharities;
                         txtPriceLargeCharity.Text = service.PriceForLargeCharities.ToString();
 
+
+                        if (service.IsLivestream??false)
+                        {
+                            ddlServices.SelectedValue = "Livestream";
+                        }
+                        else if (service.IsOnlineShop ?? false)
+                        {
+                            ddlServices.SelectedValue = "OnlineShop";
+                        }
+                        else if (service.IsPeerToPeerFundraising ?? false)
+                        {
+                            ddlServices.SelectedValue = "PeerToPeerFundraising";
+                        }
+                        else if (service.IsBeneficiaryManagement ?? false)
+                        {
+                            ddlServices.SelectedValue = "BeneficiaryManagement";
+                        }
+                        else if (service.IsProjectManagement ?? false)
+                        {
+                            ddlServices.SelectedValue = "ProjectManagement";
+                        }
+                        else if (service.IsAI ?? false)
+                        {
+                            ddlServices.SelectedValue = "AI";
+                        }
+                        else if (service.IsAcademy ?? false)
+                        {
+                            ddlServices.SelectedValue = "Academy";
+                        }
+                        else if (service.IsOtherServices ?? false)
+                        {
+                            ddlServices.SelectedValue = "OtherServices";
+                        }
+
+
+
                         ddlCurrencyDiscount.SelectedValue = service.CurrencyForAnnualDiscount;
                         txtDiscountAnnualPrice.Text = service.AnnualDiscount.ToString();
                         TxtBuyNow.Text= service.textforbuynowbutton;
@@ -212,6 +248,48 @@ namespace DeffinityAppDev.App
                         service.TrialPeriod = int.Parse(txtTrialPeriod.Text);
                         service.IsModuleAvailable = chkModuleAvailable.Checked;
 
+                        service.IsLivestream = false;
+                        service.IsOnlineShop = false;
+                        service.IsPeerToPeerFundraising = false;
+                        service.IsBeneficiaryManagement = false;
+                        service.IsProjectManagement = false;
+                        service.IsAI = false;
+                        service.IsAcademy = false;
+                        service.IsOtherServices = false;
+
+                        // Set the selected service to true based on the dropdown value
+                        switch (ddlServices.SelectedValue)
+                        {
+                            case "Livestream":
+                                service.IsLivestream = true;
+                                break;
+                            case "OnlineShop":
+                                service.IsOnlineShop = true;
+                                break;
+                            case "PeerToPeerFundraising":
+                                service.IsPeerToPeerFundraising = true;
+                                break;
+                            case "BeneficiaryManagement":
+                                service.IsBeneficiaryManagement = true;
+                                break;
+                            case "ProjectManagement":
+                                service.IsProjectManagement = true;
+                                break;
+                            case "AI":
+                                service.IsAI = true;
+                                break;
+                            case "Academy":
+                                service.IsAcademy = true;
+                                break;
+                            case "OtherServices":
+                                service.IsOtherServices = true;
+                                break;
+                            default:
+                                // No valid service selected
+                                break;
+                        }
+
+
                         // Handle updating images, if necessary
                         var existingImage = context.FileDatas.SingleOrDefault(f => f.FileID == service.Id.ToString());
                         byte[] img = SaveBannerImage();
@@ -258,6 +336,9 @@ namespace DeffinityAppDev.App
                         TrialPeriod = int.Parse(txtTrialPeriod.Text),
                         IsModuleAvailable = chkModuleAvailable.Checked,
 
+
+
+
                         UrlForSmall=txtBuyNowSmallCharity.Text,
                         UrlForLarge=txtBuyNowLargeCharity.Text,
                         UrlForMedium=txtBuyNowMediumCharity.Text,
@@ -265,6 +346,46 @@ namespace DeffinityAppDev.App
                         textforvideobutton=txtVideoBtn.Text
 
                     };
+                    service.IsLivestream = false;
+                    service.IsOnlineShop = false;
+                    service.IsPeerToPeerFundraising = false;
+                    service.IsBeneficiaryManagement = false;
+                    service.IsProjectManagement = false;
+                    service.IsAI = false;
+                    service.IsAcademy = false;
+                    service.IsOtherServices = false;
+
+                    // Set the selected service to true based on the dropdown value
+                    switch (ddlServices.SelectedValue)
+                    {
+                        case "Livestream":
+                            service.IsLivestream = true;
+                            break;
+                        case "OnlineShop":
+                            service.IsOnlineShop = true;
+                            break;
+                        case "PeerToPeerFundraising":
+                            service.IsPeerToPeerFundraising = true;
+                            break;
+                        case "BeneficiaryManagement":
+                            service.IsBeneficiaryManagement = true;
+                            break;
+                        case "ProjectManagement":
+                            service.IsProjectManagement = true;
+                            break;
+                        case "AI":
+                            service.IsAI = true;
+                            break;
+                        case "Academy":
+                            service.IsAcademy = true;
+                            break;
+                        case "OtherServices":
+                            service.IsOtherServices = true;
+                            break;
+                        default:
+                            // No valid service selected
+                            break;
+                    }
 
                     // Insert new service into the database
                     context.MarketplaceProducts.InsertOnSubmit(service);
