@@ -54,6 +54,12 @@ namespace DeffinityAppDev
                         {
                             url = marketPlaceProducts[i].UrlForLarge; // Use URL for large
                         }
+                        var boughtproducts=c.BoughtMarketplaceProducts.FirstOrDefault(o=>o.ProductID == marketPlaceProducts[i].Id);
+                        if(boughtproducts!= null)
+                        {
+                            continue;
+                        }
+                        
                         var Product = new Products
                         {
                             Id = marketPlaceProducts[i].Id,
@@ -146,7 +152,7 @@ namespace DeffinityAppDev
 
         }
 
-        private void BuyNow(int ID)
+        private void BuyNow(int ID, bool success)
         {
             try { 
             using (var ucontext = new UserDataContext())
@@ -240,20 +246,106 @@ namespace DeffinityAppDev
             },
                     Mode = "subscription",
                     
-                    SuccessUrl = $"{url}/PaySuccess.aspx?uid{user.ID}&pid={product.Id}&price={price}", // Replace with your success URL
+                    SuccessUrl = $"{url}/PaySuccess.aspx?uid={user.ID}&pid={product.Id}&price={price}", // Replace with your success URL
                     CancelUrl = $"{url}/app/marketplace.aspx", // Replace with your cancel URL
                     Metadata = new Dictionary<string, string>
             {
                 { "UserId", user.ID.ToString() } // Add user ID to metadata
             },
                 };
-
+                    string successURL = $"{url}/PaySuccess.aspx?uid={user.ID}&pid={product.Id}&price={price}";
                 var session = sessionService.Create(sessionOptions);
-
+                    string redirectUrl = $"{stripepaymenturl}?sessionId={session.Id}&successUrl={successURL}&cancelUrl=https://dev.plegit.ai/cancel";
                 // Redirect to the checkout URL
-               Response.Redirect(session.Url);
+               Response.Redirect(redirectUrl);
             }
             }catch(Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+        }
+        string stripeApiKey = "sk_test_51PGlrNGzv4qSCbkBuyXuul65KHEZ97wThTwdXwb7uTiyuUkfkwf58xRcN3n8KxXmbEtZckXguKjxFHnPxIuS5ZA300JD4kOxbg";
+        string stripePublishableApiKey = "pk_test_51PGlrNGzv4qSCbkB8m9lJUs6u578E4vyWXg4Wj65zbokvveztQo3nH0LLWFVmpX4SdUjmbPcWjjBY13yLDWeggxa00tLaNsvJ8";
+        private void BuyNow(int ID)
+        {
+            try
+            {
+                using (var ucontext = new UserDataContext())
+                using (var context = new PortfolioDataContext())
+                {
+                    string url = "https://dev.plegit.ai";
+                    var product = context.MarketplaceProducts.FirstOrDefault(o => o.Id == ID);
+                    int sizeOfCurrentCharity = GetSize();
+
+                    // Get the size range based on the current size
+                    var range = context.CharitySizeRanges
+                        .FirstOrDefault(o => o.FromRange <= sizeOfCurrentCharity && o.ToRange >= sizeOfCurrentCharity);
+
+                    double price = 0; // Initialize price
+                    string currency = "usd";
+                    string priceid = "";
+                    if (range != null)
+                    {
+                        if (range.Size.ToLower() == "small")
+                        {
+                            currency = product.CurrencyForSmallCharities;
+                            price = double.Parse(product.PriceForSmallCharities.ToString()); // Convert to double
+                            priceid = product.UrlForSmall;
+                        }
+                        else if (range.Size.ToLower() == "medium")
+                        {
+                            currency = product.CurrencyForMediumCharities;
+                            price = double.Parse(product.PriceForMediumCharities.ToString()); // Convert to double
+                            priceid = product.UrlForMedium;
+                        }
+                        else if (range.Size.ToLower() == "large")
+                        {
+                            currency = product.CurrencyForLargeCharities;
+                            price = double.Parse(product.PriceForLargeCharities.ToString()); // Convert to double
+                            priceid = product.UrlForLarge;
+                        }
+                    }
+                    if(String.IsNullOrEmpty(priceid))
+                    {
+                        DeffinityManager.ShowMessages.ShowErrorAlert(this.Page, "Oops! There seems to be an issue. We are working to get it fixed.");
+                        return;
+                    }
+                    Response.Write("Price: " + price);
+
+                    // Set Stripe API Key
+                    StripeConfiguration.ApiKey = stripeApiKey;
+
+                    var user = ucontext.Contractors.FirstOrDefault(o => o.ID == sessionKeys.UID);
+
+                    // Skip creating a new price, use the existing price ID
+                    var sessionService = new SessionService();
+                    var sessionOptions = new SessionCreateOptions
+                    {
+                        PaymentMethodTypes = new List<string> { "card" },
+                        LineItems = new List<SessionLineItemOptions>
+                {
+                    new SessionLineItemOptions
+                    {
+                        Price = priceid, // Use the existing price ID
+                        Quantity = 1,
+                    },
+                },
+                        Mode = "subscription",
+                        SuccessUrl = $"{url}/PaySuccess.aspx?uid={user.ID}&pid={product.Id}&price={price}", // Success URL
+                        CancelUrl = $"{url}/app/marketplace.aspx", // Cancel URL
+                        Metadata = new Dictionary<string, string>
+                {
+                    { "user_id", user.ID.ToString() }, // Add user ID to metadata
+                },
+                    };
+
+                    var session = sessionService.Create(sessionOptions);
+
+                    // Redirect to the Stripe Checkout session URL
+                    Response.Redirect(session.Url);
+                }
+            }
+            catch (Exception ex)
             {
                 Response.Write(ex.Message);
             }

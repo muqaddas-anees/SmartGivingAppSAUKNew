@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-3">
-                    <asp:TextBox ID="txtBuyNowSmallCharity" runat="server" CssClass="form-control" placeholder="Buy Now URL for Small Charities"></asp:TextBox>
+                    <asp:TextBox ID="txtBuyNowSmallCharity" runat="server" CssClass="form-control" placeholder="Buy Now Price ID for Small Charities"></asp:TextBox>
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
                 <div class="col-md-4" align="left">
                     <div class="form-group d-flex align-items-center">
                         
-                        <asp:TextBox ID="txtBuyNowMediumCharity" runat="server" CssClass="form-control" placeholder="Buy Now URL for Medium Charities"></asp:TextBox>
+                        <asp:TextBox ID="txtBuyNowMediumCharity" runat="server" CssClass="form-control" placeholder="Buy Now Price ID for Medium Charities"></asp:TextBox>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-3">
-                    <asp:TextBox ID="txtBuyNowLargeCharity" runat="server" CssClass="form-control" placeholder="Buy Now URL for Large Charities"></asp:TextBox>
+                    <asp:TextBox ID="txtBuyNowLargeCharity" runat="server" CssClass="form-control" placeholder="Buy Now Price ID for Large Charities"></asp:TextBox>
                 </div>
             </div>
 

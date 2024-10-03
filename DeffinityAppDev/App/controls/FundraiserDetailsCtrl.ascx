@@ -362,8 +362,8 @@ header .close:hover{
             <div class="card-body border-top p-9">
                 <!--begin::Input group-->
                 <div class="row pt-5">
-                    <div class="row mb-6"></div>
-                    <div class="row p-5">
+                    
+                    <div class="row p-5" style="padding-top:0px !important">
                         <h3 class="fw-bolder m-0 text-center">
                             <asp:Label ID="lblTitle" runat="server" Font-Size="32px"></asp:Label>
                         </h3>
@@ -428,7 +428,7 @@ header .close:hover{
     </div>
 
     <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card mb-5" style="min-width: 340px; ">
+        <div style="background-color: #F5F7F8;" class="card mb-5" style="min-width: 340px; ">
             <!--begin::Card header-->
             <div class="card-header border-0 cursor-pointer" data-bs-target="#kt_account_profile_details" aria-controls="kt_account_profile_details">
                 <!--begin::Card title-->
@@ -441,7 +441,7 @@ header .close:hover{
                 <!--end::Card title-->
             </div>
 
-            <div class="card-body border-top p-9 h-400px text-center">
+            <div  class="card-body border-top p-9 h-400px text-center">
                 <div style="">
                 <span id="amountraised" class="raised fw-bolder">
                     

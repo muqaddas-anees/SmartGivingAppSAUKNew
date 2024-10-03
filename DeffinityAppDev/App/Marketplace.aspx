@@ -24,15 +24,16 @@
 
 </style>
 	
-		<asp:ListView ID="lvCards" runat="server" OnItemCommand="lvCards_ItemCommand1">
+	<asp:ListView ID="lvCards" runat="server" OnItemCommand="lvCards_ItemCommand1">
     <LayoutTemplate>
-        <div class="row">
+        <div class="row d-flex flex-wrap">
             <asp:PlaceHolder ID="itemPlaceholder" runat="server"></asp:PlaceHolder>
         </div>
     </LayoutTemplate>
     <ItemTemplate>
-        <div class="col-md-4">
-            <div class="card card-bordered mb-6">
+        <div class="col-md-4 d-flex">
+            <!-- Make the card container a flex column to push footer to the bottom -->
+            <div class="card card-bordered mb-6 h-100 w-100 d-flex flex-column">
                 <!--begin::Publications post-->
                 <div class="card-xl-stretch me-md-6">
                     <!--begin::Overlay-->
@@ -63,30 +64,23 @@
                     </div>
                     <!--end::Body-->
                 </div>
-                <div class="card-footer gap-3" style="display: flex; justify-content: space-between;">
-                    <a class="btn btn-primary" style="padding:10px 40px" href='<%# Eval("VideoLink") %>'><%# Eval("videoText") %></a>
+                <!--begin::Footer-->
+                <!-- Add mt-auto to push the footer to the bottom and add 10px margin from the bottom -->
+                <div class="card-footer d-flex justify-content-between mt-auto" style="margin-bottom: 10px;">
+                    <a class="btn btn-primary" style="padding:10px 40px" href='<%# Eval("VideoLink") %>'>
+                        <%# Eval("videoText") %>
+                    </a>
 
                     <!-- Replace buy now link with button -->
                     <asp:LinkButton ID="btnBuyNow" runat="server" 
                                 CommandName="BuyNow" CommandArgument='<%# Eval("Id") %>' 
                                 CssClass="btn btn-primary"><%# Eval("buyText") %></asp:LinkButton>
                 </div>
-                <!--end::Publications post-->
+                <!--end::Footer-->
             </div>
         </div>
     </ItemTemplate>
 </asp:ListView>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
