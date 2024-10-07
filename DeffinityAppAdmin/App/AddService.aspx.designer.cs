@@ -150,15 +150,6 @@ namespace DeffinityAppDev.App
         protected global::System.Web.UI.WebControls.TextBox txtBuyNowLargeCharity;
 
         /// <summary>
-        /// ddlCurrencyDiscount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCurrencyDiscount;
-
-        /// <summary>
         /// txtDiscountAnnualPrice control.
         /// </summary>
         /// <remarks>

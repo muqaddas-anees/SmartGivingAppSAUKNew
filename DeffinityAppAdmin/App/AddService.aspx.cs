@@ -44,7 +44,7 @@ namespace DeffinityAppDev.App
                 using (var context = new PortfolioDataContext())
                 {
                     // Retrieve the service with the given ID
-                    var service = context.MarketplaceProducts.SingleOrDefault(s => s.Id == serviceId);
+                    var service = context.MarketplaceProducts.FirstOrDefault(s => s.Id == serviceId);
 
                     if (service != null)
                     {
@@ -98,7 +98,6 @@ namespace DeffinityAppDev.App
 
 
 
-                        ddlCurrencyDiscount.SelectedValue = service.CurrencyForAnnualDiscount;
                         txtDiscountAnnualPrice.Text = service.AnnualDiscount.ToString();
                         TxtBuyNow.Text= service.textforbuynowbutton;
                         txtVideoBtn.Text = service.textforvideobutton;
@@ -149,10 +148,6 @@ namespace DeffinityAppDev.App
             ddlCurrencyLargeCharity.DataValueField = "Value";
             ddlCurrencyLargeCharity.DataBind();
 
-            ddlCurrencyDiscount.DataSource = currencies;
-            ddlCurrencyDiscount.DataTextField = "Text";
-            ddlCurrencyDiscount.DataValueField = "Value";
-            ddlCurrencyDiscount.DataBind();
         }
 
         private void LoadServices()
@@ -206,48 +201,147 @@ namespace DeffinityAppDev.App
 
         protected void btnSaveNew_Click(object sender, EventArgs e)
         {
-            using (var context = new PortfolioDataContext())
+            try
             {
-                MarketplaceProduct service;
-
-                // Check if MID exists in the query string to determine if we're in edit mode
-                if (!string.IsNullOrEmpty(Request.QueryString["MID"]))
+                using (var context = new PortfolioDataContext())
                 {
-                    // Parse MID as an integer
-                    int serviceId = int.Parse(Request.QueryString["MID"]);
+                    MarketplaceProduct service;
 
-                    // Retrieve the existing service
-                    service = context.MarketplaceProducts.SingleOrDefault(s => s.Id == serviceId);
-
-                    if (service != null)
+                    // Check if MID exists in the query string to determine if we're in edit mode
+                    if (!string.IsNullOrEmpty(Request.QueryString["MID"]))
                     {
-                        // Update the existing service
-                        service.Title = txtModuleTitle.Text;
-                        service.Description = txtModuleDescription.Text;
-                        service.VideoDescriptionUrl = txtVideoExplainerURL.Text;
+                        // Parse MID as an integer
+                        int serviceId = int.Parse(Request.QueryString["MID"]);
 
-                        service.CurrencyForSmallCharities = ddlCurrencySmallCharity.SelectedValue;
-                        service.PriceForSmallCharities = decimal.Parse(txtPriceSmallCharity.Text);
+                        // Retrieve the existing service
+                        service = context.MarketplaceProducts.FirstOrDefault(s => s.Id == serviceId);
 
-                        service.CurrencyForMediumCharities = ddlCurrencyMediumCharity.SelectedValue;
-                        service.PriceForMediumCharities = decimal.Parse(txtPriceMediumCharity.Text);
+                        if (service != null)
+                        {
+                            // Update the existing service
+                            service.Title = txtModuleTitle.Text;
+                            service.Description = txtModuleDescription.Text;
+                            service.VideoDescriptionUrl = txtVideoExplainerURL.Text;
 
-                        service.CurrencyForLargeCharities = ddlCurrencyLargeCharity.SelectedValue;
-                        service.PriceForLargeCharities = decimal.Parse(txtPriceLargeCharity.Text);
+                            service.CurrencyForSmallCharities = ddlCurrencySmallCharity.SelectedValue;
+                            service.PriceForSmallCharities = decimal.Parse(txtPriceSmallCharity.Text);
 
-                        service.textforbuynowbutton = TxtBuyNow.Text;
-                        service.textforvideobutton = txtVideoBtn.Text;
+                            service.CurrencyForMediumCharities = ddlCurrencyMediumCharity.SelectedValue;
+                            service.PriceForMediumCharities = decimal.Parse(txtPriceMediumCharity.Text);
 
-                        service.CurrencyForAnnualDiscount = ddlCurrencyDiscount.SelectedValue;
-                        service.AnnualDiscount = decimal.Parse(txtDiscountAnnualPrice.Text);
+                            service.CurrencyForLargeCharities = ddlCurrencyLargeCharity.SelectedValue;
+                            service.PriceForLargeCharities = decimal.Parse(txtPriceLargeCharity.Text);
 
-                        service.UrlForSmall = txtBuyNowSmallCharity.Text;
-                        service.UrlForLarge = txtBuyNowLargeCharity.Text;
-                        service.UrlForMedium = txtBuyNowMediumCharity.Text;
+                            service.textforbuynowbutton = TxtBuyNow.Text;
+                            service.textforvideobutton = txtVideoBtn.Text;
 
-                        service.TrialPeriod = int.Parse(txtTrialPeriod.Text);
-                        service.IsModuleAvailable = chkModuleAvailable.Checked;
+                            service.AnnualDiscount = decimal.Parse(txtDiscountAnnualPrice.Text);
 
+                            service.UrlForSmall = txtBuyNowSmallCharity.Text;
+                            service.UrlForLarge = txtBuyNowLargeCharity.Text;
+                            service.UrlForMedium = txtBuyNowMediumCharity.Text;
+
+                            service.TrialPeriod = int.Parse(txtTrialPeriod.Text);
+                            service.IsModuleAvailable = chkModuleAvailable.Checked;
+
+                            service.IsLivestream = false;
+                            service.IsOnlineShop = false;
+                            service.IsPeerToPeerFundraising = false;
+                            service.IsBeneficiaryManagement = false;
+                            service.IsProjectManagement = false;
+                            service.IsAI = false;
+                            service.IsAcademy = false;
+                            service.IsOtherServices = false;
+
+                            // Set the selected service to true based on the dropdown value
+                            switch (ddlServices.SelectedValue)
+                            {
+                                case "Livestream":
+                                    service.IsLivestream = true;
+                                    break;
+                                case "OnlineShop":
+                                    service.IsOnlineShop = true;
+                                    break;
+                                case "PeerToPeerFundraising":
+                                    service.IsPeerToPeerFundraising = true;
+                                    break;
+                                case "BeneficiaryManagement":
+                                    service.IsBeneficiaryManagement = true;
+                                    break;
+                                case "ProjectManagement":
+                                    service.IsProjectManagement = true;
+                                    break;
+                                case "AI":
+                                    service.IsAI = true;
+                                    break;
+                                case "Academy":
+                                    service.IsAcademy = true;
+                                    break;
+                                case "OtherServices":
+                                    service.IsOtherServices = true;
+                                    break;
+                                default:
+                                    // No valid service selected
+                                    break;
+                            }
+
+
+                            // Handle updating images, if necessary
+                            var existingImage = context.FileDatas.FirstOrDefault(f => f.FileID == service.Id.ToString() && f.Section==ImageManager.file_section_marketplace);
+                            byte[] img = SaveBannerImage();
+                            if (existingImage != null && img != null)
+                            {
+                                existingImage.FileData1 = img;
+                            }
+                            else
+                            {
+                                if (img != null)
+                                {
+                                    var newimg = new FileData
+                                    {
+                                        FileID = service.Id.ToString(),
+                                        FileData1 = img,
+                                        Section = ImageManager.file_section_marketplace
+                                    };
+                                    context.FileDatas.InsertOnSubmit(newimg);
+                                }
+                            }
+                            context.SubmitChanges();
+                        }
+                    }
+                    else
+                    {
+                        // Insert a new service
+                        service = new MarketplaceProduct
+                        {
+                            Title = txtModuleTitle.Text,
+                            Description = txtModuleDescription.Text,
+                            VideoDescriptionUrl = txtVideoExplainerURL.Text,
+
+                            CurrencyForSmallCharities = ddlCurrencySmallCharity.SelectedValue,
+                            PriceForSmallCharities = decimal.Parse(txtPriceSmallCharity.Text),
+
+                            CurrencyForMediumCharities = ddlCurrencyMediumCharity.SelectedValue,
+                            PriceForMediumCharities = decimal.Parse(txtPriceMediumCharity.Text),
+
+                            CurrencyForLargeCharities = ddlCurrencyLargeCharity.SelectedValue,
+                            PriceForLargeCharities = decimal.Parse(txtPriceLargeCharity.Text),
+
+                            AnnualDiscount = decimal.Parse(txtDiscountAnnualPrice.Text),
+
+                            TrialPeriod = int.Parse(txtTrialPeriod.Text),
+                            IsModuleAvailable = chkModuleAvailable.Checked,
+
+
+
+
+                            UrlForSmall = txtBuyNowSmallCharity.Text,
+                            UrlForLarge = txtBuyNowLargeCharity.Text,
+                            UrlForMedium = txtBuyNowMediumCharity.Text,
+                            textforbuynowbutton = TxtBuyNow.Text,
+                            textforvideobutton = txtVideoBtn.Text
+
+                        };
                         service.IsLivestream = false;
                         service.IsOnlineShop = false;
                         service.IsPeerToPeerFundraising = false;
@@ -289,126 +383,38 @@ namespace DeffinityAppDev.App
                                 break;
                         }
 
+                        // Insert new service into the database
+                        context.MarketplaceProducts.InsertOnSubmit(service);
+                        context.SubmitChanges();  // Commit here to generate the service ID
 
-                        // Handle updating images, if necessary
-                        var existingImage = context.FileDatas.SingleOrDefault(f => f.FileID == service.Id.ToString());
+                        // Now that the service ID is available, save the image
                         byte[] img = SaveBannerImage();
-                        if (existingImage != null && img!=null)
+                        if (img != null)
                         {
-                            existingImage.FileData1 = img;
-                        }
-                        else
-                        {
-                            if(img!=null)
-                            { 
                             var newimg = new FileData
                             {
-                                FileID = service.Id.ToString(),
+                                FileID = service.Id.ToString(),  // Now service.Id is valid
                                 FileData1 = img,
                                 Section = ImageManager.file_section_marketplace
                             };
                             context.FileDatas.InsertOnSubmit(newimg);
-                            }
                         }
                     }
-                }
-                else
-                {
-                    // Insert a new service
-                    service = new MarketplaceProduct
+
+                    // Commit any remaining changes to the database
+                    context.SubmitChanges();
+                    DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Saved Successfuly");
+                    if (QueryStringValues.MID == 0)
                     {
-                        Title = txtModuleTitle.Text,
-                        Description = txtModuleDescription.Text,
-                        VideoDescriptionUrl = txtVideoExplainerURL.Text,
-
-                        CurrencyForSmallCharities = ddlCurrencySmallCharity.SelectedValue,
-                        PriceForSmallCharities = decimal.Parse(txtPriceSmallCharity.Text),
-
-                        CurrencyForMediumCharities = ddlCurrencyMediumCharity.SelectedValue,
-                        PriceForMediumCharities = decimal.Parse(txtPriceMediumCharity.Text),
-
-                        CurrencyForLargeCharities = ddlCurrencyLargeCharity.SelectedValue,
-                        PriceForLargeCharities = decimal.Parse(txtPriceLargeCharity.Text),
-
-                        CurrencyForAnnualDiscount = ddlCurrencyDiscount.SelectedValue,
-                        AnnualDiscount = decimal.Parse(txtDiscountAnnualPrice.Text),
-
-                        TrialPeriod = int.Parse(txtTrialPeriod.Text),
-                        IsModuleAvailable = chkModuleAvailable.Checked,
-
-
-
-
-                        UrlForSmall=txtBuyNowSmallCharity.Text,
-                        UrlForLarge=txtBuyNowLargeCharity.Text,
-                        UrlForMedium=txtBuyNowMediumCharity.Text,
-                        textforbuynowbutton=TxtBuyNow.Text,
-                        textforvideobutton=txtVideoBtn.Text
-
-                    };
-                    service.IsLivestream = false;
-                    service.IsOnlineShop = false;
-                    service.IsPeerToPeerFundraising = false;
-                    service.IsBeneficiaryManagement = false;
-                    service.IsProjectManagement = false;
-                    service.IsAI = false;
-                    service.IsAcademy = false;
-                    service.IsOtherServices = false;
-
-                    // Set the selected service to true based on the dropdown value
-                    switch (ddlServices.SelectedValue)
-                    {
-                        case "Livestream":
-                            service.IsLivestream = true;
-                            break;
-                        case "OnlineShop":
-                            service.IsOnlineShop = true;
-                            break;
-                        case "PeerToPeerFundraising":
-                            service.IsPeerToPeerFundraising = true;
-                            break;
-                        case "BeneficiaryManagement":
-                            service.IsBeneficiaryManagement = true;
-                            break;
-                        case "ProjectManagement":
-                            service.IsProjectManagement = true;
-                            break;
-                        case "AI":
-                            service.IsAI = true;
-                            break;
-                        case "Academy":
-                            service.IsAcademy = true;
-                            break;
-                        case "OtherServices":
-                            service.IsOtherServices = true;
-                            break;
-                        default:
-                            // No valid service selected
-                            break;
+                        Response.Redirect(Request.RawUrl + "?MID=" + service.Id);
                     }
-
-                    // Insert new service into the database
-                    context.MarketplaceProducts.InsertOnSubmit(service);
-                    context.SubmitChanges();  // Commit here to generate the service ID
-
-                    // Now that the service ID is available, save the image
-                    byte[] img = SaveBannerImage();
-                    if(img!=null)
-                    { 
-                    var newimg = new FileData
-                    {
-                        FileID = service.Id.ToString(),  // Now service.Id is valid
-                        FileData1 = img,
-                        Section = ImageManager.file_section_marketplace
-                    };
-                    context.FileDatas.InsertOnSubmit(newimg);
-                    }
+                    // Redirect or show success message
                 }
+            }
+            catch (Exception ex)
+            {
 
-                // Commit any remaining changes to the database
-                context.SubmitChanges();
-                DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Saved Successfuly");
-                // Redirect or show success message
+                LogExceptions.WriteExceptionLog(ex);
             }
         }
 

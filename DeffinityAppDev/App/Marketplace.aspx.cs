@@ -33,6 +33,7 @@ namespace DeffinityAppDev
                     .Where(o => o.IsModuleAvailable == true)
                     .ToList();
                 List<Products> produces=new List<Products>();
+                List<Products> Boughtproduces = new List<Products>();
                 // Modify the list as needed
                 for (int i=0;i < marketPlaceProducts.Count();i++)
                 {
@@ -54,11 +55,7 @@ namespace DeffinityAppDev
                         {
                             url = marketPlaceProducts[i].UrlForLarge; // Use URL for large
                         }
-                        var boughtproducts=c.BoughtMarketplaceProducts.FirstOrDefault(o=>o.ProductID == marketPlaceProducts[i].Id);
-                        if(boughtproducts!= null)
-                        {
-                            continue;
-                        }
+                 
                         
                         var Product = new Products
                         {
@@ -71,7 +68,14 @@ namespace DeffinityAppDev
                             VideoLink = marketPlaceProducts[i].VideoDescriptionUrl,
                             ImageUrl = $"/imagehandler.ashx?id={marketPlaceProducts[i].Id}&s={ImageManager.file_section_marketplace}"
                         };
+                        var boughtproducts = c.BoughtMarketplaceProducts.FirstOrDefault(o => o.ProductID == marketPlaceProducts[i].Id);
+                        if (boughtproducts != null)
+                        {
+                            Boughtproduces.Add(Product);
+                        }
+                        else { 
                         produces.Add(Product);
+                        }
                     }
 
                     // You can also add other modifications here
@@ -81,6 +85,10 @@ namespace DeffinityAppDev
                 // Now you can bind the modified list to the ListView
                 lvCards.DataSource = produces;
                 lvCards.DataBind();
+
+
+                lv_BoughtCards.DataSource = Boughtproduces;
+                lv_BoughtCards.DataBind();
             }
 
         }
@@ -305,6 +313,12 @@ namespace DeffinityAppDev
                             priceid = product.UrlForLarge;
                         }
                     }
+                    var user = ucontext.Contractors.FirstOrDefault(o => o.ID == sessionKeys.UID);
+
+                    if (price==0)
+                    {
+                        Response.Redirect($"{url}/PaySuccess.aspx?uid={user.ID}&pid={product.Id}&price={price}");
+                    }
                     if(String.IsNullOrEmpty(priceid))
                     {
                         DeffinityManager.ShowMessages.ShowErrorAlert(this.Page, "Oops! There seems to be an issue. We are working to get it fixed.");
@@ -315,7 +329,6 @@ namespace DeffinityAppDev
                     // Set Stripe API Key
                     StripeConfiguration.ApiKey = stripeApiKey;
 
-                    var user = ucontext.Contractors.FirstOrDefault(o => o.ID == sessionKeys.UID);
 
                     // Skip creating a new price, use the existing price ID
                     var sessionService = new SessionService();
