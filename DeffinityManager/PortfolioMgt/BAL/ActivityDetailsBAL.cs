@@ -105,6 +105,8 @@ namespace PortfolioMgt.BAL
             IPortfolioRepository<PortfolioMgt.Entity.V_ActivityDetail> pRep = new PortfolioRepository<PortfolioMgt.Entity.V_ActivityDetail>();
             return pRep.GetAll();
 
+           
+
         }
     }
 }

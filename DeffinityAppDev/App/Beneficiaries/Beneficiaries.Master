@@ -1,0 +1,99 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="Beneficiaries.master.cs" Inherits="DeffinityAppDev.App.Beneficiaries.Beneficiaries" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <asp:ContentPlaceHolder ID="headContent" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="page_title" runat="server">
+    <asp:Label ID="lblPagetitle" runat="server"></asp:Label>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="page_description" runat="server">
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
+
+
+
+<div class="d-flex flex-wrap flex-sm-nowrap">
+    <!-- User Profile Section -->
+    <div class="me-7 mb-4">
+        <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
+            <img src="/metronic8/demo1/assets/media/avatars/300-1.jpg" alt="image"/>
+            <div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-body h-20px w-20px"></div>
+        </div>
+    </div>
+
+    <div class="flex-grow-1">
+        <!-- User Information -->
+        <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+            <div class="d-flex flex-column">
+                <div class="d-flex align-items-center mb-2">
+                    <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bold me-1">PSRD</a>
+                </div>
+
+                <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                    <a href="#" class="d-flex align-items-center text-gray-500 text-hover-primary me-5 mb-2">
+                        <i class="ki-duotone ki-geolocation fs-4 me-1"><span class="path1"></span><span class="path2"></span></i> karachi road islamabad
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap flex-stack">   
+            <div class="d-flex align-items-center w-200 w-sm-100px flex-row mt-6">
+                <asp:Button ID="btnUpload" runat="server" Text="Upload" CssClass="btn btn-primary mb-2 mx-3 text-white" OnClick="btnUpload_Click" />
+                <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger mb-2 mx-3" OnClick="btnDelete_Click" />
+            </div>
+        </div>
+    </div>
+</div>   
+
+<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="<%= ResolveUrl("~/App/Beneficiaries/BasicInfo.aspx") %>">Personal Information</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="/App/Beneficiaries/SecondaryBeneficiaries.aspx">Secondary Beneficiaries</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="/App/Beneficiaries/BeneficiaryContacts.aspx">Contacts</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="/App/Beneficiaries/BeneficiarySupport.aspx">Support Received</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="/App/Beneficiaries/BeneficiaryActivity.aspx">Activity</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="/App/Beneficiaries/BeneficiaryCommunication.aspx">Communication</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="/App/Beneficiaries/BeneficiaryReport.aspx">Report</a>
+    </li>
+</ul>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // Get the current page URL
+    const currentUrl = window.location.pathname;
+
+    // Get all <a> elements within the nav
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // Loop through each <a> element
+    navLinks.forEach(function(link) {
+        // If the href matches the current URL, add the 'active' class
+        if (link.getAttribute("href") === currentUrl) {
+            // Remove the 'active' class from all links first
+            navLinks.forEach(navLink => navLink.classList.remove("active"));
+            
+            // Add the 'active' class to the matching link
+            link.classList.add("active");
+        }
+    });
+});
+
+    </script>
+<div class="container body-content card">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+</div>
+    </asp:Content>

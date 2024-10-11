@@ -12,7 +12,7 @@ namespace DeffinityAppDev.App.controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DisplayandHideSerives();
+            //DisplayandHideSerives();
             if (sessionKeys.SID == 3)
             {
                 
@@ -37,7 +37,7 @@ namespace DeffinityAppDev.App.controls
                 a_tithing.Title = "Tithing";
             }
         }
-        private void DisplayandHideSerives()
+  /*      private void DisplayandHideSerives()
         {
             using (var context = new PortfolioDataContext())
             {
@@ -120,5 +120,5 @@ namespace DeffinityAppDev.App.controls
             }
         }
 
-    }
+   */ }
 }

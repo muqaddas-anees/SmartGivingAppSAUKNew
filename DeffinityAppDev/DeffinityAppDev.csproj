@@ -27,6 +27,8 @@
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
     <Use64BitIISExpress>false</Use64BitIISExpress>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,6 +62,9 @@
     </Reference>
     <Reference Include="AntiXssLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
       <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="BitMiracle.LibTiff.NET, Version=2.4.649.0, Culture=neutral, PublicKeyToken=53879b3e20e7a7d6, processorArchitecture=MSIL">
+      <HintPath>..\packages\BitMiracle.LibTiff.NET.2.4.649\lib\net40\BitMiracle.LibTiff.NET.dll</HintPath>
     </Reference>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
@@ -265,6 +270,9 @@
     <Reference Include="shortid, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\shortid.4.0.0\lib\netstandard1.0\shortid.dll</HintPath>
     </Reference>
+    <Reference Include="SkiaSharp, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.2.88.6\lib\net462\SkiaSharp.dll</HintPath>
+    </Reference>
     <Reference Include="stream-chat-net, Version=0.26.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\stream-chat-net.0.26.0\lib\net46\stream-chat-net.dll</HintPath>
     </Reference>
@@ -273,6 +281,39 @@
     </Reference>
     <Reference Include="Stripe.net, Version=44.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Stripe.net.44.10.0\lib\net461\Stripe.net.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=22.1460.34.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.22.1.34\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.NET, Version=27.1.52.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.NET.27.1.52\lib\netstandard2.0\Syncfusion.Compression.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.NET, Version=27.1.52.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.DocIO.NET.27.1.52\lib\netstandard2.0\Syncfusion.DocIO.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIORenderer.NET, Version=27.1.52.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.DocIORenderer.NET.27.1.52\lib\netstandard2.0\Syncfusion.DocIORenderer.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=27.1462.52.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.27.1.52\lib\net462\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.MetafileRenderer.NET, Version=27.1.52.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.MetafileRenderer.NET.27.1.52\lib\netstandard2.0\Syncfusion.MetafileRenderer.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChart.Base, Version=22.1460.34.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.OfficeChart.Base.22.1.34\lib\net46\Syncfusion.OfficeChart.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChart.NET, Version=27.1.52.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.OfficeChart.NET.27.1.52\lib\netstandard2.0\Syncfusion.OfficeChart.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Imaging.NET, Version=27.1.52.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.Imaging.NET.27.1.52\lib\netstandard2.0\Syncfusion.Pdf.Imaging.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.NET, Version=27.1.52.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.NET.27.1.52\lib\netstandard2.0\Syncfusion.Pdf.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SkiaSharpHelper.NET, Version=27.1.52.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.SkiaSharpHelper.NET.27.1.52\lib\netstandard2.0\Syncfusion.SkiaSharpHelper.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -298,8 +339,8 @@
     <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
     </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -325,8 +366,8 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
@@ -334,8 +375,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Security" />
-    <Reference Include="System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    <Reference Include="System.Text.Encoding.CodePages, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.6.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
@@ -420,6 +461,15 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Document.NET, Version=3.0.24152.12190, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Document.NET.3.0.24152.1219\lib\net40\Xceed.Document.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Pdf, Version=3.0.24152.12190, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Pdf.3.0.24152.1219\lib\net40\Xceed.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=3.0.24152.12190, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Words.NET.3.0.24152.1219\lib\net40\Xceed.Words.NET.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\controls\b\" />
@@ -525,6 +575,95 @@
     <Compile Include="App\AutoComplete.aspx.designer.cs">
       <DependentUpon>AutoComplete.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App\Beneficiaries\BasicInfo.aspx.cs">
+      <DependentUpon>BasicInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BasicInfo.aspx.designer.cs">
+      <DependentUpon>BasicInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\Beneficiaries.Master.cs">
+      <DependentUpon>Beneficiaries.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\Beneficiaries.Master.designer.cs">
+      <DependentUpon>Beneficiaries.Master</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiaryActivity.aspx.cs">
+      <DependentUpon>BeneficiaryActivity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiaryActivity.aspx.designer.cs">
+      <DependentUpon>BeneficiaryActivity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiaryCommunication.aspx.cs">
+      <DependentUpon>BeneficiaryCommunication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiaryCommunication.aspx.designer.cs">
+      <DependentUpon>BeneficiaryCommunication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiaryContacts.aspx.cs">
+      <DependentUpon>BeneficiaryContacts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiaryContacts.aspx.designer.cs">
+      <DependentUpon>BeneficiaryContacts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiaryReport.aspx.cs">
+      <DependentUpon>BeneficiaryReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiaryReport.aspx.designer.cs">
+      <DependentUpon>BeneficiaryReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiarySocial.aspx.cs">
+      <DependentUpon>BeneficiarySocial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiarySocial.aspx.designer.cs">
+      <DependentUpon>BeneficiarySocial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiarySupport.aspx.cs">
+      <DependentUpon>BeneficiarySupport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\BeneficiarySupport.aspx.designer.cs">
+      <DependentUpon>BeneficiarySupport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\controls\EventTabs.ascx.cs">
+      <DependentUpon>EventTabs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\controls\EventTabs.ascx.designer.cs">
+      <DependentUpon>EventTabs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\Country.cs" />
+    <Compile Include="App\Beneficiaries\Entities\BeneficiariesFeedBack.cs" />
+    <Compile Include="App\Beneficiaries\Entities\Beneficiary.cs" />
+    <Compile Include="App\Beneficiaries\Entities\BeneficiaryActivity.cs" />
+    <Compile Include="App\Beneficiaries\Entities\BeneficiaryActivityService.cs" />
+    <Compile Include="App\Beneficiaries\Entities\BeneficiaryContact.cs" />
+    <Compile Include="App\Beneficiaries\Entities\BeneficiaryDonation.cs" />
+    <Compile Include="App\Beneficiaries\Entities\MyDatabaseContext.cs" />
+    <Compile Include="App\Beneficiaries\Entities\SecondaryBeneficiary.cs" />
+    <Compile Include="App\Beneficiaries\GetBeneficiaries.aspx.cs">
+      <DependentUpon>GetBeneficiaries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\GetBeneficiaries.aspx.designer.cs">
+      <DependentUpon>GetBeneficiaries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Beneficiaries\SecondaryBeneficiaries.aspx.cs">
+      <DependentUpon>SecondaryBeneficiaries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Beneficiaries\SecondaryBeneficiaries.aspx.designer.cs">
+      <DependentUpon>SecondaryBeneficiaries.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\chartdata.asmx.cs">
       <DependentUpon>chartdata.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -556,6 +695,13 @@
     </Compile>
     <Compile Include="App\GiftAid.aspx.designer.cs">
       <DependentUpon>GiftAid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\IconConfiguration.aspx.cs">
+      <DependentUpon>IconConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\IconConfiguration.aspx.designer.cs">
+      <DependentUpon>IconConfiguration.aspx</DependentUpon>
     </Compile>
     <Compile Include="App\mailchimp.aspx.cs">
       <DependentUpon>mailchimp.aspx</DependentUpon>
@@ -4872,6 +5018,16 @@
     <Content Include="App\AddFundraiser.aspx" />
     <Content Include="App\autocomplete.asmx" />
     <Content Include="App\AutoComplete.aspx" />
+    <Content Include="App\Beneficiaries\BasicInfo.aspx" />
+    <Content Include="App\Beneficiaries\BeneficiaryActivity.aspx" />
+    <Content Include="App\Beneficiaries\BeneficiaryCommunication.aspx" />
+    <Content Include="App\Beneficiaries\BeneficiaryContacts.aspx" />
+    <Content Include="App\Beneficiaries\BeneficiaryReport.aspx" />
+    <Content Include="App\Beneficiaries\BeneficiarySocial.aspx" />
+    <Content Include="App\Beneficiaries\BeneficiarySupport.aspx" />
+    <Content Include="App\Beneficiaries\controls\EventTabs.ascx" />
+    <Content Include="App\Beneficiaries\GetBeneficiaries.aspx" />
+    <Content Include="App\Beneficiaries\SecondaryBeneficiaries.aspx" />
     <Content Include="App\chartdata.asmx" />
     <Content Include="App\chat.aspx" />
     <Content Include="App\CommentsService.asmx" />
@@ -4930,6 +5086,7 @@
     <Content Include="App\Fundraiser\peertopeer\Dashboard.aspx" />
     <Content Include="App\Fundraiser\peertopeer\EmailTemplates\invitation.html" />
     <Content Include="App\GiftAid.aspx" />
+    <Content Include="App\IconConfiguration.aspx" />
     <Content Include="App\mailchimp.aspx" />
     <Content Include="App\ManageCompany.aspx" />
     <Content Include="App\Marketplace.aspx" />
@@ -14135,6 +14292,8 @@
     <Content Include="assets\plugins\global\fonts\keenicons\keenicons-solid.eot" />
     <Content Include="assets\plugins\global\fonts\keenicons\keenicons-solid.ttf" />
     <Content Include="assets\plugins\global\fonts\keenicons\keenicons-solid.woff" />
+    <Content Include="App\Beneficiaries\Beneficiaries.Master" />
+    <Content Include="App\Beneficiaries\ImageHandler.ashx" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />
@@ -20516,7 +20675,13 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.macOS.2.88.6\build\net462\SkiaSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.macOS.2.88.6\build\net462\SkiaSharp.NativeAssets.macOS.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Win32.2.88.6\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Win32.2.88.6\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
   </Target>
+  <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Import Project="..\packages\SkiaSharp.NativeAssets.macOS.2.88.6\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.2.88.6\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
+  <Import Project="..\packages\SkiaSharp.NativeAssets.Win32.2.88.6\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Win32.2.88.6\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

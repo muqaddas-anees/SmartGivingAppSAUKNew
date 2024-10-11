@@ -386,6 +386,13 @@
     <Compile Include="App\chat.aspx.designer.cs">
       <DependentUpon>chat.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App\IconConfiguration.aspx.cs">
+      <DependentUpon>IconConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\IconConfiguration.aspx.designer.cs">
+      <DependentUpon>IconConfiguration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\Marketplace.aspx.cs">
       <DependentUpon>Marketplace.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -743,6 +750,7 @@
     <Content Include="App\chat.aspx" />
     <Content Include="App\EmailSettings.aspx" />
     <Content Include="App\EmailTemplates\default.htm" />
+    <Content Include="App\IconConfiguration.aspx" />
     <Content Include="App\Marketplace.aspx" />
     <Content Include="App\PendingOrganizations.aspx" />
     <Compile Include="App_GlobalResources\DeffinityRes.designer.cs">

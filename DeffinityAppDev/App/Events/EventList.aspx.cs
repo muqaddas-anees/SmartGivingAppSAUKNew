@@ -29,6 +29,7 @@ using iTextSharp.text.pdf.qrcode;
 using QRCode = QRCoder.QRCode;
 using DocumentFormat.OpenXml.Vml;
 using Path = System.IO.Path;
+using PortfolioMgt.DAL;
 
 namespace DeffinityAppDev.App
 {
@@ -45,13 +46,22 @@ namespace DeffinityAppDev.App
         }
 
 
-
+        private string getDisplay(string id)
+        {
+            using (var context = new PortfolioDataContext())
+            {
+                var detail = context.ActivityDetails.FirstOrDefault(o => o.unid == id);
+                return detail.isInPerson??true ? "none" : "";
+             
+            }
+        }
 
         private void BindEventDetails(string sval)
         {
             try
             {
-
+                using(var context=new PortfolioDataContext())
+                { 
                 var currentDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
 
                 var alist = PortfolioMgt.BAL.ActivityDetailsBAL.ActivityDetailsBAL_SelectAll().Where(o=>o.OrganizationID == sessionKeys.PortfolioID).ToList();
@@ -64,7 +74,7 @@ namespace DeffinityAppDev.App
                     if (eventEntity.QRcode == null)
                     {
                         var options = new GenerationOptions(useSpecialCharacters: false);
-                        string shortid = ShortId.Generate(options);
+                        string shortid = ShortId.Generate(options); 
                         eDetails.QRcode = shortid;
 
                         PortfolioMgt.BAL.ActivityDetailsBAL.ActivityDetailsBAL_Update(eDetails);
@@ -115,6 +125,7 @@ namespace DeffinityAppDev.App
                                   Description = Deffinity.Utility.RemoveHTMLTags(a.Description == null ? "" : a.Description),
                                   a.EndDateTime,
                                   a.Event_Capacity,
+                                  display=getDisplay(a.unid),
                                   a.OrganizationID,
                                   a.OrganizationName,
                                   a.Title,
@@ -180,8 +191,9 @@ a.Country,
                 //{
                     lvCustomers.DataSource = retval.OrderBy(o => o.StartDateTime).ToList();
                     lvCustomers.DataBind();
+                }
                 //}
-             
+
             }
             catch(Exception ex)
             {
@@ -302,6 +314,12 @@ a.Country,
                 var id = e.CommandArgument.ToString();
 
                 Response.Redirect("~/App/Events/BasicInfo.aspx?unid=" + id, false);
+            }
+            else if (e.CommandName == "golive")
+            {
+                var id = e.CommandArgument.ToString();
+
+                Response.Redirect("~/LiveEvent.aspx?unid=" + id, false);
             }
             else if (e.CommandName == "url")
             {

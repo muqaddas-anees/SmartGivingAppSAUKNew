@@ -1,4 +1,5 @@
-﻿using PortfolioMgt.DAL;
+﻿using Deffinity.PortfolioManager;
+using PortfolioMgt.DAL;
 using PortfolioMgt.Entity;
 using QRCoder;
 using System;
@@ -223,6 +224,7 @@ namespace DeffinityAppDev.App.controls
                                      Name = getDonorName( r),
                                      Email = getDonorEmail( r),
                                      Contact = getDonorContact(r),
+                                     ImageURL=getImageUrl(r.PaidAmount??0),
                                      Amount = r.PaidAmount,
                                      AmountDis = string.Format("{1}{0:N2}", r.PaidAmount, Deffinity.Utility.GetCurrencySymbol())
                                  }).Take(10).ToList();
@@ -275,10 +277,42 @@ namespace DeffinityAppDev.App.controls
                     }
 
                 }
+                BindPortfolioImage();
             }
             catch (Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+
+
+
+
+
+
+
+        private string getImageUrl(double amount)
+        {
+            using (var context = new PortfolioDataContext())
+            {
+                // Change the condition to check if the amount is within the range
+                var range = context.IconRanges.FirstOrDefault(o => o.FromRange <= amount && o.ToRange >= amount && o.PortfolioID==sessionKeys.PortfolioID.ToString());
+                if(range==null)
+                {
+                    var portfolio = context.ProjectPortfolios.FirstOrDefault(o => o.ID == sessionKeys.PortfolioID);
+                    range = context.IconRanges.FirstOrDefault(o => o.FromRange <= amount && o.ToRange >= amount && o.Country == portfolio.CountryID.ToString() && o.PortfolioID=="0");
+                }
+                if(range==null)
+                {
+                    range = context.IconRanges.FirstOrDefault(o => o.FromRange <= amount && o.ToRange >= amount && o.Country == "0");
+
+                }
+
+                if (range != null) 
+                {
+                    return $"../../imagehandler.ashx?id={range.Id}&s=Icon";
+                }
+                return $"../../imagehandler.ashx?id=0&s=Icon";
             }
         }
 
@@ -578,6 +612,11 @@ namespace DeffinityAppDev.App.controls
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
+
+        }
+        private void BindPortfolioImage()
+        {
+            portfolioImage.ImageUrl = $"../../imagehandler.ashx?s={ImageManager.file_section_portfolio}&id={sessionKeys.PortfolioID}";
 
         }
     }

@@ -78,22 +78,22 @@ namespace DeffinityAppDev.App.controls
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl link_faithgiving;
 
         /// <summary>
-        /// p2p control.
+        /// pnlFundCamp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal p2p;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlFundCamp;
 
         /// <summary>
-        /// project control.
+        /// link_eventmanagement control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal project;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl link_eventmanagement;
 
         /// <summary>
         /// link_pagebuilder control.
@@ -184,6 +184,15 @@ namespace DeffinityAppDev.App.controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl link_expenses;
+
+        /// <summary>
+        /// Div5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div5;
 
         /// <summary>
         /// link_settings control.

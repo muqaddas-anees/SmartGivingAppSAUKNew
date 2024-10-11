@@ -190,10 +190,51 @@
                     </div>
                 </div>
             </div>
-
-            <asp:Literal runat="server" ID="p2p"></asp:Literal>
-  <asp:Literal runat="server" ID="project" ></asp:Literal>
-            <div class="menu-item py-2" id="link_pagebuilder" runat="server" visible="true">
+             <div class='menu-item py-2' id='pnlFundCamp' runat='server'>
+     <a href='<%:ResolveClientUrl("~/App/FundraiserListView.aspx?type=camp")%>' class='menu-link' title='Landing Page' data-bs-toggle='tooltip' data-bs-trigger='hover' data-bs-dismiss='click' data-bs-placement='right'>
+         <span class='menu-icon'>
+             <i class='fas fa-hands fs-2'></i>
+         </span>
+         <span class='menu-title'>P2P Participation</span>
+     </a>
+ </div>
+   <div data-kt-menu-trigger='click' data-kt-menu-placement='right-start' data-kt-menu-flip='bottom'  class='menu-item py-2' id='link_eventmanagement' runat='server'>
+       <span class='menu-link' title='' data-bs-toggle='tooltip' data-bs-trigger='hover' data-bs-dismiss='click' data-bs-placement='right' data-bs-original-title='<%:sessionKeys.JobsDisplayName %>'>
+           <span class='menu-icon'>
+               <i class='fas fa-project-diagram fs-2'></i>
+           </span>
+           <span class='menu-title'><%:sessionKeys.JobsDisplayName %></span>
+           <span class='menu-arrow'></span>
+       </span>
+       <div class='menu-sub menu-sub-accordion menu-active-bg'>
+           <div data-kt-menu-trigger='click' class='menu-item menu-accordion'>
+               <div class='menu-item'>
+                   <a class='menu-link' href='<%:ResolveClientUrl("~/WF/DC/Joblist.aspx")%>'>
+                       <span class='menu-bullet'>
+                           <span class='bullet bullet-dot'></span>
+                       </span>
+                       <span class='menu-title'>View Current Projects</span>
+                   </a>
+               </div>
+               <div class='menu-item'>
+                   <a class='menu-link' href='<%:ResolveClientUrl("~/WF/DC/FLSForm.aspx")%>'>
+                       <span class='menu-bullet'>
+                           <span class='bullet bullet-dot'></span>
+                       </span>
+                       <span class='menu-title'>Add <%:sessionKeys.JobDisplayName %></span>
+                   </a>
+               </div>
+               <div class='menu-item' style='display: none; visibility: hidden;'>
+                   <a class='menu-link' href='<%:ResolveClientUrl("~/WF/DC/FRPApprovals.aspx")%>'>
+                       <span class='menu-bullet'>
+                           <span class='bullet bullet-dot'></span>
+                       </span>
+                       <span class='menu-title'>Invoice Journal</span>
+                   </a>
+               </div>
+           </div>
+       </div>
+   </div>            <div class="menu-item py-2" id="link_pagebuilder" runat="server" visible="true">
                 <a href='<%:ResolveClientUrl("~/App/PublicViewSetup.aspx")%>' class="menu-link " title="Landing Page" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
                     <span class="menu-icon">
                         <i class="fab fa-sellsy fs-2"></i>
@@ -516,6 +557,17 @@
                     <span class="menu-title">Live Session</span>
                 </a>
             </div>
+
+            <div class=" menu-item py-2" style="display:none" id="Div5" runat="server">
+    <a href='<%:ResolveClientUrl("~/App/Beneficiaries/GetBeneficiaries.aspx")%>' class="menu-link " title="Beneficiaries" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+        <span class="menu-icon">
+            <i class="bi bi-box2-heart"></i>      
+
+        </span>
+        <span class="menu-title">Beneficiaries</span>
+    </a>
+
+</div>
             <div class="menu-item py-2" id="link_settings" runat="server">
                 <a href='<%:ResolveClientUrl("~/App/Settings.aspx")%>' class="menu-link " title="Settings" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
                     <span class="menu-icon">

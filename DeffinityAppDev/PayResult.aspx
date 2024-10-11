@@ -103,24 +103,38 @@
 												
 
 													
-												<div class="row mb-6" id="pnlResult" runat="server">
-													<div class="row mb-10 text-center">
-														<p>
-														<asp:Label ID="lblMsg" runat="server" Text="Thank you" Font-Size="22px" Font-Bold="true"></asp:Label></p>
+											<div class="row mb-6" id="pnlResult" runat="server">
+    <!-- Logo Image -->
+    <div class="row mb-10 text-center">
+        <div class="col-12">
+            <asp:Image ID="imgLogo" runat="server" CssClass="img-fluid logo-image" AlternateText="Logo" />
+        </div>
+    </div>
+    
+    <!-- Thank You Message -->
+    <div class="row mb-10 text-center">
+        <p>
+            <asp:Label ID="lblMsg" runat="server" Text="Thank you" Font-Size="22px" Font-Bold="true"></asp:Label>
+        </p>
+    </div>
+    
+    <!-- Back to Home Button -->
+    <div class="row mb-6 text-center">
+        <div class="col-lg-12 text-center">
+            <asp:Button ID="btnBacktologin" runat="server" Visible="false" OnClick="btnBacktologin_Click" Text="Back to Home" SkinID="btnDefault" />
+        </div>
+    </div>
+</div>
 
-														<p>
-														<%--<asp:Label ID="Label3" runat="server" Text="Do want to be a member?" Font-Size="22px"></asp:Label></p>--%>
+<!-- Add CSS for centering and responsive image -->
+<style>
+    .logo-image {
+        max-width: 150px; /* Adjust as needed for the logo size */
+        margin: 0 auto; /* Center the image */
+        display: block; /* Ensure the image is block-level for centering */
+    }
+</style>
 
-													</div>
-													<div class="row mb-6  text-center">
-														<div class ="col-lg-12  text-center">
-															
-
-															<asp:Button ID="btnBacktologin" runat="server" OnClick="btnBacktologin_Click" Text ="Back to Home" SkinID="btnDefault" />
-														</div>
-														</div>
-
-													</div>
 									</div>
 									
 								</div>

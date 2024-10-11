@@ -188,6 +188,10 @@ header .close:hover{
     height: 70vh;
     background-size: cover;
 }
+.pst{
+
+    padding-top: 34px !important;
+}
 
 /* Medium screens */
 @media (max-width: 1024px) {
@@ -337,6 +341,11 @@ header .close:hover{
     width: 100%;
     height: 100%;
 }
+@media only screen and (max-width: 767px) {
+    #lblptotal {
+        width: 50% !important;
+    }
+}
 
 .field button{
     padding: 5px 16px;
@@ -361,8 +370,12 @@ header .close:hover{
             <!--begin::Card body-->
             <div class="card-body border-top p-9">
                 <!--begin::Input group-->
-                <div class="row pt-5">
-                    
+                <div class="row pt-1">
+                    					<div class="row mb-3">
+	<div class="d-flex justify-content-center">
+	<asp:Image runat="server" ID="portfolioImage" CssClass="" Visible="true" />
+		</div>
+</div>
                     <div class="row p-5" style="padding-top:0px !important">
                         <h3 class="fw-bolder m-0 text-center">
                             <asp:Label ID="lblTitle" runat="server" Font-Size="32px"></asp:Label>
@@ -459,7 +472,7 @@ header .close:hover{
                         <div id="progress-bar" class="progress-bar"></div>
                     </div>
                 </div>
-                                   <p style="display:none" class="text-center"> Days left: <span id="days"></span></p> <p class="text-center"> Total Supporters: <span id="supporters"></span></p>
+                                   <p style="display:none" class="text-center"> Days left: <span id="days"></span></p> <p class="text-center"> Total Supporters: <span id="supporters">0</span></p>
 
            <button type="button" class="btn view-modal1" id="openModalBtn" style="
     border-radius: 65px;
@@ -484,7 +497,8 @@ header .close:hover{
 
 
         <div class="card mb-0 mb-xl-10" id="pnl_topdonors" runat="server" visible="false">
-            <div class="card-header border-0 cursor-pointer" data-bs-target="#kt_account_profile_details" aria-controls="kt_account_profile_details">
+            <div class="card-header border-0 cursor-pointer" style="background:url('../../assets/images/banner.png'); background-size: cover;"
+ data-bs-target="#kt_account_profile_details" aria-controls="kt_account_profile_details">
                 <div class="card-title m-0">
                     <h3 class="fw-bolder m-0 d-flex justify-content-center">Top Donors</h3>
                 </div>
@@ -495,12 +509,12 @@ header .close:hover{
                         <asp:TemplateField HeaderText="Name">
                             <ItemTemplate>
                                 <div class="d-flex d-inline gap-3">
-                                    <asp:Image ID="imgLogo" runat="server" ImageUrl='<%# GetDonorImageUrl("0") %>' Width="50px" Height="50px" />
-                                    <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>' Style="margin-top: 15px; font-weight: bold"></asp:Label>
+                                    <asp:Image ID="imgLogo" runat="server" ImageUrl='<%# Eval("ImageURL") %>' Width="50px" Height="50px" />
+                                    <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>' Style=" font-weight: bold;margin-top: 14px;"></asp:Label>
                                 </div>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Amount" HeaderStyle-CssClass="header_right" ItemStyle-CssClass="header_right">
+                        <asp:TemplateField HeaderText="Amount" HeaderStyle-CssClass="header_right" ItemStyle-CssClass="header_right pst">
                             <ItemTemplate>
                                 <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("AmountDis")%>'></asp:Label>
                             </ItemTemplate>
@@ -551,7 +565,35 @@ header .close:hover{
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<script>
+    // JavaScript function to calculate and update the number of donors
+    function calculateDonors() {
+        // Get the table by its ID
+        var table = document.getElementById('FaithGivingListCtrl_gridtopdonors');
 
+        // Get all rows in the table body
+        var rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+        // Initialize the donor count
+        var donorCount = 0;
+
+        // Loop through the rows, excluding the header and footer rows
+        for (var i = 1; i < rows.length - 1; i++) {
+            // Check if the row has a valid donor name (it means it's a donor row)
+            var nameElement = rows[i].querySelector('span[id^="FaithGivingListCtrl_gridtopdonors_lblName_"]');
+            if (nameElement) {
+                donorCount++;
+            }
+        }
+
+        // Update the count in the supporters span
+        document.getElementById('supporters').innerText = donorCount;
+    }
+
+    // Call the function on page load or at the appropriate time
+    document.addEventListener('DOMContentLoaded', calculateDonors);
+
+</script>
 <script>
     dchart();
     // Function to open the modal
@@ -593,7 +635,7 @@ header .close:hover{
         var totalsupporters = document.getElementById("totalsupporters").value;
         var supporters = document.getElementById("supporters");
         days.innerHTML = " "+DaysLeft;
-        supporters.innerHTML = " " +totalsupporters;
+        
 
         amountraised.innerHTML = "£"+formatNumber(raised);
 

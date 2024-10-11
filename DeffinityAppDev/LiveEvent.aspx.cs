@@ -100,7 +100,9 @@ namespace DeffinityAppDev.App.Events
                         var embedHtml = $@"
     <div class='w-500 yt-video' >
         <iframe 
-            src='{ev.YouTubeLink.Replace("watch?v=", "embed/").Replace("live", "embed/")}' 
+            src='{(ev.YouTubeLink.StartsWith("https://") ? ev.YouTubeLink : "https://" + ev.YouTubeLink)
+    .Replace("watch?v=", "embed/")
+    .Replace("live", "embed/")}' 
             style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'
             frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' 
             allowfullscreen>

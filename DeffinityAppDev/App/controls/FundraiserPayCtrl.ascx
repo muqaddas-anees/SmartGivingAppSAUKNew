@@ -451,8 +451,8 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                                        <label class="form-label" style="font-size:22px;margin-left:5px; font-weight:bold"> Turn <label id="lblgtotal"></label> into <label id="lblgptotal"></label> with Gift Aid  </label>
                                                                        </div>
                                                                    <div class="row  mb-6">
-                                                                        <div class="col-lg-12 d-flex d-inline">
-                                                       <asp:CheckBox ID="chkgift" runat="server" Text="" Font-Size="20px" CssClass="mycheckBig pt-2" ClientIDMode="Static"  />
+                                                                        <div class="col-lg-12 d-flex align-center align-content-center d-inline">
+                                                       <asp:CheckBox ID="chkgift" runat="server" style="padding-top:1px;" Text="" Font-Size="20px" CssClass="mycheckBig" ClientIDMode="Static"  />
                                                             <label style="font-size:20px;margin-left:5px;"> Please Gift Aid this donation  </label> 
                                                                 
                                                                 </div>
@@ -483,20 +483,63 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                                 <label style="font-size:20px;margin-left:5px;margin-right:5px" class="control-label">   Total amount: </label> <asp:Label ID="lblptotal" runat="server" ClientIDMode="Static" Font-Bold="true" Font-Size="X-Large"></asp:Label>
                                                                     </div>
                                                               </div>--%>
-                                                          <div class="card-footer py-3 px-5 mb-10">
-                                                              <div class="row d-flex justify-content-around"> 
-                                                                  <div class="col-lg-3 text-center mt-5">
-                                                                      <asp:Button ID="btnBack" runat="server" SkinID="btnDefault" Text="Back" Height="60px" Width="70%" Font-Size="22px" OnClick="btnBack_Click"/>
-                                                                      </div>
-                                                                  <div class="col-lg-3 text-center mt-5">
- 
-                    <asp:Button ID="btnNextCategory" runat="server" SkinID="btnNext" Height="60px" Width="70%" Font-Size="22px" OnClick="btnNextCategory_Click"/>
-                                                                   <asp:Button ID="btnNextPaynow" runat="server" Font-Size="22px" SkinID="btnDefault" Text="Pay Now" Height="60px" Width="70%" OnClick="btnProceed_Click" style="display:none;" />
-                                                                  
-                                                                  </div> 
+                                                       <div class="card-footer py-3 px-5 mb-10">
+    <div class="row d-flex justify-content-around">
+        <div class="col-lg-3 text-center mt-5">
+            <asp:Button ID="btnBack" runat="server" SkinID="btnDefault" Text="Back" CssClass="btn-responsive btn btn-primary" OnClick="btnBack_Click" />
+        </div>
+        <div class="col-lg-3 text-center mt-5">
+            <asp:Button ID="btnNextCategory" runat="server" SkinID="btnNext" CssClass="btn-responsive btn btn-primary" OnClick="btnNextCategory_Click" />
+            <asp:Button ID="btnNextPaynow" runat="server" SkinID="btnDefault" Text="Pay Now" CssClass="btn-responsive btn-primary" OnClick="btnProceed_Click" style="display:none;" />
+        </div>
+    </div>
+</div>
 
-                                                              </div>
-                </div>                             
+<!-- Add responsive CSS -->
+<style>
+    /* Default button style */
+    .btn-responsive {
+        width: 70% !important;
+        height: 60px !important;
+        font-size: 22px !important;
+    }
+
+    /* For tablet and small screens (below 992px) */
+    @media (max-width: 992px) {
+        .btn-responsive {
+            width: 80% !important; /* Increase width slightly */
+            height: 55px !important; /* Slightly reduce height */
+            font-size: 20px !important; /* Adjust font size */
+        }
+    }
+
+    /* For mobile screens (below 768px) */
+    @media (max-width: 768px) {
+        .btn-responsive {
+            width: 100% !important; /* Full width */
+            height: 50px !important; /* Reduce height further */
+            font-size: 18px !important; /* Adjust font size */
+        }
+
+        .mt-5 {
+            margin-top: 20px !important; /* Reduce top margin */
+        }
+    }
+
+    /* For extra small screens (below 576px) */
+    @media (max-width: 576px) {
+        .btn-responsive {
+            width: 100% !important;
+            height: 45px !important; /* Smaller height for tiny screens */
+            font-size: 16px !important; /* Smaller font size */
+        }
+
+        .mt-5 {
+            margin-top: 15px !important; /* Reduce top margin further */
+        }
+    }
+</style>
+
     
 
 </asp:Panel>
@@ -543,8 +586,8 @@ input[type=range].form-control-lg::-moz-range-thumb {
           </div>
         <div class="card-footer mb-10">
             <div class="row d-flex justify-content-around">
-                <div class="col-sm-3 mt-5"> <asp:Button ID="btnBackToCategory" runat="server" SkinID="btnDefault" Text="Back" Height="60px" Width="70%" OnClick="btnBackToCategory_Click" style="margin-right:50px" /></div>
-                <div class="col-sm-3  mt-5"> <asp:Button ID="btnNextToPayAdvanced" runat="server" SkinID="btnNext" Height="60px" Width="70%" OnClick="btnNextToPayAdvanced_Click" style="float:right;" /></div>
+                <div class="col-sm-3 mt-5"> <asp:Button ID="btnBackToCategory" runat="server" CssClass="btn-responsive btn btn-primary" SkinID="btnDefault" Text="Back" Height="60px" Width="70%" OnClick="btnBackToCategory_Click" style="margin-right:50px" /></div>
+                <div class="col-sm-3  mt-5"> <asp:Button ID="btnNextToPayAdvanced" runat="server" CssClass="btn-responsive btn btn-primary" SkinID="btnNext" Height="60px" Width="70%" OnClick="btnNextToPayAdvanced_Click" style="float:right;" /></div>
               
               
 
@@ -655,8 +698,8 @@ input[type=range].form-control-lg::-moz-range-thumb {
 															</div>
              <div class="card-footer  py-3 px-5 mb-10">
                  <div class="row d-flex justify-content-around">
-               <div class="col-sm-5 mt-5"> <asp:Button ID="btnRecurringBack" runat="server" SkinID="btnDefault" Text="Back" Height="100%" Width="70%" OnClick="btnRecurringBack_Click"  style="margin-right:50px" /></div>
-                <div class="col-sm-5 mt-5">  <asp:Button ID="btnNextUserInfo" runat="server" SkinID="btnNext" Height="60px" Width="70%"  OnClick="btnNextUserInfo_Click" ValidationGroup="date1" style="float:right" /></div>
+               <div class="col-sm-5 mt-5"> <asp:Button ID="btnRecurringBack" runat="server" CssClass="btn-responsive btn btn-primary" SkinID="btnDefault" Text="Back" Height="100%" Width="70%" OnClick="btnRecurringBack_Click"  style="margin-right:50px" /></div>
+                <div class="col-sm-5 mt-5">  <asp:Button ID="btnNextUserInfo" runat="server" CssClass="btn-responsive btn btn-primary" SkinID="btnNext" Height="60px" Width="70%"  OnClick="btnNextUserInfo_Click" ValidationGroup="date1" style="float:right" /></div>
                     
                   
                      
@@ -723,10 +766,10 @@ input[type=range].form-control-lg::-moz-range-thumb {
                                                                 <div class="row d-flex justify-content-around">
                <div class="col-sm-5 mt-5"> 
                
-                      <asp:Button ID="btnBackToOptions" runat="server" SkinID="btnDefault" Text="Back" Height="60px" Width="70%" OnClick="btnBackToOptions_Click"  style="margin-right:50px"/>
+                      <asp:Button ID="btnBackToOptions" runat="server" CssClass="btn-responsive btn btn-primary" SkinID="btnDefault" Text="Back" Height="60px" Width="70%" OnClick="btnBackToOptions_Click"  style="margin-right:50px"/>
                   </div>
                                                                      <div class="col-sm-5 mt-5">
-                  <asp:Button ID="btnNextToCardDetails" runat="server" SkinID="btnDefault" Text="Pay Now" Height="60px" Width="70%" OnClick="btnProceed_Click" style="float:right" ValidationGroup="user" />
+                  <asp:Button ID="btnNextToCardDetails" runat="server" CssClass="btn-responsive btn btn-primary" SkinID="btnDefault" Text="Pay Now" Height="60px" Width="70%" OnClick="btnProceed_Click" style="float:right" ValidationGroup="user" />
                            </div>
                      </div>
                    

@@ -16,6 +16,7 @@ namespace DeffinityAppDev
         {
             PopulateChatContacts();
             LoadChatMessages();
+            
         }
 
         private void PopulateChatContacts()

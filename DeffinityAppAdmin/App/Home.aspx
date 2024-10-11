@@ -9,27 +9,34 @@
 	.bi-envelope::before {
 		font-size:39px;
 	}
+    path{
+        fill:#7239EA !important;
+    }
+    .fill{
+                fill:#7239EA !important;
+
+    }
 </style>
   <div class="row gy-5 g-xl-8 mb-5">
-								<div class="col-xl-3">
+<div class="col-xl-3">
     <!--begin::Statistics Widget 5-->
     <a href="Organizations.aspx" class="card hoverable card-xl-stretch mb-xl-8" style="border: 2px solid #7239EA; background-color: transparent;">
         <!--begin::Body-->
-        <div class="card-body text-center"> <!-- Centered the text (NEW) -->
-            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
-            <span class="svg-icon svg-icon-white svg-icon-3x ms-n1" style="color: #7239EA;">
+        <div class="card-body text-center">
+            <!--begin::Svg Icon-->
+            <span style="color: #7239EA;" class="svg-icon svg-icon-white svg-icon-3x ms-n1">
                 <!-- SVG Icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <rect x="0" y="0" width="24" height="24"/>
-                        <path d="M13.5,21 L13.5,18 C13.5,17.4477153 13.0522847,17 12.5,17 L11.5,17 C10.9477153,17 10.5,17.4477153 10.5,18 L10.5,21 L5,21 L5,4 C5,2.8954305 5.8954305,2 7,2 L17,2 C18.1045695,2 19,2.8954305 19,4 L19,21 L13.5,21 Z M9,4 C8.44771525,4 8,4.44771525 8,5 L8,6 C8,6.55228475 8.44771525,7 9,7 L10,7 C10.5522847,7 11,6.55228475 11,6 L11,5 C11,4.44771525 10.5522847,4 10,4 L9,4 Z M14,4 C13.4477153,4 13,4.44771525 13,5 L13,6 C13,6.55228475 13.4477153,7 14,7 L15,7 C15.5522847,7 16,6.55228475 16,6 L16,5 C16,4.44771525 15.5522847,4 15,4 L14,4 Z M9,8 C8.44771525,8 8,8.44771525 8,9 L8,10 C8,10.5522847 8.44771525,11 9,11 L10,11 C10.5522847,11 11,10.5522847 11,10 L11,9 C11,8.44771525 10.5522847,8 10,8 L9,8 Z M9,12 C8.44771525,12 8,12.4477153 8,13 L8,14 C8,14.5522847 8.44771525,15 9,15 L10,15 C10.5522847,15 11,14.5522847 11,14 L11,13 C11,12.4477153 10.5522847,12 10,12 L9,12 Z M14,12 C13.4477153,12 13,12.4477153 13,13 L13,14 C13,14.5522847 13.4477153,15 14,15 L15,15 C15.5522847,15 16,14.5522847 16,14 L16,13 C16,12.4477153 15.5522847,12 15,12 L14,12 Z" fill="#000000"/>
+                        <path d="M13.5,21 L13.5,18 C13.5,17.4477153 13.0522847,17 12.5,17 L11.5,17 C10.9477153,17 10.5,17.4477153 10.5,18 L10.5,21 L5,21 L5,4 C5,2.8954305 5.8954305,2 7,2 L17,2 C18.1045695,2 19,2.8954305 19,4 L19,21 L13.5,21 Z M9,4 C8.44771525,4 8,4.44771525 8,5 L8,6 C8,6.55228475 8.44771525,7 9,7 L10,7 C10.5522847,7 11,6.55228475 11,6 L11,5 C11,4.44771525 10.5522847,4 10,4 L9,4 Z M14,4 C13.4477153,4 13,4.44771525 13,5 L13,6 C13,6.55228475 13.4477153,7 14,7 L15,7 C15.5522847,7 16,6.55228475 16,6 L16,5 C16,4.44771525 15.5522847,4 15,4 L14,4 Z M9,8 C8.44771525,8 8,8.44771525 8,9 L8,10 C8,10.5522847 8.44771525,11 9,11 L10,11 C10.5522847,11 11,10.5522847 11,10 L11,9 C11,8.44771525 10.5522847,8 10,8 L9,8 Z M9,12 C8.44771525,12 8,12.4477153 8,13 L8,14 C8,14.5522847 8.44771525,15 9,15 L10,15 C10.5522847,15 11,14.5522847 11,14 L11,13 C11,12.4477153 10.5522847,12 10,12 L9,12 Z M14,12 C13.4477153,12 13,12.4477153 13,13 L13,14 C13,14.5522847 13.4477153,15 14,15 L15,15 C15.5522847,15 16,14.5522847 16,14 L16,13 C16,12.4477153 15.5522847,12 15,12 L14,12 Z" fill="#7239EA"/> <!-- Changed fill to purple -->
                         <rect fill="#FFFFFF" x="13" y="8" width="3" height="3" rx="1"/>
                         <path d="M4,21 L20,21 C20.5522847,21 21,21.4477153 21,22 L21,22.4 C21,22.7313708 20.7313708,23 20.4,23 L3.6,23 C3.26862915,23 3,22.7313708 3,22.4 L3,22 C3,21.4477153 3.44771525,21 4,21 Z" fill="#000000" opacity="0.3"/>
                     </g>
                 </svg>
                 <!--end::Svg Icon-->
             </span>
-            <div class="fw-bolder" style="color: #7239EA; font-size: 2rem; margin-top: 1rem;">Organizations</div> <!-- Increased font size (NEW) and centered text (NEW) -->
+            <div class="fw-bolder" style="color: #7239EA; font-size: 2rem; margin-top: 1rem;">Organizations</div>
             <div class="fw-bold fs-7" style="color: #7239EA !important;"></div>
         </div>
         <!--end::Body-->
@@ -37,30 +44,33 @@
     <!--end::Statistics Widget 5-->
 </div>
 
-		<div class="col-xl-3">
+
+<div class="col-xl-3">
     <!--begin::Statistics Widget 5-->
     <a href="Members.aspx" class="card hoverable card-xl-stretch mb-xl-8" style="border: 2px solid #7239EA; background-color: transparent;">
         <!--begin::Body-->
         <div class="card-body text-center"> <!-- Centered the text -->
             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm008.svg-->
-            <span class="svg-icon svg-icon-white svg-icon-3x ms-n1" style="color: #7239EA;">
+            <span class="svg-icon svg-icon-3x ms-n1">
                 <!-- SVG Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <polygon points="0 0 24 0 24 24 0 24" />
-                        <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#7239EA" fill-rule="nonzero" opacity="0.3" />
-                        <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                        <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 z" fill="#7239EA" />
+                        <path d="M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 z" fill="#7239EA" />
+                        <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 z" fill="#7239EA" />
                     </g>
                 </svg>
                 <!--end::Svg Icon-->
             </span>
-            <div class="fw-bolder" style="color: #7239EA; font-size: 2rem; margin-top: 1rem;">Members</div> <!-- Increased font size and centered -->
+            <div class="fw-bolder" style="color: #7239EA; font-size: 2rem; margin-top: 1rem;">Members</div>
             <div class="fw-bold fs-7" style="color: #7239EA !important;"></div>
         </div>
         <!--end::Body-->
     </a>
     <!--end::Statistics Widget 5-->
 </div>
+
 
 
 
@@ -155,124 +165,126 @@
 
 	  				
 								
-		<div class="col-xl-3" style="">
-									<!--begin::Statistics Widget 5-->
-									<a href="TransactionReport.aspx" class="card bg-warning hoverable card-xl-stretch mb-xl-8">
-										<!--begin::Body-->
-										<div class="card-body">
-											<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm008.svg-->
-											<span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
-												<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Tools/Tools.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect x="0" y="0" width="24" height="24"/>
-        <path d="M15.9497475,3.80761184 L13.0246125,6.73274681 C12.2435639,7.51379539 12.2435639,8.78012535 13.0246125,9.56117394 L14.4388261,10.9753875 C15.2198746,11.7564361 16.4862046,11.7564361 17.2672532,10.9753875 L20.1923882,8.05025253 C20.7341101,10.0447871 20.2295941,12.2556873 18.674559,13.8107223 C16.8453326,15.6399488 14.1085592,16.0155296 11.8839934,14.9444337 L6.75735931,20.0710678 C5.97631073,20.8521164 4.70998077,20.8521164 3.92893219,20.0710678 C3.1478836,19.2900192 3.1478836,18.0236893 3.92893219,17.2426407 L9.05556629,12.1160066 C7.98447038,9.89144078 8.36005124,7.15466739 10.1892777,5.32544095 C11.7443127,3.77040588 13.9552129,3.26588995 15.9497475,3.80761184 Z" fill="#000000"/>
-        <path d="M16.6568542,5.92893219 L18.0710678,7.34314575 C18.4615921,7.73367004 18.4615921,8.36683502 18.0710678,8.75735931 L16.6913928,10.1370344 C16.3008685,10.5275587 15.6677035,10.5275587 15.2771792,10.1370344 L13.8629656,8.7228208 C13.4724413,8.33229651 13.4724413,7.69913153 13.8629656,7.30860724 L15.2426407,5.92893219 C15.633165,5.5384079 16.26633,5.5384079 16.6568542,5.92893219 Z" fill="#000000" opacity="0.3"/>
-    </g>
-</svg><!--end::Svg Icon-->
-											</span>
-											<!--end::Svg Icon-->
-											<div class="text-inverse-primary fw-bolder fs-2 mb-2 mt-5">Transaction Report</div>
-											<div class="fw-bold text-inverse-primary fs-7"></div>
-										</div>
-										<!--end::Body-->
-									</a>
-									<!--end::Statistics Widget 5-->
-								</div>
-		<div class="col-xl-3">
-									<!--begin::Statistics Widget 5-->
-									<a href="CharityChampions.aspx" class="card bg-danger hoverable card-xl-stretch mb-xl-8">
-										<!--begin::Body-->
-										<div class="card-body">
-											<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
-											<span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
-												<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Shopping/Wallet2.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect x="0" y="0" width="24" height="24"/>
-        <rect fill="#000000" opacity="0.3" x="2" y="2" width="10" height="12" rx="2"/>
-        <path d="M4,6 L20,6 C21.1045695,6 22,6.8954305 22,8 L22,20 C22,21.1045695 21.1045695,22 20,22 L4,22 C2.8954305,22 2,21.1045695 2,20 L2,8 C2,6.8954305 2.8954305,6 4,6 Z M18,16 C19.1045695,16 20,15.1045695 20,14 C20,12.8954305 19.1045695,12 18,12 C16.8954305,12 16,12.8954305 16,14 C16,15.1045695 16.8954305,16 18,16 Z" fill="#000000"/>
-    </g>
-</svg><!--end::Svg Icon-->
-											</span>
-											<!--end::Svg Icon-->
-											<div class="text-inverse-danger fw-bolder fs-2 mb-2 mt-5">Charity Champions</div>
-											<div class="fw-bold text-inverse-danger fs-7"></div>
-										</div>
-										<!--end::Body-->
-									</a>
-									<!--end::Statistics Widget 5-->
-								</div>
-							</div>
+	<div class="col-xl-3">
+    <!--begin::Statistics Widget 5-->
+    <a href="TransactionReport.aspx" class="card card-xl-stretch mb-xl-8 hoverable" style="border: 2px solid #7239EA; background-color: transparent;">
+        <!--begin::Body-->
+        <div class="card-body text-center">
+            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm008.svg-->
+            <span class="svg-icon svg-icon-3x" style="color: #7239EA;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24"/>
+                        <path d="M15.9497475,3.80761184 L13.0246125,6.73274681 C12.2435639,7.51379539 12.2435639,8.78012535 13.0246125,9.56117394 L14.4388261,10.9753875 C15.2198746,11.7564361 16.4862046,11.7564361 17.2672532,10.9753875 L20.1923882,8.05025253 C20.7341101,10.0447871 20.2295941,12.2556873 18.674559,13.8107223 C16.8453326,15.6399488 14.1085592,16.0155296 11.8839934,14.9444337 L6.75735931,20.0710678 C5.97631073,20.8521164 4.70998077,20.8521164 3.92893219,20.0710678 C3.1478836,19.2900192 3.1478836,18.0236893 3.92893219,17.2426407 L9.05556629,12.1160066 C7.98447038,9.89144078 8.36005124,7.15466739 10.1892777,5.32544095 C11.7443127,3.77040588 13.9552129,3.26588995 15.9497475,3.80761184 Z" fill="#7239EA"/>
+                        <path d="M16.6568542,5.92893219 L18.0710678,7.34314575 C18.4615921,7.73367004 18.4615921,8.36683502 18.0710678,8.75735931 L16.6913928,10.1370344 C16.3008685,10.5275587 15.6677035,10.5275587 15.2771792,10.1370344 L13.8629656,8.7228208 C13.4724413,8.33229651 13.4724413,7.69913153 13.8629656,7.30860724 L15.2426407,5.92893219 C15.633165,5.5384079 16.26633,5.5384079 16.6568542,5.92893219 Z" fill="#7239EA"/>
+                    </g>
+                </svg>
+            </span>
+            <!--end::Svg Icon-->
+            <div class="fw-bolder fs-2 mb-2 mt-5" style="color: #7239EA;">Transaction Report</div>
+            <div class="fw-bold fs-7" style="color: #7239EA;"></div>
+        </div>
+        <!--end::Body-->
+    </a>
+    <!--end::Statistics Widget 5-->
+</div>
+
+<div class="col-xl-3">
+    <!--begin::Statistics Widget 5-->
+    <a href="CharityChampions.aspx" class="card card-xl-stretch mb-xl-8 hoverable" style="border: 2px solid #7239EA; background-color: transparent;">
+        <!--begin::Body-->
+        <div class="card-body text-center">
+            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
+            <span class="svg-icon svg-icon-3x" style="color: #7239EA;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24"/>
+                        <rect fill="#7239EA" opacity="0.3" x="2" y="2" width="10" height="12" rx="2"/>
+                        <path d="M4,6 L20,6 C21.1045695,6 22,6.8954305 22,8 L22,20 C22,21.1045695 21.1045695,22 20,22 L4,22 C2.8954305,22 2,21.1045695 2,20 L2,8 C2,6.8954305 2.8954305,6 4,6 Z M18,16 C19.1045695,16 20,15.1045695 20,14 C20,12.8954305 19.1045695,12 18,12 C16.8954305,12 16,12.8954305 16,14 C16,15.1045695 16.8954305,16 18,16 Z" fill="#7239EA"/>
+                    </g>
+                </svg>
+            </span>
+            <!--end::Svg Icon-->
+            <div class="fw-bolder fs-2 mb-2 mt-5" style="color: #7239EA;">Charity Champions</div>
+            <div class="fw-bold fs-7" style="color: #7239EA;"></div>
+        </div>
+        <!--end::Body-->
+    </a>
+    <!--end::Statistics Widget 5-->
+</div>
+
 	<div class="row gy-5 g-xl-8">
 								
 				
 		</div>
 	<div class="row gy-5 g-xl-8">
 								
-								<div class="col-xl-3" >
-									<!--begin::Statistics Widget 5-->
-									<a href="ProfitReport.aspx" class="card bg-primary hoverable card-xl-stretch mb-xl-8">
-										<!--begin::Body-->
-										<div class="card-body">
-											<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm008.svg-->
-											<span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
-												<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Shopping/Credit-card.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect x="0" y="0" width="24" height="24"/>
-        <rect fill="#000000" opacity="0.3" x="2" y="5" width="20" height="14" rx="2"/>
-        <rect fill="#000000" x="2" y="8" width="20" height="3"/>
-        <rect fill="#000000" opacity="0.3" x="16" y="14" width="4" height="2" rx="1"/>
-    </g>
-</svg><!--end::Svg Icon-->
-											</span>
-											<!--end::Svg Icon-->
-											<div class="text-inverse-primary fw-bolder fs-2 mb-2 mt-5">Profit Report</div>
-											<div class="fw-bold text-inverse-primary fs-7"></div>
-										</div>
-										<!--end::Body-->
-									</a>
-									<!--end::Statistics Widget 5-->
-								</div>
-								<div class="col-xl-3" >
-									<!--begin::Statistics Widget 5-->
-									<a href="VideosConfig.aspx" class="card bg-danger hoverable card-xl-stretch mb-xl-8">
-										<!--begin::Body-->
-										<div class="card-body">
-											<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
-											<span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
-												<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Code/Compiling.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect x="0" y="0" width="24" height="24"/>
-        <path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3"/>
-        <path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000"/>
-    </g>
-</svg><!--end::Svg Icon-->
-											</span>
-											<!--end::Svg Icon-->
-											<div class="text-inverse-success fw-bolder fs-2 mb-2 mt-5">Videos</div>
-											<div class="fw-bold text-inverse-success fs-7"></div>
-										</div>
-										<!--end::Body-->
-									</a>
-									<!--end::Statistics Widget 5-->
-								</div>
-			  <div class="col-xl-3">
-									<!--begin::Statistics Widget 5-->
-									<a href="Wordpress.aspx" class="card bg-dark hoverable card-xl-stretch mb-5 mb-xl-8">
-										<!--begin::Body-->
-										<div class="card-body">
-											<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
-											<span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
-												<i style="color:white;height:39px;width:39px" class="bi bi-envelope"></i>
-					
-											</span>
-											<!--end::Svg Icon-->
-											<div class="text-inverse-success fw-bolder fs-2 mb-2 mt-5">WordPress</div>
-											<div class="fw-bold text-inverse-success fs-7"></div>
-										</div>
-										<!--end::Body-->
-									</a>
-									<!--end::Statistics Widget 5-->
-								</div>
+<div class="col-xl-3">
+    <!--begin::Statistics Widget 5-->
+    <a href="ProfitReport.aspx" class="card card-xl-stretch mb-xl-8 hoverable" style="border: 2px solid #7239EA; background-color: transparent;">
+        <!--begin::Body-->
+        <div class="card-body text-center">
+            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm008.svg-->
+            <span class="svg-icon svg-icon-3x" style="color: #7239EA;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24"/>
+                        <rect fill="#7239EA" class="fill" opacity="0.3" x="2" y="5" width="20" height="14" rx="2"/>
+                        <rect fill="#7239EA" class="fill" x="2" y="8" width="20" height="3"/>
+                        <rect fill="#7239EA" class="fill" opacity="0.3" x="16" y="14" width="4" height="2" rx="1"/>
+                    </g>
+                </svg>
+            </span>
+            <!--end::Svg Icon-->
+            <div class="fw-bolder fs-2 mb-2 mt-5" style="color: #7239EA;">Profit Report</div>
+            <div class="fw-bold fs-7" style="color: #7239EA;"></div>
+        </div>
+        <!--end::Body-->
+    </a>
+    <!--end::Statistics Widget 5-->
+</div>
+
+<div class="col-xl-3">
+    <!--begin::Statistics Widget 5-->
+    <a href="VideosConfig.aspx" class="card card-xl-stretch mb-xl-8 hoverable" style="border: 2px solid #7239EA; background-color: transparent;">
+        <!--begin::Body-->
+        <div class="card-body text-center">
+            <!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
+            <span class="svg-icon svg-icon-3x" style="color: #7239EA;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24"/>
+                        <path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#7239EA" opacity="0.3"/>
+                        <path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#7239EA"/>
+                    </g>
+                </svg>
+            </span>
+            <!--end::Svg Icon-->
+            <div class="fw-bolder fs-2 mb-2 mt-5" style="color: #7239EA;">Videos</div>
+            <div class="fw-bold fs-7" style="color: #7239EA;"></div>
+        </div>
+        <!--end::Body-->
+    </a>
+    <!--end::Statistics Widget 5-->
+</div>
+
+		<div class="col-xl-3">
+    <!--begin::Statistics Widget 5-->
+    <a href="Wordpress.aspx" class="card card-xl-stretch mb-5 mb-xl-8 hoverable" style="border: 2px solid #7239EA; background-color: transparent;">
+        <!--begin::Body-->
+        <div class="card-body text-center">
+            <!--begin::Svg Icon-->
+            <span class="svg-icon svg-icon-3x">
+                <i class="bi bi-envelope" style="color: #7239EA; height:39px;width:39px;"></i>
+            </span>
+            <!--end::Svg Icon-->
+            <div class="fw-bolder fs-2 mb-2 mt-5" style="color: #7239EA;">WordPress</div>
+            <div class="fw-bold fs-7" style="color: #7239EA;"></div>
+        </div>
+        <!--end::Body-->
+    </a>
+    <!--end::Statistics Widget 5-->
+</div>
 
 
 
@@ -293,25 +305,43 @@
 
 
 
-			  <div class="col-xl-3">
-							<!--begin::Statistics Widget 5-->
-							<a href="Marketplace.aspx" class="card bg-dark hoverable card-xl-stretch mb-5 mb-xl-8">
-								<!--begin::Body-->
-								<div class="card-body">
-									<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
-									<span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
-										<i style="color:white;height:39px;width:39px" class="bi bi-envelope"></i>
-			
-									</span>
-									<!--end::Svg Icon-->
-									<div class="text-inverse-success fw-bolder fs-2 mb-2 mt-5">Marketplace</div>
-									<div class="fw-bold text-inverse-success fs-7"></div>
-								</div>
-								<!--end::Body-->
-							</a>
-							<!--end::Statistics Widget 5-->
-						</div>
 
+		<div class="col-xl-3">
+    <!--begin::Statistics Widget 5-->
+    <a href="Marketplace.aspx" class="card card-xl-stretch mb-5 mb-xl-8 hoverable" style="border: 2px solid #7239EA; background-color: transparent;">
+        <!--begin::Body-->
+        <div class="card-body text-center">
+            <!--begin::Svg Icon-->
+            <span class="svg-icon svg-icon-3x">
+                <i class="bi bi-envelope" style="color: #7239EA; height:39px;width:39px;"></i>
+            </span>
+            <!--end::Svg Icon-->
+            <div class="fw-bolder fs-2 mb-2 mt-5" style="color: #7239EA;">Marketplace</div>
+            <div class="fw-bold fs-7" style="color: #7239EA;"></div>
+        </div>
+        <!--end::Body-->
+    </a>
+    <!--end::Statistics Widget 5-->
+</div>
+
+
+        		<div class="col-xl-3">
+    <!--begin::Statistics Widget 5-->
+    <a href="Iconconfiguration.aspx" class="card card-xl-stretch mb-5 mb-xl-8 hoverable" style="border: 2px solid #7239EA; background-color: transparent;">
+        <!--begin::Body-->
+        <div class="card-body text-center">
+            <!--begin::Svg Icon-->
+            <span class="svg-icon svg-icon-3x">
+                <i class="bi bi-envelope" style="color: #7239EA; height:39px;width:39px;"></i>
+            </span>
+            <!--end::Svg Icon-->
+            <div class="fw-bolder fs-2 mb-2 mt-5" style="color: #7239EA;">Icon Configuration</div>
+            <div class="fw-bold fs-7" style="color: #7239EA;"></div>
+        </div>
+        <!--end::Body-->
+    </a>
+    <!--end::Statistics Widget 5-->
+</div>
 
 
 

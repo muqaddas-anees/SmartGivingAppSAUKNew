@@ -700,7 +700,10 @@ ItemPlaceholderID="itemPlaceHolder1" OnPagePropertiesChanging="OnPagePropertiesC
                                     <div class="row">
                                                            
 															<div class="col-lg-12  my-10">
-																 <asp:Button ID="btnView" runat="server" Text="View Event" CommandName="viewmore" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"  />
+					
+																<asp:Button ID="btnView" runat="server" Text="View Event" CommandName="viewmore" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"  />
+<asp:Button ID="Button1" runat="server" Text="Go Live" CssClass="btn btn-success" CommandName="golive" CommandArgument='<%# Eval("unid") %>' style='<%# "margin-right:10px;background-color:#50CD89; display:" + Eval("display") %>' />
+
 																<asp:Button ID="btnEditEvent" runat="server" Text="Edit Event" CommandName="editevent" CssClass="btn btn-light" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"    />
 																<asp:Button ID="btnGenerate" runat="server" Text="Download QR" CommandName="qr" CssClass="btn btn-light" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"   />
 																<asp:Button ID="btnSocialSettings" runat="server" Text="Social Settings" CommandName="social" CssClass="btn btn-light" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"   />

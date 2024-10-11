@@ -82,12 +82,19 @@ namespace DeffinityAppDev.App
                     gridtopdonors.DataSource = rList;
                     gridtopdonors.DataBind();
 
+
+
                 }
             }
             catch(Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
             }
+        }
+
+        private void BindLogo()
+        {
+
         }
 
         protected static string GetImageUrl(string contactsId)

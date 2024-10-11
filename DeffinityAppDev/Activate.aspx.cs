@@ -3,6 +3,7 @@ using AngleSharp.Dom;
 using DeffinityAppDev;
 using DeffinityManager.BLL;
 using DocumentFormat.OpenXml.Wordprocessing;
+using PortfolioMgt.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,6 +120,7 @@ namespace DeffinityAppDev
                 LogExceptions.WriteExceptionLog(ex);
             }
         }
+      
 
         private void UpdateActiveCamp(UserMgt.Entity.Contractor uDetails,string tag)
         {

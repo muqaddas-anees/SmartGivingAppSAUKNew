@@ -28,6 +28,10 @@ namespace DeffinityAppDev.App
             {
                 Response.Redirect("~/App/FLSDefault.aspx?tab=fls&type=access" + b + "&pnl=JobTicketConfiguration", false);
             }
+            else if (e.CommandName == "icons")
+            {
+                Response.Redirect("~/App/iconConfiguration.aspx", false);
+            }
             else if (e.CommandName == "SourceofRequest")
             {
                 Response.Redirect("~/App/FLSDefault.aspx?tab=fls&type=source" + b + "&pnl=JobTicketConfiguration", false);

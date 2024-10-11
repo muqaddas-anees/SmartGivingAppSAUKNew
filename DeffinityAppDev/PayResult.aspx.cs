@@ -1,4 +1,5 @@
 ﻿using DC.Entity;
+using PortfolioMgt.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace DeffinityAppDev
                 {
                     //string paymentStatus = Request.QueryString["payment_status"];
 
-                    lblOrgname.Text = PortfolioMgt.BAL.ProjectPortfolioBAL.ProjectPortfolioBAL_SelectByID(sessionKeys.PortfolioID).PortFolio;
+                    var portfolio = PortfolioMgt.BAL.ProjectPortfolioBAL.ProjectPortfolioBAL_SelectByID(sessionKeys.PortfolioID);
+                    lblOrgname.Text = portfolio.PortFolio;
                     var unid = QueryStringValues.UNID;
                     var pmRep = new PortfolioRepository<PortfolioMgt.Entity.TithingPaymentTracker>();
                     var pE = pmRep.GetAll().Where(o => o.unid == unid).FirstOrDefault();
@@ -141,12 +143,18 @@ namespace DeffinityAppDev
 
                     }
 
+                    BindLogo();
+
                 }
             }
             catch(Exception ex)
             {
                 LogExceptions.WriteExceptionLog(ex);
             }
+        }
+        private void BindLogo()
+        {
+            imgLogo.ImageUrl = $"imagehandler.ashx?id={sessionKeys.PortfolioID}&s={ImageManager.file_section_portfolio}";
         }
         public static void AdminOrderMail(string unid)
         {
@@ -597,8 +605,12 @@ Sincerely,
                     Response.Redirect("~/App/Dashboard.aspx", false);
                 else
                 {
-                    Response.Redirect("~/Default.aspx", false);
+                    
+                    var portfolio = PortfolioMgt.BAL.ProjectPortfolioBAL.ProjectPortfolioBAL_SelectByID(sessionKeys.PortfolioID);
+
+                    Response.Redirect("~/OrgHomeNewV2.aspx?orgguid="+portfolio.OrgarnizationGUID, false);
                 }
+                
             }
         }
     }

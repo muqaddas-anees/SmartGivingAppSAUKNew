@@ -2510,6 +2510,15 @@
       <Column Name="TrialPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.IconRange" Member="IconRanges">
+    <Type Name="IconRange">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FromRange" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToRange" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.TimeSheetResource_AddUpdateWcDate" Method="TimeSheetResource_AddUpdateWcDate">
     <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="contractorID" Type="System.Int32" DbType="Int" />

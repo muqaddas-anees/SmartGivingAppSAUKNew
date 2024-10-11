@@ -442,6 +442,9 @@ namespace PortfolioMgt.DAL
     partial void InsertBoughtMarketplaceProduct(PortfolioMgt.Entity.BoughtMarketplaceProduct instance);
     partial void UpdateBoughtMarketplaceProduct(PortfolioMgt.Entity.BoughtMarketplaceProduct instance);
     partial void DeleteBoughtMarketplaceProduct(PortfolioMgt.Entity.BoughtMarketplaceProduct instance);
+    partial void InsertIconRange(PortfolioMgt.Entity.IconRange instance);
+    partial void UpdateIconRange(PortfolioMgt.Entity.IconRange instance);
+    partial void DeleteIconRange(PortfolioMgt.Entity.IconRange instance);
     #endregion
 		
 		public PortfolioDataContext() : 
@@ -1743,6 +1746,14 @@ namespace PortfolioMgt.DAL
 			get
 			{
 				return this.GetTable<PortfolioMgt.Entity.BoughtMarketplaceProduct>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.IconRange> IconRanges
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.IconRange>();
 			}
 		}
 		
@@ -49508,6 +49519,164 @@ namespace PortfolioMgt.Entity
 					this._TrialPeriod = value;
 					this.SendPropertyChanged("TrialPeriod");
 					this.OnTrialPeriodChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IconRange")]
+	public partial class IconRange : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _FromRange;
+		
+		private System.Nullable<int> _ToRange;
+		
+		private string _Country;
+		
+		private string _PortfolioID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnFromRangeChanging(System.Nullable<int> value);
+    partial void OnFromRangeChanged();
+    partial void OnToRangeChanging(System.Nullable<int> value);
+    partial void OnToRangeChanged();
+    partial void OnCountryChanging(string value);
+    partial void OnCountryChanged();
+    partial void OnPortfolioIDChanging(string value);
+    partial void OnPortfolioIDChanged();
+    #endregion
+		
+		public IconRange()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FromRange", DbType="Int")]
+		public System.Nullable<int> FromRange
+		{
+			get
+			{
+				return this._FromRange;
+			}
+			set
+			{
+				if ((this._FromRange != value))
+				{
+					this.OnFromRangeChanging(value);
+					this.SendPropertyChanging();
+					this._FromRange = value;
+					this.SendPropertyChanged("FromRange");
+					this.OnFromRangeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToRange", DbType="Int")]
+		public System.Nullable<int> ToRange
+		{
+			get
+			{
+				return this._ToRange;
+			}
+			set
+			{
+				if ((this._ToRange != value))
+				{
+					this.OnToRangeChanging(value);
+					this.SendPropertyChanging();
+					this._ToRange = value;
+					this.SendPropertyChanged("ToRange");
+					this.OnToRangeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Country", DbType="NVarChar(100)")]
+		public string Country
+		{
+			get
+			{
+				return this._Country;
+			}
+			set
+			{
+				if ((this._Country != value))
+				{
+					this.OnCountryChanging(value);
+					this.SendPropertyChanging();
+					this._Country = value;
+					this.SendPropertyChanged("Country");
+					this.OnCountryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PortfolioID", DbType="VarChar(1)")]
+		public string PortfolioID
+		{
+			get
+			{
+				return this._PortfolioID;
+			}
+			set
+			{
+				if ((this._PortfolioID != value))
+				{
+					this.OnPortfolioIDChanging(value);
+					this.SendPropertyChanging();
+					this._PortfolioID = value;
+					this.SendPropertyChanged("PortfolioID");
+					this.OnPortfolioIDChanged();
 				}
 			}
 		}

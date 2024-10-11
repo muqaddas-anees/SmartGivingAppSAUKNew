@@ -1012,5 +1012,11 @@
         <elementListCompartment Id="1d2f9b4c-aa01-4d3f-8cf5-b06c3b3b838e" absoluteBounds="34.64, 5.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="2325e03d-0f92-430d-8c4d-1983ab36bdc2" absoluteBounds="23.5, 1.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/PortfolioDataContext/IconRange" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4b9d13ac-2545-4c60-829f-f05b8c241578" absoluteBounds="23.515, 2.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
