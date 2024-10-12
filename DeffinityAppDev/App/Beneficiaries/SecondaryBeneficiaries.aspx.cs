@@ -84,6 +84,7 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 // Handle exceptions (e.g., log the error, display a message)
                 Console.WriteLine($"Error fetching country data: {ex.Message}");
+                LogExceptions.WriteExceptionLog(ex);
 
                 // Optionally, you can display a user-friendly message in the UI
                 ddlCountryCode.Enabled = false;
@@ -161,8 +162,7 @@ namespace DeffinityAppDev.App.Beneficiaries
 
         private void LoadBeneficiaryDetails(string beneficiaryID)
         {
-
-
+            try { 
             using (var context = new MyDatabaseContext())
             {
                 // Use LINQ to get the SecondaryBeneficiary with the specified ID
@@ -237,13 +237,17 @@ namespace DeffinityAppDev.App.Beneficiaries
                     }
                 }
             }
+            }catch(Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
         }
 
         private void SaveSecondaryBeneficiary()
         {
 
 
-
+            
 
             // Get the beneficiary ID from the hidden field
             string beneficiaryID = hfBeneficiaryID.Value;
@@ -279,7 +283,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                     }
 
                     // Assign properties from the form inputs
-                    beneficiary.TithingID = 1; // Assuming this dropdown is for TithingID
+                    beneficiary.TithingID = sessionKeys.PortfolioID; // Assuming this dropdown is for TithingID
                     beneficiary.Type = ddlTypeModal.SelectedValue;
                     beneficiary.Gender = ddlGenderModal.SelectedValue;
                     beneficiary.Name = txtNameModal.Text.Trim();
@@ -330,22 +334,10 @@ namespace DeffinityAppDev.App.Beneficiaries
 
 
             }
-            catch (DbUpdateException dbEx)
-            {
-                var innerException = dbEx.InnerException?.InnerException;
-                if (innerException != null)
-                {
-                    Debug.WriteLine("Inner Exception: " + innerException.Message);
-                    ShowMessage("An error occurred: " + innerException.Message);
-                }
-                else
-                {
-                    Debug.WriteLine("General DbUpdateException: " + dbEx.Message);
-                    ShowMessage("An error occurred: " + dbEx.Message);
-                }
-            }
+         
             catch (Exception ex)
             {
+                LogExceptions.WriteExceptionLog(ex);
                 Debug.WriteLine("General Exception: " + ex.Message);
                 ShowMessage("An unexpected error occurred. Please try again.");
             }
@@ -381,6 +373,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                 catch (Exception ex)
                 {
                     ShowMessage("An error occurred: " + ex.Message);
+
 
                 }
             
@@ -460,11 +453,27 @@ namespace DeffinityAppDev.App.Beneficiaries
         }
         private void LoadSecondaryBeneficiaries()
         {
-            using (var context = new MyDatabaseContext())
+            try
             {
-                // Fetch data from the database first
-                var beneficiaries = context.SecondaryBeneficiary
-                    .Select(b => new
+                using (var context = new MyDatabaseContext())
+                {
+                    // Fetch data from the database first
+                    var beneficiaries = context.SecondaryBeneficiary
+                        .Select(b => new
+                        {
+                            b.SecondaryBeneficiaryID,
+                            b.Gender,
+                            b.Name,
+                            b.Email,
+                            b.DateOfBirth,
+                            b.InternalIDNumber,
+                            b.PhoneNumber,
+                            b.ProfileImage // Fetch the binary image data as-is
+                        })
+                        .ToList(); // Perform the database query first
+
+                    // Convert ProfileImage to Base64 string in-memory after data retrieval
+                    var beneficiariesWithBase64Images = beneficiaries.Select(b => new
                     {
                         b.SecondaryBeneficiaryID,
                         b.Gender,
@@ -473,28 +482,18 @@ namespace DeffinityAppDev.App.Beneficiaries
                         b.DateOfBirth,
                         b.InternalIDNumber,
                         b.PhoneNumber,
-                        b.ProfileImage // Fetch the binary image data as-is
-                    })
-                    .ToList(); // Perform the database query first
+                        ProfileImageBase64 = b.ProfileImage != null
+                            ? "data:image/jpeg;base64," + Convert.ToBase64String(b.ProfileImage)
+                            : "~/metronic8/demo1/assets/media/avatars/300-1.jpg" // Default placeholder if image is null
+                    }).ToList();
 
-                // Convert ProfileImage to Base64 string in-memory after data retrieval
-                var beneficiariesWithBase64Images = beneficiaries.Select(b => new
-                {
-                    b.SecondaryBeneficiaryID,
-                    b.Gender,
-                    b.Name,
-                    b.Email,
-                    b.DateOfBirth,
-                    b.InternalIDNumber,
-                    b.PhoneNumber,
-                    ProfileImageBase64 = b.ProfileImage != null
-                        ? "data:image/jpeg;base64," + Convert.ToBase64String(b.ProfileImage)
-                        : "~/metronic8/demo1/assets/media/avatars/300-1.jpg" // Default placeholder if image is null
-                }).ToList();
-
-                // Bind the result to the Repeater
-                rptSecondaryBeneficiaries.DataSource = beneficiariesWithBase64Images;
-                rptSecondaryBeneficiaries.DataBind();
+                    // Bind the result to the Repeater
+                    rptSecondaryBeneficiaries.DataSource = beneficiariesWithBase64Images;
+                    rptSecondaryBeneficiaries.DataBind();
+                }
+            }catch(Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
             }
         }
 

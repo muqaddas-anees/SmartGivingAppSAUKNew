@@ -558,7 +558,7 @@
                 </a>
             </div>
 
-            <div class=" menu-item py-2" style="display:none" id="Div5" runat="server">
+            <div class=" menu-item py-2" id="Div5" runat="server">
     <a href='<%:ResolveClientUrl("~/App/Beneficiaries/GetBeneficiaries.aspx")%>' class="menu-link " title="Beneficiaries" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
         <span class="menu-icon">
             <i class="bi bi-box2-heart"></i>      

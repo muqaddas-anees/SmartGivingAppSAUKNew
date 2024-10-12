@@ -13,12 +13,12 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 
 
-
+    <!-- any other thing like scripts or css files, add here -->
 <div class="d-flex flex-wrap flex-sm-nowrap">
     <!-- User Profile Section -->
     <div class="me-7 mb-4">
         <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-            <img src="/metronic8/demo1/assets/media/avatars/300-1.jpg" alt="image"/>
+            <img src="../../assets/media/avatars/300-1.jpg" alt="image"/>
             <div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-body h-20px w-20px"></div>
         </div>
     </div>
