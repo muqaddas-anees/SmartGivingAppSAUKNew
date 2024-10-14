@@ -33,22 +33,40 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.TextBox txtDonationDate;
 
         /// <summary>
-        /// ddlLoggedBy control.
+        /// ddlLogged control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ddlLoggedBy;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLogged;
 
         /// <summary>
-        /// ddlAssociatedFundraiser control.
+        /// rfvLoggedBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ddlAssociatedFundraiser;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLoggedBy;
+
+        /// <summary>
+        /// ddlAssociatedFundraise control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAssociatedFundraise;
+
+        /// <summary>
+        /// rfvAssociatedFundraise control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssociatedFundraise;
 
         /// <summary>
         /// ddlCurrency control.
@@ -67,6 +85,15 @@ namespace DeffinityAppDev.App.Beneficiaries
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDonationAmount;
+
+        /// <summary>
+        /// rfvDonationAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDonationAmount;
 
         /// <summary>
         /// rbOneOff control.
@@ -96,13 +123,22 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.RadioButton rbAnnual;
 
         /// <summary>
-        /// ddlDonatedBy control.
+        /// ddlDonated control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ddlDonatedBy;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDonated;
+
+        /// <summary>
+        /// rfvDonatedBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDonatedBy;
 
         /// <summary>
         /// txtDonationNotes control.

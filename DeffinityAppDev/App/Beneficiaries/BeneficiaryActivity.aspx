@@ -262,17 +262,22 @@
                         <asp:Label ID="lblDate" runat="server" Text="Date"></asp:Label>
                         <div class="input-group">
                             <asp:TextBox ID="txtActivityDate" runat="server" CssClass="form-control bg-transparent" TextMode="Date" />
+                            <asp:RequiredFieldValidator ID="txt" ControlToValidate="txtActivityDate" runat="server" ErrorMessage="Date is Required" CssClass="text-danger"/>
                         </div>
                     </div>
                 </div>
 
 
                                 <div class="row mb-3">
-                    <div class="col-12">
-                        <asp:Label ID="lblLoggedBy" runat="server" Text="Logged By"></asp:Label>
-                        <asp:TextBox ID="txtLoggedBy" runat="server" CssClass="form-control" placeholder="Enter name of the person logging this activity"></asp:TextBox>
-                    </div>
-                </div>
+    <div class="col-12">
+        <asp:Label for="ddlLoggedBy" runat="server" Text="Logged By"></asp:Label>
+        <asp:DropDownList ID="ddlLoggedBy" runat="server" CssClass="form-control" DataTextField="Name" DataValueField="ID" AutoPostBack="false">
+            <asp:ListItem Text="Select a person" Value=""></asp:ListItem>
+          
+        </asp:DropDownList>
+    </div>
+</div>
+
 
                 <!-- Rich Text Editor -->
                 <div class="row mb-3">

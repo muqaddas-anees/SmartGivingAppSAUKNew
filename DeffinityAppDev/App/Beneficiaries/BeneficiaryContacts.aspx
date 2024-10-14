@@ -114,7 +114,7 @@
     <div class="input-group w-100">
         <!-- Country Code Dropdown -->
         <asp:DropDownList 
-            ID="ddlCountryCode" 
+            ID="ddlPhone" 
             runat="server" 
             CssClass="form-select form-select-lg form-select-solid country-code-dropdown text-dark">
           
@@ -184,11 +184,11 @@
         </div>
     </div>
 </div>
-                <script>
-                    var hostUrl = "/metronic8/demo1/assets/";
-                </script>
-<script src="/metronic8/demo1/assets/plugins/global/plugins.bundle.js"></script>
-<script src="/metronic8/demo1/assets/js/scripts.bundle.js"></script>
+                 <script type="text/javascript">
+                     var hostUrl = "/assets/";
+                 </script>
+<script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
+<script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
 
  <script type="text/javascript">
         $(document).ready(function () {

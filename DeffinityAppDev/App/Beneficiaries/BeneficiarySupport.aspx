@@ -97,11 +97,20 @@
                 <div class="row mb-3">
                     <div class="col-6">
                         <label for="ddlLoggedBy" class="form-label">Logged By</label>
-                        <asp:TextBox ID="ddlLoggedBy" runat="server" CssClass="form-control" placeholder="Logged By" />
+                          <asp:DropDownList ID="ddlLogged" runat="server" CssClass="form-control" DataTextField="Name" DataValueField="ID" AutoPostBack="false">
+      <asp:ListItem Text="Select a person" Value=""></asp:ListItem>
+
+  </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvLoggedBy" runat="server" ControlToValidate="ddlLogged" InitialValue="" ErrorMessage="Please select a person." CssClass="text-danger" Display="Dynamic" ValidationGroup="DonationGroup" />
+
                     </div>
                     <div class="col-6">
-                        <label for="ddlAssociatedFundraiser" class="form-label">Associated Fundraiser</label>
-                        <asp:TextBox runat="server" ID="ddlAssociatedFundraiser" class="form-control" placeholder="Associated Fundraiser" />
+                        <label for="ddlAssociated" class="form-label">Associated Fundraiser</label>
+                        <asp:DropDownList ID="ddlAssociatedFundraise" runat="server" CssClass="form-control" DataTextField="Name" DataValueField="ID" AutoPostBack="false">
+    <asp:ListItem Text="Select a Fundraiser" Value=""></asp:ListItem>
+</asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvAssociatedFundraise" runat="server" ControlToValidate="ddlAssociatedFundraise" InitialValue="" ErrorMessage="Please select a fundraiser." CssClass="text-danger" Display="Dynamic" ValidationGroup="DonationGroup" />
+
                     </div>
                 </div>
 
@@ -120,48 +129,54 @@
                             <asp:ListItem Text="Australian Dollar (&#36;)" Value="&#36;"></asp:ListItem> 
                             <asp:ListItem Text="Swiss Franc (&#8355;)" Value="&#8355;"></asp:ListItem> 
                             <asp:ListItem Text="Russian Ruble (&#8381;)" Value="&#8381;"></asp:ListItem> 
-                            <asp:ListItem Text="South Korean Won (&#8361;)" Value="&#8361;"></asp:ListItem> 
                             <asp:ListItem Text="Saudi Riyal (&#xFDFC;)" Value="&#xFDFC;"></asp:ListItem> 
-                            <asp:ListItem Text="Brazilian Real (&#82;)" Value="&#82;"></asp:ListItem> 
-                            <asp:ListItem Text="Mexican Peso (&#36;)" Value="&#36;"></asp:ListItem> 
                             <asp:ListItem Text="South African Rand (&#82;)" Value="&#82;"></asp:ListItem> 
                             <asp:ListItem Text="Turkish Lira (&#8378;)" Value="&#8378;"></asp:ListItem> 
                             <asp:ListItem Text="Swedish Krona (&#107;&#114;)" Value="&#107;&#114;"></asp:ListItem> 
-                            <asp:ListItem Text="Norwegian Krone (&#107;&#114;)" Value="&#107;&#114;"></asp:ListItem> 
-                            <asp:ListItem Text="Danish Krone (&#107;&#114;)" Value="&#107;&#114;"></asp:ListItem> 
-                            <asp:ListItem Text="New Zealand Dollar (&#36;)" Value="&#36;"></asp:ListItem> 
                         </asp:DropDownList>
                     </div>
                     <div class="col-6">
                         <label for="txtDonationAmount" class="form-label">Donation Amount</label>
                         <asp:TextBox ID="txtDonationAmount" runat="server" CssClass="form-control" TextMode="Number" placeholder="Donation Amount" oninput="validatePositiveNumber(this)" min="0" />
                         <span id="donationAmountError" class="text-white text-bg-danger" style="display:none;">Please enter a positive number.</span>
+                        <asp:RequiredFieldValidator ID="rfvDonationAmount" runat="server" ControlToValidate="txtDonationAmount" ErrorMessage="Donation amount is required." CssClass="text-danger" Display="Dynamic" EnableClientScript="true" ValidationGroup="DonationGroup" />
+
                     </div>
                 </div>
 
                 <!-- Payment Type -->
-                <div class="row mb-3">
-                    <div class="col-12 d-flex flex-wrap gap-3">
-                        <div class="form-check">
-                            <asp:RadioButton ID="rbOneOff" runat="server" GroupName="PaymentType" CssClass="form-check-input" />
-                            <label class="form-check-label ms-2" for="rbOneOff">One Off Payment</label>
-                        </div>
-                        <div class="form-check">
-                            <asp:RadioButton ID="rbMonthly" runat="server" GroupName="PaymentType" CssClass="form-check-input" />
-                            <label class="form-check-label ms-2" for="rbMonthly">Monthly</label>
-                        </div>
-                        <div class="form-check">
-                            <asp:RadioButton ID="rbAnnual" runat="server" GroupName="PaymentType" CssClass="form-check-input" />
-                            <label class="form-check-label ms-2" for="rbAnnual">Annual</label>
-                        </div>
-                    </div>
-                </div>
+    <div class="row mb-3">
+        <div class="col-12 d-flex flex-wrap gap-3">
+            <div class="form-check">
+                <asp:RadioButton ID="rbOneOff" runat="server" GroupName="PaymentType" CssClass="form-check-input" />
+                <label class="form-check-label ms-2" for="rbOneOff">One Off Payment</label>
+            </div>
+
+            <div class="form-check">
+                <asp:RadioButton ID="rbMonthly" runat="server" GroupName="PaymentType" CssClass="form-check-input" />
+                <label class="form-check-label ms-2" for="rbMonthly">Monthly</label>
+            </div>
+
+            <div class="form-check">
+                <asp:RadioButton ID="rbAnnual" runat="server" GroupName="PaymentType" CssClass="form-check-input" />
+                <label class="form-check-label ms-2" for="rbAnnual">Annual</label>
+            </div>
+
+            
+        </div>
+    </div>
+
+
 
                 <!-- Donated By and Notes -->
                 <div class="row mb-3">
                     <div class="col-6">
                         <label for="ddlDonatedBy" class="form-label">Donated By</label>
-                        <asp:TextBox ID="ddlDonatedBy" runat="server" CssClass="form-control" placeholder="Donated By" />
+                       <asp:DropDownList ID="ddlDonated" runat="server" CssClass="form-control" DataTextField="Name" DataValueField="ID" AutoPostBack="false">
+                           <asp:ListItem Text="Select a person" Value=""></asp:ListItem>
+                           </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvDonatedBy" runat="server" ControlToValidate="ddlDonated" InitialValue="" ErrorMessage="Please select a donor." CssClass="text-danger" Display="Dynamic" ValidationGroup="DonationGroup" />
+
                     </div>
                     <div class="col-6">
                         <label for="txtDonationNotes" class="form-label">Notes</label>
@@ -213,12 +228,11 @@
         </div>
     </div>
 </div>
-
-                <script>
-                    var hostUrl = "/metronic8/demo1/assets/";
-                </script>
-<script src="/metronic8/demo1/assets/plugins/global/plugins.bundle.js"></script>
-<script src="/metronic8/demo1/assets/js/scripts.bundle.js"></script>
+                 <script type="text/javascript">
+                     var hostUrl = "/assets/";
+                 </script>
+<script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
+<script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
 <script>
     function showSuccessModal() {
 

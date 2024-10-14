@@ -3,21 +3,19 @@
 <asp:Content ID="BeneficiaryReport" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  
- <!-- Include Tempus Dominus CSS -->
- <link href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.0.0-beta1/dist/css/tempus-dominus.min.css" rel="stylesheet"/>
+
  
  <!--begin::Fonts(mandatory for all pages)-->
- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700">        
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/>        
 
- <link href="/metronic8/demo1/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css">
- <link href="/metronic8/demo1/assets/css/style.bundle.css" rel="stylesheet" type="text/css">
+ <link href="/metronic8/demo1/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
+ <link href="/metronic8/demo1/assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
  <!--end::Global Stylesheets Bundle-->
  
  <!-- Include Font Awesome -->
  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
  
- <!-- Include Tempus Dominus JS -->
- <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.0.0-beta1/dist/js/tempus-dominus.min.js"></script>
+
 
 
  
@@ -37,6 +35,7 @@
         <!-- Dropdown for Type (Institute / Individual) -->
         <div class="col-md-6 mb-8 fv-plugins-icon-container">
             <asp:DropDownList ID="ddlType" runat="server" CssClass="form-select text-muted form-select-lg bg-transparent fw-semibold">
+                <asp:ListItem Text="Select Type" Value=""></asp:ListItem>
                 <asp:ListItem Text="Institute" Value="Institute"></asp:ListItem>
                 <asp:ListItem Text="Individual" Value="Individual"></asp:ListItem>
             </asp:DropDownList>
@@ -70,6 +69,7 @@
         <!-- Gender -->
         <div class="col-md-6 mb-8">
             <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
+                <asp:ListItem Text="Select Gender" Value=""></asp:ListItem>
                 <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
                 <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
                 <asp:ListItem Text="Binary" Value="Binary"></asp:ListItem>
@@ -118,11 +118,7 @@
         </div>
 
         <!-- Postcode/Zip Code -->
-        <div class="col-md-6 mb-8">
-            <asp:TextBox ID="txtZip" runat="server" placeholder="Postcode / Zip Code" CssClass="form-control text-muted fw-semibold form-control-lg  bg-transparent" />
-            <asp:RequiredFieldValidator ID="rfvZip" runat="server" ControlToValidate="txtZip"
-                ErrorMessage="Zip code is required" CssClass="text-white text-bg-danger" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
+
     </div>
 
     <div class="row text-muted">
@@ -133,6 +129,11 @@
             </asp:DropDownList>
             <asp:RequiredFieldValidator ID="rfvCountry" runat="server" ControlToValidate="ddlCountry"
                 InitialValue="" ErrorMessage="Country is required" CssClass="text-white text-bg-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+        </div>
+                <div class="col-md-5 mb-8">
+            <asp:TextBox ID="txtZip" runat="server" placeholder="Postcode / Zip Code" CssClass="form-control text-muted fw-semibold form-control-lg  bg-transparent" />
+            <asp:RequiredFieldValidator ID="rfvZip" runat="server" ControlToValidate="txtZip"
+                ErrorMessage="Zip code is required" CssClass="text-white text-bg-danger" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
     </div>
 
@@ -154,7 +155,7 @@
     <!-- Country Code Dropdown -->
     <div class="me-2" style="flex: 0 1 auto;"> <!-- Optional: Add some margin between the elements -->
         <asp:DropDownList 
-            ID="ddlCountryCode" 
+            ID="ddlPhone" 
             runat="server" 
             CssClass="form-select form-select-lg form-select-solid country-code-dropdown text-dark" 
             onchange="updatePhoneCode();">
@@ -224,22 +225,27 @@
 <div class="col-md-12 mb-8"> 
         <div class="input-group">
             <asp:FileUpload ID="fileUploadFront" runat="server" CssClass="form-control text-muted fw-semibold form-control-lg" onchange="showImagePreview(this);" />
+    <asp:Image ID="imgFrontPreview" runat="server" CssClass="img-thumbnail" />
+
         </div>
         <div class="imagePreviewContainer"></div> 
     </div>
 
    
-    <div class="col-md-12 mb-8"> <!-- Set column to 'col-md-6' to match the width of the previous column -->
+    <div class="col-md-12 mb-8"> 
         <div class="input-group">
             <asp:FileUpload ID="fileUploadBack" runat="server" CssClass="form-control text-muted fw-semibold form-control-lg" onchange="showImagePreview(this);" />
+            <asp:Image ID="imgBackPreview" runat="server" CssClass="img-thumbnail" />
+
         </div>
-        <div class="imagePreviewContainer"></div> <!-- Preview container for the second upload -->
+        <div class="imagePreviewContainer">
+        </div> 
     </div>
                                 </div>
 
                             </div>  
                         </div>
-                        <!-- Save Button -->
+                      
                         <div class="d-flex justify-content-end">
                         <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn btn-primary btn-lg text-white active" onClick="btnSave_Click" />
                     </div>
@@ -266,14 +272,12 @@
         </div>
     </div>
 
-         <script>
-             var hostUrl = "/metronic8/demo1/assets/";
-         </script>
- <script src="/metronic8/demo1/assets/plugins/global/plugins.bundle.js"></script>
- <script src="/metronic8/demo1/assets/js/scripts.bundle.js"></script>
-<script>
-  
-
+                 <script type="text/javascript">
+                     var hostUrl = "/assets/";
+                 </script>
+<script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
+<script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
+<script type="text/javascript">
     function showSuccessModal() {
         var successModal = new bootstrap.Modal(document.getElementById('successModal'));
         successModal.show();

@@ -52,22 +52,20 @@
     </div>
 </div>
 <div class="row mt-4">
-    <div class="col-lg-6  mb-3">
-        <asp:Button ID="produceWord" CssClass="btn btn-primary w-lg-100 w-sm-50 text-white" runat="server" OnClick="ProduceWordReport_Click" Text="Produce Report In Word" />
-    </div>
-    <div class="col-lg-6 ">
+   
+    <div class="col-lg-12 ">
         <asp:Button ID="producePdf" CssClass="btn btn-primary w-lg-100 w-sm-50 text-white" runat="server" OnClick="ProducePdfReport_Click" Text="Produce in PDF" />
     </div>
 </div>
 
 </div>
 
-<script>
-    var hostUrl = "/metronic8/demo1/assets/";
-</script>
-<script src="/metronic8/demo1/assets/plugins/global/plugins.bundle.js"></script>
-<script src="/metronic8/demo1/assets/js/scripts.bundle.js"></script>
-    <script>
+                 <script type="text/javascript">
+                     var hostUrl = "/assets/";
+                 </script>
+<script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
+<script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
+    <script type="text/javascript">
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }

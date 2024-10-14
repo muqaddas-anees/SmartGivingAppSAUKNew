@@ -8,6 +8,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web.UI;
+using DeffinityManager;
+using System.Runtime.Remoting.Contexts;
+using UserMgt.DAL;
+using System.Web.UI.WebControls;
 
 namespace DeffinityAppDev.App.Beneficiaries
 {
@@ -20,22 +24,33 @@ namespace DeffinityAppDev.App.Beneficiaries
             if (!IsPostBack)
             {
                 LoadTodayActivities(null, null);
+                BindLoggedByDropdown();
                 // Reset the session flag
-                Session["FormSubmitted"] = null;
-            }
 
-            // Check if we need to show the success modal
-            if (Session["ShowSuccessModal"] != null && (bool)Session["ShowSuccessModal"])
-            {
-
-                lblMessage.ForeColor = System.Drawing.Color.Green;
-                lblMessage.Text = "User Saved Succesfully";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowTheMOdal", "showSuccessModal();", true);
-
-                // Reset the session flag
-                Session["ShowSuccessModal"] = null;
             }
         }
+        protected void BindLoggedByDropdown()
+        {
+            try
+            {
+                UserDataContext tags = new UserDataContext();
+                var contractorsList = tags.v_contractors
+                    .Where(o => o.CompanyID == sessionKeys.PortfolioID)
+                    .ToList();
+
+                ddlLoggedBy.DataSource = contractorsList;
+                ddlLoggedBy.DataTextField = "ContractorName"; // Update this line
+                ddlLoggedBy.DataValueField = "ID"; // Ensure ID is correct as well
+                ddlLoggedBy.DataBind(); // Don't forget to call DataBind after setting DataSource
+                ddlLoggedBy.Items.Insert(0, new ListItem("Select a person", "")); // Add the default item if needed
+            }
+            catch (Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+
+
         protected void LoadTodayActivities(object sender, EventArgs e)
         {
             try
@@ -47,7 +62,7 @@ namespace DeffinityAppDev.App.Beneficiaries
 
                     // Ensure that the comparison works correctly with DateTime
                     var activities = context.BeneficiaryActivities
-                        .Where(a => a.ActivityDate >= today && a.ActivityDate < tomorrow)
+                        .Where(a => a.ActivityDate >= today && a.ActivityDate < tomorrow && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
                         .OrderByDescending(a => a.ActivityDate)
                         .ToList();
 
@@ -60,6 +75,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                 // Log the error message
                 Debug.WriteLine("Error loading today's activities: " + ex.Message);
                 lblErrorMessage.Visible = true; // Display the error message to the user
+                LogExceptions.WriteExceptionLog(ex);
             }
         }
 
@@ -76,7 +92,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                     DateTime endOfWeek = startOfWeek.AddDays(7); // End of the week
 
                     var activities = context.BeneficiaryActivities
-                        .Where(a => a.ActivityDate >= startOfWeek && a.ActivityDate < endOfWeek)
+                        .Where(a => a.ActivityDate >= startOfWeek && a.ActivityDate < endOfWeek && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
                         .OrderByDescending(a => a.ActivityDate)
                         .ToList();
 
@@ -88,6 +104,8 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 lblErrorMessage.Text = "Error loading weekly activities: " + ex.Message;
                 lblErrorMessage.Visible = true;
+                LogExceptions.WriteExceptionLog(ex);
+
             }
         }
 
@@ -103,7 +121,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                     DateTime endOfMonth = startOfMonth.AddMonths(1); // End of the month
 
                     var activities = context.BeneficiaryActivities
-                        .Where(a => a.ActivityDate >= startOfMonth && a.ActivityDate < endOfMonth)
+                        .Where(a => a.ActivityDate >= startOfMonth && a.ActivityDate < endOfMonth && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
                         .OrderByDescending(a => a.ActivityDate)
                         .ToList();
 
@@ -115,6 +133,8 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                     Debug.WriteLine( "Error loading monthly activities: " + ex.Message);
                 lblErrorMessage.Visible = true;
+                LogExceptions.WriteExceptionLog(ex);
+
             }
         }
 
@@ -130,7 +150,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                     DateTime endOfYear = startOfYear.AddYears(1); // End of the year
 
                     var activities = context.BeneficiaryActivities
-                        .Where(a => a.ActivityDate >= startOfYear && a.ActivityDate < endOfYear)
+                        .Where(a => a.ActivityDate >= startOfYear && a.ActivityDate < endOfYear && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
                         .OrderByDescending(a => a.ActivityDate)
                         .ToList();
 
@@ -142,6 +162,8 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 lblErrorMessage.Text = "Error loading yearly activities: " + ex.Message;
                 lblErrorMessage.Visible = true;
+                LogExceptions.WriteExceptionLog(ex);
+
             }
         }
 
@@ -157,26 +179,14 @@ namespace DeffinityAppDev.App.Beneficiaries
 protected void btnSaveActivity_Click(object sender, EventArgs e)
         {
           
-            if (Session["FormSubmitted"] != null && (bool)Session["FormSubmitted"])
-            {
-                // Redirect to avoid duplicate form submission
-                Response.Redirect(Request.RawUrl, false);
-                Context.ApplicationInstance.CompleteRequest();
-                return;
-            }
+          
 
             // Save activity to the database
             bool isSaved = SaveActivity();
             if (isSaved)
             {
                 ClearForm();
-                // Trigger the success modal
-                Session["ShowSuccessModal"] = true;
-                Session["FormSubmitted"] = true;
-                // Set session to show the modal
-                System.Diagnostics.Debug.WriteLine("Activity saved successfully.");
-                Response.Redirect(Request.RawUrl, false);
-                Context.ApplicationInstance.CompleteRequest();
+                DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Activity saved Succesfully", "close");
             }
             else
             {
@@ -184,6 +194,7 @@ protected void btnSaveActivity_Click(object sender, EventArgs e)
                 lblErrorMessage.CssClass = "alert alert-danger";
                 lblErrorMessage.Visible = true;
                 System.Diagnostics.Debug.WriteLine("Form submission failed: Activity could not be saved.");
+                DeffinityManager.ShowMessages.ShowErrorAlert(this.Page, "something wrong occured", "close");
             }
         }
 
@@ -194,12 +205,12 @@ protected void btnSaveActivity_Click(object sender, EventArgs e)
                 var newActivity = new DeffinityAppDev.App.Beneficiaries.Entities.BeneficiaryActivity
                 {
                     ActivityDate = DateTime.Parse(txtActivityDate.Text),  // Ensure the date is correctly formatted
-                    LoggedBy = txtLoggedBy.Text,
+                    LoggedBy = ddlLoggedBy.SelectedValue,
                     ProgressDetails = txtProgressDetails.Text,
                     CreatedAt = DateTime.Now,
                     ImageData = SaveUploadedFiles(),
                     // Ensure you include image data
-                    TithingDefaultDetailsID = 1
+                    TithingDefaultDetailsID = sessionKeys.PortfolioID
                 };
 
                 
@@ -271,7 +282,7 @@ protected void btnSaveActivity_Click(object sender, EventArgs e)
         {
             txtActivityDate.Text = string.Empty;
             txtProgressDetails.Text = string.Empty;
-            txtLoggedBy.Text = string.Empty;
+            ddlLoggedBy.SelectedValue= "";
             fileUploadDocuments.Dispose();  // Reset the file input
         }
     }

@@ -114,13 +114,13 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmailAddress;
 
         /// <summary>
-        /// ddlCountryCode control.
+        /// ddlPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCountryCode;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPhone;
 
         /// <summary>
         /// txtPhoneNumber control.

@@ -137,11 +137,11 @@
           </div>
       </div>
   </div>
-             <script>
-                 var hostUrl = "/metronic8/demo1/assets/";
+             <script type="text/javascript">
+                 var hostUrl = "/assets/";
              </script>
- <script src="/metronic8/demo1/assets/plugins/global/plugins.bundle.js"></script>
- <script src="/metronic8/demo1/assets/js/scripts.bundle.js"></script>
+ <script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
+ <script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
 
     <script type="text/javascript">
         function showImagePreview(input) {
@@ -182,7 +182,10 @@
         }
 
      
-     
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+
 
 
         // When the "Add Communication" button is clicked, show the modal
