@@ -231,6 +231,15 @@ namespace DeffinityAppDev.App.Beneficaries
         protected global::System.Web.UI.WebControls.CustomValidator cvEmailUniqueModal;
 
         /// <summary>
+        /// ddlEmploymentStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEmploymentStatus;
+
+        /// <summary>
         /// ddlPhone control.
         /// </summary>
         /// <remarks>
@@ -247,15 +256,6 @@ namespace DeffinityAppDev.App.Beneficaries
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPhone;
-
-        /// <summary>
-        /// ddlEmploymentStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEmploymentStatus;
 
         /// <summary>
         /// txtHealthCondition control.

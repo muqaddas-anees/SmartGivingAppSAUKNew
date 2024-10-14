@@ -130,7 +130,7 @@
             <asp:RequiredFieldValidator ID="rfvCountry" runat="server" ControlToValidate="ddlCountry"
                 InitialValue="" ErrorMessage="Country is required" CssClass="text-white text-bg-danger" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
-                <div class="col-md-5 mb-8">
+                <div class="col-md-6 mb-8">
             <asp:TextBox ID="txtZip" runat="server" placeholder="Postcode / Zip Code" CssClass="form-control text-muted fw-semibold form-control-lg  bg-transparent" />
             <asp:RequiredFieldValidator ID="rfvZip" runat="server" ControlToValidate="txtZip"
                 ErrorMessage="Zip code is required" CssClass="text-white text-bg-danger" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -151,34 +151,7 @@
         </div>
 
         <!-- Phone -->
-       <div class="d-flex align-items-center mb-8">
-    <!-- Country Code Dropdown -->
-    <div class="me-2" style="flex: 0 1 auto;"> <!-- Optional: Add some margin between the elements -->
-        <asp:DropDownList 
-            ID="ddlPhone" 
-            runat="server" 
-            CssClass="form-select form-select-lg form-select-solid country-code-dropdown text-dark" 
-            onchange="updatePhoneCode();">
-        </asp:DropDownList>
-    </div>
-
-    <!-- Phone Number Input -->
-    <div style="flex: 1 1 auto;">
-        <asp:TextBox 
-            ID="txtPhone" 
-            runat="server" 
-            placeholder="Phone Number" 
-            CssClass="form-control form-control-lg flex-grow-1" 
-            ClientIDMode="Static" />
-    </div>
-</div>
-
-    
-           </div>
-
-
-        <!-- Employment Status -->
-        <div class="col-md-6 mb-8">
+               <div class="col-md-6 mb-8">
             <asp:DropDownList ID="ddlEmploymentStatus" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
                 <asp:ListItem Text="Select Employment Status" Value="" />
                 <asp:ListItem Text="Employed" Value="Employed"></asp:ListItem>
@@ -188,15 +161,53 @@
             </asp:DropDownList>
         </div>
 
-        <!-- Health Condition -->
-        <div class="col-md-6 mb-8">
-            <asp:TextBox ID="txtHealthCondition" runat="server" placeholder="Health Condition" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
-        </div>
+    
+           </div>
 
-        <!-- Notes -->
-        <div class="col-md-6 mb-8">
+
+<div class="row">
+    <!-- Mobile Section -->
+    <div class="col-md-6">
+        <div class="d-flex">
+            <!-- Country Code Dropdown -->
+            <div class="col-4"> <!-- Adjust width as needed -->
+                <asp:DropDownList 
+                    ID="ddlPhone" 
+                    runat="server" 
+                    CssClass="form-select form-select-lg form-select-solid country-code-dropdown text-dark" 
+                    onchange="updatePhoneCode();">
+                </asp:DropDownList>
+            </div>
+
+            <!-- Phone Number Textbox -->
+            <div class="col-8">
+                <asp:TextBox 
+                    ID="txtPhone" 
+                    runat="server" 
+                    placeholder="Phone Number" 
+                    CssClass="form-control form-control-lg flex-grow-1" 
+                    ClientIDMode="Static" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Health Condition Section -->
+    <div class="col-md-6">
+        <asp:TextBox 
+            ID="txtHealthCondition" 
+            runat="server" 
+            placeholder="Health Condition" 
+            CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
+    </div>
+    
+        <div class="col-md-6 ">
             <asp:TextBox ID="txtNotes" runat="server" placeholder="Notes" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" TextMode="MultiLine" />
         </div>
+</div>
+
+                        
+                            </div>
+                    
     </div>
 </div>
 

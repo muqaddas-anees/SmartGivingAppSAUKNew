@@ -66,6 +66,7 @@
 <script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
 <script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
     <script type="text/javascript">
+
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }

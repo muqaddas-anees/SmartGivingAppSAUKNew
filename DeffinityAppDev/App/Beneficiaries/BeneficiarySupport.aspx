@@ -13,17 +13,17 @@
             <div class="table-responsive">
                 <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable" id="kt_table_donations" style="width: 100%; text-align: left;">
                     <colgroup>
-                        <col style="width: 10%;">
-                        <col style="width: 10%;">
+                        
                         <col style="width: 20%;">
                         <col style="width: 20%;">
-                        <col style="width: 15%;">
-                        <col style="width: 10%;">
-                        <col style="width: 15%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        
                     </colgroup>
                     <thead>
                         <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0" role="row">
-                            <th>Edit</th>
+                            
                             <th>Date</th>
                             <th>Associated Fundraiser</th>
                             <th>Supported Donor</th>
@@ -36,12 +36,7 @@
                       <asp:Repeater ID="RepeaterDonations" runat="server">
     <ItemTemplate>
         <tr>
-            <!-- Hardcoded Edit button -->
-           <td class="text-start">
-    <asp:Button runat="server" class="btn btn-light btn-active-light-primary btn-sm" />
-        <i class="fas fa-pen"></i> <!-- Pen icon from Font Awesome -->
-   
-</td>
+            
 
             <!-- Display Date formatted -->
             <td class="text-muted fw-semi-bold"><%# Eval("DonationDate", "{0:MM/dd/yyyy}") %></td>

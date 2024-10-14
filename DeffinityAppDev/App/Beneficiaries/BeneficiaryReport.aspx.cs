@@ -112,9 +112,12 @@ namespace DeffinityAppDev.App.Beneficiaries
                                            b.Phone,
                                            b.Background,
                                            b.EmploymentStatus,
-                                           b.HealthCondition
+                                           b.HealthCondition,
+                                           b.ProfileImage, // Include image
+                                           b.DocumentFront, // Include image
+                                           b.DocumentBack  // Include image
                                        })
-                                       .ToList());
+                                       .ToList(), true); // Pass true for image sections
                         }
 
                         if (includeContacts)
@@ -151,9 +154,10 @@ namespace DeffinityAppDev.App.Beneficiaries
                                            d.Currency,
                                            d.PaymentType,
                                            d.DonatedBy,
-                                           d.Notes
+                                           d.Notes,
+                                           d.DocumentUpload // Include image
                                        })
-                                       .ToList());
+                                       .ToList(), true); // Pass true for image sections
                         }
 
                         if (includeActivity)
@@ -167,9 +171,9 @@ namespace DeffinityAppDev.App.Beneficiaries
                                            a.ActivityDate,
                                            a.LoggedBy,
                                            a.ProgressDetails,
-                                           a.ImageData // Skipping image handling here
+                                           a.ImageData // Include image
                                        })
-                                       .ToList());
+                                       .ToList(), true); // Pass true for image sections
                         }
 
                         if (includeCommunication)
@@ -182,9 +186,10 @@ namespace DeffinityAppDev.App.Beneficiaries
                                        {
                                            f.FeedbackDate,
                                            f.FeedbackText,
-                                           f.CreatedAt
+                                           f.CreatedAt,
+                                           f.Attachments // Include image
                                        })
-                                       .ToList());
+                                       .ToList(), true); // Pass true for image sections
                         }
                     }
 
@@ -202,58 +207,78 @@ namespace DeffinityAppDev.App.Beneficiaries
 
 
 
-        private void InsertSection(Document pdfDoc, string sectionTitle, Font font, IEnumerable<dynamic> records)
-    {
-        // Section Header
-        Paragraph sectionHeader = new Paragraph(sectionTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14));
-        sectionHeader.SpacingAfter = 15;
-        pdfDoc.Add(sectionHeader);
 
-        if (records.Any())
+        private void InsertSection(Document pdfDoc, string sectionTitle, Font font, IEnumerable<dynamic> records, bool includeImages = false)
         {
-            foreach (var record in records)
+            // Section Header
+            Paragraph sectionHeader = new Paragraph(sectionTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14));
+            sectionHeader.SpacingAfter = 15;
+            pdfDoc.Add(sectionHeader);
+
+            if (records.Any())
             {
-                // Create a new paragraph for each record in the section
-                Paragraph recordParagraph = new Paragraph();
-                recordParagraph.SpacingAfter = 10;
-
-                // Loop through the fields and add them to the paragraph
-                foreach (var prop in record.GetType().GetProperties())
+                foreach (var record in records)
                 {
-                    var fieldName = prop.Name.Replace("_", " "); // Replace underscores for readability
-                    var fieldValue = prop.GetValue(record);
+                    // Create a new paragraph for each record in the section
+                    Paragraph recordParagraph = new Paragraph();
+                    recordParagraph.SpacingAfter = 10;
 
-                    if (fieldValue != null)
+                    // Loop through the fields and add them to the paragraph
+                    foreach (var prop in record.GetType().GetProperties())
                     {
-                        try
+                        var fieldName = prop.Name.Replace("_", " "); // Replace underscores for readability
+                        var fieldValue = prop.GetValue(record);
+
+                        if (fieldValue != null)
                         {
-                            // Append the field name followed by the value
-                            recordParagraph.Add(new Chunk($"{fieldName}: ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
-                            recordParagraph.Add(new Chunk(fieldValue.ToString(), font));
-                            recordParagraph.Add(new Chunk("\n"));
-                        }
-                        catch (Exception ex)
-                        {
-                            recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Data]\n"));
-                                LogExceptions.WriteExceptionLog(ex);
-                                System.Diagnostics.Debug.WriteLine(ex.Message);
+                            if (includeImages && fieldValue is byte[] imageData)
+                            {
+                                try
+                                {
+                                    // Convert the byte[] into an iTextSharp image
+                                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageData);
+                                    image.ScaleToFit(150f, 150f); // Scale the image if necessary
+                                    pdfDoc.Add(image);
+                                }
+                                catch (Exception ex)
+                                {
+                                    recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Image]\n"));
+                                    LogExceptions.WriteExceptionLog(ex);
+                                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                                }
                             }
+                            else
+                            {
+                                try
+                                {
+                                    // Append the field name followed by the value
+                                    recordParagraph.Add(new Chunk($"{fieldName}: ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                                    recordParagraph.Add(new Chunk(fieldValue.ToString(), font));
+                                    recordParagraph.Add(new Chunk("\n"));
+                                }
+                                catch (Exception ex)
+                                {
+                                    recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Data]\n"));
+                                    LogExceptions.WriteExceptionLog(ex);
+                                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                                }
+                            }
+                        }
                     }
+
+                    // Add the record to the document
+                    pdfDoc.Add(recordParagraph);
                 }
-
-                // Add the record to the document
-                pdfDoc.Add(recordParagraph);
             }
-        }
-        else
-        {
+            else
+            {
                 pdfDoc.Add(new Paragraph("No data available for this section", new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC)));
-
             }
 
             // Add a separator line between sections
             pdfDoc.Add(new Paragraph("\n──────────────────────────────────────────────\n", FontFactory.GetFont(FontFactory.HELVETICA, 8)));
-    }
+        }
 
-}
+
+    }
 }
