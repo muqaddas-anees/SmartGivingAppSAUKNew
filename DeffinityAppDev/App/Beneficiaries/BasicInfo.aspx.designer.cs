@@ -159,24 +159,6 @@ namespace DeffinityAppDev.App.Beneficaries
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCity;
 
         /// <summary>
-        /// txtZip control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtZip;
-
-        /// <summary>
-        /// rfvZip control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvZip;
-
-        /// <summary>
         /// ddlCountry control.
         /// </summary>
         /// <remarks>
@@ -193,6 +175,24 @@ namespace DeffinityAppDev.App.Beneficaries
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCountry;
+
+        /// <summary>
+        /// txtZip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtZip;
+
+        /// <summary>
+        /// rfvZip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvZip;
 
         /// <summary>
         /// txtEmail control.
@@ -231,13 +231,22 @@ namespace DeffinityAppDev.App.Beneficaries
         protected global::System.Web.UI.WebControls.CustomValidator cvEmailUniqueModal;
 
         /// <summary>
-        /// ddlCountryCode control.
+        /// ddlEmploymentStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCountryCode;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEmploymentStatus;
+
+        /// <summary>
+        /// ddlPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPhone;
 
         /// <summary>
         /// txtPhone control.
@@ -247,15 +256,6 @@ namespace DeffinityAppDev.App.Beneficaries
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPhone;
-
-        /// <summary>
-        /// ddlEmploymentStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEmploymentStatus;
 
         /// <summary>
         /// txtHealthCondition control.
@@ -303,6 +303,15 @@ namespace DeffinityAppDev.App.Beneficaries
         protected global::System.Web.UI.WebControls.FileUpload fileUploadFront;
 
         /// <summary>
+        /// imgFrontPreview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgFrontPreview;
+
+        /// <summary>
         /// fileUploadBack control.
         /// </summary>
         /// <remarks>
@@ -310,6 +319,15 @@ namespace DeffinityAppDev.App.Beneficaries
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fileUploadBack;
+
+        /// <summary>
+        /// imgBackPreview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgBackPreview;
 
         /// <summary>
         /// Button1 control.

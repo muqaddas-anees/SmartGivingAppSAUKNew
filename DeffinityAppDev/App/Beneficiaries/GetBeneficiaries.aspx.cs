@@ -2,6 +2,7 @@
 using DeffinityAppDev.App.Beneficiaries.Entities;
 using System;
 using System.Linq;
+using System.Web.Configuration;
 using System.Web.UI.WebControls;
 
 namespace DeffinityAppDev.App.Beneficiaries
@@ -26,6 +27,59 @@ namespace DeffinityAppDev.App.Beneficiaries
 
 
         }
+        protected void DeleteButtonForBeneficiaries_Click(object sender,EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int personID = int.Parse(btn.CommandArgument);
+            DeleteBeneficiaries(personID);
+            LoadBeneficiaries();
+            
+        }
+        protected void DeleteBeneficiaries(int id)
+        {
+            using (var context= new MyDatabaseContext())
+            {
+                var beneficiaries = context.Beneficiaries.Find(id);
+                if (beneficiaries != null)
+                {
+                    context.Beneficiaries.Remove(beneficiaries);
+                    context.SaveChanges();
+                    DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Deleted Successfully", "OK");
+
+                }
+            }
+        }
+        protected void DeleteButton_Click(object sender, EventArgs e)
+        {
+            // Get the CommandArgument (SecondaryBeneficiaryID)
+            LinkButton btn = (LinkButton)sender;
+            int secondaryBeneficiaryId = int.Parse(btn.CommandArgument);
+
+            // Call the delete method
+            DeleteSecondaryBeneficiary(secondaryBeneficiaryId);
+
+            // Optionally, refresh the data on the page
+            LoadSecondaryBeneficiaries();  // Assuming you have a method to reload the page data
+        }
+
+        private void DeleteSecondaryBeneficiary(int id)
+        {
+            using (var context = new MyDatabaseContext())
+            {
+                // Find the record
+                var secondaryBeneficiary = context.SecondaryBeneficiary.Find(id);
+                if (secondaryBeneficiary != null)
+                {
+                    // Remove the record
+                    context.SecondaryBeneficiary.Remove(secondaryBeneficiary);
+                    context.SaveChanges();
+                    DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Deleted Successfully", "OK");
+                }
+            }
+
+            
+        }
+
 
         private void LoadBeneficiaries()
         {
@@ -33,7 +87,7 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 // Fetch beneficiaries where TithingDefaultDetailsID = 1
                 var beneficiaries = context.Beneficiaries
-                                           .Where(b => b.TithingDefaultDetailsID == 1)
+                                           .Where(b => b.TithingDefaultDetailsID == sessionKeys.PortfolioID)
                                            .ToList();
 
                 // Bind the beneficiaries list to your Repeater/GridView
@@ -48,7 +102,7 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 // Fetch secondary beneficiaries where TithingID = 1
                 var secondaryBeneficiaries = context.SecondaryBeneficiary
-                                                    .Where(sb => sb.TithingID == 1)
+                                                    .Where(sb => sb.TithingID == sessionKeys.PortfolioID)
                                                     .ToList();
 
                 // Bind the secondary beneficiaries list to your Repeater/GridView

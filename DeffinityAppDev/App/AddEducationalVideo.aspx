@@ -1,4 +1,4 @@
-﻿d<%@ Page Title="" Language="C#" MasterPageFile="~/MainTab.master" AutoEventWireup="true" CodeBehind="AddEducationalVideo.aspx.cs" Inherits="DeffinityAppDev.App.AddEducationalVideo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainTab.master" AutoEventWireup="true" CodeBehind="AddEducationalVideo.aspx.cs" Inherits="DeffinityAppDev.App.AddEducationalVideo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="page_title" runat="server">

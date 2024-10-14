@@ -1,13 +1,18 @@
 ﻿using DeffinityAppDev.App.Beneficiaries.Entities;
+using Microsoft.Ajax.Utilities;
+using PortfolioMgt.DAL;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UserMgt.BAL;
+using UserMgt.DAL;
 
 namespace DeffinityAppDev.App.Beneficiaries
 {
@@ -19,6 +24,9 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 
                 BindDonations();
+                BindLoggedByDropdown();
+                BindBeneficiariesByDropDown();
+              BindDonorsByDropDown();
             }
          
                 // Register the startup script to show the success modal and redirect after delay
@@ -26,13 +34,55 @@ namespace DeffinityAppDev.App.Beneficiaries
     
          
         }
+        protected void BindDonorsByDropDown()
+        {
 
+            var iList = ContractorsBAL.Contractor_SelectAll_WithOutCompany()
+  .Where(o => o.CompanyID == sessionKeys.PortfolioID && o.SID == UserType.Donor)
+  .OrderBy(o => o.ContractorName)
+  .ToList();
+            ddlDonated.DataSource = iList;
+            ddlDonated.DataTextField = "ContractorName"; // assign the table column 
+            ddlDonated.DataBind(); // Don't forget to call DataBind after setting DataSource
+            ddlDonated.Items.Insert(0, new ListItem("Select a Fundraiser", ""));
+        }
+
+        protected void BindBeneficiariesByDropDown()
+        {
+            PortfolioDataContext tag = new PortfolioDataContext();
+            var associatedFundraiserDetailsList = tag.TithingDefaultDetails.Where(o => o.OrganizationID == sessionKeys.PortfolioID).ToList();
+            ddlAssociatedFundraise.DataSource = associatedFundraiserDetailsList;
+            ddlAssociatedFundraise.DataTextField = "Title"; // assign the table column 
+            ddlAssociatedFundraise.DataBind(); // Don't forget to call DataBind after setting DataSource
+            ddlAssociatedFundraise.DataValueField = "Title";
+            ddlAssociatedFundraise.Items.Insert(0, new ListItem("Select a Fundraiser", ""));
+        }
+
+        protected void BindLoggedByDropdown()
+        {
+            try
+            {
+                UserDataContext tags = new UserDataContext();
+                var contractorsList = tags.v_contractors
+                    .Where(o => o.CompanyID == sessionKeys.PortfolioID)
+                    .ToList();
+
+                ddlLogged.DataSource = contractorsList;
+                ddlLogged.DataTextField = "ContractorName"; // Update this line
+                ddlLogged.DataValueField = "ContractorName"; // Ensure ID is correct as well
+                ddlLogged.DataBind(); // Don't forget to call DataBind after setting DataSource
+                ddlLogged.Items.Insert(0, new ListItem("Select a person", "")); // Add the default item if needed
+            }           catch (Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+        }
         private void BindDonations()
         {
             using (var context = new MyDatabaseContext())
             {
                 // Using LINQ to get donations from the database
-                var donations = context.BeneficiaryDonations
+                var donations = context.BeneficiaryDonations.Where(o => o.TithingID == sessionKeys.PortfolioID)
                     .Select(d => new
                     {
                         d.DonationID,
@@ -49,7 +99,11 @@ namespace DeffinityAppDev.App.Beneficiaries
                 RepeaterDonations.DataBind();
             }
         }
-        protected void btnSaveDonation_Click(object sender, EventArgs e)
+
+
+
+
+            protected void btnSaveDonation_Click(object sender, EventArgs e)
         {
           
             // Check if the page is valid
@@ -69,7 +123,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                     // Mark the form as submitted to prevent duplicate submissions
                     lblMessage.ForeColor = System.Drawing.Color.Green;
                     lblMessage.Text = "User Saved Succesfully";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showMe", "showSuccessModal()", true);
+                    DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Saved SuccessFully ", "OK");
 
                 }
             }
@@ -84,14 +138,14 @@ namespace DeffinityAppDev.App.Beneficiaries
                     var donation = new BeneficiaryDonation
                     {
                         DonationDate = DateTime.Parse(txtDonationDate.Text),
-                        LoggedBy = ddlLoggedBy.Text,
-                        AssociatedFundraiser = ddlAssociatedFundraiser.Text,
+                        LoggedBy = ddlLogged.SelectedValue,
+                        AssociatedFundraiser = ddlAssociatedFundraise.SelectedValue,
                         DonationAmount = decimal.Parse(txtDonationAmount.Text),
                         Currency = ddlCurrency.SelectedValue,
                         PaymentType = GetSelectedPaymentType(),
-                        DonatedBy = ddlDonatedBy.Text,
+                        DonatedBy = ddlDonated.SelectedValue,
                         Notes = txtDonationNotes.Text,
-                        TithingID = 1,
+                        TithingID = sessionKeys.PortfolioID,
                         DocumentUpload = SaveUploadedFile()
                     };
 
@@ -100,11 +154,22 @@ namespace DeffinityAppDev.App.Beneficiaries
                     context.SaveChanges();
                     return true;
                 }
-                catch (Exception ex)
+                catch (DbUpdateException ex) // Database update errors
                 {
-                    ShowErrorMessage("An error occurred while saving the donation: " + ex.Message);
-                    return false;
+                    var innerException = ex.InnerException?.InnerException;
+                    if (innerException != null)
+                    {
+                      
+                        System.Diagnostics.Debug.WriteLine($"Inner Exception: {innerException.Message}");
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("error eadfkdslk");
+                    }
+                    System.Diagnostics.Debug.WriteLine($"Error occurred: {ex.Message}");
                 }
+                return false;
+
             }
         }
         private byte[] SaveUploadedFile()
@@ -139,14 +204,14 @@ namespace DeffinityAppDev.App.Beneficiaries
         {
             // Clear all form fields
             txtDonationDate.Text = string.Empty;
-            ddlLoggedBy.Text = string.Empty;
-            ddlAssociatedFundraiser.Text = string.Empty;
+            ddlLogged.SelectedValue = string.Empty;
+            ddlAssociatedFundraise.SelectedValue= string.Empty;
             txtDonationAmount.Text = string.Empty;
             ddlCurrency.SelectedIndex = 0;
             rbOneOff.Checked = false;
             rbMonthly.Checked = false;
             rbAnnual.Checked = false;
-            ddlDonatedBy.Text = string.Empty;
+            ddlDonated.SelectedValue = string.Empty;
             txtDonationNotes.Text = string.Empty;
         }
         private string GetSelectedPaymentType()

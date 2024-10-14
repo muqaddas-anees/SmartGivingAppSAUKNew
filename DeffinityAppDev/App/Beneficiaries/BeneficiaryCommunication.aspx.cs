@@ -37,14 +37,13 @@ namespace DeffinityAppDev.App.Beneficiaries
 
             
         }
+
         private void ServeAttachment(int beneficiaryId)
         {
-            
-
             using (var context = new MyDatabaseContext())
             {
                 var attachment = context.BeneficiariesFeedBack
-                    .Where(f => f.FeedbackID == beneficiaryId)
+                    .Where(f => f.FeedbackID == beneficiaryId && f.TithingID == sessionKeys.PortfolioID)
                     .Select(f => f.Attachments)
                     .FirstOrDefault();
 
@@ -65,14 +64,14 @@ namespace DeffinityAppDev.App.Beneficiaries
                     // Clear the response and write the file bytes
                     Response.Clear();
                     Response.BinaryWrite(fileBytes);
-                    Response.End();
+                    Context.ApplicationInstance.CompleteRequest();  // Replaced Response.End()
                 }
                 else
                 {
                     // Handle the case where there is no attachment
                     Response.StatusCode = 404;
                     Response.Write("Attachment not found.");
-                    Response.End();
+                    Context.ApplicationInstance.CompleteRequest();  // Replaced Response.End()
                 }
             }
         }
@@ -166,7 +165,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                     Attachments = SaveUploadedFiles(), // Assuming this method returns a byte[]
                     CreatedAt = DateTime.Now,
                     Deleted = false,
-                    TithingID = 1 // Set this based on your logic
+                    TithingID = sessionKeys.PortfolioID// Set this based on your logic
                 };
 
                 try
@@ -231,7 +230,7 @@ namespace DeffinityAppDev.App.Beneficiaries
             using (var context = new MyDatabaseContext())
             {
                 // Find the feedback entry by its ID
-                var feedbackToDelete = context.BeneficiariesFeedBack.SingleOrDefault(f => f.FeedbackID == feedbackID);
+                var feedbackToDelete = context.BeneficiariesFeedBack.SingleOrDefault(f => f.FeedbackID == feedbackID && f.TithingID==sessionKeys.PortfolioID);
 
                 if (feedbackToDelete != null)
                 {
@@ -259,7 +258,7 @@ namespace DeffinityAppDev.App.Beneficiaries
             using (var context = new MyDatabaseContext())
             {
                 // Find the feedback entry by ID
-                var feedback = context.BeneficiariesFeedBack.SingleOrDefault(f => f.FeedbackID == beneficiaryId);
+                var feedback = context.BeneficiariesFeedBack.SingleOrDefault(f => f.FeedbackID == beneficiaryId && f.TithingID == sessionKeys.PortfolioID);
 
                 if (feedback != null && feedback.Attachments != null)
                 {
@@ -277,8 +276,12 @@ namespace DeffinityAppDev.App.Beneficiaries
         {
             using (var context = new MyDatabaseContext())
             {
-                // Fetch feedback data using LINQ
+                // Fetch the TithingID from session
+              
+
+                // Fetch feedback data using LINQ with the TithingID filter
                 var feedbackData = context.BeneficiariesFeedBack
+                    .Where(f => f.TithingID == sessionKeys.PortfolioID)
                     .Select(f => new
                     {
                         f.FeedbackID,
@@ -293,6 +296,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                 RepeaterFeedback.DataBind();
             }
         }
+
 
 
     }

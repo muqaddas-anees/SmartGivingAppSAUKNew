@@ -87,22 +87,13 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDOBModal;
 
         /// <summary>
-        /// ddlCountryCode control.
+        /// ddlPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCountryCode;
-
-        /// <summary>
-        /// rfvCC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCC;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPhone;
 
         /// <summary>
         /// txtPhone control.

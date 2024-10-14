@@ -78,22 +78,22 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.TextBox txtActivityDate;
 
         /// <summary>
-        /// lblLoggedBy control.
+        /// txt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLoggedBy;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator txt;
 
         /// <summary>
-        /// txtLoggedBy control.
+        /// ddlLoggedBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLoggedBy;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLoggedBy;
 
         /// <summary>
         /// lblFeedback control.

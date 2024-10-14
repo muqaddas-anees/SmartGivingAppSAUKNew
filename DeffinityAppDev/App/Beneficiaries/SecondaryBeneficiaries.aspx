@@ -135,9 +135,9 @@
                         
                         <div class="col-md-6 mb-4">
                             <div class="form-group">
-                                <label for="ddlCountryCode">Country Code</label>
-                                <asp:DropDownList ID="ddlCountryCode" runat="server" CssClass="form-select form-select-lg form-select-solid country-code-dropdown text-dark"></asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rfvCC" runat="server" ControlToValidate="ddlCountryCode" ErrorMessage="Country Code is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <label for="ddlPhone">Country Code</label>
+                                <asp:DropDownList ID="ddlPhone" runat="server" CssClass="form-select form-select-lg form-select-solid country-code-dropdown text-dark"></asp:DropDownList>
+                               
                             </div>
                         </div>
 
@@ -332,6 +332,11 @@
         </div>
     </div>
 </div>
+                 <script type="text/javascript">
+                     var hostUrl = "/assets/";
+                 </script>
+<script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
+<script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
        
     <script type="text/javascript">
         $(document).ready(function () {
@@ -413,7 +418,7 @@
 
     // Reset dropdowns
     document.getElementById('<%= ddlTypeModal.ClientID %>').selectedIndex = 0;
-    document.getElementById('<%= ddlCountryCode.ClientID %>').selectedIndex = 0;
+    document.getElementById('<%= ddlPhone.ClientID %>').selectedIndex = 0;
     document.getElementById('<%= ddlGenderModal.ClientID %>').selectedIndex = 0;
             document.getElementById('<%= ddlCountryModal.ClientID %>').selectedIndex = 0;
         }
