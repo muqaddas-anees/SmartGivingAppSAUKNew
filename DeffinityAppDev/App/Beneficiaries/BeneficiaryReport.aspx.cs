@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 using System.IO;
 using System.Linq;
-
 using System.Web.UI.WebControls;
 
 using DeffinityAppDev.App.Beneficiaries.Entities;
+using System.Text.RegularExpressions;
 using iTextSharp.text;
 
 using iTextSharp.text.pdf;
@@ -211,7 +211,6 @@ namespace DeffinityAppDev.App.Beneficiaries
             }
         }
 
-
         private void InsertSection(bool isPersonalInformation, Document pdfDoc, string sectionTitle, Font font, IEnumerable<dynamic> records, bool includeImages = false)
         {
             // Section Header
@@ -231,7 +230,19 @@ namespace DeffinityAppDev.App.Beneficiaries
                     // Loop through the fields and add them to the table
                     foreach (var prop in record.GetType().GetProperties())
                     {
-                        var fieldName = prop.Name.Replace("_", " "); // Replace underscores for readability
+                        string fieldName = prop.Name;
+
+                        // Hardcode specific field names for better readability
+                        if (fieldName == "IDNumber" || fieldName == "InternalIDNumber")
+                        {
+                            fieldName = "Internal ID Number"; // Hardcoded replacement
+                        }
+                        else
+                        {
+                            // Insert spaces between camel-case or Pascal-case words for better readability
+                            fieldName = Regex.Replace(prop.Name, @"(?<!^)(?=[A-Z][a-z])", " ").Replace("_", " ");
+                        }
+
                         var fieldValue = prop.GetValue(record);
 
                         if (fieldValue != null)
@@ -304,8 +315,9 @@ namespace DeffinityAppDev.App.Beneficiaries
                                     PdfPCell errorCell = new PdfPCell(new Phrase($"{fieldName}: [Invalid Data]", font));
                                     errorCell.Colspan = 2; // Span across both columns for errors
                                     table.AddCell(errorCell);
+
                                     LogExceptions.WriteExceptionLog(ex);
-                                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                                    System.Diagnostics.Debug.WriteLine($"Error with field: {fieldName}, Value: {fieldValue}");
                                 }
                             }
                         }
@@ -327,6 +339,9 @@ namespace DeffinityAppDev.App.Beneficiaries
             pdfDoc.Add(new Paragraph("\n──────────────────────────────────────────────\n", FontFactory.GetFont(FontFactory.HELVETICA, 8)));
         }
 
+
+
+
         private void InsertSection(Document pdfDoc, string sectionTitle, Font font, IEnumerable<dynamic> records, bool includeImages = false)
         {
             // Section Header
@@ -346,7 +361,12 @@ namespace DeffinityAppDev.App.Beneficiaries
                     // Loop through the fields and add them to the table
                     foreach (var prop in record.GetType().GetProperties())
                     {
-                        var fieldName = prop.Name.Replace("_", " "); // Replace underscores for readability
+                        // Replace underscores with spaces and split PascalCase or camelCase words
+                        string fieldName = Regex.Replace(prop.Name.Replace("_", " "), "([a-z])([A-Z])", "$1 $2");
+
+                        // Ensure that abbreviations like IDNumber are handled (e.g., "IDNumber" becomes "ID Number")
+                        fieldName = Regex.Replace(fieldName, "(ID|Number)", " $1");
+
                         var fieldValue = prop.GetValue(record);
 
                         if (fieldValue != null)
@@ -421,7 +441,6 @@ namespace DeffinityAppDev.App.Beneficiaries
             // Add a separator line between sections
             pdfDoc.Add(new Paragraph("\n──────────────────────────────────────────────\n", FontFactory.GetFont(FontFactory.HELVETICA, 8)));
         }
-
 
     }
 }
