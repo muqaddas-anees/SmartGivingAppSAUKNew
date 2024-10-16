@@ -44,7 +44,7 @@ namespace DeffinityAppDev.App.Beneficiaries
             ddlDonated.DataSource = iList;
             ddlDonated.DataTextField = "ContractorName"; // assign the table column 
             ddlDonated.DataBind(); // Don't forget to call DataBind after setting DataSource
-            ddlDonated.Items.Insert(0, new ListItem("Select a Fundraiser", ""));
+            ddlDonated.Items.Insert(0, new ListItem("Select a Donor", ""));
         }
 
         protected void BindBeneficiariesByDropDown()

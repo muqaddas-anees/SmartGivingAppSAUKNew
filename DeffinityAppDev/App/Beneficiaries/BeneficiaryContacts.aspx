@@ -46,11 +46,23 @@
                                     <td><%# Eval("CountryCode").ToString() + Eval("PhoneNumber").ToString() %></td>
                                     <td><%# Eval("Position") %></td>
                                     <td><%# Eval("Notes") %></td>
-                                     <td class="text-end">
-                        <button class="btn btn-primary" 
-                                     onclick="editContact('<%# Eval("ContactID") %>');">
-                         <i class="fas fa-lg fa-pencil-alt"></i>
-     </button>
+                                     <td class="">
+                                    <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+    Actions
+    <i class="ki-duotone ki-down fs-5 ms-1"></i>
+</a>
+<!--begin::Menu-->
+<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+    <div class="menu-item px-3">
+        <a    onclick="editContact('<%# Eval("ContactID") %>');" class="menu-link px-3">Edit</a>
+    </div>
+    
+</div>
+                                         
+                                         
+                                         
+                                         
+                                        
  </td>
                                 </tr>
                             </ItemTemplate>
@@ -142,7 +154,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                <asp:Button ID="btnSaveContact" runat="server" Text="Add Contact" OnClick="btnSaveContact_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="btnSaveContact" runat="server" Text="Add a New Contact" OnClick="btnSaveContact_Click" CssClass="btn btn-primary" />
             </div>
         </div>
     </div>

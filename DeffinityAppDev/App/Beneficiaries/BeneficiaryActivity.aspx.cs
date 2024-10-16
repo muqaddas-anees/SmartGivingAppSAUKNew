@@ -202,6 +202,7 @@ protected void btnSaveActivity_Click(object sender, EventArgs e)
             {
                 ClearForm();
                 DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Activity saved Succesfully", "close");
+                LoadTodayActivities( sender,  e);
             }
             else
             {

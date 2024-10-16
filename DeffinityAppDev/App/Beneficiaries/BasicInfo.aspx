@@ -36,7 +36,7 @@
         <div class="col-md-6">
             <!-- Dropdown for Type (Institute / Individual) -->
             <div class="mb-4">
-                <asp:DropDownList ID="ddlType" runat="server" CssClass="form-select text-muted form-select-lg bg-transparent fw-semibold">
+                <asp:DropDownList ID="ddlType" ClientIDMode="Static" runat="server" onchange="toggleFields()" CssClass="form-select text-muted form-select-lg bg-transparent fw-semibold">
                     <asp:ListItem Text="Select Type" Value=""></asp:ListItem>
                     <asp:ListItem Text="Institute" Value="Institute"></asp:ListItem>
                     <asp:ListItem Text="Individual" Value="Individual"></asp:ListItem>
@@ -46,13 +46,13 @@
             <!-- Date of Birth -->
             <div class="mb-4">
                 <div class="input-group" id="dobPicker">
-                    <asp:TextBox ID="txtDOBModal" placeholder="Date of Birth" SkinID="DateNew" runat="server" CssClass="form-control bg-transparent" TextMode="Date" />
+                    <asp:TextBox ID="txtDOBModal" ClientIDMode="Static" placeholder="Date of Birth" SkinID="DateNew" runat="server" CssClass="form-control bg-transparent" TextMode="Date" />
                 </div>
             </div>
 
             <!-- Gender -->
             <div class="mb-4">
-                <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
+                <asp:DropDownList ID="ddlGender" ClientIDMode="Static" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
                     <asp:ListItem Text="Select Gender" Value=""></asp:ListItem>
                     <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
                     <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
@@ -73,7 +73,7 @@
 
             <!-- Employment Status -->
             <div class="mb-4">
-                <asp:DropDownList ID="ddlEmploymentStatus" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
+                <asp:DropDownList ID="ddlEmploymentStatus" ClientIDMode="Static" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
                     <asp:ListItem Text="Select Employment Status" Value="" />
                     <asp:ListItem Text="Employed" Value="Employed"></asp:ListItem>
                     <asp:ListItem Text="Unemployed" Value="Unemployed"></asp:ListItem>
@@ -99,7 +99,7 @@
 
             <!-- Health Condition -->
             <div class="mb-4">
-                <asp:TextBox ID="txtHealthCondition" runat="server" placeholder="Health Condition" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
+                <asp:TextBox ID="txtHealthCondition" ClientIDMode="Static" runat="server" placeholder="Health Condition" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
             </div>
 
             <!-- Notes -->
@@ -133,7 +133,7 @@
 
             <!-- Postcode/Zip Code -->
             <div class="mb-4">
-                <asp:TextBox ID="txtZip" runat="server" placeholder="Postcode / Zip Code" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
+                <asp:TextBox ID="txtZip" runat="server" placeholder="Postcode / Zip Code" CssClass="form-control fw-semibold form-control-lg bg-transparent" />
             </div>
 
             <!-- Country -->
@@ -197,7 +197,7 @@
 
         <asp:TemplateField>
             <ItemTemplate>
-                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("ID") %>' Text="Delete" />
+                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("ID") %>'> <i class="fa fa-trash-alt" style="font-size:16px"></i>  </asp:LinkButton>
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
@@ -240,6 +240,37 @@
                  </script>
 <script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
 <script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
+    <script type="text/javascript">
+        function toggleFields() {
+            // Get the selected value from the dropdown
+            var ddlType = document.getElementById('<%= ddlType.ClientID %>');
+            var selectedValue = ddlType.value;
+
+            // Get the fields to hide/show
+            var dateOfBirthField = document.getElementById("txtDOBModal");
+            var genderField = document.getElementById("ddlGender");
+            var employmentStatusField = document.getElementById("ddlEmploymentStatus");
+            var healthConditionField = document.getElementById("txtHealthCondition");
+
+            // If "Institute" is selected, hide the fields, otherwise show them
+            if (selectedValue === "Institute") {
+                dateOfBirthField.style.display = "none";
+                genderField.style.display = "none";
+                employmentStatusField.style.display = "none";
+                healthConditionField.style.display = "none";
+            } else {
+                dateOfBirthField.style.display = "block";
+                genderField.style.display = "block";
+                employmentStatusField.style.display = "block";
+                healthConditionField.style.display = "block";
+            }
+        }
+
+        // Optionally call the function on page load to set the initial visibility
+        window.onload = function () {
+            toggleFields();
+        };
+</script>
 <script type="text/javascript">
     function showSuccessModal() {
         var successModal = new bootstrap.Modal(document.getElementById('successModal'));

@@ -138,11 +138,8 @@ namespace DeffinityAppDev.App.Beneficiaries
                 // Bind data and clear the form
                 BindFeedbackData();
                 ClearForm();
-              
 
-                lblMessage.ForeColor = System.Drawing.Color.Green;
-                lblMessage.Text = "User Saved Succesfully";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModalAndRedirect", "showSuccessModal()", true);
+                DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Communication Saved Successfully!");
 
             }
             else

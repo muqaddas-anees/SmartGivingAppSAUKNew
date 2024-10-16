@@ -35,7 +35,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                 byte[] imageBytes = (byte[])profileImage;
                 return "data:image/png;base64," + Convert.ToBase64String(imageBytes);
             }
-            return "/metronic/8/default.jpeg";
+            return "../../assets/media/avatars/Benficiaries.jpg";
         }
 
         protected void DeleteButtonForBeneficiaries_Click(object sender,EventArgs e)

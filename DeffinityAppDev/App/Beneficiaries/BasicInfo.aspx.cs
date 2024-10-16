@@ -227,6 +227,7 @@ namespace DeffinityAppDev.App.Beneficaries
                         lblMessage.ForeColor = System.Drawing.Color.Green;
                         lblMessage.Text = personID != null ? "Beneficiary updated successfully!" : "Beneficiary saved successfully!";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModalAndRedirect", "showSuccessModal()", true);
+                        DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Saved Successfully!");
                         
                     }
                 }

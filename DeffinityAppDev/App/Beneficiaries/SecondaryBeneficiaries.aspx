@@ -77,10 +77,17 @@
             <td><%# Eval("PhoneNumber") %></td>
             <td><%# Eval("InternalIDNumber") %></td>
             <td class="text-end">
-                <button class="btn btn-primary" 
-                        onclick="editBeneficiary('<%# Eval("SecondaryBeneficiaryID") %>');">
-                    <i class="fas fa-lg fa-pencil-alt"></i>
-                </button>
+                     <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+         Actions
+         <i class="ki-duotone ki-down fs-5 ms-1"></i>
+     </a>
+     <!--begin::Menu-->
+     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+         <div class="menu-item px-3">
+             <a   onclick="editBeneficiary('<%# Eval("SecondaryBeneficiaryID") %>');" class="menu-link px-3">Edit</a>
+         </div>
+         
+     </div>
             </td>
         </tr>
     </ItemTemplate>
@@ -192,7 +199,6 @@
                             <div class="form-group">
                                 <label for="txtEmailModal">Email Address</label>
                                 <asp:TextBox ID="txtEmailModal" runat="server" placeholder="Email Address" CssClass="form-control bg-transparent" ClientIDMode="Static" />
-                                <asp:RequiredFieldValidator ID="rfvEmailModal" runat="server" ControlToValidate="txtEmailModal" ErrorMessage="Email address is required" CssClass="text-danger" Display="Dynamic" />
                                 <asp:RegularExpressionValidator ID="revEmailModal" runat="server" ControlToValidate="txtEmailModal" ValidationExpression="^[^\s@]+@[^\s@]+\.[^\s@]+$" ErrorMessage="Invalid email format" CssClass="text-danger" Display="Dynamic" />
                                 <asp:CustomValidator ID="cvEmailUniqueModal" runat="server" ControlToValidate="txtEmailModal" ErrorMessage="Email address already exists" OnServerValidate="cvEmailUniqueModal_ServerValidate" CssClass="text-danger" Display="Dynamic" />
                             </div>
@@ -205,7 +211,6 @@
                             <div class="form-group">
                                 <label for="txtAddressModal">Address</label>
                                 <asp:TextBox ID="txtAddressModal" runat="server" placeholder="Address" CssClass="form-control bg-transparent" />
-                                <asp:RequiredFieldValidator ID="rfvAddressModal" runat="server" ControlToValidate="txtAddressModal" ErrorMessage="Address is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
@@ -237,21 +242,18 @@
                             <div class="form-group">
                                 <label for="ddlCountryModal">Country</label>
                                 <asp:DropDownList ID="ddlCountryModal" runat="server" CssClass="form-select form-select-lg"></asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rfvCountryModal" runat="server" ControlToValidate="ddlCountryModal" InitialValue="" ErrorMessage="Country is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                            <div class="col-md-6 mb-4">
        <div class="form-group">
            <label for="txtZipModal">Postcode / Zip Code</label>
-           <asp:TextBox ID="txtZipModal" runat="server" placeholder="Postcode / Zip Code" CssClass="form-control bg-transparent" TextMode="Number"/>
-           <asp:RequiredFieldValidator ID="rfvZipModal" runat="server" ControlToValidate="txtZipModal" ErrorMessage="Zip code is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+           <asp:TextBox ID="txtZipModal" runat="server" placeholder="Postcode / Zip Code" CssClass="form-control bg-transparent" />
        </div>
    </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-group">
                                 <label for="txtBackgroundModal">Background</label>
                                 <asp:TextBox ID="txtBackgroundModal" runat="server" placeholder="Background" CssClass="form-control bg-transparent" TextMode="MultiLine" Rows="3" />
-                                <asp:RequiredFieldValidator ID="rfvBackgroundModal" runat="server" ControlToValidate="txtBackgroundModal" ErrorMessage="Background is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
                         </div>
 
@@ -260,7 +262,6 @@
                             <div class="form-group">
                                 <label for="txtHealthConditionModal">Health Condition</label>
                                 <asp:TextBox ID="txtHealthConditionModal" runat="server" placeholder="Health Condition" CssClass="form-control  bg-transparent" TextMode="MultiLine" Rows="3" />
-                                <asp:RequiredFieldValidator ID="rfvHealthConditionModal" runat="server" ControlToValidate="txtHealthConditionModal" ErrorMessage="Health Condition is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
                         </div>
 
@@ -277,14 +278,7 @@
             <asp:ListItem Text="Student" Value="Student"></asp:ListItem>
             <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
         </asp:DropDownList>
-        <asp:RequiredFieldValidator 
-            ID="rfvEmploymentStatusModal" 
-            runat="server" 
-            ControlToValidate="ddlEmploymentStatusModal" 
-            ErrorMessage="Employment Status is required" 
-            CssClass="text-danger" 
-            Display="Dynamic">
-        </asp:RequiredFieldValidator>
+      
     </div>
 </div>
 

@@ -1,7 +1,14 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BeneficiarySupport.aspx.cs" Inherits="DeffinityAppDev.App.Beneficiaries.BeneficiarySupport" MasterPageFile="~/App/Beneficiaries/Beneficiaries.master" %>
 
 <asp:Content ID="BeneficiaryReport" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        .form-check .form-check-input{
+            border:none !important;
+            
+    padding-top: 3px;
 
+        }
+    </style>
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="me-34">Support Received</h1>
         <button id="addDonationButton" class="btn btn-primary" type="button">Add Donation</button>

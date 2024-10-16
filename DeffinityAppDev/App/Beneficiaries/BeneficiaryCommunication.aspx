@@ -38,11 +38,23 @@
 </td>
 
 <td>
-    <asp:LinkButton ID="btnDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("FeedbackID") %>' CssClass="btnDelete">
-        <i class="fas fa-trash-alt" style="color: red;"></i> <!-- Change color as needed -->
-    </asp:LinkButton>
-</td>
 
+                    <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+    Actions
+    <i class="ki-duotone ki-down fs-5 ms-1"></i>
+</a>
+<!--begin::Menu-->
+<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+    <div class="menu-item px-3">
+            <asp:LinkButton ID="btnDelete" runat="server" CommandName="Delete" style="color:black;background:none !important;" CommandArgument='<%# Eval("FeedbackID") %>' CssClass="btnDelete menu-item">
+       Delete 
+    </asp:LinkButton>
+
+    </div>
+    
+</div>
+   
+</td>
         </tr>
     </ItemTemplate>
 </asp:Repeater>
@@ -81,19 +93,21 @@
                 </div>
 
                 <!-- File Upload with Add/Remove functionality -->
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <asp:Label ID="lblUpload" runat="server" Text="Upload file(s)"></asp:Label>
-                        <asp:FileUpload ID="fileUploadDocuments" runat="server" CssClass="form-control" onchange="showImagePreview(this);" />
-                                                        <div id="imagePreviewContainer" class="mt-3">
-                                    <!-- Image preview will be displayed here -->
-                                </div>
+           <div class="row mb-3">
+    <div class="col-12">
+        <asp:Label ID="lblUpload" runat="server" Text="Upload file(s)"></asp:Label>
+        <div class="d-flex align-items-center">
+            <asp:FileUpload ID="fileUploadDocuments" runat="server" CssClass="form-control me-2" onchange="showImagePreview(this);" />
+            <button type="button" class="btn " onclick="removeImagePreview();" title="Discard Image">
+                <i class="fa fa-trash"></i>
+            </button>
+        </div>
 
-                    </div>
-                </div>
-                
-
-                <div class="modal-footer">
+        <div id="imagePreviewContainer" class="mt-3">
+            <!-- Image preview will be displayed here -->
+        </div>
+    </div>
+</div>    <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <asp:Button runat="server" ID="btnSaveCommunication" CssClass="btn btn-primary" Text="Save" OnClick="btnSaveCommunication_Click" />
                 </div>
@@ -174,6 +188,15 @@
             }
         }
 
+        function removeImagePreview() {
+            // Clear the file input
+            var fileInput = document.getElementById('<%= fileUploadDocuments.ClientID %>');
+        fileInput.value = ""; // Reset the file input
+
+        // Clear the image preview
+        var previewContainer = document.getElementById('imagePreviewContainer');
+        previewContainer.innerHTML = ''; // Clear previous content
+    }
         function showSuccessModal() {
             // Debugging alert
             var successModal = new bootstrap.Modal(document.getElementById('successModal'));

@@ -212,7 +212,7 @@ namespace DeffinityAppDev.App.Beneficiaries
         }
 
 
-        private void InsertSection(bool ispersonalInformation, Document pdfDoc, string sectionTitle, Font font, IEnumerable<dynamic> records, bool includeImages = false)
+        private void InsertSection(bool isPersonalInformation, Document pdfDoc, string sectionTitle, Font font, IEnumerable<dynamic> records, bool includeImages = false)
         {
             // Section Header
             Paragraph sectionHeader = new Paragraph(sectionTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14));
@@ -223,11 +223,12 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 foreach (var record in records)
                 {
-                    // Create a new paragraph for each record in the section
-                    Paragraph recordParagraph = new Paragraph();
-                    recordParagraph.SpacingAfter = 10;
+                    // Create a table with two columns for field name and value
+                    PdfPTable table = new PdfPTable(2);
+                    table.WidthPercentage = 100; // Full width of the page
+                    table.SetWidths(new float[] { 30f, 70f }); // Column widths for name and value (30% and 70%)
 
-                    // Loop through the fields and add them to the paragraph
+                    // Loop through the fields and add them to the table
                     foreach (var prop in record.GetType().GetProperties())
                     {
                         var fieldName = prop.Name.Replace("_", " "); // Replace underscores for readability
@@ -238,50 +239,71 @@ namespace DeffinityAppDev.App.Beneficiaries
                             // Handle list of images (FileDatas)
                             if (includeImages && fieldValue is List<byte[]> imageList)
                             {
+                                PdfPCell nameCell = new PdfPCell(new Phrase(fieldName, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                                nameCell.Border = PdfPCell.NO_BORDER;
+                                table.AddCell(nameCell);
+
+                                PdfPCell imageCell = new PdfPCell();
+                                imageCell.Border = PdfPCell.NO_BORDER;
+
                                 foreach (var imageData in imageList)
                                 {
                                     try
                                     {
                                         iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageData);
-                                        image.ScaleToFit(150f, 150f); // Optionally scale the image
-                                        pdfDoc.Add(image);
+                                        image.ScaleToFit(150f, 150f);
+                                        imageCell.AddElement(image);
                                     }
                                     catch (Exception ex)
                                     {
-                                        recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Image]\n"));
+                                        imageCell.Phrase = new Phrase("[Invalid Image]", font);
                                         LogExceptions.WriteExceptionLog(ex);
                                         System.Diagnostics.Debug.WriteLine(ex.Message);
                                     }
                                 }
+                                table.AddCell(imageCell);
                             }
                             // Handle single ProfileImage
                             else if (includeImages && fieldValue is byte[] profileImageData)
                             {
+                                PdfPCell nameCell = new PdfPCell(new Phrase(fieldName, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                                nameCell.Border = PdfPCell.NO_BORDER;
+                                table.AddCell(nameCell);
+
+                                PdfPCell imageCell = new PdfPCell();
+                                imageCell.Border = PdfPCell.NO_BORDER;
                                 try
                                 {
                                     iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(profileImageData);
-                                    image.ScaleToFit(150f, 150f); // Optionally scale the image
-                                    pdfDoc.Add(image);
+                                    image.ScaleToFit(150f, 150f);
+                                    imageCell.AddElement(image);
                                 }
                                 catch (Exception ex)
                                 {
-                                    recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Image]\n"));
+                                    imageCell.Phrase = new Phrase("[Invalid Image]", font);
                                     LogExceptions.WriteExceptionLog(ex);
                                     System.Diagnostics.Debug.WriteLine(ex.Message);
                                 }
+                                table.AddCell(imageCell);
                             }
                             else
                             {
+                                // Add field name and value to the table
                                 try
                                 {
-                                    // Add other non-image fields as text
-                                    recordParagraph.Add(new Chunk($"{fieldName}: ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
-                                    recordParagraph.Add(new Chunk(fieldValue.ToString(), font));
-                                    recordParagraph.Add(new Chunk("\n"));
+                                    PdfPCell nameCell = new PdfPCell(new Phrase($"{fieldName}:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                                    nameCell.Border = PdfPCell.NO_BORDER;
+                                    table.AddCell(nameCell);
+
+                                    PdfPCell valueCell = new PdfPCell(new Phrase(fieldValue.ToString(), font));
+                                    valueCell.Border = PdfPCell.NO_BORDER;
+                                    table.AddCell(valueCell);
                                 }
                                 catch (Exception ex)
                                 {
-                                    recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Data]\n"));
+                                    PdfPCell errorCell = new PdfPCell(new Phrase($"{fieldName}: [Invalid Data]", font));
+                                    errorCell.Colspan = 2; // Span across both columns for errors
+                                    table.AddCell(errorCell);
                                     LogExceptions.WriteExceptionLog(ex);
                                     System.Diagnostics.Debug.WriteLine(ex.Message);
                                 }
@@ -289,8 +311,11 @@ namespace DeffinityAppDev.App.Beneficiaries
                         }
                     }
 
-                    // Add the record paragraph to the document
-                    pdfDoc.Add(recordParagraph);
+                    // Add the table for the record to the document
+                    pdfDoc.Add(table);
+
+                    // Add some spacing after each record
+                    pdfDoc.Add(new Paragraph("\n"));
                 }
             }
             else
@@ -301,7 +326,6 @@ namespace DeffinityAppDev.App.Beneficiaries
             // Add a separator line between sections
             pdfDoc.Add(new Paragraph("\n──────────────────────────────────────────────\n", FontFactory.GetFont(FontFactory.HELVETICA, 8)));
         }
-
 
         private void InsertSection(Document pdfDoc, string sectionTitle, Font font, IEnumerable<dynamic> records, bool includeImages = false)
         {
@@ -314,11 +338,12 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 foreach (var record in records)
                 {
-                    // Create a new paragraph for each record in the section
-                    Paragraph recordParagraph = new Paragraph();
-                    recordParagraph.SpacingAfter = 10;
+                    // Create a table with two columns for field name and value
+                    PdfPTable table = new PdfPTable(2);
+                    table.WidthPercentage = 100; // Make the table span the full width of the page
+                    table.SetWidths(new float[] { 30f, 70f }); // Define relative widths of columns (30% and 70%)
 
-                    // Loop through the fields and add them to the paragraph
+                    // Loop through the fields and add them to the table
                     foreach (var prop in record.GetType().GetProperties())
                     {
                         var fieldName = prop.Name.Replace("_", " "); // Replace underscores for readability
@@ -332,12 +357,24 @@ namespace DeffinityAppDev.App.Beneficiaries
                                 {
                                     // Convert the byte[] into an iTextSharp image
                                     iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageData);
-                                    image.ScaleToFit(150f, 150f); // Scale the image if necessary
-                                    pdfDoc.Add(image);
+                                    image.ScaleToFit(100f, 100f); // Scale the image to fit in the table
+
+                                    // Add the field name as a cell
+                                    PdfPCell nameCell = new PdfPCell(new Phrase(fieldName, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                                    nameCell.Border = PdfPCell.NO_BORDER; // No border for cleaner look
+                                    table.AddCell(nameCell);
+
+                                    // Add the image in the second column
+                                    PdfPCell imageCell = new PdfPCell(image);
+                                    imageCell.Border = PdfPCell.NO_BORDER;
+                                    table.AddCell(imageCell);
                                 }
                                 catch (Exception ex)
                                 {
-                                    recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Image]\n"));
+                                    PdfPCell errorCell = new PdfPCell(new Phrase($"{fieldName}: [Invalid Image]", font));
+                                    errorCell.Colspan = 2; // Span across both columns
+                                    table.AddCell(errorCell);
+
                                     LogExceptions.WriteExceptionLog(ex);
                                     System.Diagnostics.Debug.WriteLine(ex.Message);
                                 }
@@ -346,14 +383,22 @@ namespace DeffinityAppDev.App.Beneficiaries
                             {
                                 try
                                 {
-                                    // Append the field name followed by the value
-                                    recordParagraph.Add(new Chunk($"{fieldName}: ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
-                                    recordParagraph.Add(new Chunk(fieldValue.ToString(), font));
-                                    recordParagraph.Add(new Chunk("\n"));
+                                    // Add the field name as a bold cell
+                                    PdfPCell nameCell = new PdfPCell(new Phrase($"{fieldName}:", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                                    nameCell.Border = PdfPCell.NO_BORDER; // No border for cleaner look
+                                    table.AddCell(nameCell);
+
+                                    // Add the field value as a regular text cell
+                                    PdfPCell valueCell = new PdfPCell(new Phrase(fieldValue.ToString(), font));
+                                    valueCell.Border = PdfPCell.NO_BORDER;
+                                    table.AddCell(valueCell);
                                 }
                                 catch (Exception ex)
                                 {
-                                    recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Data]\n"));
+                                    PdfPCell errorCell = new PdfPCell(new Phrase($"{fieldName}: [Invalid Data]", font));
+                                    errorCell.Colspan = 2; // Span across both columns
+                                    table.AddCell(errorCell);
+
                                     LogExceptions.WriteExceptionLog(ex);
                                     System.Diagnostics.Debug.WriteLine(ex.Message);
                                 }
@@ -361,8 +406,11 @@ namespace DeffinityAppDev.App.Beneficiaries
                         }
                     }
 
-                    // Add the record to the document
-                    pdfDoc.Add(recordParagraph);
+                    // Add the table for the record to the document
+                    pdfDoc.Add(table);
+
+                    // Add some spacing after each record
+                    pdfDoc.Add(new Paragraph("\n"));
                 }
             }
             else

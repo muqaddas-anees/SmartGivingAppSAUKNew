@@ -168,15 +168,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.TextBox txtEmailModal;
 
         /// <summary>
-        /// rfvEmailModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmailModal;
-
-        /// <summary>
         /// revEmailModal control.
         /// </summary>
         /// <remarks>
@@ -202,15 +193,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAddressModal;
-
-        /// <summary>
-        /// rfvAddressModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAddressModal;
 
         /// <summary>
         /// txtTownModal control.
@@ -240,15 +222,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.DropDownList ddlCountryModal;
 
         /// <summary>
-        /// rfvCountryModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCountryModal;
-
-        /// <summary>
         /// txtZipModal control.
         /// </summary>
         /// <remarks>
@@ -256,15 +229,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtZipModal;
-
-        /// <summary>
-        /// rfvZipModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvZipModal;
 
         /// <summary>
         /// txtBackgroundModal control.
@@ -276,15 +240,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.TextBox txtBackgroundModal;
 
         /// <summary>
-        /// rfvBackgroundModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBackgroundModal;
-
-        /// <summary>
         /// txtHealthConditionModal control.
         /// </summary>
         /// <remarks>
@@ -294,15 +249,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.TextBox txtHealthConditionModal;
 
         /// <summary>
-        /// rfvHealthConditionModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHealthConditionModal;
-
-        /// <summary>
         /// ddlEmploymentStatusModal control.
         /// </summary>
         /// <remarks>
@@ -310,15 +256,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEmploymentStatusModal;
-
-        /// <summary>
-        /// rfvEmploymentStatusModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmploymentStatusModal;
 
         /// <summary>
         /// fuProfileImage control.

@@ -19,7 +19,7 @@ namespace DeffinityAppDev.App
         {
             try
             {
-                if (!IsPostBack)
+               /* if (!IsPostBack)
                 {
 
                     if (Request.QueryString["unid"] != null)
@@ -40,7 +40,7 @@ namespace DeffinityAppDev.App
                         BindSpeakerGridDetails(id);
                         BingSponsorsGrid();
                     }
-                }
+                }*/
 
             }
             catch(Exception ex)
@@ -64,8 +64,7 @@ namespace DeffinityAppDev.App
             //hEventid.Value = uEntity.ID.ToString();
 
 
-            BannerList.DataSource = list;
-            BannerList.DataBind();
+          
 
 
 
@@ -217,9 +216,7 @@ namespace DeffinityAppDev.App
                 var Value = pRep.GetAll().Where(o => o.EventID == eventDetils.ID).ToList();
 
 
-                gridSponsors.DataSource = Value;
-                gridSponsors.DataBind();
-
+            
 
             }
             catch (Exception ex)
@@ -291,8 +288,7 @@ namespace DeffinityAppDev.App
 
                              }).ToList();
 
-                ListEventDetails.DataSource = rlist;
-                ListEventDetails.DataBind();
+      
 
             }
             catch (Exception ex)
