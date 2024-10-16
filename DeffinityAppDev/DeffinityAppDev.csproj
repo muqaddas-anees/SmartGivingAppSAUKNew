@@ -679,6 +679,7 @@
     <Compile Include="App\Beneficiaries\GetBeneficiaries.aspx.designer.cs">
       <DependentUpon>GetBeneficiaries.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App\Beneficiaries\Helper.cs" />
     <Compile Include="App\Beneficiaries\ImageHandler.ashx.cs">
       <DependentUpon>ImageHandler.ashx</DependentUpon>
     </Compile>

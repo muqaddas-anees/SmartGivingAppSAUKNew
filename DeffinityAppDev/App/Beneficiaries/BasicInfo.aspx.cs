@@ -1,6 +1,8 @@
 ﻿using DeffinityAppDev.App.Beneficiaries;
 using DeffinityAppDev.App.Beneficiaries.Entities;
 using Newtonsoft.Json;
+using PortfolioMgt.DAL;
+using PortfolioMgt.Entity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,6 +11,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -20,6 +23,8 @@ namespace DeffinityAppDev.App.Beneficaries
 {
     public partial class BasicInfo : System.Web.UI.Page
     {
+        public static string file_section_beneficiary_doc = "beneficiarydoc";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,12 +41,56 @@ namespace DeffinityAppDev.App.Beneficaries
                 {
                     int id = int.Parse(personID);
                     LoadBeneficiaryDetails(id); // A method to load details
+                    GridFilesBind();
+                }
+                else
+                {
+                    CreateandRedirectBeneficiary();
                 }
 
             }
         }
 
-            private void LoadBeneficiaryDetails(int personID)
+        private void CreateandRedirectBeneficiary()
+        {
+            try
+            {
+                using (var context = new MyDatabaseContext())
+                {
+                    // Create a new beneficiary
+                    var newBeneficiary = new Beneficiary
+                    {
+                        CreatedAt = DateTime.Now // Ensure CreatedAt has a valid value
+                                                 // Set other properties as necessary
+                    };
+
+                    // Add the new beneficiary to the database
+                    context.Beneficiaries.Add(newBeneficiary);
+
+                    // Save the changes to the database
+                    context.SaveChanges();
+
+                    // Ensure the PersonID is not 0
+                    if (newBeneficiary.PersonID != 0)
+                    {
+                        // Redirect to the BasicInfo page with the new PersonID
+                        Response.Redirect("BasicInfo.aspx?Personid=" + newBeneficiary.PersonID);
+                    }
+                    else
+                    {
+                        // Handle the case where PersonID is 0 if needed
+                        throw new Exception("PersonID is 0 after saving the beneficiary.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (you can replace this with your own logging method)
+                LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+
+        private void LoadBeneficiaryDetails(int personID)
             {
                 using (MyDatabaseContext db = new MyDatabaseContext())
                 {
@@ -66,28 +115,11 @@ namespace DeffinityAppDev.App.Beneficaries
                     ddlCountry.SelectedValue = beneficiary.Country;
                     ddlDocumentType.SelectedValue = beneficiary.DocumentType;
                     txtID.Text = beneficiary.InternalIDNumber;
+                    ddlType.SelectedValue = beneficiary.Type;
 
 
-                    if (beneficiary.DocumentBack != null && beneficiary.DocumentBack.Length > 0)
-                    {
-                        string base64Image = Convert.ToBase64String(beneficiary.DocumentBack);
-                        imgBackPreview.ImageUrl = "data:image/png;base64," + base64Image;
-                    }
-                    else
-                    {
-                        imgBackPreview.Visible = false;
-                    }
 
-
-                    if (beneficiary.DocumentFront != null && beneficiary.DocumentFront.Length > 0)
-                    {
-                        string base64Image = Convert.ToBase64String(beneficiary.DocumentFront);
-                        imgFrontPreview.ImageUrl = "data:image/png;base64," + base64Image;
-                    }
-                    else
-                    {
-                        imgFrontPreview.Visible = false;
-                    }
+                  
                     // Add other fields here as needed
                 }
             }
@@ -184,56 +216,24 @@ namespace DeffinityAppDev.App.Beneficaries
                         beneficiary.TithingDefaultDetailsID = sessionKeys.PortfolioID;
 
                         // Handle Document Uploads
-                        if (fileUploadFront.HasFile)
-                        {
-                            beneficiary.DocumentFront = fileUploadFront.FileBytes;
-                        }
-                        // Keep existing file if no new one is uploaded
-                        else if (string.IsNullOrEmpty(personID)) // Only for new entries
-                        {
-                            beneficiary.DocumentFront = null;
-                        }
-
-                        if (fileUploadBack.HasFile)
-                        {
-                            beneficiary.DocumentBack = fileUploadBack.FileBytes;
-                        }
-                        // Keep existing file if no new one is uploaded
-                        else if (string.IsNullOrEmpty(personID)) // Only for new entries
-                        {
-                            beneficiary.DocumentBack = null;
-                        }
-
+                        
                         // Save the changes to the database
                         context.SaveChanges();
 
                         // Clear the form after save
                         ClearForm();
-
+                        LoadBeneficiaryDetails(beneficiary.PersonID);
                         // Display success message
                         lblMessage.ForeColor = System.Drawing.Color.Green;
                         lblMessage.Text = personID != null ? "Beneficiary updated successfully!" : "Beneficiary saved successfully!";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModalAndRedirect", "showSuccessModal()", true);
+                        
                     }
                 }
-                catch (DbUpdateException ex)
+
+                catch (Exception ex)
                 {
-                    Exception innerException = ex;
-                    while (innerException.InnerException != null)
-                    {
-                        innerException = innerException.InnerException;
-                    }
-
-                    // Log the detailed error to the debug output
-                    System.Diagnostics.Debug.WriteLine("Error saving beneficiary: " + ex.Message);
-                    System.Diagnostics.Debug.WriteLine("Inner Exception: " + innerException.Message);
-
-                    // Optionally, log the full stack trace for more insight
-                    System.Diagnostics.Debug.WriteLine("Stack Trace: " + innerException.StackTrace);
-
-                    // Display a friendly error message to the user
-                    lblMessage.ForeColor = System.Drawing.Color.Red;
-                    lblMessage.Text = "An unexpected error occurred while saving the data. Please try again later.";
+                    LogExceptions.WriteExceptionLog(ex);
                 }
             }
             else
@@ -264,9 +264,7 @@ namespace DeffinityAppDev.App.Beneficaries
             txtNotes.Text = string.Empty;
             txtHealthCondition.Text = string.Empty;
             // Clear FileUpload controls (Note: FileUpload cannot be cleared programmatically, so just inform the user to re-upload if necessary)
-            fileUploadFront.Attributes.Clear();
-            fileUploadBack.Attributes.Clear();
-
+        
         }
         private void BindCountryCodes()
         {
@@ -565,7 +563,153 @@ namespace DeffinityAppDev.App.Beneficaries
                 ddlCountry.Items.Add(new ListItem(country.EnglishName, country.TwoLetterISORegionName));
             }
         }
+        public void GridFilesBind()
+        {
+            try
+            {
+                string SID = Request.QueryString["PersonID"];
+                // Repository to fetch file data
+                IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
 
+                // Ensure repository is not null and fetch the file list by section and ID
+                if (fRep != null)
+                {
+                    var fList = fRep.GetAll()
+                                    .Where(o => o.Section == file_section_beneficiary_doc)
+                                    .Where(o => o.FileID == SID)
+                                    .ToList();
+
+                    // Prepare data for binding with a projection to the fields needed
+                    var rList = fList.Select(r => new
+                    {
+                        FileName = r.FileName, // Bind to the correct property 'FileName'
+                        ID = r.ID,
+                        FileID = r.FileID
+                    }).ToList();
+
+                    // Bind the data to the GridView
+                    gridfiles.DataSource = rList;
+                    gridfiles.DataBind();
+                }
+                else
+                {
+                    // Handle the case where repository is null (optional)
+                    gridfiles.DataSource = null;
+                    gridfiles.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log any exceptions that occur
+                LogExceptions.WriteExceptionLog(ex);
+
+                // Optionally, clear the grid in case of an exception
+                gridfiles.DataSource = null;
+                gridfiles.DataBind();
+            }
+        }
+        protected void gridfiles_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                int fileId = Convert.ToInt32(e.CommandArgument); // Get the file ID from CommandArgument
+
+                // Handle Download Command
+                if (e.CommandName == "Download")
+                {
+                    IPortfolioRepository<PortfolioMgt.Entity.FileData> fRep = new PortfolioRepository<PortfolioMgt.Entity.FileData>();
+
+                    // Fetch the file by its ID
+                    var fileData = fRep.GetAll().FirstOrDefault(o => o.ID == fileId);
+
+                    if (fileData != null)
+                    {
+                        // File data is stored in the database as bytes (fileData.FileData1)
+                        byte[] fileBytes = fileData.FileData1.ToArray();
+                        string fileName = fileData.FileName;
+
+                        // Send the file as a download to the user's browser
+                        Response.Clear();
+                        Response.ContentType = "application/octet-stream";
+                        Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
+                        Response.AddHeader("Content-Length", fileBytes.Length.ToString());
+                        Response.BinaryWrite(fileBytes);
+                        Response.Flush();
+                        Response.End();
+                    }
+                }
+
+                // Handle Delete Command
+                if (e.CommandName == "Delete")
+                {
+                    using (var context = new PortfolioDataContext())
+                    {
+                        var file = context.FileDatas.FirstOrDefault(o => o.ID == fileId);
+                        context.FileDatas.DeleteOnSubmit(file);
+                        context.SubmitChanges();
+                        Response.Redirect(Request.RawUrl);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+
+        protected void btnFileUpload_Click(object sender, EventArgs e)
+        {
+            // Check if a file is uploaded
+            if (fileUpload.HasFile)
+            {
+                try
+                {
+                    using(var context=new PortfolioDataContext())
+                    { 
+                        
+                    // Get the uploaded file as a byte array
+                    byte[] fileByteArray;
+                    using (BinaryReader br = new BinaryReader(fileUpload.PostedFile.InputStream))
+                    {
+                        fileByteArray = br.ReadBytes(fileUpload.PostedFile.ContentLength);
+                    }
+
+                    // Define parameters
+                    string fileid = Request.QueryString["Personid"]; // Assigning fileid from query string
+                    string section = file_section_beneficiary_doc; // Assign the section as needed
+                    string fileExtension = Path.GetExtension(fileUpload.FileName); // Get the file extension
+                    string filename = fileUpload.FileName; // Use the uploaded file's name
+
+                    // Save the file with FileDBSave method, setting Smallfilebytearray as null
+                        var file = new FileData
+                        {
+                            FileID = fileid,
+                            Section = section,
+                            FileExtenstion = fileExtension,
+                            FileName = filename,
+                            FileData1 = fileByteArray
+                        };
+                        context.FileDatas.InsertOnSubmit(file);
+                        context.SubmitChanges();
+
+
+                    // Optionally, handle the result or success/failure of the save
+                    DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "File Saved Successfully!");
+                    GridFilesBind(); // Refresh the file grid or any necessary UI elements
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle exceptions and log errors
+                    LogExceptions.WriteExceptionLog(ex);
+                    DeffinityManager.ShowMessages.ShowErrorAlert(this.Page, "Error: " + ex.Message);
+                }
+            }
+            else
+            {
+                DeffinityManager.ShowMessages.ShowErrorAlert(this.Page, "Please select a file to upload.");
+            }
+        }
 
     }
 }

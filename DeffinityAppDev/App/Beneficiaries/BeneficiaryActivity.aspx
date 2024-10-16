@@ -262,7 +262,7 @@
                         <asp:Label ID="lblDate" runat="server" Text="Date"></asp:Label>
                         <div class="input-group">
                             <asp:TextBox ID="txtActivityDate" runat="server" CssClass="form-control bg-transparent" TextMode="Date" />
-                            <asp:RequiredFieldValidator ID="txt" ControlToValidate="txtActivityDate" runat="server" ErrorMessage="Date is Required" CssClass="text-danger"/>
+                       
                         </div>
                     </div>
                 </div>

@@ -88,30 +88,25 @@
                 <!-- First Name -->
                 <div class="fv-row mb-7">
                     <asp:TextBox ID="txtFirstName" runat="server" placeholder="First Name" CssClass="form-control form-control-lg form-control-solid" />
-                    <asp:RequiredFieldValidator ID="rfvFirstName" runat="server" ControlToValidate="txtFirstName"
-                        ErrorMessage="First name is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                    
                 </div>
 
                 <!-- Last Name -->
                 <div class="fv-row mb-7">
                     <asp:TextBox ID="txtLastName" runat="server" placeholder="Last Name" CssClass="form-control form-control-lg form-control-solid" />
-                    <asp:RequiredFieldValidator ID="rfvLastName" runat="server" ControlToValidate="txtLastName"
-                        ErrorMessage="Last name is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                  
                 </div>
 
                 <!-- Email Address -->
                 <div class="fv-row mb-7">
                     <asp:TextBox ID="txtEmailAddress" runat="server" placeholder="Email Address" CssClass="form-control form-control-lg form-control-solid" />
-                    <asp:RequiredFieldValidator ID="rfvEmailAddress" runat="server" ControlToValidate="txtEmailAddress"
-                        ErrorMessage="Email is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="revEmailAddress" runat="server" ControlToValidate="txtEmailAddress"
-                        ValidationExpression="\w+([-+.\w])*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorMessage="Invalid email format" CssClass="text-danger"></asp:RegularExpressionValidator>
+                  
                 </div>
 
 
 <!-- Phone Number with Country Code -->
-<div class="fv-row mb-7">
-    <div class="input-group w-100">
+<div class="row mb-7">
+    <div class="col-lg-4">
         <!-- Country Code Dropdown -->
         <asp:DropDownList 
             ID="ddlPhone" 
@@ -119,7 +114,7 @@
             CssClass="form-select form-select-lg form-select-solid country-code-dropdown text-dark">
           
         </asp:DropDownList>
-        
+        </div><div class="col">
         <!-- Phone Number Input -->
         <asp:TextBox 
             ID="txtPhoneNumber" 
@@ -129,21 +124,8 @@
     </div>
     
     <!-- Validation Validators -->
-    <asp:RequiredFieldValidator 
-        ID="rfvPhoneNumber" 
-        runat="server" 
-        ControlToValidate="txtPhoneNumber"
-        ErrorMessage="Phone number is required" 
-        CssClass="text-danger" 
-        Display="Dynamic"></asp:RequiredFieldValidator>
-    <asp:RegularExpressionValidator 
-        ID="revPhoneNumber" 
-        runat="server" 
-        ControlToValidate="txtPhoneNumber"
-        ValidationExpression="^\+?\d{1,3}(\s\d{1,4}){2,3}$"
-        ErrorMessage="Invalid phone number format" 
-        CssClass="text-danger" 
-        Display="Dynamic"></asp:RegularExpressionValidator>
+  
+  
 </div>
 
 

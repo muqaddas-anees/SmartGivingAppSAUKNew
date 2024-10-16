@@ -11,12 +11,15 @@ using DeffinityAppDev.App.Beneficiaries.Entities;
 using iTextSharp.text;
 
 using iTextSharp.text.pdf;
+using PortfolioMgt.DAL;
 
 namespace DeffinityAppDev.App.Beneficiaries
 
 {
     public partial class BeneficiaryReport : System.Web.UI.Page
     {
+        public static string file_section_beneficiary_doc = "beneficiarydoc";
+
         protected void ProducePdfReport_Click(object sender, EventArgs e)
         {
             // Get selected dates and options from UI controls
@@ -85,13 +88,13 @@ namespace DeffinityAppDev.App.Beneficiaries
                     dateRange.Alignment = Element.ALIGN_CENTER;
                     pdfDoc.Add(dateRange);
                     pdfDoc.Add(new Paragraph("\n"));
-
+                    using(var portfoliocontext=new PortfolioDataContext())
                     using (var context = new MyDatabaseContext())
                     {
                         // Add each section if selected
                         if (includePersonalInfo)
                         {
-                            InsertSection(pdfDoc, "Personal Information", normalFont,
+                            InsertSection(true,pdfDoc, "Personal Information", normalFont,
                                 context.Beneficiaries
                                        .Where(b => b.CreatedAt >= fromDate && b.CreatedAt <= toDate && b.TithingDefaultDetailsID == sessionKeys.PortfolioID)
                                        .AsEnumerable()
@@ -113,9 +116,13 @@ namespace DeffinityAppDev.App.Beneficiaries
                                            b.Background,
                                            b.EmploymentStatus,
                                            b.HealthCondition,
-                                           b.ProfileImage, // Include image
-                                           b.DocumentFront, // Include image
-                                           b.DocumentBack  // Include image
+                                           b.ProfileImage,
+                                           // Include multiple images up to 5 from the FileDatas for each beneficiary
+                                           Images = portfoliocontext.FileDatas
+                                                       .Where(f => f.FileID == b.PersonID.ToString() && f.Section == file_section_beneficiary_doc)
+                                                       .Take(5)  // Limit to 5 images
+                                                       .Select(f => f.FileData1.ToArray())  // Assuming FileData1 contains the image byte[]
+                                                       .ToList() // Convert to list
                                        })
                                        .ToList(), true); // Pass true for image sections
                         }
@@ -205,7 +212,95 @@ namespace DeffinityAppDev.App.Beneficiaries
         }
 
 
+        private void InsertSection(bool ispersonalInformation, Document pdfDoc, string sectionTitle, Font font, IEnumerable<dynamic> records, bool includeImages = false)
+        {
+            // Section Header
+            Paragraph sectionHeader = new Paragraph(sectionTitle, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14));
+            sectionHeader.SpacingAfter = 15;
+            pdfDoc.Add(sectionHeader);
 
+            if (records.Any())
+            {
+                foreach (var record in records)
+                {
+                    // Create a new paragraph for each record in the section
+                    Paragraph recordParagraph = new Paragraph();
+                    recordParagraph.SpacingAfter = 10;
+
+                    // Loop through the fields and add them to the paragraph
+                    foreach (var prop in record.GetType().GetProperties())
+                    {
+                        var fieldName = prop.Name.Replace("_", " "); // Replace underscores for readability
+                        var fieldValue = prop.GetValue(record);
+
+                        if (fieldValue != null)
+                        {
+                            // Handle list of images (FileDatas)
+                            if (includeImages && fieldValue is List<byte[]> imageList)
+                            {
+                                foreach (var imageData in imageList)
+                                {
+                                    try
+                                    {
+                                        iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageData);
+                                        image.ScaleToFit(150f, 150f); // Optionally scale the image
+                                        pdfDoc.Add(image);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Image]\n"));
+                                        LogExceptions.WriteExceptionLog(ex);
+                                        System.Diagnostics.Debug.WriteLine(ex.Message);
+                                    }
+                                }
+                            }
+                            // Handle single ProfileImage
+                            else if (includeImages && fieldValue is byte[] profileImageData)
+                            {
+                                try
+                                {
+                                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(profileImageData);
+                                    image.ScaleToFit(150f, 150f); // Optionally scale the image
+                                    pdfDoc.Add(image);
+                                }
+                                catch (Exception ex)
+                                {
+                                    recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Image]\n"));
+                                    LogExceptions.WriteExceptionLog(ex);
+                                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    // Add other non-image fields as text
+                                    recordParagraph.Add(new Chunk($"{fieldName}: ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                                    recordParagraph.Add(new Chunk(fieldValue.ToString(), font));
+                                    recordParagraph.Add(new Chunk("\n"));
+                                }
+                                catch (Exception ex)
+                                {
+                                    recordParagraph.Add(new Chunk($"{fieldName}: [Invalid Data]\n"));
+                                    LogExceptions.WriteExceptionLog(ex);
+                                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                                }
+                            }
+                        }
+                    }
+
+                    // Add the record paragraph to the document
+                    pdfDoc.Add(recordParagraph);
+                }
+            }
+            else
+            {
+                pdfDoc.Add(new Paragraph("No data available for this section", new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC)));
+            }
+
+            // Add a separator line between sections
+            pdfDoc.Add(new Paragraph("\n──────────────────────────────────────────────\n", FontFactory.GetFont(FontFactory.HELVETICA, 8)));
+        }
 
 
         private void InsertSection(Document pdfDoc, string sectionTitle, Font font, IEnumerable<dynamic> records, bool includeImages = false)

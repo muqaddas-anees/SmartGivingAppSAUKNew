@@ -27,6 +27,17 @@ namespace DeffinityAppDev.App.Beneficiaries
 
 
         }
+
+        public string GetProfileImage(object profileImage)
+        {
+            if (profileImage != DBNull.Value && profileImage != null)
+            {
+                byte[] imageBytes = (byte[])profileImage;
+                return "data:image/png;base64," + Convert.ToBase64String(imageBytes);
+            }
+            return "/metronic/8/default.jpeg";
+        }
+
         protected void DeleteButtonForBeneficiaries_Click(object sender,EventArgs e)
         {
             LinkButton btn = (LinkButton)sender;
@@ -87,8 +98,9 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 // Fetch beneficiaries where TithingDefaultDetailsID = 1
                 var beneficiaries = context.Beneficiaries
-                                           .Where(b => b.TithingDefaultDetailsID == sessionKeys.PortfolioID)
-                                           .ToList();
+                    .Where(b => b.TithingDefaultDetailsID == sessionKeys.PortfolioID
+                                && (b.Name != null || b.Country != null))
+                    .ToList();
 
                 // Bind the beneficiaries list to your Repeater/GridView
                 BeneficiariesRepeater.DataSource = beneficiaries;

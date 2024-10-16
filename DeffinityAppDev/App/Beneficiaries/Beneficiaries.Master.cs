@@ -12,9 +12,11 @@ namespace DeffinityAppDev.App.Beneficiaries
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string personID;
+            personID = Request.QueryString["PersonID"];
             if (!IsPostBack)
             {
-                string personID = Request.QueryString["PersonID"];
+
 
                 // Check if PersonID is present in the query string
                 if (!string.IsNullOrEmpty(personID))
@@ -22,8 +24,15 @@ namespace DeffinityAppDev.App.Beneficiaries
                     // PersonID exists, make buttons visible
                     btnUpload.Visible = true;
                     btnDelete.Visible = true;
+                    personalinformation.HRef = ResolveUrl("~/App/Beneficiaries/BasicInfo.aspx") + "?personid=" + personID;
+                    secondarybeneficiary.HRef = ResolveUrl("~/App/Beneficiaries/SecondaryBeneficiaries.aspx") + "?personid=" + personID;
+                    contacts.HRef = ResolveUrl("~/App/Beneficiaries/BeneficiaryContacts.aspx") + "?personid=" + personID;
+                    supportreceived.HRef = ResolveUrl("~/App/Beneficiaries/BeneficiarySupport.aspx") + "?personid=" + personID;
+                    activity.HRef = ResolveUrl("~/App/Beneficiaries/BeneficiaryActivity.aspx") + "?personid=" + personID;
+                    communication.HRef = ResolveUrl("~/App/Beneficiaries/BeneficiaryCommunication.aspx") + "?personid=" + personID;
+                    report.HRef = ResolveUrl("~/App/Beneficiaries/BeneficiaryReport.aspx") + "?personid=" + personID;
 
-                    // Fetch beneficiary information
+                    // Fetch beneficiary 
                     LoadBeneficiaryInfo(personID);
                 }
                 else
@@ -31,6 +40,13 @@ namespace DeffinityAppDev.App.Beneficiaries
                     // No PersonID, hide the buttons
                     btnUpload.Visible = false;
                     btnDelete.Visible = false;
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(personID))
+                {
+                    LoadBeneficiaryInfo(personID);
                 }
             }
         }

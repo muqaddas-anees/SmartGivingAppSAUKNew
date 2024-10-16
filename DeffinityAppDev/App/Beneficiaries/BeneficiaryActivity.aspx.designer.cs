@@ -78,15 +78,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.TextBox txtActivityDate;
 
         /// <summary>
-        /// txt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator txt;
-
-        /// <summary>
         /// ddlLoggedBy control.
         /// </summary>
         /// <remarks>

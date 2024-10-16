@@ -83,17 +83,15 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 // Using LINQ to get donations from the database
                 var donations = context.BeneficiaryDonations.Where(o => o.TithingID == sessionKeys.PortfolioID)
-                    .Select(d => new
-                    {
-                        d.DonationID,
-                        d.DonationDate,
-                        d.AssociatedFundraiser,
-                        d.DonatedBy,
-                        d.DonationAmount,
-                        d.Currency,
-                        d.Notes
-                    }).ToList();
+                   .ToList();
+                for(int i=0;i<donations.Count;i++)
+                {
+                    donations[i].AssociatedFundraiser = Helper.GetFundraiserNamebyID(donations[i].AssociatedFundraiser);
+                    donations[i].DonatedBy = Helper.GetPersonNamebyID(donations[i].DonatedBy);
 
+
+
+                }
                 // Binding the retrieved data to the Repeater control
                 RepeaterDonations.DataSource = donations;
                 RepeaterDonations.DataBind();

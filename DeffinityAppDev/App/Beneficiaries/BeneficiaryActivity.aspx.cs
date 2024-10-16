@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Web.UI;
 using DeffinityManager;
+using DeffinityAppDev.App.Beneficiaries;
 using System.Runtime.Remoting.Contexts;
 using UserMgt.DAL;
 using System.Web.UI.WebControls;
@@ -64,8 +65,13 @@ namespace DeffinityAppDev.App.Beneficiaries
                     var activities = context.BeneficiaryActivities
                         .Where(a => a.ActivityDate >= today && a.ActivityDate < tomorrow && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
                         .OrderByDescending(a => a.ActivityDate)
+                         
                         .ToList();
 
+                    for(int i=0;i<activities.Count;i++)
+                    {
+                        activities[i].LoggedBy = Helper.GetPersonNamebyID(activities[i].LoggedBy);
+                    }
                     rptActivities.DataSource = activities;
                     rptActivities.DataBind();
                 }
@@ -95,7 +101,10 @@ namespace DeffinityAppDev.App.Beneficiaries
                         .Where(a => a.ActivityDate >= startOfWeek && a.ActivityDate < endOfWeek && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
                         .OrderByDescending(a => a.ActivityDate)
                         .ToList();
-
+                    for (int i = 0; i < activities.Count; i++)
+                    {
+                        activities[i].LoggedBy = Helper.GetPersonNamebyID(activities[i].LoggedBy);
+                    }
                     rptActivities.DataSource = activities;
                     rptActivities.DataBind();
                 }
@@ -124,7 +133,10 @@ namespace DeffinityAppDev.App.Beneficiaries
                         .Where(a => a.ActivityDate >= startOfMonth && a.ActivityDate < endOfMonth && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
                         .OrderByDescending(a => a.ActivityDate)
                         .ToList();
-
+                    for (int i = 0; i < activities.Count; i++)
+                    {
+                        activities[i].LoggedBy = Helper.GetPersonNamebyID(activities[i].LoggedBy);
+                    }
                     rptActivities.DataSource = activities;
                     rptActivities.DataBind();
                 }
@@ -153,7 +165,10 @@ namespace DeffinityAppDev.App.Beneficiaries
                         .Where(a => a.ActivityDate >= startOfYear && a.ActivityDate < endOfYear && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
                         .OrderByDescending(a => a.ActivityDate)
                         .ToList();
-
+                    for (int i = 0; i < activities.Count; i++)
+                    {
+                        activities[i].LoggedBy = Helper.GetPersonNamebyID(activities[i].LoggedBy);
+                    }
                     rptActivities.DataSource = activities;
                     rptActivities.DataBind();
                 }

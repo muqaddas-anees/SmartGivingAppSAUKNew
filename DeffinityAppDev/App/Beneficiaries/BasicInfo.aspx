@@ -24,191 +24,128 @@
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <div class="d-flex flex-column flex-lg-row-fluid w-lg-75 p-10 order-2 order-lg-1">
                 <div class="d-flex flex-center flex-column flex-lg-row-fluid">
-                    <div class="w-lg-1600px p-10 shadow-sm bg-body rounded">
+                    <div style="width:100% !important;border: none;box-shadow: none !important;" class=" shadow-sm bg-body rounded">
                         <div class="card mb-10">
                             <div class="card-header">
                                 <h3 class="card-title fw-bold text-muted">Personal Profile</h3>
                               
                             </div>
-                            <div class="card-body">
+ <div class="card-body">
     <div class="row">
-        <!-- Dropdown for Type (Institute / Individual) -->
-        <div class="col-md-6 mb-8 fv-plugins-icon-container">
-            <asp:DropDownList ID="ddlType" runat="server" CssClass="form-select text-muted form-select-lg bg-transparent fw-semibold">
-                <asp:ListItem Text="Select Type" Value=""></asp:ListItem>
-                <asp:ListItem Text="Institute" Value="Institute"></asp:ListItem>
-                <asp:ListItem Text="Individual" Value="Individual"></asp:ListItem>
-            </asp:DropDownList>
-            <asp:RequiredFieldValidator ID="rfvType" runat="server" ControlToValidate="ddlType"
-                InitialValue="" ErrorMessage="Please select a Type" CssClass="text-danger text-muted" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
-
-        <!-- Date of Birth -->
-        <div class="col-md-6 mb-8">
-            <div class="input-group" id="dobPicker">
-                <!-- Textbox for Date of Birth with Placeholder -->
-           
-  
-         <asp:TextBox ID="txtDOBModal" runat="server" CssClass="form-control bg-transparent" TextMode="Date" />
-       
-
- 
-
-                <!-- Required Field Validator for Date of Birth -->
-                <asp:RequiredFieldValidator 
-                    ID="rfvDOB" 
-                    runat="server" 
-                    ControlToValidate="txtDOBModal"
-                    ErrorMessage="Date of Birth is required" 
-                    CssClass="text-danger" 
-                    Display="Dynamic">
-                </asp:RequiredFieldValidator>
-            </div>
-        </div>
-
-        <!-- Gender -->
-        <div class="col-md-6 mb-8">
-            <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
-                <asp:ListItem Text="Select Gender" Value=""></asp:ListItem>
-                <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
-                <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
-                <asp:ListItem Text="Binary" Value="Binary"></asp:ListItem>
-                <asp:ListItem Text="Prefer Not to Mention" Value="PreferNotToMention"></asp:ListItem>
-            </asp:DropDownList>
-            <asp:RequiredFieldValidator ID="rfvGender" runat="server" ControlToValidate="ddlGender"
-                InitialValue="" ErrorMessage="Gender is required" CssClass="text-white text-bg-danger text-muted" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
-
-        <!-- Internal ID Number -->
-        <div class="col-md-6 mb-8">
-            <asp:TextBox ID="txtID" runat="server" placeholder="Internal ID Number" CssClass="form-control text-muted fw-semibold form-control-lg  bg-transparent" />
-            <asp:RequiredFieldValidator ID="rfvID" runat="server" ControlToValidate="txtID" 
-                ErrorMessage="Internal ID Number is required" CssClass="text-white text-bg-danger  fw-semibold" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
-    </div>
-
-    <!-- Name, Address, and Town Information -->
-    <div class="row">
-        <!-- Name -->
-        <div class="col-md-6 mb-8">
-            <asp:TextBox ID="txtName" runat="server" placeholder="Name" CssClass="form-control form-control-lg text-muted fw-semibold  bg-transparent" />
-            <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName"
-                ErrorMessage="Name is required" CssClass="text-white text-bg-danger  fw-semibold" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
-
-        <!-- Address -->
-        <div class="col-md-6 mb-8">
-            <asp:TextBox ID="txtAddress" runat="server" placeholder="Address" CssClass="form-control text-muted fw-semibold form-control-lg  bg-transparent" />
-            <asp:RequiredFieldValidator ID="rfvAddress" runat="server" ControlToValidate="txtAddress"
-                ErrorMessage="Address is required" CssClass="text-white text-bg-danger fw-semibold" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
-
-        <!-- Town -->
-        <div class="col-md-6 mb-8">
-            <asp:TextBox ID="txtTown" runat="server" placeholder="Town" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
-            <asp:RequiredFieldValidator ID="rfvTown" runat="server" ControlToValidate="txtTown"
-                ErrorMessage="Town is required" CssClass="text-white text-bg-danger  fw-semibold" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
-
-        <!-- City -->
-        <div class="col-md-6 mb-8">
-            <asp:TextBox ID="txtCity" runat="server" placeholder="City" CssClass="form-control form-control-lg text-muted fw-semibold bg-transparent" />
-            <asp:RequiredFieldValidator ID="rfvCity" runat="server" ControlToValidate="txtCity"
-                ErrorMessage="City is required" CssClass="text-white text-bg-danger  fw-semibold" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
-
-        <!-- Postcode/Zip Code -->
-
-    </div>
-
-    <div class="row text-muted">
-        <!-- Country Dropdown -->
-        <div class="col-md-6 mb-8 text-muted">
-            <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
-                <asp:ListItem Text="Pakistan" Value="PK"></asp:ListItem>
-            </asp:DropDownList>
-            <asp:RequiredFieldValidator ID="rfvCountry" runat="server" ControlToValidate="ddlCountry"
-                InitialValue="" ErrorMessage="Country is required" CssClass="text-white text-bg-danger" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
-                <div class="col-md-6 mb-8">
-            <asp:TextBox ID="txtZip" runat="server" placeholder="Postcode / Zip Code" CssClass="form-control text-muted fw-semibold form-control-lg  bg-transparent" />
-            <asp:RequiredFieldValidator ID="rfvZip" runat="server" ControlToValidate="txtZip"
-                ErrorMessage="Zip code is required" CssClass="text-white text-bg-danger" Display="Dynamic"></asp:RequiredFieldValidator>
-        </div>
-    </div>
-
-    <!-- New Fields: Health Condition, Email, Phone, Employment Status, Note -->
-    <div class="row">
-        <!-- Email -->
-        <div class="col-md-6 mb-8">
-            <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="form-control text-muted fw-semibold form-control-lg  bg-transparent" />
-            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" 
-                ErrorMessage="Email is required" CssClass="text-danger fw-semibold" Display="Dynamic"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail"
-                ValidationExpression="\w+([-+.\w])*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorMessage="Invalid Email Format"
-                CssClass="text-danger fw-semibold" Display="Dynamic"></asp:RegularExpressionValidator>
-            <asp:CustomValidator ID="cvEmailUniqueModal" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email address already exists" OnServerValidate="cvEmailUniqueModal_ServerValidate" CssClass="text-danger" Display="Dynamic" />
-        </div>
-
-        <!-- Phone -->
-               <div class="col-md-6 mb-8">
-            <asp:DropDownList ID="ddlEmploymentStatus" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
-                <asp:ListItem Text="Select Employment Status" Value="" />
-                <asp:ListItem Text="Employed" Value="Employed"></asp:ListItem>
-                <asp:ListItem Text="Unemployed" Value="Unemployed"></asp:ListItem>
-                <asp:ListItem Text="Student" Value="Student"></asp:ListItem>
-                <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
-            </asp:DropDownList>
-        </div>
-
-    
-           </div>
-
-
-<div class="row">
-    <!-- Mobile Section -->
-    <div class="col-md-6">
-        <div class="d-flex">
-            <!-- Country Code Dropdown -->
-            <div class="col-4"> <!-- Adjust width as needed -->
-                <asp:DropDownList 
-                    ID="ddlPhone" 
-                    runat="server" 
-                    CssClass="form-select form-select-lg form-select-solid country-code-dropdown text-dark" 
-                    onchange="updatePhoneCode();">
+        <!-- First Column -->
+        <div class="col-md-6">
+            <!-- Dropdown for Type (Institute / Individual) -->
+            <div class="mb-4">
+                <asp:DropDownList ID="ddlType" runat="server" CssClass="form-select text-muted form-select-lg bg-transparent fw-semibold">
+                    <asp:ListItem Text="Select Type" Value=""></asp:ListItem>
+                    <asp:ListItem Text="Institute" Value="Institute"></asp:ListItem>
+                    <asp:ListItem Text="Individual" Value="Individual"></asp:ListItem>
                 </asp:DropDownList>
             </div>
 
-            <!-- Phone Number Textbox -->
-            <div class="col-8">
-                <asp:TextBox 
-                    ID="txtPhone" 
-                    runat="server" 
-                    placeholder="Phone Number" 
-                    CssClass="form-control form-control-lg flex-grow-1" 
-                    ClientIDMode="Static" />
+            <!-- Date of Birth -->
+            <div class="mb-4">
+                <div class="input-group" id="dobPicker">
+                    <asp:TextBox ID="txtDOBModal" placeholder="Date of Birth" SkinID="DateNew" runat="server" CssClass="form-control bg-transparent" TextMode="Date" />
+                </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="mb-4">
+                <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
+                    <asp:ListItem Text="Select Gender" Value=""></asp:ListItem>
+                    <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
+                    <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
+                    <asp:ListItem Text="Binary" Value="Binary"></asp:ListItem>
+                    <asp:ListItem Text="Prefer Not to Mention" Value="PreferNotToMention"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+
+            <!-- Internal ID Number -->
+            <div class="mb-4">
+                <asp:TextBox ID="txtID" runat="server" placeholder="Internal ID Number" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
+            </div>
+
+            <!-- Email -->
+            <div class="mb-4">
+                <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
+            </div>
+
+            <!-- Employment Status -->
+            <div class="mb-4">
+                <asp:DropDownList ID="ddlEmploymentStatus" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
+                    <asp:ListItem Text="Select Employment Status" Value="" />
+                    <asp:ListItem Text="Employed" Value="Employed"></asp:ListItem>
+                    <asp:ListItem Text="Unemployed" Value="Unemployed"></asp:ListItem>
+                    <asp:ListItem Text="Student" Value="Student"></asp:ListItem>
+                    <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+
+            <!-- Phone Section -->
+            <div class="mb-4">
+                <div class="d-flex">
+                    <!-- Country Code Dropdown -->
+                    <div class="col-4">
+                        <asp:DropDownList ID="ddlPhone" runat="server" CssClass="form-select form-select-lg form-select-solid country-code-dropdown text-dark" onchange="updatePhoneCode();"></asp:DropDownList>
+                    </div>
+
+                    <!-- Phone Number Textbox -->
+                    <div class="col-8">
+                        <asp:TextBox ID="txtPhone" runat="server" placeholder="Phone Number" CssClass="form-control form-control-lg flex-grow-1" ClientIDMode="Static" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Condition -->
+            <div class="mb-4">
+                <asp:TextBox ID="txtHealthCondition" runat="server" placeholder="Health Condition" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
+            </div>
+
+            <!-- Notes -->
+            <div class="mb-4">
+                <asp:TextBox ID="txtNotes" runat="server" placeholder="Notes" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" TextMode="MultiLine" />
+            </div>
+        </div>
+
+        <!-- Second Column -->
+        <div class="col-md-6">
+            <!-- Name -->
+            <div class="mb-4">
+                <asp:TextBox ID="txtName" runat="server" placeholder="Name" CssClass="form-control form-control-lg text-muted fw-semibold bg-transparent" />
+                <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name is required" CssClass="text-white text-bg-danger fw-semibold" Display="Dynamic"></asp:RequiredFieldValidator>
+            </div>
+
+            <!-- Address -->
+            <div class="mb-4">
+                <asp:TextBox ID="txtAddress" runat="server" placeholder="Address" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
+            </div>
+
+            <!-- Town -->
+            <div class="mb-4">
+                <asp:TextBox ID="txtTown" runat="server" placeholder="Town" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
+            </div>
+
+            <!-- City -->
+            <div class="mb-4">
+                <asp:TextBox ID="txtCity" runat="server" placeholder="City" CssClass="form-control form-control-lg text-muted fw-semibold bg-transparent" />
+            </div>
+
+            <!-- Postcode/Zip Code -->
+            <div class="mb-4">
+                <asp:TextBox ID="txtZip" runat="server" placeholder="Postcode / Zip Code" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
+            </div>
+
+            <!-- Country -->
+            <div class="mb-4">
+                <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-select form-select-lg text-muted fw-semibold">
+                    <asp:ListItem Text="Pakistan" Value="PK"></asp:ListItem>
+                </asp:DropDownList>
             </div>
         </div>
     </div>
-
-    <!-- Health Condition Section -->
-    <div class="col-md-6">
-        <asp:TextBox 
-            ID="txtHealthCondition" 
-            runat="server" 
-            placeholder="Health Condition" 
-            CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
-    </div>
-    
-        <div class="col-md-6 ">
-            <asp:TextBox ID="txtNotes" runat="server" placeholder="Notes" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" TextMode="MultiLine" />
-        </div>
 </div>
-
-                        
-                            </div>
-                    
-    </div>
+ </div>
 </div>
 
                         </div>
@@ -221,37 +158,52 @@
                             <div class="card-body">
                                 <div class="row">
                                     <!-- Document Type Dropdown -->
-                                    <div class="col-md-12 mb-8">
+                                    <div class="col-md-6 mb-8">
                                         <asp:DropDownList ID="ddlDocumentType" runat="server" CssClass="form-select text-muted fw-semibold form-select-lg">
                                             <asp:ListItem Text="Passport" Value="Passport"></asp:ListItem>
                                             <asp:ListItem Text="ID Card" Value="IdCard"></asp:ListItem>
                                             <asp:ListItem Text="License" Value="License"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
-
+                                    </div>
+                                <div class="row">
                                     <!-- Government ID Number -->
                                     <div class="col-md-6 mb-8 ">
                                         <asp:TextBox ID="txtGovID" runat="server" placeholder="Government ID Number" CssClass="form-control form-control-lg text-muted fw-semibold bg-transparent" />
                                     </div>
-<div class="col-md-12 mb-8"> 
-        <div class="input-group">
-            <asp:FileUpload ID="fileUploadFront" runat="server" CssClass="form-control text-muted fw-semibold form-control-lg" onchange="showImagePreview(this);" />
-    <asp:Image ID="imgFrontPreview" runat="server" CssClass="img-thumbnail" />
-
-        </div>
-        <div class="imagePreviewContainer"></div> 
+<div class="row mb-8">
+    <!-- File Upload Control -->
+    <div class="col-md-5">
+        <asp:FileUpload ID="fileUpload" runat="server" CssClass="form-control text-muted fw-semibold form-control-lg" onchange="showImagePreview(this);" />
     </div>
+    
+    <!-- Upload Button -->
+    <div class="col-md-1">
+        <asp:Button ID="btnFileUpload" runat="server" Text="Upload" CssClass="btn btn-primary w-100" OnClick="btnFileUpload_Click" />
+    </div>
+</div>
 
+
+<asp:GridView ID="gridfiles" runat="server" AutoGenerateColumns="false" CssClass=""
+    OnRowCommand="gridfiles_RowCommand" DataKeyNames="ID">
+    <Columns>
+        <asp:TemplateField HeaderText="File Name">
+            <ItemTemplate>
+                <asp:LinkButton ID="lnkDownloadFile" runat="server" CommandName="Download" CommandArgument='<%# Eval("ID") %>'>
+                    <%# Eval("FileName") %>
+                </asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
+
+        <asp:TemplateField>
+            <ItemTemplate>
+                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("ID") %>' Text="Delete" />
+            </ItemTemplate>
+        </asp:TemplateField>
+    </Columns>
+</asp:GridView>
    
-    <div class="col-md-12 mb-8"> 
-        <div class="input-group">
-            <asp:FileUpload ID="fileUploadBack" runat="server" CssClass="form-control text-muted fw-semibold form-control-lg" onchange="showImagePreview(this);" />
-            <asp:Image ID="imgBackPreview" runat="server" CssClass="img-thumbnail" />
-
-        </div>
-        <div class="imagePreviewContainer">
-        </div> 
-    </div>
+   
                                 </div>
 
                             </div>  

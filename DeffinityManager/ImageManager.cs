@@ -195,6 +195,7 @@ public class ImageManager
     public static string file_section_landing_top = "landingtop";
 
     public static string file_section_user = "user";
+
     public static string file_section_fundriser = "fundriser";
     public static string file_section_fundriser_top = "fundriser_top";
     public static string file_section_fundriser_logo = "fundriserlogo";
@@ -220,6 +221,8 @@ public class ImageManager
 
     public static string file_section_video = "video";
     public static string file_section_marketplace = "marketplace";
+
+    public static string file_section_beneficiary_doc = "beneficiarydoc";
 
 
 

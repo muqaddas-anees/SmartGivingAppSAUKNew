@@ -7,17 +7,20 @@
 
 
     <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-   
+   <link rel="Stylesheet" href="../../assets/css/style.bundle.css" />
+        <script src="../../assets/js/scripts.bundle.js"></script>
         <div class="row justify-content-end">
         </div>
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="me-auto mx-auto my-12 d-flex">
-                <select id="tableSelector" class="form-select" onchange="toggleTables();">
-                    <option value="beneficiaries">Beneficiaries</option>
-                    <option value="secondaryBeneficiaries">Secondary Beneficiaries</option>
-                </select>
-                        <a class="btn btn-primary mx-2" href="BasicInfo.aspx" ID="btnBeneficiaries">Beneficiaries</a>
-            </div>
+     <div class="card mb-4 p-4">
+    <div class="card-header justify-content-between align-items-center mb-3">
+            <div class="my-12 d-flex">
+    <select id="tableSelector" class="form-select" onchange="toggleTables();">
+        <option value="beneficiaries">Beneficiaries</option>
+        <option value="secondaryBeneficiaries">Secondary Beneficiaries</option>
+    </select>
+    <a class="btn btn-primary mx-2 text-nowrap" href="BasicInfo.aspx" id="btnBeneficiaries">Add a New Beneficiary</a>
+</div>
+
 
             <!-- Search bar and button (aligned to the right) -->
             <div class="d-flex align-items-center">
@@ -27,7 +30,9 @@
                 </div>
             </div>
         </div>
+    
 
+    <div class="card-body">
         <!-- Secondary Beneficiaries Table -->
         <div id="secondaryBeneficiariesTableContainer" class="table-responsive" style="display: block;">
             <table class="table align-middle table-row-dashed fs-6 gy-5" id="secondaryBeneficiariesTable" style="width: 100%; text-align: left;">
@@ -47,7 +52,7 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                    <img src='<%# Eval("ProfileImage") != DBNull.Value && Eval("ProfileImage") != null ? "data:image/png;base64," + Convert.ToBase64String((byte[])Eval("ProfileImage")) : "/metronic/8/default.jpeg" %>' 
+                                    <img src='<%# GetProfileImage(Eval("ProfileImage")) %>' 
                                          style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" alt="Image" />
                                 </td>
                                 <td><%# Eval("Name") %></td>
@@ -56,36 +61,29 @@
                                 <td><%# Eval("Country") %></td>
                                 <td><%# Eval("Email") %></td>
                                 <td class="text-start">
-                        <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            Actions
-                            <i class="ki-duotone ki-down fs-5 ms-1"></i>                    </a>
-                        <!--begin::Menu-->
-    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-            <a href="/App/Beneficiaries/SecondaryBeneficiaries.aspx" class="menu-link px-3">
-                Edit
-            </a>
-        </div>
-        <!--end::Menu item-->
-    
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-        <asp:LinkButton 
-            ID="DeleteButton" 
-            runat="server" 
-            CommandArgument='<%# Eval("SecondaryBeneficiaryID") %>' 
-            OnClick="DeleteButton_Click"
-            CssClass="menu-link px-3"
-            data-kt-users-table-filter="delete_row">
-            Delete
-        </asp:LinkButton>
-    </div>
-
-        <!--end::Menu item-->
-    </div>
-    <!--end::Menu-->
-                    </td>
+                                    <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        Actions
+                                        <i class="ki-duotone ki-down fs-5 ms-1"></i>
+                                    </a>
+                                    <!--begin::Menu-->
+                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+                                        <div class="menu-item px-3">
+                                            <a href="/App/Beneficiaries/SecondaryBeneficiaries.aspx" class="menu-link px-3">Edit</a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <asp:LinkButton 
+                                                ID="DeleteButton" 
+                                                runat="server" 
+                                                CommandArgument='<%# Eval("SecondaryBeneficiaryID") %>' 
+                                                OnClick="DeleteButton_Click"
+                                                CssClass="menu-link px-3"
+                                                data-kt-users-table-filter="delete_row">
+                                                Delete
+                                            </asp:LinkButton>
+                                        </div>
+                                    </div>
+                                    <!--end::Menu-->
+                                </td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -121,43 +119,38 @@
                                 <td><%# Eval("Country") %></td>
                                 <td><%# Eval("Email") %></td>
                                 <td class="text-start">
-                        <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            Actions
-                            <i class="ki-duotone ki-down fs-5 ms-1"></i>                    </a>
-                        <!--begin::Menu-->
-    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-        <a href='/App/Beneficiaries/BasicInfo.aspx?PersonID=<%# Eval("PersonID") %>' class="menu-link px-3">
-    Edit
-</a>
-
-        </div>
-        <!--end::Menu item-->
-    
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-        <asp:LinkButton 
-            ID="DeleteButton" 
-            runat="server" 
-            CommandArgument='<%# Eval("PersonID") %>' 
-            OnClick="DeleteButtonForBeneficiaries_Click"
-            CssClass="menu-link px-3"
-            data-kt-users-table-filter="delete_row">
-            Delete
-        </asp:LinkButton>
-    </div>
-
-        <!--end::Menu item-->
-    </div>
-    <!--end::Menu-->
-                    </td>
+                                    <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        Actions
+                                        <i class="ki-duotone ki-down fs-5 ms-1"></i>
+                                    </a>
+                                    <!--begin::Menu-->
+                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+                                        <div class="menu-item px-3">
+                                            <a href='/App/Beneficiaries/BasicInfo.aspx?PersonID=<%# Eval("PersonID") %>' class="menu-link px-3">Edit</a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <asp:LinkButton 
+                                                ID="DeleteButton" 
+                                                runat="server" 
+                                                CommandArgument='<%# Eval("PersonID") %>' 
+                                                OnClick="DeleteButtonForBeneficiaries_Click"
+                                                CssClass="menu-link px-3"
+                                                data-kt-users-table-filter="delete_row">
+                                                Delete
+                                            </asp:LinkButton>
+                                        </div>
+                                    </div>
+                                    <!--end::Menu-->
+                                </td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
+
                          <script type="text/javascript">
                              var hostUrl = "/assets/";
                          </script>
