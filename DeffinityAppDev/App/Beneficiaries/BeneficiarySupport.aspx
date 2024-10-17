@@ -21,12 +21,12 @@
                 <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable" id="kt_table_donations" style="width: 100%; text-align: left;">
                     <colgroup>
                         
+                        <col style="width: 15%;">
+                        <col style="width: 15%;">
+                        <col style="width: 15%;">
                         <col style="width: 20%;">
                         <col style="width: 20%;">
-                        <col style="width: 20%;">
-                        <col style="width: 20%;">
-                        <col style="width: 20%;">
-                        
+                        <col style ="width: 15%;" >
                     </colgroup>
                     <thead>
                         <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0" role="row">
@@ -37,6 +37,7 @@
                             <th>Beneficiary Target</th>
                          
                             <th>Notes</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-600 fw-semibold">
@@ -62,6 +63,29 @@
             
             <!-- Display Notes -->
             <td class="text-muted fw-semi-bold"><%# Eval("Notes") %></td>
+                  <td class="text-start">
+                <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+    Actions
+    <i class="ki-duotone ki-down fs-5 ms-1"></i>
+</a>
+<!--begin::Menu-->
+<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+    <div class="menu-item px-3">
+        <a   onclick="editDonations('<%# Eval("DonationID") %>');" class="menu-link px-3">Edit</a>
+    </div>
+     <div class="menu-item px-3">
+     <asp:LinkButton 
+         ID="DeleteButton" 
+         runat="server" 
+         CommandArgument='<%# Eval("DonationID") %>' 
+         OnClick="DeleteButtonForBeneficiaries_Click"
+         CssClass="menu-link px-3"
+         data-kt-users-table-filter="delete_row">
+         Delete
+     </asp:LinkButton>
+ </div>
+</div>
+       </td>
         </tr>
     </ItemTemplate>
 </asp:Repeater>
@@ -73,7 +97,8 @@
             </div>
         </div>
     </div>
-
+     <asp:HiddenField ID="hfDonationID" runat="server" />
+     <asp:HiddenField ID="hfShowModal" runat="server" />
     <!-- Modal Structure for Adding Donation -->
 
 <div class="modal fade" id="addDonationModal" tabindex="-1" aria-labelledby="addDonationModalLabel" aria-hidden="true">
@@ -98,7 +123,7 @@
                 <!-- Logged By and Associated Fundraiser -->
                 <div class="row mb-3">
                     <div class="col-6">
-                        <label for="ddlLoggedBy" class="form-label">Logged By</label>
+                        <label for="LoggedBy" class="form-label">Logged By</label>
                           <asp:DropDownList ID="ddlLogged" runat="server" CssClass="form-control" DataTextField="Name" DataValueField="ID" AutoPostBack="false">
       <asp:ListItem Text="Select a person" Value=""></asp:ListItem>
 
@@ -199,6 +224,7 @@
                     <div class="col-12">
                         <div id="imagePreviewContainer" class="mt-3">
                             <!-- Image preview will be displayed here -->
+                            <asp:Image ID="imgPreview" runat="server"  CssClass="img-fluid" />
                         </div>
                     </div>
                 </div>
@@ -235,7 +261,26 @@
                  </script>
 <script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
 <script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
-<script>
+<script type="text/jscript">
+    $(document).ready(function () {
+        // O the modal when the "Add Secondary Beneficiary" button is clicked
+   
+
+        // Close the modal when the "Close" button is clicked
+       
+
+        // Check if we need to show the modal after postback
+        if ($('#<%= hfShowModal.ClientID %>').val() === 'true') {
+            $('#addDonationModal').modal('show');
+            // Reset the hidden field to prevent the modal from opening again
+                    $('#<%= hfShowModal.ClientID %>').val('false');
+                }
+            });
+
+    function editDonations(donationID) {
+        document.getElementById('<%= hfDonationID.ClientID %>').value = donationID;
+        __doPostBack('EditDonations', donationID);
+            }
     function showSuccessModal() {
 
         var successModal = new bootstrap.Modal(document.getElementById('MysuccessModal'));
@@ -288,6 +333,8 @@
     $(document).ready(function () {
         $('#addDonationButton').on('click', function () {
             $('#addDonationModal').modal('show');
+            document.getElementById('<%= hfDonationID.ClientID %>').value = null;
+            
         });
     });
 

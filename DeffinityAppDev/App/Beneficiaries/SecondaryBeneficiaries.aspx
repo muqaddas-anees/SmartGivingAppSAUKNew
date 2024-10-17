@@ -119,12 +119,11 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-group">
                                 <label for="ddlTypeModal">Type</label>
-                                <asp:DropDownList ID="ddlTypeModal" runat="server" CssClass="form-select form-select-lg">
+                                <asp:DropDownList ID="ddlTypeModal" ClientIDMode="Static" runat="server" onchange="toggleFields()" CssClass="form-select form-select-lg">
                                     <asp:ListItem Text="Select Type" Value=""></asp:ListItem>
                                     <asp:ListItem Text="Institute" Value="Institute"></asp:ListItem>
                                     <asp:ListItem Text="Individual" Value="Individual"></asp:ListItem>
                                 </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rfvTypeModal" runat="server" ControlToValidate="ddlTypeModal" InitialValue="" ErrorMessage="Please select a Type" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
                         </div>
 
@@ -132,8 +131,7 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-group">
                                 <label for="txtDOBModal">Date of Birth</label>
-                                <asp:TextBox ID="txtDOBModal" runat="server" CssClass="form-control bg-transparent" TextMode="Date" />
-                                <asp:RequiredFieldValidator ID="rfvDOBModal" runat="server" ControlToValidate="txtDOBModal" ErrorMessage="Date of Birth is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="txtDOBModal" ClientIDMode="Static" runat="server" CssClass="form-control bg-transparent" TextMode="Date" />
                             </div>
                         </div>
                     </div>
@@ -161,14 +159,13 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-group">
                                 <label for="ddlGenderModal">Gender</label>
-                                <asp:DropDownList ID="ddlGenderModal" runat="server" CssClass="form-select form-select-lg">
+                                <asp:DropDownList ID="ddlGenderModal" ClientIDMode="Static" runat="server" CssClass="form-select form-select-lg">
                                      <asp:ListItem Text="Select Gender" Value=""></asp:ListItem>
                                     <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
                                     <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
                                     <asp:ListItem Text="Binary" Value="Binary"></asp:ListItem>
                                     <asp:ListItem Text="Prefer Not to Mention" Value="PreferNotToMention"></asp:ListItem>
                                 </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rfvGenderModal" runat="server" ControlToValidate="ddlGenderModal" InitialValue="" ErrorMessage="Gender is required" CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
                         </div>
 
@@ -177,7 +174,6 @@
                             <div class="form-group">
                                 <label for="txtIDModal">Internal ID Number</label>
                                 <asp:TextBox ID="txtIDModal" runat="server" TextMode="Number" placeholder="Internal ID Number" CssClass="form-control bg-transparent" />
-                                <asp:RequiredFieldValidator ID="rfvIDModal" runat="server" ControlToValidate="txtIDModal" ErrorMessage="Internal ID Number is required" CssClass="text-danger" Display="Dynamic" ></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
@@ -261,14 +257,14 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-group">
                                 <label for="txtHealthConditionModal">Health Condition</label>
-                                <asp:TextBox ID="txtHealthConditionModal" runat="server" placeholder="Health Condition" CssClass="form-control  bg-transparent" TextMode="MultiLine" Rows="3" />
+                                <asp:TextBox ID="txtHealthConditionModal" ClientIDMode="Static" runat="server" placeholder="Health Condition" CssClass="form-control  bg-transparent" TextMode="MultiLine" Rows="3" />
                             </div>
                         </div>
 
                       <div class="col-md-6 mb-4">
     <div class="form-group">
         <label for="ddlEmploymentStatusModal">Employment Status</label>
-        <asp:DropDownList 
+        <asp:DropDownList  ClientIDMode="Static"
             ID="ddlEmploymentStatusModal" 
             runat="server" 
             CssClass="form-select bg-transparent">
@@ -331,12 +327,45 @@
                  </script>
 <script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
 <script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
-       
+    <script>
+        function toggleFields() {
+            // Get the selected value from the dropdown
+            var ddlType = document.getElementById('<%= ddlTypeModal.ClientID %>');
+            var selectedValue = ddlType.value;
+
+            // Get the parent div elements that contain both label and input fields
+            var dateOfBirthGroup = document.getElementById("txtDOBModal").closest('.form-group');
+            var genderGroup = document.getElementById("<%= ddlGenderModal.ClientID %>").closest('.form-group');
+            var employmentStatusGroup = document.getElementById("<%= ddlEmploymentStatusModal.ClientID %>").closest('.form-group');
+            var healthConditionGroup = document.getElementById("txtHealthConditionModal").closest('.form-group');
+
+            // If "Institute" is selected, hide the whole group (label and input), otherwise show them
+            if (selectedValue === "Institute") {
+                dateOfBirthGroup.style.display = "none";
+                genderGroup.style.display = "none";
+                employmentStatusGroup.style.display = "none";
+                healthConditionGroup.style.display = "none";
+            } else {
+                dateOfBirthGroup.style.display = "block";
+                genderGroup.style.display = "block";
+                employmentStatusGroup.style.display = "block";
+                healthConditionGroup.style.display = "block";
+            }
+        }
+
+        // Optionally call the function on page load to set the initial visibility
+        window.onload = function () {
+            toggleFields();
+        };
+
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             // O the modal when the "Add Secondary Beneficiary" button is clicked
             $('#addSecondaryBeneficiaryButton').on('click', function () {
                 $('#FormModal').modal('show');
+                document.getElementById('<%= hfBeneficiaryID.ClientID %>').value = null;
+                
             });
 
             // Close the modal when the "Close" button is clicked

@@ -12,6 +12,10 @@ namespace DeffinityAppDev.App.Beneficiaries
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            loadDetails();
+        }
+        private void loadDetails()
+        {
             string personID;
             personID = Request.QueryString["PersonID"];
             if (!IsPostBack)
@@ -50,7 +54,6 @@ namespace DeffinityAppDev.App.Beneficiaries
                 }
             }
         }
-
         private void LoadBeneficiaryInfo(string personID)
         {
             using (var context = new MyDatabaseContext())
@@ -176,7 +179,10 @@ namespace DeffinityAppDev.App.Beneficiaries
                         beneficiary.ProfileImage = null; // Or new byte[0] if you prefer an empty byte array
 
                         context.SaveChanges();
-
+                        loadDetails();
+                        profileImage.Src = "../../assets/media/avatars/Benficiaries.jpg";
+                        DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Deleted Successfully!");
+                        
                     
                     }
                     else

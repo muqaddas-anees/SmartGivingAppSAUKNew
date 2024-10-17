@@ -47,9 +47,9 @@
 
         <div class="d-flex flex-wrap flex-stack">   
             <div class="d-flex align-items-center w-250 w-sm-400px flex-row mt-6">
-                <button id="SelectBtn" type="button" class="btn btn-primary mb-2 mx-3 text-white">Select a File</button>
-                <asp:Button ID="btnUpload" runat="server" Text="Upload" Visible="false" CssClass="btn btn-primary mb-2 mx-3 text-white" OnClick="btnUpload_Click" />
-                <asp:Button ID="btnDelete" runat="server" Text="Delete" Visible="false" CssClass="btn btn-danger mb-2 mx-3" OnClick="btnDelete_Click" />
+                <button id="SelectBtn" type="button" class="btn btn-primary mb-2 mx-3 text-white">Select File</button>
+                <asp:Button ID="btnUpload" runat="server" Text="Upload" Visible="false" CausesValidation="false" CssClass="btn btn-primary mb-2 mx-3 text-white" OnClick="btnUpload_Click" />
+                <asp:Button ID="btnDelete" runat="server" Text="Delete" Visible="false" CausesValidation="false" CssClass="btn btn-danger mb-2 mx-3" OnClick="btnDelete_Click" />
             </div>
             <div><a href="GetBeneficiaries.aspx" class="btn btn-primary">Back to  Beneficiaries</a></div>
         </div>

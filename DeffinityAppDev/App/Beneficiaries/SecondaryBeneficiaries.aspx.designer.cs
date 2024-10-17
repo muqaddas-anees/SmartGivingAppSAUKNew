@@ -60,15 +60,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.DropDownList ddlTypeModal;
 
         /// <summary>
-        /// rfvTypeModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTypeModal;
-
-        /// <summary>
         /// txtDOBModal control.
         /// </summary>
         /// <remarks>
@@ -76,15 +67,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDOBModal;
-
-        /// <summary>
-        /// rfvDOBModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDOBModal;
 
         /// <summary>
         /// ddlPhone control.
@@ -114,15 +96,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.DropDownList ddlGenderModal;
 
         /// <summary>
-        /// rfvGenderModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvGenderModal;
-
-        /// <summary>
         /// txtIDModal control.
         /// </summary>
         /// <remarks>
@@ -130,15 +103,6 @@ namespace DeffinityAppDev.App.Beneficiaries
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIDModal;
-
-        /// <summary>
-        /// rfvIDModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvIDModal;
 
         /// <summary>
         /// txtNameModal control.

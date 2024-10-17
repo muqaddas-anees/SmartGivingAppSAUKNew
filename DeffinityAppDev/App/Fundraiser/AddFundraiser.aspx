@@ -361,9 +361,14 @@
 
             </div>
         </div>
+
     <script>
         function openModal() {
             $('#embedModal').modal('show');
+        }
+        function closeModal() {
+            // Select the modal by its ID and hide it
+            $('#embedModal').modal('hide');
         }
 
         // Function to copy the embed code to clipboard

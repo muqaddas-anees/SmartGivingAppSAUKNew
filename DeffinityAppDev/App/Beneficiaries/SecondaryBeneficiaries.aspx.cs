@@ -579,21 +579,37 @@ namespace DeffinityAppDev.App.Beneficiaries
 
         protected void cvEmailUniqueModal_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            string email = args.Value.Trim();
-
             try
             {
                 using (var context = new MyDatabaseContext())
                 {
+                    // Edit mode: Update existing beneficiary
+                    int parsedID = int.Parse(hfBeneficiaryID.Value);
+                    var existingBeneficiary = context.SecondaryBeneficiary
+                        .FirstOrDefault(b => b.SecondaryBeneficiaryID == parsedID && b.TithingID == sessionKeys.PortfolioID);
+
+                    // Get the email of the existing beneficiary
+                    string existingEmail = existingBeneficiary?.Email;
+
+                    // Check the new email entered in the relevant control (assuming it's in a textbox called txtEmail)
+                    string newEmail = txtEmailModal.Text.Trim(); // Adjust according to your control's ID
+
+                    // If the new email matches the existing email, it's valid
+                    if (existingEmail != null && existingEmail.Equals(newEmail, StringComparison.OrdinalIgnoreCase))
+                    {
+                        args.IsValid = true;
+                        return; // Exit early since the email is the same
+                    }
+
                     // Check if email already exists in the database
-                    bool emailExists = context.SecondaryBeneficiary.Any(b => b.Email == email && b.TithingID==sessionKeys.PortfolioID);
+                    bool emailExists = context.SecondaryBeneficiary
+                        .Any(b => b.Email == newEmail && b.TithingID == sessionKeys.PortfolioID);
 
                     if (emailExists)
                     {
                         // Email already exists
                         args.IsValid = false;
                         DeffinityManager.ShowMessages.ShowErrorAlert(this.Page, "Email Already Exists", "OK");
-
                     }
                     else
                     {
@@ -615,7 +631,8 @@ namespace DeffinityAppDev.App.Beneficiaries
             }
         }
 
-        
+
+
         private void ClearForm()
         {
            

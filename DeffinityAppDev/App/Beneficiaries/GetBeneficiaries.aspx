@@ -110,7 +110,7 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                    <img src='<%# Eval("ProfileImage") != DBNull.Value && Eval("ProfileImage") != null ? "data:image/png;base64," + Convert.ToBase64String((byte[])Eval("ProfileImage")) : "/metronic/8/default.jpeg" %>' 
+                                    <img src='<%# Eval("ProfileImage") != DBNull.Value && Eval("ProfileImage") != null ? "data:image/png;base64," + Convert.ToBase64String((byte[])Eval("ProfileImage")) : "../../assets/media/avatars/Benficiaries.jpg" %>' 
                                          style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" alt="Image" />
                                 </td>
                                 <td><%# Eval("Name") %></td>
