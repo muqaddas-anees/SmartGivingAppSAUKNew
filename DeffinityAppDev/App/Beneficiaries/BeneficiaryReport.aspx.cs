@@ -88,7 +88,8 @@ namespace DeffinityAppDev.App.Beneficiaries
                     dateRange.Alignment = Element.ALIGN_CENTER;
                     pdfDoc.Add(dateRange);
                     pdfDoc.Add(new Paragraph("\n"));
-                    using(var portfoliocontext=new PortfolioDataContext())
+                    string BeneficiaryID = Request.QueryString["personid"];
+                    using (var portfoliocontext=new PortfolioDataContext())
                     using (var context = new MyDatabaseContext())
                     {
                         // Add each section if selected
@@ -96,7 +97,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                         {
                             InsertSection(true,pdfDoc, "Personal Information", normalFont,
                                 context.Beneficiaries
-                                       .Where(b => b.CreatedAt >= fromDate && b.CreatedAt <= toDate && b.TithingDefaultDetailsID == sessionKeys.PortfolioID)
+                                       .Where(b => b.CreatedAt >= fromDate && b.CreatedAt <= toDate && b.TithingDefaultDetailsID == sessionKeys.PortfolioID && b.PersonID.ToString()==BeneficiaryID)
                                        .AsEnumerable()
                                        .Select(b => new
                                        {
@@ -131,7 +132,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                         {
                             InsertSection(pdfDoc, "Contacts", normalFont,
                                 context.BeneficiaryContacts
-                                       .Where(c => c.CreatedAt >= fromDate && c.CreatedAt <= toDate && c.TithingID == sessionKeys.PortfolioID)
+                                       .Where(c => c.CreatedAt >= fromDate && c.CreatedAt <= toDate && c.TithingID == sessionKeys.PortfolioID && c.PrimaryBeneficiaryID==BeneficiaryID)
                                        .AsEnumerable()
                                        .Select(c => new
                                        {
@@ -150,7 +151,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                         {
                             InsertSection(pdfDoc, "Support Received", normalFont,
                                 context.BeneficiaryDonations
-                                       .Where(d => d.DonationDate >= fromDate && d.DonationDate <= toDate && d.TithingID == sessionKeys.PortfolioID)
+                                       .Where(d => d.DonationDate >= fromDate && d.DonationDate <= toDate && d.TithingID == sessionKeys.PortfolioID && d.PrimaryBeneficiaryID == BeneficiaryID)
                                        .AsEnumerable()
                                        .Select(d => new
                                        {
@@ -171,7 +172,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                         {
                             InsertSection(pdfDoc, "Activity", normalFont,
                                 context.BeneficiaryActivities
-                                       .Where(a => a.ActivityDate >= fromDate && a.ActivityDate <= toDate && a.TithingDefaultDetailsID == sessionKeys.PortfolioID)
+                                       .Where(a => a.ActivityDate >= fromDate && a.ActivityDate <= toDate && a.TithingDefaultDetailsID == sessionKeys.PortfolioID && a.PrimaryBeneficiaryID == BeneficiaryID)
                                        .AsEnumerable()
                                        .Select(a => new
                                        {
@@ -187,7 +188,7 @@ namespace DeffinityAppDev.App.Beneficiaries
                         {
                             InsertSection(pdfDoc, "Communication", normalFont,
                                 context.BeneficiariesFeedBack
-                                       .Where(f => f.FeedbackDate >= fromDate && f.FeedbackDate <= toDate && f.TithingID == sessionKeys.PortfolioID)
+                                       .Where(f => f.FeedbackDate >= fromDate && f.FeedbackDate <= toDate && f.TithingID == sessionKeys.PortfolioID && f.PrimaryBeneficiaryID == BeneficiaryID)
                                        .AsEnumerable()
                                        .Select(f => new
                                        {

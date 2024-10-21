@@ -16,7 +16,9 @@ namespace DeffinityAppDev.App.Beneficiaries.Entities
             public byte[] Attachments { get; set; }
             public DateTime CreatedAt { get; set; }
             public bool Deleted { get; set; }
-            public int TithingID { get; set; }
+        public string PrimaryBeneficiaryID { get; set; }
+
+        public int TithingID { get; set; }
 
         }
 

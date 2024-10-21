@@ -49,6 +49,11 @@ namespace DeffinityAppDev.App.Beneficaries
                 }
 
             }
+            if (IsPostBack)
+            {
+                // Register the script to run the toggleFields function after postback
+                ScriptManager.RegisterStartupScript(this, GetType(), "toggleFieldsScript", "toggleFields();", true);
+            }
         }
 
         private void CreateandRedirectBeneficiary()
@@ -100,7 +105,6 @@ namespace DeffinityAppDev.App.Beneficaries
                         // Pre-fill the form inputs with the beneficiary details
                         txtName.Text = beneficiary.Name;
                         txtEmail.Text = beneficiary.Email;
-                        txtPhone.Text = beneficiary.Phone;
                     txtTown.Text = beneficiary.Town;
                     txtAddress.Text = beneficiary.Address;
                     txtCity.Text = beneficiary.City;
@@ -118,8 +122,34 @@ namespace DeffinityAppDev.App.Beneficaries
                     ddlType.SelectedValue = beneficiary.Type;
 
 
+                    // Assuming beneficiary.Phone is in the format "countryCode-phoneNumber" (e.g., "1-1234567890")
+                    if (!string.IsNullOrEmpty(beneficiary.Phone))
+                    {
+                        // Split the phone number by '-'
+                        string[] phoneParts = beneficiary.Phone.Split('-');
 
-                  
+                        if (phoneParts.Length == 2)
+                        {
+                            // Assign the first part (country code) to the DropDownList ddlCountryCode
+                            ddlPhone.SelectedValue = phoneParts[0];  // Ensure the country code exists in the ddl options
+
+                            // Assign the second part (phone number) to the TextBox txtPhone
+                            txtPhone.Text = phoneParts[1];
+                        }
+                        else
+                        {
+                            // If the format is unexpected or there's no '-' to split
+                            txtPhone.Text = beneficiary.Phone;
+                        }
+                    }
+                    else
+                    {
+                        // Handle case when the phone number is empty or null
+                        txtPhone.Text = string.Empty;
+                        ddlPhone.SelectedIndex = 0;  // Reset or set to a default value
+                    }
+
+
                     // Add other fields here as needed
                 }
             }
@@ -209,7 +239,7 @@ namespace DeffinityAppDev.App.Beneficaries
                         beneficiary.DocumentType = ddlDocumentType.SelectedValue;
                         beneficiary.GovernmentID = txtGovID.Text.Trim();
                         beneficiary.Email = txtEmail.Text.Trim();
-                        beneficiary.Phone = $"{ddlPhone.SelectedValue}{txtPhone.Text.Trim()}";
+                        beneficiary.Phone = $"{ddlPhone.SelectedValue}-{txtPhone.Text.Trim()}";
                         beneficiary.Background = txtNotes.Text.Trim();
                         beneficiary.EmploymentStatus = ddlEmploymentStatus.SelectedValue;
                         beneficiary.HealthCondition = txtHealthCondition.Text.Trim();
@@ -226,7 +256,6 @@ namespace DeffinityAppDev.App.Beneficaries
                         // Display success message
                         lblMessage.ForeColor = System.Drawing.Color.Green;
                         lblMessage.Text = personID != null ? "Beneficiary updated successfully!" : "Beneficiary saved successfully!";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModalAndRedirect", "showSuccessModal()", true);
                         DeffinityManager.ShowMessages.ShowSuccessAlert(this.Page, "Saved Successfully!");
                         
                     }

@@ -134,7 +134,8 @@ namespace DeffinityAppDev.App.Beneficiaries
             using (var context = new MyDatabaseContext())
             {
                 // Using LINQ to get donations from the database
-                var donations = context.BeneficiaryDonations.Where(o => o.TithingID == sessionKeys.PortfolioID)
+                string BeneficiaryID = Request.QueryString["personid"];
+                var donations = context.BeneficiaryDonations.Where(o => o.TithingID == sessionKeys.PortfolioID && o.PrimaryBeneficiaryID==BeneficiaryID)
                    .ToList();
                 for(int i=0;i<donations.Count;i++)
                 {
@@ -206,6 +207,7 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 try
                 {
+                    string BeneficiaryID = Request.QueryString["personid"];
                     // Check if hfDonationID has a value (indicating an edit operation)
                     if (!string.IsNullOrEmpty(hfDonationID.Value))
                     {
@@ -216,16 +218,41 @@ namespace DeffinityAppDev.App.Beneficiaries
                         if (donation != null)
                         {
                             // Update the existing donation
-                            donation.DonationDate = DateTime.Parse(txtDonationDate.Text);
+                            // Attempt to parse the DonationDate
+                            DateTime donationDate;
+                            if (DateTime.TryParse(txtDonationDate.Text, out donationDate))
+                            {
+                                donation.DonationDate = donationDate;
+                            }
+                            else
+                            {
+                                // Handle the parsing failure, e.g., log an error, set a default date, or show a message
+                                donation.DonationDate = DateTime.Now; // Set a default date or handle accordingly
+                            }
+
+                            // Attempt to parse the DonationAmount
+                            decimal donationAmount;
+                            if (decimal.TryParse(txtDonationAmount.Text, out donationAmount))
+                            {
+                                donation.DonationAmount = donationAmount;
+                            }
+                            else
+                            {
+                                // Handle the parsing failure, e.g., log an error, set a default amount, or show a message
+                                donation.DonationAmount = 0; // Set a default amount or handle accordingly
+                            }
+
+                            // Assign remaining values
+                            donation.PrimaryBeneficiaryID = BeneficiaryID;
                             donation.LoggedBy = ddlLogged.SelectedValue;
                             donation.AssociatedFundraiser = ddlAssociatedFundraise.SelectedValue;
-                            donation.DonationAmount = decimal.Parse(txtDonationAmount.Text);
                             donation.Currency = ddlCurrency.SelectedValue;
                             donation.PaymentType = GetSelectedPaymentType();
                             donation.DonatedBy = ddlDonated.SelectedValue;
                             donation.Notes = txtDonationNotes.Text;
                             donation.TithingID = sessionKeys.PortfolioID;
-                            
+
+
                             // Optionally update the document if a new file is uploaded
                             if (FileUploadDocuments.HasFile)
                             {
@@ -247,19 +274,44 @@ namespace DeffinityAppDev.App.Beneficiaries
                     else
                     {
                         // Create a new donation
+                        // Initialize variables with default values
+                        DateTime donationDate = DateTime.Now; // Default to current date
+                        decimal donationAmount = 0; // Default amount
+
+                        // Attempt to parse DonationDate
+                        if (DateTime.TryParse(txtDonationDate.Text, out var parsedDate))
+                        {
+                            donationDate = parsedDate;
+                        }
+                        else
+                        {
+                            // Handle parsing failure if needed (e.g., logging, notification)
+                        }
+
+                        // Attempt to parse DonationAmount
+                        if (decimal.TryParse(txtDonationAmount.Text, out var parsedAmount))
+                        {
+                            donationAmount = parsedAmount;
+                        }
+                        else
+                        {
+                            // Handle parsing failure if needed (e.g., logging, setting default)
+                        }
+
                         var donation = new BeneficiaryDonation
                         {
-                            DonationDate = DateTime.Parse(txtDonationDate.Text),
+                            DonationDate = donationDate, // Use the parsed date
                             LoggedBy = ddlLogged.SelectedValue,
                             AssociatedFundraiser = ddlAssociatedFundraise.SelectedValue,
-                            DonationAmount = decimal.Parse(txtDonationAmount.Text),
+                            DonationAmount = donationAmount, // Use the parsed amount
                             Currency = ddlCurrency.SelectedValue,
                             PaymentType = GetSelectedPaymentType(),
                             DonatedBy = ddlDonated.SelectedValue,
+                            PrimaryBeneficiaryID = BeneficiaryID,
                             Notes = txtDonationNotes.Text,
                             TithingID = sessionKeys.PortfolioID,
                             CreatedAt = DateTime.Now.Date,
-                            DocumentUpload = SaveUploadedFile()
+                            DocumentUpload = SaveUploadedFile() // Assuming this returns a valid file path or object
                         };
 
                         // Add the new donation to the context

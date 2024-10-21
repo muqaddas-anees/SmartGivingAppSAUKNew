@@ -33,6 +33,8 @@ namespace DeffinityAppDev.App.Beneficiaries.Entities
 
         public byte [] DocumentUpload { get; set; }
 
+        public string PrimaryBeneficiaryID { get; set; }
+
         public int TithingID { get; set; }
         public object CreatedAt { get; internal set; }
     }

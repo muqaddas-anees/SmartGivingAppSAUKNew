@@ -12,6 +12,8 @@ namespace DeffinityAppDev.App.Beneficiaries.Entities
         public string ProgressDetails { get; set; }  // Details of the activity progress
         public byte[] ImageData { get; set; }  // Binary data for image upload
         public int TithingDefaultDetailsID { get; set; }  // Foreign key or reference ID
+        public string PrimaryBeneficiaryID { get; set; }
+
         public DateTime CreatedAt { get; set; }  // Timestamp for when the record was created
     }
 }

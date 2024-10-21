@@ -154,6 +154,9 @@ namespace DeffinityAppDev.App.Beneficiaries
         {
             using (var context = new MyDatabaseContext())
             {
+                string BeneficiaryID = Request.QueryString["personid"];
+
+
                 // Create a new feedback object
                 var communication = new BeneficiariesFeedBack
                 {
@@ -161,7 +164,9 @@ namespace DeffinityAppDev.App.Beneficiaries
                     FeedbackText = txtCommunicationText.Text,
                     Attachments = SaveUploadedFiles(), // Assuming this method returns a byte[]
                     CreatedAt = DateTime.Now,
+                    PrimaryBeneficiaryID=BeneficiaryID,
                     Deleted = false,
+
                     TithingID = sessionKeys.PortfolioID// Set this based on your logic
                 };
 
@@ -274,11 +279,12 @@ namespace DeffinityAppDev.App.Beneficiaries
             using (var context = new MyDatabaseContext())
             {
                 // Fetch the TithingID from session
-              
 
+                string BeneficiaryID = Request.QueryString["personid"];
+                
                 // Fetch feedback data using LINQ with the TithingID filter
                 var feedbackData = context.BeneficiariesFeedBack
-                    .Where(f => f.TithingID == sessionKeys.PortfolioID)
+                    .Where(f => f.TithingID == sessionKeys.PortfolioID && f.PrimaryBeneficiaryID==BeneficiaryID)
                     .Select(f => new
                     {
                         f.FeedbackID,

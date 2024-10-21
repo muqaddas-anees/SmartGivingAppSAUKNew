@@ -26,6 +26,7 @@ namespace DeffinityAppDev.App.Beneficiaries.Entities
         public byte[] ProfileImage { get; set; }
         public string Background { get; set; }
         public string HealthCondition { get; set; }
+        public string PrimaryBeneficiaryID { get; set; }
         public string EmploymentStatus { get; set; }
         public DateTime? CreatedAt { get; set; }
     }

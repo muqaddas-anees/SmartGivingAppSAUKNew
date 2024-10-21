@@ -30,10 +30,20 @@
                                 <h3 class="card-title fw-bold text-muted">Personal Profile</h3>
                               
                             </div>
- <div class="card-body">
+
+
+
+
+<div class="card-body">
     <div class="row">
         <!-- First Column -->
         <div class="col-md-6">
+            <!-- Name -->
+            <div class="mb-4">
+                <asp:TextBox ID="txtName" runat="server" placeholder="Name" CssClass="form-control form-control-lg text-muted fw-semibold bg-transparent" />
+                <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name is required" CssClass="text-white text-bg-danger fw-semibold" Display="Dynamic"></asp:RequiredFieldValidator>
+            </div>
+
             <!-- Dropdown for Type (Institute / Individual) -->
             <div class="mb-4">
                 <asp:DropDownList ID="ddlType" ClientIDMode="Static" runat="server" onchange="toggleFields()" CssClass="form-select text-muted form-select-lg bg-transparent fw-semibold">
@@ -110,12 +120,6 @@
 
         <!-- Second Column -->
         <div class="col-md-6">
-            <!-- Name -->
-            <div class="mb-4">
-                <asp:TextBox ID="txtName" runat="server" placeholder="Name" CssClass="form-control form-control-lg text-muted fw-semibold bg-transparent" />
-                <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name is required" CssClass="text-white text-bg-danger fw-semibold" Display="Dynamic"></asp:RequiredFieldValidator>
-            </div>
-
             <!-- Address -->
             <div class="mb-4">
                 <asp:TextBox ID="txtAddress" runat="server" placeholder="Address" CssClass="form-control text-muted fw-semibold form-control-lg bg-transparent" />
@@ -145,6 +149,11 @@
         </div>
     </div>
 </div>
+
+
+
+
+
  </div>
 </div>
 
@@ -179,7 +188,7 @@
     
     <!-- Upload Button -->
     <div class="col-md-1">
-        <asp:Button ID="btnFileUpload" runat="server" Text="Upload" CssClass="btn btn-primary w-100" OnClick="btnFileUpload_Click" />
+        <asp:Button ID="btnFileUpload" runat="server" CausesValidation="false" Text="Upload" CssClass="btn btn-primary w-100" OnClick="btnFileUpload_Click" />
     </div>
 </div>
 

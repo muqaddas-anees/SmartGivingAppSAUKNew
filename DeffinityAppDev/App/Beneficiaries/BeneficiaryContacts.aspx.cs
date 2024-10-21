@@ -326,10 +326,11 @@ namespace DeffinityAppDev.App.Beneficiaries
                 {
                     // Retrieve the PortfolioID from the session
                     int portfolioID = sessionKeys.PortfolioID; // Default to 0 if null
-
+                    string BeneficiaryID = Request.QueryString["personid"];
+                
                     // Query to get all contacts where TithingID matches PortfolioID
                     var contacts = context.BeneficiaryContacts
-                                          .Where(c => c.TithingID == portfolioID)
+                                          .Where(c => c.TithingID == portfolioID && c.PrimaryBeneficiaryID == BeneficiaryID)
                                           .ToList();
 
                     // Debugging: Check how many contacts were retrieved
@@ -411,6 +412,8 @@ namespace DeffinityAppDev.App.Beneficiaries
                     if (contact != null)
                     {
                         // Update contact details (for both new and edited contact)
+                        string BeneficiaryID = Request.QueryString["personid"];
+                        contact.PrimaryBeneficiaryID = BeneficiaryID;
                         contact.FirstName = txtFirstName.Text;
                         contact.LastName = txtLastName.Text;
                         contact.EmailAddress = txtEmailAddress.Text;

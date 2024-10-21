@@ -60,10 +60,11 @@ namespace DeffinityAppDev.App.Beneficiaries
                 {
                     DateTime today = DateTime.Today;
                     DateTime tomorrow = today.AddDays(1); // Get the start of tomorrow
-
+                    string BeneficiaryID = Request.QueryString["personid"];
+        
                     // Ensure that the comparison works correctly with DateTime
                     var activities = context.BeneficiaryActivities
-                        .Where(a => a.ActivityDate >= today && a.ActivityDate < tomorrow && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
+                        .Where(a => a.ActivityDate >= today && a.ActivityDate < tomorrow && a.TithingDefaultDetailsID==sessionKeys.PortfolioID && a.PrimaryBeneficiaryID==BeneficiaryID)
                         .OrderByDescending(a => a.ActivityDate)
                          
                         .ToList();
@@ -96,9 +97,9 @@ namespace DeffinityAppDev.App.Beneficiaries
                     DateTime today = DateTime.Today;
                     DateTime startOfWeek = today.AddDays(-(int)today.DayOfWeek); // Start of the week
                     DateTime endOfWeek = startOfWeek.AddDays(7); // End of the week
-
+                    string BeneficiaryID = Request.QueryString["personid"];
                     var activities = context.BeneficiaryActivities
-                        .Where(a => a.ActivityDate >= startOfWeek && a.ActivityDate < endOfWeek && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
+                        .Where(a => a.ActivityDate >= startOfWeek && a.ActivityDate < endOfWeek && a.TithingDefaultDetailsID==sessionKeys.PortfolioID && a.PrimaryBeneficiaryID==BeneficiaryID)
                         .OrderByDescending(a => a.ActivityDate)
                         .ToList();
                     for (int i = 0; i < activities.Count; i++)
@@ -128,9 +129,9 @@ namespace DeffinityAppDev.App.Beneficiaries
                     DateTime today = DateTime.Today;
                     DateTime startOfMonth = new DateTime(today.Year, today.Month, 1); // Start of the month
                     DateTime endOfMonth = startOfMonth.AddMonths(1); // End of the month
-
+                    string BeneficiaryID = Request.QueryString["personid"];
                     var activities = context.BeneficiaryActivities
-                        .Where(a => a.ActivityDate >= startOfMonth && a.ActivityDate < endOfMonth && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
+                        .Where(a => a.ActivityDate >= startOfMonth && a.ActivityDate < endOfMonth && a.TithingDefaultDetailsID==sessionKeys.PortfolioID && a.PrimaryBeneficiaryID==BeneficiaryID)
                         .OrderByDescending(a => a.ActivityDate)
                         .ToList();
                     for (int i = 0; i < activities.Count; i++)
@@ -160,9 +161,10 @@ namespace DeffinityAppDev.App.Beneficiaries
                     DateTime today = DateTime.Today;
                     DateTime startOfYear = new DateTime(today.Year, 1, 1); // Start of the year
                     DateTime endOfYear = startOfYear.AddYears(1); // End of the year
-
+                    string BeneficiaryID = Request.QueryString["personid"];
+                
                     var activities = context.BeneficiaryActivities
-                        .Where(a => a.ActivityDate >= startOfYear && a.ActivityDate < endOfYear && a.TithingDefaultDetailsID==sessionKeys.PortfolioID)
+                        .Where(a => a.ActivityDate >= startOfYear && a.ActivityDate < endOfYear && a.TithingDefaultDetailsID==sessionKeys.PortfolioID && a.PrimaryBeneficiaryID==BeneficiaryID)
                         .OrderByDescending(a => a.ActivityDate)
                         .ToList();
                     for (int i = 0; i < activities.Count; i++)
@@ -218,12 +220,14 @@ protected void btnSaveActivity_Click(object sender, EventArgs e)
         {
             using (var context = new MyDatabaseContext())
             {
+                string BeneficiaryID = Request.QueryString["personid"];
                 var newActivity = new DeffinityAppDev.App.Beneficiaries.Entities.BeneficiaryActivity
                 {
                     ActivityDate = DateTime.Parse(txtActivityDate.Text),  // Ensure the date is correctly formatted
                     LoggedBy = ddlLoggedBy.SelectedValue,
                     ProgressDetails = txtProgressDetails.Text,
                     CreatedAt = DateTime.Now,
+                    PrimaryBeneficiaryID=BeneficiaryID,
                     ImageData = SaveUploadedFiles(),
                     // Ensure you include image data
                     TithingDefaultDetailsID = sessionKeys.PortfolioID

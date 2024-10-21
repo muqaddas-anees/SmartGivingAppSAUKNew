@@ -452,12 +452,12 @@ namespace DeffinityAppDev.App.Beneficiaries
         {
 
 
-            if (!Page.IsValid)
+            /*if (!Page.IsValid)
             {
                 DeffinityManager.ShowMessages.ShowErrorAlert(this.Page, "please enter a unique Email", "Ok");
                 // If the page is not valid (i.e., email validation failed), exit the method
                 return;
-            }
+            }*/
 
             // Get the beneficiary ID from the hidden field
             string beneficiaryID = hfBeneficiaryID.Value;
@@ -494,6 +494,8 @@ namespace DeffinityAppDev.App.Beneficiaries
                     }
 
                     // Assign properties from the form inputs
+                    string BeneficiaryID = Request.QueryString["personid"];
+                    beneficiary.PrimaryBeneficiaryID = BeneficiaryID;
                     beneficiary.TithingID = sessionKeys.PortfolioID; // Assuming this dropdown is for TithingID
                     beneficiary.Type = ddlTypeModal.SelectedValue;
                     beneficiary.Gender = ddlGenderModal.SelectedValue;
@@ -660,12 +662,12 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 // Retrieve the PortfolioID from the session
                 int portfolioID = sessionKeys.PortfolioID;// Default to 0 if null
-
+                string BeneficiaryID = Request.QueryString["PersonID"];
                 using (var context = new MyDatabaseContext())
                 {
                     // Fetch data from the database where TithingID matches PortfolioID
                     var beneficiaries = context.SecondaryBeneficiary
-                        .Where(b => b.TithingID == portfolioID) // Ensure the TithingID matches PortfolioID
+                        .Where(b => b.TithingID == portfolioID && b.PrimaryBeneficiaryID== BeneficiaryID) // Ensure the TithingID matches PortfolioID
                         .Select(b => new
                         {
                             b.SecondaryBeneficiaryID,

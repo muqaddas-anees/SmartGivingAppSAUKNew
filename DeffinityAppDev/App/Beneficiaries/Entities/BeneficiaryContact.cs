@@ -13,6 +13,8 @@ namespace DeffinityAppDev.App.Beneficiaries.Entities
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public string CountryCode { get; set; }
+        public string PrimaryBeneficiaryID { get; set; }
+
         public string PhoneNumber { get; set; }
         public string Position { get; set; }
         public string Notes { get; set; }
