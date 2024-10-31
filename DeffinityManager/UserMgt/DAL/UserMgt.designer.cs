@@ -106,7 +106,7 @@ namespace UserMgt.DAL
     #endregion
 		
 		public UserDataContext() : 
-				base(global::DeffinityManager.Properties.Settings.Default.DBstring, mappingSource)
+				base(global::DeffinityManager.Properties.Settings.Default.PlegitDBConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -340,6 +340,14 @@ namespace UserMgt.DAL
 			get
 			{
 				return this.GetTable<UserMgt.Entity.SecondaryBeneficiary>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UserMgt.Entity.DonationNote> DonationNotes
+		{
+			get
+			{
+				return this.GetTable<UserMgt.Entity.DonationNote>();
 			}
 		}
 		
@@ -8315,6 +8323,87 @@ namespace UserMgt.Entity
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DonationNotes")]
+	public partial class DonationNote
+	{
+		
+		private int _ID;
+		
+		private string _fundraiserunid;
+		
+		private System.Nullable<int> _Userid;
+		
+		private System.Nullable<bool> _IsAnonymous;
+		
+		public DonationNote()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fundraiserunid", DbType="NVarChar(256)")]
+		public string fundraiserunid
+		{
+			get
+			{
+				return this._fundraiserunid;
+			}
+			set
+			{
+				if ((this._fundraiserunid != value))
+				{
+					this._fundraiserunid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Userid", DbType="Int")]
+		public System.Nullable<int> Userid
+		{
+			get
+			{
+				return this._Userid;
+			}
+			set
+			{
+				if ((this._Userid != value))
+				{
+					this._Userid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAnonymous", DbType="Bit")]
+		public System.Nullable<bool> IsAnonymous
+		{
+			get
+			{
+				return this._IsAnonymous;
+			}
+			set
+			{
+				if ((this._IsAnonymous != value))
+				{
+					this._IsAnonymous = value;
+				}
 			}
 		}
 	}

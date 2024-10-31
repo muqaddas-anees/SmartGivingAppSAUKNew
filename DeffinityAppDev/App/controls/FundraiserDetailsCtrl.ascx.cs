@@ -35,6 +35,7 @@ namespace DeffinityAppDev.App.controls
                     IPortfolioRepository<PortfolioMgt.Entity.TithingDefaultDetail> pRep = new PortfolioRepository<PortfolioMgt.Entity.TithingDefaultDetail>();
                     var listTithingDefaults = pRep.GetAll().Where(o => o.unid == QueryStringValues.UNID).ToList();
 
+                    
 
                     sessionKeys.FundPortfolioID = listTithingDefaults.FirstOrDefault().OrganizationID.Value;
                     var tList = PortfolioMgt.BAL.TithingPaymentTrackerBAL.TithingPaymentTrackerBAL_SelectAll().Where(o => o.OrganizationID == sessionKeys.FundPortfolioID).Where(o => o.DonerEmail != null).Where(o => (o.IsPaid.HasValue?o.IsPaid.Value:false) ==  true).ToList();
@@ -43,7 +44,6 @@ namespace DeffinityAppDev.App.controls
                     //if (QueryStringValues.EVENTUNID.Length > 0)
                     //    listTithingDefaults = listTithingDefaults.Where(o => o.Event_unid == QueryStringValues.EVENTUNID).ToList();
                     var f = PortfolioMgt.BAL.FundraisersInfoBAL.FundraisersInfoBAL_SelectAll().Where(o => o.FundUNID == QueryStringValues.UNID && o.Email.ToLower() == sessionKeys.UEmail.ToLower()).FirstOrDefault();
-
                     var dlist = (from p in listTithingDefaults
                                  select new
                                  {
@@ -77,6 +77,7 @@ namespace DeffinityAppDev.App.controls
                                      p.City,
                                      p.Country,
                                      p.Postcode,
+                                     
                                      RaisedAmount = p.unid == null ? 0.00 : tList.Where(o => o.FundriserUNID == p.unid).Where(o=>o.IsPaid.HasValue?o.IsPaid.Value:false).Select(o => o.PaidAmount.HasValue ? o.PaidAmount.Value : 0.00).Sum()
                                  }).FirstOrDefault();
                     if(dlist != null)
@@ -101,7 +102,7 @@ namespace DeffinityAppDev.App.controls
                             FundProgressCtrl.Visible = dlist.ShowProgress.Value;
                         }
                         //FundraiserPayCtrl
-
+                        
                         //dlist.show
                     }
 
@@ -175,7 +176,6 @@ namespace DeffinityAppDev.App.controls
                         Literal1.Text = carouselHtml;
                     }
 
-
                     lblTitle.Text = dlist.Title;
                    // lblTitle1.Text= dlist.Title;
                     lblDescription.Text = dlist.Description;
@@ -221,6 +221,7 @@ namespace DeffinityAppDev.App.controls
                     var rList = (from r in userlist
                                  select new
                                  {
+                                     txtSupport=getDonorNotes(r),
                                      Name = getDonorName( r),
                                      Email = getDonorEmail( r),
                                      Contact = getDonorContact(r),
@@ -287,8 +288,29 @@ namespace DeffinityAppDev.App.controls
 
 
 
+        
+        private string getDonorNotes(TithingPaymentTracker t)
+        {
+            string retval = "";
 
+            if (t.IsAnonymously.HasValue)
+            {
+                if (t.IsAnonymously.Value)
+                {
+                    retval = "Anonymous";
+                }
+                else
+                {
+                    retval = t.Notes;
+                }
+            }
+            else
+            {
+                retval = t.Notes;
+            }
 
+            return retval;
+        }
 
 
         private string getImageUrl(double amount)

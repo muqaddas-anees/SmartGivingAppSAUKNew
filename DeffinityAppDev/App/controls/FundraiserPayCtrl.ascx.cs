@@ -1,13 +1,17 @@
 ﻿
 using DC.BLL;
 using PortfolioMgt.DAL;
+using PortfolioMgt.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DeffinityManager;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using TuesPechkin;
+using UserMgt.DAL;
 
 namespace DeffinityAppDev.App.controls
 {
@@ -31,6 +35,7 @@ namespace DeffinityAppDev.App.controls
                     hunid.Value = Guid.NewGuid().ToString();
                     var tithing = PortfolioMgt.BAL.TithingDefaultDetailsBAL.TithingDefaultDetailsBAL_Select().Where(o => o.unid == QueryStringValues.UNID).FirstOrDefault();
                     var plist = "";
+                    BindWordsofSupport();
                     if (tithing != null)
                     {
                         sessionKeys.FundPortfolioID = tithing.OrganizationID.HasValue ? tithing.OrganizationID.Value : 0;
@@ -470,11 +475,98 @@ namespace DeffinityAppDev.App.controls
 
         }
 
+        private void SaveDonorNote(string note,int userid,bool isanonymous)
+        {
+            try
+            {
+                using (var context = new PortfolioDataContext())
+                using (var ucontext=new UserDataContext())
+                {
+                    
+                    {
+                        
+                        
+                    }
+                    
+                }
+
+            }catch(Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+        private void BindWordsofSupport()
+        {
+            using (var context = new PortfolioDataContext())
+            {
+                var wordsofsupport = context.TithingPaymentTrackers
+                    .Where(o => o.FundriserUNID == QueryStringValues.UNID && o.IsPaid == true &&
+                                o.AdditionalDetails != null &&
+                                o.AdditionalDetails != string.Empty)
+                    .ToList();
+
+                // Initialize strings to hold the HTML for each row
+                string detailsRowHtml = "";
+                string namesRowHtml = "";
+                if (wordsofsupport.Count == 0)
+                    wordsofsupportdiv.Visible = false;
+
+
+                foreach (var word in wordsofsupport)
+                {
+                    var tithing = context.TithingDefaultDetails.FirstOrDefault(o => o.unid == word.FundriserUNID);
+                    string title = "";
+                    if (tithing != null)
+                        title = tithing.Title;
+
+                    string name = word.IsAnonymously ?? false ? "Anonymous kind soul" : word.DonerName;
+                    // Append each AdditionalDetails to the first row
+                    detailsRowHtml += $@"<td style='padding:13px;min-width:250px;max-width:260px'>
+                                   <h6 class='' style='font-size:20px;color:#071437;font-weight:Normal'>{word.AdditionalDetails}</h6>
+                                 </td>";
+
+                    // Append each DonerName to the second row
+                    namesRowHtml += $@"<td style='padding:13px'>
+                                <span style='color:#7A8394;font-size:15px'>{name} - {title}</span>
+                               </td>";
+                }
+
+                // Construct the final table HTML with two rows
+                string tablehtml = $@"<table class='wordsofsupport'>
+                                <tbody>
+                                    <tr> <!-- First row for AdditionalDetails -->
+                                        {detailsRowHtml} <!-- Insert the accumulated cells for AdditionalDetails here -->
+                                    </tr>
+                                    <tr> <!-- Second row for DonerNames -->
+                                        {namesRowHtml} <!-- Insert the accumulated cells for DonerNames here -->
+                                    </tr>
+                                </tbody>
+                              </table>";
+
+                wordsofsupportlit.Text = tablehtml;
+            }
+        }
+
+        private void SavedonationNOte(string id)
+        {
+            using(var context = new PortfolioDataContext())
+            {
+                var tithing=context.TithingPaymentTrackers.FirstOrDefault(o=>o.ID.ToString()==id);
+                if(tithing!=null)
+                {
+                    tithing.AdditionalDetails = txtSupport.Text;
+                    context.SubmitChanges();
+                }
+            }
+        }
         protected void btnClose_Click(object sender, EventArgs e)
         {
             mdlManageOptions.Hide();
         }
+        private void EnterWordsofSupport()
+        {
 
+        }
         protected void btnProceed_Click(object sender, EventArgs e)
         {
             try
@@ -531,7 +623,10 @@ namespace DeffinityAppDev.App.controls
                     var retval = QuickPayBAL.TithingCardConnectPay(txtCardNumber.Text.Trim(), Convert.ToInt32(hPortfolioid.Value), tithing.ID, txtCardConnectNumber.Text, ddlMonth.SelectedItem.Text.Trim(),
                       ddlYear.SelectedItem.Text.Substring(ddlYear.SelectedItem.Text.Length - 2), txtCvv.Text.Trim(), ddlCardType.SelectedValue,
                       sessionKeys.UID, Convert.ToDouble(total), txtNameOnCard.Text.Trim() + " " + txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(), tfee, pfee, hrec.Value == "2" ? chkMontly.Checked ? "Monthly" : "Weekly" : "", startdate, enddate
-                      , daystart, txtNotes.Text.Trim(), chkAnonymously.Checked, 0, moredetails, hunid.Value, QueryStringValues.UNID, code, chkfee.Checked, amout_withoutfee, chkgift.Checked);
+                      , daystart, txtNotes.Text.Trim(), chkAnonymously.Checked, 0, moredetails, hunid.Value, QueryStringValues.UNID, code, chkfee.Checked, amout_withoutfee, chkgift.Checked,txtSupport.Text);
+
+
+                    SavedonationNOte(retval);
                     Response.Redirect("~/PayProcess.aspx?frm=fund&refid=" + retval + "&type=" + d.PayType, false);
                 }
                 else
@@ -540,7 +635,8 @@ namespace DeffinityAppDev.App.controls
                     var retval = QuickPayBAL.TithingCardConnectPay(txtCardNumber.Text.Trim(), Convert.ToInt32(hPortfolioid.Value), tithing.ID, txtCardConnectNumber.Text, ddlMonth.SelectedItem.Text.Trim(),
                      ddlYear.SelectedItem.Text.Substring(ddlYear.SelectedItem.Text.Length - 2), txtCvv.Text.Trim(), ddlCardType.SelectedValue,
                      sessionKeys.UID, Convert.ToDouble(total), txtNameOnCard.Text.Trim() + " " + txtLastname.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(), tfee, pfee, chkRecurring.Checked ? chkMontly.Checked ? "Monthly" : "Weekly" : "", startdate, enddate
-                     , daystart, txtNotes.Text.Trim(), chkAnonymously.Checked, 0, moredetails, hunid.Value, QueryStringValues.UNID, code, chkfee.Checked, amout_withoutfee, chkgift.Checked);
+                     , daystart, txtNotes.Text.Trim(), chkAnonymously.Checked, 0, moredetails, hunid.Value, QueryStringValues.UNID, code, chkfee.Checked, amout_withoutfee, chkgift.Checked,txtSupport.Text);
+                    SavedonationNOte(retval);
                     Response.Redirect("~/PayProcess.aspx?frm=fund&refid=" + retval + "&type=" + d.PayType, false);
                     //var retval = QuickPayBAL.TithingCardConnectPay(txtCardNumber.Text.Trim(), Convert.ToInt32(hPortfolioid.Value), tithing.ID, txtCardConnectNumber.Text, ddlMonth.SelectedItem.Text.Trim(),
                     //    ddlYear.SelectedItem.Text.Substring(ddlYear.SelectedItem.Text.Length - 2), txtCvv.Text.Trim(), ddlCardType.SelectedValue,
@@ -621,6 +717,15 @@ namespace DeffinityAppDev.App.controls
             Response.Redirect("~/App/Donations.aspx", false);
         }
 
+        //protected void SaveSupportWords()
+        //{
+        //        IPortfolioRepository<PortfolioMgt.Entity.TithingPaymentTracker> rpNew = new PortfolioRepository<PortfolioMgt.Entity.TithingPaymentTracker>();
+        //        IPortfolioRepository<PortfolioMgt.BLL.>
+        //    var dItem = rpNew.GetAll().Where(o => o.FundriserUNID == hunid.Value && o.DonerEmail== ).FirstOrDefault();//get the currentUser
+           
+            
+                
+        //}
         protected void listCards_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             try
@@ -863,6 +968,7 @@ namespace DeffinityAppDev.App.controls
             //enable payment option
             changePanel(false, true, false, false, false, false);
         }
+
 
         protected void btnNextToPayAdvanced_Click(object sender, EventArgs e)
         {

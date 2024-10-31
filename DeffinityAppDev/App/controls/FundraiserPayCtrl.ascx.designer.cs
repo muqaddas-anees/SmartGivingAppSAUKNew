@@ -204,6 +204,15 @@ namespace DeffinityAppDev.App.controls
         protected global::System.Web.UI.WebControls.TextBox txtAmountTotal;
 
         /// <summary>
+        /// txtSupport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupport;
+
+        /// <summary>
         /// listCategory control.
         /// </summary>
         /// <remarks>
@@ -859,6 +868,24 @@ namespace DeffinityAppDev.App.controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddNewCard;
+
+        /// <summary>
+        /// wordsofsupportdiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl wordsofsupportdiv;
+
+        /// <summary>
+        /// wordsofsupportlit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal wordsofsupportlit;
 
         /// <summary>
         /// mdlManageOptions control.

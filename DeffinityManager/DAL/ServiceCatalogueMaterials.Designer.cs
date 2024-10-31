@@ -5900,7 +5900,7 @@ WHERE     (PortfolioID = @PortfolioID) AND (ItemDescription = @ItemDescripton) A
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT     COUNT(*) AS Expr1\r\nFROM         Manufacturer\r\nWHERE     (Name =@Name)";
+            this._commandCollection[1].CommandText = "SELECT     COUNT(*) AS Expr1\nFROM         Manufacturer\nWHERE     (Name =@Name)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -6760,7 +6760,7 @@ WHERE     (PortfolioID = @PortfolioID) AND (ItemDescription = @ItemDescripton) A
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT     ID, Site\r\nFROM         Site";
+            this._commandCollection[0].CommandText = "SELECT     ID, Site\nFROM         Site";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

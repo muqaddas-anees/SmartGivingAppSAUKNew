@@ -630,7 +630,7 @@
 													<!--begin::Actions-->
 													<div class="d-flex align-items-center py-2">
 
-                                                        <asp:Button ID="btnPayNowListView" runat="server" CausesValidation="false" CommandName="paynow" CssClass="btn btn-sm btn-light btn-active-light-primary me-3" Text="Pay Now" CommandArgument='<%# Eval("ID") %>' />
+                                                        <asp:Button ID="btnPayNowListView" runat="server" CausesValidation="false" CommandName="paynow" CssClass="btn btn-sm btn-light btn-active-light-primary me-3" Text="Pay Later" CommandArgument='<%# Eval("ID") %>' />
 														<%--<button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-3">Pay Now</button>
 														<button class="btn btn-sm btn-light btn-active-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_new_card" style="display:none;visibility:hidden;">Edit</button>--%>
 													</div>

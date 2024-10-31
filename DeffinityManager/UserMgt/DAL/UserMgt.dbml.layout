@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 19.875, 19.5" name="AdminUserLinq">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 22.125, 19.5" name="AdminUserLinq">
   <DataContextMoniker Name="/UserDataContext" />
   <nestedChildShapes>
     <classShape Id="d5493d56-93e8-4fc5-a24f-d47eaa10649a" absoluteBounds="7.875, 0.75, 2, 1.5785953776041666">
@@ -177,6 +177,12 @@
       <DataClassMoniker Name="/UserDataContext/SecondaryBeneficiary" />
       <nestedChildShapes>
         <elementListCompartment Id="5dc86e3e-3a1b-46d9-9164-1cc1616693d6" absoluteBounds="17.64, 5.21, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d8c8a02f-1c8d-43e3-8f28-af45ffbf6e88" absoluteBounds="19.875, 1.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/UserDataContext/DonationNote" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aa95a3c5-911e-4023-8fb7-50905d58762f" absoluteBounds="19.89, 2.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

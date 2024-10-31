@@ -1107,7 +1107,7 @@ return retval;
         }
         public static string TithingCardConnectPay(string name, int portfolioID, int tithingid, string CardNumber, string month, string year, string CVV, string cardtype, int userid, 
             double amount,string contactname,string contactemail,string contactnumber,double transactionfeee,double platformfee,string recurringtype="",DateTime? startdate =null, DateTime? enddate= null, 
-            int? dayStart = 0,string notes="", bool IsAnonymously = false,int RecurringPayID =0, string moredetails="",string unid = "", string fundriserUNID = "",string code="",bool IsCoveredFee= true,double amout_withoutfee=0.00,bool giftaid=false)
+            int? dayStart = 0,string notes="", bool IsAnonymously = false,int RecurringPayID =0, string moredetails="",string unid = "", string fundriserUNID = "",string code="",bool IsCoveredFee= true,double amout_withoutfee=0.00,bool giftaid=false, string WordsofSupport="")
         {
             string payref = "";
             string rettext = "";
@@ -1182,6 +1182,7 @@ return retval;
                 p.DonerEmail = contactemail;
                 p.DonerContact = contactnumber;
                 p.unid = unid;
+                p.AdditionalDetails = WordsofSupport;
                 p.FundriserUNID = fundriserUNID;
                 p.TransactionFee = transactionfeee;
                 p.PlatformFee = platformfee;

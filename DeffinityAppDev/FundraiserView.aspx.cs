@@ -32,6 +32,7 @@ namespace DeffinityAppDev
                         // "~/ImageHandler.ashx?id=" + eventEntity.ID + "&s=" + ImageManager.file_section_fundriser_top;
                         hdescription.Value = tEntity.SocialDescription;
                         hkey.Value = tEntity.SocialKeywords;
+                       
                     }
 
 

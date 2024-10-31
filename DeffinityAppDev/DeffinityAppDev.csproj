@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DeffinityAppDev</RootNamespace>
     <AssemblyName>DeffinityAppDev</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort>54391</IISExpressSSLPort>
@@ -77,10 +77,6 @@
       <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
     </Reference>
     <Reference Include="CustomMarshalers" />
-    <Reference Include="DeffinityManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\izhar\bin\bin\DeffinityManager.dll</HintPath>
-    </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
@@ -91,12 +87,11 @@
     <Reference Include="Domain">
       <HintPath>..\DLLs\Domain.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\izhar\bin\bin\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\bin\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>D:\izhar\bin\bin\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\bin\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Evyatar.Web.Controls">
       <HintPath>..\DLLs\Evyatar.Web.Controls.dll</HintPath>
@@ -20641,6 +20636,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeffinityManager\DeffinityManager.csproj">
+      <Project>{c6b303c2-294f-475c-95f9-ef6908482840}</Project>
+      <Name>DeffinityManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

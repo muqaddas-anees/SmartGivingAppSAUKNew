@@ -363,8 +363,8 @@ header .close:hover{
         height: 35px;
     }
 }
-</style>
-<div class="row">
+</style> 
+<div class="row" style="margin-top:10px">
     <div class="col-lg-9 col-md-6 col-sm-12">
         <div class="card mb-5 mb-xl-10" style="margin-left: 15px">
             <!--begin::Card body-->
@@ -432,9 +432,12 @@ header .close:hover{
                     <asp:Label ID="lblDescription" Text="" runat="server" /><br />
                     <br />
                 </div>
+            
             </div>
         </div>
 
+
+         
         <div class="row" style="margin-left: 15px">
             <Pref:FundraiserPayCtrl runat="server" ID="FundraiserPayCtrl" />
         </div>
@@ -461,9 +464,9 @@ header .close:hover{
                 </span>
                    <p class="fs-2"> Raised of    <asp:Label ID="lblTarget" runat="server" Text=""></asp:Label>  </p>
                     </div>
-                <div class="d-flex flex-wrap align-center flex-center" style="min-width: 350px;align-content:center">
+                <div class="d-flex flex-wrap align-center flex-center" style="align-content:center">
 
-                    <div class="progress-wrapper position-relative d-flex flex-center  me-15 mb-7" style="min-width: 300px">
+                    <div class="progress-wrapper position-relative d-flex flex-center mb-7" style="width:100%">
 
                         <div class="position-absolute translate-middle start-50 top-75 d-flex flex-column flex-center">
 
@@ -504,7 +507,7 @@ header .close:hover{
                 </div>
             </div>
             <div class="card-body border-top p-9">
-                <asp:GridView ID="gridtopdonors" runat="server">
+                <div class="table-responsive">                <asp:GridView ID="gridtopdonors" runat="server">
                     <Columns>
                         <asp:TemplateField HeaderText="Name">
                             <ItemTemplate>
@@ -520,7 +523,8 @@ header .close:hover{
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
-                </asp:GridView>
+                </asp:GridView></div>
+
             </div>
         </div>
     </div>

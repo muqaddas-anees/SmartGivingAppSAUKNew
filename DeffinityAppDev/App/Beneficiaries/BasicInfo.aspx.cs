@@ -63,7 +63,7 @@ namespace DeffinityAppDev.App.Beneficaries
                 using (var context = new MyDatabaseContext())
                 {
                     // Create a new beneficiary
-                    var newBeneficiary = new Beneficiary
+                    var newBeneficiary = new Beneficiaries.Entities.Beneficiary
                     {
                         CreatedAt = DateTime.Now // Ensure CreatedAt has a valid value
                                                  // Set other properties as necessary
@@ -198,7 +198,7 @@ namespace DeffinityAppDev.App.Beneficaries
                 {
                     using (var context = new MyDatabaseContext())
                     {
-                        Beneficiary beneficiary;
+                        Beneficiaries.Entities.Beneficiary beneficiary;
 
                         // Check if we are editing an existing record
                         string personID = Request.QueryString["PersonID"];
@@ -218,7 +218,7 @@ namespace DeffinityAppDev.App.Beneficaries
                         else
                         {
                             // Creating a new record
-                            beneficiary = new Beneficiary
+                            beneficiary = new Beneficiaries.Entities.Beneficiary
                             {
                                 CreatedAt = DateTime.Now
                             };

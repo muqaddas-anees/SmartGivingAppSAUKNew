@@ -1054,5 +1054,11 @@
         <elementListCompartment Id="f47b553a-aaa3-4d3e-be3f-33448b32e644" absoluteBounds="4.64, 3.335, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="8a007ea5-4102-4208-9187-7d70ff9b445e" absoluteBounds="32.875, 3, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/PortfolioDataContext/DonationNote" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d09640f7-0ff5-4175-a663-2e706a8cd21b" absoluteBounds="32.89, 3.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
