@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using PortfolioMgt.DAL;
+using PortfolioMgt.Entity;
+using DeffinityAppDev.WF.DC.Feedback;
 
 namespace DeffinityAppDev
 {
@@ -113,5 +116,66 @@ namespace DeffinityAppDev
             // +"/" + eImageType.ToString() + "/" + a_gId.ToString() + ".png"; 
 
         }
+
+        protected void btnSubmitFeedback_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var context = new PortfolioDataContext())
+                {
+                    var feedback = new FeedbackSystem
+                    {
+                        Submittedby = sessionKeys.UID,
+                        PortfolioID = sessionKeys.PortfolioID,
+                        Name = txtName.Text,
+                        MobileNumber = txtMobile.Text,
+                        CreatedDate = DateTime.Now,
+                        IsAgreetobeContacted=chkContact.Checked,
+                        Status = "Pending",
+                        EmailAddress = txtEmail.Text,
+                        FeedbackType = ddlFeedbackType.SelectedValue,
+                        UrgencyLevel = ddlUrgencyLevel.SelectedValue,
+                        Comments = txtComments.Text
+                    };
+                    context.FeedbackSystems.InsertOnSubmit(feedback);
+                    context.SubmitChanges();
+                    SendMails(feedback);
+                    Response.Redirect(Request.RawUrl+(Request.RawUrl.Contains("?")?"&show=true": "?show=true"),false);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showSuccessModal", "showSuccessModal();", true);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+
+            // Call JavaScript function to show the success modal
+        }
+
+        private void SendMails(FeedbackSystem f)
+        {
+            try
+            {
+                string Subject = "Feedback from Donor Received";
+                string emailcontext = $"Dear Team, <br /><br />The following feedback has been received from {f.Name}:<br />Category: {f.FeedbackType}<br /><Feedback: {f.Comments}<br /><br />Please log into the Admin portal to review it.<br /><br />Thanks";
+                using (var context = new PortfolioDataContext())
+                {
+                    Email em = new Email();
+                    var emails = context.EmailTrails.ToList();
+                    foreach (var email in emails)
+                    {
+
+                        em.SendingMail(Deffinity.systemdefaults.GetFromEmail(), Subject, emailcontext, email.Email, "");
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogExceptions.WriteExceptionLog(ex);
+            }
+        }
+
     }
 }

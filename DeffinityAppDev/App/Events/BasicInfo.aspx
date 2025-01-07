@@ -59,7 +59,86 @@
 }
 
     </style>
+     <style>
+    /* Ribbon for Secure Invite */
+    .ribbon {
+        position: absolute;
+    top: 10px;
+    left: -48px;
+    z-index: 1;
+    overflow: hidden;
+    width: 219px;
+    height: 30px;
+    text-align: center;
+    transform: rotate(-45deg);
+    background-color: #28a745;
+    color: white;
+    font-size: 12px;
+    /* font-weight: bold; */
+    /* line-height: 40px; */
+    overflow: hidden;
+    }
+    .ribbon span {
+    position: absolute;
+    /* width: 150px; */
+    /* text-align: center; */
+    /* left: -15px; */
+    /* top: 10px; */
+    text-transform: uppercase;
+    left: 34px;
+    top: 7px;
+    font-size: 12px;
+    font-weight: 600;
+}
 
+    /* Modal Customizations */
+    .modal-content {
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 20px;
+      position: relative;
+    }
+
+    .modal-body h2 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .modal-body p {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .modal-body hr {
+      margin: 20px 0;
+      border-top: 1px solid #ddd;
+    }
+
+    .modal-body img {
+      transition: transform 0.3s ease;
+    }
+
+    .modal-body img:hover {
+      transform: scale(1.1);
+    }
+
+    .modal-body a {
+      color: #333;
+    }
+    .modal-body a:hover {
+      text-decoration: underline;
+    }
+    .hover-enlarge i {
+    transition: transform 0.3s ease; /* Smooth scaling */
+}
+
+.hover-enlarge:hover i {
+    transform: scale(1.2); /* Enlarge to 120% */
+    color: #007bff; /* Optional: Change icon color on hover */
+}
+
+  </style>
 
     <div class="container-xxl" id="kt_content_container">
         <!--begin::Row-->
@@ -479,7 +558,84 @@
         </div>
 
     </div>
+    <div class="modal fade" id="calendarInviteModal" tabindex="-1" aria-labelledby="calendarInviteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <!-- Secure Invite Ribbon -->
+        <div class="ribbon">
+          <span>Secure Invite</span>
+        </div>
 
+        <!-- Modal Body -->
+        <div class="modal-body text-center">
+          <h2 class="fw-bold mb-3">  <asp:Literal ID="eventName" runat="server"></asp:Literal>           </h2>
+          <p><strong style="margin-right:10px">When:</strong> <asp:Literal ID="Literal1" runat="server"></asp:Literal> </p>
+          <p><strong style="margin-right:10px">Where:</strong><asp:Literal ID="Literal2" runat="server"></asp:Literal> </p>
+          <p><strong style="margin-right:10px">Duration:</strong><asp:Literal ID="Literal3" runat="server"></asp:Literal>  </p>
+          <hr />
+
+          <!-- Calendar Icons -->
+          <div class="d-flex justify-content-center gap-4 mt-4">
+     
+
+              <!-- Apple Calendar -->
+              <div class="text-center">
+    <a href="#" target="_blank" runat="server" id="Outlook" class="text-decoration-none hover-enlarge">
+        <i class="bi bi-envelope" style="font-size: 2rem;"></i>
+        <p class="mt-2">Microsoft Outlook</p>
+    </a>
+</div>
+
+<!-- Apple Calendar -->
+
+
+<!-- Google Calendar -->
+<div class="text-center">
+    <a href="#" target="_blank" runat="server" id="Google" class="text-decoration-none hover-enlarge">
+        <i class="bi bi-calendar" style="font-size: 2rem;"></i>
+        <p class="mt-2">Google Calendar</p>
+    </a>
+</div>
+
+              <div class="text-center">
+    <a href="#" target="_blank" runat="server" id="Apple" class="text-decoration-none hover-enlarge">
+        <i class="bi bi-apple" style="font-size: 2rem;"></i>
+        <p class="mt-2">Apple Calendar</p>
+    </a>
+</div>
+<!-- Microsoft Outlook -->
+
+<!-- Yahoo Calendar -->
+
+
+<!-- Download Invite -->
+<div class="text-center">
+    <a href="#" target="_blank" runat="server" id="ICS" class="text-decoration-none hover-enlarge">
+        <i class="bi bi-download" style="font-size: 2rem;"></i>
+        <p class="mt-2">Download Invite (.ics)</p>
+    </a>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="Scripts_Section" runat="server">
+<script>
+    function showCalendarInviteModal() {
+        // Get the modal element
+        const modalElement = document.getElementById('calendarInviteModal');
+
+        // Initialize Bootstrap modal
+        const modal = new bootstrap.Modal(modalElement);
+
+        // Show the modal
+        modal.show();
+    }
+</script>
+<asp:Literal ID="showModal" runat="server"></asp:Literal>
 </asp:Content>

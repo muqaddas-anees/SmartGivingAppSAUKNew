@@ -83,9 +83,15 @@
                     <!--begin::Title-->
                     <div class="fs-5 fw-semibold mb-2">
                         <%# Eval("ProgressDetails") %>
+<i class="bi bi-pencil ms-2 cursor-pointer" 
+   onclick="openCommunicationModal('<%# Eval("ActivityID") %>', 
+                                   '<%# Eval("ActivityDate", "{0:yyyy-MM-dd}") %>', 
+                                   '<%# Eval("ProgressDetails") %>', 
+                                   '<%# Eval("LoggedBy") %>', 
+                                   '<%# Eval("ImageData") != null ?Convert.ToBase64String((byte[])Eval("ImageData")):"" %>')">
+</i> 
                     </div>
-                    <!--end::Title-->
-
+         
                     <!--begin::Description-->
                     <div class="d-flex align-items-center mt-1 fs-6">
                         <!--begin::Info-->
@@ -96,7 +102,9 @@
 
                         <!--begin::User-->
                         <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" aria-label="<%# Eval("LoggedBy") %>">
-                            <img src='<%# (Eval("ImageData") == null) ? "/path/to/default-image.jpg" : "data:image/png;base64," + Convert.ToBase64String((byte[])Eval("ImageData")) %>' alt="User">
+<%# Eval("ImageData") == null ? 
+    "<i class='bi bi-postcard'></i>" : 
+    "<img src='data:image/png;base64," + Convert.ToBase64String((byte[])Eval("ImageData")) + "' alt='User'>" %>
 
                         </div>
                       
@@ -256,6 +264,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                                <asp:HiddenField ID="hfActivityID" runat="server" Value="0" />
+
                 <!-- Date Picker -->
                 <div class="row mb-3">
                     <div class="col-12">
@@ -377,4 +387,42 @@
              window.history.replaceState(null, null, window.location.href);
          }
      </script>
+    <script>
+        function openCommunicationModal(activityID, activityDate, progressDetails, loggedBy, imageData) {
+            // Set the HiddenField value to differentiate between add (0) or update (ID)
+            document.getElementById('<%= hfActivityID.ClientID %>').value = activityID || '0';
+
+         // Pre-fill the Activity Date
+         if (activityDate) {
+             document.getElementById('<%= txtActivityDate.ClientID %>').value = activityDate;
+    } else {
+        document.getElementById('<%= txtActivityDate.ClientID %>').value = '';  // Default value
+    }
+
+    // Pre-fill the LoggedBy dropdown list (assuming loggedBy contains the ID of the person)
+            var ddlLoggedBy = document.getElementById('<%= ddlLoggedBy.ClientID %>');
+            var options = ddlLoggedBy.options;
+
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].text === loggedBy) {
+                    ddlLoggedBy.value = options[i].value;
+                    break;
+                }
+            }
+    // Pre-fill the Progress Details Textbox
+            document.getElementById('<%= txtProgressDetails.ClientID %>').value = progressDetails || '';
+
+            // Pre-fill the image preview if available
+            if (imageData) {
+                document.getElementById('imagePreviewContainer').innerHTML = '<img src="data:image/png;base64,' + imageData + '" alt="User Image" class="img-fluid">';
+            } else {
+                document.getElementById('imagePreviewContainer').innerHTML = '';  // No image, clear preview
+            }
+
+            // Open the modal
+            $('#addCommunicationModal').modal('show');
+        }
+
+
+    </script>
     </asp:Content>

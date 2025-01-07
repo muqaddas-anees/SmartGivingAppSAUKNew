@@ -36,6 +36,10 @@ namespace DeffinityAppDev.App
             {
                 Response.Redirect("~/App/FLSDefault.aspx?tab=fls&type=source" + b + "&pnl=JobTicketConfiguration", false);
             }
+            else if (e.CommandName == "EventDisplay")
+            {
+                Response.Redirect("~/App/EventDisplaySettings.aspx?tab=fls&type=source" + b + "&pnl=JobTicketConfiguration", false);
+            }
             else if (e.CommandName == "giftaid")
             {
                 Response.Redirect("~/App/GiftAid.aspx?" + b + "&pnl=JobTicketConfiguration", false);
@@ -59,6 +63,10 @@ namespace DeffinityAppDev.App
             else if (e.CommandName == "EmailNotification")
             {
                 Response.Redirect("~/App/FLSDefault.aspx?tab=fls&type=notification" + b + "&pnl=EmailConfiguration", false);
+            }
+            else if (e.CommandName == "eventscroller")
+            {
+                Response.Redirect("~/App/EventScroller.aspx", false);
             }
             else if (e.CommandName == "wordpress")
             {

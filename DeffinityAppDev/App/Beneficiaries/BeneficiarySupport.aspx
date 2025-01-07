@@ -56,7 +56,7 @@
             <td class="text-muted fw-semi-bold"><%# Eval("DonatedBy") %></td>
             
             <!-- Display Donation Amount + Currency -->
-            <td class="text-muted fw-semi-bold"><%# Eval("DonationAmount") %> <%# Eval("Currency") %></td>
+            <td class="text-muted fw-semi-bold"><%# Eval("Currency") %> <%# String.Format("{0:N2}", Eval("DonationAmount")) %> </td>
             
             <!-- Empty Progress to Date -->
          

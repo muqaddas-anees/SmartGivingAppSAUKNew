@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 39.5, 145.25" name="Portfolio">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 58.75, 145.25" name="Portfolio">
   <DataContextMoniker Name="/PortfolioDataContext" />
   <nestedChildShapes>
     <classShape Id="19a13a74-d318-4e97-9081-a15dad863e09" absoluteBounds="2.625, 0.625, 2, 14.847394205729165">
@@ -1060,5 +1060,54 @@
         <elementListCompartment Id="d09640f7-0ff5-4175-a663-2e706a8cd21b" absoluteBounds="32.89, 3.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="5a87f175-503f-432c-bad0-d3d9468a024a" absoluteBounds="37.625, 2.25, 2, 3.1170068359375">
+      <DataClassMoniker Name="/PortfolioDataContext/FeedbackSystem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c634add3-e593-454d-8848-680f170311de" absoluteBounds="37.64, 2.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0b7ef170-8b63-4644-9b48-365af8c63f06" absoluteBounds="41.5, 4.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PortfolioDataContext/FeedbackTeam" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fbdbbc8c-83b9-4cfb-af8a-16424f1b5d7a" absoluteBounds="41.515, 5.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4a78c285-c514-4864-8ea2-ff637f34243e" absoluteBounds="41, 1.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/PortfolioDataContext/EmailTrail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="33b0d66e-2d93-426b-9c2b-1b2d224d781f" absoluteBounds="41.015, 1.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="db6b648b-a192-4f6b-987d-44bf61980c6d" absoluteBounds="47.625, 3.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/PortfolioDataContext/EventReminder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3c588cdb-84e2-4fff-9c86-4f802b49d1b0" absoluteBounds="47.64, 3.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="71643205-c7cf-4025-aec0-14ab87a46b6d" absoluteBounds="50.125, 0.5, 2, 4.2708154296875">
+      <DataClassMoniker Name="/PortfolioDataContext/ViewOption" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fbf5be35-a869-4f26-a46f-8ea883be5cfb" absoluteBounds="50.14, 0.96, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0f01166b-7f9f-4daf-8ee2-744b0e07cc41" absoluteBounds="56.5, 1.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PortfolioDataContext/EventsToEventScroller" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6da3c677-fe58-4c1b-9852-85625e54e09a" absoluteBounds="56.515, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6f5eede5-9c79-498d-b10d-6ec7addd3f85" absoluteBounds="53.75, 1.25, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/PortfolioDataContext/EventScrollerSetting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1b978c50-cd2d-4ef6-bb63-e6be57e604b0" absoluteBounds="53.765, 1.71, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(55.75 : 1.88064697265625); (56.5 : 1.88064697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PortfolioDataContext/EventScrollerSetting/EventScrollerSetting_EventsToEventScroller" />
+      <nodes>
+        <classShapeMoniker Id="6f5eede5-9c79-498d-b10d-6ec7addd3f85" />
+        <classShapeMoniker Id="0f01166b-7f9f-4daf-8ee2-744b0e07cc41" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

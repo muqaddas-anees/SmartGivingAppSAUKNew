@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PlegitDB" EntityNamespace="PortfolioMgt.Entity" ContextNamespace="PortfolioMgt.DAL" Class="PortfolioDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MuQaddas\MSSQLSERVER01;Initial Catalog=PlegitDB;Persist Security Info=True;User ID=sada;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60;Trust Server Certificate=True" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="PlegitDBConnectionString3" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-JNTBUME;Initial Catalog=PlegitDB;Persist Security Info=True;User ID=sada1;Pooling=True;Min Pool Size=0;Max Pool Size=100;Connect Timeout=60;Trust Server Certificate=True" SettingsObjectName="DeffinityManager.Properties.Settings" SettingsPropertyName="PlegitDBConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.V_ProjectDetails" Member="ProjectDetails">
     <Type Name="ProjectDetail">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
@@ -2637,6 +2637,101 @@
       <Column Name="fundraiserunid" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
       <Column Name="Userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FeedbackSystem" Member="FeedbackSystems">
+    <Type Name="FeedbackSystem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Submittedby" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="MobileNumber" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="FeedbackType" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UrgencyLevel" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="IsAgreetobeContacted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FeedbackTeam" Member="FeedbackTeams">
+    <Type Name="FeedbackTeam">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmailTrail" Member="EmailTrails">
+    <Type Name="EmailTrail">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Createdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Sentby" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Feedbackid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EventReminders" Member="EventReminders">
+    <Type Name="EventReminder">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventUNID" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Days" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeZoneName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TimeZoneOffset" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmailBody" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewOptions" Member="ViewOptions">
+    <Type Name="ViewOption">
+      <Column Name="ViewOptionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortfolioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ListHeaderBackgroundColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListHeaderFontSize" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListHeaderFontColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListTimeSlotBackgroundColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListTimeSlotFontColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListTimeSlotFontSize" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListEventTitleColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListEventTitleSize" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListEventSubjectColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListEventSubjectFontSize" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListEventPanelBackgroundColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ListDatePickerColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PanelBookTicketsButtonColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PanelBookTicketsButtonFontColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PanelViewLiveButtonColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PanelViewLiveButtonFontColour" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EventsToEventScrollers" Member="EventsToEventScrollers">
+    <Type Name="EventsToEventScroller">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ScrollerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EventScrollerSetting_EventsToEventScroller" Member="EventScrollerSetting" ThisKey="ScrollerID" OtherKey="ID" Type="EventScrollerSetting" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EventScrollerSettings" Member="EventScrollerSettings">
+    <Type Name="EventScrollerSetting">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Height" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Width" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TitleBackgroundColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TitleBackgroundTransparency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TitleFontColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TimeBackgroundColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TimeBackgroundTransparency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeFontColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategoryBackgroundColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CategoryBackgroundTransparency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryFontColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EventType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PortfolioID" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="EventScrollerSetting_EventsToEventScroller" Member="EventsToEventScrollers" ThisKey="ID" OtherKey="ScrollerID" Type="EventsToEventScroller" />
     </Type>
   </Table>
   <Function Name="dbo.TimeSheetResource_AddUpdateWcDate" Method="TimeSheetResource_AddUpdateWcDate">

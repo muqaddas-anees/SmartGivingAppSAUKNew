@@ -36,9 +36,12 @@ namespace DeffinityAppDev.App.Beneficiaries
             {
                 UserDataContext tags = new UserDataContext();
                 var contractorsList = tags.v_contractors
-                    .Where(o => o.CompanyID == sessionKeys.PortfolioID)
-                    .ToList();
-
+           .Where(o => o.CompanyID == sessionKeys.PortfolioID)
+           .Select(o => new {
+               ContractorName = (o.ContractorName ?? "") + " " + (o.LastName ?? ""),
+               ID = o.ID
+           })
+           .ToList();
                 ddlLoggedBy.DataSource = contractorsList;
                 ddlLoggedBy.DataTextField = "ContractorName"; // Update this line
                 ddlLoggedBy.DataValueField = "ID"; // Ensure ID is correct as well
@@ -221,63 +224,105 @@ protected void btnSaveActivity_Click(object sender, EventArgs e)
             using (var context = new MyDatabaseContext())
             {
                 string BeneficiaryID = Request.QueryString["personid"];
-                var newActivity = new DeffinityAppDev.App.Beneficiaries.Entities.BeneficiaryActivity
+                if (string.IsNullOrEmpty(BeneficiaryID))
                 {
-                    ActivityDate = DateTime.Parse(txtActivityDate.Text),  // Ensure the date is correctly formatted
-                    LoggedBy = ddlLoggedBy.SelectedValue,
-                    ProgressDetails = txtProgressDetails.Text,
-                    CreatedAt = DateTime.Now,
-                    PrimaryBeneficiaryID=BeneficiaryID,
-                    ImageData = SaveUploadedFiles(),
-                    // Ensure you include image data
-                    TithingDefaultDetailsID = sessionKeys.PortfolioID
-                };
-
-                
-                context.BeneficiaryActivities.Add(newActivity);  // Add to the context
-
-                try
-                {
-                    context.SaveChanges();  // Save changes to the database
-                    return true;
+                    lblErrorMessage.Text = "Beneficiary ID is missing.";
+                    lblErrorMessage.CssClass = "alert alert-danger";
+                    lblErrorMessage.Visible = true;
+                    return false;
                 }
-                catch (DbEntityValidationException ex) // Validation errors
+
+                DeffinityAppDev.App.Beneficiaries.Entities.BeneficiaryActivity newActivity = null;
+
+                // Create a new activity or update an existing one
+                if (hfActivityID.Value == "0")
                 {
-                    foreach (var validationErrors in ex.EntityValidationErrors)
+                    newActivity = new DeffinityAppDev.App.Beneficiaries.Entities.BeneficiaryActivity
                     {
-                        foreach (var validationError in validationErrors.ValidationErrors)
+                        ActivityDate = DateTime.Parse(txtActivityDate.Text), // Ensure the date is correctly formatted
+                        LoggedBy = ddlLoggedBy.SelectedValue,
+                        ProgressDetails = txtProgressDetails.Text,
+                        CreatedAt = DateTime.Now,
+                        PrimaryBeneficiaryID = BeneficiaryID,
+                        ImageData = SaveUploadedFiles(), // Ensure the image data is correctly saved
+                        TithingDefaultDetailsID = sessionKeys.PortfolioID
+                    };
+                }
+                else
+                {
+                    var existingActivity = context.BeneficiaryActivities
+                                                  .FirstOrDefault(o => o.ActivityID.ToString() == hfActivityID.Value);
+
+                    if (existingActivity == null)
+                    {
+                        lblErrorMessage.Text = "Activity not found.";
+                        lblErrorMessage.CssClass = "alert alert-danger";
+                        lblErrorMessage.Visible = true;
+                        return false;
+                    }
+
+                    // Update the existing activity
+                    existingActivity.ActivityDate = DateTime.Parse(txtActivityDate.Text);
+                    existingActivity.LoggedBy = ddlLoggedBy.SelectedValue;
+                    existingActivity.ProgressDetails = txtProgressDetails.Text;
+                    existingActivity.ImageData = SaveUploadedFiles(); // Save the updated image data
+                    existingActivity.TithingDefaultDetailsID = sessionKeys.PortfolioID;
+
+                    // Set newActivity to existingActivity for saving
+                    newActivity = existingActivity;
+                }
+
+                // Add to the context and save changes
+                if (newActivity != null)
+                {
+                    context.BeneficiaryActivities.Add(newActivity); // This will add only if it's a new activity
+
+                    try
+                    {
+                        context.SaveChanges(); // Save changes to the database
+                        return true;
+                    }
+                    catch (DbEntityValidationException ex) // Validation errors
+                    {
+                        foreach (var validationErrors in ex.EntityValidationErrors)
                         {
-                            System.Diagnostics.Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                            foreach (var validationError in validationErrors.ValidationErrors)
+                            {
+                                System.Diagnostics.Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                            }
                         }
+                        lblErrorMessage.Text = "Validation error occurred while saving the activity.";
+                        lblErrorMessage.CssClass = "alert alert-danger";
+                        lblErrorMessage.Visible = true;
                     }
-                    lblErrorMessage.Text = "Validation error occurred while saving the activity.";
-                }
-                catch (DbUpdateException ex) // Database update errors
-                {
-                    var innerException = ex.InnerException?.InnerException;
-                    if (innerException != null)
+                    catch (DbUpdateException ex) // Database update errors
                     {
-                        lblErrorMessage.Text = "Error: " + innerException.Message;
-                        System.Diagnostics.Debug.WriteLine($"Inner Exception: {innerException.Message}");
+                        var innerException = ex.InnerException?.InnerException;
+                        if (innerException != null)
+                        {
+                            lblErrorMessage.Text = "Error: " + innerException.Message;
+                            System.Diagnostics.Debug.WriteLine($"Inner Exception: {innerException.Message}");
+                        }
+                        else
+                        {
+                            lblErrorMessage.Text = "An error occurred while updating the entries.";
+                        }
+                        lblErrorMessage.CssClass = "alert alert-danger";
+                        lblErrorMessage.Visible = true;
+                        System.Diagnostics.Debug.WriteLine($"Error occurred: {ex.Message}");
                     }
-                    else
+                    catch (Exception ex) // Generic errors
                     {
-                        lblErrorMessage.Text = "An error occurred while updating the entries.";
+                        lblErrorMessage.Text = "Error: " + ex.Message;
+                        lblErrorMessage.CssClass = "alert alert-danger";
+                        lblErrorMessage.Visible = true;
+                        System.Diagnostics.Debug.WriteLine($"Error occurred: {ex.Message}");
                     }
-                    System.Diagnostics.Debug.WriteLine($"Error occurred: {ex.Message}");
-                }
-                catch (Exception ex) // Generic errors
-                {
-                    lblErrorMessage.Text = "Error: " + ex.Message;
-                    System.Diagnostics.Debug.WriteLine($"Error occurred: {ex.Message}");
                 }
 
-                lblErrorMessage.CssClass = "alert alert-danger";
-                lblErrorMessage.Visible = true;
                 return false;
             }
         }
-
 
 
 

@@ -30,6 +30,8 @@ using QRCode = QRCoder.QRCode;
 using DocumentFormat.OpenXml.Vml;
 using Path = System.IO.Path;
 using PortfolioMgt.DAL;
+using TuesPechkin;
+using Stripe;
 
 namespace DeffinityAppDev.App
 {
@@ -139,6 +141,8 @@ namespace DeffinityAppDev.App
                                   a.Venue_Type,
                                   a.Slots,
                                   Price = GetPrices(tList.Where(o => o.unid == a.unid).ToList()),
+                                  WordpressCode=GetEventEmbedCode(GetImageofEvent(a.unid),a.Title,Deffinity.Utility.RemoveHTMLTags(a.Description??""),a.unid),
+                                  ListWPCode=GetEventEmbedListCode(GetImageofEvent(a.unid), a.Title??"",Deffinity.Utility.RemoveHTMLTags(a.Description??""), a.unid??"",a.StartDateTime),
                                   a.Postalcode,
 a.Country,
                                   QRcode = Deffinity.systemdefaults.GetWebUrl() + "/Event/" + a.QRcode
@@ -191,6 +195,32 @@ a.Country,
                 //{
                     lvCustomers.DataSource = retval.OrderBy(o => o.StartDateTime).ToList();
                     lvCustomers.DataBind();
+
+                    string allEmbedHtml = "<div id='PlegitWordpressEmbed' data-show-paging='{{showPaging}}' data-paging-value='{{pageValue}}' style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; box-sizing: border-box; height: {{height}}; width: {{width}};\">";
+                    foreach(var activity in retval)
+                    {
+                        allEmbedHtml += activity.WordpressCode;
+                    }
+                    allEmbedHtml += "</div>";
+                    hfAllEmbedCode.Value = HttpUtility.JavaScriptStringEncode(allEmbedHtml);
+                    BasehfAllEmbedCode.Value = HttpUtility.JavaScriptStringEncode(allEmbedHtml);
+
+
+
+                    string allEmbedListHtml = "<div id='PlegitWordpressEmbed' data-show-paging='{{showPaging}}' data-paging-value='{{pageValue}}' style='border: 1px solid #ddd; box-sizing: border-box;height:{{height}};width:{{width}}'>";
+                    //allEmbedListHtml += $@"<div style=""background-color: #990000; color: #FFFFFF; padding: 10px 15px; font-size: 30px; font-weight: bold;"">
+                    //                     {ddlSelect.SelectedItem.Text}
+                    //                  </div>";
+                    foreach (var activity in retval)
+                    {
+                        allEmbedListHtml += activity.ListWPCode;
+                    }
+                    allEmbedListHtml += "</div>";
+                    hfAllEmbedListCode.Value = HttpUtility.JavaScriptStringEncode(allEmbedListHtml);
+                    BasehfAllEmbedListCode.Value = HttpUtility.JavaScriptStringEncode(allEmbedListHtml);
+
+
+
                 }
                 //}
 
@@ -201,7 +231,49 @@ a.Country,
             }
 
         }
+        private string GetEventEmbedListCode(string img, string title, string description, string unid,DateTime startTime)
+        {
+           
+            string Desc = description.Length > 100 ? description.Substring(0, 100) + "..." : description;
+            string embedCode = $@"
+       <div list-data-start-time=""12:00AM"" list-data-end-time=""12:30AM"" style=""display: flex; border-bottom: 1px solid #ddd; background-color: #FFFFFF;"">
+    <!-- Time Section -->
+    <div style=""background-color: #990000; color: #FFFFFF; width: 100px; text-align: center; padding: 10px; font-size: 18px;"">
+      <div style=""font-size: 18px; font-weight: bold;"">{startTime.ToString()}</div>
+    </div>
+    <!-- Content Section -->
+    <div style=""flex: 1; padding: 10px; box-sizing: border-box;"">
+      <div style=""font-size: 18px; font-weight: bold; color: #990000;"">{title}</div>
+      <div style=""font-size: 14px; color: #252F4A; margin-top: 5px;"">
+       {Desc}
+      </div>
+    </div>
+  </div>
+";
+            return embedCode;
+        }
 
+
+        private string GetEventEmbedCode(string img,string title,string description,string unid)
+        {
+
+            string Desc=description;
+            string embedCode = $@"
+                <div style='border: 1px solid #ddd; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);'>
+                    <img src='{img}' alt='{title}' style=""width: 100%; height: calc({{{{height}}}} * 0.64); border-radius: 10px;"" />
+                    <h4 style='color: #333; text-align: center;'>{title}</h4>
+<p style='color: #555; text-align: center;'>
+    {(Desc?.Length > 100 ? Desc?.Substring(0, 100) + "..." : Desc ?? "")}
+</p>                    <a href='{GetDonationUrl(unid)}' style='display: block; text-align: center; padding: 10px 20px; background-color: #50CD89; color: #fff; text-decoration: none; border-radius: 5px;'>View Event</a>
+                </div>";
+            return embedCode;
+        }
+
+        private string GetDonationUrl(string unid)
+        {
+            return $"{Request.Url.Scheme}://{Request.Url.Authority}/EventDetailsNew.aspx?unid={unid}";
+
+        }
         private string GetPrices(List<PortfolioMgt.Entity.ActivityTicketSetting> tList)
         {
             string retval = string.Empty;
@@ -278,7 +350,7 @@ a.Country,
         protected string GetImmageString(string activityid)
         {
             string retval = string.Empty;
-            if (File.Exists(Server.MapPath("~/WF/UploadData/Events/" + activityid + "/0.png")))
+            if (System.IO.File.Exists(Server.MapPath("~/WF/UploadData/Events/" + activityid + "/0.png")))
             {
                 retval = "<div class='bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px' style='background-image:url('"+"../../WF/UploadData/Events/" + activityid + "/0.png"+"?v="+DateTime.Now.Ticks+"')' ></div> ";
             }
@@ -314,6 +386,12 @@ a.Country,
                 var id = e.CommandArgument.ToString();
 
                 Response.Redirect("~/App/Events/BasicInfo.aspx?unid=" + id, false);
+            }
+            else if (e.CommandName == "reminder")
+            {
+                var id = e.CommandArgument.ToString();
+
+                Response.Redirect("~/App/Events/EventReminders.aspx?unid=" + id, false);
             }
             else if (e.CommandName == "golive")
             {
@@ -448,7 +526,7 @@ a.Country,
                 {
                     heventid.Value = eventEntity.unid;
                     txtDescription.Text = eventEntity.SocialDescription;
-                    if (File.Exists(Server.MapPath("~/WF/UploadData/Events/Event_" + heventid.Value + "_top.png")))
+                    if (System.IO.File.Exists(Server.MapPath("~/WF/UploadData/Events/Event_" + heventid.Value + "_top.png")))
 
                     {
                         imgTop.Visible = true;
@@ -496,6 +574,10 @@ a.Country,
             return retval;
         }
 
+        private string GetImageofEvent(string unid)
+        {
+            return $"https://dev.plegit.ai/imagehandler.ashx?id={unid}&s=event";
+        }
         protected static string GetAddress(object address1, object address2,object city,object state,object postcode,object country)
         {
             string retval = "";

@@ -143,7 +143,6 @@ namespace DeffinityAppDev.App.Beneficiaries
                     donations[i].DonatedBy = Helper.GetPersonNamebyID(donations[i].DonatedBy);
 
 
-
                 }
                 // Binding the retrieved data to the Repeater control
                 RepeaterDonations.DataSource = donations;

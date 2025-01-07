@@ -463,6 +463,27 @@ namespace PortfolioMgt.DAL
     partial void InsertSecondaryBeneficiary(PortfolioMgt.Entity.SecondaryBeneficiary instance);
     partial void UpdateSecondaryBeneficiary(PortfolioMgt.Entity.SecondaryBeneficiary instance);
     partial void DeleteSecondaryBeneficiary(PortfolioMgt.Entity.SecondaryBeneficiary instance);
+    partial void InsertFeedbackSystem(PortfolioMgt.Entity.FeedbackSystem instance);
+    partial void UpdateFeedbackSystem(PortfolioMgt.Entity.FeedbackSystem instance);
+    partial void DeleteFeedbackSystem(PortfolioMgt.Entity.FeedbackSystem instance);
+    partial void InsertFeedbackTeam(PortfolioMgt.Entity.FeedbackTeam instance);
+    partial void UpdateFeedbackTeam(PortfolioMgt.Entity.FeedbackTeam instance);
+    partial void DeleteFeedbackTeam(PortfolioMgt.Entity.FeedbackTeam instance);
+    partial void InsertEmailTrail(PortfolioMgt.Entity.EmailTrail instance);
+    partial void UpdateEmailTrail(PortfolioMgt.Entity.EmailTrail instance);
+    partial void DeleteEmailTrail(PortfolioMgt.Entity.EmailTrail instance);
+    partial void InsertEventReminder(PortfolioMgt.Entity.EventReminder instance);
+    partial void UpdateEventReminder(PortfolioMgt.Entity.EventReminder instance);
+    partial void DeleteEventReminder(PortfolioMgt.Entity.EventReminder instance);
+    partial void InsertViewOption(PortfolioMgt.Entity.ViewOption instance);
+    partial void UpdateViewOption(PortfolioMgt.Entity.ViewOption instance);
+    partial void DeleteViewOption(PortfolioMgt.Entity.ViewOption instance);
+    partial void InsertEventsToEventScroller(PortfolioMgt.Entity.EventsToEventScroller instance);
+    partial void UpdateEventsToEventScroller(PortfolioMgt.Entity.EventsToEventScroller instance);
+    partial void DeleteEventsToEventScroller(PortfolioMgt.Entity.EventsToEventScroller instance);
+    partial void InsertEventScrollerSetting(PortfolioMgt.Entity.EventScrollerSetting instance);
+    partial void UpdateEventScrollerSetting(PortfolioMgt.Entity.EventScrollerSetting instance);
+    partial void DeleteEventScrollerSetting(PortfolioMgt.Entity.EventScrollerSetting instance);
     #endregion
 		
 		public PortfolioDataContext() : 
@@ -1828,6 +1849,62 @@ namespace PortfolioMgt.DAL
 			get
 			{
 				return this.GetTable<PortfolioMgt.Entity.DonationNote>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.FeedbackSystem> FeedbackSystems
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.FeedbackSystem>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.FeedbackTeam> FeedbackTeams
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.FeedbackTeam>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.EmailTrail> EmailTrails
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.EmailTrail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.EventReminder> EventReminders
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.EventReminder>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.ViewOption> ViewOptions
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.ViewOption>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.EventsToEventScroller> EventsToEventScrollers
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.EventsToEventScroller>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PortfolioMgt.Entity.EventScrollerSetting> EventScrollerSettings
+		{
+			get
+			{
+				return this.GetTable<PortfolioMgt.Entity.EventScrollerSetting>();
 			}
 		}
 		
@@ -52194,6 +52271,1901 @@ namespace PortfolioMgt.Entity
 					this._IsAnonymous = value;
 				}
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FeedbackSystem")]
+	public partial class FeedbackSystem : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _Submittedby;
+		
+		private System.Nullable<int> _PortfolioID;
+		
+		private string _Name;
+		
+		private string _EmailAddress;
+		
+		private string _MobileNumber;
+		
+		private string _FeedbackType;
+		
+		private string _Status;
+		
+		private string _Comments;
+		
+		private string _UrgencyLevel;
+		
+		private System.Nullable<bool> _IsAgreetobeContacted;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnSubmittedbyChanging(System.Nullable<int> value);
+    partial void OnSubmittedbyChanged();
+    partial void OnPortfolioIDChanging(System.Nullable<int> value);
+    partial void OnPortfolioIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnEmailAddressChanging(string value);
+    partial void OnEmailAddressChanged();
+    partial void OnMobileNumberChanging(string value);
+    partial void OnMobileNumberChanged();
+    partial void OnFeedbackTypeChanging(string value);
+    partial void OnFeedbackTypeChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
+    partial void OnCommentsChanging(string value);
+    partial void OnCommentsChanged();
+    partial void OnUrgencyLevelChanging(string value);
+    partial void OnUrgencyLevelChanged();
+    partial void OnIsAgreetobeContactedChanging(System.Nullable<bool> value);
+    partial void OnIsAgreetobeContactedChanged();
+    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedDateChanged();
+    #endregion
+		
+		public FeedbackSystem()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Submittedby", DbType="Int")]
+		public System.Nullable<int> Submittedby
+		{
+			get
+			{
+				return this._Submittedby;
+			}
+			set
+			{
+				if ((this._Submittedby != value))
+				{
+					this.OnSubmittedbyChanging(value);
+					this.SendPropertyChanging();
+					this._Submittedby = value;
+					this.SendPropertyChanged("Submittedby");
+					this.OnSubmittedbyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PortfolioID", DbType="Int")]
+		public System.Nullable<int> PortfolioID
+		{
+			get
+			{
+				return this._PortfolioID;
+			}
+			set
+			{
+				if ((this._PortfolioID != value))
+				{
+					this.OnPortfolioIDChanging(value);
+					this.SendPropertyChanging();
+					this._PortfolioID = value;
+					this.SendPropertyChanged("PortfolioID");
+					this.OnPortfolioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(256)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailAddress", DbType="NVarChar(256)")]
+		public string EmailAddress
+		{
+			get
+			{
+				return this._EmailAddress;
+			}
+			set
+			{
+				if ((this._EmailAddress != value))
+				{
+					this.OnEmailAddressChanging(value);
+					this.SendPropertyChanging();
+					this._EmailAddress = value;
+					this.SendPropertyChanged("EmailAddress");
+					this.OnEmailAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobileNumber", DbType="NVarChar(256)")]
+		public string MobileNumber
+		{
+			get
+			{
+				return this._MobileNumber;
+			}
+			set
+			{
+				if ((this._MobileNumber != value))
+				{
+					this.OnMobileNumberChanging(value);
+					this.SendPropertyChanging();
+					this._MobileNumber = value;
+					this.SendPropertyChanged("MobileNumber");
+					this.OnMobileNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FeedbackType", DbType="NVarChar(256)")]
+		public string FeedbackType
+		{
+			get
+			{
+				return this._FeedbackType;
+			}
+			set
+			{
+				if ((this._FeedbackType != value))
+				{
+					this.OnFeedbackTypeChanging(value);
+					this.SendPropertyChanging();
+					this._FeedbackType = value;
+					this.SendPropertyChanged("FeedbackType");
+					this.OnFeedbackTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(256)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comments", DbType="NVarChar(MAX)")]
+		public string Comments
+		{
+			get
+			{
+				return this._Comments;
+			}
+			set
+			{
+				if ((this._Comments != value))
+				{
+					this.OnCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._Comments = value;
+					this.SendPropertyChanged("Comments");
+					this.OnCommentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UrgencyLevel", DbType="NVarChar(256)")]
+		public string UrgencyLevel
+		{
+			get
+			{
+				return this._UrgencyLevel;
+			}
+			set
+			{
+				if ((this._UrgencyLevel != value))
+				{
+					this.OnUrgencyLevelChanging(value);
+					this.SendPropertyChanging();
+					this._UrgencyLevel = value;
+					this.SendPropertyChanged("UrgencyLevel");
+					this.OnUrgencyLevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAgreetobeContacted", DbType="Bit")]
+		public System.Nullable<bool> IsAgreetobeContacted
+		{
+			get
+			{
+				return this._IsAgreetobeContacted;
+			}
+			set
+			{
+				if ((this._IsAgreetobeContacted != value))
+				{
+					this.OnIsAgreetobeContactedChanging(value);
+					this.SendPropertyChanging();
+					this._IsAgreetobeContacted = value;
+					this.SendPropertyChanged("IsAgreetobeContacted");
+					this.OnIsAgreetobeContactedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this.OnCreatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedDate = value;
+					this.SendPropertyChanged("CreatedDate");
+					this.OnCreatedDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FeedbackTeam")]
+	public partial class FeedbackTeam : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _name;
+		
+		private string _Email;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    #endregion
+		
+		public FeedbackTeam()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(256)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(256)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EmailTrail")]
+	public partial class EmailTrail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private System.Nullable<System.DateTime> _Createdate;
+		
+		private string _Subject;
+		
+		private string _Email;
+		
+		private System.Nullable<int> _Sentby;
+		
+		private System.Nullable<int> _Feedbackid;
+		
+		private string _EmailAddress;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnCreatedateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedateChanged();
+    partial void OnSubjectChanging(string value);
+    partial void OnSubjectChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnSentbyChanging(System.Nullable<int> value);
+    partial void OnSentbyChanged();
+    partial void OnFeedbackidChanging(System.Nullable<int> value);
+    partial void OnFeedbackidChanged();
+    partial void OnEmailAddressChanging(string value);
+    partial void OnEmailAddressChanged();
+    #endregion
+		
+		public EmailTrail()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Createdate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Createdate
+		{
+			get
+			{
+				return this._Createdate;
+			}
+			set
+			{
+				if ((this._Createdate != value))
+				{
+					this.OnCreatedateChanging(value);
+					this.SendPropertyChanging();
+					this._Createdate = value;
+					this.SendPropertyChanged("Createdate");
+					this.OnCreatedateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subject", DbType="NVarChar(256)")]
+		public string Subject
+		{
+			get
+			{
+				return this._Subject;
+			}
+			set
+			{
+				if ((this._Subject != value))
+				{
+					this.OnSubjectChanging(value);
+					this.SendPropertyChanging();
+					this._Subject = value;
+					this.SendPropertyChanged("Subject");
+					this.OnSubjectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(MAX)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sentby", DbType="Int")]
+		public System.Nullable<int> Sentby
+		{
+			get
+			{
+				return this._Sentby;
+			}
+			set
+			{
+				if ((this._Sentby != value))
+				{
+					this.OnSentbyChanging(value);
+					this.SendPropertyChanging();
+					this._Sentby = value;
+					this.SendPropertyChanged("Sentby");
+					this.OnSentbyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Feedbackid", DbType="Int")]
+		public System.Nullable<int> Feedbackid
+		{
+			get
+			{
+				return this._Feedbackid;
+			}
+			set
+			{
+				if ((this._Feedbackid != value))
+				{
+					this.OnFeedbackidChanging(value);
+					this.SendPropertyChanging();
+					this._Feedbackid = value;
+					this.SendPropertyChanged("Feedbackid");
+					this.OnFeedbackidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailAddress", DbType="NVarChar(256)")]
+		public string EmailAddress
+		{
+			get
+			{
+				return this._EmailAddress;
+			}
+			set
+			{
+				if ((this._EmailAddress != value))
+				{
+					this.OnEmailAddressChanging(value);
+					this.SendPropertyChanging();
+					this._EmailAddress = value;
+					this.SendPropertyChanged("EmailAddress");
+					this.OnEmailAddressChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EventReminders")]
+	public partial class EventReminder : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _EventUNID;
+		
+		private System.Nullable<int> _Days;
+		
+		private string _Subject;
+		
+		private string _TimeZoneName;
+		
+		private int _TimeZoneOffset;
+		
+		private string _EmailBody;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnEventUNIDChanging(string value);
+    partial void OnEventUNIDChanged();
+    partial void OnDaysChanging(System.Nullable<int> value);
+    partial void OnDaysChanged();
+    partial void OnSubjectChanging(string value);
+    partial void OnSubjectChanged();
+    partial void OnTimeZoneNameChanging(string value);
+    partial void OnTimeZoneNameChanged();
+    partial void OnTimeZoneOffsetChanging(int value);
+    partial void OnTimeZoneOffsetChanged();
+    partial void OnEmailBodyChanging(string value);
+    partial void OnEmailBodyChanged();
+    #endregion
+		
+		public EventReminder()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventUNID", DbType="NVarChar(256)")]
+		public string EventUNID
+		{
+			get
+			{
+				return this._EventUNID;
+			}
+			set
+			{
+				if ((this._EventUNID != value))
+				{
+					this.OnEventUNIDChanging(value);
+					this.SendPropertyChanging();
+					this._EventUNID = value;
+					this.SendPropertyChanged("EventUNID");
+					this.OnEventUNIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Days", DbType="Int")]
+		public System.Nullable<int> Days
+		{
+			get
+			{
+				return this._Days;
+			}
+			set
+			{
+				if ((this._Days != value))
+				{
+					this.OnDaysChanging(value);
+					this.SendPropertyChanging();
+					this._Days = value;
+					this.SendPropertyChanged("Days");
+					this.OnDaysChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subject", DbType="NVarChar(MAX)")]
+		public string Subject
+		{
+			get
+			{
+				return this._Subject;
+			}
+			set
+			{
+				if ((this._Subject != value))
+				{
+					this.OnSubjectChanging(value);
+					this.SendPropertyChanging();
+					this._Subject = value;
+					this.SendPropertyChanged("Subject");
+					this.OnSubjectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeZoneName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string TimeZoneName
+		{
+			get
+			{
+				return this._TimeZoneName;
+			}
+			set
+			{
+				if ((this._TimeZoneName != value))
+				{
+					this.OnTimeZoneNameChanging(value);
+					this.SendPropertyChanging();
+					this._TimeZoneName = value;
+					this.SendPropertyChanged("TimeZoneName");
+					this.OnTimeZoneNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeZoneOffset", DbType="Int NOT NULL")]
+		public int TimeZoneOffset
+		{
+			get
+			{
+				return this._TimeZoneOffset;
+			}
+			set
+			{
+				if ((this._TimeZoneOffset != value))
+				{
+					this.OnTimeZoneOffsetChanging(value);
+					this.SendPropertyChanging();
+					this._TimeZoneOffset = value;
+					this.SendPropertyChanged("TimeZoneOffset");
+					this.OnTimeZoneOffsetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailBody", DbType="NVarChar(MAX)")]
+		public string EmailBody
+		{
+			get
+			{
+				return this._EmailBody;
+			}
+			set
+			{
+				if ((this._EmailBody != value))
+				{
+					this.OnEmailBodyChanging(value);
+					this.SendPropertyChanging();
+					this._EmailBody = value;
+					this.SendPropertyChanged("EmailBody");
+					this.OnEmailBodyChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ViewOptions")]
+	public partial class ViewOption : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ViewOptionID;
+		
+		private System.Nullable<int> _PortfolioID;
+		
+		private string _ListHeaderBackgroundColour;
+		
+		private string _ListHeaderFontSize;
+		
+		private string _ListHeaderFontColour;
+		
+		private string _ListTimeSlotBackgroundColour;
+		
+		private string _ListTimeSlotFontColour;
+		
+		private string _ListTimeSlotFontSize;
+		
+		private string _ListEventTitleColour;
+		
+		private string _ListEventTitleSize;
+		
+		private string _ListEventSubjectColour;
+		
+		private string _ListEventSubjectFontSize;
+		
+		private string _ListEventPanelBackgroundColour;
+		
+		private string _ListDatePickerColour;
+		
+		private string _PanelBookTicketsButtonColour;
+		
+		private string _PanelBookTicketsButtonFontColour;
+		
+		private string _PanelViewLiveButtonColour;
+		
+		private string _PanelViewLiveButtonFontColour;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnViewOptionIDChanging(int value);
+    partial void OnViewOptionIDChanged();
+    partial void OnPortfolioIDChanging(System.Nullable<int> value);
+    partial void OnPortfolioIDChanged();
+    partial void OnListHeaderBackgroundColourChanging(string value);
+    partial void OnListHeaderBackgroundColourChanged();
+    partial void OnListHeaderFontSizeChanging(string value);
+    partial void OnListHeaderFontSizeChanged();
+    partial void OnListHeaderFontColourChanging(string value);
+    partial void OnListHeaderFontColourChanged();
+    partial void OnListTimeSlotBackgroundColourChanging(string value);
+    partial void OnListTimeSlotBackgroundColourChanged();
+    partial void OnListTimeSlotFontColourChanging(string value);
+    partial void OnListTimeSlotFontColourChanged();
+    partial void OnListTimeSlotFontSizeChanging(string value);
+    partial void OnListTimeSlotFontSizeChanged();
+    partial void OnListEventTitleColourChanging(string value);
+    partial void OnListEventTitleColourChanged();
+    partial void OnListEventTitleSizeChanging(string value);
+    partial void OnListEventTitleSizeChanged();
+    partial void OnListEventSubjectColourChanging(string value);
+    partial void OnListEventSubjectColourChanged();
+    partial void OnListEventSubjectFontSizeChanging(string value);
+    partial void OnListEventSubjectFontSizeChanged();
+    partial void OnListEventPanelBackgroundColourChanging(string value);
+    partial void OnListEventPanelBackgroundColourChanged();
+    partial void OnListDatePickerColourChanging(string value);
+    partial void OnListDatePickerColourChanged();
+    partial void OnPanelBookTicketsButtonColourChanging(string value);
+    partial void OnPanelBookTicketsButtonColourChanged();
+    partial void OnPanelBookTicketsButtonFontColourChanging(string value);
+    partial void OnPanelBookTicketsButtonFontColourChanged();
+    partial void OnPanelViewLiveButtonColourChanging(string value);
+    partial void OnPanelViewLiveButtonColourChanged();
+    partial void OnPanelViewLiveButtonFontColourChanging(string value);
+    partial void OnPanelViewLiveButtonFontColourChanged();
+    #endregion
+		
+		public ViewOption()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViewOptionID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ViewOptionID
+		{
+			get
+			{
+				return this._ViewOptionID;
+			}
+			set
+			{
+				if ((this._ViewOptionID != value))
+				{
+					this.OnViewOptionIDChanging(value);
+					this.SendPropertyChanging();
+					this._ViewOptionID = value;
+					this.SendPropertyChanged("ViewOptionID");
+					this.OnViewOptionIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PortfolioID", DbType="Int")]
+		public System.Nullable<int> PortfolioID
+		{
+			get
+			{
+				return this._PortfolioID;
+			}
+			set
+			{
+				if ((this._PortfolioID != value))
+				{
+					this.OnPortfolioIDChanging(value);
+					this.SendPropertyChanging();
+					this._PortfolioID = value;
+					this.SendPropertyChanged("PortfolioID");
+					this.OnPortfolioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListHeaderBackgroundColour", DbType="NVarChar(256)")]
+		public string ListHeaderBackgroundColour
+		{
+			get
+			{
+				return this._ListHeaderBackgroundColour;
+			}
+			set
+			{
+				if ((this._ListHeaderBackgroundColour != value))
+				{
+					this.OnListHeaderBackgroundColourChanging(value);
+					this.SendPropertyChanging();
+					this._ListHeaderBackgroundColour = value;
+					this.SendPropertyChanged("ListHeaderBackgroundColour");
+					this.OnListHeaderBackgroundColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListHeaderFontSize", DbType="NVarChar(256)")]
+		public string ListHeaderFontSize
+		{
+			get
+			{
+				return this._ListHeaderFontSize;
+			}
+			set
+			{
+				if ((this._ListHeaderFontSize != value))
+				{
+					this.OnListHeaderFontSizeChanging(value);
+					this.SendPropertyChanging();
+					this._ListHeaderFontSize = value;
+					this.SendPropertyChanged("ListHeaderFontSize");
+					this.OnListHeaderFontSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListHeaderFontColour", DbType="NVarChar(256)")]
+		public string ListHeaderFontColour
+		{
+			get
+			{
+				return this._ListHeaderFontColour;
+			}
+			set
+			{
+				if ((this._ListHeaderFontColour != value))
+				{
+					this.OnListHeaderFontColourChanging(value);
+					this.SendPropertyChanging();
+					this._ListHeaderFontColour = value;
+					this.SendPropertyChanged("ListHeaderFontColour");
+					this.OnListHeaderFontColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListTimeSlotBackgroundColour", DbType="NVarChar(256)")]
+		public string ListTimeSlotBackgroundColour
+		{
+			get
+			{
+				return this._ListTimeSlotBackgroundColour;
+			}
+			set
+			{
+				if ((this._ListTimeSlotBackgroundColour != value))
+				{
+					this.OnListTimeSlotBackgroundColourChanging(value);
+					this.SendPropertyChanging();
+					this._ListTimeSlotBackgroundColour = value;
+					this.SendPropertyChanged("ListTimeSlotBackgroundColour");
+					this.OnListTimeSlotBackgroundColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListTimeSlotFontColour", DbType="NVarChar(256)")]
+		public string ListTimeSlotFontColour
+		{
+			get
+			{
+				return this._ListTimeSlotFontColour;
+			}
+			set
+			{
+				if ((this._ListTimeSlotFontColour != value))
+				{
+					this.OnListTimeSlotFontColourChanging(value);
+					this.SendPropertyChanging();
+					this._ListTimeSlotFontColour = value;
+					this.SendPropertyChanged("ListTimeSlotFontColour");
+					this.OnListTimeSlotFontColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListTimeSlotFontSize", DbType="NVarChar(256)")]
+		public string ListTimeSlotFontSize
+		{
+			get
+			{
+				return this._ListTimeSlotFontSize;
+			}
+			set
+			{
+				if ((this._ListTimeSlotFontSize != value))
+				{
+					this.OnListTimeSlotFontSizeChanging(value);
+					this.SendPropertyChanging();
+					this._ListTimeSlotFontSize = value;
+					this.SendPropertyChanged("ListTimeSlotFontSize");
+					this.OnListTimeSlotFontSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListEventTitleColour", DbType="NVarChar(256)")]
+		public string ListEventTitleColour
+		{
+			get
+			{
+				return this._ListEventTitleColour;
+			}
+			set
+			{
+				if ((this._ListEventTitleColour != value))
+				{
+					this.OnListEventTitleColourChanging(value);
+					this.SendPropertyChanging();
+					this._ListEventTitleColour = value;
+					this.SendPropertyChanged("ListEventTitleColour");
+					this.OnListEventTitleColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListEventTitleSize", DbType="NVarChar(256)")]
+		public string ListEventTitleSize
+		{
+			get
+			{
+				return this._ListEventTitleSize;
+			}
+			set
+			{
+				if ((this._ListEventTitleSize != value))
+				{
+					this.OnListEventTitleSizeChanging(value);
+					this.SendPropertyChanging();
+					this._ListEventTitleSize = value;
+					this.SendPropertyChanged("ListEventTitleSize");
+					this.OnListEventTitleSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListEventSubjectColour", DbType="NVarChar(256)")]
+		public string ListEventSubjectColour
+		{
+			get
+			{
+				return this._ListEventSubjectColour;
+			}
+			set
+			{
+				if ((this._ListEventSubjectColour != value))
+				{
+					this.OnListEventSubjectColourChanging(value);
+					this.SendPropertyChanging();
+					this._ListEventSubjectColour = value;
+					this.SendPropertyChanged("ListEventSubjectColour");
+					this.OnListEventSubjectColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListEventSubjectFontSize", DbType="NVarChar(256)")]
+		public string ListEventSubjectFontSize
+		{
+			get
+			{
+				return this._ListEventSubjectFontSize;
+			}
+			set
+			{
+				if ((this._ListEventSubjectFontSize != value))
+				{
+					this.OnListEventSubjectFontSizeChanging(value);
+					this.SendPropertyChanging();
+					this._ListEventSubjectFontSize = value;
+					this.SendPropertyChanged("ListEventSubjectFontSize");
+					this.OnListEventSubjectFontSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListEventPanelBackgroundColour", DbType="NVarChar(256)")]
+		public string ListEventPanelBackgroundColour
+		{
+			get
+			{
+				return this._ListEventPanelBackgroundColour;
+			}
+			set
+			{
+				if ((this._ListEventPanelBackgroundColour != value))
+				{
+					this.OnListEventPanelBackgroundColourChanging(value);
+					this.SendPropertyChanging();
+					this._ListEventPanelBackgroundColour = value;
+					this.SendPropertyChanged("ListEventPanelBackgroundColour");
+					this.OnListEventPanelBackgroundColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ListDatePickerColour", DbType="NVarChar(256)")]
+		public string ListDatePickerColour
+		{
+			get
+			{
+				return this._ListDatePickerColour;
+			}
+			set
+			{
+				if ((this._ListDatePickerColour != value))
+				{
+					this.OnListDatePickerColourChanging(value);
+					this.SendPropertyChanging();
+					this._ListDatePickerColour = value;
+					this.SendPropertyChanged("ListDatePickerColour");
+					this.OnListDatePickerColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PanelBookTicketsButtonColour", DbType="NVarChar(256)")]
+		public string PanelBookTicketsButtonColour
+		{
+			get
+			{
+				return this._PanelBookTicketsButtonColour;
+			}
+			set
+			{
+				if ((this._PanelBookTicketsButtonColour != value))
+				{
+					this.OnPanelBookTicketsButtonColourChanging(value);
+					this.SendPropertyChanging();
+					this._PanelBookTicketsButtonColour = value;
+					this.SendPropertyChanged("PanelBookTicketsButtonColour");
+					this.OnPanelBookTicketsButtonColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PanelBookTicketsButtonFontColour", DbType="NVarChar(256)")]
+		public string PanelBookTicketsButtonFontColour
+		{
+			get
+			{
+				return this._PanelBookTicketsButtonFontColour;
+			}
+			set
+			{
+				if ((this._PanelBookTicketsButtonFontColour != value))
+				{
+					this.OnPanelBookTicketsButtonFontColourChanging(value);
+					this.SendPropertyChanging();
+					this._PanelBookTicketsButtonFontColour = value;
+					this.SendPropertyChanged("PanelBookTicketsButtonFontColour");
+					this.OnPanelBookTicketsButtonFontColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PanelViewLiveButtonColour", DbType="NVarChar(256)")]
+		public string PanelViewLiveButtonColour
+		{
+			get
+			{
+				return this._PanelViewLiveButtonColour;
+			}
+			set
+			{
+				if ((this._PanelViewLiveButtonColour != value))
+				{
+					this.OnPanelViewLiveButtonColourChanging(value);
+					this.SendPropertyChanging();
+					this._PanelViewLiveButtonColour = value;
+					this.SendPropertyChanged("PanelViewLiveButtonColour");
+					this.OnPanelViewLiveButtonColourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PanelViewLiveButtonFontColour", DbType="NVarChar(256)")]
+		public string PanelViewLiveButtonFontColour
+		{
+			get
+			{
+				return this._PanelViewLiveButtonFontColour;
+			}
+			set
+			{
+				if ((this._PanelViewLiveButtonFontColour != value))
+				{
+					this.OnPanelViewLiveButtonFontColourChanging(value);
+					this.SendPropertyChanging();
+					this._PanelViewLiveButtonFontColour = value;
+					this.SendPropertyChanged("PanelViewLiveButtonFontColour");
+					this.OnPanelViewLiveButtonFontColourChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EventsToEventScrollers")]
+	public partial class EventsToEventScroller : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _ScrollerID;
+		
+		private int _EventID;
+		
+		private EntityRef<EventScrollerSetting> _EventScrollerSetting;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnScrollerIDChanging(int value);
+    partial void OnScrollerIDChanged();
+    partial void OnEventIDChanging(int value);
+    partial void OnEventIDChanged();
+    #endregion
+		
+		public EventsToEventScroller()
+		{
+			this._EventScrollerSetting = default(EntityRef<EventScrollerSetting>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ScrollerID", DbType="Int NOT NULL")]
+		public int ScrollerID
+		{
+			get
+			{
+				return this._ScrollerID;
+			}
+			set
+			{
+				if ((this._ScrollerID != value))
+				{
+					if (this._EventScrollerSetting.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnScrollerIDChanging(value);
+					this.SendPropertyChanging();
+					this._ScrollerID = value;
+					this.SendPropertyChanged("ScrollerID");
+					this.OnScrollerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventID", DbType="Int NOT NULL")]
+		public int EventID
+		{
+			get
+			{
+				return this._EventID;
+			}
+			set
+			{
+				if ((this._EventID != value))
+				{
+					this.OnEventIDChanging(value);
+					this.SendPropertyChanging();
+					this._EventID = value;
+					this.SendPropertyChanged("EventID");
+					this.OnEventIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EventScrollerSetting_EventsToEventScroller", Storage="_EventScrollerSetting", ThisKey="ScrollerID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public EventScrollerSetting EventScrollerSetting
+		{
+			get
+			{
+				return this._EventScrollerSetting.Entity;
+			}
+			set
+			{
+				EventScrollerSetting previousValue = this._EventScrollerSetting.Entity;
+				if (((previousValue != value) 
+							|| (this._EventScrollerSetting.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EventScrollerSetting.Entity = null;
+						previousValue.EventsToEventScrollers.Remove(this);
+					}
+					this._EventScrollerSetting.Entity = value;
+					if ((value != null))
+					{
+						value.EventsToEventScrollers.Add(this);
+						this._ScrollerID = value.ID;
+					}
+					else
+					{
+						this._ScrollerID = default(int);
+					}
+					this.SendPropertyChanged("EventScrollerSetting");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EventScrollerSettings")]
+	public partial class EventScrollerSetting : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Height;
+		
+		private string _Width;
+		
+		private string _TitleBackgroundColor;
+		
+		private System.Nullable<int> _TitleBackgroundTransparency;
+		
+		private string _TitleFontColor;
+		
+		private string _TimeBackgroundColor;
+		
+		private System.Nullable<int> _TimeBackgroundTransparency;
+		
+		private string _TimeFontColor;
+		
+		private string _CategoryBackgroundColor;
+		
+		private System.Nullable<int> _CategoryBackgroundTransparency;
+		
+		private string _CategoryFontColor;
+		
+		private string _EventType;
+		
+		private string _Name;
+		
+		private string _PortfolioID;
+		
+		private EntitySet<EventsToEventScroller> _EventsToEventScrollers;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnHeightChanging(string value);
+    partial void OnHeightChanged();
+    partial void OnWidthChanging(string value);
+    partial void OnWidthChanged();
+    partial void OnTitleBackgroundColorChanging(string value);
+    partial void OnTitleBackgroundColorChanged();
+    partial void OnTitleBackgroundTransparencyChanging(System.Nullable<int> value);
+    partial void OnTitleBackgroundTransparencyChanged();
+    partial void OnTitleFontColorChanging(string value);
+    partial void OnTitleFontColorChanged();
+    partial void OnTimeBackgroundColorChanging(string value);
+    partial void OnTimeBackgroundColorChanged();
+    partial void OnTimeBackgroundTransparencyChanging(System.Nullable<int> value);
+    partial void OnTimeBackgroundTransparencyChanged();
+    partial void OnTimeFontColorChanging(string value);
+    partial void OnTimeFontColorChanged();
+    partial void OnCategoryBackgroundColorChanging(string value);
+    partial void OnCategoryBackgroundColorChanged();
+    partial void OnCategoryBackgroundTransparencyChanging(System.Nullable<int> value);
+    partial void OnCategoryBackgroundTransparencyChanged();
+    partial void OnCategoryFontColorChanging(string value);
+    partial void OnCategoryFontColorChanged();
+    partial void OnEventTypeChanging(string value);
+    partial void OnEventTypeChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnPortfolioIDChanging(string value);
+    partial void OnPortfolioIDChanged();
+    #endregion
+		
+		public EventScrollerSetting()
+		{
+			this._EventsToEventScrollers = new EntitySet<EventsToEventScroller>(new Action<EventsToEventScroller>(this.attach_EventsToEventScrollers), new Action<EventsToEventScroller>(this.detach_EventsToEventScrollers));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Height", DbType="NVarChar(50)")]
+		public string Height
+		{
+			get
+			{
+				return this._Height;
+			}
+			set
+			{
+				if ((this._Height != value))
+				{
+					this.OnHeightChanging(value);
+					this.SendPropertyChanging();
+					this._Height = value;
+					this.SendPropertyChanged("Height");
+					this.OnHeightChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Width", DbType="NVarChar(50)")]
+		public string Width
+		{
+			get
+			{
+				return this._Width;
+			}
+			set
+			{
+				if ((this._Width != value))
+				{
+					this.OnWidthChanging(value);
+					this.SendPropertyChanging();
+					this._Width = value;
+					this.SendPropertyChanged("Width");
+					this.OnWidthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TitleBackgroundColor", DbType="NVarChar(50)")]
+		public string TitleBackgroundColor
+		{
+			get
+			{
+				return this._TitleBackgroundColor;
+			}
+			set
+			{
+				if ((this._TitleBackgroundColor != value))
+				{
+					this.OnTitleBackgroundColorChanging(value);
+					this.SendPropertyChanging();
+					this._TitleBackgroundColor = value;
+					this.SendPropertyChanged("TitleBackgroundColor");
+					this.OnTitleBackgroundColorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TitleBackgroundTransparency", DbType="Int")]
+		public System.Nullable<int> TitleBackgroundTransparency
+		{
+			get
+			{
+				return this._TitleBackgroundTransparency;
+			}
+			set
+			{
+				if ((this._TitleBackgroundTransparency != value))
+				{
+					this.OnTitleBackgroundTransparencyChanging(value);
+					this.SendPropertyChanging();
+					this._TitleBackgroundTransparency = value;
+					this.SendPropertyChanged("TitleBackgroundTransparency");
+					this.OnTitleBackgroundTransparencyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TitleFontColor", DbType="NVarChar(50)")]
+		public string TitleFontColor
+		{
+			get
+			{
+				return this._TitleFontColor;
+			}
+			set
+			{
+				if ((this._TitleFontColor != value))
+				{
+					this.OnTitleFontColorChanging(value);
+					this.SendPropertyChanging();
+					this._TitleFontColor = value;
+					this.SendPropertyChanged("TitleFontColor");
+					this.OnTitleFontColorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeBackgroundColor", DbType="NVarChar(50)")]
+		public string TimeBackgroundColor
+		{
+			get
+			{
+				return this._TimeBackgroundColor;
+			}
+			set
+			{
+				if ((this._TimeBackgroundColor != value))
+				{
+					this.OnTimeBackgroundColorChanging(value);
+					this.SendPropertyChanging();
+					this._TimeBackgroundColor = value;
+					this.SendPropertyChanged("TimeBackgroundColor");
+					this.OnTimeBackgroundColorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeBackgroundTransparency", DbType="Int")]
+		public System.Nullable<int> TimeBackgroundTransparency
+		{
+			get
+			{
+				return this._TimeBackgroundTransparency;
+			}
+			set
+			{
+				if ((this._TimeBackgroundTransparency != value))
+				{
+					this.OnTimeBackgroundTransparencyChanging(value);
+					this.SendPropertyChanging();
+					this._TimeBackgroundTransparency = value;
+					this.SendPropertyChanged("TimeBackgroundTransparency");
+					this.OnTimeBackgroundTransparencyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeFontColor", DbType="NVarChar(50)")]
+		public string TimeFontColor
+		{
+			get
+			{
+				return this._TimeFontColor;
+			}
+			set
+			{
+				if ((this._TimeFontColor != value))
+				{
+					this.OnTimeFontColorChanging(value);
+					this.SendPropertyChanging();
+					this._TimeFontColor = value;
+					this.SendPropertyChanged("TimeFontColor");
+					this.OnTimeFontColorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryBackgroundColor", DbType="NVarChar(50)")]
+		public string CategoryBackgroundColor
+		{
+			get
+			{
+				return this._CategoryBackgroundColor;
+			}
+			set
+			{
+				if ((this._CategoryBackgroundColor != value))
+				{
+					this.OnCategoryBackgroundColorChanging(value);
+					this.SendPropertyChanging();
+					this._CategoryBackgroundColor = value;
+					this.SendPropertyChanged("CategoryBackgroundColor");
+					this.OnCategoryBackgroundColorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryBackgroundTransparency", DbType="Int")]
+		public System.Nullable<int> CategoryBackgroundTransparency
+		{
+			get
+			{
+				return this._CategoryBackgroundTransparency;
+			}
+			set
+			{
+				if ((this._CategoryBackgroundTransparency != value))
+				{
+					this.OnCategoryBackgroundTransparencyChanging(value);
+					this.SendPropertyChanging();
+					this._CategoryBackgroundTransparency = value;
+					this.SendPropertyChanged("CategoryBackgroundTransparency");
+					this.OnCategoryBackgroundTransparencyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryFontColor", DbType="NVarChar(50)")]
+		public string CategoryFontColor
+		{
+			get
+			{
+				return this._CategoryFontColor;
+			}
+			set
+			{
+				if ((this._CategoryFontColor != value))
+				{
+					this.OnCategoryFontColorChanging(value);
+					this.SendPropertyChanging();
+					this._CategoryFontColor = value;
+					this.SendPropertyChanged("CategoryFontColor");
+					this.OnCategoryFontColorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventType", DbType="NVarChar(100)")]
+		public string EventType
+		{
+			get
+			{
+				return this._EventType;
+			}
+			set
+			{
+				if ((this._EventType != value))
+				{
+					this.OnEventTypeChanging(value);
+					this.SendPropertyChanging();
+					this._EventType = value;
+					this.SendPropertyChanged("EventType");
+					this.OnEventTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(256)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PortfolioID", DbType="NVarChar(256)")]
+		public string PortfolioID
+		{
+			get
+			{
+				return this._PortfolioID;
+			}
+			set
+			{
+				if ((this._PortfolioID != value))
+				{
+					this.OnPortfolioIDChanging(value);
+					this.SendPropertyChanging();
+					this._PortfolioID = value;
+					this.SendPropertyChanged("PortfolioID");
+					this.OnPortfolioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EventScrollerSetting_EventsToEventScroller", Storage="_EventsToEventScrollers", ThisKey="ID", OtherKey="ScrollerID")]
+		public EntitySet<EventsToEventScroller> EventsToEventScrollers
+		{
+			get
+			{
+				return this._EventsToEventScrollers;
+			}
+			set
+			{
+				this._EventsToEventScrollers.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_EventsToEventScrollers(EventsToEventScroller entity)
+		{
+			this.SendPropertyChanging();
+			entity.EventScrollerSetting = this;
+		}
+		
+		private void detach_EventsToEventScrollers(EventsToEventScroller entity)
+		{
+			this.SendPropertyChanging();
+			entity.EventScrollerSetting = null;
 		}
 	}
 	

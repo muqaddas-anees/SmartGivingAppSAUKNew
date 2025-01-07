@@ -49,8 +49,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
-      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    <Reference Include="AjaxControlToolkit, Version=19.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.19.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="AjaxControlToolkit.HtmlEditor.Sanitizer, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <HintPath>..\packages\AjaxControlToolkit.HtmlEditor.Sanitizer.20.1.0\lib\net40\AjaxControlToolkit.HtmlEditor.Sanitizer.dll</HintPath>
@@ -577,6 +577,13 @@
     <Compile Include="App\AddEducationalVideo.aspx.designer.cs">
       <DependentUpon>AddEducationalVideo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App\AddEventScroller.aspx.cs">
+      <DependentUpon>AddEventScroller.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\AddEventScroller.aspx.designer.cs">
+      <DependentUpon>AddEventScroller.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\AddFundraiser.aspx.cs">
       <DependentUpon>AddFundraiser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -709,6 +716,27 @@
     </Compile>
     <Compile Include="App\controls\VideoCtrl.ascx.designer.cs">
       <DependentUpon>VideoCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="App\EventDisplaySettings.aspx.cs">
+      <DependentUpon>EventDisplaySettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\EventDisplaySettings.aspx.designer.cs">
+      <DependentUpon>EventDisplaySettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\EventScroller.aspx.cs">
+      <DependentUpon>EventScroller.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\EventScroller.aspx.designer.cs">
+      <DependentUpon>EventScroller.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Events\EventReminders.aspx.cs">
+      <DependentUpon>EventReminders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Events\EventReminders.aspx.designer.cs">
+      <DependentUpon>EventReminders.aspx</DependentUpon>
     </Compile>
     <Compile Include="App\GiftAid.aspx.cs">
       <DependentUpon>GiftAid.aspx</DependentUpon>
@@ -2033,6 +2061,13 @@
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="WF\AdminChgPassword.aspx.cs">
       <DependentUpon>AdminChgPassword.aspx</DependentUpon>
@@ -5036,6 +5071,7 @@
     <Content Include="App\Activity\Activitylist.aspx" />
     <Content Include="App\Activity\AddActivity.aspx" />
     <Content Include="App\AddEducationalVideo.aspx" />
+    <Content Include="App\AddEventScroller.aspx" />
     <Content Include="App\AddFundraiser.aspx" />
     <Content Include="App\autocomplete.asmx" />
     <Content Include="App\AutoComplete.aspx" />
@@ -5080,8 +5116,11 @@
     <Content Include="App\DonorCRM.aspx" />
     <Content Include="App\DonorList.aspx" />
     <Content Include="App\EmailTemplates\EmailActive.html" />
+    <Content Include="App\EventDisplaySettings.aspx" />
+    <Content Include="App\EventScroller.aspx" />
     <Content Include="App\Events\AddSponsor.aspx" />
     <Content Include="App\Events\EventInteraction.aspx" />
+    <Content Include="App\Events\EventReminders.aspx" />
     <Content Include="App\Events\PollAndSurvey\EventInteraction.aspx" />
     <Content Include="App\Events\PollAndSurvey\Polls\Grid_Set_Up_New_Poll.aspx" />
     <Content Include="App\Events\PollAndSurvey\Polls\Poll_Display.aspx" />
@@ -14356,6 +14395,7 @@
     <Content Include="VariationApprove.aspx" />
     <Content Include="Views\Home\index.aspx" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="WebForm2.aspx" />
     <Content Include="Web\css\dataTables.editor.css" />
     <Content Include="Web\css\dataTables.editor.min.css" />
     <Content Include="Web\css\editor.bootstrap.css" />

@@ -645,7 +645,23 @@ namespace DeffinityAppDev.App.Events.controls
 
         private string getButton(string url, string name)
         {
-            var v = string.Format("<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td><table border='0' cellspacing='0' cellpadding='0'><tr><td align = 'center' style = 'border-radius: 3px;' bgcolor = '#7239EA'><a href = '{0}' target = '_blank' style = 'font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; text-decoration: none;border-radius: 3px; padding: 12px 18px; border: 1px solid #7239EA; display: inline-block;'>{1}</a></td ></tr></table></td></tr ></table>", url, name);
+            var v = string.Format(
+                "<table width='100%' border='0' cellspacing='0' cellpadding='0' style='margin: 0; padding: 0;'>" +
+                "<tr>" +
+                "<td style='margin: 0; padding: 0;'>" +
+                "<table border='0' cellspacing='0' cellpadding='0' style='margin: 0; padding: 0;'>" +
+                "<tr>" +
+                "<td align='center' style='border-radius: 3px; margin: 0; padding: 0;' bgcolor='#7CD474'>" +
+                "<a href='{0}' target='_blank' style='font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 12px 18px; border: 1px solid #7239EA; display: inline-block; margin: 0;'>" +
+                "{1}" +
+                "</a>" +
+                "</td>" +
+                "</tr>" +
+                "</table>" +
+                "</td>" +
+                "</tr>" +
+                "</table>",
+                url, name);
             return v;
         }
         protected void btnSave_Click(object sender, EventArgs e)

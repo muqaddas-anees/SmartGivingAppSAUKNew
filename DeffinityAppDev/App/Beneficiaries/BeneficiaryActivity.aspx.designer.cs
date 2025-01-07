@@ -60,6 +60,15 @@ namespace DeffinityAppDev.App.Beneficiaries
         protected global::System.Web.UI.WebControls.Repeater rptActivities;
 
         /// <summary>
+        /// hfActivityID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfActivityID;
+
+        /// <summary>
         /// lblDate control.
         /// </summary>
         /// <remarks>

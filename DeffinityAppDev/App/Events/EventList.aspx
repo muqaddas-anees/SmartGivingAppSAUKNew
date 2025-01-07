@@ -9,6 +9,11 @@
     Events
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+	<style>
+		 .icon-20 {
+        font-size: 20px !important;
+    }
+	</style>
 	<script type="text/javascript">
         function copyUrlToClipboard(url) {
             // Create a temporary input element
@@ -55,7 +60,13 @@
                         <div id="kt_content_container1" class="container-xxl">
 		<div class="row" style="float:right;">
 			<div class="col-sm-6">
+				<button type="button" class="btn btn-primary" onclick="displayAllEmbedCode()">
+  Show Embed Code
+</button>
 			 </div>
+			<!-- Button to Trigger Modal -->
+
+
 				<div class="col-sm-6">
 			<asp:DropDownList ID="ddlSelect" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSelect_SelectedIndexChanged" SkinID="ddl_225px">
 			<asp:ListItem Text="All events" Value="all"></asp:ListItem> 
@@ -700,18 +711,49 @@ ItemPlaceholderID="itemPlaceHolder1" OnPagePropertiesChanging="OnPagePropertiesC
                                     <div class="row">
                                                            
 															<div class="col-lg-12  my-10">
-					
-																<asp:Button ID="btnView" runat="server" Text="View Event" CommandName="viewmore" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"  />
-<asp:Button ID="Button1" runat="server" Text="Go Live" CssClass="btn btn-success" CommandName="golive" CommandArgument='<%# Eval("unid") %>' style='<%# "margin-right:10px;background-color:#50CD89; display:" + Eval("display") %>' />
+												<asp:HiddenField runat="server" ID="hdWordpressCode" Value='<%# HttpUtility.JavaScriptStringEncode(Eval("WordpressCode").ToString()) %>' ClientIDMode="Static" />
+														<asp:LinkButton ID="btnView" runat="server" CommandName="viewmore" CommandArgument='<%# Eval("unid") %>' CssClass="btn btn-primary text-white" ToolTip="Preview the event as a visit to your site." style="margin-right:10px">
+    <i class="bi bi-binoculars icon-20"></i>
+</asp:LinkButton>
 
-																<asp:Button ID="btnEditEvent" runat="server" Text="Edit Event" CommandName="editevent" CssClass="btn btn-light" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"    />
-																<asp:Button ID="btnGenerate" runat="server" Text="Download QR" CommandName="qr" CssClass="btn btn-light" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"   />
-																<asp:Button ID="btnSocialSettings" runat="server" Text="Social Settings" CommandName="social" CssClass="btn btn-light" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"   />
-															<asp:Button ID="btnCopyURL" runat="server" Text="Copy URL" CommandName="url" CssClass="btn btn-light" OnClientClick='<%# Eval("QRcode", "return copyUrlToClipboard(\"{0}\");") %>' CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"   />
-																			<asp:Button ID="btnAtten" runat="server" Text="View Attendees" CommandName="attendees" CssClass="btn btn-light" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"   />
-																	<asp:Button ID="btnEventInteraction" runat="server" Text="Event Interaction" CommandName="interaction" CssClass="btn btn-light" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px"  Visible="false" />
-																<asp:Button ID="btnDelete" runat="server" Text="Delete" CommandName="del" CssClass="btn btn-light" CommandArgument='<%# Eval("unid") %>' style="margin-right:10px" OnClientClick="return confirm('Do you want to delete this record?');"   />
-															</div>
+<asp:LinkButton ID="Button1" runat="server" CommandName="golive" CommandArgument='<%# Eval("unid") %>' CssClass="btn btn-success" ToolTip="Go to the Livestream page" style='<%# "margin-right:10px;background-color:#50CD89; display:" + Eval("display") %>'>
+    Go Live
+</asp:LinkButton>
+
+<asp:LinkButton ID="btnEditEvent" runat="server" CommandName="editevent" CommandArgument='<%# Eval("unid") %>' CssClass="btn btn-light" ToolTip="Edit the event" style="margin-right:10px">
+    <i class="bi bi-pencil icon-20"></i>
+</asp:LinkButton>
+
+<asp:LinkButton ID="Button3" runat="server" CommandName="reminder" CommandArgument='<%# Eval("unid") %>' CssClass="btn btn-light" ToolTip="Schedule event reminders." style="margin-right:10px">
+    <i class="bi bi-calendar2-check icon-20"></i>
+</asp:LinkButton>
+
+<asp:LinkButton ID="btnGenerate" runat="server" CommandName="qr" CommandArgument='<%# Eval("unid") %>' CssClass="btn btn-light" ToolTip="Download the QR code for this event" style="margin-right:10px">
+    <i class="bi bi-qr-code-scan icon-20"></i>
+</asp:LinkButton>
+
+<asp:LinkButton ID="btnSocialSettings" runat="server" CommandName="social" CommandArgument='<%# Eval("unid") %>' CssClass="btn btn-light" ToolTip="Set up the social sharing options for this event to ensure it appears as you want when shared on social media platforms." style="margin-right:10px">
+    <i class="bi bi-share icon-20"></i>
+</asp:LinkButton>
+
+<asp:LinkButton ID="btnCopyURL" runat="server" CommandName="url" CommandArgument='<%# Eval("unid") %>' CssClass="btn btn-light" ToolTip="Copy the event's short URL to share it on social media, send via SMS, email, or any other platform." OnClientClick='<%# Eval("QRcode", "return copyUrlToClipboard(\"{0}\");") %>' style="margin-right:10px">
+    <i class="bi bi-copy icon-20"></i>
+</asp:LinkButton>
+
+<asp:LinkButton ID="btnAtten" runat="server" CommandName="attendees" CommandArgument='<%# Eval("unid") %>' CssClass="btn btn-light" ToolTip="Access the list of potential attendees, review ticket sales statistics, and resend tickets to them before the event." style="margin-right:10px">
+    <i class="bi bi-people icon-20"></i>
+</asp:LinkButton>
+
+<asp:LinkButton ID="btnEventInteraction" runat="server" CommandName="interaction" CommandArgument='<%# Eval("unid") %>' CssClass="btn btn-light" ToolTip="Event Interaction" Visible="false" style="margin-right:10px">
+    Event Interaction
+</asp:LinkButton>
+
+<asp:LinkButton ID="btnDelete" runat="server" CommandName="del" CommandArgument='<%# Eval("unid") %>' CssClass="btn btn-light" ToolTip="Delete this event" OnClientClick="return confirmDelete(this);" style="margin-right:10px">
+    <i class="bi bi-trash icon-20"></i>
+</asp:LinkButton>
+
+
+	</div>
                                                           
                                                         </div>
                                 <!--end::Body-->
@@ -750,7 +792,110 @@ ItemPlaceholderID="itemPlaceHolder1" OnPagePropertiesChanging="OnPagePropertiesC
     <!--end::Javascript-->
 
 
+	<!-- Bootstrap Modal -->
+<div class="modal fade" id="embedCodeModal" tabindex="-1" aria-labelledby="embedCodeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="embedCodeModalLabel">WordPress Embed Code</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <!-- Embed Code Display -->
+          <label for="embedCodeText" class="form-label">Copy the code below:</label>
+          <textarea id="embedCodeText" class="form-control" rows="4">
+<!-- Sample WordPress Embed Code -->
 
+          </textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!-- Copy Button -->
+        <button type="button" class="btn btn-primary" id="copyEmbedCode">Copy Code</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="embedAllCodeModal" tabindex="-1" aria-labelledby="embedCodeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="embedCodeModalLabel">WordPress Embed Code</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <!-- Embed Code Display -->
+          <label for="embedAllCodeText" class="form-label">Copy the code below:</label>
+          <textarea id="embedAllCodeText" class="form-control" rows="4">
+<!-- Sample WordPress Embed Code -->
+          </textarea>
+        </div>
+        
+        <!-- Configuration Options -->
+      <!-- Configuration Options -->
+		      <div class="row mb-3 align-items-center">
+      <div class="col-sm-4">
+        <label for="showPaging" class="form-label">Show Paging</label>
+      </div>
+      <div class="col-sm-4">
+        <input type="checkbox" id="showPaging" onchange="updateEmbedCode()" class="form-check-input" />
+      </div>
+    </div>
+
+
+        <div class="row mb-3 align-items-center">
+          <div class="col-lg-12" style="display:flex;align-items:center">
+            <label for="eventsPerPage" class="">Show</label>
+         
+            <input type="number" value="10" oninput="updateEmbedCode()" id="eventsPerPage" class="form-control" style="width: 80px;margin:0px 10px" />
+      
+         
+            Per Page
+          </div>
+        </div>
+
+    
+ 
+		  <div class="row mb-3">
+  <div class="col-sm-4">
+    <label for="viewType" class="form-label">Type of View</label>
+  </div>
+  <div class="col-sm-8">
+    <select id="viewType" class="form-control" style="max-width: 150px;" onchange="updateEmbedCode()">
+      <option value="panel">Panel View</option>
+      <option value="list">List View</option>
+    </select>
+  </div>
+</div>
+		         <div class="row mb-3">
+         <div class="col-sm-4">
+           <label for="panelHeight" class="form-label">Panel Height</label>
+         </div>
+         <div class="col-sm-8">
+           <input type="number" oninput="updateEmbedCode()" id="panelHeight" class="form-control" placeholder="Enter Panel Height" style="max-width: 150px;" />
+         </div>
+       </div>
+        <div class="row mb-3">
+          <div class="col-sm-4">
+            <label for="panelWidth" class="form-label">Panel Width</label>
+          </div>
+          <div class="col-sm-8">
+            <input type="number" id="panelWidth" oninput="updateEmbedCode()" class="form-control" placeholder="Enter Panel Width" style="max-width: 150px;" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!-- Copy Button -->
+        <button type="button" class="btn btn-primary" id="copyAllEmbedCode">Copy Code</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 	<ajaxToolkit:ModalPopupExtender ID="mdlSocialSettings" runat="server" BackgroundCssClass="modalBackground"
@@ -841,7 +986,233 @@ ItemPlaceholderID="itemPlaceHolder1" OnPagePropertiesChanging="OnPagePropertiesC
 
 
     </asp:Panel>
+	<asp:HiddenField runat="server" ID="hfAllEmbedCode" ClientIDMode="Static" />
+		<asp:HiddenField runat="server" ID="hfAllEmbedListCode" ClientIDMode="Static" />
 
+	<asp:HiddenField runat="server" ID="BasehfAllEmbedCode" ClientIDMode="Static" />
+	<asp:HiddenField runat="server" ID="BasehfAllEmbedListCode" ClientIDMode="Static" />
+	<script>
+		function updateEmbedCode() {
+            const viewType = document.getElementById("viewType").value;
+			var display = "";
+			var bgcolor = "#990000";
+            if (viewType === "panel") {
+				display = "";
+				bgcolor = "#50CD89";
+            } else if (viewType === "list") {
+                 display = "flex";
+            }
+            const JS = `
+<script>
+// Wait for the DOM to fully load
+
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("PlegitWordpressEmbed");
+
+    // Check if pagination is enabled
+    if (container && container.dataset.showPaging === "true") {
+        const itemsPerPage = parseInt(container.dataset.pagingValue, 10) || 10;
+        const items = Array.from(container.children);
+
+        // Filter out the pagination container if already exists
+        const mainItems = items.filter(item => !item.classList.contains('pagination-container'));
+
+        // Calculate total pages
+        const totalPages = Math.ceil(mainItems.length / itemsPerPage);
+
+        // Create pagination controls
+        const paginationContainer = document.createElement("div");
+        paginationContainer.className = "pagination-container";
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement("button");
+            pageButton.className = "pagination-button";
+            pageButton.textContent = i;
+            pageButton.dataset.page = i;
+            paginationContainer.appendChild(pageButton);
+        }
+
+        // Add pagination container to the DOM
+        container.appendChild(paginationContainer);
+
+        // Function to display items for the current page
+        const showPage = (pageNumber) => {
+            const start = (pageNumber - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+
+            mainItems.forEach((item, index) => {
+                item.style.display = index >= start && index < end ? "${display}" : "none";
+            });
+
+            // Highlight the active page button
+            document.querySelectorAll(".pagination-button").forEach(button => {
+                button.classList.toggle("active", button.dataset.page == pageNumber);
+            });
+        };
+
+        // Initial display of the first page
+        showPage(1);
+
+        // Add event listeners to pagination buttons
+        document.querySelectorAll(".pagination-button").forEach(button => {
+            button.addEventListener("click", () => {
+                const page = parseInt(button.dataset.page, 10);
+                showPage(page);
+            });
+        });
+    }
+
+    // Styling for pagination controls
+    const style = document.createElement("style");
+    style.textContent = \`
+        #PlegitWordpressEmbed {
+            position: relative; /* Ensure positioning context for child elements */
+        }
+        .pagination-container {
+            position: absolute; /* Place at the bottom of the parent */
+            bottom: 0;
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Correct centering alignment */
+            text-align: center;
+            margin-top: 20px; /* Space between content and pagination */
+        }
+        .pagination-button {
+            margin: 0 5px;
+            padding: 10px 15px;
+            border: none;
+            background-color: #ddd;
+            color: #333;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .pagination-button.active {
+            background-color: ${bgcolor};
+            color: white;
+        }
+        .pagination-button:hover {
+            background-color: ${bgcolor} ;
+            color: white;
+        }
+    \`;
+    document.head.appendChild(style);
+});
+// Closing script tag split to avoid parsing issues
+</scr` + `ipt>
+`;
+       // Get the selected value from the dropdown
+		
+            const heightInput = document.getElementById("panelHeight").value;
+			const widthInput = document.getElementById("panelWidth").value;
+
+            const height = heightInput+"px" || "400px"; // Use defaultHeight if input is empty
+			const width = widthInput + "px" || "600px";   // Use defaultWidth if input is empty
+
+			const showPaging = document.getElementById('showPaging').checked;
+			const pagingValue = document.getElementById('eventsPerPage').value;
+
+            // Get the hidden field values
+            var panelEmbedCode = document.getElementById("BasehfAllEmbedCode").value;
+            var listEmbedCode = document.getElementById("BasehfAllEmbedListCode").value;
+
+            panelEmbedCode = panelEmbedCode
+								.replace(/{{height}}/g, height)
+								.replace(/{{width}}/g, width)
+								.replace(/{{showPaging}}/g, showPaging)
+								.replace(/{{pageValue}}/g, pagingValue);
+			listEmbedCode = listEmbedCode
+								.replace(/{{height}}/g, height)
+								.replace(/{{width}}/g, width)
+								.replace(/{{showPaging}}/g, showPaging)
+								.replace(/{{pageValue}}/g, pagingValue);
+
+			document.getElementById("hfAllEmbedCode").value = panelEmbedCode;
+			document.getElementById("hfAllEmbedListCode").value = listEmbedCode;
+            // Get the textarea
+            const embedCodeTextArea = document.getElementById("embedAllCodeText");
+			
+            // Update the textarea based on the selection
+            if (viewType === "panel") {
+                embedCodeTextArea.value = JSON.parse('"' + panelEmbedCode + '"')+JS; 
+            } else if (viewType === "list") {
+                embedCodeTextArea.value = JSON.parse('"' + listEmbedCode + '"')+JS; 
+            }
+        }
+
+    </script>
+	<script>
+        document.getElementById("copyAllEmbedCode").addEventListener("click", function () {
+            var embedCodeTextarea = document.getElementById("embedAllCodeText");
+            embedCodeTextarea.select();
+            document.execCommand("copy");
+
+            // Optional: Show a temporary alert to confirm
+			showswal("Copied Successfully!", "OK");
+        });
+    </script>
+	<script>
+        function showEmbedCodeModal(embedCode) {
+            // Set the value of the textarea in the modal
+            document.getElementById('embedAllCodeText').value = embedCode;
+
+            // Show the modal
+            var modal = new bootstrap.Modal(document.getElementById('embedAllCodeText'));
+            modal.show();
+        }
+    </script>
+	<script>
+        function displayAllEmbedCode() {
+            var encodedHtml = document.getElementById('hfAllEmbedCode').value;
+
+            // Decode the encoded HTML using JSON.parse
+            var decodedHtml = JSON.parse('"' + encodedHtml + '"');
+
+            // Set the decoded HTML into the textarea
+            document.getElementById('embedAllCodeText').value = decodedHtml;
+
+            // Show the modal
+            $('#embedAllCodeModal').modal('show');
+        }
+
+
+    </script>
+<script>
+    function confirmDelete(button) {
+        // Prevent the default action (the postback via the link)
+        event.preventDefault();
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "To delete this event type the word 'EVENT' to confirm you wish to delete it. Note: You cannot undo this action.",
+            input: "text",
+            inputPlaceholder: "Type 'EVENT'",
+            showCancelButton: true,
+            confirmButtonText: "Delete",
+            cancelButtonText: "Cancel",
+            confirmButtonColor: "#d33",
+            customClass: {
+                cancelButton: "btn btn-light",
+                confirmButton: "btn btn-danger"
+            },
+            preConfirm: (inputValue) => {
+                if (inputValue !== "EVENT") {
+                    Swal.showValidationMessage("You must type 'EVENT' to confirm.");
+                }
+                return inputValue === "EVENT";
+            },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Extract the href from the button (the postback info)
+                var href = button.getAttribute("href");
+
+                // Manually trigger the postback using the href (this calls __doPostBack)
+                eval(href); // This will run the __doPostBack with the correct arguments
+            }
+        });
+
+        // Return false to prevent immediate postback
+        return false;
+    }
+</script>
 
 
 </asp:Content>

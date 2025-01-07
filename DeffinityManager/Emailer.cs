@@ -68,7 +68,7 @@ public class Emailer
     {
         try
         {
-            addressFrom = new MailAddress(FromEmailID);
+            addressFrom = new MailAddress("service@plegit.ai");
             addressTo = new MailAddress(ToEmailID);
             MailMessage mailMessage = new MailMessage(addressFrom, addressTo);
             mailMessage.Subject = Subject;

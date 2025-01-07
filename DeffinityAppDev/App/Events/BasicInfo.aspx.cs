@@ -19,6 +19,7 @@ namespace DeffinityAppDev.App.Events
             {
                 if (!IsPostBack)
                 {
+                    LoadPopUP();
                     pnlURLs.Visible = false;
                     setMapKey();
                     IProjectRepository<ProjectMgt.Entity.ProjectDefault> pd = new ProjectRepository<ProjectMgt.Entity.ProjectDefault>();
@@ -47,6 +48,61 @@ namespace DeffinityAppDev.App.Events
                 LogExceptions.WriteExceptionLog(ex);
             }
         }
+        public static string GetAddress(string address1, string address2, string city, string state, string postcode, string country)
+        {
+            // Concatenate the non-null and non-empty values with a space separator
+            return string.Join(" ", new[] { address1, address2, city, state, postcode, country }
+                                    .Where(item => !string.IsNullOrWhiteSpace(item)));
+        }
+
+
+        private void LoadPopUP()
+        {
+            var ActivityDetail = PortfolioMgt.BAL.ActivityDetailsBAL.ActivityDetailsBAL_SelectByUNID(QueryStringValues.UNID);
+            if (ActivityDetail != null)
+            {
+                eventName.Text = ActivityDetail.Title;
+                Literal1.Text = ActivityDetail.StartDateTime.ToString("dd/MM/yyyy");
+                Literal2.Text = GetAddress(ActivityDetail.Address1, ActivityDetail.Address2, ActivityDetail.City, ActivityDetail.state_Province, ActivityDetail.Postalcode, ActivityDetail.Country);
+                TimeSpan duration = ActivityDetail.EndDateTime - ActivityDetail.StartDateTime;
+
+                if (duration.TotalMinutes < 60)
+                {
+                    Literal3.Text = $"{(int)duration.TotalMinutes} minutes";
+                }
+                else
+                {
+                    int hours = (int)duration.TotalHours;
+                    int minutes = duration.Minutes; // Remainder minutes
+                    Literal3.Text = $"{hours} hour(s) and {minutes} minute(s)";
+                }
+                string title = ActivityDetail.Title;
+                string location = Literal2.Text;
+                string details = ActivityDetail.Description??"Join us for this exciting event!";
+                DateTime startDateTime = ActivityDetail.StartDateTime;
+                DateTime endDateTime = ActivityDetail.EndDateTime;
+
+                // Generate calendar links and `.ics` file
+                Google.Attributes["href"] = GenerateGoogleCalendarLink(title, startDateTime, endDateTime, location, details);
+                Outlook.Attributes["href"] = GenerateOutlookCalendarLink(title, startDateTime, endDateTime, location, details);
+
+                string icsContent = GenerateICSFile(title, startDateTime, endDateTime, location, details);
+                string base64Ics = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(icsContent));
+                string icsDataUrl = $"data:text/calendar;charset=utf-8;base64,{base64Ics}";
+                Apple.Attributes["href"] = icsDataUrl;
+                ICS.Attributes["href"] = icsDataUrl; // Download link
+
+            }
+            else
+            {
+                return;
+            }
+        
+            if (Request.QueryString["popup"]=="true")
+            { 
+            showModal.Text = "<script>showCalendarInviteModal()</script>";
+            }
+        }
         private void setMapKey()
         {
             try
@@ -59,6 +115,49 @@ namespace DeffinityAppDev.App.Events
             {
                 LogExceptions.WriteExceptionLog(ex);
             }
+        }
+        private string GenerateGoogleCalendarLink(string title, DateTime start, DateTime end, string location, string details)
+        {
+            string startUtc = start.ToUniversalTime().ToString("yyyyMMddTHHmmssZ");
+            string endUtc = end.ToUniversalTime().ToString("yyyyMMddTHHmmssZ");
+            string link = $"https://calendar.google.com/calendar/render?action=TEMPLATE&text={Uri.EscapeDataString(title)}" +
+                          $"&dates={startUtc}/{endUtc}&details={Uri.EscapeDataString(details)}&location={Uri.EscapeDataString(location)}";
+            return link;
+        }
+
+        private string GenerateYahooCalendarLink(string title, DateTime start, DateTime end, string location, string details)
+        {
+            string startUtc = start.ToUniversalTime().ToString("yyyyMMddTHHmmssZ");
+            string endUtc = end.ToUniversalTime().ToString("yyyyMMddTHHmmssZ");
+            string link = $"https://calendar.yahoo.com/?v=60&title={Uri.EscapeDataString(title)}" +
+                          $"&st={startUtc}&et={endUtc}&desc={Uri.EscapeDataString(details)}&in_loc={Uri.EscapeDataString(location)}";
+            return link;
+        }
+
+        private string GenerateOutlookCalendarLink(string title, DateTime start, DateTime end, string location, string details)
+        {
+            string startUtc = start.ToUniversalTime().ToString("yyyyMMddTHHmmssZ");
+            string endUtc = end.ToUniversalTime().ToString("yyyyMMddTHHmmssZ");
+            string link = $"https://outlook.live.com/owa/?path=/calendar/action/compose&subject={Uri.EscapeDataString(title)}" +
+                          $"&body={Uri.EscapeDataString(details)}&startdt={startUtc}&enddt={endUtc}&location={Uri.EscapeDataString(location)}";
+            return link;
+        }
+
+        private string GenerateICSFile(string title, DateTime start, DateTime end, string location, string details)
+        {
+            return $"BEGIN:VCALENDAR\n" +
+                   $"VERSION:2.0\n" +
+                   $"PRODID:-//Your Organization//Your Product//EN\n" +
+                   $"BEGIN:VEVENT\n" +
+                   $"UID:{Guid.NewGuid()}\n" +
+                   $"DTSTAMP:{DateTime.UtcNow:yyyyMMddTHHmmssZ}\n" +
+                   $"DTSTART:{start:yyyyMMddTHHmmssZ}\n" +
+                   $"DTEND:{end:yyyyMMddTHHmmssZ}\n" +
+                   $"SUMMARY:{title}\n" +
+                   $"DESCRIPTION:{details}\n" +
+                   $"LOCATION:{location}\n" +
+                   $"END:VEVENT\n" +
+                   $"END:VCALENDAR";
         }
         private void BindCountry()
         {
@@ -186,7 +285,7 @@ namespace DeffinityAppDev.App.Events
                     //else
                     //    Response.Redirect("~/App/Events/EventList.aspx", false);
 
-                    Response.Redirect("~/App/Events/BasicInfo.aspx?unid="+ eEntity.unid, false);
+                    Response.Redirect("~/App/Events/BasicInfo.aspx?popup=true&unid="+ eEntity.unid, false);
 
                 }
                 else
@@ -220,7 +319,7 @@ namespace DeffinityAppDev.App.Events
                     //eEntity.Price = Convert.ToDouble(!string.IsNullOrEmpty(txtPrice.Value.Trim()) ? txtPrice.Value.Trim() : "0.00");
                     PortfolioMgt.BAL.ActivityDetailsBAL.ActivityDetailsBAL_Update(eEntity);
                     sessionKeys.Message = "Event updated successfully";
-                    Response.Redirect("~/App/Events/BasicInfo.aspx?unid=" + eEntity.unid, false);
+                    Response.Redirect("~/App/Events/BasicInfo.aspx?popup=true&unid=" + eEntity.unid, false);
                     //if (nav_Showspeckers)
                     //    Response.Redirect("~/App/Events/ManageSpeakers.aspx?unid=" + eEntity.unid, false);
 

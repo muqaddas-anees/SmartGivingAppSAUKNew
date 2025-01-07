@@ -151,13 +151,10 @@
 											<h3 class="fs-2hx text-dark mb-5">Events			</h3>					</div>
 										<!--end::Top-->
 										<!--begin::Row-->
-											<div class="scroll-y mh-540px">
-										<div class="row g-5 mb-6" style="overflow-y:scroll;max-height:540px">
-                                           
+										
                                             <Pref:ActivitiesCtrl runat="server" ID="ActivitiesCtrl" />
 											</div>
-												</div>
-									</div>
+											
 									</div>
 
 								
@@ -337,7 +334,6 @@
             });
         }
 		
-
         $(window).on('load', function () {
             //   
 			page_load();
@@ -449,6 +445,9 @@
 	
 <%--	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"/>--%>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+		<script>
+
+</script>
 <script type="text/javascript">
 
 

@@ -27,6 +27,11 @@
 		
 	<%-- <%: System.Web.Optimization.Styles.Render("~/bundles/metroniccss") %>--%>
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		#chkContact{
+			margin-right:10px;
+		}
+	</style>
 	 <style>
      .modalBackground
     {
@@ -238,12 +243,35 @@
 									
 										<!--end::Chat-->
 									<div class="d-flex align-items-center ms-1 ms-lg-3 mx-15" >
-																				<a class="btn btn-video" style="background-color:#50CD89;color:white;" href="marketplace.aspx" ><i class="bi bi-bag-plus" style="color:white;margin-right:10px;"></i> Marketplace</a>
 
+<a 
+    class="btn btn-video" 
+    style="background-color:#50CD89;color:white;margin-left:20px;" 
+    href="#" 
+    data-bs-toggle="modal" 
+    data-bs-target="#feedbackModal"
+    data-bs-placement="top" 
+    title="Got a suggestion to improve? We’d love to hear it!"
+>
+    <i class="bi bi-lightbulb" style="color:white;margin-right:10px;"></i> Feedback
+</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+
+
+</script>
 										<a class="btn btn-video" style="background-color:#50CD89;color:white;margin-left:20px;" href="https://academy.plegit.ai" target="_blank"><i class="bi bi-book" style="color:white;margin-right:10px;"></i> Academy</a>
-										</div>
+	
+									</div>
 										<!--begin::User-->
 										<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+											<!--begin::Menu wrapper-->
 											<!--begin::Menu wrapper-->
 											<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
 												<img id="imguser" runat="server" src="../assets/media/avatars/150-26.jpg" alt="User" />
@@ -355,6 +383,69 @@
 			</div>
 			<!--end::Page-->
 		</div>
+
+	<!-- Feedback Input Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="feedbackModalLabel">Got Ideas? Tell us what's on your mind!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5 class="text-center mb-6">Your feedback helps us improve! Please share your thoughts, and we'll get back to you if needed.</h5>
+        
+        <!-- ASP.NET Input Fields -->
+        <asp:TextBox ID="txtName" runat="server" CssClass="form-control" Placeholder="Name"></asp:TextBox><br />
+        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Placeholder="Email Address"></asp:TextBox><br />
+        <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" Placeholder="Mobile Number"></asp:TextBox><br />
+        
+        <asp:DropDownList ID="ddlFeedbackType" runat="server" style="font-weight:normal!important" CssClass="form-control text-muted">
+            <asp:ListItem Value="" Text="Feedback Type"></asp:ListItem>
+            <asp:ListItem Value="Feature request" Text="Feature request"></asp:ListItem>
+            <asp:ListItem Value="Bug Report" Text="Bug Report"></asp:ListItem>
+            <asp:ListItem Value="General Feedback" Text="General Feedback"></asp:ListItem>
+        </asp:DropDownList><br />
+        
+        <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="4" Placeholder="Comments"></asp:TextBox><br />
+        
+        <asp:DropDownList ID="ddlUrgencyLevel" style="font-weight:normal!important" runat="server" CssClass="form-control">
+            <asp:ListItem Value="" Text="Urgency Level"></asp:ListItem>
+            <asp:ListItem Value="Low" Text="Low"></asp:ListItem>
+            <asp:ListItem Value="Medium" Text="Medium"></asp:ListItem>
+            <asp:ListItem Value="High" Text="High"></asp:ListItem>
+        </asp:DropDownList><br />
+        
+        <asp:CheckBox ID="chkContact" CssClass="text-muted" runat="server" Text="I agree to be contacted regarding this feedback" />
+      </div>
+      <div class="modal-footer">
+        <asp:Button ID="btnSubmitFeedback" ClientIDMode="Static" runat="server" style="background-color:#50CD89;" Text="Submit" OnClick="btnSubmitFeedback_Click" />
+        <button data-bs-dismiss="modal" aria-label="Close" class="btn btn-light">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Thank You!</h5>
+        <button type="button" data-bs-dismiss="modal" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 style="text-align:center">Thanks for sharing your thoughts with us! Your feedback is invaluable in helping us make the platform even better.</h4>
+        <h4 style="text-align:center;margin-top:20px">We'll be in touch if we have any follow-up questions!</h4>
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal" type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
        
     </form>
 
@@ -417,7 +508,9 @@
 		<script src='assets/js/custom/apps/chat/chat.js'></script>
 		<script src='assets/js/custom/modals/create-app.js'></script>
 		<script src='assets/js/custom/modals/upgrade-plan.js'></script>--%>
-
+					<script type="text/javascript">
+               
+                    </script>
 	<script type="text/javascript">
         toastr.options = {
             "closeButton": true,
@@ -449,6 +542,19 @@
                 }
             });
 		}
+        function showSuccessModal() {
+            // Hide the feedback input modal if it's open
+            console.log("asd");
+
+            // Show the success modal by adding the 'modal-show' class
+            document.getElementById("successModal").classList.add("modal-show");
+        }
+
+        function hideSuccessModal() {
+            // Hide the success modal by removing the 'modal-show' class
+            document.getElementById("successModal").classList.remove("modal-show");
+        }
+
         function showswalerror(msg, buttontitle) {
             //Swal.fire({
             //    text: msg,
@@ -511,5 +617,18 @@
                       .then(function () { console.log('Service Worker Registered'); });
               }
           </script>
+	
+		<script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Check if the URL contains `show=true`
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.get("show") === "true") {
+                    // Show the modal if `show=true` is present
+                    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                    successModal.show();
+                }
+            });
+
+        </script>
 </body>
 </html>
