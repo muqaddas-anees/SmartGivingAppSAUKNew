@@ -63,11 +63,12 @@ namespace DeffinityAppDev.App
             try
             {
                 using(var context=new PortfolioDataContext())
-                { 
+                {
+                var viewOptions = GetViewOptions(sessionKeys.PortfolioID);
                 var currentDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
 
                 var alist = PortfolioMgt.BAL.ActivityDetailsBAL.ActivityDetailsBAL_SelectAll().Where(o=>o.OrganizationID == sessionKeys.PortfolioID).ToList();
-
+            
               
                 //update shotr url
                 foreach (var eventEntity in alist.Where(o=>o.QRcode == null).ToList())
@@ -141,8 +142,8 @@ namespace DeffinityAppDev.App
                                   a.Venue_Type,
                                   a.Slots,
                                   Price = GetPrices(tList.Where(o => o.unid == a.unid).ToList()),
-                                  WordpressCode=GetEventEmbedCode(GetImageofEvent(a.unid),a.Title,Deffinity.Utility.RemoveHTMLTags(a.Description??""),a.unid),
-                                  ListWPCode=GetEventEmbedListCode(GetImageofEvent(a.unid), a.Title??"",Deffinity.Utility.RemoveHTMLTags(a.Description??""), a.unid??"",a.StartDateTime),
+                                  WordpressCode=GetEventEmbedCode(GetImageofEvent(a.unid),a.Title,Deffinity.Utility.RemoveHTMLTags(a.Description??""),a.unid,viewOptions),
+                                  ListWPCode=GetEventEmbedListCode(GetImageofEvent(a.unid), a.Title??"",Deffinity.Utility.RemoveHTMLTags(a.Description??""), a.unid??"",a.StartDateTime, viewOptions),
                                   a.Postalcode,
 a.Country,
                                   QRcode = Deffinity.systemdefaults.GetWebUrl() + "/Event/" + a.QRcode
@@ -208,14 +209,41 @@ a.Country,
 
 
                     string allEmbedListHtml = "<div id='PlegitWordpressEmbed' data-show-paging='{{showPaging}}' data-paging-value='{{pageValue}}' style='border: 1px solid #ddd; box-sizing: border-box;height:{{height}};width:{{width}}'>";
-                    //allEmbedListHtml += $@"<div style=""background-color: #990000; color: #FFFFFF; padding: 10px 15px; font-size: 30px; font-weight: bold;"">
-                    //                     {ddlSelect.SelectedItem.Text}
-                    //                  </div>";
+                    allEmbedListHtml += $@"
+                    <div id=""listHeader"" style=""background-color: {viewOptions.ListHeaderBackgroundColour}; color: {viewOptions.ListHeaderFontColour}; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-size: {viewOptions.ListHeaderFontSize}; font-weight: bold;"">
+                        <span>{DateTime.Now.ToShortDateString()}</span>
+                     
+  <input type=""date"" id=""headerDatePicker"" onchange=""filterEventsByDate(this)"" style=""background:transparent;border:none;font-size:30px;color:transparent"" />                    </div>
+                    ";
+
                     foreach (var activity in retval)
                     {
                         allEmbedListHtml += activity.ListWPCode;
                     }
-                    allEmbedListHtml += "</div>";
+                    allEmbedListHtml += @"</div><script>
+function filterEventsByDate(input) {
+    const selectedDate = input.value; // Get selected date in YYYY-MM-DD format
+      
+    const formattedDate = selectedDate.split(""-"").reverse().join(""/""); // Convert to DD/MM/YYYY format
+    const events = document.querySelectorAll("".event"");
+if (!selectedDate) {
+        // If no date is selected, display all events
+        events.forEach(event => {
+            event.style.display = ""flex""; // Show all events
+        });
+        return;
+    }
+
+    events.forEach(event => {
+        const eventDate = event.getAttribute(""list-data-start-time"")?.split("" "")[0]; // Extract the date part
+        if (eventDate === formattedDate) {
+            event.style.display = ""flex""; // Show matching events
+        } else {
+            event.style.display = ""none""; // Hide non-matching events
+        }
+    });
+}
+</script>";
                     hfAllEmbedListCode.Value = HttpUtility.JavaScriptStringEncode(allEmbedListHtml);
                     BasehfAllEmbedListCode.Value = HttpUtility.JavaScriptStringEncode(allEmbedListHtml);
 
@@ -231,20 +259,20 @@ a.Country,
             }
 
         }
-        private string GetEventEmbedListCode(string img, string title, string description, string unid,DateTime startTime)
+        private string GetEventEmbedListCode(string img, string title, string description, string unid,DateTime startTime, ViewOption viewoption)
         {
-           
+            string link = GetDonationUrl(unid);
             string Desc = description.Length > 100 ? description.Substring(0, 100) + "..." : description;
             string embedCode = $@"
-       <div list-data-start-time=""12:00AM"" list-data-end-time=""12:30AM"" style=""display: flex; border-bottom: 1px solid #ddd; background-color: #FFFFFF;"">
+       <div onclick=""window.location.href = '{link}'"" list-data-start-time=""{startTime}"" class=""event"" list-data-end-time=""12:30AM"" style=""display: flex; border-bottom: 1px solid #ddd; background-color: #FFFFFF;"">
     <!-- Time Section -->
-    <div style=""background-color: #990000; color: #FFFFFF; width: 100px; text-align: center; padding: 10px; font-size: 18px;"">
+    <div style=""background-color: {viewoption.ListTimeSlotBackgroundColour}; color: {viewoption.ListTimeSlotFontColour}; width: 100px; text-align: center; padding: 10px; font-size: {viewoption.ListTimeSlotFontSize}"">
       <div style=""font-size: 18px; font-weight: bold;"">{startTime.ToString()}</div>
     </div>
     <!-- Content Section -->
     <div style=""flex: 1; padding: 10px; box-sizing: border-box;"">
-      <div style=""font-size: 18px; font-weight: bold; color: #990000;"">{title}</div>
-      <div style=""font-size: 14px; color: #252F4A; margin-top: 5px;"">
+      <div style=""font-size: {viewoption.ListEventTitleSize}; font-weight: bold; color: {viewoption.ListEventTitleColour};"">{title}</div>
+      <div style=""font-size: {viewoption.ListEventSubjectFontSize}; color: {viewoption.ListEventSubjectColour}; margin-top: 5px;"">
        {Desc}
       </div>
     </div>
@@ -254,7 +282,7 @@ a.Country,
         }
 
 
-        private string GetEventEmbedCode(string img,string title,string description,string unid)
+        private string GetEventEmbedCode(string img,string title,string description,string unid,ViewOption viewoption)
         {
 
             string Desc=description;
@@ -363,6 +391,68 @@ a.Country,
 
         }
 
+        public ViewOption GetViewOptions(int portfolioId)
+        {
+            // Default display options for List View
+            var defaultViewOption = new ViewOption
+            {
+                ListHeaderBackgroundColour = "#FFFFFF",
+                ListHeaderFontSize = 30+"px",
+                ListHeaderFontColour = "#252F4A",
+
+                ListTimeSlotBackgroundColour = "#DAF6E4",
+                ListTimeSlotFontColour = "#252F4A",
+                ListTimeSlotFontSize = 20 + "px",
+
+                ListEventTitleColour = "#252F4A",
+                ListEventTitleSize = 16 + "px",
+
+                ListEventSubjectColour = "#98A0B7",
+                ListEventSubjectFontSize = 12 + "px",
+
+                ListEventPanelBackgroundColour = "#FFFFFF",
+                ListDatePickerColour = "#9CA4BA",
+
+                PanelBookTicketsButtonColour = "#1E2129",
+                PanelBookTicketsButtonFontColour = "#FFFFFF",
+                PanelViewLiveButtonColour = "#17C653",
+                PanelViewLiveButtonFontColour = "#FFFFFF"
+            };
+
+            using (var context = new PortfolioDataContext())
+            {
+                var viewOptions = context.ViewOptions.FirstOrDefault(o => o.PortfolioID == portfolioId);
+                if (viewOptions != null)
+                {
+                    return new ViewOption
+                    {
+                        ListHeaderBackgroundColour = viewOptions.ListHeaderBackgroundColour ?? defaultViewOption.ListHeaderBackgroundColour,
+                        ListHeaderFontSize = viewOptions.ListHeaderFontSize ?? defaultViewOption.ListHeaderFontSize+"px",
+                        ListHeaderFontColour = viewOptions.ListHeaderFontColour ?? defaultViewOption.ListHeaderFontColour,
+
+                        ListTimeSlotBackgroundColour = viewOptions.ListTimeSlotBackgroundColour ?? defaultViewOption.ListTimeSlotBackgroundColour,
+                        ListTimeSlotFontColour = viewOptions.ListTimeSlotFontColour ?? defaultViewOption.ListTimeSlotFontColour,
+                        ListTimeSlotFontSize = viewOptions.ListTimeSlotFontSize ?? defaultViewOption.ListTimeSlotFontSize + "px",
+
+                        ListEventTitleColour = viewOptions.ListEventTitleColour ?? defaultViewOption.ListEventTitleColour,
+                        ListEventTitleSize = viewOptions.ListEventTitleSize ?? defaultViewOption.ListEventTitleSize + "px",
+
+                        ListEventSubjectColour = viewOptions.ListEventSubjectColour ?? defaultViewOption.ListEventSubjectColour,
+                        ListEventSubjectFontSize = viewOptions.ListEventSubjectFontSize ?? defaultViewOption.ListEventSubjectFontSize + "px",
+
+                        ListEventPanelBackgroundColour = viewOptions.ListEventPanelBackgroundColour ?? defaultViewOption.ListEventPanelBackgroundColour,
+                        ListDatePickerColour = viewOptions.ListDatePickerColour ?? defaultViewOption.ListDatePickerColour,
+
+                        PanelBookTicketsButtonColour = viewOptions.PanelBookTicketsButtonColour ?? defaultViewOption.PanelBookTicketsButtonColour,
+                        PanelBookTicketsButtonFontColour = viewOptions.PanelBookTicketsButtonFontColour ?? defaultViewOption.PanelBookTicketsButtonFontColour,
+                        PanelViewLiveButtonColour = viewOptions.PanelViewLiveButtonColour ?? defaultViewOption.PanelViewLiveButtonColour,
+                        PanelViewLiveButtonFontColour = viewOptions.PanelViewLiveButtonFontColour ?? defaultViewOption.PanelViewLiveButtonFontColour
+                    };
+                }
+            }
+
+            return defaultViewOption;
+        }
 
 
         protected void OnPagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)

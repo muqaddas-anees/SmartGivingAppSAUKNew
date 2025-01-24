@@ -156,7 +156,7 @@ namespace DeffinityAppDev.App.controls
             // Fetch values from database if they exist (assume ViewOptions table exists)
             using (var context = new PortfolioDataContext())
             {
-                var viewOptions = context.ViewOptions.FirstOrDefault(); // Fetch ViewOptions from the database
+                var viewOptions = context.ViewOptions.FirstOrDefault(o => o.PortfolioID == sessionKeys.PortfolioID); // Fetch ViewOptions from the database
                 if (viewOptions != null)
                 {
                     headerBackgroundColor = viewOptions.ListHeaderBackgroundColour ?? headerBackgroundColor;

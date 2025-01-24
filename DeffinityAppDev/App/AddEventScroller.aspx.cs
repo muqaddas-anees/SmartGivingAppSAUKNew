@@ -134,6 +134,7 @@ namespace DeffinityAppDev.App
 
                         // Update the existing scroller properties
                         newScroller.Name = txtName.Value;
+                        newScroller.PortfolioID = sessionKeys.PortfolioID.ToString();
                         newScroller.Height = panelHeight.Value;
                         newScroller.Width = panelWidth.Value;
                         newScroller.TitleBackgroundColor = titleBgColor.Value;
@@ -161,7 +162,7 @@ namespace DeffinityAppDev.App
                     var existingMappings = context.EventsToEventScrollers
                         .Where(et => et.ScrollerID == newScroller.ID);
                     context.EventsToEventScrollers.DeleteAllOnSubmit(existingMappings);
-
+                    context.SubmitChanges();
                     // Add new mappings
                     foreach (var eventId in selectedEvents)
                     {

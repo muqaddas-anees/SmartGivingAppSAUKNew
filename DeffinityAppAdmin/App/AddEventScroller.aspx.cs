@@ -161,7 +161,7 @@ namespace DeffinityAppDev.App
                     var existingMappings = context.EventsToEventScrollers
                         .Where(et => et.ScrollerID == newScroller.ID);
                     context.EventsToEventScrollers.DeleteAllOnSubmit(existingMappings);
-
+                    context.SubmitChanges();
                     // Add new mappings
                     foreach (var eventId in selectedEvents)
                     {

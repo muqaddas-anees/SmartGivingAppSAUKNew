@@ -441,13 +441,13 @@
                 ${event.Title}
             </div>
             <div style="padding: 10px;">
-                ${event.Description}
+                ${event.Description??"".substring(0,80)}
             </div>
         </div>
     </div>
 `;
 
-
+                console.log(event);
                 slide.appendChild(title);
                 slide.appendChild(headline);
                 carousel.appendChild(slide);

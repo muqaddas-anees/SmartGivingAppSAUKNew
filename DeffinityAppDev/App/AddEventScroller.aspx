@@ -398,13 +398,13 @@
                 position: relative; 
                 background-size: cover!important; 
                 background-position: center;
-                background-image: url('../../imagehandler.ashx?s=event&id=${event.unid}');
+                background-image: url('../imagehandler.ashx?s=event&id=${event.unid}');
             `;
                 
 
                 // Title at the top right
                 const title = document.createElement("div");
-                title.textContent = document.getElementById('ddltype').value;
+                title.textContent = document.getElementById('txtOtherType').value;
                 title.style.cssText = `
                 position: absolute; 
                 top: 0px; 
@@ -442,9 +442,10 @@
             <div style="font-weight: bold; font-size: 20px; padding: 10px;">
                 ${event.Title}
             </div>
-            <div style="padding: 10px;">
-                ${event.Description}
-            </div>
+         <div style="padding: 10px;">
+    ${event.Description ? event.Description.substring(0, 100) : ""}
+</div>
+
         </div>
     </div>
 `;
@@ -577,7 +578,7 @@
         <div class="carousel-container" id="carousel-container" style="width: ${styles.width}px; height: ${styles.height}px;">
             <button id="prev" type="button" class="carousel-button">&#10094;</button>
             <div id="carousel" class="carousel">
-               ${document.getElementById('carousel').innerHTML.replace("../","https://dev.plegit.ai/")}
+               ${document.getElementById('carousel').innerHTML.replace("../","https://portal.plegit.ai/")}
             </div>
             <button id="next" type="button" class="carousel-button">&#10095;</button>
         </div>

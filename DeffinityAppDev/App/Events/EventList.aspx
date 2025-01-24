@@ -1015,7 +1015,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const items = Array.from(container.children);
 
         // Filter out the pagination container if already exists
-        const mainItems = items.filter(item => !item.classList.contains('pagination-container'));
+          const mainItems = items.filter(item =>
+            !item.classList.contains('pagination-container') &&
+            item.id !== "listHeader"
+        );
 
         // Calculate total pages
         const totalPages = Math.ceil(mainItems.length / itemsPerPage);
